@@ -21,3 +21,5 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::resource('industrialEstate','IndustrialEstateController');
+
+Route::resource('equipment','EquipmentController');

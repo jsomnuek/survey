@@ -80,7 +80,8 @@ class EquipmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editEquipment = Equipment::find($id);
+        return view('basic_informations.equipmentEdit')->with('editEquipment',$editEquipment);
     }
 
     /**
@@ -92,7 +93,11 @@ class EquipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updateEquipment = Equipment::find($id);
+        $updateEquipment->equipment_name = $request->input('equipmentName');
+        $updateEquipment->equipment_status = $request->input('equipmentStatus');
+        $updateEquipment->save();
+        return redirect('/equipment');
     }
 
     /**

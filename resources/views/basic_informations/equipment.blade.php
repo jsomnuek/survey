@@ -28,7 +28,7 @@
                       <td>{{$equipment->id}}</td>
                       <td>{{$equipment->equipment_name}}</td>
                       <td>{{$equipment->equipment_status}}</td>
-                      <td><a href="#" class="btn btn-primary btn-sm">แก้ไข</a></td>
+                      <td><a href="/equipment/{{$equipment->id}}/edit" class="btn btn-primary btn-sm">แก้ไข</a></td>
                     </tr>
                     @endforeach
                   </tbody>

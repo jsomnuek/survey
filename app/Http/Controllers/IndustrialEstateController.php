@@ -7,7 +7,16 @@ use Illuminate\Http\Request;
 use App\IndustrialEstate;
 
 class IndustrialEstateController extends Controller
-{    
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }    
     /**
      * Display a listing of the resource.
      *
@@ -89,9 +98,9 @@ class IndustrialEstateController extends Controller
     public function update(Request $request, $id)
     {
         // Validat Data before insert
-        $this->validate($request,[
-            'estateName' => 'required|unique:industrial_estates,estate_name',
-        ]);
+        // $this->validate($request,[
+        //     'estateName' => 'required|unique:industrial_estates,estate_name',
+        // ]);
         
         //
         $updateEstate = IndustrialEstate::find($id);

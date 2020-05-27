@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Lab Survey',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Lab</b> Survey',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -167,7 +167,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
 
     'logout_url' => 'logout',
 
@@ -218,12 +218,26 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => 'Basic_informations'],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Industrial Estate',
+            'url'         => 'industrialEstate',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 5,
+            'label'       => 2,
             'label_color' => 'success',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'ข้อมูลนิคม',
+                    'url'  => 'industrialEstate',
+                    'icon_color' => 'info',
+                ],
+                [
+                    'text' => 'เพิ่มข้อมูล',
+                    'url'  => 'industrialEstate/create',
+                    'icon_color' => 'green',
+                ],
+            ],
         ],
         ['header' => 'account_settings'],
         [

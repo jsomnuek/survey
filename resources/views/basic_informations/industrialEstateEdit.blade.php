@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('title_name','แก้ไขข้อมูลนิคมอุตสาหกรรม')
+@section('title', 'Dashboard | Industrial Estate')
+
+@section('content_header')
+    <h1>Industrial Estate</h1>
+@stop
 
 @section('content')
-    
 <div class="container">
   <div class="row">
     <div class="col">
@@ -38,5 +41,12 @@
     </div>
   </div>
 </div>
+@stop
 
-@endsection
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

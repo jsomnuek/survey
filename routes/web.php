@@ -15,8 +15,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('industrialEstate','IndustrialEstateController');
 
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+Route::resource('industrialEstate','IndustrialEstateController');

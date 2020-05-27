@@ -11,12 +11,14 @@
 |
 */
 
-// Route::get('/', function () {
-    // return view('welcome');
-// });
+Route::get('/', function () {
+    return view('index');
+});
 
 Route::resource('industrialEstate','IndustrialEstateController');
+// Route::resource('subb','SubbsController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+

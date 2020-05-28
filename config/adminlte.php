@@ -259,6 +259,26 @@ return [
                 ],
             ],
         ],
+        [
+            'text'        => 'TechnicalEquipment',
+            'url'         => 'technicalEquipment',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 2,
+            'label_color' => 'success',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'ข้อมูลเทคนิคเครื่องมือ',
+                    'url'  => 'technicalEquipment',
+                    'icon_color' => 'info',
+                ],
+                [
+                    'text' => 'เพิ่มข้อมูล',
+                    'url'  => 'technicalEquipment/create',
+                    'icon_color' => 'green',
+                ],
+            ],
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

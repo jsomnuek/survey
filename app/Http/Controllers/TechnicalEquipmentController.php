@@ -23,7 +23,7 @@ class TechnicalEquipmentController extends Controller
      */
     public function index()
     {
-        // return Equipment::all();
+        // return TechnicalEquipment::all();
         $allTechnicalEquipment = TechnicalEquipment::all();
         return view('basic_informations.technicalEquipment')->with('showAllTechnicalEquipment',$allTechnicalEquipment);
     }
@@ -48,7 +48,7 @@ class TechnicalEquipmentController extends Controller
     {
         //return $request->input();
         $this->validate($request, [
-             'technicalEquipmentName' => 'required|unique:technical_equipments,technical_equipment_name'
+            'technicalEquipmentName' => 'required|unique:technical_equipments,technical_equipment_name'
          ]);
 
         // insert new equipment

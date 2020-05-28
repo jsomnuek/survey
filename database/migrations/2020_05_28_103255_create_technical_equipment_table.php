@@ -13,7 +13,7 @@ class CreateTechnicalEquipmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('technical_equipment', function (Blueprint $table) {
+        Schema::create('technical_equipments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('technical_equipment_name', 255);
             $table->string('technical_equipment_status' ,1);

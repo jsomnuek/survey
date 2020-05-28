@@ -46,16 +46,16 @@ class TechnicalEquipmentController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->input();
+        //return $request->input();
         $this->validate($request, [
-            'technicalEquipmentName' => 'required|unique:technical_equipments,technical_equipment_name'
-        ]);
+             'technicalEquipmentName' => 'required|unique:technical_equipments,technical_equipment_name'
+         ]);
 
         // insert new equipment
         $insertTechnicalEquipment = new TechnicalEquipment;
         $insertTechnicalEquipment->technical_equipment_name = $request->input('technicalEquipmentName');
         $insertTechnicalEquipment->technical_equipment_status = 'A';
-        $insertEquipment->save();
+        $insertTechnicalEquipment->save();
         
         return redirect('/technicalEquipment');
 

@@ -48,12 +48,14 @@ class EquipmentController extends Controller
     {
         // return $request->input();
         $this->validate($request, [
-            'equipmentName' => 'required|unique:equipments,equipment_name'
+            'equipmentName' => 'required|unique:equipments,equipment_name',
+            'equipmentAbbr' => 'required|unique:equipments,equipment_abbr'
         ]);
 
         // insert new equipment
         $insertEquipment = new Equipment;
         $insertEquipment->equipment_name = $request->input('equipmentName');
+        $insertEquipment->equipment_abbr = $request->input('equipmentAbbr');
         $insertEquipment->equipment_status = 'A';
         $insertEquipment->save();
         
@@ -96,6 +98,7 @@ class EquipmentController extends Controller
         $updateEquipment = Equipment::find($id);
         $updateEquipment->equipment_name = $request->input('equipmentName');
         $updateEquipment->equipment_status = $request->input('equipmentStatus');
+        $updateEquipment->equipment_abbr = $request->input('equipmentAbbr');
         $updateEquipment->save();
         return redirect('/equipment');
     }

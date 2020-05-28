@@ -25,6 +25,10 @@
             {{Form::text('equipmentName', $editEquipment->equipment_name, ['class'=>'form-control','required'])}}
           </div>
           <div class="form-group">
+            {{Form::label('equipmentAbbr','ชื่อย่อเครื่องมือ')}}
+            {{Form::text('equipmentAbbr', $editEquipment->equipment_abbr, ['class'=>'form-control','required'])}}
+          </div>
+          <div class="form-group">
             {{Form::label('equipmentStatus','สถานะการใช้งานเครื่องมือ')}}
             {{-- {{Form::text('estateStatus', $editEstate->estate_status, ['class'=>'form-control','required'])}} --}}
             {{Form::select('equipmentStatus',[

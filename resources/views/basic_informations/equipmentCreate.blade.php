@@ -24,6 +24,10 @@
             {{Form::label('title','ชื่อเครื่องมือ')}}
             {{Form::text('equipmentName','',['class'=>'form-control','required'])}}
           </div>
+          <div class="form-group">
+            {{Form::label('title','ตัวย่อชื่อเครื่องมือ')}}
+            {{Form::text('equipmentAbbr','',['class'=>'form-control','required'])}}
+          </div>
           <a href="/equipment"  class="btn btn-secondary">ย้อนกลับ</a>
           {{Form::submit('บันทึก',['class'=>'btn btn-primary'])}}
         </div>

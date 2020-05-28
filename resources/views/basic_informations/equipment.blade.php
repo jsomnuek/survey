@@ -19,6 +19,7 @@
                       <th>ลำดับที่</th>
                       <th>ชื่อเครื่องมือ</th>
                       <th>สถานะการใช้งาน</th>
+                      <th>ชื่อย่อเครื่องมือ<th>
                       <th></th>
                     </tr>
                   </thead>
@@ -28,6 +29,7 @@
                       <td>{{$equipment->id}}</td>
                       <td>{{$equipment->equipment_name}}</td>
                       <td>{{$equipment->equipment_status}}</td>
+                      <td>{{$equipment->equipment_abbr}}</td>
                       <td><a href="/equipment/{{$equipment->id}}/edit" class="btn btn-primary btn-sm">แก้ไข</a></td>
                     </tr>
                     @endforeach

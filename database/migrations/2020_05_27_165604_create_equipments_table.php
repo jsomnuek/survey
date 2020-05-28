@@ -17,6 +17,7 @@ class CreateEquipmentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('equipment_name');
             $table->string('equipment_status', 1);
+            $table->string('equipment_abbr', 15);
             $table->timestamps();
         });
     }

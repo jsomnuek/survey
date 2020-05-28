@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTechnicalEquipmentTable extends Migration
+class CreateProductTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTechnicalEquipmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('technical_equipments', function (Blueprint $table) {
+        Schema::create('product_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('technical_equipment_name', 255);
-            $table->string('technical_equipment_status' ,1)->default('A');
+            $table->String('pruduct_type_name,255');
+            $table->String('product_type_status,1')->default('A');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTechnicalEquipmentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('technical_equipment');
+        Schema::dropIfExists('product_types');
     }
 }

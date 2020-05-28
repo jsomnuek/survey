@@ -24,4 +24,8 @@ Route::resource('industrialEstate','IndustrialEstateController');
 
 Route::resource('equipment','EquipmentController');
 
+<<<<<<< HEAD
 Route::resource('technicalEquipment','TechnicalEquipmentController');
+=======
+Route::resource('productType','ProductTypeController');
+>>>>>>> 52cdcedc4f8bc1dce816de61304df00d86b9f95f

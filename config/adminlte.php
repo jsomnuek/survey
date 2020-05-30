@@ -279,6 +279,26 @@ return [
                 ],
             ],
         ],
+        [
+            'text'        => 'ประเภทผลิตภัณฑ์',
+            'url'         => 'productType',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 2,
+            'label_color' => 'success',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'ชื่อประเภทผลิตภัณฑ์',
+                    'url'  => 'productType',
+                    'icon_color' => 'info',
+                ],
+                [
+                    'text' => 'เพิ่มข้อมูลประเภทผลิตภัณฑ์',
+                    'url'  => 'productType/create',
+                    'icon_color' => 'green',
+                ],
+            ],
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

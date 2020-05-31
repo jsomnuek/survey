@@ -15,8 +15,8 @@ class CreateProductTypesTable extends Migration
     {
         Schema::create('product_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('pruduct_type_name,255');
-            $table->String('product_type_status,1')->default('A');
+            $table->String('product_type_name',255);
+            $table->String('product_type_status',1)->default('A');
             $table->timestamps();
         });
     }

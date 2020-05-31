@@ -33,6 +33,8 @@
                     @endforeach
                   </tbody>
                 </table>
+                @else
+                <p>no result</p>
             @endif
           </div>
         </div>

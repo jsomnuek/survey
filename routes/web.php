@@ -19,6 +19,10 @@ Route::get('/subb', function () {
     return view('subb');
 });
 
+Route::get('/lab', function () {
+    return view('lab');
+});
+
 
 Auth::routes();
 

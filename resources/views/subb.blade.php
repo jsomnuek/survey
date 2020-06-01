@@ -24,7 +24,7 @@
                       </div>
                       <div class="col-md-6">
                             {{Form::label('title','ประเภทหน่วยงาน')}}
-                            {{Form::select('organizeGroup',[
+                            {{Form::select('organizeType',[
                                 '1' => 'ภาครัฐ',
                                 '2' => 'เอกชน',
                                 '3' => 'รัฐวิสาหกิจ',
@@ -87,7 +87,7 @@
                   </div>
                   <div class="row form-group">
                       <div class="col-md-4">         
-                        {{Form::label('title','ข้อมูลระบบคุณภาพ')}}
+                        {{Form::label('title','การจำหน่าย - ส่งออก')}}
                         {{Form::select('organizeExport',[
                             '1' => 'ไม่มีส่งออก',
                             '2' => 'ยุโรป',
@@ -102,25 +102,7 @@
                         {{Form::label('title','ทุนจดทะเบียน')}}
                         {{Form::number('organizeRegisterCapital','',['class'=>'form-control'])}}
                       </div>
-                  </div>
-                  <div class="row form-group">
-                      <div class="col-md-4">         
-                        {{Form::label('title','การจำหน่าย-ส่งออก')}}
-                        {{Form::select('organizeExport',[
-                            '1' => 'ไม่มีส่งออก',
-                            '2' => 'ยุโรป',
-                            '3' => 'อื่นๆ'
-                        ],'',['class'=>'form-control'])}}
-                      </div>
-                      <div class="col-md-4">
-                        {{Form::label('title','จำนวนบุคลากรในหน่วยงาน')}}
-                        {{Form::number('organizeMember','',['class'=>'form-control'])}}
-                      </div>
-                      <div class="col-md-4">
-                        {{Form::label('title','ทุนจดทะเบียน')}}
-                        {{Form::number('organizeRegisterCapital','',['class'=>'form-control'])}}
-                      </div>
-                  </div>
+                  </div>      
                 </div>
                
                 <div class="card-footer">

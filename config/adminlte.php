@@ -299,6 +299,86 @@ return [
                 ],
             ],
         ],
+        [
+            'text'        => 'ประเภทองค์กร',
+            'url'         => 'organisationType',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 2,
+            'label_color' => 'success',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'ชื่อประเภทองค์กร',
+                    'url'  => 'organisationType',
+                    'icon_color' => 'info',
+                ],
+                [
+                    'text' => 'เพิ่มข้อมูลประเภทองค์กร',
+                    'url'  => 'organisationType/create',
+                    'icon_color' => 'green',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'ประเภทกิจการ',
+            'url'         => 'businessType',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 2,
+            'label_color' => 'success',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'ชื่อประเภทกิจการ',
+                    'url'  => 'businessType',
+                    'icon_color' => 'info',
+                ],
+                [
+                    'text' => 'เพิ่มข้อมูลประเภทกิจการ',
+                    'url'  => 'businessType/create',
+                    'icon_color' => 'green',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'ประเภทอุตสาหกรรม',
+            'url'         => 'industrialType',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 2,
+            'label_color' => 'success',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'ชื่อประเภทอุตสาหกรรม',
+                    'url'  => 'industrialType',
+                    'icon_color' => 'info',
+                ],
+                [
+                    'text' => 'เพิ่มข้อมูลประเภทอุตสาหกรรม',
+                    'url'  => 'industrialType/create',
+                    'icon_color' => 'green',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'ประเภทการทดสอบ/สอบเทียบ',
+            'url'         => 'testingCalibratingType',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 2,
+            'label_color' => 'success',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'ชื่อประเภทการทดสอบ/สอบเทียบ',
+                    'url'  => 'testingCalibratingType',
+                    'icon_color' => 'info',
+                ],
+                [
+                    'text' => 'เพิ่มข้อมูลประเภทการทดสอบ/สอบเทียบ',
+                    'url'  => 'testingCalibratingType/create',
+                    'icon_color' => 'green',
+                ],
+            ],
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

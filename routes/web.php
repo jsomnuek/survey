@@ -27,3 +27,11 @@ Route::resource('equipment','EquipmentController');
 Route::resource('technicalEquipment', 'TechnicalEquipmentController');
 
 Route::resource('productType', 'ProductTypeController');
+
+Route::resource('testingCalibratingType', 'TestingCalibratingTypeController');
+
+Route::resource('businessType','BusinessTypeController');
+
+Route::resource('industrialType','IndustrialTypeController');
+
+Route::resource('organisationType','OrganisationTypeController');

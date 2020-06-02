@@ -80,12 +80,16 @@
                         </select>
                       </div>
                       <div class="col-md-3">
-                        {{Form::label('title','อำเภอ')}}
-                        {{Form::text('organizeDistrict','',['class'=>'form-control',''])}}
+                        <label for="">เขต/อำเภอ</label>
+                        <select class="custom-select" name="amphoes" id="amphoes">
+                          <option value="" selected>-- โปรดเลือก --</option>
+                        </select>
                       </div>
                       <div class="col-md-3">
-                        {{Form::label('title','ตำบล')}}
-                        {{Form::text('organizeSubDistrict','',['class'=>'form-control',''])}}
+                        <label for="">แขวง/ตำบล</label>
+                        <select class="custom-select" name="tambons" id="tambons">
+                          <option value="" selected>-- โปรดเลือก --</option>
+                        </select>
                       </div>
                   </div>
                   <div class="row form-group">

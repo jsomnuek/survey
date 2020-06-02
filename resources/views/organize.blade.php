@@ -232,7 +232,7 @@
           // Amphoe
           $('#changwats').change(function (){
               let ch_id = $(this).val();
-              $("#amphoes").html('<option value="" selected>select เขต/อำเภอ</option>');
+              $("#amphoes").html('<option value="" selected>-- โปรดเลือก --</option>');
               if(ch_id != null) {
                   $.ajax({
                       type:'POST',
@@ -254,7 +254,7 @@
           // Tambon
           $('#amphoes').change(function (){
               let am_id = $(this).val();
-              $("#tambons").html('<option value="" selected>select เขต/อำเภอ</option>');
+              $("#tambons").html('<option value="" selected>-- โปรดเลือก --</option>');
               if(am_id != null) {
                   $.ajax({
                       type:'POST',

@@ -465,6 +465,28 @@ return [
                 ],
             ],
         ],
+        ['header' => 'ข้อมูลแบบสำรวจ'],
+        [
+            'text'    => 'บันทึกข้อมูลแบบสำรวจ',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text'        => 'ส่วนที่ 1',
+                    'url'         => 'organize',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label'       => '',
+                    'label_color' => 'success',
+                    'icon'    => 'fas fa-arrow-alt-circle-right',
+                    'submenu' => [
+                        [
+                            'text' => 'ข้อมูลองค์กร',
+                            'url'  => 'organize',
+                            'icon_color' => 'info',
+                        ],
+                    ],
+                ],
+            ],
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

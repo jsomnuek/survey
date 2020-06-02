@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                {!!Form::open(['action'=>'TechnicalEquipmentController@store','method'=>'POST', 'class' => 'was-validated'])!!}
+                {!!Form::open(['action'=>'TechnicalEquipmentController@store','method'=>'POST', 'class' => ''])!!}
                 <div class="card-header">
                 <h1 class="card-title">ส่วนที่ 1 ข้อมูลองค์กรและภาพรวมของห้องปฏิบัติการ (ต่อ)</h1>
                 </div>
@@ -215,7 +215,6 @@
                         {{Form::text('','',['class'=>'form-control'])}}
                       </div>
                   </div>
-                  
                   <div class="row form-group">
                     <div class="col-md-6">
                       {{Form::label('title','1.21.2 เจ้าหน้าที่ห้องปฏิบัติการได้รับการฝึกอบรมเฉลี่ยต่อปี')}}
@@ -229,9 +228,40 @@
                       </select>
                     </div>
                   </div>
+                  <div class="row form-group">
+                    <div class="col-md-6">
+                      {{Form::label('title','1.21.3 ห้องปฏิบัติการของท่านมีการจัดการทางด้านสิ่งแวดล้อมในสถานที่ทำงานหรือไม่อย่างไร')}}
+                    </div>
+                    <div class="col-md-1">
+                      {{Form::radio('labEnvironment','',['class'=>'form-control',''])}} ไม่มี
+                    </div>
+                    <div class="col-md-1">
+                      {{Form::radio('labEnvironment','',['class'=>'form-control',''])}} มี ได้แก่
+                    </div>
+                    <div class="col-md-4">
+                      {{Form::text('environment','',['class'=>'form-control','placeholder'=>'แนวทางการจัดการสิ่งแวดล้อมของหน่วยงาน คือ'])}}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-md-12">
+                      {{Form::label('title','1.21.4 ปัญหาและอุปสรรคที่พบในการพัฒนาห้องปฏิบัติการทดสอบ (ถ้ามี)')}}
+                      {{Form::textarea('','',['class'=>'form-control','placeholder'=>'อื่นๆ โปรดระบุ','rows'=>'4'])}}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-md-12">
+                      {{Form::label('title','1.21.5 ความต้องการที่จะได้รับการสนับสนุนเพื่อพัฒนาห้องปฏิบัติการทดสอบ (ถ้ามี)')}}
+                      {{Form::textarea('','',['class'=>'form-control','placeholder'=>'อื่นๆ โปรดระบุ','rows'=>'4'])}}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-md-12">
+                      {{Form::label('title','1.21.6 ข้อเสนอแนะอื่น ๆ (ถ้ามี)')}}
+                      {{Form::textarea('','',['class'=>'form-control','placeholder'=>'อื่นๆ โปรดระบุ','rows'=>'4'])}}
+                    </div>
+                  </div>
                     
                 </div>
-              
                
                 <div class="card-footer">
                     <a href="/technicalEquipment"  class="btn btn-secondary">ย้อนกลับ</a>

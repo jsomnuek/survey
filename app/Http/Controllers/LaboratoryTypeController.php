@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\ProductType;
+use App\LaboratoryType;
 use Illuminate\Http\Request;
 
-class ProductTypeController extends Controller
+class LaboratoryTypeController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -25,9 +24,10 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        $allProductType = ProductType::all();
-        return view('basic_informations.productType')->with('showAllProductType',$allProductType);
+        $allLabType = LaboratoryType::all();
+        return view('basic_informations.laboratoryType')->with('showAllLabType',$allLabType);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,9 +36,8 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.productTypeCreate');
+        return view('basic_informations.laboratoryTypeCreate');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -49,26 +48,26 @@ class ProductTypeController extends Controller
     {
         // Validate Data before insert
         $this->validate($request,[
-            'productTypeName' => 'required|unique:product_types,product_type_name',
+            'labTypeName' => 'required|unique:laboratory_types,lab_type_name',
             ]);
         
         // Insert new product type record
-        $insertProductType = new ProductType;
-        $insertProductType->product_type_name = $request->input('productTypeName');
-        $insertProductType->product_type_status = 'A';
-        $insertProductType->save();
+        $insertLabType = new LaboratoryType;
+        $insertLabType->lab_type_name = $request->input('labTypeName');
+        $insertLabType->lab_type_status = 'A';
+        $insertLabType->save();
 
-        //return productType view
-        return redirect('/productType');
+        //return laboratoryType view
+        return redirect('/laboratoryType');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProductType  $productType
+     * @param  \App\LaboratoryType  $laboratoryType
      * @return \Illuminate\Http\Response
-     */ 
-    public function show(ProductType $productType)
+     */
+    public function show(LaboratoryType $laboratoryType)
     {
         //
     }
@@ -76,44 +75,43 @@ class ProductTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProductType  $productType
+     * @param  \App\LaboratoryType  $laboratoryType
      * @return \Illuminate\Http\Response
      */
-     public function edit(ProductType $productType)
+    public function edit(LaboratoryType $laboratoryType)
     {
-        $editProductType = ProductType::find($productType->id);
-        return view('basic_informations.productTypeEdit')->with('editProductType',$editProductType);
+        $editLabType = LaboratoryType::find($laboratoryType->id);
+        return view('basic_informations.laboratoryTypeEdit')->with('editLabType',$editLabType);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProductType  $productType
+     * @param  \App\LaboratoryType  $laboratoryType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductType $productType)
+    public function update(Request $request, LaboratoryType $laboratoryType)
     {
         // Validat Data before update
         // $this->validate($request,[
         //     'productTypeName' => 'required|unique:product_types,product_type_name',
         // ]);
 
-        $updateProductType = ProductType::find($productType->id);
-        $updateProductType->product_type_name = $request->input('productTypeName');
-        $updateProductType->product_type_status = $request->input('productTypeStatus');
-        $updateProductType->save();
+        $updateLabType = LaboratoryType::find($laboratoryType->id);
+        $updateLabType->lab_type_name = $request->input('labTypeName');
+        $updateLabType->lab_type_status = $request->input('labTypeStatus');
+        $updateLabType->save();
 
-        return redirect('/productType');
+        return redirect('/laboratoryType');
     }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProductType  $productType
+     * @param  \App\LaboratoryType  $laboratoryType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductType $productType)
+    public function destroy(LaboratoryType $laboratoryType)
     {
         //
     }

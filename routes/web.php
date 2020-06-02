@@ -40,3 +40,19 @@ Route::resource('organize','OrganizeController');
 Route::resource('technicalEquipment', 'TechnicalEquipmentController');
 
 Route::resource('productType', 'ProductTypeController');
+
+Route::resource('testingCalibratingType', 'TestingCalibratingTypeController');
+
+Route::resource('businessType','BusinessTypeController');
+
+Route::resource('industrialType','IndustrialTypeController');
+
+Route::resource('organisationType','OrganisationTypeController');
+
+Route::resource('laboratoryType','LaboratoryTypeController');
+
+Route::resource('certifyLaboratory','CertifyLaboratoryController');
+
+Route::resource('majorTechnology','MajorTechnologyController');
+
+Route::resource('objectiveUsage','ObjectiveUsageController');

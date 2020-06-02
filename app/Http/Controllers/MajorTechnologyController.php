@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\ProductType;
+use App\MajorTechnology;
 use Illuminate\Http\Request;
 
-class ProductTypeController extends Controller
+class MajorTechnologyController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -25,9 +24,10 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        $allProductType = ProductType::all();
-        return view('basic_informations.productType')->with('showAllProductType',$allProductType);
+        $allMajorTech = MajorTechnology::all();
+        return view('basic_informations.majorTechnology')->with('showAllMajorTech',$allMajorTech);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +36,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.productTypeCreate');
+        return view('basic_informations.majorTechnologyCreate');
     }
 
     /**
@@ -49,26 +49,25 @@ class ProductTypeController extends Controller
     {
         // Validate Data before insert
         $this->validate($request,[
-            'productTypeName' => 'required|unique:product_types,product_type_name',
+            'majorTechName' => 'required|unique:major_technologies,major_tech_name',
             ]);
         
         // Insert new product type record
-        $insertProductType = new ProductType;
-        $insertProductType->product_type_name = $request->input('productTypeName');
-        $insertProductType->product_type_status = 'A';
-        $insertProductType->save();
+        $insertMajorTech = new MajorTechnology;
+        $insertMajorTech->major_tech_name = $request->input('majorTechName');
+        $insertMajorTech->major_tech_status = 'A';
+        $insertMajorTech->save();
 
         //return productType view
-        return redirect('/productType');
+        return redirect('/majorTechnology');
     }
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProductType  $productType
+     * @param  \App\MajorTechnology  $majorTechnology
      * @return \Illuminate\Http\Response
-     */ 
-    public function show(ProductType $productType)
+     */
+    public function show(MajorTechnology $majorTechnology)
     {
         //
     }
@@ -76,44 +75,43 @@ class ProductTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProductType  $productType
+     * @param  \App\MajorTechnology  $majorTechnology
      * @return \Illuminate\Http\Response
      */
-     public function edit(ProductType $productType)
+    public function edit(MajorTechnology $majorTechnology)
     {
-        $editProductType = ProductType::find($productType->id);
-        return view('basic_informations.productTypeEdit')->with('editProductType',$editProductType);
+        $editMajorTech = MajorTechnology::find($majorTechnology->id);
+        return view('basic_informations.majorTechnologyEdit')->with('editMajorTech',$editMajorTech);
     }
-
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProductType  $productType
+     * @param  \App\MajorTechnology  $majorTechnology
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductType $productType)
+    public function update(Request $request, MajorTechnology $majorTechnology)
     {
         // Validat Data before update
         // $this->validate($request,[
         //     'productTypeName' => 'required|unique:product_types,product_type_name',
         // ]);
 
-        $updateProductType = ProductType::find($productType->id);
-        $updateProductType->product_type_name = $request->input('productTypeName');
-        $updateProductType->product_type_status = $request->input('productTypeStatus');
-        $updateProductType->save();
+        $updateMajorTech = MajorTechnology::find($majorTechnology->id);
+        $updateMajorTech->major_tech_name = $request->input('majorTechName');
+        $updateMajorTech->major_tech_status = $request->input('majorTechStatus');
+        $updateMajorTech->save();
 
-        return redirect('/productType');
+        return redirect('/majorTechnology');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProductType  $productType
+     * @param  \App\MajorTechnology  $majorTechnology
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductType $productType)
+    public function destroy(MajorTechnology $majorTechnology)
     {
         //
     }

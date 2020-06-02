@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\ProductType;
+use App\ObjectiveUsage;
 use Illuminate\Http\Request;
 
-class ProductTypeController extends Controller
+class ObjectiveUsageController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -25,9 +24,10 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        $allProductType = ProductType::all();
-        return view('basic_informations.productType')->with('showAllProductType',$allProductType);
+        $allObjUsage = ObjectiveUsage::all();
+        return view('basic_informations.objectiveUsage')->with('showAllObjUsage',$allObjUsage);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +36,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.productTypeCreate');
+        return view('basic_informations.objectiveUsageCreate');
     }
 
     /**
@@ -49,26 +49,26 @@ class ProductTypeController extends Controller
     {
         // Validate Data before insert
         $this->validate($request,[
-            'productTypeName' => 'required|unique:product_types,product_type_name',
+            'objUsageName' => 'required|unique:objective_usages,obj_usage_name',
             ]);
         
         // Insert new product type record
-        $insertProductType = new ProductType;
-        $insertProductType->product_type_name = $request->input('productTypeName');
-        $insertProductType->product_type_status = 'A';
-        $insertProductType->save();
+        $insertObjUsage = new ObjectiveUsage;
+        $insertObjUsage->obj_usage_name = $request->input('objUsageName');
+        $insertObjUsage->obj_usage_status = 'A';
+        $insertObjUsage->save();
 
         //return productType view
-        return redirect('/productType');
+        return redirect('/objectiveUsage');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProductType  $productType
+     * @param  \App\ObjectiveUsage  $objectiveUsage
      * @return \Illuminate\Http\Response
-     */ 
-    public function show(ProductType $productType)
+     */
+    public function show(ObjectiveUsage $objectiveUsage)
     {
         //
     }
@@ -76,44 +76,43 @@ class ProductTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProductType  $productType
+     * @param  \App\ObjectiveUsage  $objectiveUsage
      * @return \Illuminate\Http\Response
      */
-     public function edit(ProductType $productType)
+    public function edit(ObjectiveUsage $objectiveUsage)
     {
-        $editProductType = ProductType::find($productType->id);
-        return view('basic_informations.productTypeEdit')->with('editProductType',$editProductType);
+        $editObjUsage = ObjectiveUsage::find($objectiveUsage->id);
+        return view('basic_informations.objectiveUsageEdit')->with('editObjUsage',$editObjUsage);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProductType  $productType
+     * @param  \App\ObjectiveUsage  $objectiveUsage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductType $productType)
+    public function update(Request $request, ObjectiveUsage $objectiveUsage)
     {
         // Validat Data before update
         // $this->validate($request,[
         //     'productTypeName' => 'required|unique:product_types,product_type_name',
         // ]);
 
-        $updateProductType = ProductType::find($productType->id);
-        $updateProductType->product_type_name = $request->input('productTypeName');
-        $updateProductType->product_type_status = $request->input('productTypeStatus');
-        $updateProductType->save();
+        $updateObjUsage = ObjectiveUsage::find($objectiveUsage->id);
+        $updateObjUsage->obj_usage_name = $request->input('objUsageName');
+        $updateObjUsage->obj_usage_status = $request->input('objUsageStatus');
+        $updateObjUsage->save();
 
-        return redirect('/productType');
+        return redirect('/objectiveUsage');
     }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProductType  $productType
+     * @param  \App\ObjectiveUsage  $objectiveUsage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductType $productType)
+    public function destroy(ObjectiveUsage $objectiveUsage)
     {
         //
     }

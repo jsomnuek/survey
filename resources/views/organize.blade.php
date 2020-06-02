@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+<<<<<<< HEAD
                 {!!Form::open(['action'=>'TechnicalEquipmentController@store','method'=>'POST', 'class' => ''])!!}
+=======
+                {!!Form::open(['action'=>'TechnicalEquipmentController@store','method'=>'POST'])!!}
+>>>>>>> 7b7ef86ca4f133a4aedea607f800272b82ac675b
                 <div class="card-header">
                     <h1 class="card-title">ส่วนที่ 1 ข้อมูลองค์กรและภาพรวมของห้องปฏิบัติการ</h1>
                 </div>
@@ -15,14 +19,14 @@
                   <div class="row form-group">
                       <div class="col-md-12">
                             {{Form::label('title','1.1 ชื่อหน่วยงาน')}}
-                            {{Form::text('organizeName','',['class'=>'form-control',''])}}
+                            {{Form::text('organizeName','',['class'=>'form-control','required'])}}
                       </div>
                   </div>
                   {{-- 1.2orgID /1.3orgCode --}}
                   <div class="row form-group">
                       <div class="col-md-6">
                             {{Form::label('title','1.2 รหัสหน่วยงาน (AABCC)')}}
-                            {{Form::text('organizeCode','',['class'=>'form-control',''])}}
+                            {{Form::text('organizeCode','',['class'=>'form-control','required'])}}
                       </div>
                       <div class="col-md-6">
                             {{Form::label('title','1.3 หมายเลขประจำหน่วยงาน (ถ้ามี)')}}
@@ -34,7 +38,7 @@
                   <div class="row form-group">
                     <div class="col-md-12">
                           {{Form::label('title','1.4 ที่ตั้งของห้องปฏิบัติการ')}}
-                          <select class="form-control" name="orgEstate" id="orgEstate" >
+                          <select class="form-control" name="orgEstate" id="orgEstate">
                             <option>เลือกที่ตั้งของห้องปฏิบัติการ</option>
                               @foreach ($showAllOrg as $LabsData)
                                 <option value="{{$LabsData->estate_name}}"> {{$LabsData->estate_name}} </option>
@@ -184,7 +188,6 @@
                   </div>  
 
                 </div>
-               
                 <div class="card-footer">
                     <a href="/technicalEquipment"  class="btn btn-secondary">ย้อนกลับ</a>
                     {{Form::submit('บันทึก',['class'=>'btn btn-primary'])}}

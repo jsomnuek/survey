@@ -73,17 +73,23 @@
                         {{Form::label('title','รหัสไปรษณีย์')}}
                         {{Form::text('organizePostcode','',['class'=>'form-control',''])}}
                       </div>
-                      <div class="col-md-3">
-                        {{Form::label('title','จังหวัด')}}
-                        {{Form::text('organizeProvince','',['class'=>'form-control',''])}}
+                      <div class="col-md-3">                        
+                        <label for="">จังหวัด</label>
+                        <select class="custom-select" name="changwats" id="changwats">
+                          <option value="" selected>-- โปรดเลือก --</option>
+                        </select>
                       </div>
                       <div class="col-md-3">
-                        {{Form::label('title','อำเภอ')}}
-                        {{Form::text('organizeDistrict','',['class'=>'form-control',''])}}
+                        <label for="">เขต/อำเภอ</label>
+                        <select class="custom-select" name="amphoes" id="amphoes">
+                          <option value="" selected>-- โปรดเลือก --</option>
+                        </select>
                       </div>
                       <div class="col-md-3">
-                        {{Form::label('title','ตำบล')}}
-                        {{Form::text('organizeSubDistrict','',['class'=>'form-control',''])}}
+                        <label for="">แขวง/ตำบล</label>
+                        <select class="custom-select" name="tambons" id="tambons">
+                          <option value="" selected>-- โปรดเลือก --</option>
+                        </select>
                       </div>
                   </div>
                   <div class="row form-group">
@@ -193,6 +199,85 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+  $(document).ready(function() {
+
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+      function showChangwats () {
+          $.ajax({
+              url: "{{ route('changwats') }}",
+              type: 'GET',
+              dataType: 'JSON',
+              success: function (data) {
+                  // console.log(data);
+                  for(let i = 0; i < data.length; i++){
+                      $("#changwats").append(`
+                          <option value="${data[i].ch_id}">${data[i].changwat_t}</option>
+                      `);
+                  }
+              }
+          });                
+      }
+      showChangwats();
+
+      function showAmphoeTambon() {
+          // Amphoe
+          $('#changwats').change(function (){
+              let ch_id = $(this).val();
+              $("#amphoes").html('<option value="" selected>-- โปรดเลือก --</option>');
+              if(ch_id != null) {
+                  $.ajax({
+                      type:'POST',
+                      url:"{{ route('amphoes.post') }}",
+                      data:{ch_id:ch_id},
+                      success:function(data){
+                          for(let i = 0; i < data.length; i++){
+                          $("#amphoes").append(`
+                              <option value="${data[i].am_id}">${data[i].amphoe_t}</option>
+                          `);
+                          }
+                      }
+                  });
+              } else {
+                  $("#amphoes").html();
+              }
+              
+          });
+          // Tambon
+          $('#amphoes').change(function (){
+              let am_id = $(this).val();
+              $("#tambons").html('<option value="" selected>-- โปรดเลือก --</option>');
+              if(am_id != null) {
+                  $.ajax({
+                      type:'POST',
+                      url:"{{ route('tambons.post') }}",
+                      data:{am_id:am_id},
+                      success:function(data){
+                          for(let i = 0; i < data.length; i++){
+                          $("#tambons").append(`
+                              <option value="${data[i].ta_id}">${data[i].tambon_t}</option>
+                          `);
+                          }
+                      }
+                  });
+              } else {
+                  $("#tambons").html();
+              }
+              
+          });
+      }
+      showAmphoeTambon();
+
+  });
+</script>
 @endsection
 
 

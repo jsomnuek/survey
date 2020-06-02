@@ -73,9 +73,11 @@
                         {{Form::label('title','รหัสไปรษณีย์')}}
                         {{Form::text('organizePostcode','',['class'=>'form-control',''])}}
                       </div>
-                      <div class="col-md-3">
-                        {{Form::label('title','จังหวัด')}}
-                        {{Form::text('organizeProvince','',['class'=>'form-control',''])}}
+                      <div class="col-md-3">                        
+                        <label for="">จังหวัด</label>
+                        <select class="custom-select" name="changwats" id="changwats">
+                          <option value="" selected>-- โปรดเลือก --</option>
+                        </select>
                       </div>
                       <div class="col-md-3">
                         {{Form::label('title','อำเภอ')}}

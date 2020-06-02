@@ -44,30 +44,40 @@
                       {{Form::text('equipmentOrgCode','',['class'=>'form-control'])}}
                     </div>
                   </div>
-                  {{-- 1.5orgAddress --}}
-                  <label for="">1.5 ที่อยู่</label>
+                  {{-- 2.7equipmentMajorTech/2.8equipmentTechnical --}}
                   <div class="row form-group">
                       <div class="col-md-6">
-                        {{Form::label('title','อาคาร')}}
-                        {{Form::text('organizeAddress','',['class'=>'form-control',''])}}
+                        {{Form::label('title','2.7 สาขาเทคโนโลยีของเครื่องมือ')}}
+                        <select class="form-control" name="equipmentMajorTech" id="equipmentMajorTech" >
+                          <option>สาขาเทคโนโลยีของเครื่องมือ</option>
+                            @foreach ($showAllOrg as $orgType)
+                              <option value="{{$orgType->estate_name}}"> {{$orgType->estate_name}} </option>
+                            @endforeach
+                        </select>
                       </div>
                       <div class="col-md-6">
-                        {{Form::label('title','ชั้น')}}
-                        {{Form::text('organizeAddress','',['class'=>'form-control',''])}}
+                        {{Form::label('title','2.8 เทคนิคของเครื่องมือ')}}
+                        <select class="form-control" name="equipmentTechnical" id="equipmentTechnical" >
+                          <option>เทคนิคของเครื่องมือ</option>
+                            @foreach ($showAllOrg as $orgType)
+                              <option value="{{$orgType->estate_name}}"> {{$orgType->estate_name}} </option>
+                            @endforeach
+                        </select>
                       </div>
                   </div>
+                  {{-- 2.9equipmentYear/2.10equipmentPrice/2.11equipmentSupplier --}}
                   <div class="row form-group">
                       <div class="col-md-4">
-                        {{Form::label('title','เลขที่')}}
-                        {{Form::text('organizeAddress','',['class'=>'form-control',''])}}
+                        {{Form::label('title','2.9 ปีืี่ซื้อ')}}
+                        {{Form::number('equipmentYear','',['class'=>'form-control',''])}}
                       </div>
                       <div class="col-md-4">
-                        {{Form::label('title','ถนน')}}
-                        {{Form::text('organizeAddress','',['class'=>'form-control',''])}}
+                        {{Form::label('title','2.10 มูลค่า')}}
+                        {{Form::number('equipmentPrice','',['class'=>'form-control',''])}}
                       </div>
                       <div class="col-md-4">
-                        {{Form::label('title','ซอย')}}
-                        {{Form::text('organizeAddress','',['class'=>'form-control',''])}}
+                        {{Form::label('title','2.11 บริษัทที่จัดจำหน่าย')}}
+                        {{Form::text('equipmentSupplier','',['class'=>'form-control',''])}}
                       </div>
                   </div>
                   <div class="row form-group">

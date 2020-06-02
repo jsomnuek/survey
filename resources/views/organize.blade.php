@@ -5,11 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-<<<<<<< HEAD
-                {!!Form::open(['action'=>'TechnicalEquipmentController@store','method'=>'POST', 'class' => ''])!!}
-=======
                 {!!Form::open(['action'=>'TechnicalEquipmentController@store','method'=>'POST'])!!}
->>>>>>> 7b7ef86ca4f133a4aedea607f800272b82ac675b
                 <div class="card-header">
                     <h1 class="card-title">ส่วนที่ 1 ข้อมูลองค์กรและภาพรวมของห้องปฏิบัติการ</h1>
                 </div>

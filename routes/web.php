@@ -15,9 +15,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/equipmentLab', function () {
-    return view('equipmentLab');
-});
 
 // Route::get('/lab', function () {
 //     return view('lab');
@@ -28,6 +25,8 @@ Route::get('/equipmentLab', function () {
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+Route::resource('equipmentLab','EquipmentLabController');
 
 Route::resource('industrialEstate','IndustrialEstateController');
 

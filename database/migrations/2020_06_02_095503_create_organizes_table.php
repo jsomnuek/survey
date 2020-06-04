@@ -24,7 +24,7 @@ class CreateOrganizesTable extends Migration
             $table->string('org_address',255);
             $table->string('org_road',255)->nullable();
             $table->string('org_soi',255)->nullable();
-            $table->string('org_postcode',6);
+            $table->integer('org_postcode');
             $table->integer('org_ch_id');        
             $table->integer('org_am_id');        
             $table->integer('org_ta_id');

@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/subb', function () {
-    return view('subb');
+Route::get('/equipmentLab', function () {
+    return view('equipmentLab');
 });
 
 // Route::get('/lab', function () {

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard | Equipment')
 
 @section('content_header')
-    <h1>Equipment</h1>
+    <h1>ข้อมูลเครื่องมือวิทยาศาสตร์</h1>
 @stop
 
 @section('content')
@@ -25,7 +25,7 @@
             {{Form::text('equipmentName','',['class'=>'form-control','required'])}}
           </div>
           <div class="form-group">
-            {{Form::label('title','ตัวย่อชื่อเครื่องมือ')}}
+            {{Form::label('title','ชื่อย่อเครื่องมือ')}}
             {{Form::text('equipmentAbbr','',['class'=>'form-control','required'])}}
           </div>
           <a href="/equipment"  class="btn btn-secondary">ย้อนกลับ</a>

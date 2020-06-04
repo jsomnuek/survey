@@ -25,7 +25,7 @@ class IndustrialEstateController extends Controller
      */
     public function index()
     {
-        $allEstate = IndustrialEstate::all();
+        $allEstate = IndustrialEstate::paginate(15);
         return view('basic_informations.industrialEstate')->with('showAllEstate',$allEstate);
     }
 

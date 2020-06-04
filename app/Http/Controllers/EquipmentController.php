@@ -24,7 +24,7 @@ class EquipmentController extends Controller
     public function index()
     {
         // return Equipment::all();
-        $allEquipment = Equipment::all();
+        $allEquipment = Equipment::paginate(15);
         return view('basic_informations.equipment')->with('showAllEquipment',$allEquipment);
     }
 
@@ -97,8 +97,8 @@ class EquipmentController extends Controller
     {
         $updateEquipment = Equipment::find($id);
         $updateEquipment->equipment_name = $request->input('equipmentName');
-        $updateEquipment->equipment_status = $request->input('equipmentStatus');
         $updateEquipment->equipment_abbr = $request->input('equipmentAbbr');
+        $updateEquipment->equipment_status = $request->input('equipmentStatus');
         $updateEquipment->save();
         return redirect('/equipment');
     }

@@ -24,7 +24,7 @@ class IndustrialTypeController extends Controller
      */
     public function index()
     {
-        $allIndustType = IndustrialType::all();
+        $allIndustType = IndustrialType::paginate(15);
         return view('basic_informations.industrialType')->with('showAllIndustType',$allIndustType);
     }
 

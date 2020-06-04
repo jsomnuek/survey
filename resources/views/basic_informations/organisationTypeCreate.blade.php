@@ -24,7 +24,7 @@
                 {{Form::label('title','ชื่อประเภทองค์กร')}}
                 {{Form::text('orgTypeName','',['class' => 'form-control','required'])}}
               </div>
-              <a href="/orgnisationType" class="btn btn-primary">ย้อนกลับ</a>
+              <a href="/organisationType" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::submit('บันทึก',['class' => 'btn btn-primary'])}}
             </div>
             {!!Form::close()!!}

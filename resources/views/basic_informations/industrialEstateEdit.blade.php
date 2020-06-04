@@ -3,7 +3,7 @@
 @section('title', 'Dashboard | Industrial Estate')
 
 @section('content_header')
-    <h1>Industrial Estate</h1>
+    <h1>ข้อมูลนิคมอุตสาหกรรม</h1>
 @stop
 
 @section('content')

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard | Industrial Estate')
 
 @section('content_header')
-    <h1>Industrial Estate</h1>
+    <h1>ข้อมูลนิคมอุตสาหกรรม</h1>
 @stop
 
 @section('content')
@@ -16,23 +16,24 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>ลำดับที่</th>
-                      <th>ชื่อนิคมอุตสาหกรรม</th>
-                      <th>สถานะการใช้งาน</th>
+                      <th style="width:80px;">ลำดับที่</th>
+                      <th class="text-center">ชื่อนิคมอุตสาหกรรม</th>
+                      <th style="width:180px;">สถานะการใช้งานข้อมูล</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach ($showAllEstate as $estate)
                     <tr>
-                      <td>{{$estate->id}}</td>
+                      <td class="text-center">{{$estate->id}}</td>
                       <td>{{$estate->estate_name}}</td>
-                      <td>{{$estate->estate_status}}</td>
+                      <td class="text-center">{{$estate->estate_status}}</td>
                       <td><a href="/industrialEstate/{{$estate->id}}/edit" class="btn btn-primary btn-sm">แก้ไข</a></td>
                     </tr>
                     @endforeach
                   </tbody>
                 </table>
+                {{$showAllEstate->links()}}
                 @else
                 <p>no result</p>
             @endif

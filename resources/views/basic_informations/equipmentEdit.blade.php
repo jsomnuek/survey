@@ -3,7 +3,7 @@
 @section('title', 'Dashboard | Equipment')
 
 @section('content_header')
-    <h1>Equipment</h1>
+    <h1>ข้อมูลเครื่องมือวิทยาศาสตร์</h1>
 @stop
 
 @section('content')
@@ -29,7 +29,7 @@
             {{Form::text('equipmentAbbr', $editEquipment->equipment_abbr, ['class'=>'form-control','required'])}}
           </div>
           <div class="form-group">
-            {{Form::label('equipmentStatus','สถานะการใช้งานเครื่องมือ')}}
+            {{Form::label('equipmentStatus','สถานะการใช้งานข้อมูล')}}
             {{-- {{Form::text('estateStatus', $editEstate->estate_status, ['class'=>'form-control','required'])}} --}}
             {{Form::select('equipmentStatus',[
               'A' => 'Active',

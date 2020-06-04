@@ -16,23 +16,24 @@
                   <table class="table">
                     <thead>
                       <tr>
-                        <th>ลำดับที่</th>
-                        <th>ชื่อประเภทอุตสาหกรรม</th>
-                        <th>สถานะการใช้งานข้อมูล</th>
+                        <th style="width:80px;">ลำดับที่</th>
+                        <th class="text-center">ชื่อประเภทอุตสาหกรรม</th>
+                        <th style="width:180px;">สถานะการใช้งานข้อมูล</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($showAllIndustType as $industType)
                           <tr>
-                            <td>{{$industType->id}}</td>
+                            <td class="text-center">{{$industType->id}}</td>
                             <td>{{$industType->industrial_type_name}}</td>
-                            <td>{{$industType->industrial_type_status}}</td>
+                            <td class="text-center">{{$industType->industrial_type_status}}</td>
                             <td><a href="/industrialType/{{$industType->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
                           </tr>
                       @endforeach
                     </tbody>
                   </table>
+                  {{$showAllIndustType->links()}}
                   @else
                     <p>ไม่พบข้อมูล</p>
               @endif

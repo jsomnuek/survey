@@ -16,12 +16,6 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/lab', function () {
-//     return view('lab');
-// });
-
-
-
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
@@ -32,7 +26,10 @@ Route::resource('industrialEstate','IndustrialEstateController');
 
 Route::resource('equipment','EquipmentController');
 
-Route::resource('lab','LabsController');
+Route::resource('lab','LabController');
+// Route::get('/lab', 'LabsController@index');
+// Route::post('/lab', 'LabsController@store');
+// Route::get('/lab/create', 'LabsController@create');
 
 Route::resource('organize','OrganizeController');
 

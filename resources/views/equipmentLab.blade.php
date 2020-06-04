@@ -108,8 +108,94 @@
                       {{Form::label('title','2.15 ภาพ')}}
                       {{Form::text('equipmentPic','',['class'=>'form-control',''])}}
                     </div>
-                   
-                </div>
+                  </div>
+                  {{-- 2.16สอบเทียบ --}}
+                  <div class="row form-group">
+                    <div class="col-md-2">
+                      {{Form::label('title','2.16 การสอบเทียบ')}}
+                    </div>
+                    <div class="col-md-2">
+                      {{Form::radio('','',['class'=>'form-control',''])}} ไม่มี
+                    </div>
+                    <div class="col-md-2">
+                      {{Form::radio('','',['class'=>'form-control',''])}} มี
+                    </div>
+                    <div class="col-md-3">
+                      {{Form::text('','',['class'=>'form-control','placeholder'=>'ชื่อหน่วยงานสอบเทียบ'])}}
+                    </div>
+                    <div class="col-md-3">
+                      {{Form::date('','',['class'=>'form-control','placeholder'=>'วัน/เดือน/ปี'])}}
+                    </div>
+                  </div>
+                  {{-- 2.17equipmentMaintenance/2.18equipmentMaintenanceBudget --}}
+                  <div class="row form-group">
+                    <div class="col-md-6">
+                      {{Form::label('title','2.17	การตรวจเช็ค/บำรุงรักษาเครื่องมืออุปกรณ์ทางวิทยาศาสตร์')}}
+                      <select class="form-control" name="equipmentMaintenance" id="" >
+                        <option>ไม่มี</option>
+                        <option>มีทุก 1 เดือน</option>
+                        <option>มีทุก 3 เดือน</option>
+                        <option>มีทุก 6 เดือน</option>
+                        <option>มีทุก 1 ปี</option>
+                        <option>อื่นๆ</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      {{Form::label('title','2.18 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท)')}}
+                      {{Form::number('equipmentMaintenanceBudget','',['class'=>'form-control'])}}
+                    </div>
+                  </div>
+                  {{-- 2.19equipmentAdmin --}}
+                  {{Form::label('title','2.19 ผู้ดูแลเครื่องมือ')}}
+                  <div class="row form-group">
+                    <div class="col-md-4">
+                      ชื่อผู้ดูแล {{Form::text('equipmentAdminName','',['class'=>'form-control',''])}}
+                    </div>
+                    <div class="col-md-4">
+                      เบอร์โทรศัพท์ {{Form::text('equipmentAdminPhone','',['class'=>'form-control',''])}}
+                    </div>
+                    <div class="col-md-4">
+                      Email {{Form::email('equipmentAdminEmail','',['class'=>'form-control',''])}}
+                    </div>
+                  </div>
+                  {{-- 2.20equipmentManual  --}}
+                  <div class="row form-group">
+                    <div class="col-md-2">
+                      {{Form::label('title','2.20 คู่มือการใช้งาน ')}}
+                    </div>
+                    <div class="col-md-1">
+                      {{Form::radio('equipmentManual','',['class'=>'form-control',''])}} ไม่มี
+                    </div>
+                    <div class="col-md-1">
+                      {{Form::radio('equipmentManual','',['class'=>'form-control',''])}} มี
+                    </div>
+                    <div class="col-md-4">
+                      {{Form::text('equipmentManualName','',['class'=>'form-control','placeholder'=>'ชื่อคู่มือ/รหัสคู่มือ'])}}
+                    </div>
+                    <div class="col-md-4">
+                      {{Form::text('equipmentManualLocate','',['class'=>'form-control','placeholder'=>'สถานที่จัดเก็บ/ลิงก์ดาวน์โหลด '])}}
+                    </div>
+                  </div>
+                  {{-- 2.21equipmentRent --}}
+                  <div class="row form-group">
+                    <div class="col-md-3">
+                      {{Form::label('title','2.21	การให้เช่าใช้เครื่องมือ')}}
+                    </div>
+                    <div class="col-md-3">
+                      {{Form::radio('equipmentRent','',['class'=>'form-control',''])}} ไม่ให้บุคคลภายนอกเช่าใช้     
+                    </div>
+                    <div class="col-md-3">
+                      {{Form::radio('equipmentRent','',['class'=>'form-control',''])}} ให้บุคคลภายนอกเช่าใช้     
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-md-6">
+                      2.21.1 ค่าบริการต่อครั้ง (บาท){{Form::number('','',['class'=>'form-control','placeholder'=>''])}}
+                    </div>
+                    <div class="col-md-6">
+                      2.21.2 เงื่อนไขการขอยืม/ใช้งานเครื่องมือ {{Form::text('','',['class'=>'form-control','placeholder'=>''])}}
+                    </div>
+                  </div>
 
 
                 </div>

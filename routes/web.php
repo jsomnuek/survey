@@ -56,3 +56,5 @@ Route::resource('objectiveUsage','ObjectiveUsageController');
 Route::get('/changwats', 'Api\ProvinceInfosController@changwats')->name('changwats');
 Route::post('/amphoes', 'Api\ProvinceInfosController@amphoes')->name('amphoes.post');
 Route::post('/tambons', 'Api\ProvinceInfosController@tambons')->name('tambons.post');
+
+Route::resource('/organization', 'Employee\OrganizationController');

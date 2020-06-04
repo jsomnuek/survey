@@ -1,19 +1,39 @@
-@extends('adminlte::page')
-
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Dashboard</h1>
-@stop
+@extends('layouts.admin')
 
 @section('content')
-    <p>Welcome to Admin Lab Survey</p>
-@stop
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-6">
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
 
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+
+        </div>
+        <!-- ./col -->
+    </div>
+    <!-- /.row -->
+
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-7 connectedSortable">
+            
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-5 connectedSortable">
+
+        </section>
+        <!-- right col -->
+    </div>
+    <!-- /.row (main row) -->
+@endsection

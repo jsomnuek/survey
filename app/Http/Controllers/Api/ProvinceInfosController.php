@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+use App\ProvinceInfo;
+
+class ProvinceInfosController extends Controller
+{
+    public function changwats ()
+    {
+        $changwats = ProvinceInfo::select('ch_id', 'changwat_t')
+            ->orderBy('changwat_t', 'asc')
+            ->distinct()
+            ->get();
+        // return response()->json($changwats);
+        return $changwats;
+    }
+
+    public function amphoes (Request $request)
+    {
+        $data = $request->all();
+        // dd($data);
+        $amphoes = ProvinceInfo::select('am_id', 'amphoe_t')
+            ->where('ch_id', $data['ch_id'])
+            ->orderBy('amphoe_t', 'asc')
+            ->distinct()
+            ->get();
+        return $amphoes;
+    }
+
+    public function tambons (Request $request)
+    {
+        $data = $request->all();
+        // dd($data);
+        $tambons = ProvinceInfo::select('ta_id', 'tambon_t')
+            ->where('am_id', $data['am_id'])
+            ->orderBy('tambon_t', 'asc')
+            ->distinct()
+            ->get();
+        return $tambons;
+    }
+}

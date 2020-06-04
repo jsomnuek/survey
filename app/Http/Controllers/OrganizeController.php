@@ -24,7 +24,7 @@ class OrganizeController extends Controller
         //dd($allOrgData);
         //return $allOrgData;
 
-        return view('employee.organize.organize')->with('showAllOrg',$allOrgData);
+        return view('employee.organize.index')->with('showAllOrg',$allOrgData);
     }
 
     /**
@@ -34,7 +34,8 @@ class OrganizeController extends Controller
      */
     public function create()
     {
-        //
+        $allOrgData = Organize::all();
+        return view('employee.organize.create')->with('showAllOrg',$allOrgData);
     }
 
     /**

@@ -196,6 +196,22 @@
                       2.21.2 เงื่อนไขการขอยืม/ใช้งานเครื่องมือ {{Form::text('','',['class'=>'form-control','placeholder'=>''])}}
                     </div>
                   </div>
+                  
+                    <div class="form-group">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radio1">
+                        <label class="form-check-label form-control">Radio</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radio1" >
+                        <label class="form-check-label">Radio checked</label><br/>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radio1" >
+                        <label class="form-check-label">Radio disabled</label>
+                      </div>
+                    </div>
+               
 
 
                 </div>

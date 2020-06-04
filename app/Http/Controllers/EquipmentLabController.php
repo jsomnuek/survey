@@ -19,7 +19,7 @@ class EquipmentLabController extends Controller
         //dd($allOrgData);
         //return $allOrgData;
 
-        return view('equipmentlab')->with('showEquipmentLab',$allEquipmentLab);
+        return view('employee.equipmentlab.equipmentlab')->with('showEquipmentLab',$allEquipmentLab);
     }
 
     /**

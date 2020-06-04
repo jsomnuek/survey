@@ -21,7 +21,7 @@ class LabsController extends Controller
         $allLabs = Lab::all();
         //dd($allLabs);
         //return $allLabs;
-        return view('lab')->with('showAllLabs',$allLabs);
+        return view('employee.lab.lab')->with('showAllLabs',$allLabs);
 
     }
 

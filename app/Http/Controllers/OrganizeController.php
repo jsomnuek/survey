@@ -24,7 +24,7 @@ class OrganizeController extends Controller
         //dd($allOrgData);
         //return $allOrgData;
 
-        return view('organize')->with('showAllOrg',$allOrgData);
+        return view('employee.organize.organize')->with('showAllOrg',$allOrgData);
     }
 
     /**

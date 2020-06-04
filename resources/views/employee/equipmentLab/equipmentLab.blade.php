@@ -204,7 +204,7 @@
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="radio1" >
-                        <label class="form-check-label">Radio checked</label><br/>
+                        <label class="form-check-label">Radio checked</label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="radio1" >

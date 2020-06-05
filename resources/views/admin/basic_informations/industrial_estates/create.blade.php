@@ -18,7 +18,7 @@
         @endforeach
       @endif
       <div class="card">
-        {!!Form::open(['action'=>'IndustrialEstateController@store','method'=>'POST', 'class' => 'was-validated'])!!}
+        {!!Form::open(['action'=>'BasicInformations\IndustrialEstateController@store','method'=>'POST', 'class' => 'was-validated'])!!}
         <div class="card-body">
           <div class="form-group">
             {{Form::label('title','ชื่อนิคมอุตสาหกรรม')}}

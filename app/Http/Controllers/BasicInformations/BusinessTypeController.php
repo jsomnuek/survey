@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
-use App\BusinessType;
+use App\Http\Controllers\Controller;
+use App\Model\BasicInformations\BusinessType;
 use Illuminate\Http\Request;
 
 class BusinessTypeController extends Controller
@@ -25,7 +26,7 @@ class BusinessTypeController extends Controller
     public function index()
     {
         $allBizType = BusinessType::all();
-        return view('basic_informations.businessType')->with('showAllBizType',$allBizType);
+        return view('admin.basic_informations.business_types.index',['showAllBizType'=>$allBizType]);
     }
 
     /**
@@ -35,7 +36,7 @@ class BusinessTypeController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.businessTypeCreate');
+        return view('admin.basic_informations.business_types.create');
     }
 
     /**
@@ -80,7 +81,7 @@ class BusinessTypeController extends Controller
     public function edit(BusinessType $businessType)
     {
         $editBizType = BusinessType::find($businessType->id);
-        return view('basic_informations.businessTypeEdit')->with('editBizType', $editBizType);
+        return view('admin.basic_informations.business_types.edit', ['editBizType' => $editBizType]);
     }
 
     /**

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\IndustrialEstate;
+use App\Model\BasicInformations\IndustrialEstate;
 
 class IndustrialEstateController extends Controller
 {
@@ -25,8 +26,8 @@ class IndustrialEstateController extends Controller
      */
     public function index()
     {
-        $allEstate = IndustrialEstate::paginate(15);
-        return view('basic_informations.industrialEstate')->with('showAllEstate',$allEstate);
+        $allEstate = IndustrialEstate::paginate(10);
+        return view('admin.basic_informations.industrial_estates.index',['showAllEstate' => $allEstate]);
     }
 
     /**
@@ -36,7 +37,7 @@ class IndustrialEstateController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.industrialEstateCreate');
+        return view('admin.basic_informations.industrial_estates.create');
     }
 
     /**
@@ -86,7 +87,7 @@ class IndustrialEstateController extends Controller
     {
         $editEstate = IndustrialEstate::find($id);
 
-        return view('basic_informations.industrialEstateEdit')->with('editEstate',$editEstate);
+        return view('admin.basic_informations.industrial_estates.edit', ['editEstate' => $editEstate]);
     }
 
     /**

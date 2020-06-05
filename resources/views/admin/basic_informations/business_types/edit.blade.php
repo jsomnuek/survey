@@ -18,7 +18,7 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => ['BusinessTypeController@update',$editBizType->id],'method'=>'PUT'])!!}
+            {!!Form::open(['action' => ['BasicInformations\BusinessTypeController@update',$editBizType->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('little','ชื่อประเภทกิจการ')}}

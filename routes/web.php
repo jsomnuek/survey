@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
-Route::resource('industrialEstate','IndustrialEstateController');
+Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
 
 Route::resource('equipment','EquipmentController');
 
@@ -41,7 +41,7 @@ Route::resource('productType', 'ProductTypeController');
 
 Route::resource('testingCalibratingType', 'TestingCalibratingTypeController');
 
-Route::resource('businessType','BusinessTypeController');
+Route::resource('/businessType','BasicInformations\BusinessTypeController');
 
 Route::resource('industrialType','IndustrialTypeController');
 

@@ -16,18 +16,18 @@
                   <table class="table">
                     <thead>
                       <tr>
-                        <th>ลำดับที่</th>
-                        <th>ประเภทกิจการ</th>
-                        <th>สถานะการใช้งานข้อมูล</th>
+                        <th style="width:80px;">ลำดับที่</th>
+                        <th class="text-center">ประเภทกิจการ</th>
+                        <th style="width:180px;">สถานะการใช้งานข้อมูล</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($showAllBizType as $bizType)
                           <tr>
-                            <td>{{$bizType->id}}</td>
+                            <td class="text-center">{{$bizType->id}}</td>
                             <td>{{$bizType->business_type_name}}</td>
-                            <td>{{$bizType->business_type_status}}</td>
+                            <td class="text-center">{{$bizType->business_type_status}}</td>
                             <td><a href="/businessType/{{$bizType->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
                           </tr>
                       @endforeach

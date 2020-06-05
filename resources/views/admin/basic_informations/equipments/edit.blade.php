@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard | Industrial Estate')
+@section('title', 'Dashboard | Equipment')
 
 @section('content_header')
-    <h1>Industrial Estate</h1>
+    <h1>ข้อมูลเครื่องมือวิทยาศาสตร์</h1>
 @stop
 
 @section('content')
@@ -18,21 +18,25 @@
         @endforeach
       @endif
       <div class="card">
-        {!! Form::open(['action'=>['IndustrialEstateController@update', $editEstate->id], 'method' => 'PUT']) !!}
+        {!! Form::open(['action'=>['EquipmentController@update', $editEquipment->id], 'method' => 'PUT']) !!}
         <div class="card-body">
           <div class="form-group">
-            {{Form::label('estateName','ชื่อนิคมอุตสาหกรรม')}}
-            {{Form::text('estateName', $editEstate->estate_name, ['class'=>'form-control','required'])}}
+            {{Form::label('equipmentName','ชื่อเครื่องมือ')}}
+            {{Form::text('equipmentName', $editEquipment->equipment_name, ['class'=>'form-control','required'])}}
           </div>
           <div class="form-group">
-            {{Form::label('estateStatus','สถานะการใช้งานข้อมูล')}}
+            {{Form::label('equipmentAbbr','ชื่อย่อเครื่องมือ')}}
+            {{Form::text('equipmentAbbr', $editEquipment->equipment_abbr, ['class'=>'form-control','required'])}}
+          </div>
+          <div class="form-group">
+            {{Form::label('equipmentStatus','สถานะการใช้งานข้อมูล')}}
             {{-- {{Form::text('estateStatus', $editEstate->estate_status, ['class'=>'form-control','required'])}} --}}
-            {{Form::select('estateStatus',[
+            {{Form::select('equipmentStatus',[
               'A' => 'Active',
               'D' => 'Disable',
-          ],$editEstate->estate_status,['class'=>'form-control'])}}
+          ],$editEquipment->equipment_status,['class'=>'form-control'])}}
           </div>
-          <a href="/industrialEstate"  class="btn btn-secondary">ย้อนกลับ</a>
+          <a href="/equipment"  class="btn btn-secondary">ย้อนกลับ</a>
           {{ Form::hidden('_method', 'PUT') }}
           {{ Form::submit('บันทึก',['class'=>'btn btn-primary']) }}
         </div>

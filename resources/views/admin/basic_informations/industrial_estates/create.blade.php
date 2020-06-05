@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard | Equipment')
+@section('title', 'Dashboard | Industrial Estate')
 
 @section('content_header')
-    <h1>Equipment</h1>
+    <h1>ข้อมูลนิคมอุตสาหกรรม</h1>
 @stop
 
 @section('content')
@@ -18,17 +18,13 @@
         @endforeach
       @endif
       <div class="card">
-        {!!Form::open(['action'=>'EquipmentController@store','method'=>'POST', 'class' => 'was-validated'])!!}
+        {!!Form::open(['action'=>'BasicInformations\IndustrialEstateController@store','method'=>'POST', 'class' => 'was-validated'])!!}
         <div class="card-body">
           <div class="form-group">
-            {{Form::label('title','ชื่อเครื่องมือ')}}
-            {{Form::text('equipmentName','',['class'=>'form-control','required'])}}
+            {{Form::label('title','ชื่อนิคมอุตสาหกรรม')}}
+            {{Form::text('estateName','',['class'=>'form-control','required'])}}
           </div>
-          <div class="form-group">
-            {{Form::label('title','ตัวย่อชื่อเครื่องมือ')}}
-            {{Form::text('equipmentAbbr','',['class'=>'form-control','required'])}}
-          </div>
-          <a href="/equipment"  class="btn btn-secondary">ย้อนกลับ</a>
+          <a href="/industrialEstate"  class="btn btn-secondary">ย้อนกลับ</a>
           {{Form::submit('บันทึก',['class'=>'btn btn-primary'])}}
         </div>
         {!!Form::close()!!}

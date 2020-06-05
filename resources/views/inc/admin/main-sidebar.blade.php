@@ -100,20 +100,20 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview {{ Request::is('product*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ Request::is('productLab*') ? 'menu-open' : '' }}">
                     {{-- active --}}
-                    <a href="#" class="nav-link {{ Request::is('product*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('productLab*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-dolly-flatbed"></i>
                         <p>ผลิตภัณฑ์<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             {{-- active --}}
-                            <a href="{{ url('/product') }}" class="nav-link {{ Request::is('product') ? 'active' : '' }}">
+                            <a href="{{ url('/productLab') }}" class="nav-link {{ Request::is('productLab') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ข้อมูลผลิตภัณฑ์ทั้งหมด</p>
                             </a>
-                            <a href="{{ url('/product/create') }}" class="nav-link {{ Request::is('product/create') ? 'active' : '' }}">
+                            <a href="{{ url('/productLab/create') }}" class="nav-link {{ Request::is('productLab/create') ? 'active' : '' }}">
                                 <i class="fas fa-plus-circle nav-icon"></i>
                                 <p>เพิ่มข้อมูลผลิตภัณฑ์</p>
                             </a>

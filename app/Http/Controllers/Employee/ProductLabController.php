@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Model\Employee\ProductLab;
+
 class ProductLabController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class ProductLabController extends Controller
      */
     public function index()
     {
-        //
+        return view('employee.productlab.index');
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductLabController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.productLab.create');
     }
 
     /**

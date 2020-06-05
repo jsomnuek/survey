@@ -5,7 +5,7 @@
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">Product Create</h1>
+    <h1 class="m-0 text-dark">เพิ่มข้อมูลผลิตภัณฑ์</h1>
 @endsection
 
 @section('content')
@@ -15,102 +15,160 @@
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">ส่วนที่ 1 ข้อมูลองค์กรและภาพรวมของห้องปฎิบัติการ</h3>
+                    <h3 class="card-title">ส่วนที่ 3 ผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form action="/organization" method="POST" role="form">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="org_name">ชื่อหน่วย</label>
-                            <input type="text" name="org_name" class="form-control form-control-sm @error('org_name') is-invalid @enderror" id="org_name" placeholder="">
-                            @error('org_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                    {{-- <strong>text assignment</strong> --}}
-                                </span>
-                            @enderror
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="">3.1 ชื่อผลิตภัณฑ์ที่ทดสอบ / สอบเทียบ</label>
+                                <input type="text" name="productName" class="form-control @error('org_name') is-invalid @enderror" id="productName" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">3.2 ประเภทผลิตภัณฑ์</label>
+                                <select class="form-control">
+                                    <option>ยานยนต์ ชิ้นส่วน อะไหล่</option>
+                                    <option>อุปกรณ์อิเล็กทรอนิกส์</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="org_number">หมายเลขประจำหน่วยงาน (ถ้ามี)</label>
-                            <input type="text" name="org_number" class="form-control form-control-sm" id="org_number" placeholder="">
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="">3.3 มาตราฐานผลิตภัณฑ์</label>
+                                <input type="text" name="productStandard" class="form-control" id="productStandard" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">3.4 ประเภทรายการทดสอบ/สอบเทียบ</label>
+                                <select class="form-control" name="" id="">
+                                    <option>ดำเนินการแล้ว</option>
+                                    <option>อยู่ระหว่างพัฒนา/วิจัย/ทดสอบ</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="org_building">อาคาร</label>
-                            <input type="text" name="org_building" class="form-control form-control-sm" id="org_building" placeholder="">
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="">3.5 ชื่อรายการทดสอบ/สอบเทียบ</label>
+                                <input type="text" name="" class="form-control" id="" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">3.6 ประเภทรายการทดสอบ/สอบเทียบ</label>
+                                <select class="form-control" name="" id="">
+                                    <option>วิเคราะห์คุณลักษณะทางกายภาพ</option>
+                                    <option>วิเคราะห์ทางเคมี</option>
+                                    <option>วิเคราะห์ทางเคมี</option>
+                                    <option>วิเคราะห์จุลชีววิทยา</option>
+                                    <option>วิเคราะห์ทางชีววิทยา ชีวเคมี ชีวโมเลกุล</option>
+                                    <option>สอบเทียบ</option>
+                                    <option>อื่นๆ </option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="org_floor">ชั้น</label>
-                            <input type="text" name="org_floor" class="form-control form-control-sm" id="org_floor" placeholder="">
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <label for="">3.7 วิธีทดสอบ/สอบเทียบตามาตราฐาน </label>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="form-check-input" type="radio" name="radio1">
+                                <label class="form-check-label">Inhoused Method</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="form-check-input" type="radio" name="radio1">
+                                <label class="form-check-label">Inhoused Method</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" type="text" name="detail" placeholder="โปรดระบุรายละเอียด">
+                            </div>
+                        </div>   
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="">3.8 ช่วงความสามารถของการวัด</label>
+                                <input type="text" name="" class="form-control " id="" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">3.9 ระยะเวลาการทดสอบ/สอบเทียบ</label>
+                                <input type="text" name="" class="form-control " id="" placeholder="">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="org_address">เลขที่</label>
-                            <input type="text" name="org_address" class="form-control form-control-sm @error('org_address') is-invalid @enderror" id="org_address" placeholder="">
-                            @error('org_address')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="">3.10 ค่าธรรมเนียมการทดสอบ/สอบเทียบ</label>
+                                <input type="text" name="" class="form-control " id="" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="org_soi">ซอย</label>
-                            <input type="text" name="org_soi" class="form-control form-control-sm" id="org_soi" placeholder="">
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="">3.11 วัสดุอ้างอิงที่ใช้ทดสอบ</label>
+                                <input type="text" name="" class="form-control " id="" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">3.12 แหล่งที่มาของวัสดุอ้างอิง</label>
+                                <input type="text" name="" class="form-control " id="" placeholder="">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="org_road">ถนน</label>
-                            <input type="text" name="org_road" class="form-control form-control-sm" id="org_road" placeholder="">
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <label for="">3.13 การควบคุมคุณภาพผลการทดสอบภายใน</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select class="form-control" name="" id="">
+                                    <option>ไม่มี</option>
+                                    <option>มีการใช้ Spike Sample</option>
+                                    <option>มีการใช้วัสดุอ้างอิงเพื่อตรวจสอบความถูกต้องของการทดสอบ</option>
+                                    <option>มีการวิเคราะห์ Regrant Blank, Field Blank</option>
+                                    <option>มีการทำซ้ำ (Replicate)</option>
+                                    <option>มีการวิเคราะห์ Checked หรือ Control Sample</option>
+                                    <option>มีอื่นๆ </option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="org_postcode">รหัสไปรษณีย์</label>
-                            <input type="text" name="org_postcode" class="form-control form-control-sm @error('org_postcode') is-invalid @enderror" id="org_postcode" placeholder="">
-                            @error('org_postcode')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <label for="">3.14 การทดสอบความชำนาญห้องปฏิบัติการ </label>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="form-check-input" type="radio" name="radio2">
+                                <label class="form-check-label">ไม่มี</label>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="form-check-input" type="radio" name="radio2">
+                                <label class="form-check-label">มี</label>
+                            </div>
+                            <div class="col-md-3">
+                                {{-- <label class="form-check-label">ชื่อผู้จัด</label> --}}
+                                <input class="form-control" type="text" name="detail" placeholder="โปรดระบุชื่อผู้จัด">
+                            </div>
+                            <div class="col-md-3">
+                                {{-- <label class="form-check-label">ปีที่เข้าร่วม</label> --}}
+                                <input class="form-control" type="text" name="detail" placeholder="โปรดระบุปีที่เข้าร่วม">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="org_phone">โทรศัพท์</label>
-                            <input type="text" name="org_phone" class="form-control form-control-sm @error('org_phone') is-invalid @enderror" id="org_phone" placeholder="">
-                            @error('org_phone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <label for="">3.15 การรับรองความสามารถห้องปฏิบัติการ</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select class="form-control" name="" id="">
+                                    <option>ไม่ได้รับการรับรอง</option>
+                                    <option>ได้รับการรับรอง ISO/IEC 17025</option>
+                                    <option>ได้รับการรับรอง ISO 15189</option>
+                                    <option>จะขอการรับรอง ISO/IEC 17025</option>
+                                    <option>จะขอการรับรอง ISO 15189</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="org_fax">โทรสาร</label>
-                            <input type="text" name="org_fax" class="form-control form-control-sm" id="org_fax" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="org_email">อีเมล</label>
-                            <input type="email" name="org_email" class="form-control form-control-sm @error('org_email') is-invalid @enderror" id="org_email" placeholder="">
-                            @error('org_email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="org_website">เว็บไซต์</label>
-                            <input type="text" name="org_website" class="form-control form-control-sm" id="org_website" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="org_lat">ละติจูด</label>
-                            <input type="text" name="org_lat" class="form-control form-control-sm" id="org_lat" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="org_long">ลองติจูด</label>
-                            <input type="text" name="org_long" class="form-control form-control-sm" id="org_long" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="org_capital">ทุนจดทะเบียน (ล้านบาท)</label>
-                            <input type="text" name="org_capital" class="form-control form-control-sm" id="org_capital" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="org_employee_amount">จำนวนบุคลากร (คน)</label>
-                            <input type="text" name="org_employee_amount" class="form-control form-control-sm" id="org_employee_amount" placeholder="">
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label for="">3.16 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ (ระบุโดยรหัสเครื่องมือจากส่วนที่ 2)</label>
+                            </div>
+                            <input class="form-control" type="text" name="detail" placeholder="Ex.AABCC-MNN-RRRSS"><br/>
+                            <input class="form-control" type="text" name="detail" placeholder="Ex.AABCC-MNN-RRRSS"><br/>
+                            <input class="form-control" type="text" name="detail" placeholder="Ex.AABCC-MNN-RRRSS">
                         </div>
                     </div>
                     <!-- /.card-body -->

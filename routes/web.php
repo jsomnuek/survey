@@ -64,3 +64,5 @@ Route::resource('/organization', 'Employee\OrganizationController');
 Route::resource('/lab', 'Employee\LabController');
 
 Route::resource('/equipmentLab','Employee\EquipmentLabController');
+
+Route::resource('/productLab','Employee\ProductLabController');

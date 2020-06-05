@@ -15,18 +15,20 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/org', function () {
+    return view('employee.organize');
+});
+
 
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
-Route::resource('equipmentLab','EquipmentLabController');
-
 Route::resource('industrialEstate','IndustrialEstateController');
 
 Route::resource('equipment','EquipmentController');
 
-Route::resource('lab','LabController');
+
 // Route::get('/lab', 'LabsController@index');
 // Route::post('/lab', 'LabsController@store');
 // Route::get('/lab/create', 'LabsController@create');
@@ -58,3 +60,7 @@ Route::post('/amphoes', 'Api\ProvinceInfosController@amphoes')->name('amphoes.po
 Route::post('/tambons', 'Api\ProvinceInfosController@tambons')->name('tambons.post');
 
 Route::resource('/organization', 'Employee\OrganizationController');
+
+Route::resource('/lab', 'Employee\LabController');
+
+Route::resource('/equipmentLab','Employee\EquipmentLabController');

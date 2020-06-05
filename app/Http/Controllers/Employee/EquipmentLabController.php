@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\EquipmentLab;
+namespace App\Http\Controllers\Employee;
+use App\Http\Controllers\Controller;
+use App\Model\Employee\EquipmentLab;
+use App\TechnicalEquipment;
 use Illuminate\Http\Request;
 
 class EquipmentLabController extends Controller
@@ -19,7 +20,7 @@ class EquipmentLabController extends Controller
         //dd($allOrgData);
         //return $allOrgData;
 
-        return view('employee.equipmentlab.equipmentlab')->with('showEquipmentLab',$allEquipmentLab);
+        return view('employee.equipmentlab.index')->with('showEquipmentLab',$allEquipmentLab);
     }
 
     /**
@@ -29,7 +30,8 @@ class EquipmentLabController extends Controller
      */
     public function create()
     {
-        //
+        $allEquipmentLab = EquipmentLab::all();
+        return view('employee.equipmentlab.create')->with('showEquipmentLab',$allEquipmentLab);;
     }
 
     /**

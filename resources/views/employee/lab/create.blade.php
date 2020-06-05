@@ -1,4 +1,12 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
+
+@section('page')
+    Laboratory Create
+@endsection
+
+@section('header-box-1')
+    <h1 class="m-0 text-dark">เพิ่มข้อมูลห้องปฏิบัติการ</h1>
+@endsection
 
 @section('content')
 <div class="container">
@@ -7,7 +15,7 @@
         <div class="card">
             <form action="/lab" method="POST">
             @csrf
-            <div class="card-header">
+            <div class="card-header bg-primary">
             <h1 class="card-title">ส่วนที่ 1 ข้อมูลองค์กรและภาพรวมของห้องปฏิบัติการ (ต่อ)</h1>
             </div>
          

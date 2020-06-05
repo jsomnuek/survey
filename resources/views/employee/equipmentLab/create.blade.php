@@ -1,4 +1,12 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
+
+@section('page')
+    Equipment Laboratory Create
+@endsection
+
+@section('header-box-1')
+    <h1 class="m-0 text-dark">เพิ่มข้อมูลเครื่องมือในห้องปฏิบัติการ</h1>
+@endsection
 
 @section('content')
 <div class="container">
@@ -6,7 +14,7 @@
         <div class="col-md-12">
             <div class="card">
                 {!!Form::open(['action'=>'TechnicalEquipmentController@store','method'=>'POST'])!!}
-                <div class="card-header">
+                <div class="card-header bg-primary">
                     <h1 class="card-title">ส่วนที่ 2 เครื่องมือวิทยาศาสตร์ </h1>
                 </div>
         
@@ -50,7 +58,7 @@
                         {{Form::label('title','2.7 สาขาเทคโนโลยีของเครื่องมือ')}}
                         <select class="form-control" name="equipmentMajorTech" id="equipmentMajorTech" >
                           <option>สาขาเทคโนโลยีของเครื่องมือ</option>
-                            @foreach ($showEquipmentLab as $TechnicalEquipmentName)
+                            @foreach ($showEquipmentLab ?? '' as $TechnicalEquipmentName)
                               <option value="{{$TechnicalEquipmentName->technical_equipment_name}}"> {{$TechnicalEquipmentName->technical_equipment_name}} </option>
                             @endforeach
                         </select>
@@ -59,7 +67,7 @@
                         {{Form::label('title','2.8 เทคนิคของเครื่องมือ')}}
                         <select class="form-control" name="equipmentTechnical" id="equipmentTechnical" >
                           <option>เทคนิคของเครื่องมือ</option>
-                            @foreach ($showEquipmentLab as $TechnicalEquipmentName)
+                            @foreach ($showEquipmentLab ?? '' as $TechnicalEquipmentName)
                               <option value="{{$TechnicalEquipmentName->technical_equipment_name}}"> {{$TechnicalEquipmentName->technical_equipment_name}} </option>
                             @endforeach
                         </select>

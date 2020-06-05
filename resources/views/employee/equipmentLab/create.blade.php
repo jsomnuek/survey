@@ -16,47 +16,47 @@
               <form action="" method="post">
               
                 <div class="card-header bg-primary">
-                    <h1 class="card-title">ส่วนที่ 2 เครื่องมือวิทยาศาสตร์ </h1>
+                    <h1 class="card-title">ส่วนที่ 3 เครื่องมือวิทยาศาสตร์ </h1>
                 </div>
         
                 <div class="card-body">
-                  {{-- 2.1equipmentID--}}
+                  {{-- 3.1equipmentID--}}
                   <div class="row form-group">
                       <div class="col-md-4">
-                        <label for="">2.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS)</label>
+                        <label for="">3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS)</label>
                         <input type="text" class="form-control" name="equipmentID" id="equipmentID" required>
                       </div>
                   </div>
-                  {{-- 2.2equipmentNameEN /2.3equipmentNameTH --}}
+                  {{-- 3.2equipmentNameEN /3.3equipmentNameTH --}}
                   <div class="row form-group">
                       <div class="col-md-6">
-                        <label for="">2.2 ชื่อเครื่องมือ (ภาษาอังกฤษ)</label>
+                        <label for="">3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ)</label>
                         <input type="text" class="form-control" name="equipmentNameEN" id="equipmentNameEN" required>
                       </div>
                       <div class="col-md-6">
-                        <label for="">2.3 ชื่อเครื่องมือ (ภาษาไทย)</label>
+                        <label for="">3.3 ชื่อเครื่องมือ (ภาษาไทย)</label>
                         <input type="text" class="form-control" name="equipmentNameTH" id="equipmentNameTH" required>
                       </div>
                   </div>
                   {{-- 2.4equipmentBrand /2.5equipmentModel /2.6equipmentOrgCode--}}
                   <div class="row form-group">
                     <div class="col-md-4">
-                      <label for="">2.4 ยี่ห้อของเครืองมือ</label>
+                      <label for="">3.4 ยี่ห้อของเครืองมือ</label>
                       <input type="text" class=form-control name="equipmentBrand" id="equipmentBrand">
                     </div>
                     <div class="col-md-4">
-                      <label for="">2.5 รุ่นของเครืองมือ</label>
+                      <label for="">3.5 รุ่นของเครืองมือ</label>
                       <input type="text" class=form-control name="equipmentModel" id="equipmentModel">
                     </div>
                     <div class="col-md-4">
-                      <label for="">2.6 รหัสเครื่องมือของหน่วยงาน (ถ้ามี)</label>
+                      <label for="">3.6 รหัสเครื่องมือของหน่วยงาน (ถ้ามี)</label>
                       <input type="text" class=form-control name="equipmentOrgCode" id="equipmentOrgCode">
                     </div>
                   </div>
                   {{-- 2.7equipmentMajorTech/2.8equipmentTechnical --}}
                   <div class="row form-group">
                       <div class="col-md-6">
-                        <label for="">2.7 สาขาเทคโนโลยีของเครื่องมือ</label>
+                        <label for="">3.7 สาขาเทคโนโลยีของเครื่องมือ</label>
                         <select class="form-control" name="equipmentMajorTech" id="equipmentMajorTech" >
                           <option>สาขาเทคโนโลยีของเครื่องมือ</option>
                             @foreach ($showEquipmentLab ?? '' as $TechnicalEquipmentName)
@@ -65,7 +65,7 @@
                         </select>
                       </div>
                       <div class="col-md-6">
-                        <label for="">2.8 เทคนิคของเครื่องมือ</label>
+                        <label for="">3.8 เทคนิคของเครื่องมือ</label>
                         <select class="form-control" name="equipmentTechnical" id="equipmentTechnical" >
                           <option>เทคนิคของเครื่องมือ</option>
                             @foreach ($showEquipmentLab ?? '' as $TechnicalEquipmentName)
@@ -77,22 +77,22 @@
                   {{-- 2.9equipmentYear/2.10equipmentPrice/2.11equipmentSupplier --}}
                   <div class="row form-group">
                       <div class="col-md-4">
-                        <label for="">2.9 ปีืี่ซื้อ</label>
+                        <label for="">3.9 ปีืี่ซื้อ</label>
                         <input type="text" class=form-control name="equipmentYear" id="equipmentYear">
                       </div>
                       <div class="col-md-4">
-                        <label for="">2.10 มูลค่า</label>
+                        <label for="">3.10 มูลค่า</label>
                         <input type="number" class=form-control name="equipmentPrice" id="equipmentPrice">
                       </div>
                       <div class="col-md-4">
-                        <label for="">2.11 บริษัทที่จัดจำหน่าย</label>
+                        <label for="">3.11 บริษัทที่จัดจำหน่าย</label>
                         <input type="text" class=form-control name="equipmentSupplier" id="equipmentSupplier">
                       </div>
                   </div>
-                  {{-- 2.12วัตถุประสงค์/2.13ขอบเขต --}}
+                  {{-- 3.12วัตถุประสงค์/3.13ขอบเขต --}}
                   <div class="row form-group">
                     <div class="col-md-6">
-                      <label for="">2.12 วัตถุประสงค์การใช้งาน</label>
+                      <label for="">3.12 วัตถุประสงค์การใช้งาน</label>
                       <select class="form-control" name="" id="" >
                         <option>ทดสอบ/สอบเทียบ</option>
                         <option>วิจัย</option>
@@ -100,28 +100,28 @@
                       </select>
                     </div>
                     <div class="col-md-6">
-                      <label for="">2.13 ขอบเขตการใช้เครื่องมือ</label>
+                      <label for="">3.13 ขอบเขตการใช้เครื่องมือ</label>
                       <select class="form-control" name="" id="" >
                         <option>ใช้เฉพาะผลิตภัณฑ์</option>
                         <option>ใช้ได้กับหลายผลิตภัณฑ์</option>
                       </select>
                     </div>
                   </div>
-                  {{-- 2.14ความละเอียด/2.15รูป --}}
+                  {{-- 3.14ความละเอียด/3.15รูป --}}
                   <div class="row form-group">
                     <div class="col-md-6">
-                      <label for="">2.14 ความสามารถของเครื่อง/ความละเอียด</label>
+                      <label for="">3.14 ความสามารถของเครื่อง/ความละเอียด</label>
                       <input type="text" class=form-control name="" id="">
                     </div>
                     <div class="col-md-6">
-                      <label for="">2.15 ภาพเครื่องมือ</label>
+                      <label for="">3.15 ภาพเครื่องมือ</label>
                       <input type="file" class="form-control" name="" id="">
                     </div>
                   </div>
-                  {{-- 2.16สอบเทียบ --}}
+                  {{-- 3.16สอบเทียบ --}}
                   <div class="row form-group">
                     <div class="col-md-2">
-                      <label for="">2.16 การสอบเทียบ</label>
+                      <label for="">3.16 การสอบเทียบ</label>
                     </div>
                     <div class="col-md-2">
                       <input type="radio" class="" name="" id=""> ไม่มี
@@ -139,7 +139,7 @@
                   {{-- 2.17equipmentMaintenance/2.18equipmentMaintenanceBudget --}}
                   <div class="row form-group">
                     <div class="col-md-6">
-                      <label for="">2.17	การตรวจเช็ค/บำรุงรักษาเครื่องมืออุปกรณ์ทางวิทยาศาสตร์</label>
+                      <label for="">3.17	การตรวจเช็ค/บำรุงรักษาเครื่องมืออุปกรณ์ทางวิทยาศาสตร์</label>
                       <select class="form-control" name="equipmentMaintenance" id="" >
                         <option>ไม่มี</option>
                         <option>มีทุก 1 เดือน</option>
@@ -150,7 +150,7 @@
                       </select>
                     </div>
                     <div class="col-md-6">
-                      <label for="">2.18 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท)</label>
+                      <label for="">3.18 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท)</label>
                       <input type="number" class="form-control" name="equipmentMaintenanceBudget" id="equipmentMaintenanceBudget">
                     </div>
                   </div>
@@ -173,7 +173,7 @@
                   {{-- 2.20equipmentManual  --}}
                   <div class="row form-group">
                     <div class="col-md-2">
-                      <label for="">2.20 คู่มือการใช้งาน</label>
+                      <label for="">3.20 คู่มือการใช้งาน</label>
                     </div>
                     <div class="col-md-1">
                       <input type="radio" class="" name="equipmentManual" id="equipmentManual"> ไม่มี
@@ -191,7 +191,7 @@
                   {{-- 2.21equipmentRent --}}
                   <div class="row form-group">
                     <div class="col-md-3">
-                      <label for="">2.21	การให้เช่าใช้เครื่องมือ</label>
+                      <label for="">3.21	การให้เช่าใช้เครื่องมือ</label>
                     </div>
                     <div class="col-md-3">
                       <input type="radio" class="" name="equipmentRent" id="equipmentRent"> ไม่ให้บุคคลภายนอกเช่าใช้  
@@ -202,11 +202,11 @@
                   </div>
                   <div class="row form-group">
                     <div class="col-md-6">
-                      2.21.1 ค่าบริการต่อครั้ง (บาท)
+                      3.21.1 ค่าบริการต่อครั้ง (บาท)
                       <input type="number" class="form-control" name="" id="">
                     </div>
                     <div class="col-md-6">
-                      2.21.2 เงื่อนไขการขอยืม/ใช้งานเครื่องมือ 
+                      3.21.2 เงื่อนไขการขอยืม/ใช้งานเครื่องมือ 
                       <input type="text" class="form-control" name="" id="">
                     </div>
                   </div>

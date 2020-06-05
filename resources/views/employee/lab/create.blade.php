@@ -16,11 +16,11 @@
             <form action="/lab" method="POST">
             @csrf
             <div class="card-header bg-primary">
-            <h1 class="card-title">ส่วนที่ 1 ข้อมูลองค์กรและภาพรวมของห้องปฏิบัติการ (ต่อ)</h1>
+            <h1 class="card-title">ส่วนที่ 2 ข้อมูลห้องปฏิบัติการ </h1>
             </div>
          
             <div class="card-body">
-              {{-- 1.13labname /1.14labID --}}
+              {{-- 2.1labname /2.2labID --}}
               <div class="row form-group">
                   <div class="col-md-8">
                         {{Form::label('title','1.13 ชื่ิอห้องปฎิบัติการ')}}

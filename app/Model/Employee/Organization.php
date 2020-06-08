@@ -10,11 +10,21 @@ class Organization extends Model
 
     protected $primaryKey = 'id';
 
+    /*
     protected $fillable = [
         'org_name','org_number','org_building','org_floor','org_address','org_soi',
         'org_road','org_postcode','org_postcode','org_fax','org_email','org_website',
         'org_lat','org_long','org_capital','org_employee_amount'
     ];
+    */
+    
+    protected $guarded = [];
 
     public $timestamps = true;
+
+    public function provinceInfos()
+    {
+        return $this->belongsTo(ProvinceInfo::class, 'ch_id','am_id','ta_id');
+    }
+
 }

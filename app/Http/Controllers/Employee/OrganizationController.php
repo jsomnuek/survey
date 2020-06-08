@@ -16,7 +16,8 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $orgs = Organization::all();
+        // $orgs = Organization::all();
+        $orgs = Organization::paginate(5);
 
         return view('employee.organization.index', ['orgs' => $orgs]);
     }
@@ -39,38 +40,7 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        // check request 
-        // dump(request()->all());
-        // dd($request->all());
-
-        // validation
-        request()->validate([
-            'org_name' => 'required',
-            'org_address' => 'required',
-            'org_postcode' => 'required',
-            'org_phone' => 'required',
-            'org_email' => 'required',
-        ]);
-
-        // clean up
-        $organization = new Organization;
-        $organization->org_name =  $request['org_name'];
-        $organization->org_number =  $request['org_number'];
-        $organization->org_building =  $request['org_building'];
-        $organization->org_floor =  $request['org_floor'];
-        $organization->org_address =  $request['org_address'];
-        $organization->org_soi =  $request['org_soi'];
-        $organization->org_road =  $request['org_road'];
-        $organization->org_postcode =  $request['org_postcode'];
-        $organization->org_phone =  $request['org_phone'];
-        $organization->org_fax =  $request['org_fax'];
-        $organization->org_email =  $request['org_email'];
-        $organization->org_website =  $request['org_website'];
-        $organization->org_lat =  $request['org_lat'];
-        $organization->org_long =  $request['org_long'];
-        $organization->org_capital =  $request['org_capital'];
-        $organization->org_employee_amount =  $request['org_employee_amount'];
-        $organization->save();
+        Organization::create($this->validateOrganization());
 
         return redirect('/organization');
     }
@@ -81,11 +51,13 @@ class OrganizationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    // public function show($id)
+    public function show(Organization $organization)
     {
-        $org = Organization::find($id);
+        // $org = Organization::find($id);
+        // $org = Organization::findOrFail($id);
 
-        return view('employee.organization.show', ['org' => $org]);
+        return view('employee.organization.show', ['org' => $organization]);
     }
 
     /**
@@ -94,9 +66,11 @@ class OrganizationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    // public function edit($id)
+    public function edit(Organization $organization)
     {
-        $org = Organization::find($id);
+        // $org = Organization::find($id);
+        $org = $organization;
 
         return view('employee.organization.edit', compact('org'));
     }
@@ -108,35 +82,13 @@ class OrganizationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    public function update(Organization $organization)
     {
-        // check request 
-        // dump(request()->all());
-        // dd($request->all());
-
-        // validation
-
         // clean up
-        $organization = Organization::find($id);
-        $organization->org_name =  $request['org_name'];
-        $organization->org_number =  $request['org_number'];
-        $organization->org_building =  $request['org_building'];
-        $organization->org_floor =  $request['org_floor'];
-        $organization->org_address =  $request['org_address'];
-        $organization->org_soi =  $request['org_soi'];
-        $organization->org_road =  $request['org_road'];
-        $organization->org_postcode =  $request['org_postcode'];
-        $organization->org_phone =  $request['org_phone'];
-        $organization->org_fax =  $request['org_fax'];
-        $organization->org_email =  $request['org_email'];
-        $organization->org_website =  $request['org_website'];
-        $organization->org_lat =  $request['org_lat'];
-        $organization->org_long =  $request['org_long'];
-        $organization->org_capital =  $request['org_capital'];
-        $organization->org_employee_amount =  $request['org_employee_amount'];
-        $organization->save();
+        $organization->update($this->validateOrganization());
 
-        return redirect('/organization');
+        return redirect("/organization/$organization->id");
     }
 
     /**
@@ -148,5 +100,38 @@ class OrganizationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function validateOrganization()
+    {
+        return request()->validate([
+            'org_name' => 'required',
+            'org_code' => '',
+            'org_number' => '',
+            'org_location' => '',
+            'org_location_other' => '',
+            'org_building' => '',
+            'org_floor' => '',
+            'org_address' => 'required',
+            'org_soi' => '',
+            'org_road' => '',
+            'province_info_ch_id' => 'required',
+            'province_info_am_id' => 'required',
+            'province_info_ta_id' => 'required',
+            'org_postcode' => 'required|min:5|max:5',
+            'org_phone' => 'required',
+            'org_fax' => '',
+            'org_email' => 'required',
+            'org_website' => '',
+            'org_lat' => '',
+            'org_long' => '',
+            'org_type' => '',
+            'org_type_other' => '',
+            'org_type_of_business' => '',
+            'org_distribution' => '',
+            'org_distribution_other' => '',
+            'org_capital' => '',
+            'org_employee_amount' => '',
+        ]);
     }
 }

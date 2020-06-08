@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Employee;
 
-use App\Organize;
-use App\IndustrialEstate;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class OrganizeController extends Controller
+use App\Model\Employee\Lab;
+
+class LabController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }    
     /**
      * Display a listing of the resource.
      *
@@ -19,12 +16,7 @@ class OrganizeController extends Controller
      */
     public function index()
     {
-        $allOrgData = Organize::all();
-        //$allEstate = IndustrialEstate::all();
-        //dd($allOrgData);
-        //return $allOrgData;
-
-        return view('organize')->with('showAllOrg',$allOrgData);
+        return view('employee.lab.index');
     }
 
     /**
@@ -34,7 +26,7 @@ class OrganizeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.lab.create');
     }
 
     /**
@@ -45,16 +37,16 @@ class OrganizeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dump(request()->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Organize  $organize
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Organize $organize)
+    public function show($id)
     {
         //
     }
@@ -62,10 +54,10 @@ class OrganizeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Organize  $organize
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Organize $organize)
+    public function edit($id)
     {
         //
     }
@@ -74,10 +66,10 @@ class OrganizeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Organize  $organize
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Organize $organize)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -85,10 +77,10 @@ class OrganizeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Organize  $organize
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Organize $organize)
+    public function destroy($id)
     {
         //
     }

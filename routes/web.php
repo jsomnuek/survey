@@ -15,14 +15,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/equipmentLab', function () {
-    return view('equipmentLab');
+Route::get('/org', function () {
+    return view('employee.organize');
 });
-
-// Route::get('/lab', function () {
-//     return view('lab');
-// });
-
 
 
 Auth::routes();
@@ -33,7 +28,10 @@ Route::resource('/industrialEstate','BasicInformations\IndustrialEstateControlle
 
 Route::resource('equipment','EquipmentController');
 
-Route::resource('lab','LabsController');
+
+// Route::get('/lab', 'LabsController@index');
+// Route::post('/lab', 'LabsController@store');
+// Route::get('/lab/create', 'LabsController@create');
 
 Route::resource('organize','OrganizeController');
 
@@ -57,8 +55,14 @@ Route::resource('majorTechnology','MajorTechnologyController');
 
 Route::resource('objectiveUsage','ObjectiveUsageController');
 
-Route::get('/changwats', 'Api\ProvinceInfosController@changwats')->name('changwats');
-Route::post('/amphoes', 'Api\ProvinceInfosController@amphoes')->name('amphoes.post');
-Route::post('/tambons', 'Api\ProvinceInfosController@tambons')->name('tambons.post');
+Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
+Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');
+Route::get('/tambons/{id}', 'Api\ProvinceInfoController@tambons');
 
 Route::resource('/organization', 'Employee\OrganizationController');
+
+Route::resource('/lab', 'Employee\LabController');
+
+Route::resource('/equipmentLab','Employee\EquipmentLabController');
+
+Route::resource('/productLab','Employee\ProductLabController');

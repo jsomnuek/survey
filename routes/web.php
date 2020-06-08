@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 // Route::get('/org', function () {
-//     return view('employee.organize');
+//     return view('employee.organize.create');
 // });
 
 

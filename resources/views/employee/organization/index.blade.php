@@ -15,6 +15,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">ข้อมูลทั้งหมด</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -23,10 +28,9 @@
                         <thead>                  
                             <tr>
                                 <th style="width: 10px">รหัส</th>
-                                <th>ชื่อหน่วย</th>
-                                <th>โทรศัพท์</th>
-                                <th style="width: 40px">อีเมล</th>
-                                <th style="width: auto"></th>
+                                <th>ชื่อหน่วยงาน</th>
+                                <th>อีเมล</th>
+                                <th style="width: 10em"><i class="fas fa-users-cog"></i></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,7 +38,6 @@
                             <tr>
                                 <td>{{ $org->id }}</td>
                                 <td>{{ $org->org_name }}</td>
-                                <td>{{ $org->org_phone }}</td>
                                 <td>{{ $org->org_email }}</td>
                                 <td><a href="/organization/{{ $org->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a></td>
                             </tr>                                
@@ -49,9 +52,13 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer clearfix">
-
-                </div>
+                @if (count($orgs) > 10)
+                    <div class="card-footer clearfix">
+                        {{ $orgs->links() }}
+                    </div>
+                @else
+                    
+                @endif
                 <!-- /.card-footer -->
             </div>
             <!--/.card -->

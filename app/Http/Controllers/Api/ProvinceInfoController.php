@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\ProvinceInfo;
+use App\Model\ProvinceInfo;
 
-class ProvinceInfosController extends Controller
+class ProvinceInfoController extends Controller
 {
     public function changwats ()
     {
@@ -15,31 +15,36 @@ class ProvinceInfosController extends Controller
             ->orderBy('changwat_t', 'asc')
             ->distinct()
             ->get();
-        // return response()->json($changwats);
-        return $changwats;
+        
+        return response()->json($changwats);
+        // return $changwats;
     }
 
-    public function amphoes (Request $request)
+    public function amphoes ($id)
     {
-        $data = $request->all();
+        // $data = $request->all();
         // dd($data);
         $amphoes = ProvinceInfo::select('am_id', 'amphoe_t')
-            ->where('ch_id', $data['ch_id'])
+            ->where('ch_id', $id)
             ->orderBy('amphoe_t', 'asc')
             ->distinct()
             ->get();
-        return $amphoes;
+        
+        return response()->json($amphoes);
+        // return $amphoes;
     }
 
-    public function tambons (Request $request)
+    public function tambons ($id)
     {
-        $data = $request->all();
+        // $data = $request->all();
         // dd($data);
         $tambons = ProvinceInfo::select('ta_id', 'tambon_t')
-            ->where('am_id', $data['am_id'])
+            ->where('am_id', $id)
             ->orderBy('tambon_t', 'asc')
             ->distinct()
             ->get();
-        return $tambons;
+
+        return response()->json($tambons);
+        // return $tambons;
     }
 }

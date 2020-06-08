@@ -39,7 +39,6 @@ class OrganizationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    // public function store()
     {
         Organization::create($this->validateOrganization());
 

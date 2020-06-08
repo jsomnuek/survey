@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Employee;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Model\Employee\ProductLab;
+use App\Model\BasicInformations\ProductType;
+use App\Model\BasicInformations\IndustrialType;
 
 class ProductLabController extends Controller
 {
@@ -16,6 +17,7 @@ class ProductLabController extends Controller
      */
     public function index()
     {
+        
         return view('employee.productlab.index');
     }
 
@@ -26,7 +28,14 @@ class ProductLabController extends Controller
      */
     public function create()
     {
-        return view('employee.productLab.create');
+        $industrialTypes = IndustrialType::all();
+        $productTypes = ProductType::all();
+        $data = [
+            'industrialTypes' => $industrialTypes,
+            'productTypes' => $productTypes,
+        ];
+        //return $data;
+        return view('employee.productLab.create')->with($data);
     }
 
     /**

@@ -29,9 +29,10 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">4.2 ประเภทผลิตภัณฑ์</label>
-                                <select class="form-control">
-                                    <option>ยานยนต์ ชิ้นส่วน อะไหล่</option>
-                                    <option>อุปกรณ์อิเล็กทรอนิกส์</option>
+                                <select class="form-control" name="" id="">
+                                    @foreach ($industrialTypes as $industrialType)
+                                        <option value="{{$industrialType->id}}"> {{$industrialType->industrial_type_name}} </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -41,17 +42,18 @@
                                 <input type="text" name="productStandard" class="form-control" id="productStandard" placeholder="">
                             </div>
                             <div class="col-md-6">
-                                <label for="">4.4 ประเภทรายการทดสอบ/สอบเทียบ</label>
+                                <label for="">4.4 ชื่อรายการทดสอบ/สอบเทียบ</label>
+                                <input type="text" name="" class="form-control" id="" placeholder="">
+                            </div>
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="">4.5 ประเภทรายการทดสอบ/สอบเทียบ</label>
                                 <select class="form-control" name="" id="">
                                     <option>ดำเนินการแล้ว</option>
                                     <option>อยู่ระหว่างพัฒนา/วิจัย/ทดสอบ</option>
                                 </select>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-6">
-                                <label for="">4.5 ชื่อรายการทดสอบ/สอบเทียบ</label>
-                                <input type="text" name="" class="form-control" id="" placeholder="">
                             </div>
                             <div class="col-md-6">
                                 <label for="">4.6 ประเภทรายการทดสอบ/สอบเทียบ</label>
@@ -88,8 +90,8 @@
                                 <input type="text" name="" class="form-control " id="" placeholder="">
                             </div>
                             <div class="col-md-6">
-                                <label for="">4.9 ระยะเวลาการทดสอบ/สอบเทียบ</label>
-                                <input type="text" name="" class="form-control " id="" placeholder="">
+                                <label for="">4.9 ระยะเวลาการทดสอบ/สอบเทียบ (วัน)</label>
+                                <input type="number" name="" class="form-control " id="" placeholder="">
                             </div>
                         </div>
                         <div class="row form-group">

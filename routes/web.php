@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/org', function () {
-    return view('employee.organize');
-});
+// Route::get('/org', function () {
+//     return view('employee.organize');
+// });
 
 
 Auth::routes();
@@ -33,7 +33,7 @@ Route::resource('equipment','EquipmentController');
 // Route::post('/lab', 'LabsController@store');
 // Route::get('/lab/create', 'LabsController@create');
 
-Route::resource('organize','OrganizeController');
+Route::resource('/organize','OrganizeController');
 
 Route::resource('technicalEquipment', 'TechnicalEquipmentController');
 

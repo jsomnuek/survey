@@ -55,9 +55,9 @@ Route::resource('majorTechnology','MajorTechnologyController');
 
 Route::resource('objectiveUsage','ObjectiveUsageController');
 
-Route::get('/changwats', 'Api\ProvinceInfosController@changwats')->name('changwats');
-Route::post('/amphoes', 'Api\ProvinceInfosController@amphoes')->name('amphoes.post');
-Route::post('/tambons', 'Api\ProvinceInfosController@tambons')->name('tambons.post');
+Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
+Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');
+Route::get('/tambons/{id}', 'Api\ProvinceInfoController@tambons');
 
 Route::resource('/organization', 'Employee\OrganizationController');
 

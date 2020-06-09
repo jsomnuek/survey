@@ -33,8 +33,8 @@
                                 <label for="">4.2 ประเภทผลิตภัณฑ์</label>
                                 <select class="form-control" name="product_type" id="product_type">
                                     <option value="">โปรดเลือกรายการประเภทผลิตภัณฑ์</option>
-                                    @foreach ($industrialTypes as $industrialType)
-                                        <option value="{{$industrialType->id}}"> {{$industrialType->industrial_type_name}} </option>
+                                    @foreach ($productTypes as $productType)
+                                        <option value="{{$productType->id}}"> {{$productType->product_type_name}} </option>
                                     @endforeach
                                 </select>
                             </div>

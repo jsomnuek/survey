@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Equipment;
+use App\Model\BasicInformation\Equipment;
 
 class EquipmentController extends Controller
 {

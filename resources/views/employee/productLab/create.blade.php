@@ -5,7 +5,7 @@
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">เพิ่มข้อมูลผลิตภัณฑ์</h1>
+    <h1 class="m-0 text-dark">เพิ่มรายการทดสอบ/สอบเทียบ</h1>
 @endsection
 
 @section('content')

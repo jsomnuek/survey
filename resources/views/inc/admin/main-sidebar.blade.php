@@ -104,18 +104,18 @@
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('productLab*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-dolly-flatbed"></i>
-                        <p>ผลิตภัณฑ์<i class="right fas fa-angle-left"></i></p>
+                        <p>รายการทดสอบ/สอบเทียบ<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             {{-- active --}}
                             <a href="{{ url('/productLab') }}" class="nav-link {{ Request::is('productLab') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>ข้อมูลผลิตภัณฑ์ทั้งหมด</p>
+                                <p>ข้อมูลรายการทดสอบ</p>
                             </a>
                             <a href="{{ url('/productLab/create') }}" class="nav-link {{ Request::is('productLab/create') ? 'active' : '' }}">
                                 <i class="fas fa-plus-circle nav-icon"></i>
-                                <p>เพิ่มข้อมูลผลิตภัณฑ์</p>
+                                <p>เพิ่มข้อมูลรายการทดสอบ</p>
                             </a>
                         </li>
                     </ul>

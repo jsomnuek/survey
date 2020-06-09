@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title','Dashboard | Organisation Type')
     
@@ -16,7 +16,7 @@
                   <table class="table">
                     <thead>
                       <tr>
-                        <th>ลำดับที่</th>
+                        <th style="width: 80px;">ลำดับที่</th>
                         <th>ชื่อประเภทองค์กร</th>
                         <th>สถานะการใช้งานข้อมูล</th>
                         <th></th>
@@ -25,7 +25,7 @@
                     <tbody>
                       @foreach ($showAllOrgType as $orgType)
                           <tr>
-                            <td>{{$orgType->id}}</td>
+                            <td class="text-center">{{$orgType->id}}</td>
                             <td>{{$orgType->org_type_name}}</td>
                             <td>{{$orgType->org_type_status}}</td>
                             <td><a href="/organisationType/{{$orgType->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>

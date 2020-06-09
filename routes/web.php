@@ -35,25 +35,25 @@ Route::resource('equipment','EquipmentController');
 
 Route::resource('organize','OrganizeController');
 
-Route::resource('technicalEquipment', 'TechnicalEquipmentController');
+Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
 
-Route::resource('productType', 'ProductTypeController');
+Route::resource('/productType', 'BasicInformations\ProductTypeController');
 
-Route::resource('testingCalibratingType', 'TestingCalibratingTypeController');
+Route::resource('/testingCalibratingType', 'BasicInformations\TestingCalibratingTypeController');
 
 Route::resource('/businessType','BasicInformations\BusinessTypeController');
 
-Route::resource('industrialType','IndustrialTypeController');
+Route::resource('/industrialType','BasicInformations\IndustrialTypeController');
 
-Route::resource('organisationType','OrganisationTypeController');
+Route::resource('/organisationType','BasicInformations\OrganisationTypeController');
 
-Route::resource('laboratoryType','LaboratoryTypeController');
+Route::resource('/laboratoryType','BasicInformations\LaboratoryTypeController');
 
-Route::resource('certifyLaboratory','CertifyLaboratoryController');
+Route::resource('/certifyLaboratory','BasicInformations\CertifyLaboratoryController');
 
-Route::resource('majorTechnology','MajorTechnologyController');
+Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
 
-Route::resource('objectiveUsage','ObjectiveUsageController');
+Route::resource('/objectiveUsage','BasicInformations\ObjectiveUsageController');
 
 Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');

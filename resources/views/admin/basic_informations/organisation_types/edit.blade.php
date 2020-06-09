@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title', 'Dashboard | Organisation Type')
 
@@ -18,7 +18,7 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => ['OrganisationTypeController@update',$editOrgType->id],'method'=>'PUT'])!!}
+            {!!Form::open(['action' => ['BasicInformations\OrganisationTypeController@update',$editOrgType->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('little','ชื่อประเภทองค์กร')}}

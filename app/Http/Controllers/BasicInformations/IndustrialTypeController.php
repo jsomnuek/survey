@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
-use App\IndustrialType;
+use App\Http\Controllers\Controller;
+use App\Model\BasicInformations\IndustrialType;
 use Illuminate\Http\Request;
 
 class IndustrialTypeController extends Controller
@@ -24,8 +25,8 @@ class IndustrialTypeController extends Controller
      */
     public function index()
     {
-        $allIndustType = IndustrialType::paginate(15);
-        return view('basic_informations.industrialType')->with('showAllIndustType',$allIndustType);
+        $allIndustType = IndustrialType::all();
+        return view('admin.basic_informations.industrial_types.index')->with('showAllIndustType',$allIndustType);
     }
 
     /**
@@ -35,7 +36,7 @@ class IndustrialTypeController extends Controller
      */
     public function create()
     {
-            return view('basic_informations.industrialTypeCreate');
+            return view('admin.basic_informations.industrial_types.create');
     }
 
     /**
@@ -80,7 +81,7 @@ class IndustrialTypeController extends Controller
     public function edit(IndustrialType $industrialType)
     {
         $editIndustType = IndustrialType::find($industrialType->id);
-        return view('basic_informations.industrialTypeEdit')->with('editIndustType', $editIndustType);
+        return view('admin.basic_informations.industrial_types.edit')->with('editIndustType', $editIndustType);
     }
 
     /**

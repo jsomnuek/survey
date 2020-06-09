@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTechnicalEquipmentTable extends Migration
+class CreateTechnicalEquipmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -28,6 +28,6 @@ class CreateTechnicalEquipmentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('technical_equipment');
+        Schema::dropIfExists('technical_equipments');
     }
 }

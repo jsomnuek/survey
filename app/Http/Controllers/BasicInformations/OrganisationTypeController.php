@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
-use App\OrganisationType;
+use App\Http\Controllers\Controller;
+use App\Model\BasicInformations\OrganisationType;
 use Illuminate\Http\Request;
 
 class OrganisationTypeController extends Controller
@@ -25,7 +26,7 @@ class OrganisationTypeController extends Controller
     public function index()
     {
         $allOrgType = OrganisationType::all();
-        return view('basic_informations.organisationType')->with('showAllOrgType',$allOrgType);
+        return view('admin.basic_informations.organisation_types.index')->with('showAllOrgType',$allOrgType);
     }
 
     /**
@@ -35,7 +36,7 @@ class OrganisationTypeController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.organisationTypeCreate');
+        return view('admin.basic_informations.organisation_types.create');
     }
 
     /**
@@ -80,7 +81,7 @@ class OrganisationTypeController extends Controller
     public function edit(OrganisationType $organisationType)
     {
         $editOrgType = OrganisationType::find($organisationType->id);
-        return view('basic_informations.organisationTypeEdit')->with('editOrgType', $editOrgType);
+        return view('admin.basic_informations.organisation_types.edit')->with('editOrgType', $editOrgType);
     }
 
     /**

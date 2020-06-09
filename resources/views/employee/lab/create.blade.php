@@ -115,7 +115,7 @@
                       </select>
                 </div>
               </div>
-              {{-- 2.9labUpgrade --}}
+              {{-- 2.9labSeminar --}}
               <label for="">2.9 ข้อมูลการพัฒนาห้องปฎิบัติการ</label><br/>
               <label for="">2.9.1 เจ้าหน้าที่ได้รับการฝึกอบรมเพื่อการพัฒนาห้องปฏิบัติการหรือไม่อย่างไร</label>
               <div class="row form-group">

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Model\Employee\ProductLab;
 use App\Model\BasicInformations\ProductType;
 use App\Model\BasicInformations\IndustrialType;
+use App\Model\BasicInformations\TestingCalibratingType;
+use App\Model\BasicInformations\CertifyLaboratory;
 
 class ProductLabController extends Controller
 {
@@ -28,11 +30,15 @@ class ProductLabController extends Controller
      */
     public function create()
     {
-        $industrialTypes = IndustrialType::all();
-        $productTypes = ProductType::all();
+        $allIndustrialTypes = IndustrialType::all();
+        $allProductTypes = ProductType::all();
+        $allTestingCalibratingType = TestingCalibratingType::all();
+        $allCertifyLaboratory = CertifyLaboratory::all();
         $data = [
-            'industrialTypes' => $industrialTypes,
-            'productTypes' => $productTypes,
+            'industrialTypes' => $allIndustrialTypes,
+            'productTypes' => $allProductTypes,
+            'testingCalibratingTypes'=>$allTestingCalibratingType,
+            'cerifyLaboratories'=>$allCertifyLaboratory,
         ];
         //return $data;
         return view('employee.productLab.create')->with($data);

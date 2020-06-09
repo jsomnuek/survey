@@ -14,11 +14,9 @@
         <div class="col-md-12">
             <div class="card">
               <form action="" method="post">
-              
                 <div class="card-header bg-primary">
                     <h1 class="card-title">ส่วนที่ 3 เครื่องมือวิทยาศาสตร์ </h1>
                 </div>
-        
                 <div class="card-body">
                   {{-- 3.1equipmentID--}}
                   <div class="row form-group">

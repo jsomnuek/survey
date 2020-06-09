@@ -37,6 +37,147 @@
                 <li class="nav-header d-none">Display None</li>
                 {{-- Menu for Admin --}}
                 <li class="nav-header">Basic Informations</li>
+                {{-- menu open --}}
+                <li class="nav-item has-treeview {{ Request::is('industrialEstate*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('industrialEstate*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-industry"></i>
+                        <p>นิคมอุตสาหกรรม <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/industrialEstate') }}" class="nav-link {{ Request::is('industrialEstate') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายชื่อนิคมอุตสาหกรรม</p>
+                            </a>
+                            <a href="{{ url('/industrialEstate/create') }}" class="nav-link {{ Request::is('industrialEstate/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon "></i>
+                                <p>เพิ่มข้อมูลนิคมอุตสาหกรรม</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview {{ Request::is('organisationType*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('organisationType*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-building"></i>
+                        <p>ประเภทองค์กร <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/organisationType') }}" class="nav-link {{ Request::is('organisationType') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายชื่อประเภทองค์กร</p>
+                            </a>
+                            <a href="{{ url('/organisationType/create') }}" class="nav-link {{ Request::is('organisationType/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon "></i>
+                                <p>เพิ่มข้อมูลประเภทองค์กร</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview {{ Request::is('businessType*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('businessType*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-briefcase"></i>
+                        <p>ประเภทธุรกิจ <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/businessType') }}" class="nav-link {{ Request::is('businessType') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายชื่อประเภทธุรกิจ</p>
+                            </a>
+                            <a href="{{ url('/businessType/create') }}" class="nav-link {{ Request::is('businessType/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon "></i>
+                                <p>เพิ่มข้อมูลประเภทธุรกิจ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview {{ Request::is('industrialType*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('industrialType*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-warehouse"></i>
+                        <p>ประเภทอุตสาหกรรม <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/industrialType') }}" class="nav-link {{ Request::is('industrialType') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายชื่อประเภทอุตสาหกรรม</p>
+                            </a>
+                            <a href="{{ url('/industrialType/create') }}" class="nav-link {{ Request::is('industrialType/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon "></i>
+                                <p>เพิ่มข้อมูลประเภทอุตสาหกรรม</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview {{ Request::is('laboratoryType*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('laboratoryType*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-vials"></i>
+                        <p>ประเภทห้องปฏิบัติการ <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/laboratoryType') }}" class="nav-link {{ Request::is('laboratoryType') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายชื่อประเภทห้องปฏิบัติการ</p>
+                            </a>
+                            <a href="{{ url('/laboratoryType/create') }}" class="nav-link {{ Request::is('laboratoryType/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon "></i>
+                                <p>เพิ่มข้อมูลประเภทห้องปฏิบัติการ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview {{ Request::is('majorTechnology*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('majorTechnology*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-microchip"></i>
+                        <p>สาขาเทคโนโลยี<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/majorTechnology') }}" class="nav-link {{ Request::is('majorTechnology') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายชื่อสาขาเทคโนโลยี</p>
+                            </a>
+                            <a href="{{ url('/majorTechnology/create') }}" class="nav-link {{ Request::is('majorTechnology/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon "></i>
+                                <p>เพิ่มข้อมูลสาขาเทคโนโลยี</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview {{ Request::is('technicalEquipment*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('technicalEquipment*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tools"></i>
+                        <p>เทคนิคของเครื่องมือ <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/technicalEquipment') }}" class="nav-link {{ Request::is('technicalEquipment') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายชื่อเทคนิคของเครื่องมือ</p>
+                            </a>
+                            <a href="{{ url('/technicalEquipment/create') }}" class="nav-link {{ Request::is('technicalEquipment/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon "></i>
+                                <p>เพิ่มข้อมูลเทคนิคของเครื่องมือ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 {{-- Menu for Employee --}}
                 <li class="nav-header">ข้อมูลแบบสำรวจ</li>
                 {{-- menu-open --}}

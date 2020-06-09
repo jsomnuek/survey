@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title','Dashboard | Laboratory Type')
 
@@ -18,7 +18,7 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action'=>['LaboratoryTypeController@update',$editLabType->id],'method'=>'PUT'])!!}
+            {!!Form::open(['action'=>['BasicInformations\LaboratoryTypeController@update',$editLabType->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('title','ชื่อประเภทห้องปฏิบัติการ')}}

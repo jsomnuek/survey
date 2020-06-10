@@ -51,7 +51,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('labLocation*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-search-location"></i>
-                                <p class="text-red">ที่ตั้งห้องปฏิบัติการ<i class="right fas fa-angle-left"></i></p>
+                                <p>ที่ตั้งห้องปฏิบัติการ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -127,20 +127,20 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview {{ Request::is('sale*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('saleProduct*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('sale*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('saleProduct*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-briefcase"></i>
                                 <p class="text-red">การจำหน่ายสินค้า/บริการ <i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
-                                    <a href="{{ url('/sale') }}" class="nav-link {{ Request::is('sale') ? 'active' : '' }}">
+                                    <a href="{{ url('/saleProduct') }}" class="nav-link {{ Request::is('saleProduct') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>รายการจำหน่ายสินค้า</p>
                                     </a>
-                                    <a href="{{ url('/sale/create') }}" class="nav-link {{ Request::is('sale/create') ? 'active' : '' }}">
+                                    <a href="{{ url('/saleProduct/create') }}" class="nav-link {{ Request::is('saleProduct/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลการจำหน่ายสินค้า</p>
                                     </a>

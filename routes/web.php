@@ -71,7 +71,7 @@ Route::resource('/maintenance','BasicInformations\MaintenanceController');
 
 Route::resource('/labLocation','BasicInformations\LabLocationController');
 
-Route::resource('/sale','BasicInformations\SaleController');
+Route::resource('/saleProduct','BasicInformations\SaleProductController');
 
 Route::resource('/environmentManage','BasicInformations\EnvironmentManageController');
 

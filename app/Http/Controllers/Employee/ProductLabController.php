@@ -52,7 +52,9 @@ class ProductLabController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_name' => '',
+        ]);
     }
 
     /**

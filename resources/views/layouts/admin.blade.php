@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-<<<<<<< HEAD
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- DataTables -->
@@ -24,12 +23,10 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
     <!-- Google Font: Source Sans Pro -->
-=======
     <!-- Font: Saraban -->
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     {{-- CustomCSS --}}
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
->>>>>>> 3a8d2ee05fd3c671bd2b5529da95275e8bc213e2
 </head>
 <body class="hold-transition sidebar-mini layout-fixed text-sm">
     <div class="wrapper">

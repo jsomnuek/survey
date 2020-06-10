@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title', 'Dashboard | Equipment')
 
@@ -14,7 +14,7 @@
         <div class="card mb-2">
           <div class="card-body">
             @if (count($showAllEquipment) > 0)
-                <table class="table">
+                <table class="table" id="dt1">
                   <thead>
                     <tr>
                       <th style="width:80px;">ลำดับที่</th>

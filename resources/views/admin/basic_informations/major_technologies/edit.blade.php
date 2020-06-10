@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title','Dashboard | Major Technology')
 
@@ -18,7 +18,7 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action'=>['MajorTechnologyController@update',$editMajorTech->id],'method'=>'PUT'])!!}
+            {!!Form::open(['action'=>['BasicInformations\MajorTechnologyController@update',$editMajorTech->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('title','ชื่อสาขาเทคโนโลยีของเครื่องมือ/อุปกรณ์')}}

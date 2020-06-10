@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title','Dashboard | Certify Laboratory')
 
@@ -18,7 +18,7 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action'=>['CertifyLaboratoryController@update',$editCertLab->id],'method'=>'PUT'])!!}
+            {!!Form::open(['action'=>['BasicInformations\CertifyLaboratoryController@update',$editCertLab->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('title','ชื่อการรับรองห้องปฏิบัติการ')}}

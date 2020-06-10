@@ -26,7 +26,7 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
 
-Route::resource('equipment','EquipmentController');
+Route::resource('/equipment','BasicInformations\EquipmentController');
 
 
 // Route::get('/lab', 'LabsController@index');
@@ -54,6 +54,40 @@ Route::resource('/certifyLaboratory','BasicInformations\CertifyLaboratoryControl
 Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
 
 Route::resource('/objectiveUsage','BasicInformations\ObjectiveUsageController');
+
+Route::resource('/areaService','BasicInformations\AreaServiceController');
+
+Route::resource('/fixedCost','BasicInformations\FixedCostController');
+
+Route::resource('/income','BasicInformations\IncomeController');
+
+Route::resource('/employeeTraining','BasicInformations\EmployeeTrainingController');
+
+Route::resource('/resultVerify','BasicInformations\ResultVerifyController');
+
+Route::resource('/equipmentUsage','BasicInformations\EquipmentUsageController');
+
+Route::resource('/maintenance','BasicInformations\MaintenanceController');
+
+Route::resource('/labLocation','BasicInformations\LabLocationController');
+
+Route::resource('/sale','BasicInformations\SaleController');
+
+Route::resource('/environmentManage','BasicInformations\EnvironmentManageController');
+
+Route::resource('/equipmentCalibration','BasicInformations\EuipmentCalibrationController');
+
+Route::resource('/equipmentManual','BasicInformations\EuipmentManualController');
+
+Route::resource('/equipmentRent','BasicInformations\EuipmentRentController');
+
+Route::resource('/testingCalibratingList','BasicInformations\TestingCalibratingListController');
+
+Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratingMethodController');
+
+Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
+
+
 
 Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');

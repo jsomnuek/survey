@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title','Dashboard | Equipment Objective Usage')
 
@@ -18,7 +18,7 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action'=>'ObjectiveUsageController@store','method'=>'POST','class' => 'was-validate'])!!}
+            {!!Form::open(['action'=>'BasicInformations\ObjectiveUsageController@store','method'=>'POST','class' => 'was-validate'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('title','วัตถุประสงค์การใช้งานเครื่องมือ')}}

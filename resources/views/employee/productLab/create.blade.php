@@ -78,9 +78,9 @@
                             <div class="col-md-6">
                                 <label for="">4.5 ประเภทรายการทดสอบ/สอบเทียบ</label>
                                 <select class="form-control  @error('product_lab_test_process') is-invalid @enderror" name="product_lab_test_process" id="product_lab_test_process" value="{{ old('product_lab_test_process')}}">
-                                    <option value=''>โปรดเลือกรายการทดสอบ/สอบเทียบ</option>
-                                    <option value='1'>ดำเนินการแล้ว</option>
-                                    <option value='2'>อยู่ระหว่างพัฒนา/วิจัย/ทดสอบ</option>
+                                    <option value='' >โปรดเลือกรายการทดสอบ/สอบเทียบ</option>
+                                    <option value='1' {{ old('product_lab_test_process') ==  1? 'selected' : ''}}>ดำเนินการแล้ว</option>
+                                    <option value='2' {{ old('product_lab_test_process') ==  2? 'selected' : ''}}>อยู่ระหว่างพัฒนา/วิจัย/ทดสอบ</option>
                                 </select>
                                 @error('product_lab_test_process')
                                 <span class="invalid-feedback" role="alert">

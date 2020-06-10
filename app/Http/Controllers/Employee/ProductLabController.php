@@ -52,9 +52,52 @@ class ProductLabController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $request->validate([
-            'product_name' => '',
+            'product_lab_name' => 'required|unique:product_labs',
+            'product_type_id' => 'required',
+            'product_lab_standard' => 'required' ,
+            'product_lab_test_name' => 'required',
+            'product_lab_test_process' => 'required',
+            'testing_calibrating_type_id' => 'required',
+            'product_lab_test_method' => '',
+            'product_lab_test_method_detail' => '',
+            'product_lab_test_unit' => '',
+            'product_lab_test_duration' => '',
+            'product_lab_test_fee' => '',
+            'product_lab_material_ref' => '',
+            'product_lab_material_ref_from' => '',
+            'product_lab_test_control' => '',
+            'proficiency_testing' => '',
+            'proficiency_testing_by' => '',
+            'proficiency_testing_year' => '',
+            'certify_laboratory_id' => ''
         ]);
+
+        //clean up
+        $productLab = new ProductLab;
+        $productLab->product_lab_name = $request['product_lab_name'];
+        $productLab->product_type_id = $request['product_type_id'];
+        $productLab->product_lab_standard = $request['product_lab_standard'];
+        $productLab->product_lab_test_name = $request['product_lab_test_name'];
+        $productLab->product_lab_test_process = $request['product_lab_test_process'];
+        $productLab->testing_calibrating_type_id = $request['testing_calibrating_type_id'];
+        $productLab->product_lab_test_method = $request['product_lab_test_method'];
+        $productLab->product_lab_test_method_detail = $request['product_lab_test_method_detail'];
+        $productLab->product_lab_test_unit = $request['product_lab_test_unit'];
+        $productLab->product_lab_test_duration = $request['product_lab_test_duration'];
+        $productLab->product_lab_test_fee = $request['product_lab_test_fee'];
+        $productLab->product_lab_material_ref = $request['product_lab_material_ref'];
+        $productLab->product_lab_material_ref_from = $request['product_lab_material_ref_from'];
+        $productLab->product_lab_test_control = $request['product_lab_test_control'];
+        $productLab->proficiency_testing = $request['proficiency_testing'];
+        $productLab->proficiency_testing_by = $request['proficiency_testing_by'];
+        $productLab->proficiency_testing_year = $request['proficiency_testing_year'];
+        $productLab->certify_laboratory_id = $request['certify_laboratory_id'];
+
+        $productLab->save();
+        return redirect('/productLab');
     }
 
     /**
@@ -65,7 +108,10 @@ class ProductLabController extends Controller
      */
     public function show($id)
     {
-        //
+        $productLab = ProductLab::find($id);
+        //return $productLab;
+        
+        return view('employee.productLab.show')->with('test', $productLab);
     }
 
     /**

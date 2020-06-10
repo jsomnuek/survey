@@ -3,6 +3,7 @@
 namespace App\Model\Employee;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\BasicInformations\ProductType;
 
 class ProductLab extends Model
 {
@@ -30,4 +31,8 @@ class ProductLab extends Model
     ];
     public $timestamps = true;
 
+    public function productType()
+    {
+        return $this->belongsTo(ProductType::class);
+    }
 }

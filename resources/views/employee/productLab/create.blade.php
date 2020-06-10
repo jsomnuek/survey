@@ -19,13 +19,13 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="" method="POST" role="form">
+                <form action="/productLab" method="POST" role="form">
                     @csrf
                     <div class="card-body">
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="">4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ / สอบเทียบ</label>
-                                <input type="text" name="product_lab_name" class="form-control @error('product_lab_name') is-invalid @enderror" id="product_lab_name" placeholder="" value="{{ old('product_lab_name') }}"  required >
+                                <input type="text" name="product_lab_name" class="form-control @error('product_lab_name') is-invalid @enderror" id="product_lab_name" placeholder="" value="{{ old('product_lab_name') }}"  >
                                 @error('product_lab_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
                                 <select class="form-control @error('product_type_id') is-invalid @enderror" name="product_type_id" id="product_type_id">
                                     <option value="">โปรดเลือกรายการประเภทผลิตภัณฑ์</option>
                                     @foreach ($productTypes as $productType)
-                                        <option value="{{$productType->id}}"> {{$productType->product_type_name}} </option>
+                                        <option value="{{$productType->id}}" {{ old('product_type_id') ==  $productType->id ? 'selected' : ''}}> {{$productType->product_type_name}} </option>
                                     @endforeach
                                 </select>
                                 @error('product_type_id')
@@ -54,34 +54,57 @@
                         <div class="row form-group">
                             <div class="col-md-6">
                                 <label for="">4.3 มาตราฐานผลิตภัณฑ์</label>
-                                <input type="text" name="product_lab_standard" class="form-control" id="product_lab_standard" placeholder="">
+                                <input type="text" name="product_lab_standard" class="form-control  @error('product_lab_standard') is-invalid @enderror" id="product_lab_standard" placeholder="">
+                                @error('product_lab_standard')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    {{-- <strong>text assignment</strong> --}}
+                                </span>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="">4.4 ชื่อรายการทดสอบ/สอบเทียบ</label>
-                                <input type="text" name="product_lab_test_name" class="form-control" id="product_lab_test_name" placeholder="">
+                                <input type="text" name="product_lab_test_name" class="form-control @error('product_lab_test_name') is-invalid @enderror" id="product_lab_test_name" placeholder="">
+                                @error('product_lab_test_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    {{-- <strong>text assignment</strong> --}}
+                                </span>
+                                @enderror
                             </div>
 
                         </div>
                         <div class="row form-group">
                             <div class="col-md-6">
                                 <label for="">4.5 ประเภทรายการทดสอบ/สอบเทียบ</label>
-                                <select class="form-control" name="product_lab_test_process" id="product_lab_test_process">
+                                <select class="form-control  @error('product_lab_test_process') is-invalid @enderror" name="product_lab_test_process" id="product_lab_test_process">
                                     <option value=''>โปรดเลือกรายการทดสอบ/สอบเทียบ</option>
                                     <option value='1'>ดำเนินการแล้ว</option>
                                     <option value='2'>อยู่ระหว่างพัฒนา/วิจัย/ทดสอบ</option>
                                 </select>
+                                @error('product_lab_test_process')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    {{-- <strong>text assignment</strong> --}}
+                                </span>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="">4.6 ประเภทการทดสอบ/สอบเทียบ</label>
-                                <select class="form-control" name="testing_calibrating_type" id="testing_calibrating_type">
+                                <select class="form-control  @error('testing_calibrating_type_id') is-invalid @enderror" name="testing_calibrating_type_id" id="testing_calibrating_type_id">
                                     <option value="">โปรดเลือกประเภทการทดสอบ/สอบเทียบ</option>
                                     @foreach ($testingCalibratingTypes as $testingCalibratingTypes)
                                         <option value="{{$testingCalibratingTypes->id}}"> {{$testingCalibratingTypes->testing_calibrating_type_name}} </option>
                                     @endforeach
                                 </select>
+                                @error('testing_calibrating_type')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    {{-- <strong>text assignment</strong> --}}
+                                </span>
+                                @enderror
                             </div>
                         </div>
-                    
                         <div class="row form-group">
                             <div class="col-md-4">
                                 <label for="">4.7 วิธีทดสอบ/สอบเทียบตามมาตราฐาน </label>

@@ -100,3 +100,6 @@ Route::resource('/lab', 'Employee\LabController');
 Route::resource('/equipmentLab','Employee\EquipmentLabController');
 
 Route::resource('/productLab','Employee\ProductLabController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

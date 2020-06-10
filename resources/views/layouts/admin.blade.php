@@ -105,9 +105,6 @@
     <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-<<<<<<< HEAD
-
-
     <!-- Data tables script -->
     <script>
         $(function () {
@@ -127,9 +124,7 @@
         });
     </script>
     
-=======
     {{-- Developer --}}
     @yield('scripts')
->>>>>>> 3a8d2ee05fd3c671bd2b5529da95275e8bc213e2
 </body>
 </html>

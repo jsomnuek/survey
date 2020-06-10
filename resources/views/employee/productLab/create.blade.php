@@ -40,7 +40,7 @@
                                 <select class="form-control @error('product_type_id') is-invalid @enderror" name="product_type_id" id="product_type_id">
                                     <option value="">โปรดเลือกรายการประเภทผลิตภัณฑ์</option>
                                     @foreach ($productTypes as $productType)
-                                        <option value="{{$productType->id}}"> {{$productType->product_lab_type_name}} </option>
+                                        <option value="{{$productType->id}}"> {{$productType->product_type_name}} </option>
                                     @endforeach
                                 </select>
                                 @error('product_type_id')
@@ -66,14 +66,14 @@
                             <div class="col-md-6">
                                 <label for="">4.5 ประเภทรายการทดสอบ/สอบเทียบ</label>
                                 <select class="form-control" name="product_lab_test_process" id="product_lab_test_process">
-                                    <option value="">โปรดเลือกรายการทดสอบ/สอบเทียบ</option>
-                                    <option value=">ดำเนินการแล้ว">ดำเนินการแล้ว</option>
-                                    <option value="อยู่ระหว่างพัฒนา/วิจัย/ทดสอบ">อยู่ระหว่างพัฒนา/วิจัย/ทดสอบ</option>
+                                    <option value=''>โปรดเลือกรายการทดสอบ/สอบเทียบ</option>
+                                    <option value='1'>ดำเนินการแล้ว</option>
+                                    <option value='2'>อยู่ระหว่างพัฒนา/วิจัย/ทดสอบ</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="">4.6 ประเภทการทดสอบ/สอบเทียบ</label>
-                                <select class="form-control" name="product_lab_test" id="product_lab_test">
+                                <select class="form-control" name="testing_calibrating_type" id="testing_calibrating_type">
                                     <option value="">โปรดเลือกประเภทการทดสอบ/สอบเทียบ</option>
                                     @foreach ($testingCalibratingTypes as $testingCalibratingTypes)
                                         <option value="{{$testingCalibratingTypes->id}}"> {{$testingCalibratingTypes->testing_calibrating_type_name}} </option>
@@ -194,8 +194,8 @@
                                 <label for="">4.15 การรับรองความสามารถห้องปฏิบัติการ</label>
                             </div>
                             <div class="col-md-8">
-                                <select class="form-control" name="product_lab_certify" id="product_lab_certify">
-                                    <option value="">โปรดเลือกประเภทการทดสอบ/สอบเทียบ</option>
+                                <select class="form-control" name="certify_laboratory_id" id="certify_laboratory_id">
+                                    <option value="">โปรดเลือกการรับรองความสามารถห้องปฏิบัติการ</option>
                                     @foreach ($cerifyLaboratories as $cerifyLaboratory)
                                         <option value="{{$cerifyLaboratory->id}}"> {{$cerifyLaboratory->cert_lab_name}} </option>
                                     @endforeach

@@ -4,11 +4,7 @@ namespace App\Http\Controllers\BasicInformations;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use App\Model\BasicInformation\Equipment;
-=======
 use App\Model\BasicInformations\Equipment;
->>>>>>> ca6f2d4b4922e07f3cc223db3647f9d41c9a6edf
 
 class EquipmentController extends Controller
 {

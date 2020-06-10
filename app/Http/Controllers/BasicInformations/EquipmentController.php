@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Equipment;
+use App\Model\BasicInformations\Equipment;
 
 class EquipmentController extends Controller
 {
@@ -25,7 +26,7 @@ class EquipmentController extends Controller
     {
         // return Equipment::all();
         $allEquipment = Equipment::paginate(15);
-        return view('basic_informations.equipment')->with('showAllEquipment',$allEquipment);
+        return view('admin.basic_informations.equipments.index')->with('showAllEquipment',$allEquipment);
     }
 
     /**
@@ -35,7 +36,7 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.equipmentCreate');
+        return view('admin.basic_informations.equipments.create');
     }
 
     /**
@@ -83,7 +84,7 @@ class EquipmentController extends Controller
     public function edit($id)
     {
         $editEquipment = Equipment::find($id);
-        return view('basic_informations.equipmentEdit')->with('editEquipment',$editEquipment);
+        return view('admin.basic_informations.equipments.edit')->with('editEquipment',$editEquipment);
     }
 
     /**

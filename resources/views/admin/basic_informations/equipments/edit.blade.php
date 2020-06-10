@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title', 'Dashboard | Equipment')
 
@@ -18,7 +18,7 @@
         @endforeach
       @endif
       <div class="card">
-        {!! Form::open(['action'=>['EquipmentController@update', $editEquipment->id], 'method' => 'PUT']) !!}
+        {!! Form::open(['action'=>['BasicInformations\EquipmentController@update', $editEquipment->id], 'method' => 'PUT']) !!}
         <div class="card-body">
           <div class="form-group">
             {{Form::label('equipmentName','ชื่อเครื่องมือ')}}

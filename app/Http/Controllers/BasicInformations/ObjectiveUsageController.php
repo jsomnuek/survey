@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
-use App\ObjectiveUsage;
+use App\Http\Controllers\Controller;
+use App\Model\BasicInformations\ObjectiveUsage;
 use Illuminate\Http\Request;
 
 class ObjectiveUsageController extends Controller
@@ -25,7 +26,7 @@ class ObjectiveUsageController extends Controller
     public function index()
     {
         $allObjUsage = ObjectiveUsage::all();
-        return view('basic_informations.objectiveUsage')->with('showAllObjUsage',$allObjUsage);
+        return view('admin.basic_informations.objective_usages.index')->with('showAllObjUsage',$allObjUsage);
     }
 
 
@@ -36,7 +37,7 @@ class ObjectiveUsageController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.objectiveUsageCreate');
+        return view('admin.basic_informations.objective_usages.create');
     }
 
     /**
@@ -82,7 +83,7 @@ class ObjectiveUsageController extends Controller
     public function edit(ObjectiveUsage $objectiveUsage)
     {
         $editObjUsage = ObjectiveUsage::find($objectiveUsage->id);
-        return view('basic_informations.objectiveUsageEdit')->with('editObjUsage',$editObjUsage);
+        return view('admin.basic_informations.objective_usages.edit')->with('editObjUsage',$editObjUsage);
     }
 
     /**

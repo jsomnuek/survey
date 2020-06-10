@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
-use App\TestingCalibratingType;
+use App\Http\Controllers\Controller;
+use App\Model\BasicInformations\TestingCalibratingType;
 use Illuminate\Http\Request;
 
 class TestingCalibratingTypeController extends Controller
@@ -25,7 +26,7 @@ class TestingCalibratingTypeController extends Controller
     public function index()
     {
         $allTCType = TestingCalibratingType::all();
-        return view('basic_informations.testingCalibratingType')->with('showAllTCType',$allTCType);
+        return view('admin.basic_informations.testing_calibrating_types.index')->with('showAllTCType',$allTCType);
     }
     /**
      * Show the form for creating a new resource.
@@ -34,7 +35,7 @@ class TestingCalibratingTypeController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.testingCalibratingTypeCreate');
+        return view('admin.basic_informations.testing_calibrating_types.create');
     }
 
     /**
@@ -80,7 +81,7 @@ class TestingCalibratingTypeController extends Controller
     public function edit(TestingCalibratingType $testingCalibratingType)
     {
         $editTCType = TestingCalibratingType::find($testingCalibratingType->id);
-        return view('basic_informations.testingCalibratingTypeEdit')->with('editTCType', $editTCType);
+        return view('admin.basic_informations.testing_calibrating_types.edit')->with('editTCType', $editTCType);
     }
 
     /**

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
-use App\CertifyLaboratory;
+use App\Http\Controllers\Controller;
+use App\Model\BasicInformations\CertifyLaboratory;
 use Illuminate\Http\Request;
 
 class CertifyLaboratoryController extends Controller
@@ -25,7 +26,7 @@ class CertifyLaboratoryController extends Controller
     public function index()
     {
         $allCertLab = CertifyLaboratory::all();
-        return view('basic_informations.certifyLaboratory')->with('showAllCertLab',$allCertLab);
+        return view('admin.basic_informations.certify_laboratories.index')->with('showAllCertLab',$allCertLab);
     }
 
 
@@ -36,7 +37,7 @@ class CertifyLaboratoryController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.certifyLaboratoryCreate');
+        return view('admin.basic_informations.certify_laboratories.create');
     }
 
     /**
@@ -81,7 +82,7 @@ class CertifyLaboratoryController extends Controller
     public function edit(CertifyLaboratory $certifyLaboratory)
     {
         $editCertLab = CertifyLaboratory::find($certifyLaboratory->id);
-        return view('basic_informations.certifyLaboratoryEdit')->with('editCertLab',$editCertLab);
+        return view('admin.basic_informations.certify_laboratories.edit')->with('editCertLab',$editCertLab);
     }
 
     /**

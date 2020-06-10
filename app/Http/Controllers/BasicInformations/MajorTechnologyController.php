@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\BasicInformations;
 
 use App\Http\Controllers\Controller;
-use App\BasicInformation\MajorTechnology;
+use App\Model\BasicInformations\MajorTechnology;
 use Illuminate\Http\Request;
 
 class MajorTechnologyController extends Controller
@@ -26,7 +26,7 @@ class MajorTechnologyController extends Controller
     public function index()
     {
         $allMajorTech = MajorTechnology::all();
-        return view('basic_informations.majorTechnology')->with('showAllMajorTech',$allMajorTech);
+        return view('admin.basic_informations.major_technologies.index')->with('showAllMajorTech',$allMajorTech);
     }
 
 
@@ -37,7 +37,7 @@ class MajorTechnologyController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.majorTechnologyCreate');
+        return view('admin.basic_informations.major_technologies.create');
     }
 
     /**
@@ -82,7 +82,7 @@ class MajorTechnologyController extends Controller
     public function edit(MajorTechnology $majorTechnology)
     {
         $editMajorTech = MajorTechnology::find($majorTechnology->id);
-        return view('basic_informations.majorTechnologyEdit')->with('editMajorTech',$editMajorTech);
+        return view('admin.basic_informations.major_technologies.edit')->with('editMajorTech',$editMajorTech);
     }
     /**
      * Update the specified resource in storage.

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Model\BasicInformations;
-
 use Illuminate\Database\Eloquent\Model;
 
 class CertifyLaboratory extends Model

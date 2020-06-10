@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Employee;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Model\Employee\ProductLab;
+use App\Model\BasicInformations\ProductType;
+use App\Model\BasicInformations\IndustrialType;
+use App\Model\BasicInformations\TestingCalibratingType;
+use App\Model\BasicInformations\CertifyLaboratory;
 
 class ProductLabController extends Controller
 {
@@ -16,6 +19,7 @@ class ProductLabController extends Controller
      */
     public function index()
     {
+        
         return view('employee.productlab.index');
     }
 
@@ -26,7 +30,18 @@ class ProductLabController extends Controller
      */
     public function create()
     {
-        return view('employee.productLab.create');
+        $allIndustrialTypes = IndustrialType::all();
+        $allProductTypes = ProductType::all();
+        $allTestingCalibratingType = TestingCalibratingType::all();
+        $allCertifyLaboratory = CertifyLaboratory::all();
+        $data = [
+            'industrialTypes' => $allIndustrialTypes,
+            'productTypes' => $allProductTypes,
+            'testingCalibratingTypes'=>$allTestingCalibratingType,
+            'cerifyLaboratories'=>$allCertifyLaboratory,
+        ];
+        //return $data;
+        return view('employee.productLab.create')->with($data);
     }
 
     /**
@@ -37,7 +52,9 @@ class ProductLabController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_name' => '',
+        ]);
     }
 
     /**
@@ -83,5 +100,14 @@ class ProductLabController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function validateProductLab()
+    {
+        return request()->validate([
+            'product_name' => 'required',
+            'product_type' => '',
+
+        ]);
     }
 }

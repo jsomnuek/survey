@@ -19,24 +19,36 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/organization" method="POST" role="form">
+                <form action="" method="POST" role="form">
                     @csrf
                     <div class="card-body">
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="">4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ / สอบเทียบ</label>
-                                <input type="text" name="product_name" class="form-control @error('org_name') is-invalid @enderror" id="product_name" placeholder="">
+                                <input type="text" name="product_name" class="form-control @error('product_name') is-invalid @enderror" id="product_name" placeholder="" value="{{ old('product_name') }}"  required >
+                                @error('product_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    {{-- <strong>text assignment</strong> --}}
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="">4.2 ประเภทผลิตภัณฑ์</label>
-                                <select class="form-control" name="product_type" id="product_type">
+                                <select class="form-control @error('product_type') is-invalid @enderror" name="product_type" id="product_type">
                                     <option value="">โปรดเลือกรายการประเภทผลิตภัณฑ์</option>
                                     @foreach ($productTypes as $productType)
                                         <option value="{{$productType->id}}"> {{$productType->product_type_name}} </option>
                                     @endforeach
                                 </select>
+                                @error('product_type')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    {{-- <strong>text assignment</strong> --}}
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row form-group">

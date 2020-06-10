@@ -179,7 +179,7 @@ return [
         /*
         * Survey Application Service Provider
         */
-        Collective\Html\HtmlServiceProvider::class,
+        // Collective\Html\HtmlServiceProvider::class,
 
         /*
         * Yajra Datatables
@@ -235,8 +235,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Form' => Collective\Html\FormFacades::class,
-        'Html' => Collective\Html\HtmlFacades::class,
+        // 'Form' => Collective\Html\FormFacades::class,
+        // 'Html' => Collective\Html\HtmlFacades::class,
 
         'Datatables' => Yajra\Datatables\DatatablesServiceProvider::class,
 

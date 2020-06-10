@@ -10,11 +10,18 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
-        "jeroennoten/laravel-adminlte": "^3.2",
         "laravel/framework": "^6.2",
+<<<<<<< HEAD
+        "laravel/tinker": "^2.0"
+=======
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.1",
+<<<<<<< HEAD
         "yajra/laravel-datatables-oracle": "~9.0"
+=======
+        "yajra/laravel-datatables-oracle": "^9.10"
+>>>>>>> 1cc557d673c77993af875f7760e06c44b8ad424c
+>>>>>>> 28f6076d8d5ac63c7059963c860e1072f5f80c7a
     },
     "require-dev": {
         "facade/ignition": "^1.4",

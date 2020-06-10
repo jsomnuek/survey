@@ -184,7 +184,7 @@ return [
         /*
         * Yajra Datatables
         */
-        Yajra\Datatables\DatatablesServiceProvider::class,
+        // Yajra\Datatables\DatatablesServiceProvider::class,
     ],
 
     /*

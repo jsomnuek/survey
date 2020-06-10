@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
-use App\LaboratoryType;
+use App\Http\Controllers\Controller;
+use App\Model\BasicInformations\LaboratoryType;
 use Illuminate\Http\Request;
 
 class LaboratoryTypeController extends Controller
@@ -25,7 +26,7 @@ class LaboratoryTypeController extends Controller
     public function index()
     {
         $allLabType = LaboratoryType::all();
-        return view('basic_informations.laboratoryType')->with('showAllLabType',$allLabType);
+        return view('admin.basic_informations.laboratory_types.index')->with('showAllLabType',$allLabType);
     }
 
 
@@ -36,7 +37,7 @@ class LaboratoryTypeController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.laboratoryTypeCreate');
+        return view('admin.basic_informations.laboratory_types.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -81,7 +82,7 @@ class LaboratoryTypeController extends Controller
     public function edit(LaboratoryType $laboratoryType)
     {
         $editLabType = LaboratoryType::find($laboratoryType->id);
-        return view('basic_informations.laboratoryTypeEdit')->with('editLabType',$editLabType);
+        return view('admin.basic_informations.laboratory_types.edit')->with('editLabType',$editLabType);
     }
 
     /**

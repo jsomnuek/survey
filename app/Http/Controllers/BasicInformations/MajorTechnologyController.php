@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
-use App\MajorTechnology;
+use App\Http\Controllers\Controller;
+use App\BasicInformation\MajorTechnology;
 use Illuminate\Http\Request;
 
 class MajorTechnologyController extends Controller

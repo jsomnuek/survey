@@ -1,5 +1,4 @@
-@extends('adminlte::page')
-
+@extends('layouts.admin')
 @section('title', 'Dashboard | Industrial Estate')
 
 @section('content_header')
@@ -13,7 +12,7 @@
         <div class="card mb-2">
           <div class="card-body">
             @if (count($showAllEstate) > 0)
-                <table class="table">
+                <table class="table" id="dt1">
                   <thead>
                     <tr>
                       <th style="width:80px;">ลำดับที่</th>
@@ -33,7 +32,7 @@
                     @endforeach
                   </tbody>
                 </table>
-                {{$showAllEstate->links()}}
+                {{-- {{$showAllEstate->links()}} --}}
                 @else
                 <p>no result</p>
             @endif

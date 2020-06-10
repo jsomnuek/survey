@@ -57,22 +57,22 @@ class ProductLabController extends Controller
         $request->validate([
             'product_lab_name' => 'required|unique:product_labs',
             'product_type_id' => 'required',
-            'product_lab_standard' => 'required' ,
-            'product_lab_test_name' => 'required',
+            'product_lab_standard' => '' ,
+            'product_lab_test_name' => '',
             'product_lab_test_process' => 'required',
             'testing_calibrating_type_id' => 'required',
-            'product_lab_test_method' => '',
+            'product_lab_test_method' => 'required',
             'product_lab_test_method_detail' => '',
             'product_lab_test_unit' => '',
-            'product_lab_test_duration' => '',
+            'product_lab_test_duration' => 'required',
             'product_lab_test_fee' => '',
             'product_lab_material_ref' => '',
             'product_lab_material_ref_from' => '',
-            'product_lab_test_control' => '',
-            'proficiency_testing' => '',
+            'product_lab_test_control' => 'required',
+            'proficiency_testing' => 'required',
             'proficiency_testing_by' => '',
             'proficiency_testing_year' => '',
-            'certify_laboratory_id' => ''
+            'certify_laboratory_id' => 'required'
         ]);
 
         //clean up

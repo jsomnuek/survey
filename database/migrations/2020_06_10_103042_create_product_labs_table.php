@@ -30,8 +30,8 @@ class CreateProductLabsTable extends Migration
             $table->string('product_lab_material_ref_from', 255)->nullable()->comment('แหล่งที่มาวัสดุ');//4.12แหล่งที่มาวัสดุ
             $table->string('product_lab_test_control', 255)->comment('การควบคุมคุณภาพผลการทดสอบ');//4.13การควบคุมคุณภาพผลการทดสอบ no table now
             $table->string('proficiency_testing', 255)->comment('มีการสดสอบความชำนาญแลปไหม');//4.14.1มีการสดสอบความชำนาญแลปไหม
-            $table->string('proficiency_testing_by', 255)->comment('ใครทดสอบความชำนาญให้');//4.14.2ใครทดสอบความชำนาญให้
-            $table->string('proficiency_testing_year', 255)->comment('ทดสอบความชำนาญปีไหน');//4.14.3ทดสอบความชำนาญปีไหน
+            $table->string('proficiency_testing_by', 255)->nullable()->comment('ใครทดสอบความชำนาญให้');//4.14.2ใครทดสอบความชำนาญให้
+            $table->string('proficiency_testing_year', 255)->nullable()->comment('ทดสอบความชำนาญปีไหน');//4.14.3ทดสอบความชำนาญปีไหน
             $table->integer('certify_laboratory_id')->comment('การรับรองความสามารถห้องปฏิบัติการ');//4.15การรับรองความสามารถห้องปฏิบัติการ
             // ขาด 4.16 เครื่องมือที่ใช้ทดสอบที่เกียวข้อง
             $table->timestamps();

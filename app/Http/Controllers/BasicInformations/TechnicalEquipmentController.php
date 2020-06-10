@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\TechnicalEquipment;
+use App\Model\BasicInformations\TechnicalEquipment;
 
 class TechnicalEquipmentController extends Controller
 {
@@ -25,7 +26,7 @@ class TechnicalEquipmentController extends Controller
     {
         // return TechnicalEquipment::all();
         $allTechnicalEquipment = TechnicalEquipment::all();
-        return view('basic_informations.technicalEquipment')->with('showAllTechnicalEquipment',$allTechnicalEquipment);
+        return view('admin.basic_informations.technical_equipments.index')->with('showAllTechnicalEquipment',$allTechnicalEquipment);
     }
 
     /**
@@ -35,7 +36,7 @@ class TechnicalEquipmentController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.technicalEquipmentCreate');
+        return view('admin.basic_informations.technical_equipments.create');
     }
 
     /**
@@ -81,7 +82,7 @@ class TechnicalEquipmentController extends Controller
     public function edit($id)
     {
         $editTechnicalEquipment = TechnicalEquipment::find($id);
-        return view('basic_informations.technicalEquipmentEdit')->with('editTechnicalEquipment',$editTechnicalEquipment);
+        return view('admin.basic_informations.technical_equipments.edit')->with('editTechnicalEquipment',$editTechnicalEquipment);
     }
 
     /**

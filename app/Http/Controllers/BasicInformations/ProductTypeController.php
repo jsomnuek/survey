@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BasicInformations;
 
-use App\ProductType;
+use App\Http\Controllers\Controller;
+use App\Model\BasicInformations\ProductType;
 use Illuminate\Http\Request;
 
 class ProductTypeController extends Controller
@@ -26,7 +27,7 @@ class ProductTypeController extends Controller
     public function index()
     {
         $allProductType = ProductType::all();
-        return view('basic_informations.productType')->with('showAllProductType',$allProductType);
+        return view('admin.basic_informations.product_types.index')->with('showAllProductType',$allProductType);
     }
 
     /**
@@ -36,7 +37,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        return view('basic_informations.productTypeCreate');
+        return view('admin.basic_informations.product_types.create');
     }
 
     /**
@@ -82,7 +83,7 @@ class ProductTypeController extends Controller
      public function edit(ProductType $productType)
     {
         $editProductType = ProductType::find($productType->id);
-        return view('basic_informations.productTypeEdit')->with('editProductType',$editProductType);
+        return view('admin.basic_informations.product_types.edit')->with('editProductType',$editProductType);
     }
 
     /**

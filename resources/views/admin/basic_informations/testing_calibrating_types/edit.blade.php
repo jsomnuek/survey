@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title', 'Dashboard | Industrial Type')
 
@@ -18,7 +18,7 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => ['TestingCalibratingTypeController@update',$editTCType->id],'method'=>'PUT'])!!}
+            {!!Form::open(['action' => ['BasicInformations\TestingCalibratingTypeController@update',$editTCType->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('little','ชื่อประเภทการทดสอบ/สอบเทียบ')}}

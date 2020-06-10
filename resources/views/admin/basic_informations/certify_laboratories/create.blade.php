@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title','Dashboard | Certify Laboratory')
 
@@ -18,13 +18,13 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action'=>'CertifyLaboratoryController@store','method'=>'POST','class' => 'was-validate'])!!}
+            {!!Form::open(['action'=>'BasicInformations\CertifyLaboratoryController@store','method'=>'POST','class' => 'was-validate'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('title','ชื่อการรับรองปฏิบัติการ')}}
                 {{Form::text('certLabName','',['class'=>'form-control','required'])}}
               </div>
-              <a href="/certLaboratory" class="btn btn-secondary">ย้อนกลับ</a>
+              <a href="/certifyLaboratory" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::submit('บันทึก',['class' => 'btn btn-primary'])}}
             </div>
             {!!Form::close()!!}

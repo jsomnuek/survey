@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title', 'Dashboard | TechnicalEquipment')
 
@@ -34,7 +34,7 @@
                   </tbody>
                 </table>
             @else 
-                <p>no result</p>
+                <p>ไม่พบข้อมูล</p>
             @endif
           </div>
         </div>

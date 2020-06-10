@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
 @section('title','Dashboard | Equipment Objective Usage')
 
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>ลำดับที่</th>
-                      <th>ชื่อประเภทผลิตภัณฑ์</th>
-                      <th>สถานะการใช้งาน</th>
+                      <th>วัตถุประสงค์การใช้งานเครื่องมือ</th>
+                      <th>สถานะการใช้งานข้อมูล</th>
                       <th></th>
                     </tr>
                   </thead>

@@ -18,7 +18,6 @@ class OrganizationController extends Controller
     {
         // $orgs = Organization::all();
         $orgs = Organization::paginate(5);
-
         return view('employee.organization.index', ['orgs' => $orgs]);
     }
 

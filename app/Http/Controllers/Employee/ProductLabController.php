@@ -19,8 +19,8 @@ class ProductLabController extends Controller
      */
     public function index()
     {
-        
-        return view('employee.productlab.index');
+        $allProductLab = ProductLab::paginate(5);
+        return view('employee.productlab.index',['allProductLabs' => $allProductLab]);
     }
 
     /**
@@ -153,7 +153,6 @@ class ProductLabController extends Controller
         return request()->validate([
             'product_name' => 'required',
             'product_type' => '',
-
         ]);
     }
 }

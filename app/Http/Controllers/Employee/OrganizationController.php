@@ -70,7 +70,7 @@ class OrganizationController extends Controller
     {
         // $org = Organization::find($id);
         $org = $organization;
-
+        //return $org;
         return view('employee.organization.edit', compact('org'));
     }
 

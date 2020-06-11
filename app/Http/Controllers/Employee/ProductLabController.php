@@ -52,7 +52,7 @@ class ProductLabController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
 
         $request->validate([
             'product_lab_name' => 'required|unique:product_labs',
@@ -111,7 +111,7 @@ class ProductLabController extends Controller
         $productLab = ProductLab::find($id);
         //return $productLab;
         
-        return view('employee.productLab.show')->with('test', $productLab);
+        return view('employee.productLab.show')->with($datas);
     }
 
     /**
@@ -122,7 +122,21 @@ class ProductLabController extends Controller
      */
     public function edit($id)
     {
-        //
+        $productLab = ProductLab::find($id);
+        $allIndustrialTypes = IndustrialType::all();
+        $allProductTypes = ProductType::all();
+        $allTestingCalibratingType = TestingCalibratingType::all();
+        $allCertifyLaboratory = CertifyLaboratory::all();
+        
+        // return $productLab;
+
+        return view('employee.productLab.edit')->with([
+            'productLabs' => $productLab,
+            'industrialTypes' => $allIndustrialTypes,
+            'productTypes' => $allProductTypes,
+            'testingCalibratingTypes' => $allTestingCalibratingType,
+            'cerifyLaboratories' => $allCertifyLaboratory
+        ]);
     }
 
     /**

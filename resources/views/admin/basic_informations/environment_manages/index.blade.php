@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title','Dashboard | Sale Product')
+@section('title','Dashboard | Environment Manage')
     
 @section('content_header')
-    <h1>รายการจำหน่ายสินค้า/บริการ</h1>
+    <h1>การจัดการสิ่งแวดล้อม</h1>
 @stop
 
 @section('content')
@@ -12,23 +12,23 @@
         <div class="col-12">
           <div class="card mb-2">
             <div class="card-body">
-              @if (count($showAllSaleProduct) > 0)
+              @if (count($showAllEnvManage) > 0)
                   <table class="table">
                     <thead>
                       <tr>
                         <th style="width:80px;">ลำดับที่</th>
-                        <th class="text-center">รายการจำหน่ายสินค้า/บริการ</th>
+                        <th class="text-center">วิธีการจัดการสิ่งแวดล้อม</th>
                         <th style="width:180px;">สถานะการใช้งานข้อมูล</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($showAllSaleProduct as $saleProduct)
+                      @foreach ($showAllEnvManage as $envManage)
                           <tr>
-                            <td class="text-center">{{$saleProduct->id}}</td>
-                            <td>{{$saleProduct->sale_product_name}}</td>
-                            <td class="text-center">{{$saleProduct->sale_product_status}}</td>
-                            <td><a href="/saleProduct/{{$saleProduct->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
+                            <td class="text-center">{{$envManage->id}}</td>
+                            <td>{{$envManage->env_manage_name}}</td>
+                            <td class="text-center">{{$envManage->env_manage_status}}</td>
+                            <td><a href="/environmentManage/{{$envManage->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
                           </tr>
                       @endforeach
                     </tbody>

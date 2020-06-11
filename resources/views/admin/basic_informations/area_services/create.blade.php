@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard | Sale Product')
+@section('title', 'Dashboard | Area Service')
     
 @section('content_header')
-    <h1>เพิ่มข้อมูลการจำหน่ายสินค้า/บริการ</h1>
+    <h1>เพิ่มขอบเขตการให้บริการ</h1>
 @stop
 
 @section('content')
@@ -18,13 +18,13 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => 'BasicInformations\SaleProductController@store','method' => 'POST','class' => 'was-validate'])!!}
+            {!!Form::open(['action' => 'BasicInformations\AreaServiceController@store','method' => 'POST','class' => 'was-validate'])!!}
             <div class="card-body">
               <div class="form-group">
-                {{Form::label('title','รายการจำหน่ายสินค้า/บริการ')}}
-                {{Form::text('saleProductName','',['class' => 'form-control','required'])}}
+                {{Form::label('title','รายการขอบเขตการให้บริการ')}}
+                {{Form::text('areaServiceName','',['class' => 'form-control','required'])}}
               </div>
-              <a href="/saleProduct" class="btn btn-secondary">ย้อนกลับ</a>
+              <a href="/areaService" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::submit('บันทึก',['class' => 'btn btn-primary'])}}
             </div>
             {!!Form::close()!!}

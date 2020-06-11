@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard | Testing Calibrating Type')
+@section('title', 'Dashboard | Area Service')
 
 @section('content_header')
-    <h1>แก้ไขข้อมูลประเภทการทดสอบ/สอบเทียบ</h1>
+    <h1>แก้ไขขอบเขตการให้บริการ</h1>
 @endsection
 
 @section('content')
@@ -18,20 +18,20 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => ['BasicInformations\TestingCalibratingTypeController@update',$editTCType->id],'method'=>'PUT'])!!}
+            {!!Form::open(['action' => ['BasicInformations\AreaServiceController@update',$editAreaService->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
-                {{Form::label('little','ชื่อประเภทการทดสอบ/สอบเทียบ')}}
-                {{Form::text('tCTypeName',$editTCType->testing_calibrating_type_name,['class'=>'form-control','required'])}}
+                {{Form::label('little','รายการขอบเขตการให้บริการ')}}
+                {{Form::text('areaServiceName',$editAreaService->area_service_name,['class'=>'form-control','required'])}}
               </div>
               <div class="form-group">
                 {{Form::label('title', 'สถานะการใช้งานข้อมูล')}}
-                {{Form::select('tCTypeStatus',[
+                {{Form::select('areaServiceStatus',[
                   'A' => 'Active',
                   'D' => 'Disable',
-              ], $editTCType->testing_calibrating_type_status,['class'=>'form-control'])}}
+              ], $editAreaService->area_service_status,['class'=>'form-control'])}}
               </div>
-              <a href="/testingCalibratingType" class="btn btn-secondary">ย้อนกลับ</a>
+              <a href="/areaService" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::hidden('_method','PUT')}}
               {{Form::submit('บันทึก',['class'=>'btn btn-primary'])}}
             </div>

@@ -59,15 +59,15 @@ Route::resource('/areaService','BasicInformations\AreaServiceController');
 
 Route::resource('/fixedCost','BasicInformations\FixedCostController');
 
-Route::resource('/income','BasicInformations\IncomeController');
+Route::resource('/incomePerYear','BasicInformations\IncomePerYearController');
 
 Route::resource('/employeeTraining','BasicInformations\EmployeeTrainingController');
 
-Route::resource('/resultVerify','BasicInformations\ResultVerifyController');
+Route::resource('/resultControl','BasicInformations\ResultControlController');
 
 Route::resource('/equipmentUsage','BasicInformations\EquipmentUsageController');
 
-Route::resource('/maintenance','BasicInformations\MaintenanceController');
+Route::resource('/equipmentMaintenance','BasicInformations\EquipmentMaintenanceController');
 
 Route::resource('/labLocation','BasicInformations\LabLocationController');
 
@@ -75,11 +75,11 @@ Route::resource('/saleProduct','BasicInformations\SaleProductController');
 
 Route::resource('/environmentManage','BasicInformations\EnvironmentManageController');
 
-Route::resource('/equipmentCalibration','BasicInformations\EuipmentCalibrationController');
+Route::resource('/equipmentCalibration','BasicInformations\EquipmentCalibrationController');
 
-Route::resource('/equipmentManual','BasicInformations\EuipmentManualController');
+Route::resource('/equipmentManual','BasicInformations\EquipmentManualController');
 
-Route::resource('/equipmentRent','BasicInformations\EuipmentRentController');
+Route::resource('/equipmentRent','BasicInformations\EquipmentRentController');
 
 Route::resource('/testingCalibratingList','BasicInformations\TestingCalibratingListController');
 

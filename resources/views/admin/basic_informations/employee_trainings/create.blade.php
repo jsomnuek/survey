@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard | Sale Product')
+@section('title', 'Dashboard | FEmployee Training')
     
 @section('content_header')
-    <h1>เพิ่มข้อมูลการจำหน่ายสินค้า/บริการ</h1>
+    <h1>เพิ่มรายการจำนวนพนักงานที่ได้รับการฝึกอบรม</h1>
 @stop
 
 @section('content')
@@ -18,13 +18,13 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => 'BasicInformations\SaleProductController@store','method' => 'POST','class' => 'was-validate'])!!}
+            {!!Form::open(['action' => 'BasicInformations\EmployeeTrainingController@store','method' => 'POST','class' => 'was-validate'])!!}
             <div class="card-body">
               <div class="form-group">
-                {{Form::label('title','รายการจำหน่ายสินค้า/บริการ')}}
-                {{Form::text('saleProductName','',['class' => 'form-control','required'])}}
+                {{Form::label('title','ช่วงจำนวนเข้ารับการฝึกอบรม')}}
+                {{Form::text('empTrainingDetail','',['class' => 'form-control','required'])}}
               </div>
-              <a href="/saleProduct" class="btn btn-secondary">ย้อนกลับ</a>
+              <a href="/employeeTraining" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::submit('บันทึก',['class' => 'btn btn-primary'])}}
             </div>
             {!!Form::close()!!}

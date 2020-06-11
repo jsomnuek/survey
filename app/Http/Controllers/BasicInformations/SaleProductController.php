@@ -26,7 +26,7 @@ class SaleProductController extends Controller
     public function index()
     {
         $allSaleProduct = SaleProduct::all();
-        return view('admin.basic_informations.sale_products.index')->with('allSaleProduct', $allSaleProduct);
+        return view('admin.basic_informations.sale_products.index')->with('showAllSaleProduct', $allSaleProduct);
     }
 
     /**
@@ -36,7 +36,7 @@ class SaleProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.basic_informations.sale_products.create');
     }
 
     /**
@@ -47,7 +47,19 @@ class SaleProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate unique data
+        $this->validate($request,[
+            'saleProductName' => 'required|unique:sale_products,sale_product_name'
+        ]);
+
+        //Insert new data
+        $insertSaleProduct = new SaleProduct;
+        $insertSaleProduct->sale_product_name = $request->input('saleProductName');
+        $insertSaleProduct->sale_product_status = 'A';
+        $insertSaleProduct->save();
+
+        //Retuen sale product view
+        return redirect('/saleProduct');
     }
 
     /**
@@ -69,7 +81,8 @@ class SaleProductController extends Controller
      */
     public function edit(SaleProduct $saleProduct)
     {
-        //
+        $editSaleProduct = SaleProduct::find($saleProduct->id);
+        return view('admin.basic_informations.sale_products.edit')->with('editSaleProduct', $saleProduct);
     }
 
     /**
@@ -81,7 +94,15 @@ class SaleProductController extends Controller
      */
     public function update(Request $request, SaleProduct $saleProduct)
     {
-        //
+        //Validate data before update
+
+        $updateSaleProduct = SaleProduct::find($saleProduct->id);
+        $updateSaleProduct->sale_product_name = $request->input('saleProductName');
+        $updateSaleProduct->sale_product_status = $request->input('saleProductStatus');
+        $updateSaleProduct->save();
+
+        //return sale product view
+        return redirect('/saleProduct');
     }
 
     /**

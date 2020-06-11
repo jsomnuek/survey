@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title','Dashboard | Sale Product')
+@section('title','Dashboard | Area Service')
     
 @section('content_header')
-    <h1>รายการจำหน่ายสินค้า/บริการ</h1>
+    <h1>ขอบเขตการให้บริการ</h1>
 @stop
 
 @section('content')
@@ -12,23 +12,23 @@
         <div class="col-12">
           <div class="card mb-2">
             <div class="card-body">
-              @if (count($showAllSaleProduct) > 0)
+              @if (count($showAllAreaService) > 0)
                   <table class="table">
                     <thead>
                       <tr>
                         <th style="width:80px;">ลำดับที่</th>
-                        <th class="text-center">รายการจำหน่ายสินค้า/บริการ</th>
+                        <th class="text-center">รายการขอบเขตการให้บริการ</th>
                         <th style="width:180px;">สถานะการใช้งานข้อมูล</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($showAllSaleProduct as $saleProduct)
+                      @foreach ($showAllAreaService as $areaService)
                           <tr>
-                            <td class="text-center">{{$saleProduct->id}}</td>
-                            <td>{{$saleProduct->sale_product_name}}</td>
-                            <td class="text-center">{{$saleProduct->sale_product_status}}</td>
-                            <td><a href="/saleProduct/{{$saleProduct->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
+                            <td class="text-center">{{$areaService->id}}</td>
+                            <td>{{$areaService->area_service_name}}</td>
+                            <td class="text-center">{{$areaService->area_service_status}}</td>
+                            <td><a href="/areaService/{{$areaService->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
                           </tr>
                       @endforeach
                     </tbody>

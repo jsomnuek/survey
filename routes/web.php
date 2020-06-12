@@ -22,18 +22,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
 
 Route::resource('/equipment','BasicInformations\EquipmentController');
-
-
-// Route::get('/lab', 'LabsController@index');
-// Route::post('/lab', 'LabsController@store');
-// Route::get('/lab/create', 'LabsController@create');
-
-Route::resource('/organize','OrganizeController');
 
 Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
 
@@ -100,6 +95,5 @@ Route::resource('/lab', 'Employee\LabController');
 Route::resource('/equipmentLab','Employee\EquipmentLabController');
 
 Route::resource('/productLab','Employee\ProductLabController');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

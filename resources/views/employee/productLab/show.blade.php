@@ -24,8 +24,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <p>รหัสเอกสาร {{ $test->id }}</p>
-                    <p>ชนิดผลิตฯ {{ $test->productType->product_type_name }}</p>              
+                    <p>รหัสเอกสาร {{ $productLabs->id }}</p>
+                    <p>ชนิดผลิตฯ {{ $productLabs->productType->product_type_name }}</p>              
                 </div>
                 <div class="card-footer">
 

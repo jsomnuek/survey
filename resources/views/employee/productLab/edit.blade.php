@@ -19,8 +19,9 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/productLab" method="POST" role="form">
+                <form action="/productLab/{{$productLabs->id}}" method="POST" role="form">
                     @csrf
+                    @method('PUT')
                     <div class="card-body">
                         <div class="row form-group">
                             <div class="col-md-12">

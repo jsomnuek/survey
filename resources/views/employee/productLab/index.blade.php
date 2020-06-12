@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page')
-    Organization
+    Product Lab
 @endsection
 
 @section('header-box-1')
@@ -55,7 +55,7 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
-                @if (count($allProductLabs) > 10)
+                @if (count($allProductLabs) > 1)
                     <div class="card-footer clearfix">
                         {{ $allProductLabs->links() }}
                     </div>

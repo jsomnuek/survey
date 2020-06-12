@@ -19,7 +19,7 @@ class ProductLabController extends Controller
      */
     public function index()
     {
-        $allProductLab = ProductLab::paginate(5);
+        $allProductLab = ProductLab::paginate(2);
         return view('employee.productlab.index',['allProductLabs' => $allProductLab]);
     }
 
@@ -152,7 +152,7 @@ class ProductLabController extends Controller
 
         // Validate Check
         $request->validate([
-            'product_lab_name' => 'required|unique:product_labs',
+            'product_lab_name' => 'required',
             'product_type_id' => 'required',
             'product_lab_standard' => '' ,
             'product_lab_test_name' => '',
@@ -172,8 +172,10 @@ class ProductLabController extends Controller
             'certify_laboratory_id' => 'required'
         ]);
 
+        
         //Clean Up data Before Update to Database
-        $productLab = new ProductLab;
+
+        $productLab =  ProductLab::find($id) ;
         $productLab->product_lab_name = $request['product_lab_name'];
         $productLab->product_type_id = $request['product_type_id'];
         $productLab->product_lab_standard = $request['product_lab_standard'];
@@ -193,7 +195,9 @@ class ProductLabController extends Controller
         $productLab->proficiency_testing_year = $request['proficiency_testing_year'];
         $productLab->certify_laboratory_id = $request['certify_laboratory_id'];
 
-        $productLab->update($this->$request);
+        $productLab->update();
+
+        // return to productLab that you edit
         return redirect("/productLab/$productLab->id");
 
     }

@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar elevation-4 sidebar-dark-success">
     <!-- Brand Logo -->
     <a href="{{ url('/dashboard') }}" class="brand-link">
         <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -31,14 +31,14 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-legacy nav-compact" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-compact nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
                 <li class="nav-header d-none">Display None</li>
                 {{-- Basic Informations Menu  --}}
                 <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
                 {{-- List of Menu --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ Request::is('labLocation*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
@@ -51,7 +51,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('labLocation*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-search-location"></i>
-                                <p class="text-red">ที่ตั้งห้องปฏิบัติการ<i class="right fas fa-angle-left"></i></p>
+                                <p>ที่ตั้งห้องปฏิบัติการ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -127,20 +127,20 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview {{ Request::is('sale*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('saleProduct*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('sale*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('saleProduct*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-briefcase"></i>
-                                <p class="text-red">การจำหน่ายสินค้า/บริการ <i class="right fas fa-angle-left"></i></p>
+                                <p>การจำหน่ายสินค้า/บริการ <i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
-                                    <a href="{{ url('/sale') }}" class="nav-link {{ Request::is('sale') ? 'active' : '' }}">
+                                    <a href="{{ url('/saleProduct') }}" class="nav-link {{ Request::is('saleProduct') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>รายการจำหน่ายสินค้า</p>
                                     </a>
-                                    <a href="{{ url('/sale/create') }}" class="nav-link {{ Request::is('sale/create') ? 'active' : '' }}">
+                                    <a href="{{ url('/saleProduct/create') }}" class="nav-link {{ Request::is('saleProduct/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลการจำหน่ายสินค้า</p>
                                     </a>
@@ -170,7 +170,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ Request::is('laboratoryType*','areaService*','fixedCost*','incomePerYear*','employeeTraining*','environmentManage*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
@@ -203,7 +203,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('areaService*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-meteor"></i>
-                                <p class="text-red">ขอบเขตการให้บริการ<i class="right fas fa-angle-left"></i></p>
+                                <p>ขอบเขตการให้บริการ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -223,7 +223,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('fixedCost*') ? 'active' : '' }}">
                                 <i class="nav-icon fab fa-bitcoin"></i>
-                                <p class="text-red">ต้นทุนคงที่<i class="right fas fa-angle-left"></i></p>
+                                <p>ต้นทุนคงที่<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -239,20 +239,20 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview {{ Request::is('income*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('incomePerYear*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('income*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('incomePerYear*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-dollar-sign"></i>
-                                <p class="text-red">รายได้รวมต่อปี<i class="right fas fa-angle-left"></i></p>
+                                <p>รายได้รวมต่อปี<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
-                                    <a href="{{ url('/income') }}" class="nav-link {{ Request::is('income') ? 'active' : '' }}">
+                                    <a href="{{ url('/incomePerYear') }}" class="nav-link {{ Request::is('incomePerYear') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>รายได้ต่อปี</p>
                                     </a>
-                                    <a href="{{ url('/income/create') }}" class="nav-link {{ Request::is('income/create') ? 'active' : '' }}">
+                                    <a href="{{ url('/incomePerYear/create') }}" class="nav-link {{ Request::is('incomePerYear/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลรายได้ต่อปี</p>
                                     </a>
@@ -263,7 +263,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('employeeTraining*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                                <p class="text-red">การฝึกอบรมต่อปี<i class="right fas fa-angle-left"></i></p>
+                                <p>การฝึกอบรมต่อปี<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -283,7 +283,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('environmentManage*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-air-freshener"></i>
-                                <p class="text-red">การจัดการสิ่งแวดล้อม<i class="right fas fa-angle-left"></i></p>
+                                <p>การจัดการสิ่งแวดล้อม<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -302,7 +302,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ Request::is('equipment*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
@@ -395,18 +395,18 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('equipmentUsage*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-circle"></i>
-                                <p class="text-red">ขอบเขตการใช้เครื่องมือ<i class="right fas fa-angle-left"></i></p>
+                                <p>ขอบเขตการใช้เครื่องมือ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
                                     <a href="{{ url('/equipmentUsage') }}" class="nav-link {{ Request::is('equipmentUsage') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>รายการขอบเขตการใช้เครื่องมือ</p>
+                                        <p>รายการขอบเขตการใช้</p>
                                     </a>
                                     <a href="{{ url('/equipmentUsage/create') }}" class="nav-link {{ Request::is('equipmentUsage/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
-                                        <p>เพิ่มข้อมูลขอบเขตการใช้เครื่องมือ</p>
+                                        <p>เพิ่มข้อมูลขอบเขตการใช้</p>
                                     </a>
                                 </li>
                             </ul>
@@ -415,7 +415,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('equipmentCalibration*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-clipboard-check"></i>
-                                <p class="text-red">การสอบเทียบเครื่องมือ<i class="right fas fa-angle-left"></i></p>
+                                <p>การสอบเทียบเครื่องมือ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -426,25 +426,25 @@
                                     </a>
                                     <a href="{{ url('/equipmentCalibration/create') }}" class="nav-link {{ Request::is('equipmentCalibration/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
-                                        <p>เพิ่มข้อมูลการสอบเทียบเครื่องมือ</p>
+                                        <p>เพิ่มข้อมูลสอบเทียบเครื่องมือ</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview {{ Request::is('maintenance*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('equipmentMaintenance*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('maintenance*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('equipmentMaintenance*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-toolbox"></i>
-                                <p class="text-red">การบำรุงรักษาเครื่องมือ<i class="right fas fa-angle-left"></i></p>
+                                <p>การบำรุงรักษาเครื่องมือ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
-                                    <a href="{{ url('/maintenance') }}" class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}">
+                                    <a href="{{ url('/equipmentMaintenance') }}" class="nav-link {{ Request::is('equipmentMaintenance') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>รายการบำรุงรักษา</p>
                                     </a>
-                                    <a href="{{ url('/maintenance/create') }}" class="nav-link {{ Request::is('maintenance/create') ? 'active' : '' }}">
+                                    <a href="{{ url('/equipmentMaintenance/create') }}" class="nav-link {{ Request::is('equipmentMaintenance/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลรายการบำรุงรักษา</p>
                                     </a>
@@ -455,18 +455,18 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('equipmentManual*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-book"></i>
-                                <p class="text-red">คู่มือการใช้เครื่องมือ<i class="right fas fa-angle-left"></i></p>
+                                <p>คู่มือการใช้เครื่องมือ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
                                     <a href="{{ url('/equipmentManual') }}" class="nav-link {{ Request::is('equipmentManual') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>รายการคู่มือการใช้เครื่องมือ</p>
+                                        <p>รายการข้อมูลคู่มือ</p>
                                     </a>
                                     <a href="{{ url('/equipmentManual/create') }}" class="nav-link {{ Request::is('equipmentManual/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
-                                        <p>เพิ่มข้อมูลคู่มือการใช้เครื่องมือ</p>
+                                        <p>เพิ่มข้อมูลคู่มือ</p>
                                     </a>
                                 </li>
                             </ul>
@@ -475,18 +475,18 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('equipmentRent*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-hand-holding-usd"></i>
-                                <p class="text-red">การให้เช่าใช้เครื่องมือ<i class="right fas fa-angle-left"></i></p>
+                                <p>การให้เช่าใช้เครื่องมือ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
                                     <a href="{{ url('/equipmentRent') }}" class="nav-link {{ Request::is('equipmentRent') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>รายการให้เช่าใช้เครื่องมือ</p>
+                                        <p>รายการให้เช่าเครื่องมือ</p>
                                     </a>
                                     <a href="{{ url('/equipmentRent/create') }}" class="nav-link {{ Request::is('equipmentRent/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
-                                        <p>เพิ่มข้อมูลการให้เช่าใช้เครื่องมือ</p>
+                                        <p>เพิ่มข้อมูลการให้เช่าเครื่องมือ</p>
                                     </a>
                                 </li>
                             </ul>
@@ -494,7 +494,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ Request::is('productType*','testingCalibratingList*','testingCalibratingType*','testingCalibratingMethod*','resultControl*','proficiencyTesting*','certifyLaboratory*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
@@ -527,18 +527,18 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('testingCalibratingList*') ? 'active' : '' }}">
                                 <i class="nav-icon fab fa-elementor"></i>
-                                <p class="text-red">ประเภทรายการทดสอบ<i class="right fas fa-angle-left"></i></p>
+                                <p>ประเภทรายการทดสอบ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
                                     <a href="{{ url('/testingCalibratingList') }}" class="nav-link {{ Request::is('testingCalibratingList') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>รายชื่อประเภทรายการทดสอบ</p>
+                                        <p>รายชื่อประเภทรายการ</p>
                                     </a>
                                     <a href="{{ url('/testingCalibratingList/create') }}" class="nav-link {{ Request::is('testingCalibratingList/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
-                                        <p>เพิ่มข้อมูลประเภทรายการทดสอบ</p>
+                                        <p>เพิ่มข้อมูลประเภทรายการ</p>
                                     </a>
                                 </li>
                             </ul>
@@ -547,7 +547,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('testingCalibratingType*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-tape"></i>
-                                <p>ประเภทการทดสอบ/สอบเทียบ<i class="right fas fa-angle-left"></i></p>
+                                <p>ประเภทการทดสอบ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -567,7 +567,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('testingCalibratingMethod*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-vial"></i>
-                                <p class="text-red">วิธีทดสอบ/สอบเทียบ<i class="right fas fa-angle-left"></i></p>
+                                <p>วิธีทดสอบ/สอบเทียบ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -583,20 +583,20 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview {{ Request::is('resultVerify*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('resultControl*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('resultVerify*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('resultControl*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-check-double"></i>
-                                <p class="text-red">ควบคุมคุณภาพผลทดสอบ<i class="right fas fa-angle-left"></i></p>
+                                <p>ควบคุมคุณภาพผลทดสอบ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
-                                    <a href="{{ url('/resultVerify') }}" class="nav-link {{ Request::is('resultVerify') ? 'active' : '' }}">
+                                    <a href="{{ url('/resultControl') }}" class="nav-link {{ Request::is('resultControl') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>รายการควบคุมคุณภาพ</p>
                                     </a>
-                                    <a href="{{ url('/resultVerify/create') }}" class="nav-link {{ Request::is('resultVerify/create') ? 'active' : '' }}">
+                                    <a href="{{ url('/resultControl/create') }}" class="nav-link {{ Request::is('resultControl/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลการควบคุมคุณภาพ</p>
                                     </a>
@@ -607,7 +607,7 @@
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('proficiencyTesting*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-kaaba"></i>
-                                <p class="text-red">การทดสอบความชำนาญ<i class="right fas fa-angle-left"></i></p>
+                                <p>การทดสอบความชำนาญ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -618,7 +618,7 @@
                                     </a>
                                     <a href="{{ url('/proficiencyTesting/create') }}" class="nav-link {{ Request::is('proficiencyTesting/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
-                                        <p>เพิ่มข้อมูลการทดสอบความชำนาญ</p>
+                                        <p>เพิ่มข้อมูลทดสอบความชำนาญ</p>
                                     </a>
                                 </li>
                             </ul>

@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard | Testing Calibrating Type')
+@section('title', 'Dashboard | Result Control')
 
 @section('content_header')
-    <h1>แก้ไขข้อมูลประเภทการทดสอบ/สอบเทียบ</h1>
+    <h1>แก้ไขการควบคุมคุณภาพผลการทดสอบ</h1>
 @endsection
 
 @section('content')
@@ -18,20 +18,20 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => ['BasicInformations\TestingCalibratingTypeController@update',$editTCType->id],'method'=>'PUT'])!!}
+            {!!Form::open(['action' => ['BasicInformations\ResultControlController@update',$editResultControl->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
-                {{Form::label('little','ชื่อประเภทการทดสอบ/สอบเทียบ')}}
-                {{Form::text('tCTypeName',$editTCType->testing_calibrating_type_name,['class'=>'form-control','required'])}}
+                {{Form::label('little','การควบคุมคุณภาพผลการทดสอบ')}}
+                {{Form::text('resultControlName',$editResultControl->result_control_name,['class'=>'form-control','required'])}}
               </div>
               <div class="form-group">
                 {{Form::label('title', 'สถานะการใช้งานข้อมูล')}}
-                {{Form::select('tCTypeStatus',[
+                {{Form::select('resultControlStatus',[
                   'A' => 'Active',
                   'D' => 'Disable',
-              ], $editTCType->testing_calibrating_type_status,['class'=>'form-control'])}}
+              ], $editResultControl->result_control_status,['class'=>'form-control'])}}
               </div>
-              <a href="/testingCalibratingType" class="btn btn-secondary">ย้อนกลับ</a>
+              <a href="/resultControl" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::hidden('_method','PUT')}}
               {{Form::submit('บันทึก',['class'=>'btn btn-primary'])}}
             </div>

@@ -9,13 +9,24 @@ use Illuminate\Http\Request;
 class LabLocationController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $allLabLocation = LabLocation::all();
+        return view('admin.basic_informations.lab_locations.index')->with('showAllLabLocation',$allLabLocation);
     }
 
     /**
@@ -25,7 +36,7 @@ class LabLocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.basic_informations.lab_locations.create');
     }
 
     /**
@@ -36,7 +47,19 @@ class LabLocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validate Data before insert
+        $this->validate($request, [
+            'labLocationName' => 'required|unique:lab_locations,location_name' 
+        ]);
+
+        // Insert new lab location
+        $insertLabLocation = new LabLocation;
+        $insertLabLocation->location_name = $request->input('labLocationName');
+        $insertLabLocation->location_status = 'A';
+        $insertLabLocation->save();
+
+        // Return to lab location view
+        return redirect ('/labLocation');
     }
 
     /**
@@ -58,7 +81,8 @@ class LabLocationController extends Controller
      */
     public function edit(LabLocation $labLocation)
     {
-        //
+        $editLabLocation = LabLocation::find($labLocation->id);
+        return view('admin.basic_informations.lab_locations.edit')->with('editLabLocation', $editLabLocation);
     }
 
     /**
@@ -70,7 +94,16 @@ class LabLocationController extends Controller
      */
     public function update(Request $request, LabLocation $labLocation)
     {
-        //
+        // Validate data before update
+
+        // Update data
+        $updateLabLocation = LabLocation::find($labLocation->id);
+        $updateLabLocation->location_name = $request->input('labLocationName');
+        $updateLabLocation->location_status = $request->input('labLocationStatus');
+        $updateLabLocation->save();
+
+        // Return to lab location view
+        return redirect('/labLocation');
     }
 
     /**

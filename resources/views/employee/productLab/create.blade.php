@@ -39,8 +39,8 @@
                                 <label for="">4.2 ประเภทผลิตภัณฑ์</label>
                                 <select class="form-control @error('product_type_id') is-invalid @enderror" name="product_type_id" id="product_type_id">
                                     <option value="">โปรดเลือกรายการประเภทผลิตภัณฑ์</option>
-                                    @foreach ($productTypes as $productType)
-                                        <option value="{{$productType->id}}" {{ old('product_type_id') ==  $productType->id ? 'selected' : ''}}> {{$productType->product_type_name}} </option>
+                                    @foreach ($technicalEquipments as $technicalEquipment)
+                                        <option value="{{$technicalEquipment->id}}" {{ old('product_type_id') ==  $productType->id ? 'selected' : ''}}> {{$productType->product_type_name}} </option>
                                     @endforeach
                                 </select>
                                 @error('product_type_id')

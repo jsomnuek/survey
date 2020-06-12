@@ -3,7 +3,15 @@
 namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller;
 use App\Model\Employee\EquipmentLab;
-use App\TechnicalEquipment;
+use App\Model\BasicInformations\Equipment;
+use App\Model\BasicInformations\MajorTechnology;
+use App\Model\BasicInformations\TechnicalEquipment;
+use App\Model\BasicInformations\ObjectiveUsage;
+use App\Model\BasicInformations\EquipmentUsage;
+use App\Model\BasicInformations\EquipmentCalibration;
+use App\Model\BasicInformations\EquipmentMaintenance;
+use App\Model\BasicInformations\EquipmentManual;
+use App\Model\BasicInformations\EquipmentRent;
 use Illuminate\Http\Request;
 
 class EquipmentLabController extends Controller
@@ -30,8 +38,29 @@ class EquipmentLabController extends Controller
      */
     public function create()
     {
-        $allEquipmentLab = EquipmentLab::all();
-        return view('employee.equipmentLab.create')->with('showEquipmentLab',$allEquipmentLab);;
+        $allEquipments = Equipment::where('equipment_status','A')->get();
+        $allMajorTechnology = MajorTechnology::where('major_tech_status','A')->get();
+        $allTechnicalEquipment = TechnicalEquipment::where('technical_equipment_status','A')->get();
+        $allObjectiveUsage = ObjectiveUsage::where('obj_usage_status','A')->get();
+        $allEquipmentUsage = EquipmentUsage::where('equipment_usage_status','A')->get();
+        $allEquipmentCalibration = EquipmentCalibration::where('equipment_calibration_status','A')->get();
+        $allEquipmentMaintenance = EquipmentMaintenance::where('equipment_maintenance_status','A')->get();
+        $allEquipmentManual = EquipmentManual::where('equipment_manual_status','A')->get();
+        $allEquipmentRent = EquipmentRent::where('equipment_rent_status','A')->get();
+        $data = [
+            'equipments' => $allEquipments,
+            'majorTechnologies' => $allMajorTechnology,
+            'technicalEquipments' => $allTechnicalEquipment,
+            'objectiveUsages' => $allObjectiveUsage,
+            'equipmentUsages' => $allEquipmentUsage,
+            'equipmentCalibrations' => $allEquipmentCalibration,
+            'equipmentMaintenances' => $allEquipmentMaintenance,
+            'equipmentManuals' => $allEquipmentManual,
+            'equipmentRents' => $allEquipmentRent,
+
+        ];
+        //dd($data);
+        return view('employee.equipmentLab.create')->with($data);
     }
 
     /**

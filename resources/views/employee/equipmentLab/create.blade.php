@@ -22,14 +22,19 @@
                   <div class="row form-group">
                       <div class="col-md-4">
                         <label for="">3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS)</label>
-                        <input type="text" class="form-control" name="equipmentID" id="equipmentID" required>
+                        <input type="text" class="form-control" name="equipmentLabID" id="equipmentLabID" required>
                       </div>
                   </div>
                   {{-- 3.2equipmentNameEN /3.3equipmentNameTH --}}
                   <div class="row form-group">
                       <div class="col-md-6">
                         <label for="">3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ)</label>
-                        <input type="text" class="form-control" name="equipmentNameEN" id="equipmentNameEN" required>
+                        <select class="form-control" name="equipments_id" id="equipments_id" >
+                          <option value="">โปรดเลือกเครื่องมือ</option>
+                          @foreach ($equipments as $equipment)
+                              <option value="{{$equipment->id}}" {{ old('equipments_id') ==  $equipment->id ? 'selected' : ''}}> {{$equipment->equipment_name}} </option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="col-md-6">
                         <label for="">3.3 ชื่อเครื่องมือ (ภาษาไทย)</label>
@@ -55,19 +60,19 @@
                   <div class="row form-group">
                       <div class="col-md-6">
                         <label for="">3.7 สาขาเทคโนโลยีของเครื่องมือ</label>
-                        <select class="form-control" name="equipmentMajorTech" id="equipmentMajorTech" >
-                          <option>สาขาเทคโนโลยีของเครื่องมือ</option>
-                            @foreach ($showEquipmentLab ?? '' as $TechnicalEquipmentName)
-                              <option value="{{$TechnicalEquipmentName->technical_equipment_name}}"> {{$TechnicalEquipmentName->technical_equipment_name}} </option>
-                            @endforeach
+                        <select class="form-control" name="major_technologies_id" id="major_technologies_id" >
+                          <option value="">โปรดเลือกสาขาเทคโนโลยีของเครื่องมือ</option>
+                          @foreach ($majorTechnologies as $majorTechnology)
+                              <option value="{{$majorTechnology->id}}" {{ old('major_technologies_id') ==  $majorTechnology->id ? 'selected' : ''}}> {{$majorTechnology->major_tech_name}} </option>
+                          @endforeach
                         </select>
                       </div>
                       <div class="col-md-6">
                         <label for="">3.8 เทคนิคของเครื่องมือ</label>
-                        <select class="form-control" name="equipmentTechnical" id="equipmentTechnical" >
+                        <select class="form-control" name="technical_equipments_id" id="technical_equipments_id" >
                           <option>เทคนิคของเครื่องมือ</option>
-                            @foreach ($showEquipmentLab ?? '' as $TechnicalEquipmentName)
-                              <option value="{{$TechnicalEquipmentName->technical_equipment_name}}"> {{$TechnicalEquipmentName->technical_equipment_name}} </option>
+                            @foreach ($technicalEquipments ?? '' as $technicalEquipment)
+                              <option value="{{$technicalEquipment->id}}"> {{$technicalEquipment->technical_equipment_name}} </option>
                             @endforeach
                         </select>
                       </div>
@@ -75,8 +80,8 @@
                   {{-- 2.9equipmentYear/2.10equipmentPrice/2.11equipmentSupplier --}}
                   <div class="row form-group">
                       <div class="col-md-4">
-                        <label for="">3.9 ปีืี่ซื้อ</label>
-                        <input type="text" class=form-control name="equipmentYear" id="equipmentYear">
+                        <label for="">3.9 ปีที่ซื้อ</label>
+                        <input type="number" class=form-control name="equipmentYear" id="equipmentYear">
                       </div>
                       <div class="col-md-4">
                         <label for="">3.10 มูลค่า</label>
@@ -91,7 +96,7 @@
                   <div class="row form-group">
                     <div class="col-md-6">
                       <label for="">3.12 วัตถุประสงค์การใช้งาน</label>
-                      <select class="form-control" name="" id="" >
+                      <select class="form-control" name="objective_usages_id" id="objective_usages_id" >
                         <option>ทดสอบ/สอบเทียบ</option>
                         <option>วิจัย</option>
                         <option>อบรม/การเรียนการสอน</option>
@@ -99,7 +104,7 @@
                     </div>
                     <div class="col-md-6">
                       <label for="">3.13 ขอบเขตการใช้เครื่องมือ</label>
-                      <select class="form-control" name="" id="" >
+                      <select class="form-control" name="equipment_usages_id" id="equipment_usages_id" >
                         <option>ใช้เฉพาะผลิตภัณฑ์</option>
                         <option>ใช้ได้กับหลายผลิตภัณฑ์</option>
                       </select>
@@ -109,11 +114,11 @@
                   <div class="row form-group">
                     <div class="col-md-6">
                       <label for="">3.14 ความสามารถของเครื่อง/ความละเอียด</label>
-                      <input type="text" class=form-control name="" id="">
+                      <input type="text" class=form-control name="equipmentAbility" id="equipmentAbility">
                     </div>
                     <div class="col-md-6">
                       <label for="">3.15 ภาพเครื่องมือ</label>
-                      <input type="file" class="form-control" name="" id="">
+                      <input type="file" class="form-control" name="equipmentPic" id="equipmentPic">
                     </div>
                   </div>
                   {{-- 3.16สอบเทียบ --}}
@@ -122,23 +127,23 @@
                       <label for="">3.16 การสอบเทียบ</label>
                     </div>
                     <div class="col-md-2">
-                      <input type="radio" class="" name="" id=""> ไม่มี
+                      <input type="radio" class="" name="equipment_calibrations_id" id="equipment_calibrations_id"> ไม่มี
                     </div>
                     <div class="col-md-2">
-                      <input type="radio" class="" name="" id=""> มี
+                      <input type="radio" class="" name="equipment_calibrations_id" id="equipment_calibrations_id" > มี
                     </div>
                     <div class="col-md-3">
-                      <input type="text" class="form-control" name="" id="" placeholder="ชื่อหน่วยงานสอบเทียบ">
+                      <input type="text" class="form-control" name="equipmentCalibrationBy" id="equipmentCalibrationBy" placeholder="ชื่อหน่วยงานสอบเทียบ">
                     </div>
                     <div class="col-md-3">
-                      <input type="date" class="form-control" name="" id="" placeholder="วัน/เดือน/ปี">
+                      <input type="date" class="form-control" name="equipmentCalibrationYear" id="equipmentCalibrationYear" placeholder="วัน/เดือน/ปี">
                     </div>
                   </div>
                   {{-- 2.17equipmentMaintenance/2.18equipmentMaintenanceBudget --}}
                   <div class="row form-group">
                     <div class="col-md-6">
                       <label for="">3.17	การตรวจเช็ค/บำรุงรักษาเครื่องมืออุปกรณ์ทางวิทยาศาสตร์</label>
-                      <select class="form-control" name="equipmentMaintenance" id="" >
+                      <select class="form-control" name="equipment_maintenances_id" id="equipment_maintenances_id" >
                         <option>ไม่มี</option>
                         <option>มีทุก 1 เดือน</option>
                         <option>มีทุก 3 เดือน</option>
@@ -153,7 +158,7 @@
                     </div>
                   </div>
                   {{-- 2.19equipmentAdmin --}}
-                  {{Form::label('title','2.19 ผู้ดูแลเครื่องมือ')}}
+                  <label for="">3.19 ผู้ดูแลเครื่องมือ</label>
                   <div class="row form-group">
                     <div class="col-md-4">
                       ชื่อผู้ดูแล
@@ -174,10 +179,10 @@
                       <label for="">3.20 คู่มือการใช้งาน</label>
                     </div>
                     <div class="col-md-1">
-                      <input type="radio" class="" name="equipmentManual" id="equipmentManual"> ไม่มี
+                      <input type="radio" class="" name="equipment_manuals_id" id="equipment_manuals_id"> ไม่มี
                     </div>
                     <div class="col-md-1">
-                      <input type="radio" class="" name="equipmentManual" id="equipmentManual"> มี
+                      <input type="radio" class="" name="equipment_manuals_id" id="equipment_manuals_id"> มี
                     </div>
                     <div class="col-md-4">
                       <input type="text" class="form-control" name="equipmentManualName" id="equipmentManualName" placeholder="ชื่อคู่มือ/รหัสคู่มือ">
@@ -201,11 +206,11 @@
                   <div class="row form-group">
                     <div class="col-md-6">
                       3.21.1 ค่าบริการต่อครั้ง (บาท)
-                      <input type="number" class="form-control" name="" id="">
+                      <input type="number" class="form-control" name="equipmentRentFee" id="equipmentRentFee">
                     </div>
                     <div class="col-md-6">
                       3.21.2 เงื่อนไขการขอยืม/ใช้งานเครื่องมือ 
-                      <input type="text" class="form-control" name="" id="">
+                      <input type="text" class="form-control" name="equipmentRentDetail" id="equipmentRentDetail">
                     </div>
                   </div>
                 </div>

@@ -34,7 +34,7 @@ Route::resource('/equipment','BasicInformations\EquipmentController');
 // Route::get('/lab/create', 'LabsController@create');
 
 // Route::resource('/organize','OrganizeController');
-/*
+
 Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
 
 Route::resource('/productType', 'BasicInformations\ProductTypeController');
@@ -87,7 +87,6 @@ Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratin
 
 Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
 
-*/
 
 Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');

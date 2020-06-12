@@ -6,82 +6,51 @@ $(document).ready(function() {
 
     // Check Select Option
 
-    // 1.4
+    // 1.4 main step
     $("#lab_location_id").on("change", function() {
         var lab_location_id = $(this).val();
         $("#industrial_estate_id")
             .val(null)
             .trigger("change");
         if (lab_location_id == 3) {
+            // location estate to list
+            $("#display_estate_id").removeClass("d-none");
+            $("#industrial_estate_id").prop("required", true);
+            // location other
             $("#display_location_other").addClass("d-none");
-            $("#industrial_estate_id")
-                .prop("disabled", false)
-                .prop("required", true)
-                .focus();
             $("#lab_location_other")
                 .val("")
                 .prop("readonly", true)
                 .prop("required", false);
-            // check on chang
-            $("#industrial_estate_id").on("change", function() {
-                var industrial_estate_id = $(this).val();
-                if (industrial_estate_id == 500) {
-                    $("#display_estate_other").removeClass("d-none");
-                    $("#display_location_other").addClass("d-none");
-                    $("#industrial_estate_other")
-                        .prop("readonly", false)
-                        .prop("required", true)
-                        .focus();
-                } else {
-                    $("#display_estate_other").addClass("d-none");
-                    $("#industrial_estate_other")
-                        .val("")
-                        .prop("readonly", true)
-                        .prop("required", false);
-                }
-            });
         } else if (lab_location_id == 4) {
-            $("#display_estate_other").addClass("d-none");
+            // location estate to list
+            $("#display_estate_id").addClass("d-none");
+            $("#industrial_estate_id").prop("required", false);
+            // location other
             $("#display_location_other").removeClass("d-none");
             $("#lab_location_other")
                 .prop("readonly", false)
-                .prop("required", true)
-                .focus();
-            $("#industrial_estate_id")
-                .val("")
-                .prop("disabled", true)
-                .prop("required", false);
-            $("#industrial_estate_other")
-                .val("")
-                .prop("readonly", true)
-                .prop("required", false);
+                .prop("required", true);
         } else {
+            // location estate to list
+            $("#display_estate_id").addClass("d-none");
+            $("#industrial_estate_id").prop("required", false);
+            // location other
             $("#display_location_other").addClass("d-none");
-            $("#display_estate_other").addClass("d-none");
-            $("#industrial_estate_id")
-                .val("")
-                .prop("disabled", true)
-                .prop("required", false);
-            $("#industrial_estate_other")
-                .val("")
-                .prop("readonly", true)
-                .prop("required", false);
             $("#lab_location_other")
-                .val("")
                 .prop("readonly", true)
                 .prop("required", false);
         }
     });
 
-    // check on chang
+    // sup step => check estate to list
     $("#industrial_estate_id").on("change", function() {
         var industrial_estate_id = $(this).val();
-        if (industrial_estate_id == 500) {
+        if (industrial_estate_id == 58) {
             $("#display_estate_other").removeClass("d-none");
             $("#industrial_estate_other")
                 .prop("readonly", false)
-                .prop("required", true)
-                .focus();
+                .prop("required", true);
         } else {
             $("#display_estate_other").addClass("d-none");
             $("#industrial_estate_other")
@@ -91,44 +60,53 @@ $(document).ready(function() {
         }
     });
 
+    // 1.4 main step old
     var old_lab_location_id = $("#lab_location_id").attr("data-value");
     if (old_lab_location_id != "") {
         if (old_lab_location_id == 3) {
-            $("#industrial_estate_id")
-                .prop("disabled", false)
-                .prop("required", true);
+            // location estate to list
+            $("#display_estate_id").removeClass("d-none");
+            $("#industrial_estate_id").prop("required", true);
+            // location other
+            $("#display_location_other").addClass("d-none");
             $("#lab_location_other")
                 .val("")
                 .prop("readonly", true)
                 .prop("required", false);
         } else if (old_lab_location_id == 4) {
+            // location estate to list
+            $("#display_estate_id").addClass("d-none");
+            $("#industrial_estate_id").prop("required", false);
+            // location other
             $("#display_location_other").removeClass("d-none");
             $("#lab_location_other")
                 .prop("readonly", false)
                 .prop("required", true);
-            $("#industrial_estate_id")
-                .val("")
-                .prop("disabled", true)
-                .prop("required", false);
-            $("#industrial_estate_other")
-                .val("")
+        } else {
+            // location estate to list
+            $("#display_estate_id").addClass("d-none");
+            $("#industrial_estate_id").prop("required", false);
+            // location other
+            $("#display_location_other").addClass("d-none");
+            $("#lab_location_other")
                 .prop("readonly", true)
                 .prop("required", false);
-        } else {
-            $("#display_location_other").addClass("d-none");
         }
     }
-
+    // sup step old
     var old_industrial_estate_id = $("#industrial_estate_id").attr(
         "data-value"
     );
-    if (old_industrial_estate_id == 500) {
+    if (old_industrial_estate_id == 58) {
         $("#display_estate_other").removeClass("d-none");
         $("#industrial_estate_other")
             .prop("readonly", false)
             .prop("required", true);
     } else {
         $("#display_estate_other").addClass("d-none");
+        $("#industrial_estate_other")
+            .prop("readonly", true)
+            .prop("required", false);
     }
 
     // 1.6

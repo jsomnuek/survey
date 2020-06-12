@@ -30,10 +30,10 @@ class ProductLabController extends Controller
      */
     public function create()
     {
-        $allIndustrialTypes = IndustrialType::all();
+        $allIndustrialTypes = IndustrialType::where('industrial_type_status','A')->get();
         $allProductTypes = ProductType::all();
         $allTestingCalibratingType = TestingCalibratingType::all();
-        $allCertifyLaboratory = CertifyLaboratory::all();
+        $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
         $data = [
             'industrialTypes' => $allIndustrialTypes,
             'productTypes' => $allProductTypes,

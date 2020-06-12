@@ -32,7 +32,7 @@
                         <select class="form-control" name="equipments_id" id="equipments_id" >
                           <option value="">โปรดเลือกเครื่องมือ</option>
                           @foreach ($equipments as $equipment)
-                              <option value="{{$equipment->id}}" {{ old('equipments_id') ==  $equipment->id ? 'selected' : ''}}> {{$equipment->equipment_name}} </option>
+                              <option value="{{$equipment->id}}" {{ old('equipments_id') ==  $equipment->id ? 'selected' : ''}}> {{$equipment->equipment_abbr}} : {{$equipment->equipment_name}} </option>
                           @endforeach
                         </select>
                       </div>
@@ -70,7 +70,7 @@
                       <div class="col-md-6">
                         <label for="">3.8 เทคนิคของเครื่องมือ</label>
                         <select class="form-control" name="technical_equipments_id" id="technical_equipments_id" >
-                          <option>เทคนิคของเครื่องมือ</option>
+                          <option>โปรดเลือกเทคนิคของเครื่องมือ</option>
                             @foreach ($technicalEquipments ?? '' as $technicalEquipment)
                               <option value="{{$technicalEquipment->id}}"> {{$technicalEquipment->technical_equipment_name}} </option>
                             @endforeach
@@ -97,16 +97,19 @@
                     <div class="col-md-6">
                       <label for="">3.12 วัตถุประสงค์การใช้งาน</label>
                       <select class="form-control" name="objective_usages_id" id="objective_usages_id" >
-                        <option>ทดสอบ/สอบเทียบ</option>
-                        <option>วิจัย</option>
-                        <option>อบรม/การเรียนการสอน</option>
+                        <option>โปรดเลือกวัตถุประสงค์การใช้งาน</option>
+                          @foreach ($objectiveUsages ?? '' as $objectiveUsage)
+                            <option value="{{$objectiveUsage->id}}"> {{$objectiveUsage->obj_usage_name}} </option>
+                          @endforeach
                       </select>
                     </div>
                     <div class="col-md-6">
                       <label for="">3.13 ขอบเขตการใช้เครื่องมือ</label>
                       <select class="form-control" name="equipment_usages_id" id="equipment_usages_id" >
-                        <option>ใช้เฉพาะผลิตภัณฑ์</option>
-                        <option>ใช้ได้กับหลายผลิตภัณฑ์</option>
+                        <option>โปรดเลือกขอบเขตการใช้งานเครื่องมือ</option>
+                          @foreach ($equipmentUsages ?? '' as $equipmentUsage)
+                            <option value="{{$equipmentUsage->id}}"> {{$equipmentUsage->equipment_usage_name}} </option>
+                          @endforeach
                       </select>
                     </div>
                   </div>
@@ -143,13 +146,11 @@
                   <div class="row form-group">
                     <div class="col-md-6">
                       <label for="">3.17	การตรวจเช็ค/บำรุงรักษาเครื่องมืออุปกรณ์ทางวิทยาศาสตร์</label>
-                      <select class="form-control" name="equipment_maintenances_id" id="equipment_maintenances_id" >
-                        <option>ไม่มี</option>
-                        <option>มีทุก 1 เดือน</option>
-                        <option>มีทุก 3 เดือน</option>
-                        <option>มีทุก 6 เดือน</option>
-                        <option>มีทุก 1 ปี</option>
-                        <option>อื่นๆ</option>
+                      <select class="form-control" name="equipment_usages_id" id="equipment_usages_id" >
+                        <option>โปรดเลือกขอบเขตการใช้งานเครื่องมือ</option>
+                          @foreach ($equipmentMaintenances ?? '' as $equipmentMaintenance)
+                            <option value="{{$equipmentMaintenance->id}}"> {{$equipmentMaintenance->equipment_maintenance_name}} </option>
+                          @endforeach
                       </select>
                     </div>
                     <div class="col-md-6">

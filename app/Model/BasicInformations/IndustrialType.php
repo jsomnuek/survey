@@ -8,7 +8,7 @@ class IndustrialType extends Model
 {
     protected $table = 'industrial_types';
     public $primaryKey = 'id';
-    public $businessTypeName = 'industrial_type_name';
-    public $businessTypeStatus = 'insudtrial_type_status';
-    public $timestamp = true;
+    public $industrialTypeName = 'industrial_type_name';
+    public $industrialTypeStatus = 'insudtrial_type_status';
+    public $timestamps = true;
 }

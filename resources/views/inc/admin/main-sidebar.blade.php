@@ -645,6 +645,26 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview {{ Request::is ('country*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is ('country*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-flag"></i>
+                        <p>ข้อมูลประเทศ <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/country') }}" class="nav-link {{ Request::is('country') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายชื่อประเทศ</p>
+                            </a>
+                            <a href="{{ url('/country/create') }}" class="nav-link {{ Request::is ('country/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>เพิ่มข้อมูลประเทศ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 {{-- Menu for Employee --}}
                 <li class="nav-header">ข้อมูลแบบสำรวจ</li>

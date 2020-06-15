@@ -29,7 +29,7 @@ class CreateEquipmentLabsTable extends Migration
             $table->integer('objective_usages_id')->comment('วัตถุประสงค์การใช้งาน');//3.12วัตถุประสงค์การใช้งาน
             $table->integer('equipment_usages_id')->comment('ขอบเขตการใช้งานเครื่องมือ');//3.13ขอบเขตการใช้งานเครื่องมือ
             $table->string('equipmentAbility', 255)->nullable()->comment('คสามารถคละเอียดเครื่องมือ');//3.14คสามารถคละเอียดเครื่องมือ
-            $table->file('equipmentPic')->comment('รูปเครื่องมือ');//3.15รูปเครื่องมือ
+            $table->string('equipmentPic')->comment('รูปเครื่องมือ');//3.15รูปเครื่องมือ
             $table->integer('equipment_calibrations_id')->nullable()->comment('การสอบเทียบเครื่องมือ');//3.16การสอบเทียบเครื่องมือ
             $table->string('equipmentCalibrationBy', 255)->comment('การสอบเทียบเครื่องมือโดย');//3.16.1การสอบเทียบเครื่องมือโดย
             $table->integer('equipmentCalibrationYear')->comment('การสอบเทียบเครื่องมือปี');//3.16.2การสอบเทียบเครื่องมือปี

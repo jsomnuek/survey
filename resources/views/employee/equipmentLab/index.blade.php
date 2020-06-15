@@ -24,17 +24,17 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <table class="table table-bordered">
-                        @if (count($allProductLabs) > 0)
+                        @if (count($showEquipmentLab) > 0)
                         <thead>                  
                             <tr>
-                                <th style="width: 10px">รหัสผลิตภัณฑ์</th>
-                                <th>ชื่อผลิตภัณฑ์</th>
-                                <th>ประเภทผลิตภัณฑ์</th>
+                                <th style="width: 10px">ลำดับ</th>
+                                <th>ชื่อเครื่องมือ</th>
+                                <th>ตัวย่อ</th>
                                 <th style="width: 10em"><i class="fas fa-users-cog"></i></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allProductLabs as $allProductLab)
+                            @foreach ($showEquipmentLab as $allProductLab)
                             <tr>
                                 <td>{{ $allProductLab->id }}</td>
                                 <td>{{ $allProductLab->product_lab_name }}</td>

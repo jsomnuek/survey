@@ -213,11 +213,5 @@ class ProductLabController extends Controller
         //
     }
 
-    protected function validateProductLab()
-    {
-        return request()->validate([
-            'product_name' => 'required',
-            'product_type' => '',
-        ]);
-    }
+ 
 }

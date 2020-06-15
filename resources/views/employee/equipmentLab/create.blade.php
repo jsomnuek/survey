@@ -13,7 +13,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-              <form action="" method="post">
+              <form action="/equipmentLab" role="form" method="post">
+                @csrf
                 <div class="card-header bg-primary">
                     <h1 class="card-title">ส่วนที่ 3 เครื่องมือวิทยาศาสตร์ </h1>
                 </div>
@@ -22,7 +23,13 @@
                   <div class="row form-group">
                       <div class="col-md-4">
                         <label for="">3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS)</label>
-                        <input type="text" class="form-control" name="equipmentLabID" id="equipmentLabID" required>
+                        <input type="text" name="equipment_lab_id" id="equipment_lab_id" class="form-control @error('equipment_lab_id') is-invalid @enderror" value="{{ old('equipment_lab_id')}}">
+                        @error('equipment_lab_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            {{-- <strong>text assignment</strong> --}}
+                        </span>
+                        @enderror
                       </div>
                   </div>
                   {{-- 3.2equipmentNameEN /3.3equipmentNameTH --}}
@@ -45,7 +52,13 @@
                   <div class="row form-group">
                     <div class="col-md-4">
                       <label for="">3.4 ยี่ห้อของเครืองมือ</label>
-                      <input type="text" class=form-control name="equipmentBrand" id="equipmentBrand">
+                      <input type="text" name="equipmentBrand" id="equipmentBrand" class="form-control @error('equipmentBrand') is-invalid @enderror">
+                      @error('equipmentBrand')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            {{-- <strong>text assignment</strong> --}}
+                        </span>
+                        @enderror
                     </div>
                     <div class="col-md-4">
                       <label for="">3.5 รุ่นของเครืองมือ</label>
@@ -216,8 +229,8 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                    <a href="/technicalEquipment"  class="btn btn-secondary">ย้อนกลับ</a>
-                    {{Form::submit('บันทึก',['class'=>'btn btn-primary'])}}
+                    {{-- a href="/technicalEquipment"  class="btn btn-secondary">ย้อนกลับ</a> --}}
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
                 </div>
               </form>
             </div>

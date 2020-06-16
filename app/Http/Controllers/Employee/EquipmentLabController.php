@@ -23,14 +23,15 @@ class EquipmentLabController extends Controller
      */
     public function index()
     {
+    
         $allEquipmentLab = EquipmentLab::all();
-        $allEquipments = Equipment::all();
+        //$allEquipments = Equipment::all();
         //$allEstate = IndustrialEstate::all();
-        //dd($allOrgData);
+        //dd($allEquipmentLab->all());
         //return $allOrgData;
         
 
-        return view('employee.equipmentLab.index')->with('showEquipmentLab',$allEquipmentLab);
+        return view('employee.equipmentLab.index',['showEquipmentLab'=>$allEquipmentLab]);
     }
 
     /**

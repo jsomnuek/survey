@@ -74,7 +74,7 @@ class EquipmentLabController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'equipment_lab_id' => 'required'
+            'equipment_lab_id' => 'required',
 
         ]);
         dd($request->all());

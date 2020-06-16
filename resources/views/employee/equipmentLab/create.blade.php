@@ -23,13 +23,7 @@
                   <div class="row form-group">
                       <div class="col-md-4">
                         <label for="">3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS)</label>
-                        <input type="text" name="equipment_lab_id" id="equipment_lab_id" class="form-control @error('equipment_lab_id') is-invalid @enderror" value="{{ old('equipment_lab_id')}}">
-                        @error('equipment_lab_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                            {{-- <strong>text assignment</strong> --}}
-                        </span>
-                        @enderror
+                        <input type="text" name="equipment_lab_id" id="equipment_lab_id" class="form-control" value="{{ old('equipment_lab_id')}}">
                       </div>
                   </div>
                   {{-- 3.2equipmentNameEN /3.3equipmentNameTH --}}
@@ -52,21 +46,15 @@
                   <div class="row form-group">
                     <div class="col-md-4">
                       <label for="">3.4 ยี่ห้อของเครืองมือ</label>
-                      <input type="text" name="equipmentBrand" id="equipmentBrand" class="form-control @error('equipmentBrand') is-invalid @enderror">
-                      @error('equipmentBrand')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                            {{-- <strong>text assignment</strong> --}}
-                        </span>
-                        @enderror
+                      <input type="text" name="equipment_brand" id="equipment_brand" class="form-control">
                     </div>
                     <div class="col-md-4">
                       <label for="">3.5 รุ่นของเครืองมือ</label>
-                      <input type="text" class=form-control name="equipmentModel" id="equipmentModel">
+                      <input type="text" class=form-control name="equipment_model" id="equipment_model">
                     </div>
                     <div class="col-md-4">
                       <label for="">3.6 รหัสเครื่องมือของหน่วยงาน (ถ้ามี)</label>
-                      <input type="text" class=form-control name="equipmentOrgCode" id="equipmentOrgCode">
+                      <input type="text" class=form-control name="equipment_org_code" id="equipment_org_code">
                     </div>
                   </div>
                   {{-- 2.7equipmentMajorTech/2.8equipmentTechnical --}}
@@ -94,15 +82,15 @@
                   <div class="row form-group">
                       <div class="col-md-4">
                         <label for="">3.9 ปีที่ซื้อ</label>
-                        <input type="number" class=form-control name="equipmentYear" id="equipmentYear">
+                        <input type="number" class=form-control name="equipment_year" id="equipment_year">
                       </div>
                       <div class="col-md-4">
                         <label for="">3.10 มูลค่า</label>
-                        <input type="number" class=form-control name="equipmentPrice" id="equipmentPrice">
+                        <input type="number" class=form-control name="equipment_price" id="equipment_price">
                       </div>
                       <div class="col-md-4">
                         <label for="">3.11 บริษัทที่จัดจำหน่าย</label>
-                        <input type="text" class=form-control name="equipmentSupplier" id="equipmentSupplier">
+                        <input type="text" class=form-control name="equipment_supplier" id="equipment_supplier">
                       </div>
                   </div>
                   {{-- 3.12วัตถุประสงค์/3.13ขอบเขต --}}
@@ -130,11 +118,11 @@
                   <div class="row form-group">
                     <div class="col-md-6">
                       <label for="">3.14 ความสามารถของเครื่อง/ความละเอียด</label>
-                      <input type="text" class=form-control name="equipmentAbility" id="equipmentAbility">
+                      <input type="text" class=form-control name="equipment_ability" id="equipment_ability">
                     </div>
                     <div class="col-md-6">
                       <label for="">3.15 ภาพเครื่องมือ</label>
-                      <input type="file" class="form-control" name="equipmentPic" id="equipmentPic">
+                      <input type="file" class="form-control" name="equipment_pic" id="equipment_pic">
                     </div>
                   </div>
                   {{-- 3.16สอบเทียบ --}}
@@ -149,10 +137,10 @@
                       <input type="radio" class="" name="equipment_calibrations_id" id="equipment_calibrations_id" > มี
                     </div>
                     <div class="col-md-3">
-                      <input type="text" class="form-control" name="equipmentCalibrationBy" id="equipmentCalibrationBy" placeholder="ชื่อหน่วยงานสอบเทียบ">
+                      <input type="text" class="form-control" name="equipment_calibration_by" id="equipment_calibration_by" placeholder="ชื่อหน่วยงานสอบเทียบ">
                     </div>
                     <div class="col-md-3">
-                      <input type="date" class="form-control" name="equipmentCalibrationYear" id="equipmentCalibrationYear" placeholder="วัน/เดือน/ปี">
+                      <input type="date" class="form-control" name="equipment_calibration_year" id="equipment_calibration_year" placeholder="วัน/เดือน/ปี">
                     </div>
                   </div>
                   {{-- 2.17equipmentMaintenance/2.18equipmentMaintenanceBudget --}}
@@ -168,7 +156,7 @@
                     </div>
                     <div class="col-md-6">
                       <label for="">3.18 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท)</label>
-                      <input type="number" class="form-control" name="equipmentMaintenanceBudget" id="equipmentMaintenanceBudget">
+                      <input type="number" class="form-control" name="equipment_maintenance_budget" id="equipment_maintenance_budget">
                     </div>
                   </div>
                   {{-- 2.19equipmentAdmin --}}
@@ -176,15 +164,15 @@
                   <div class="row form-group">
                     <div class="col-md-4">
                       ชื่อผู้ดูแล
-                      <input type="text" class="form-control" name="equipmentAdminName" id="equipmentAdminName">
+                      <input type="text" class="form-control" name="equipment_admin_name" id="equipment_admin_name">
                     </div>
                     <div class="col-md-4">
                       เบอร์โทรศัพท์
-                      <input type="text" class="form-control" name="equipmentAdminPhone" id="equipmentAdminPhone">
+                      <input type="text" class="form-control" name="equipment_admin_phone" id="equipment_admin_phone">
                     </div>
                     <div class="col-md-4">
                       Email
-                      <input type="email" class="form-control" name="equipmentAdminEmail" id="equipmentAdminEmail">
+                      <input type="email" class="form-control" name="equipment_admin_email" id="equipment_admin_email">
                     </div>
                   </div>
                   {{-- 2.20equipmentManual  --}}
@@ -199,10 +187,10 @@
                       <input type="radio" class="" name="equipment_manuals_id" id="equipment_manuals_id"> มี
                     </div>
                     <div class="col-md-4">
-                      <input type="text" class="form-control" name="equipmentManualName" id="equipmentManualName" placeholder="ชื่อคู่มือ/รหัสคู่มือ">
+                      <input type="text" class="form-control" name="equipment_manual_name" id="equipment_manual_name" placeholder="ชื่อคู่มือ/รหัสคู่มือ">
                     </div>
                     <div class="col-md-4">
-                      <input type="text" class="form-control" name="equipmentManualLocate" id="equipmentManualLocate" placeholder="สถานที่จัดเก็บ/ลิงก์ดาวน์โหลด">
+                      <input type="text" class="form-control" name="equipment_manual_locate" id="equipment_manual_locate" placeholder="สถานที่จัดเก็บ/ลิงก์ดาวน์โหลด">
                     </div>
                   </div>
                   {{-- 2.21equipmentRent --}}
@@ -211,20 +199,20 @@
                       <label for="">3.21	การให้เช่าใช้เครื่องมือ</label>
                     </div>
                     <div class="col-md-3">
-                      <input type="radio" class="" name="equipmentRent" id="equipmentRent"> ไม่ให้บุคคลภายนอกเช่าใช้  
+                      <input type="radio" class="" name="equipment_rent" id="equipment_rent"> ไม่ให้บุคคลภายนอกเช่าใช้  
                     </div>
                     <div class="col-md-3">
-                      <input type="radio" class="" name="equipmentRent" id="equipmentRent"> ให้บุคคลภายนอกเช่าใช้    
+                      <input type="radio" class="" name="equipment_rent" id="equipment_rent"> ให้บุคคลภายนอกเช่าใช้    
                     </div>
                   </div>
                   <div class="row form-group">
                     <div class="col-md-6">
                       3.21.1 ค่าบริการต่อครั้ง (บาท)
-                      <input type="number" class="form-control" name="equipmentRentFee" id="equipmentRentFee">
+                      <input type="number" class="form-control" name="equipment_rent_fee" id="equipment_rent_fee">
                     </div>
                     <div class="col-md-6">
                       3.21.2 เงื่อนไขการขอยืม/ใช้งานเครื่องมือ 
-                      <input type="text" class="form-control" name="equipmentRentDetail" id="equipmentRentDetail">
+                      <input type="text" class="form-control" name="equipment_rent_detail" id="equipment_rent_detail">
                     </div>
                   </div>
                 </div>

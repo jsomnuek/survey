@@ -138,6 +138,33 @@ $(document).ready(function() {
         $("#org_type_other").addClass("d-none");
     }
 
+    // 1.7 การจำหน่าย/ส่งออกสินค้า/บริการ :
+    $("#sale_products").on("select2:select select2:unselect", function(e) {
+        var data = e.params.data;
+        console.log(data["id"]);
+        if (data["id"] == 2) {
+            // $("#display_sale_product_other").removeClass("d-none");
+            $("#sale_product_other")
+                .prop("readonly", false)
+                .prop("required", true);
+        } else {
+            // $("#display_sale_product_other").addClass("d-none");
+            $("#sale_product_other")
+                .val("")
+                .prop("readonly", true)
+                .prop("required", false);
+        }
+    });
+    var old_sale_products_id = $("#sale_products").attr("data-value");
+    if (old_sale_products_id == 2) {
+        // $("#display_sale_product_other").removeClass("d-none");
+        $("#sale_product_other")
+            .prop("readonly", false)
+            .prop("required", true);
+    } else {
+        // $("#display_sale_product_other").addClass("d-none");
+    }
+
     // 1.11
     $("#industrial_type_id").on("change", function() {
         var industrial_type_id = $(this).val();

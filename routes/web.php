@@ -82,6 +82,8 @@ Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratin
 
 Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
 
+// country
+Route::resource('/country', 'BasicInformations\CountryController');
 
 
 Route::get('/changwats', 'Api\ProvinceInfoController@changwats');

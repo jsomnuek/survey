@@ -163,6 +163,7 @@
                     <div class="col-md-3">
                       <input type="text" class="form-control" name="equipment_calibration_year" id="equipment_calibration_year" value="{{ old('equipment_calibration_year')}}" placeholder="วัน/เดือน/ปี">
                     </div>
+                    
                   </div>
                   {{-- 2.16equipmentMaintenance/2.18equipmentMaintenanceBudget --}}
                   <div class="row form-group">

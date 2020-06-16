@@ -83,7 +83,6 @@ class EquipmentLabController extends Controller
             'equipment_model' =>'',
             'equipment_org_code' =>'',
             'major_technologies_id' =>'required',
-            'technical_equipments_id' =>'',
             'equipment_year' =>'',
             'equipment_price' =>'',
             'equipment_supplier' =>'',
@@ -117,7 +116,6 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_model = $request['equipment_model'];
         $equipmentLab->equipment_org_code = $request['equipment_org_code'];
         $equipmentLab->major_technologies_id = $request['major_technologies_id'];
-        $equipmentLab->technical_equipments_id = 1;
         $equipmentLab->equipment_year = $request['equipment_year'];
         $equipmentLab->equipment_price = $request['equipment_price'];
         $equipmentLab->equipment_supplier = $request['equipment_supplier'];

@@ -25,7 +25,7 @@
                 </div>
                 <div class="card-body">
                     <p>รหัสเครื่องมือ {{ $equipmentLabs->id  }}</p>
-                    <p>ชื่อเครื่องมือ {{  $equipmentLabs->id }}</p>              
+                    <p>ชื่อเครื่องมือ {{  $equipmentLabs->equipments->equipment_name }}</p>              
                 </div>
                 <div class="card-footer">
 

@@ -182,7 +182,6 @@
                                                 <input class="custom-control-input" type="radio" id="product_lab_test_control7" name="product_lab_test_control" value='7' {{ old('product_lab_test_control') == 7 ? 'checked' : ''}}>
                                                 <label for="product_lab_test_control7" class="custom-control-label">อื่น ๆ</label>
                                             </div>
-                                           
                                         </div>
                                     </div>
                                 </div>

@@ -24,7 +24,7 @@ class EquipmentLabController extends Controller
     public function index()
     {
     
-        $allEquipmentLab = EquipmentLab::paginate(5);
+        $allEquipmentLab = EquipmentLab::paginate(15);
         //$allEquipments = Equipment::all();
         //$allEstate = IndustrialEstate::all();
         //dd($allEquipmentLab->all());
@@ -140,7 +140,7 @@ class EquipmentLabController extends Controller
 
         //dd($equipmentLab->all());
         $equipmentLab->save();
-        //return redirect('/equipmentLab');
+        return redirect('/equipmentLab');
     }
 
     /**
@@ -164,7 +164,32 @@ class EquipmentLabController extends Controller
      */
     public function edit(EquipmentLab $equipmentLab)
     {
-        
+        $allEquipmentLab = EquipmentLab::find($equipmentLab->id);
+        $allEquipments = Equipment::where('equipment_status','A')->get();
+        $allMajorTechnology = MajorTechnology::where('major_tech_status','A')->get();
+        $allTechnicalEquipment = TechnicalEquipment::where('technical_equipment_status','A')->get();
+        $allObjectiveUsage = ObjectiveUsage::where('obj_usage_status','A')->get();
+        $allEquipmentUsage = EquipmentUsage::where('equipment_usage_status','A')->get();
+        $allEquipmentCalibration = EquipmentCalibration::where('equipment_calibration_status','A')->get();
+        $allEquipmentMaintenance = EquipmentMaintenance::where('equipment_maintenance_status','A')->get();
+        $allEquipmentManual = EquipmentManual::where('equipment_manual_status','A')->get();
+        $allEquipmentRent = EquipmentRent::where('equipment_rent_status','A')->get();
+        $data = [
+            'equipmentLab' => $allEquipmentLab,
+            'equipments' => $allEquipments,
+            'majorTechnologies' => $allMajorTechnology,
+            'technicalEquipments' => $allTechnicalEquipment,
+            'objectiveUsages' => $allObjectiveUsage,
+            'equipmentUsages' => $allEquipmentUsage,
+            'equipmentCalibrations' => $allEquipmentCalibration,
+            'equipmentMaintenances' => $allEquipmentMaintenance,
+            'equipmentManuals' => $allEquipmentManual,
+            'equipmentRents' => $allEquipmentRent,
+
+        ];
+        // return $data;
+        // dd($data);
+        return view('employee.equipmentLab.edit')->with($data);
     }
 
     /**
@@ -176,7 +201,73 @@ class EquipmentLabController extends Controller
      */
     public function update(Request $request, EquipmentLab $equipmentLab)
     {
-        //
+        $request->validate([
+            'equipment_lab_id' => 'required',
+            'equipments_id' =>'required',
+            'equipment_name_th' =>'',
+            'equipment_brand' =>'',
+            'equipment_model' =>'',
+            'equipment_org_code' =>'',
+            'major_technologies_id' =>'required',
+            'equipment_year' =>'',
+            'equipment_price' =>'',
+            'equipment_supplier' =>'',
+            'objective_usages_id' =>'required',
+            'equipment_usages_id' =>'required',
+            'equipment_ability' =>'',
+            'equipment_pic' =>'',
+            'equipment_calibrations_id' =>'',
+            'equipment_calibration_by' =>'',
+            'equipment_calibration_year' =>'',
+            'equipment_maintenances_id' =>'required',
+            'equipment_maintenance_budget' =>'',
+            'equipment_admin_name' =>'required',
+            'equipment_admin_phone' =>'',
+            'equipment_admin_email' =>'',
+            'equipment_manuals_id' =>'',
+            'equipment_manual_name' =>'',
+            'equipment_manual_locate' =>'',
+            'equipment_rent_id' =>'required',
+            'equipment_rent_fee' =>'',
+            'equipment_rent_detail' =>'',
+
+        ]);
+
+        $equipmentLab = EquipmentLab::find($equipmentLab->id);
+        $equipmentLab->equipment_lab_id = $request['equipment_lab_id'];
+        $equipmentLab->equipments_id = $request['equipments_id'];
+        $equipmentLab->equipment_name_th = $request['equipment_name_th'];
+        $equipmentLab->equipment_brand = $request['equipment_brand'];
+        $equipmentLab->equipment_model = $request['equipment_model'];
+        $equipmentLab->equipment_org_code = $request['equipment_org_code'];
+        $equipmentLab->major_technologies_id = $request['major_technologies_id'];
+        $equipmentLab->equipment_year = $request['equipment_year'];
+        $equipmentLab->equipment_price = $request['equipment_price'];
+        $equipmentLab->equipment_supplier = $request['equipment_supplier'];
+        $equipmentLab->objective_usages_id = $request['objective_usages_id'];
+        $equipmentLab->equipment_usages_id = $request['equipment_usages_id'];
+        $equipmentLab->equipment_ability = $request['equipment_ability'];
+        $equipmentLab->equipment_pic = $request['equipment_pic'];
+        $equipmentLab->equipment_calibrations_id = $request['equipment_calibrations_id'];
+        $equipmentLab->equipment_calibration_by = $request['equipment_calibration_by'];
+        $equipmentLab->equipment_calibration_year = $request['equipment_calibration_year'];
+        $equipmentLab->equipment_maintenances_id = $request['equipment_maintenances_id'];
+        $equipmentLab->equipment_maintenance_budget = $request['equipment_maintenance_budget'];
+        $equipmentLab->equipment_admin_name = $request['equipment_admin_name'];
+        $equipmentLab->equipment_admin_phone = $request['equipment_admin_phone'];
+        $equipmentLab->equipment_admin_email = $request['equipment_admin_email'];
+        $equipmentLab->equipment_manuals_id = $request['equipment_manuals_id'];
+        $equipmentLab->equipment_manual_name = $request['equipment_manual_name'];
+        $equipmentLab->equipment_manual_locate = $request['equipment_manual_locate'];
+        $equipmentLab->equipments_rent_id = $request['equipment_rent_id'];
+        $equipmentLab->equipment_rent_fee = $request['equipment_rent_fee'];
+        $equipmentLab->equipment_rent_detail = $request['equipment_rent_detail'];
+
+        //dd($equipmentLab->all());
+        $equipmentLab->update();
+        return redirect("/equipmentLab/$equipmentLab->id");
+
+
     }
 
     /**

@@ -27,8 +27,8 @@
                         @if (count($showEquipmentLab) > 0)
                         <thead>                  
                             <tr>
-                                <th style="width: 10px">รหัสเครื่องมือ</th>
-                                <th>ชื่อเครื่องมือ</th>
+                                <th style="width: 10px">ลำดับ</th>
+                                <th>รหัสเครื่องมือ</th>
                                 <th>ชื่อเครื่องมือ</th>
                                 <th style="width: 10em"><i class="fas fa-users-cog"></i></th>
                             </tr>
@@ -37,8 +37,8 @@
                             @foreach ($showEquipmentLab as $equipmentLab)
                             <tr>
                                 <td>{{ $equipmentLab->id }}</td>
-                                <td>{{ $equipmentLab->equipments->equipment_name }}</td>
                                 <td>{{ $equipmentLab->equipment_lab_id }}</td>
+                                <td>{{ $equipmentLab->equipments->equipment_name }}</td>
                                 <td><a href="/equipmentLab/{{ $equipmentLab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a> 
                                     <a href="/equipmentLab/{{ $equipmentLab->id }}/edit" class="btn btn-warning btn-sm">แก้ไขข้อมูล</a>
                                 </td>

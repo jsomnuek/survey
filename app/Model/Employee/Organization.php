@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Model\ProvinceInfo;
 use App\Model\BasicInformations\SaleProduct;
+use App\Model\BasicInformations\Country;
 use App\Model\BasicInformations\OrganisationType;
 use App\Model\BasicInformations\BusinessType;
 use App\Model\BasicInformations\IndustrialType;
@@ -49,7 +50,13 @@ class Organization extends Model
     // Defining Relationships 1.7 Many To Many
     public function saleProducts()
     {
-        return $this->belongsToMany(SaleProduct::class, 'sale_id')->withTimestamps();
+        return $this->belongsToMany(SaleProduct::class)->withTimestamps();
+    }
+
+    // Defining Relationships 1.7 Many To Many
+    public function countries()
+    {
+        return $this->belongsToMany(Country::class)->withTimestamps();
     }
     
     // Defining Relationships 1.8 One To Many
@@ -67,7 +74,7 @@ class Organization extends Model
     // Defining Relationships 1.10 Many To Many
     public function industrialTypes()
     {
-        return $this->belongsToMany(IndustrialType::class, 'ind_type_id')->withTimestamps();
+        return $this->belongsToMany(IndustrialType::class)->withTimestamps();
     }
 
 }

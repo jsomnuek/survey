@@ -115,14 +115,12 @@ $(document).ready(function() {
         if (organisation_type_id == 5) {
             $("#org_type_other").removeClass("d-none");
             $("#organisation_type_other")
-                .prop("readonly", false)
                 .prop("required", true)
                 .focus();
         } else {
             $("#org_type_other").addClass("d-none");
             $("#organisation_type_other")
                 .val("")
-                .prop("readonly", true)
                 .prop("required", false);
         }
     });

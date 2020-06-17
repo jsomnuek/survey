@@ -39,10 +39,11 @@ class CreateOrganizationsTable extends Migration
             $table->integer('org_capital')->nullable()->comment('ทุนจดทะเบียน'); //1.5 
             $table->integer('org_employee_amount')->comment('จำนวนบุคลากร'); //1.6
             $table->unsignedBigInteger('organisation_type_id'); //1.8
-            $table->text('organisation_type_other')->nullable()->comment('อื่นๆ');
+            $table->string('organisation_type_other')->nullable();
             $table->unsignedBigInteger('business_type_id'); //1.9
-            $table->text('business_type_other')->nullable()->comment('อื่นๆ');
-            $table->text('industrial_type_other')->nullable()->comment('อื่นๆ');; //1.10
+            $table->string('business_type_other')->nullable();
+            $table->string('industrial_type_other')->nullable(); //1.10
+            $table->boolean('completed')->default(false); //1.10
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -52,49 +53,21 @@ class CreateOrganizationsTable extends Migration
 
         
         // 1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : เลือกได้มากกว่า 1 คำตอบ 
-        Schema::create('organization_saleproduct', function (Blueprint $table) {
+        Schema::create('organization_sale_product', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('org_id');
-            $table->unsignedBigInteger('sale_id');
+            $table->unsignedBigInteger('organization_id');
+            $table->unsignedBigInteger('sale_product_id');
             $table->timestamps();
-
-            $table->unique(['org_id','sale_id']);
             
-            $table->foreign('org_id')
+            $table->foreign('organization_id')
                 ->references('id')->on('organizations');
-            $table->foreign('sale_id')
+            $table->foreign('sale_product_id')
                 ->references('id')->on('sale_products');
         });
 
         // 1.7 ส่งออกต่างประเทศ : เลือกได้มากกว่า 1 คำตอบ 
-        Schema::create('countries_organization', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('cou_id');
-            $table->unsignedBigInteger('org_id');
-            $table->timestamps();
-
-            $table->unique(['cou_id','org_id']);
-            
-            $table->foreign('cou_id')
-            ->references('id')->on('countries');
-            $table->foreign('org_id')
-                ->references('id')->on('organizations');
-        });
-
+        
         // 1.10 ประเภทอุตสาหกรรม : เลือกได้มากกว่า 1 คำตอบ
-        Schema::create('industrialtype_organization', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('ind_type_id');
-            $table->unsignedBigInteger('org_id');
-            $table->timestamps();
-
-            $table->unique(['ind_type_id','org_id']);
-            
-            $table->foreign('ind_type_id')
-                ->references('id')->on('industrial_types');
-            $table->foreign('org_id')
-                ->references('id')->on('organizations');
-        });
     }
 
     /**
@@ -104,6 +77,7 @@ class CreateOrganizationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('organizations', 'organization_saleproduct', 'industrialtype_organization');
+        Schema::drop('organization_sale_product');
+        Schema::dropIfExists('organizations');
     }
 }

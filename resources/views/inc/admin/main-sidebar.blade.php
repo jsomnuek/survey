@@ -37,7 +37,7 @@
                 <li class="nav-header d-none">Display None</li>
                 {{-- Basic Informations Menu  --}}
                 <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
-                {{-- List of Menu --}}
+                {{-- Information Organize --}}
                 <li class="nav-item has-treeview {{ Request::is('labLocation*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
@@ -169,7 +169,7 @@
                         </li>
                     </ul>
                 </li>
-
+                {{-- Information Laboratory --}}
                 <li class="nav-item has-treeview {{ Request::is('laboratoryType*','areaService*','fixedCost*','incomePerYear*','employeeTraining*','environmentManage*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
@@ -301,8 +301,8 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="nav-item has-treeview {{ Request::is('equipment*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
+                {{-- Information Equipment --}}
+                <li class="nav-item has-treeview {{ Request::is('equipments*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
@@ -311,9 +311,9 @@
                     </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item has-treeview {{ Request::is('equipment*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('equipments*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('equipment*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('equipments*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-flask"></i>
                                 <p>เครื่องมือวิทยาศาสตร์<i class="right fas fa-angle-left"></i></p>
                             </a>
@@ -493,7 +493,7 @@
                         </li>
                     </ul>
                 </li>
-
+                {{-- Information Product Test--}}
                 <li class="nav-item has-treeview {{ Request::is('productType*','testingCalibratingList*','testingCalibratingType*','testingCalibratingMethod*','resultControl*','proficiencyTesting*','certifyLaboratory*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
@@ -645,6 +645,7 @@
                         </li>
                     </ul>
                 </li>
+                {{-- Information Location --}}
                 <li class="nav-item has-treeview {{ Request::is ('country*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is ('country*') ? 'active' : '' }}">
@@ -668,7 +669,7 @@
 
                 {{-- Menu for Employee --}}
                 <li class="nav-header">ข้อมูลแบบสำรวจ</li>
-                {{-- menu-open --}}
+                {{-- Organization Menu--}}
                 <li class="nav-item has-treeview {{ Request::is('organization*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('organization*') ? 'active' : '' }}">
@@ -689,6 +690,7 @@
                         </li>
                     </ul>
                 </li>
+                {{-- Laboratory Menu --}}
                 <li class="nav-item has-treeview {{ Request::is('lab*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('lab*') ? 'active' : '' }}">
@@ -709,6 +711,7 @@
                         </li>
                     </ul>
                 </li>
+                {{-- EquipmentLab Menu --}}
                 <li class="nav-item has-treeview {{ Request::is('equipmentLab*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('equipmentLab*') ? 'active' : '' }}">
@@ -729,6 +732,7 @@
                         </li>
                     </ul>
                 </li>
+                {{-- ProductLab Menu --}}
                 <li class="nav-item has-treeview {{ Request::is('productLab*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('productLab*') ? 'active' : '' }}">

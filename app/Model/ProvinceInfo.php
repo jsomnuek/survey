@@ -4,6 +4,8 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Model\Employee\Organization;
+
 class ProvinceInfo extends Model
 {
     protected $table = 'province_infos';

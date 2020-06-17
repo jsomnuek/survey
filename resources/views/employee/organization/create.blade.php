@@ -5,7 +5,7 @@
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">Organization Create</h1>
+    <h1 class="m-0 text-dark"></h1>
 @endsection
 
 @section('content')
@@ -26,10 +26,10 @@
                             <div class="col-md-12 mb-3">
                                 <strong>หมายเหตุ: <span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_name">1.1 ชื่อหน่วยงาน :<span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="text" name="org_name" class="form-control @error('org_name') is-invalid @enderror" id="org_name" placeholder="" value="{{ old('org_name') }}" required>
+                                    <input type="text" name="org_name" class="form-control @error('org_name') is-invalid @enderror" id="org_name" placeholder="เช่น กรมวิทยาศาสตร์บริการ" value="{{ old('org_name') }}" required>
                                     @error('org_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -37,95 +37,79 @@
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- ./org_name --}}
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_code">1.2 รหัสหน่วยงาน (AABCC) :</label>
-                                    <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}">
+                                    <label for="org_name_level_1">ชื่อหน่วยงานย่อย ระดับที่ 1 :</label>
+                                    <input type="text" name="org_name_level_1" class="form-control" id="org_name_level_1" placeholder="" value="{{ old('org_name_level_1') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="org_name_level_2">ชื่อหน่วยงานย่อย ระดับที่ 2 :</label>
+                                    <input type="text" name="org_name_level_2" class="form-control" id="org_name_level_2" placeholder="" value="{{ old('org_name_level_2') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="org_code">1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> *</sup></span></label>
+                                    <input type="text" name="org_code" class="form-control @error('org_name') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}" required>
                                     @error('org_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
-                                            {{-- <strong>text assignment</strong> --}}
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- ./org_code --}}
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_number">1.3	หมายเลขประจำหน่วยงาน  (ถ้ามี) :</label>
                                     <input type="text" name="org_number" class="form-control" id="org_number" placeholder="" value="{{ old('org_number') }}">
                                 </div>
-                                {{-- ./org_number --}}
-                                <div class="form-group">
-                                    <label for="org_location">1.4 ที่ตั้งของห้องปฏิบัติการ :</label>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_location1" name="org_location" value="มหาวิทยาลัย" {{ (old('org_location') == 'มหาวิทยาลัย') ? 'checked' : '' }}>
-                                        <label for="org_location1" class="custom-control-label">มหาวิทยาลัย</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_location2" name="org_location" value="อุทยานวิทยาศาสตร์" {{ (old('org_location') == 'อุทยานวิทยาศาสตร์') ? 'checked' : '' }}>
-                                        <label for="org_location2" class="custom-control-label">อุทยานวิทยาศาสตร์</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_location3" name="org_location" value="นิคมอุตสาหกรรม" {{ (old('org_location') == 'นิคมอุตสาหกรรม') ? 'checked' : '' }}>
-                                        <label for="org_location3" class="custom-control-label">นิคมอุตสาหกรรม</label>
-                                        <div class="form-group row">
-                                            <label for="" class="col-md-2 col-form-label">โปรดระบุรหัสตามคู่มือฯ</label>
-                                            <div class="col-md-4">
-                                                <input type="text" name="" class="form-control form-control-sm" id="" placeholder="" value="" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_location4" name="org_location" value="พื้นที่อื่น" {{ (old('org_location') == 'พื้นที่อื่น') ? 'checked' : '' }}>
-                                        <label for="org_location4" class="custom-control-label">พื้นที่อื่น</label>
-                                        <div class="form-group row">
-                                            <label for="" class="col-md-2 col-form-label">โปรดระบุ</label>
-                                            <div class="col-md-4">
-                                                <input type="text" name="" class="form-control form-control-sm" id="" placeholder="" value="" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- ./org_location --}}                                
-                            </div>
-                            {{-- ./col --}}
-                            <div class="col-md-12">
-                                <label>1.5	ที่อยู่ :<span><sup class="text-danger"> * </sup>จำเป็น</span></label>
                             </div>
                             <div class="col-md-12">
+                                <label>1.4	ที่อยู่ :</label>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_building">อาคาร</label>
                                     <input type="text" name="org_building" class="form-control" id="org_building" placeholder="" value="{{ old('org_building') }}">
                                 </div>
-                                {{-- ./org_building --}}
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_floor">ชั้น</label>
                                     <input type="text" name="org_floor" class="form-control" id="org_floor" placeholder="" value="{{ old('org_floor') }}">
                                 </div>
-                                {{-- ./org_floor --}}
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_address">เลขที่ <span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="text" name="org_address" class="form-control @error('org_address') is-invalid @enderror" id="org_address" placeholder="" value="{{ old('org_address') }}">
+                                    <input type="text" name="org_address" class="form-control @error('org_address') is-invalid @enderror" id="org_address" placeholder="" value="{{ old('org_address') }}" required>
                                     @error('org_address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- ./org_address --}}
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_soi">ซอย</label>
                                     <input type="text" name="org_soi" class="form-control" id="org_soi" placeholder="" value="{{ old('org_soi') }}">
                                 </div>
-                                {{-- ./org_soi --}}
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_road">ถนน</label>
                                     <input type="text" name="org_road" class="form-control" id="org_road" placeholder="" value="{{ old('org_road') }}">
                                 </div>
-                                {{-- ./org_road --}}
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="province_info_ch_id">จังหวัด <span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select @error('province_info_ch_id') is-invalid @enderror" name="province_info_ch_id" id="province_info_ch_id" data-value="{{ old('province_info_ch_id') }}">
-                                        <option value="">-- เลือกจังหวัด --</option>
+                                    <label for="province_info_ch_id">จังหวัด<span><sup class="text-danger"> *</sup></span></label>
+                                    <select class="form-control custom-select select2 @error('province_info_ch_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกจังหวัด --" style="width: 100%;" name="province_info_ch_id" id="province_info_ch_id" data-value="{{ old('province_info_ch_id') }}" required>
+                                        <option value="" selected disabled="disabled">-- โปรดเลือกจังหวัด --</option>
                                     </select>
                                     @error('province_info_ch_id')
                                         <span class="invalid-feedback" role="alert">
@@ -133,11 +117,12 @@
                                         </span>
                                     @enderror                                    
                                 </div>
-                                {{-- ./province_info_ch_id --}}
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="province_info_am_id">เขต/อำเภอ <span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select @error('province_info_am_id') is-invalid @enderror" name="province_info_am_id" id="province_info_am_id" data-value="{{ old('province_info_am_id') }}">
-                                        <option value="">-- เลือกเขต/อำเภอ --</option>
+                                    <label for="province_info_am_id">เขต/อำเภอ<span><sup class="text-danger"> *</sup></span></label>
+                                    <select class="form-control custom-select select2 @error('province_info_am_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกเขต/อำเภอ --" style="width: 100%;" name="province_info_am_id" id="province_info_am_id" data-value="{{ old('province_info_am_id') }}" required>
+                                        <option value="" selected disabled="disabled">-- โปรดเลือกเขต/อำเภอ --</option>
                                     </select>
                                     @error('province_info_am_id')
                                         <span class="invalid-feedback" role="alert">
@@ -145,11 +130,12 @@
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- ./province_info_am_id --}}
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="province_info_ta_id">แขวง/ตำบล <span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select @error('province_info_ta_id') is-invalid @enderror" name="province_info_ta_id" id="province_info_ta_id" data-value="{{ old('province_info_ta_id') }}">
-                                        <option value="">-- เลือกแขวง/ตำบล --</option>
+                                    <label for="province_info_ta_id">แขวง/ตำบล<span><sup class="text-danger"> *</sup></span></label>
+                                    <select class="form-control custom-select select2 @error('province_info_ta_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกแขวง/ตำบล --" style="width: 100%;" name="province_info_ta_id" id="province_info_ta_id" data-value="{{ old('province_info_ta_id') }}" required>
+                                        <option value="" selected disabled="disabled">-- เลือกแขวง/ตำบล --</option>
                                     </select>
                                     @error('province_info_ta_id')
                                         <span class="invalid-feedback" role="alert">
@@ -157,19 +143,21 @@
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- ./province_info_ta_id --}}                                
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_postcode">รหัสไปรษณีย์ <span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="number" name="org_postcode" min="0" class="form-control @error('org_postcode') is-invalid @enderror" id="org_postcode" placeholder="" value="{{ old('org_postcode') }}">
+                                    <label for="org_postcode">รหัสไปรษณีย์<span><sup class="text-danger"> *</sup></span></label>
+                                    <input type="number" name="org_postcode" min="0" class="form-control @error('org_postcode') is-invalid @enderror" id="org_postcode" placeholder="" value="{{ old('org_postcode') }}" required>
                                     @error('org_postcode')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>                                
-                                {{-- ./org_postcode --}}                        
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_phone">โทรศัพท์ <span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="org_phone">โทรศัพท์</label>
                                     <input type="text" name="org_phone" class="form-control @error('org_phone') is-invalid @enderror" id="org_phone" placeholder="" value="{{ old('org_phone') }}">
                                     @error('org_phone')
                                         <span class="invalid-feedback" role="alert">
@@ -177,135 +165,137 @@
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- ./org_phone --}}
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_fax">โทรสาร</label>
                                     <input type="text" name="org_fax" class="form-control" id="org_fax" placeholder="" value="{{ old('org_fax') }}">
                                 </div>
-                                {{-- ./org_fax --}}
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="org_email">อีเมล <span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="email" name="org_email" class="form-control @error('org_email') is-invalid @enderror" id="org_email" placeholder="" value="{{ old('org_email') }}" autocomplete="email">
-                                    @error('org_email')
+                                    <label for="org_email">อีเมล</label>
+                                    <input type="email" name="org_email" class="form-control" id="org_email" placeholder="" value="{{ old('org_email') }}" autocomplete="email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="org_website">เว็บไซต์</label>
+                                    <input type="text" name="org_website" class="form-control" id="org_website" placeholder="" value="{{ old('org_website') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="org_lat">ละติจูด</label>
+                                    <input type="number" name="org_lat" class="form-control" id="org_lat" placeholder="" value="{{ old('org_lat') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="org_long">ลองจิจูด</label>
+                                    <input type="number" name="org_long" class="form-control" id="org_long" placeholder="" value="{{ old('org_long') }}">
+                                </div>
+                            </div>
+                            {{-- .col --}}
+                            <div class="col-md-6">                        
+                                <div class="form-group">
+                                    <label for="org_capital">1.5 ทุนจดทะเบียน (ล้านบาท) :</label>
+                                    <input type="number" name="org_capital" min="1" class="form-control" id="org_capital" placeholder="" value="{{ old('org_capital') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="org_employee_amount">1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> *</sup></span></label>
+                                    <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ old('org_employee_amount') }}" required>
+                                    @error('org_employee_amount')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- ./org_email --}}
-                                <div class="form-group">
-                                    <label for="org_website">เว็บไซต์</label>
-                                    <input type="text" name="org_website" class="form-control" id="org_website" placeholder="" value="{{ old('org_website') }}">
-                                </div>
-                                {{-- ./org_website --}}
-                                <div class="form-group">
-                                    <label for="org_lat">ละติจูด</label>
-                                    <input type="number" name="org_lat" class="form-control" id="org_lat" placeholder="" value="{{ old('org_lat') }}">
-                                </div>
-                                {{-- ./org_lat --}}
-                                <div class="form-group">
-                                    <label for="org_long">ลองติจูด</label>
-                                    <input type="number" name="org_long" class="form-control" id="org_long" placeholder="" value="{{ old('org_long') }}">
-                                </div>
-                                {{-- ./org_long --}}
                             </div>
-                            {{-- .col --}}                            
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="'org_type">1.6 ประเภทองค์กร :</label>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type1" name="org_type" value="ภาครัฐ" {{ (old('org_type') == 'ภาครัฐ') ? 'checked' : '' }}>
-                                        <label for="org_type1" class="custom-control-label">ภาครัฐ</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type2" name="org_type" value="รัฐวิสาหกิจ" {{ (old('org_type') == 'รัฐวิสาหกิจ') ? 'checked' : '' }}>
-                                        <label for="org_type2" class="custom-control-label">รัฐวิสาหกิจ</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type3" name="org_type" value="เอกชน"  {{ (old('org_type') == 'เอกชน') ? 'checked' : '' }}>
-                                        <label for="org_type3" class="custom-control-label">เอกชน</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type4" name="org_type" value="สถาบันการศึกษา"  {{ (old('org_type') == 'สถาบันการศึกษา') ? 'checked' : '' }}>
-                                        <label for="org_type4" class="custom-control-label">สถาบันการศึกษา</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type5" name="org_type" value="อื่น ๆ"  {{ (old('org_type') == 'อื่น ๆ') ? 'checked' : '' }}>
-                                        <label for="org_type5" class="custom-control-label">อื่น ๆ</label>
-                                        <div class="form-group row">
-                                            <label for="org_type5_other" class="col-md-3 col-form-label">โปรดระบุ</label>
-                                            <div class="col-md-9">
-                                                <input type="text" name="org_type_other" class="form-control form-control-sm" id="org_type5_other" placeholder="" value="{{ old('org_type_other') }}">
-                                            </div>
-                                        </div>
+                            {{-- ./col --}}
+                            <div class="col-md-6">
+                                <div class="form-group">                                    
+                                    <label for="'sale_products">1.7 การจำหน่าย/ส่งออกสินค้า/บริการ :</label>
+                                    <select class="form-control custom-select select2" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="sale_products[]" id="sale_products" data-value="{{ old('sale_products[]') }}">
+                                        <option value=""  disabled="disabled">disabled</option>
+                                        @foreach ($saleProducts as $saleProduct)
+                                        <option value="{{ $saleProduct->id }}" {{ in_array($saleProduct->id, old('sale_products') ? : []) ? 'selected' : '' }}>{{ $saleProduct->sale_product_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group row " id="display_countries">
+                                    <label for="countries" class="col-md-2 col-form-label">โปรดระบุ :</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control custom-select select2" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="countries[]" id="countries" data-value="{{ old('countries[]') }}">
+                                            <option value=""  disabled="disabled">disabled</option>
+                                            @foreach ($countrys as $country)
+                                            <option value="{{ $country->id }}" {{ in_array($country->id, old('countries') ? : []) ? 'selected' : '' }}>{{ $country->country_name_thai }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
-                                {{-- ./'org_type --}}
                             </div>
-                            {{-- ./col-md-4 --}}
-                            <div class="col-md-4">
+                            {{-- ./col --}}                    
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="'org_type_of_business">1.7 ประเภทกิจการ :</label>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type_of_business1" name="org_type_of_business" value="วิสาหกิจชุมชน" {{ (old('org_type_of_business') == 'วิสาหกิจชุมชน') ? 'checked' : '' }}>
-                                        <label for="org_type_of_business1" class="custom-control-label">วิสาหกิจชุมชน</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type_of_business2" name="org_type_of_business" value="วิสาหกิจเริ่มต้น" {{ (old('org_type_of_business') == 'วิสาหกิจเริ่มต้น') ? 'checked' : '' }}>
-                                        <label for="org_type_of_business2" class="custom-control-label">วิสาหกิจเริ่มต้น</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type_of_business3" name="org_type_of_business" value="อุตสาหกรรม" {{ (old('org_type_of_business') == 'อุตสาหกรรม') ? 'checked' : '' }}>
-                                        <label for="org_type_of_business3" class="custom-control-label">อุตสาหกรรม</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type_of_business4" name="org_type_of_business" value="ธุรกิจการค้า" {{ (old('org_type_of_business') == 'ธุรกิจการค้า') ? 'checked' : '' }}>
-                                        <label for="org_type_of_business4" class="custom-control-label">ธุรกิจการค้า</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type_of_business5" name="org_type_of_business" value="หน่วยวิจัย" {{ (old('org_type_of_business') == 'หน่วยวิจัย') ? 'checked' : '' }}>
-                                        <label for="org_type_of_business5" class="custom-control-label">หน่วยวิจัย</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_type_of_business6" name="org_type_of_business" value="บริการ/ที่ปรึกษา" {{ (old('org_type_of_business') == 'บริการ/ที่ปรึกษา') ? 'checked' : '' }}>
-                                        <label for="org_type_of_business6" class="custom-control-label">บริการ/ที่ปรึกษา</label>
+                                    <label for="'organisation_type_id">1.8 ประเภทองค์กร :<span><sup class="text-danger"> *</sup></span></label>
+                                    <select class="form-control custom-select select2 @error('organisation_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="organisation_type_id" id="organisation_type_id" data-value="{{ old('organisation_type_id') }}" required>
+                                        <option value="" selected disabled="disabled">-- โปรดเลือก --</option>
+                                        @foreach ($organisationTypes as $organisationType)
+                                        <option value="{{ $organisationType->id }}" {{ (old('organisation_type_id') == $organisationType->id) ? 'selected' : '' }}>{{ $organisationType->org_type_name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('organisation_type_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group row d-none" id="org_type_other">
+                                    <label for="organisation_type_other" class="col-md-2 col-form-label">โปรดระบุ :</label>
+                                    <div class="col-md-10">
+                                        <input type="text" name="organisation_type_other" class="form-control" id="organisation_type_other" placeholder="" value="{{ old('organisation_type_other') }}" readonly>
                                     </div>
                                 </div>
-                                {{-- ./'org_type_of_business --}}
                             </div>
-                            {{-- ./col-md-4 --}}
-                            <div class="col-md-4">
+                            {{-- ./col --}}
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="'org_distribution">1.8 การจำหน่าย/ส่งออกสินค้า/บริการ :</label>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_distribution1" name="org_distribution" value="ในประเทศ" {{ (old('org_distribution') == 'ในประเทศ') ? 'checked' : '' }}>
-                                        <label for="org_distribution1" class="custom-control-label">ในประเทศ</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="org_distribution2" name="org_distribution" value="ต่างประเทศ" {{ (old('org_distribution') == 'ต่างประเทศ') ? 'checked' : '' }}>
-                                        <label for="org_distribution2" class="custom-control-label">ต่างประเทศ</label>
-                                        <div class="form-group row">
-                                            <label for="org_distribution2_other" class="col-md-3 col-form-label">โปรดระบุ</label>
-                                            <div class="col-md-9">
-                                                <input type="text" name="org_distribution_other" class="form-control form-control-sm" id="org_distribution2_other" placeholder="" value="{{ old('org_distribution_other') }}">
-                                            </div>
-                                        </div>
+                                    <label for="'business_type_id">1.9 ประเภทกิจการ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <select class="form-control custom-select select2 @error('business_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="business_type_id" id="business_type_id" data-value="{{ old('business_type_id') }}" required>
+                                        <option value="" selected disabled="disabled">-- โปรดเลือก --</option>
+                                        @foreach ($businessTypes as $businessType)
+                                        <option value="{{ $businessType->id }}" {{ (old('business_type_id') == $businessType->id) ? 'selected' : '' }}>{{ $businessType->business_type_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group row d-none" id="">
+                                    <label for="business_type_other" class="col-md-2 col-form-label">โปรดระบุ :</label>
+                                    <div class="col-md-10">
+                                        <input type="text" name="business_type_other" class="form-control" id="business_type_other" placeholder="" value="{{ old('business_type_other') }}" readonly>
                                     </div>
                                 </div>
-                                {{-- ./'org_distribution --}}
                             </div>
-                            {{-- ./col-md-4 --}}
-                            <div class="col-md-12">                        
+                            {{-- ./col --}}                           
+                            
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="org_capital">1.9 ทุนจดทะเบียน (ล้านบาท) :</label>
-                                    <input type="number" name="org_capital" min="0" class="form-control" id="org_capital" placeholder="" value="{{ old('org_capital') }}">
+                                    <label for="industrial_type">1.11 ประเภทอุตสาหกรรม :</label>
+                                    <select class="form-control custom-select select2" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="industrial_type[]" id="industrial_type" data-value="{{ old('industrial_type[]') }}">
+                                        <option value="" disabled="disabled">disabled</option>
+                                        @foreach ($industrialTypes as $industrialType)
+                                        <option value="{{ $industrialType->id }}" {{ in_array($industrialType->id, old('industrial_type') ? : []) ? 'selected' : '' }}>{{ $industrialType->industrial_type_name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                {{-- ./org_capital --}}
-                                <div class="form-group">
-                                    <label for="org_employee_amount">1.10 จำนวนบุคลากร (คน) :</label>
-                                    <input type="number" name="org_employee_amount" min="0" class="form-control" id="org_employee_amount" placeholder="" value="{{ old('org_employee_amount') }}">
-                                </div>
-                                {{-- ./org_employee_amount --}}
+                                <div class="form-group row" id="">
+                                    <label for="" class="col-md-2 col-form-label">โปรดระบุ :</label>
+                                    <div class="col-md-10">
+                                        <input type="text" name="industrial_type_other" class="form-control" id="industrial_type_other" placeholder="" value="{{ old('industrial_type_other') }}">
+                                    </div>
+                                </div>                             
                             </div>
                             <!-- /.col -->
                         </div>
@@ -314,7 +304,6 @@
                     <!-- /.card-body -->
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">บันทึก</button>
-                        <button type="reset" class="btn btn-info">ล้างค่า</button>
                     </div>
                     <!-- /.card-footer -->
                 </form>
@@ -329,4 +318,5 @@
 
 @section('scripts')
     <script src="{{ asset('js/components.js') }}"></script>
+    <script src="{{ asset('js/form_org.js') }}"></script>
 @endsection

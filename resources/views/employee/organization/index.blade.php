@@ -5,7 +5,7 @@
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">Organization</h1>
+    <h1 class="m-0 text-dark"></h1>
 @endsection
 
 @section('content')
@@ -29,7 +29,6 @@
                             <tr>
                                 <th style="width: 10px">รหัส</th>
                                 <th>ชื่อหน่วยงาน</th>
-                                <th>อีเมล</th>
                                 <th style="width: 10em"><i class="fas fa-users-cog"></i></th>
                             </tr>
                         </thead>
@@ -38,7 +37,6 @@
                             <tr>
                                 <td>{{ $org->id }}</td>
                                 <td>{{ $org->org_name }}</td>
-                                <td>{{ $org->org_email }}</td>
                                 <td><a href="/organization/{{ $org->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a></td>
                             </tr>                                
                             @endforeach

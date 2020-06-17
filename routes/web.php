@@ -22,18 +22,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
 
 Route::resource('/equipment','BasicInformations\EquipmentController');
-
-
-// Route::get('/lab', 'LabsController@index');
-// Route::post('/lab', 'LabsController@store');
-// Route::get('/lab/create', 'LabsController@create');
-
-// Route::resource('/organize','OrganizeController');
 
 Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
 
@@ -87,6 +82,8 @@ Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratin
 
 Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
 
+// country
+Route::resource('/country', 'BasicInformations\CountryController');
 
 Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');
@@ -99,6 +96,5 @@ Route::resource('/lab', 'Employee\LabController');
 Route::resource('/equipmentLab','Employee\EquipmentLabController');
 
 Route::resource('/productLab','Employee\ProductLabController');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

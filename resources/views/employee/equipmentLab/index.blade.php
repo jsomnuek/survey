@@ -55,8 +55,6 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
-                
-               
                 <!-- /.card-footer -->
             </div>
             <!--/.card -->

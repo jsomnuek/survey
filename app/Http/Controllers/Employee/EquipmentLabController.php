@@ -24,12 +24,11 @@ class EquipmentLabController extends Controller
     public function index()
     {
     
-        $allEquipmentLab = EquipmentLab::all();
+        $allEquipmentLab = EquipmentLab::paginate(5);
         //$allEquipments = Equipment::all();
         //$allEstate = IndustrialEstate::all();
         //dd($allEquipmentLab->all());
         //return $allOrgData;
-        
 
         return view('employee.equipmentLab.index',['showEquipmentLab'=>$allEquipmentLab]);
     }
@@ -152,7 +151,9 @@ class EquipmentLabController extends Controller
      */
     public function show(EquipmentLab $equipmentLab)
     {
-        //
+        //return $equipmentLab;
+        //$equipmentLabs = EquipmentLab::find($id);
+        return view('employee.equipmentLab.show', ['equipmentLabs' => $equipmentLab]);
     }
 
     /**
@@ -163,7 +164,7 @@ class EquipmentLabController extends Controller
      */
     public function edit(EquipmentLab $equipmentLab)
     {
-        //
+        
     }
 
     /**

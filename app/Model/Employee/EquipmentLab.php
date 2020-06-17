@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Model\Employee;
-use App\Model\BasicInformations\TechnicalEquipment;
+use App\Model\BasicInformations\Equipment;
 use Illuminate\Database\Eloquent\Model;
 
 class EquipmentLab extends Model
@@ -40,4 +40,11 @@ class EquipmentLab extends Model
         'equipment_rent_detail'
     ];
     public $timestamps = TRUE;
+
+    public function equipments()
+    {
+        return $this->belongsTo(Equipment::class);
+    }
 }
+
+

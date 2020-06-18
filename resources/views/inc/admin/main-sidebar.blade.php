@@ -302,7 +302,7 @@
                     </ul>
                 </li>
                 {{-- Information Equipment --}}
-                <li class="nav-item has-treeview {{ Request::is('equipments*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ Request::is('equipment*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
@@ -311,9 +311,9 @@
                     </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item has-treeview {{ Request::is('equipments*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('equipment*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('equipments*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('equipment*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-flask"></i>
                                 <p>เครื่องมือวิทยาศาสตร์<i class="right fas fa-angle-left"></i></p>
                             </a>

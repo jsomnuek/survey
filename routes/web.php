@@ -26,61 +26,42 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
+// Route For Admin //
+    // information Organization
+Route::resource('/labLocation','BasicInformations\LabLocationController');
 Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
-
-Route::resource('/equipment','BasicInformations\EquipmentController');
-
-Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
-
-Route::resource('/productType', 'BasicInformations\ProductTypeController');
-
-Route::resource('/testingCalibratingType', 'BasicInformations\TestingCalibratingTypeController');
-
+Route::resource('/organisationType','BasicInformations\OrganisationTypeController');
 Route::resource('/businessType','BasicInformations\BusinessTypeController');
-
+Route::resource('/saleProduct','BasicInformations\SaleProductController');
 Route::resource('/industrialType','BasicInformations\IndustrialTypeController');
 
-Route::resource('/organisationType','BasicInformations\OrganisationTypeController');
-
+    // information Laboratory
 Route::resource('/laboratoryType','BasicInformations\LaboratoryTypeController');
-
-Route::resource('/certifyLaboratory','BasicInformations\CertifyLaboratoryController');
-
-Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
-
-Route::resource('/objectiveUsage','BasicInformations\ObjectiveUsageController');
-
 Route::resource('/areaService','BasicInformations\AreaServiceController');
-
 Route::resource('/fixedCost','BasicInformations\FixedCostController');
-
 Route::resource('/incomePerYear','BasicInformations\IncomePerYearController');
-
 Route::resource('/employeeTraining','BasicInformations\EmployeeTrainingController');
-
-Route::resource('/resultControl','BasicInformations\ResultControlController');
-
-Route::resource('/equipmentUsage','BasicInformations\EquipmentUsageController');
-
-Route::resource('/equipmentMaintenance','BasicInformations\EquipmentMaintenanceController');
-
-Route::resource('/labLocation','BasicInformations\LabLocationController');
-
-Route::resource('/saleProduct','BasicInformations\SaleProductController');
-
 Route::resource('/environmentManage','BasicInformations\EnvironmentManageController');
 
+    // information Equipment
+Route::resource('/equipment','BasicInformations\EquipmentController');
+Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
+Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
+Route::resource('/objectiveUsage','BasicInformations\ObjectiveUsageController');
+Route::resource('/equipmentUsage','BasicInformations\EquipmentUsageController');
 Route::resource('/equipmentCalibration','BasicInformations\EquipmentCalibrationController');
-
+Route::resource('/equipmentMaintenance','BasicInformations\EquipmentMaintenanceController');
 Route::resource('/equipmentManual','BasicInformations\EquipmentManualController');
-
 Route::resource('/equipmentRent','BasicInformations\EquipmentRentController');
 
+    // information Product
+Route::resource('/productType', 'BasicInformations\ProductTypeController');
 Route::resource('/testingCalibratingList','BasicInformations\TestingCalibratingListController');
-
+Route::resource('/testingCalibratingType', 'BasicInformations\TestingCalibratingTypeController');
 Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratingMethodController');
-
+Route::resource('/resultControl','BasicInformations\ResultControlController');
 Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
+Route::resource('/certifyLaboratory','BasicInformations\CertifyLaboratoryController');
 
 // country
 Route::resource('/country', 'BasicInformations\CountryController');

@@ -3,8 +3,8 @@ $(document).ready(function() {
     function checkInput() {
         let inputTypeNumber = [
             document.getElementById("org_postcode"),
-            document.getElementById("org_lat"),
-            document.getElementById("org_long"),
+            // document.getElementById("org_lat"),
+            // document.getElementById("org_long"),
             document.getElementById("org_capital"),
             document.getElementById("org_employee_amount")
         ];

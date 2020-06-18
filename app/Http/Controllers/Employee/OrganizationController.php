@@ -34,6 +34,7 @@ class OrganizationController extends Controller
      */
     public function create()
     {
+        // data for loop select
         $saleProduct = SaleProduct::where('sale_product_status', 'A')->get();
         $country = Country::where('country_status', 'A')->get();
         $organisationType = OrganisationType::where('org_type_status', 'A')->get();
@@ -100,9 +101,9 @@ class OrganizationController extends Controller
         
         $org->saleProducts()->sync($request->sale_products, false);
         $org->countrys()->sync($request->countrys, false);
-        $org->industrialTypes()->sync($request->industrial_type, false);
+        $org->industrialTypes()->sync($request->industrial_types, false);
 
-        return redirect()->route('organization.edit', $org->id);
+        return redirect()->route('organization.show', $org->id);
     }
 
     /**
@@ -211,9 +212,9 @@ class OrganizationController extends Controller
         
         $org->saleProducts()->sync($request->sale_products);
         $org->countrys()->sync($request->countrys);
-        $org->industrialTypes()->sync($request->industrial_type);
+        $org->industrialTypes()->sync($request->industrial_types);
 
-        return redirect()->route('organization.edit', $org->id);
+        return redirect()->route('organization.show', $org->id);
     }
 
     /**

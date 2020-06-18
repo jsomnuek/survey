@@ -304,6 +304,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
+                        <a href="/organization/{{ $org->id }}" class="btn btn-secondary">ย้อนกลับ</a>
                         <button type="submit" class="btn btn-primary">บันทึก</button>
                     </div>
                     <!-- /.card-footer -->

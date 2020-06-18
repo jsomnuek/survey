@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'HomeController@admin')->name('dashboard');
 
 Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
 
@@ -99,3 +99,11 @@ Route::resource('/equipmentLab','Employee\EquipmentLabController');
 Route::resource('/productLab','Employee\ProductLabController');
 
 
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

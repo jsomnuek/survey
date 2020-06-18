@@ -26,6 +26,7 @@ class Organization extends Model
 
     public $timestamps = true;
 
+    // Defining Relationships One To Many
     public function user()
     {
         return $this->belongsTo(User::class);

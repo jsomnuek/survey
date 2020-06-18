@@ -3,6 +3,10 @@ $(document).ready(function() {
     $(".select2").select2({
         theme: "bootstrap4"
     });
+    //Initialize Select2 Elements
+    $(".select2-multi")
+        .select2({ theme: "bootstrap4", placeholder: "-- โปรดเลือก --" })
+        .trigger("change");
 
     // Check Select Option
 

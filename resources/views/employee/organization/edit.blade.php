@@ -216,34 +216,23 @@
                                 </div>
                             </div>
                             {{-- ./col --}}
-                            <div class="col-md-6">                                
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="'sale_products">1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : (เลือกได้มากกว่า 1 คำตอบ)</label>                                        
-                                    <select class="form-control custom-select select2" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="sale_products[]" id="sale_products" data-value="{{ old('sale_products') }}">
+                                    <label for="'sale_products">1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : (เลือกได้มากกว่า 1 คำตอบ)</label>
+                                    <select class="form-control custom-select select2-multi" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="sale_products[]" id="sale_products" data-value="{{ old('sale_products[]') }}">
+                                        <option value=""  disabled="disabled">-- โปรดเลือก --</option>
                                         @foreach ($saleProducts as $saleProduct)
                                         <option value="{{ $saleProduct->id }}" {{ in_array($saleProduct->id, old('sale_products') ? : []) ? 'selected' : '' }}>{{ $saleProduct->sale_product_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="">ข้อ 1.7 คำตอบที่ท่านเลือกไว้</label>
-                                    <ol>
-                                        @foreach($org->saleProducts as $item)
-                                        <li>{{ $item->sale_product_name }}</li>  
-                                        @endforeach
-                                    </ol>
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="switch_sale_products" name="switch_sale_products" value="1">
-                                        <label class="custom-control-label" for="switch_sale_products">ยกเลิกคำตอบข้อ 1.7 ทั้งหมด</label>
-                                    </div>
-                                </div>
                                 <div class="form-group" id="display_countries">
                                     <label for="countries" class="col-md-12 col-form-label">กรณีต่างประเทศ โปรดระบุ : (เลือกได้มากกว่า 1 คำตอบ)</label>
                                     <div class="col-md-12">
-                                        <select class="form-control custom-select select2" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="countries[]" id="countries" data-value="{{ old('countries[]') }}">
-                                            <option value=""  disabled="disabled">disabled</option>
+                                        <select class="form-control custom-select select2-multi" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="country[]" id="country">
+                                            <option value=""  disabled="disabled">-- โปรดเลือก --</option>
                                             @foreach ($countrys as $country)
-                                            <option value="{{ $country->id }}" {{ in_array($country->id, old('countries') ? : []) ? 'selected' : '' }}>{{ $country->country_name_thai }}</option>
+                                            <option value="{{ $country->id }}">{{ $country->country_name_thai }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -277,7 +266,7 @@
                                 <div class="form-group">
                                     <label for="'business_type_id">1.9 ประเภทกิจการ :<span><sup class="text-danger"> *</sup></span></label>
                                     <select class="form-control custom-select select2 @error('business_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="business_type_id" id="business_type_id" data-value="{{ $org->business_type_id }}" required>
-                                        <option value="" selected disabled="disabled">-- โปรดเลือก --</option>
+                                        <option value="" selected disabled="disabled">-- โปรดเลือก --</option> --}}
                                         @foreach ($businessTypes as $businessType)
                                         <option value="{{ $businessType->id }}" {{ ($org->business_type_id == $businessType->id) ? 'selected' : '' }}>{{ $businessType->business_type_name }}</option>
                                         @endforeach
@@ -330,5 +319,10 @@
 
 @section('scripts')
     <script src="{{ asset('js/components.js') }}"></script>
-    <script src="{{ asset('js/form_org.js') }}"></script>
+    <script src="{{ asset('js/form.js') }}"></script>
+    <script type="text/javascript">
+        // 1.7 sale_products
+        $('#sale_products').val({{ json_encode($sale_product_items) }});
+        $('#sale_products').trigger('change');
+    </script>
 @endsection

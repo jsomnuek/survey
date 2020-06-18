@@ -65,17 +65,15 @@ Route::resource('/certifyLaboratory','BasicInformations\CertifyLaboratoryControl
 
 // country
 Route::resource('/country', 'BasicInformations\CountryController');
-
 Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');
 Route::get('/tambons/{id}', 'Api\ProvinceInfoController@tambons');
 
+
+// Route For Employee
 Route::resource('/organization', 'Employee\OrganizationController');
-
 Route::resource('/lab', 'Employee\LabController');
-
 Route::resource('/equipmentLab','Employee\EquipmentLabController');
-
 Route::resource('/productLab','Employee\ProductLabController');
 
 

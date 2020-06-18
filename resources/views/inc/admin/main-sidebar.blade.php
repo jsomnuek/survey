@@ -646,7 +646,7 @@
                     </ul>
                 </li>
                 {{-- Information Location --}}
-                <li class="nav-item has-treeview {{ Request::is ('country*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ Request::is('country*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is ('country*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-flag"></i>

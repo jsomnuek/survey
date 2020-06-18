@@ -9,6 +9,7 @@ use App\Model\BasicInformations\ProductType;
 use App\Model\BasicInformations\IndustrialType;
 use App\Model\BasicInformations\TestingCalibratingType;
 use App\Model\BasicInformations\CertifyLaboratory;
+use App\Model\BasicInformations\ResultControl;
 
 class ProductLabController extends Controller
 {
@@ -34,13 +35,15 @@ class ProductLabController extends Controller
         $allProductTypes = ProductType::where('product_type_status','A')->get();
         $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();
         $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
+        $allResultControl = ResultControl::where('result_control_status','A')->get();
         $data = [
             'industrialTypes' => $allIndustrialTypes,
             'productTypes' => $allProductTypes,
             'testingCalibratingTypes'=>$allTestingCalibratingType,
             'cerifyLaboratories'=>$allCertifyLaboratory,
+            'resultControls' => $allResultControl,
         ];
-        //return $data;
+        // return $data;
         return view('employee.productLab.create')->with($data);
     }
 
@@ -52,7 +55,7 @@ class ProductLabController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
 
         $request->validate([
             'product_lab_name' => 'required|unique:product_labs',

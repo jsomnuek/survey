@@ -88,10 +88,16 @@
                   <div class="row form-group">
                       <div class="col-md-6">
                         <label for="">3.10 สาขาเทคโนโลยีของเครื่องมือ</label>
-                        <select name="major_technologies_id" id="major_technologies_id" class="form-control @error('major_technologies_id') is-invalid @enderror"  >
+                        {{-- <select name="major_technologies_id" id="major_technologies_id" class="form-control @error('major_technologies_id') is-invalid @enderror"  >
                           <option value="">โปรดเลือกสาขาเทคโนโลยีของเครื่องมือ</option>
                           @foreach ($majorTechnologies as $majorTechnology)
                               <option value="{{$majorTechnology->id}}" {{ old('major_technologies_id') ==  $majorTechnology->id ? 'selected' : ''}}> {{$majorTechnology->major_tech_name}} </option>
+                          @endforeach
+                        </select> --}}
+                        <select class="form-control custom-select select2 @error('major_technologies_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="major_technologies_id[]" id="major_technologies_id" data-value="{{ old('major_technologies_id[]') }}">
+                          <option value="" disabled="disabled">disabled</option>
+                          @foreach ($majorTechnologies ?? '' as $majorTechnology)
+                              <option value="{{ $majorTechnology->id }}" {{ in_array($majorTechnology->id, old('major_technologies_id') ? : []) ? 'selected' : '' }}>{{ $majorTechnology->major_tech_name }}</option>
                           @endforeach
                         </select>
                         @error('major_technologies_id')
@@ -103,11 +109,11 @@
                       </div>
                       <div class="col-md-6">
                         <label for="">3.11 วัตถุประสงค์การใช้งาน</label>
-                        <select name="objective_usages_id" id="objective_usages_id" class="form-control @error('objective_usages_id') is-invalid @enderror"  >
-                          <option value="">โปรดเลือกวัตถุประสงค์การใช้งาน</option>
-                            @foreach ($objectiveUsages as $objectiveUsage)
-                              <option value="{{$objectiveUsage->id}}" {{ old('objective_usages_id') ==  $objectiveUsage->id ? 'selected' : ''}}> {{$objectiveUsage->obj_usage_name}} </option>
-                            @endforeach
+                        <select class="form-control custom-select select2 @error('objective_usages_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="objective_usages_id[]" id="objective_usages_id" data-value="{{ old('objective_usages_id[]') }}">
+                          <option value="" disabled="disabled">disabled</option>
+                          @foreach ($objectiveUsages ?? '' as $objectiveUsage)
+                              <option value="{{ $objectiveUsage->id }}" {{ in_array($objectiveUsage->id, old('objective_usages_id') ? : []) ? 'selected' : '' }}>{{ $objectiveUsage->obj_usage_name }}</option>
+                          @endforeach
                         </select>
                         @error('objective_usages_id')
                         <span class="invalid-feedback" role="alert">
@@ -271,4 +277,7 @@
 </div>
 @endsection
 
-
+@section('scripts')
+    <script src="{{ asset('js/components.js') }}"></script>
+    <script src="{{ asset('js/form_org.js') }}"></script>
+@endsection

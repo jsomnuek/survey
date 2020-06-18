@@ -55,7 +55,7 @@ class Organization extends Model
     }
 
     // Defining Relationships 1.7 Many To Many
-    public function countries()
+    public function countrys()
     {
         return $this->belongsToMany(Country::class)->withTimestamps();
     }

@@ -1,12 +1,4 @@
 $(document).ready(function() {
-    //Initialize Select2 Elements
-    // $(".select2").select2();
-
-    //Initialize Select2 Elements
-    // $(".select2bs4").select2({
-    //     theme: "bootstrap4"
-    // });
-
     // checkInput
     function checkInput() {
         let inputTypeNumber = [
@@ -124,22 +116,6 @@ $(document).ready(function() {
                                 }
                             });
                         }
-                        /*
-                        if (oldAmId != "") {
-                            $.ajax({
-                                url: "/tambons/" + oldAmId,
-                                type: "GET",
-                                dataType: "JSON",
-                                success: function(data) {
-                                    $.each(data, function(key, value) {
-                                        $("#province_info_ta_id").append(`
-                                            <option value="${value.ta_id}">${value.tambon_t}</option>
-                                        `);
-                                    });
-                                }
-                            });
-                        }
-                        */
                     } else {
                         $("#province_info_am_id").append(`
                             <option value="${value.am_id}">${value.amphoe_t}</option>
@@ -149,31 +125,6 @@ $(document).ready(function() {
             }
         });
     }
-    // laravel old method dom attribute value
-    /*
-    var oldTmId = $("#province_info_ta_id").attr("data-value");
-    if (oldAmId != "") {
-        $.ajax({
-            url: "/tambons/" + oldAmId,
-            type: "GET",
-            dataType: "JSON",
-            success: function(data) {
-                console.log(data);
-                $.each(data, function(key, value) {
-                    if (oldTmId == value.ta_id) {
-                        $("#province_info_ta_id").append(`
-                            <option value="${value.ta_id}" selected>${value.tambon_t}</option>
-                        `);
-                    } else {
-                        $("#province_info_ta_id").append(`
-                            <option value="${value.ta_id}">${value.tambon_t}</option>
-                        `);
-                    }
-                });
-            }
-        });
-    }
-    */
     // Event on change changwat
     $("#province_info_ch_id").on("change", function() {
         var ch_id = $(this).val();

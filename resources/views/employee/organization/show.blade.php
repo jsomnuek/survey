@@ -99,7 +99,7 @@
                             </tr>
                             <tr>
                                 <th class="pl-5" style="width: 30%;">เว็บไซต์</th>
-                                <td>{{ $org->org_website }}</td>
+                                <td><a href="http://{{ $org->org_website }}" target="_bank">{{ $org->org_website }}</a></td>
                             </tr>
                             <tr>
                                 <th class="pl-5" style="width: 30%;">ละติจูด</th>

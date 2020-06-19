@@ -39,7 +39,7 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/country', 'BasicInformations\CountryController');
     Route::resource('/employeeTraining','BasicInformations\EmployeeTrainingController');
     Route::resource('/environmentManage','BasicInformations\EnvironmentManageController');
-    Route::resource('/equipment','BasicInformations\EquipmentController');
+    Route::resource('/scienceTool','BasicInformations\EquipmentController');
     Route::resource('/equipmentCalibration','BasicInformations\EquipmentCalibrationController');
     Route::resource('/equipmentMaintenance','BasicInformations\EquipmentMaintenanceController');
     Route::resource('/equipmentManual','BasicInformations\EquipmentManualController');
@@ -50,7 +50,7 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
     Route::resource('/industrialType','BasicInformations\IndustrialTypeController');
     Route::resource('/laboratoryType','BasicInformations\LaboratoryTypeController');
-    Route::resource('/labLocation','BasicInformations\LabLocationController');
+    Route::resource('/locationLab','BasicInformations\labLocationController');
     Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
     Route::resource('/objectiveUsage','BasicInformations\ObjectiveUsageController');
     Route::resource('/organisationType','BasicInformations\OrganisationTypeController');

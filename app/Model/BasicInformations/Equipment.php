@@ -3,6 +3,7 @@
 namespace App\Model\BasicInformations;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Employee\EquipmentLab;
 
 class Equipment extends Model
 {
@@ -12,4 +13,9 @@ class Equipment extends Model
     public $equipmentAbbr = 'equipment_abbr';
     public $equipmentStatus = 'equipment_status';
     public $timestamps = TRUE;
+
+    public function equipmentLabs()
+    {
+        return $this->belongsTo(EquipmentLab::class);
+    }
 }

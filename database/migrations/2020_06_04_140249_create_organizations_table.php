@@ -34,9 +34,9 @@ class CreateOrganizationsTable extends Migration
             $table->string('org_fax')->nullable()->comment('โทรสาร'); 
             $table->string('org_email')->nullable()->comment('อีเมล');
             $table->string('org_website')->nullable()->comment('เว็บไซต์');
-            $table->float('org_lat')->nullable()->comment('ละติจูด'); 
-            $table->float('org_long')->nullable()->comment('ลองจิจูด');
-            $table->integer('org_capital')->nullable()->comment('ทุนจดทะเบียน'); //1.5 
+            $table->string('org_lat')->nullable()->comment('ละติจูด');
+            $table->string('org_long')->nullable()->comment('ลองจิจูด');
+            $table->bigInteger('org_capital')->nullable()->comment('ทุนจดทะเบียน'); //1.5 
             $table->integer('org_employee_amount')->comment('จำนวนบุคลากร'); //1.6
             $table->unsignedBigInteger('organisation_type_id'); //1.8
             $table->string('organisation_type_other')->nullable();
@@ -65,9 +65,31 @@ class CreateOrganizationsTable extends Migration
                 ->references('id')->on('sale_products');
         });
 
-        // 1.7 ส่งออกต่างประเทศ : เลือกได้มากกว่า 1 คำตอบ 
+        // 1.7 ส่งออกต่างประเทศ : เลือกได้มากกว่า 1 คำตอบ
+        Schema::create('country_organization', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('organization_id');
+            $table->timestamps();
+            
+            $table->foreign('country_id')
+                ->references('id')->on('countries');
+            $table->foreign('organization_id')
+                ->references('id')->on('organizations');
+        });
         
         // 1.10 ประเภทอุตสาหกรรม : เลือกได้มากกว่า 1 คำตอบ
+        Schema::create('industrial_type_organization', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('industrial_type_id');
+            $table->unsignedBigInteger('organization_id');
+            $table->timestamps();
+            
+            $table->foreign('industrial_type_id')
+                ->references('id')->on('industrial_types');
+            $table->foreign('organization_id')
+                ->references('id')->on('organizations');
+        });
     }
 
     /**
@@ -77,7 +99,9 @@ class CreateOrganizationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('organization_sale_product');
+        Schema::dropIfExists('organization_sale_product');
+        Schema::dropIfExists('country_organization');
+        Schema::dropIfExists('industrial_type_organization');
         Schema::dropIfExists('organizations');
     }
 }

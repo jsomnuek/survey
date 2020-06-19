@@ -24,7 +24,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');
 Route::get('/tambons/{id}', 'Api\ProvinceInfoController@tambons');
@@ -63,12 +62,6 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/testingCalibratingList','BasicInformations\TestingCalibratingListController');
     Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratingMethodController');
     Route::resource('/testingCalibratingType', 'BasicInformations\TestingCalibratingTypeController');
-
-    // Survey
-    Route::resource('/organization', 'Employee\OrganizationController');
-    Route::resource('/lab', 'Employee\LabController');
-    Route::resource('/equipmentLab','Employee\EquipmentLabController');
-    Route::resource('/productLab','Employee\ProductLabController');
 });
 
 Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function(){

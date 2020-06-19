@@ -29,6 +29,7 @@
                             <tr>
                                 <th style="width: 10px">รหัส</th>
                                 <th>ชื่อหน่วยงาน</th>
+                                <th>ผู้บันทึกข้อมูล</th>
                                 <th style="width: 10em"><i class="fas fa-users-cog"></i></th>
                             </tr>
                         </thead>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>{{ $org->id }}</td>
                                 <td>{{ $org->org_name }}</td>
+                                <td>{{ $org->user->name }}</td>
                                 <td><a href="/organization/{{ $org->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a></td>
                             </tr>                                
                             @endforeach

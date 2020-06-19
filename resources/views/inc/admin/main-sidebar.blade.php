@@ -36,11 +36,16 @@
                 with font-awesome or any other icon font library -->
                 <li class="nav-header d-none">Display None</li>
                 {{-- Basic Informations Menu  --}}
+<<<<<<< HEAD
             <li class="nav-header">Role : {!! auth()->user()->role_id !!}</li>
 
             @if(Auth::user()->role_id == 1)
             <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
                 {{-- List of Menu --}}
+=======
+                <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
+                {{-- Information Organize --}}
+>>>>>>> 95c054d0665a966858e60e899c87c44cdb04a942
                 <li class="nav-item has-treeview {{ Request::is('labLocation*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
@@ -172,7 +177,7 @@
                         </li>
                     </ul>
                 </li>
-
+                {{-- Information Laboratory --}}
                 <li class="nav-item has-treeview {{ Request::is('laboratoryType*','areaService*','fixedCost*','incomePerYear*','employeeTraining*','environmentManage*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
@@ -496,7 +501,7 @@
                         </li>
                     </ul>
                 </li>
-
+                {{-- Information Product Test--}}
                 <li class="nav-item has-treeview {{ Request::is('productType*','testingCalibratingList*','testingCalibratingType*','testingCalibratingMethod*','resultControl*','proficiencyTesting*','certifyLaboratory*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
@@ -673,7 +678,7 @@
 
                 {{-- Menu for Employee --}}
                 <li class="nav-header">ข้อมูลแบบสำรวจ</li>
-                {{-- menu-open --}}
+                {{-- Organization Menu--}}
                 <li class="nav-item has-treeview {{ Request::is('organization*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('organization*') ? 'active' : '' }}">
@@ -694,6 +699,7 @@
                         </li>
                     </ul>
                 </li>
+                {{-- Laboratory Menu --}}
                 <li class="nav-item has-treeview {{ Request::is('lab*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('lab*') ? 'active' : '' }}">
@@ -714,6 +720,7 @@
                         </li>
                     </ul>
                 </li>
+                {{-- EquipmentLab Menu --}}
                 <li class="nav-item has-treeview {{ Request::is('equipmentLab*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('equipmentLab*') ? 'active' : '' }}">
@@ -734,6 +741,7 @@
                         </li>
                     </ul>
                 </li>
+                {{-- ProductLab Menu --}}
                 <li class="nav-item has-treeview {{ Request::is('productLab*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('productLab*') ? 'active' : '' }}">

@@ -177,7 +177,7 @@
                                 <label for="">อื่นๆ โปรดระบุ  : </label>
                             </div>
                             <div class="col-md-4">
-                                <input class="form-control form-control" type="text" name="product_lab_test_control_detail" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('product_lab_test_control_detail')}}">
+                                <input class="form-control form-control" type="text" name="product_lab_test_control_other" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('product_lab_test_control_other')}}">
                             </div>
                         </div>
                         

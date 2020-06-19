@@ -11,6 +11,7 @@ class ProductLab extends Model
     protected $table = 'product_labs';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'user_id',
         'product_lab_name',
         'product_type_id',
         'product_lab_standard',
@@ -32,13 +33,13 @@ class ProductLab extends Model
     ];
     public $timestamps = true;
 
-    public function productType()
+    public function productTypes()
     {
-        return $this->belongsTo(ProductType::class);
+        return $this->belongsToMany(ProductType::class)->withTimestamps();
     }
-    
-    public function testingCalibratingType()
-    {
-        return $this->belongsTo(TestingCalibratingType::class);
-    }
+
+    // public function testingCalibratingType()
+    // {
+    //     return $this->belongsToMany(TestingCalibratingType::class)->withTimestamps();
+    // }
 }

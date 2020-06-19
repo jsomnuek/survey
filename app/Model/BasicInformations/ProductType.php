@@ -15,6 +15,7 @@ class ProductType extends Model
 
     public function productLabs()
     {
-        return $this->hasMany(ProductLab::class);
+        return $this->belongsToMany(ProductLab::class)->withTimestamps();
     }
+    
 }

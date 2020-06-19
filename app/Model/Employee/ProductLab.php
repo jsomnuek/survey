@@ -4,6 +4,7 @@ namespace App\Model\Employee;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\BasicInformations\ProductType;
+use App\Model\BasicInformations\TestingCalibratingType;
 
 class ProductLab extends Model
 {
@@ -34,5 +35,10 @@ class ProductLab extends Model
     public function productType()
     {
         return $this->belongsTo(ProductType::class);
+    }
+    
+    public function testingCalibratingType()
+    {
+        return $this->belongsTo(TestingCalibratingType::class);
     }
 }

@@ -241,6 +241,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/components.js') }}"></script>
-    <script src="{{ asset('js/form_org.js') }}"></script>
+    {{-- <script src="{{ asset('js/components.js') }}"></script> --}}
+    <script src="{{ asset('js/form-productLab.js') }}"></script>
 @endsection

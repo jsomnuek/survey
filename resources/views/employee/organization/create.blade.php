@@ -29,7 +29,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_name">1.1 ชื่อหน่วยงาน :<span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="text" name="org_name" class="form-control @error('org_name') is-invalid @enderror" id="org_name" placeholder="เช่น กรมวิทยาศาสตร์บริการ" value="{{ old('org_name') }}" required>
+                                    <input type="text" name="org_name" class="form-control @error('org_name') is-invalid @enderror" id="org_name" placeholder="" value="{{ old('org_name') }}">
                                     @error('org_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_code">1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="text" name="org_code" class="form-control @error('org_name') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}" required>
+                                    <input type="text" name="org_code" class="form-control @error('org_name') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}">
                                     @error('org_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -85,7 +85,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_address">เลขที่ <span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="text" name="org_address" class="form-control @error('org_address') is-invalid @enderror" id="org_address" placeholder="" value="{{ old('org_address') }}" required>
+                                    <input type="text" name="org_address" class="form-control @error('org_address') is-invalid @enderror" id="org_address" placeholder="" value="{{ old('org_address') }}">
                                     @error('org_address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -108,7 +108,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="province_info_ch_id">จังหวัด<span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select select2 @error('province_info_ch_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกจังหวัด --" style="width: 100%;" name="province_info_ch_id" id="province_info_ch_id" data-value="{{ old('province_info_ch_id') }}" required>
+                                    <select class="form-control custom-select select2 @error('province_info_ch_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกจังหวัด --" style="width: 100%;" name="province_info_ch_id" id="province_info_ch_id" data-value="{{ old('province_info_ch_id') }}">
                                         <option value="" selected disabled="disabled">-- โปรดเลือกจังหวัด --</option>
                                     </select>
                                     @error('province_info_ch_id')
@@ -121,7 +121,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="province_info_am_id">เขต/อำเภอ<span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select select2 @error('province_info_am_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกเขต/อำเภอ --" style="width: 100%;" name="province_info_am_id" id="province_info_am_id" data-value="{{ old('province_info_am_id') }}" required>
+                                    <select class="form-control custom-select select2 @error('province_info_am_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกเขต/อำเภอ --" style="width: 100%;" name="province_info_am_id" id="province_info_am_id" data-value="{{ old('province_info_am_id') }}">
                                         <option value="" selected disabled="disabled">-- โปรดเลือกเขต/อำเภอ --</option>
                                     </select>
                                     @error('province_info_am_id')
@@ -134,7 +134,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="province_info_ta_id">แขวง/ตำบล<span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select select2 @error('province_info_ta_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกแขวง/ตำบล --" style="width: 100%;" name="province_info_ta_id" id="province_info_ta_id" data-value="{{ old('province_info_ta_id') }}" required>
+                                    <select class="form-control custom-select select2 @error('province_info_ta_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกแขวง/ตำบล --" style="width: 100%;" name="province_info_ta_id" id="province_info_ta_id" data-value="{{ old('province_info_ta_id') }}">
                                         <option value="" selected disabled="disabled">-- เลือกแขวง/ตำบล --</option>
                                     </select>
                                     @error('province_info_ta_id')
@@ -147,7 +147,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_postcode">รหัสไปรษณีย์<span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="number" name="org_postcode" min="0" class="form-control @error('org_postcode') is-invalid @enderror" id="org_postcode" placeholder="" value="{{ old('org_postcode') }}" required>
+                                    <input type="number" name="org_postcode" min="0" class="form-control @error('org_postcode') is-invalid @enderror" id="org_postcode" placeholder="" value="{{ old('org_postcode') }}">
                                     @error('org_postcode')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -187,13 +187,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_lat">ละติจูด</label>
-                                    <input type="number" name="org_lat" class="form-control" id="org_lat" placeholder="" value="{{ old('org_lat') }}">
+                                    <input type="text" name="org_lat" class="form-control" id="org_lat" placeholder="" value="{{ old('org_lat') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_long">ลองจิจูด</label>
-                                    <input type="number" name="org_long" class="form-control" id="org_long" placeholder="" value="{{ old('org_long') }}">
+                                    <input type="text" name="org_long" class="form-control" id="org_long" placeholder="" value="{{ old('org_long') }}">
                                 </div>
                             </div>
                             {{-- .col --}}
@@ -206,7 +206,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_employee_amount">1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ old('org_employee_amount') }}" required>
+                                    <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ old('org_employee_amount') }}">
                                     @error('org_employee_amount')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -217,21 +217,21 @@
                             {{-- ./col --}}
                             <div class="col-md-6">
                                 <div class="form-group">                                    
-                                    <label for="'sale_products">1.7 การจำหน่าย/ส่งออกสินค้า/บริการ :</label>
-                                    <select class="form-control custom-select select2" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="sale_products[]" id="sale_products" data-value="{{ old('sale_products[]') }}">
-                                        <option value=""  disabled="disabled">disabled</option>
+                                    <label for="'sale_products">1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : (เลือกได้มากกว่า 1 คำตอบ)</label>
+                                    <select class="form-control custom-select select2-multi" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="sale_products[]" id="sale_products" data-value="{{ old('sale_products[]') }}">
+                                        {{-- <option value="" disabled="disabled">disabled</option> --}}
                                         @foreach ($saleProducts as $saleProduct)
                                         <option value="{{ $saleProduct->id }}" {{ in_array($saleProduct->id, old('sale_products') ? : []) ? 'selected' : '' }}>{{ $saleProduct->sale_product_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group row " id="display_countries">
-                                    <label for="countries" class="col-md-2 col-form-label">โปรดระบุ :</label>
-                                    <div class="col-md-10">
-                                        <select class="form-control custom-select select2" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="countries[]" id="countries" data-value="{{ old('countries[]') }}">
-                                            <option value=""  disabled="disabled">disabled</option>
+                                <div class="form-group d-none" id="display_country">
+                                    <label for="countrys" class="col-md-12 col-form-label">กรณีต่างประเทศ โปรดระบุ :<span><sup class="text-danger"> *</sup></span> (เลือกได้มากกว่า 1 คำตอบ)</label>
+                                    <div class="col-md-12">
+                                        <select class="form-control custom-select select2-multi" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="countrys[]" id="countrys" data-value="{{ old('countrys[]') }}">
+                                            {{-- <option value="" disabled="disabled">disabled</option> --}}
                                             @foreach ($countrys as $country)
-                                            <option value="{{ $country->id }}" {{ in_array($country->id, old('countries') ? : []) ? 'selected' : '' }}>{{ $country->country_name_thai }}</option>
+                                            <option value="{{ $country->id }}" {{ in_array($country->id, old('countrys') ? : []) ? 'selected' : '' }}>{{ $country->country_name_thai }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -241,10 +241,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="'organisation_type_id">1.8 ประเภทองค์กร :<span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select select2 @error('organisation_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="organisation_type_id" id="organisation_type_id" data-value="{{ old('organisation_type_id') }}" required>
-                                        <option value="" selected disabled="disabled">-- โปรดเลือก --</option>
+                                    <select class="form-control custom-select select2 @error('organisation_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="organisation_type_id" id="organisation_type_id" data-value="{{ old('organisation_type_id') }}">
+                                        <option value="" selected disabled="disabled">disabled</option>
                                         @foreach ($organisationTypes as $organisationType)
-                                        <option value="{{ $organisationType->id }}" {{ (old('organisation_type_id') == $organisationType->id) ? 'selected' : '' }}>{{ $organisationType->org_type_name }}</option>
+                                        <option value="{{ $organisationType->id }}" {{ ( old('organisation_type_id') == $organisationType->id) ? 'selected' : '' }}>{{ $organisationType->org_type_name }}</option>
                                         @endforeach
                                     </select>
                                     @error('organisation_type_id')
@@ -253,10 +253,10 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="form-group row d-none" id="org_type_other">
-                                    <label for="organisation_type_other" class="col-md-2 col-form-label">โปรดระบุ :</label>
-                                    <div class="col-md-10">
-                                        <input type="text" name="organisation_type_other" class="form-control" id="organisation_type_other" placeholder="" value="{{ old('organisation_type_other') }}" readonly>
+                                <div class="form-group d-none" id="display_org_type_other">
+                                    <label for="organisation_type_other" class="col-md-12 col-form-label">โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="organisation_type_other" class="form-control" id="organisation_type_other" placeholder="" value="{{ old('organisation_type_other') }}">
                                     </div>
                                 </div>
                             </div>
@@ -264,35 +264,34 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="'business_type_id">1.9 ประเภทกิจการ :<span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select select2 @error('business_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="business_type_id" id="business_type_id" data-value="{{ old('business_type_id') }}" required>
-                                        <option value="" selected disabled="disabled">-- โปรดเลือก --</option>
+                                    <select class="form-control custom-select select2 @error('business_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="business_type_id" id="business_type_id" data-value="{{ old('business_type_id') }}">
+                                        <option value="" selected disabled="disabled">disabled</option>
                                         @foreach ($businessTypes as $businessType)
                                         <option value="{{ $businessType->id }}" {{ (old('business_type_id') == $businessType->id) ? 'selected' : '' }}>{{ $businessType->business_type_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group row d-none" id="">
-                                    <label for="business_type_other" class="col-md-2 col-form-label">โปรดระบุ :</label>
+                                    <label for="business_type_other" class="col-md-2 col-form-label">โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
                                     <div class="col-md-10">
-                                        <input type="text" name="business_type_other" class="form-control" id="business_type_other" placeholder="" value="{{ old('business_type_other') }}" readonly>
+                                        <input type="text" name="business_type_other" class="form-control" id="business_type_other" placeholder="" value="{{ old('business_type_other') }}">
                                     </div>
                                 </div>
                             </div>
-                            {{-- ./col --}}                           
-                            
+                            {{-- ./col --}}                   
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="industrial_type">1.11 ประเภทอุตสาหกรรม :</label>
-                                    <select class="form-control custom-select select2" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="industrial_type[]" id="industrial_type" data-value="{{ old('industrial_type[]') }}">
-                                        <option value="" disabled="disabled">disabled</option>
+                                    <label for="industrial_type">1.10 ประเภทอุตสาหกรรม : (เลือกได้มากกว่า 1 คำตอบ)</label>
+                                    <select class="form-control custom-select select2-multi" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="industrial_types[]" id="industrial_types" data-value="{{ old('industrial_types[]') }}">
+                                        {{-- <option value="" disabled="disabled">disabled</option> --}}
                                         @foreach ($industrialTypes as $industrialType)
-                                        <option value="{{ $industrialType->id }}" {{ in_array($industrialType->id, old('industrial_type') ? : []) ? 'selected' : '' }}>{{ $industrialType->industrial_type_name }}</option>
+                                        <option value="{{ $industrialType->id }}" {{ in_array($industrialType->id, old('industrial_types') ? : []) ? 'selected' : '' }}>{{ $industrialType->industrial_type_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group row" id="">
-                                    <label for="" class="col-md-2 col-form-label">โปรดระบุ :</label>
-                                    <div class="col-md-10">
+                                <div class="form-group d-none" id="display_ind_type_other">
+                                    <label for="" class="col-md-12 col-form-label">โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <div class="col-md-12">
                                         <input type="text" name="industrial_type_other" class="form-control" id="industrial_type_other" placeholder="" value="{{ old('industrial_type_other') }}">
                                     </div>
                                 </div>                             
@@ -318,5 +317,5 @@
 
 @section('scripts')
     <script src="{{ asset('js/components.js') }}"></script>
-    <script src="{{ asset('js/form_org.js') }}"></script>
+    <script src="{{ asset('js/form-org.js') }}"></script>
 @endsection

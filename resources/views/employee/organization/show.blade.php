@@ -22,75 +22,164 @@
                     </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">รหัสเอกสาร : {{ $org->id }}</li>
-                        <li class="list-group-item">เจ้าของข้อมูล : {{ $org->user->name }}</li>
-                        <li class="list-group-item">{{ $org->org_name }}</li>
-                        <li class="list-group-item">{{ $org->org_name_level_1 }}</li>
-                        <li class="list-group-item">{{ $org->org_name_level_2 }}</li>
-                        <li class="list-group-item">{{ $org->org_code }}</li>
-                        <li class="list-group-item">{{ $org->org_number }}</li>
-                        @isset($org->labLocation->location_name)
-                            <li class="list-group-item"> 
-                                {{ $org->labLocation->location_name }}
-                            </li>
-                        @endisset
-                        <li class="list-group-item"> 
-                            {{ $org->lab_location_other }}
-                        </li>
-                        @isset($org->industrialEstate->estate_name)
-                            <li class="list-group-item"> 
-                                {{ $org->industrialEstate->estate_name }}
-                            </li>
-                        @endisset
-                        <li class="list-group-item"> 
-                            {{ $org->industrial_estate_other }}
-                        </li>
-                        <li class="list-group-item"> 
-                            {{ $org->org_building }}
-                        </li>
-                        <li class="list-group-item"> 
-                            {{ $org->org_floor }}
-                        </li>
-                        <li class="list-group-item"> 
-                            {{ $org->org_address }}
-                        </li>
-                        <li class="list-group-item"> 
-                            {{ $org->org_soi }}
-                        </li>
-                        <li class="list-group-item"> 
-                            {{ $org->org_road }}
-                        </li>
-                        @isset($org->provinceInfoTa->tambon_t)
-                            <li class="list-group-item"> 
-                                {{ $org->provinceInfoTa->tambon_t }}
-                            </li>
-                        @endisset
-                        @isset($org->provinceInfoAm->amphoe_t)
-                            <li class="list-group-item"> 
-                                {{ $org->provinceInfoAm->amphoe_t }}
-                            </li>
-                        @endisset
-                        @isset($org->provinceInfoCh->changwat_t)
-                            <li class="list-group-item"> 
-                                {{ $org->provinceInfoCh->changwat_t }}
-                            </li>
-                        @endisset
-                    </ul>
+                <div class="card-body table-responsive p-0" style="height: 400px;">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th class="" style="width: 30%;">1.1 ชื่อหน่วยงาน :</th>
+                                <td>{{ $org->org_name }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">ชื่อหน่วยงานย่อย ระดับที่ 1 :</th>
+                                <td>{{ $org->org_name_level_1 }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">ชื่อหน่วยงานย่อย ระดับที่ 2 :</th>
+                                <td>{{ $org->org_name_level_2 }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.2 รหัสหน่วยงาน (AABCC) :</th>
+                                <td>{{ $org->org_code }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.3 หมายเลขประจำหน่วยงาน :</th>
+                                <td>{{ $org->org_number }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.4 ที่อยู่ :</th>
+                                <td>{{ __('') }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">อาคาร</th>
+                                <td>{{ $org->org_building }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">ชั้น</th>
+                                <td>{{ $org->org_floor }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">เลขที่</th>
+                                <td>{{ $org->org_address }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">ซอย</th>
+                                <td>{{ $org->org_soi }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">ถนน</th>
+                                <td>{{ $org->org_road }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">แขวง/ตำบล</th>
+                                <td>{{ $org->provinceInfoTa->tambon_t }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">เขต/อำเภอ</th>
+                                <td>{{ $org->provinceInfoAm->amphoe_t }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">จังหวัด</th>
+                                <td>{{ $org->provinceInfoCh->changwat_t }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">รหัสไปรษณีย์</th>
+                                <td>{{ $org->org_postcode }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">โทรศัพท์</th>
+                                <td>{{ $org->org_phone }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">โทรสาร</th>
+                                <td>{{ $org->org_fax }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">อีเมล</th>
+                                <td>{{ $org->org_email }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">เว็บไซต์</th>
+                                <td>{{ $org->org_website }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">ละติจูด</th>
+                                <td>{{ $org->org_lat }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">ลองจิจูด</th>
+                                <td>{{ $org->org_long }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.5 ทุนจดทะเบียน (ล้านบาท) :</th>
+                                <td>{{ number_format($org->org_capital) }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.6 จำนวนบุคลากร (คน) :</th>
+                                <td>{{ number_format($org->org_employee_amount) }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.7 การจำหน่าย/ส่งออกสินค้า/บริการ :</th>
+                                <td>
+                                    @forelse ($org->saleProducts as $item)
+                                        <li>{{ $item->sale_product_name }}</li>
+                                    @empty
+                                        
+                                    @endforelse
+                                    <ol>
+                                        @forelse ($org->countrys as $item)
+                                            <li>{{ $item->country_name_thai }}</li>
+                                        @empty
+
+                                        @endforelse
+                                    </ol>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.8 ประเภทองค์กร :</th>
+                                <td>
+                                    @if (($org->organisationType->id) != 5)
+                                        {{ $org->organisationType->org_type_name }}
+                                    @else
+                                        
+                                    @endif
+                                    @switch(5)
+                                        @case($org->organisationType->id)
+                                            {{ $org->organisation_type_other }}
+                                            @break
+                                        @default
+                                            
+                                    @endswitch
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.9 ประเภทกิจการ :</th>
+                                <td>{{ $org->businessType->business_type_name }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.10 ประเภทอุตสาหกรรม :</th>
+                                <td>
+                                    @forelse ($org->industrialTypes as $item)
+                                        @if (($item->id) != 39)
+                                            <li>{{ $item->industrial_type_name }}</li>
+                                        @else
+                                            
+                                        @endif
+                                        
+                                    @empty
+                                        
+                                    @endforelse
+                                    @if ($org->industrial_type_other != null)
+                                        <li>{{ $org->industrial_type_other }}</li>
+                                    @endif
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <a href="/organization" class="btn btn-secondary">ย้อนกลับ</a>
                     <a href="/organization/{{ $org->id }}/edit" class="btn btn-primary">แก้ไขข้อมูล</a>
-                    <div class="float-right">
-                        <a href="/organization/detailed/print-doc-{{ $org->id }}.html" target="_blank" class="btn btn-default">
-                            <i class="fas fa-print"></i> Print
-                        </a>
-                        <a href="/organization/detailed/print-pdf-{{ $org->id }}.html" target="_blank" class="btn btn-default">
-                            <i class="fas fa-file-pdf"></i> Generate PDF
-                        </a>
-                    </div>
                 </div>
                 <!-- /.card-footer -->
             </div>

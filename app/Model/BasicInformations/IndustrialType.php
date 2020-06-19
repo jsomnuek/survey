@@ -16,6 +16,6 @@ class IndustrialType extends Model
     
     public function organizations()
     {
-        return $this->belongsToMany(Organization::class, 'org_id', 'id')->withTimestamps();
+        return $this->belongsToMany(Organization::class)->withTimestamps();
     }
 }

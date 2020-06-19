@@ -33,6 +33,14 @@ class LoginController extends Controller
             return '/dashboard';
         }
 
+        if (auth()->user()->role_id == 2 ) {
+            return '/dashboard';
+        }
+
+        if (auth()->user()->role_id == 3 ) {
+            return '/dashboard';
+        }
+
         return '/home';
     }
 

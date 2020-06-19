@@ -36,7 +36,10 @@
                 with font-awesome or any other icon font library -->
                 <li class="nav-header d-none">Display None</li>
                 {{-- Basic Informations Menu  --}}
-                <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
+            <li class="nav-header">Role : {!! auth()->user()->role_id !!}</li>
+
+            @if(Auth::user()->role_id == 1)
+            <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
                 {{-- List of Menu --}}
                 <li class="nav-item has-treeview {{ Request::is('labLocation*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
@@ -302,7 +305,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview {{ Request::is('equipment*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ Request::is('equipments*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
@@ -311,9 +314,9 @@
                     </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item has-treeview {{ Request::is('equipment*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('equipments*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('equipment*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('equipments*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-flask"></i>
                                 <p>เครื่องมือวิทยาศาสตร์<i class="right fas fa-angle-left"></i></p>
                             </a>
@@ -645,6 +648,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="nav-item has-treeview {{ Request::is ('country*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is ('country*') ? 'active' : '' }}">
@@ -665,6 +669,7 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
                 {{-- Menu for Employee --}}
                 <li class="nav-header">ข้อมูลแบบสำรวจ</li>

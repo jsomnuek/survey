@@ -51,6 +51,7 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/industrialType','BasicInformations\IndustrialTypeController');
     Route::resource('/locationLab','BasicInformations\labLocationController');
     Route::resource('/labDevelopment','BasicInformations\LabDevelopmentController');
+    Route::resource('/laboratoryType','BasicInformations\LaboratoryTypeController');
     Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
     Route::resource('/objectiveUsage','BasicInformations\ObjectiveUsageController');
     Route::resource('/organisationType','BasicInformations\OrganisationTypeController');

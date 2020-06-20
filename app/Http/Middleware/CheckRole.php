@@ -14,6 +14,10 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
+
+     // (...$roles) is splat or scatter operator for pass array of user role 
+     // from checkRole middleware.
+    
     public function handle($request, Closure $next, ...$roles)
     {
         $roleIds = ['admin' => 1, 'dssUser' => 2, 'surveyer' => 3];

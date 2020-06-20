@@ -37,9 +37,9 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/businessType','BasicInformations\BusinessTypeController');
     Route::resource('/certifyLaboratory','BasicInformations\CertifyLaboratoryController');
     Route::resource('/country', 'BasicInformations\CountryController');
+    Route::resource('/educationLevel','BasicInformations\EducationLevelController');
     Route::resource('/employeeTraining','BasicInformations\EmployeeTrainingController');
     Route::resource('/environmentManage','BasicInformations\EnvironmentManageController');
-    Route::resource('/scienceTool','BasicInformations\EquipmentController');
     Route::resource('/equipmentCalibration','BasicInformations\EquipmentCalibrationController');
     Route::resource('/equipmentMaintenance','BasicInformations\EquipmentMaintenanceController');
     Route::resource('/equipmentManual','BasicInformations\EquipmentManualController');
@@ -49,8 +49,8 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/incomePerYear','BasicInformations\IncomePerYearController');
     Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
     Route::resource('/industrialType','BasicInformations\IndustrialTypeController');
-    Route::resource('/laboratoryType','BasicInformations\LaboratoryTypeController');
     Route::resource('/locationLab','BasicInformations\labLocationController');
+    Route::resource('/labDevelopment','BasicInformations\LabDevelopmentController');
     Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
     Route::resource('/objectiveUsage','BasicInformations\ObjectiveUsageController');
     Route::resource('/organisationType','BasicInformations\OrganisationTypeController');
@@ -58,6 +58,7 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
     Route::resource('/resultControl','BasicInformations\ResultControlController');
     Route::resource('/saleProduct','BasicInformations\SaleProductController');
+    Route::resource('/scienceTool','BasicInformations\EquipmentController');
     Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
     Route::resource('/testingCalibratingList','BasicInformations\TestingCalibratingListController');
     Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratingMethodController');

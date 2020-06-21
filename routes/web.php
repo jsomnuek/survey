@@ -49,7 +49,7 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/incomePerYear','BasicInformations\IncomePerYearController');
     Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
     Route::resource('/industrialType','BasicInformations\IndustrialTypeController');
-    Route::resource('/locationLab','BasicInformations\labLocationController');
+    Route::resource('/locationLab','BasicInformations\LocationLabController');
     Route::resource('/labDevelopment','BasicInformations\LabDevelopmentController');
     Route::resource('/laboratoryType','BasicInformations\LaboratoryTypeController');
     Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
@@ -59,11 +59,14 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
     Route::resource('/resultControl','BasicInformations\ResultControlController');
     Route::resource('/saleProduct','BasicInformations\SaleProductController');
-    Route::resource('/scienceTool','BasicInformations\EquipmentController');
+    Route::resource('/scienceTool','BasicInformations\ScienceToolController');
     Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
     Route::resource('/testingCalibratingList','BasicInformations\TestingCalibratingListController');
     Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratingMethodController');
     Route::resource('/testingCalibratingType', 'BasicInformations\TestingCalibratingTypeController');
+    
+    // Log Activities
+    Route::get('logActivity','LogActivityController@logActivity');
 });
 
 Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function(){

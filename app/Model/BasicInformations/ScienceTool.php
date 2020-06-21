@@ -5,13 +5,13 @@ namespace App\Model\BasicInformations;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Employee\EquipmentLab;
 
-class Equipment extends Model
+class ScienceTool extends Model
 {
-    protected $table = 'equipments';
+    protected $table = 'science_tools';
     public $primaryKey = 'id';
-    public $equipmentName = 'equipment_name';
-    public $equipmentAbbr = 'equipment_abbr';
-    public $equipmentStatus = 'equipment_status';
+    public $equipmentName = 'science_tool_name';
+    public $equipmentAbbr = 'science_tool_abbr';
+    public $equipmentStatus = 'science_tool_status';
     public $timestamps = TRUE;
 
     public function equipmentLabs()

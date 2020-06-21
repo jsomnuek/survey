@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard | Equipment')
+@section('title', 'Dashboard | Science Tool')
 
 @section('content_header')
     <h1>ข้อมูลเครื่องมือวิทยาศาสตร์</h1>
@@ -18,25 +18,24 @@
         @endforeach
       @endif
       <div class="card">
-        {!! Form::open(['action'=>['BasicInformations\EquipmentController@update', $editEquipment->id], 'method' => 'PUT']) !!}
+        {!! Form::open(['action'=>['BasicInformations\ScienceToolController@update', $editScienceTool->id], 'method' => 'PUT']) !!}
         <div class="card-body">
           <div class="form-group">
-            {{Form::label('equipmentName','ชื่อเครื่องมือ')}}
-            {{Form::text('equipmentName', $editEquipment->equipment_name, ['class'=>'form-control','required'])}}
+            {{Form::label('title','ชื่อเครื่องมือ')}}
+            {{Form::text('scienceToolName', $editScienceTool->science_tool_name, ['class'=>'form-control','required'])}}
           </div>
           <div class="form-group">
-            {{Form::label('equipmentAbbr','ชื่อย่อเครื่องมือ')}}
-            {{Form::text('equipmentAbbr', $editEquipment->equipment_abbr, ['class'=>'form-control','required'])}}
+            {{Form::label('title','ชื่อย่อเครื่องมือ')}}
+            {{Form::text('scienceToolAbbr', $editScienceTool->science_tool_abbr, ['class'=>'form-control','required'])}}
           </div>
           <div class="form-group">
-            {{Form::label('equipmentStatus','สถานะการใช้งานข้อมูล')}}
-            {{-- {{Form::text('estateStatus', $editEstate->estate_status, ['class'=>'form-control','required'])}} --}}
-            {{Form::select('equipmentStatus',[
+            {{Form::label('title','สถานะการใช้งานข้อมูล')}}
+            {{Form::select('ScienceToolStatus',[
               'A' => 'Active',
               'D' => 'Disable',
-          ],$editEquipment->equipment_status,['class'=>'form-control'])}}
+          ],$editScienceTool->science_tool_status,['class'=>'form-control'])}}
           </div>
-          <a href="/equipment"  class="btn btn-secondary">ย้อนกลับ</a>
+          <a href="/scienceTool"  class="btn btn-secondary">ย้อนกลับ</a>
           {{ Form::hidden('_method', 'PUT') }}
           {{ Form::submit('บันทึก',['class'=>'btn btn-primary']) }}
         </div>

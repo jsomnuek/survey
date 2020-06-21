@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard | Business Type')
+@section('title', 'Dashboard | Location of Laboratory')
 
 @section('content_header')
     <h1>แก้ไขสถานที่ต้ังห้องปฏิบัติการ</h1>
@@ -18,18 +18,18 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => ['BasicInformations\LabLocationController@update',$editLabLocation->id],'method'=>'PUT'])!!}
+            {!!Form::open(['action' => ['BasicInformations\LocationLabController@update',$editLocationLab->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('little','ชื่อสถานที่ต้ังห้องปฏิบัติการ')}}
-                {{Form::text('labLocationName',$editLabLocation->location_name,['class'=>'form-control','required'])}}
+                {{Form::text('locationLabName',$editLocationLab->location_name,['class'=>'form-control','required'])}}
               </div>
               <div class="form-group">
                 {{Form::label('title', 'สถานะการใช้งานข้อมูล')}}
-                {{Form::select('labLocationStatus',[
+                {{Form::select('locationLabStatus',[
                   'A' => 'Active',
                   'D' => 'Disable',
-              ], $editLabLocation->location_status,['class'=>'form-control'])}}
+              ], $editLocationLab->location_status,['class'=>'form-control'])}}
               </div>
               <a href="/labLocation" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::hidden('_method','PUT')}}

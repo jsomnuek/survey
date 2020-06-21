@@ -39,6 +39,27 @@
             <li class="nav-header">Role : {!! auth()->user()->role_id !!}</li>
 
             @if(Auth::user()->role_id == 1)
+
+            {{-- Management Menu --}}
+            <li class="nav-header">ข้อมูลการจัดการระบบ</li>
+                {{-- Log Activity Sub-menu --}}
+                <li class="nav-item has-treeview {{ Request::is('logActivity*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('logActivity*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-tag"></i>
+                        <p>ประวัติการใช้งานระบบ <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/logActivity') }}" class="nav-link {{ Request::is('logActivity') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>การใช้งานระบบทั้งหมด</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
             <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
                 {{-- List of Menu --}}
                 {{-- Part 1 : Organisation Infos --}}
@@ -60,11 +81,11 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
-                                    <a href="{{ url('/locationLab') }}" class="nav-link {{ Request::is('labLocation') ? 'active' : '' }}">
+                                    <a href="{{ url('/locationLab') }}" class="nav-link {{ Request::is('locationLab') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>รายการที่ตั้งห้องปฏิบัติการ</p>
                                     </a>
-                                    <a href="{{ url('/locationLab/create') }}" class="nav-link {{ Request::is('labLocation/create') ? 'active' : '' }}">
+                                    <a href="{{ url('/locationLab/create') }}" class="nav-link {{ Request::is('locationLab/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลที่ตั้งห้องปฏิบัติการ</p>
                                     </a>
@@ -692,6 +713,7 @@
                     </ul>
                 </li>
                 {{-- Other Basic Infos --}}
+                {{-- Add Country --}}
                 <li class="nav-item has-treeview {{ Request::is ('country*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is ('country*') ? 'active' : '' }}">

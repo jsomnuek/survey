@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard | Laboratory Location')
+@section('title', 'Dashboard | Location of Laboratory')
     
 @section('content_header')
     <h1>เพิ่มข้อมูลสถานที่ต้ังห้องปฏิบัติการ</h1>
@@ -18,13 +18,13 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => 'BasicInformations\LabLocationController@store','method' => 'POST','class' => 'was-validate'])!!}
+            {!!Form::open(['action' => 'BasicInformations\LocationLabController@store','method' => 'POST','class' => 'was-validate'])!!}
             <div class="card-body">
               <div class="form-group">
                 {{Form::label('title','ชื่อสถานที่ตั้งห้องปฏิบัติการ')}}
-                {{Form::text('labLocationName','',['class' => 'form-control','required'])}}
+                {{Form::text('locationLabName','',['class' => 'form-control','required'])}}
               </div>
-              <a href="/labLocation" class="btn btn-secondary">ย้อนกลับ</a>
+              <a href="/locationLab" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::submit('บันทึก',['class' => 'btn btn-primary'])}}
             </div>
             {!!Form::close()!!}

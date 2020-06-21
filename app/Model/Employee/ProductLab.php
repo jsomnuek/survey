@@ -4,7 +4,7 @@ namespace App\Model\Employee;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\BasicInformations\ProductType;
-use App\Model\BasicInformations\TestingCalibratingType;
+use App\Model\BasicInformations\ResultControl;
 
 class ProductLab extends Model
 {
@@ -13,7 +13,7 @@ class ProductLab extends Model
     protected $fillable = [
         'user_id',
         'product_lab_name',
-        'product_type_id',
+        'product_type_other',
         'product_lab_standard',
         'product_lab_test_name',
         'product_lab_test_process',
@@ -25,7 +25,7 @@ class ProductLab extends Model
         'product_lab_test_fee',
         'product_lab_material_ref',
         'product_lab_material_ref_from',
-        'product_lab_test_control',
+        'product_lab_result_control_other',
         'proficiency_testing',
         'proficiency_testing_by',
         'proficiency_testing_year',
@@ -38,8 +38,8 @@ class ProductLab extends Model
         return $this->belongsToMany(ProductType::class)->withTimestamps();
     }
 
-    // public function testingCalibratingType()
-    // {
-    //     return $this->belongsToMany(TestingCalibratingType::class)->withTimestamps();
-    // }
+    public function resultControls()
+    {
+        return $this->belongsToMany(ResultControl::class)->withTimestamps();
+    }
 }

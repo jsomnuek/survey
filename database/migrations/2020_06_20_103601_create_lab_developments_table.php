@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEquipmentsTable extends Migration
+class CreateLabDevelopmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateEquipmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipments', function (Blueprint $table) {
+        Schema::create('lab_developments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('equipment_name',255);
-            $table->string('equipment_abbr',15);
-            $table->string('equipment_status', 1)->default('A');
+            $table->string('lab_dev_name',255);
+            $table->string('lab_dev_status',1)->default('A');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateEquipmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipments');
+        Schema::dropIfExists('lab_developments');
     }
 }

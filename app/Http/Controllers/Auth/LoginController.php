@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Helpers\LogActivity;
 
 class LoginController extends Controller
 {
@@ -30,14 +31,17 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if (auth()->user()->role_id == 1 ) {
+            LogActivity::addToLog('Login success.');
             return '/dashboard';
         }
 
         if (auth()->user()->role_id == 2 ) {
+            LogActivity::addToLog('Login success.');
             return '/dashboard';
         }
 
         if (auth()->user()->role_id == 3 ) {
+            LogActivity::addToLog('Login success.');
             return '/dashboard';
         }
 

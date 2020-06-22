@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 // use App\Model\Employee\Organization;
 
-class LabLocation extends Model
+class LocationLab extends Model
 {
-    protected $table = 'lab_locations';
-    public $primaryKey = 'id';
-    public $labLocationName = 'location_name';
-    public $labLocationStatus = 'location_status';
+    protected $table = 'location_labs';
+    protected $primaryKey = 'id';
+    protected $fillable = ['location_name','location_status',];
+    
     public $timestamps = true;
 
     // public function organizations()

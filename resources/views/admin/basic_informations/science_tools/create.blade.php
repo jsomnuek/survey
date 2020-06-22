@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard | Equipment')
+@section('title', 'Dashboard | Science Tool')
 
 @section('content_header')
     <h1>ข้อมูลเครื่องมือวิทยาศาสตร์</h1>
@@ -18,17 +18,17 @@
         @endforeach
       @endif
       <div class="card">
-        {!!Form::open(['action'=>'BasicInformations\EquipmentController@store','method'=>'POST', 'class' => 'was-validated'])!!}
+        {!!Form::open(['action'=>'BasicInformations\ScienceToolController@store','method'=>'POST', 'class' => 'was-validated'])!!}
         <div class="card-body">
           <div class="form-group">
             {{Form::label('title','ชื่อเครื่องมือ')}}
-            {{Form::text('equipmentName','',['class'=>'form-control','required'])}}
+            {{Form::text('scienceToolName','',['class'=>'form-control','required'])}}
           </div>
           <div class="form-group">
             {{Form::label('title','ชื่อย่อเครื่องมือ')}}
-            {{Form::text('equipmentAbbr','',['class'=>'form-control','required'])}}
+            {{Form::text('scienceToolAbbr','',['class'=>'form-control','required'])}}
           </div>
-          <a href="/equipment"  class="btn btn-secondary">ย้อนกลับ</a>
+          <a href="/scienceTool"  class="btn btn-secondary">ย้อนกลับ</a>
           {{Form::submit('บันทึก',['class'=>'btn btn-primary'])}}
         </div>
         {!!Form::close()!!}

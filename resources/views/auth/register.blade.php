@@ -43,7 +43,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  required autocomplete="new-password">
                             </div>
                         </div>
 
@@ -79,10 +79,10 @@
                             <label for="user-role" class="col-md-4 col-form-label text-md-right">{{ __('สิทธิ์การใช้งาน') }}</label>
 
                             <div class="col-md-6">
-                                <select id="role_id" class="form-control select2 @error('role_id') is-invalid @enderror" name="role_id"  data-placeholder="-- โปรดเลือกสิทธิ์การใช้งาน --">
+                                <select style="width: 100%" id="role_id" class="form-control select2 @error('role_id') is-invalid @enderror" name="role_id" required data-placeholder="-- โปรดเลือกสิทธิ์การใช้งาน --">
                                     <option value="">-- โปรดเลือกสิทธิ์การใช้งาน --</option>
                                     @foreach ($showAllRole as $role)
-                                        <option value="{{ $role->id }}">{{ $role->role_name }}</option>
+                                        <option value="{{ $role->id }}" {{ (old ('role_id') == $role->id ? 'selected' : '')}}>{{ $role->role_name }}</option>
                                     @endforeach
 
                                 </select>
@@ -93,10 +93,10 @@
                             <label for="agency-id" class="col-md-4 col-form-label text-md-right">{{ __('หน่วยจ้างงาน') }}</label>
 
                             <div class="col-md-6">
-                                <select style="width: 100%" id="agency_id" class="form-control select2 @error('agency_id') is-invalid @enderror" name="agency_id"  data-placeholder="-- โปรดเลือกหน่วยจ้างงาน --">
+                                <select style="width: 100%" id="agency_id" class="form-control select2 @error('agency_id') is-invalid @enderror" name="agency_id" required data-placeholder="-- โปรดเลือกหน่วยจ้างงาน --">
                                     <option value="">-- โปรดเลือกหน่วยจ้างงาน --</option>
                                     @foreach ($showAllAgency as $agency)
-                                        <option value="{{ $agency->id }}">{{ $agency->agency_name }}</option>
+                                        <option value="{{ $agency->id }}" {{ (old ('agency_id') == $agency->id ? 'selected' : '')}}>{{ $agency->agency_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -81,7 +81,7 @@
             <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
                 {{-- List of Menu --}}
                 {{-- Part 1 : Organisation Infos --}}
-                <li class="nav-item has-treeview {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*','qualitySystem') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p class="">
@@ -90,6 +90,7 @@
                     </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        {{-- Location Lab Sub-menu --}}
                         <li class="nav-item has-treeview {{ Request::is('locationLab*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('locationLab*') ? 'active' : '' }}">
@@ -170,6 +171,7 @@
                                 </li>
                             </ul>
                         </li>
+                        {{-- Sale Product Sub-menu --}}
                         <li class="nav-item has-treeview {{ Request::is('saleProduct*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('saleProduct*') ? 'active' : '' }}">
@@ -190,6 +192,7 @@
                                 </li>
                             </ul>
                         </li>
+                        {{-- Industrial Type sub-menu --}}
                         <li class="nav-item has-treeview {{ Request::is('industrialType*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('industrialType*') ? 'active' : '' }}">
@@ -206,6 +209,27 @@
                                     <a href="{{ url('/industrialType/create') }}" class="nav-link {{ Request::is('industrialType/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลประเภทอุตสาหกรรม</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- Quality System Sub-menu --}}
+                        <li class="nav-item has-treeview {{ Request::is('qualitySystem*') ? 'menu-open' : '' }}">
+                            {{-- active --}}
+                            <a href="#" class="nav-link {{ Request::is('qualitySystem*') ? 'active' : '' }}">
+                                <i class="nav-icon fab fa-angellist"></i>
+                                <p>ระบบคุณภาพ<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    {{-- active --}}
+                                    <a href="{{ url('/qualitySystem') }}" class="nav-link {{ Request::is('qualitySystem') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>รายชื่อระบบคุณภาพ</p>
+                                    </a>
+                                    <a href="{{ url('/qualitySystem/create') }}" class="nav-link {{ Request::is('qualitySystem/create') ? 'active' : '' }}">
+                                        <i class="fas fa-plus-circle nav-icon "></i>
+                                        <p>เพิ่มข้อมูลระบบคุณภาพ</p>
                                     </a>
                                 </li>
                             </ul>

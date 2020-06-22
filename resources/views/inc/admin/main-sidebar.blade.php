@@ -36,31 +36,56 @@
                 with font-awesome or any other icon font library -->
                 <li class="nav-header d-none">Display None</li>
                 {{-- Basic Informations Menu  --}}
-                <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
+            <li class="nav-header">Role : {!! auth()->user()->role_id !!}</li>
+
+            @if(Auth::user()->role_id == 1)
+
+            {{-- Management Menu --}}
+            <li class="nav-header">ข้อมูลการจัดการระบบ</li>
+                {{-- Log Activity Sub-menu --}}
+                <li class="nav-item has-treeview {{ Request::is('logActivity*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('logActivity*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-tag"></i>
+                        <p>ประวัติการใช้งานระบบ <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/logActivity') }}" class="nav-link {{ Request::is('logActivity') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>การใช้งานระบบทั้งหมด</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
                 {{-- List of Menu --}}
-                <li class="nav-item has-treeview {{ Request::is('labLocation*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'menu-open' : '' }}">
+                {{-- Part 1 : Organisation Infos --}}
+                <li class="nav-item has-treeview {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
-                    <p>
-                        ข้อมูลองค์กร
+                    <p class="">
+                        ส่วนที่ 1 : องค์กร
                         <i class="right fas fa-angle-left"></i>
                     </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item has-treeview {{ Request::is('labLocation*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('locationLab*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('labLocation*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('locationLab*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-search-location"></i>
                                 <p>ที่ตั้งห้องปฏิบัติการ<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
-                                    <a href="{{ url('/labLocation') }}" class="nav-link {{ Request::is('labLocation') ? 'active' : '' }}">
+                                    <a href="{{ url('/locationLab') }}" class="nav-link {{ Request::is('locationLab') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>รายการที่ตั้งห้องปฏิบัติการ</p>
                                     </a>
-                                    <a href="{{ url('/labLocation/create') }}" class="nav-link {{ Request::is('labLocation/create') ? 'active' : '' }}">
+                                    <a href="{{ url('/locationLab/create') }}" class="nav-link {{ Request::is('locationLab/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลที่ตั้งห้องปฏิบัติการ</p>
                                     </a>
@@ -169,12 +194,12 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="nav-item has-treeview {{ Request::is('laboratoryType*','areaService*','fixedCost*','incomePerYear*','employeeTraining*','environmentManage*') ? 'menu-open' : '' }}">
+                {{-- Part 2 : Laboratory Infos--}}
+                <li class="nav-item has-treeview {{ Request::is('laboratoryType*','areaService*','fixedCost*','incomePerYear*','employeeTraining*','environmentManage*', 'educationLevel*','labDevelopment*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
-                        ข้อมูลห้องปฏิบัติการ
+                        ส่วนที่ 2 : ห้องปฏิบัติการ
                         <i class="right fas fa-angle-left"></i>
                     </p>
                     </a>
@@ -219,6 +244,27 @@
                                 </li>
                             </ul>
                         </li>
+                        {{-- Education Level --}}
+                        <li class="nav-item has-treeview {{ Request::is('educationLevel*') ? 'menu-open' : '' }}">
+                            {{-- active --}}
+                            <a href="#" class="nav-link {{ Request::is('educationLevel*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-graduation-cap"></i>
+                                <p>ระดับการศึกษา<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    {{-- active --}}
+                                    <a href="{{ url('/educationLevel') }}" class="nav-link {{ Request::is('educationLevel') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>รายการระดับการศึกษา</p>
+                                    </a>
+                                    <a href="{{ url('/educationLevel/create') }}" class="nav-link {{ Request::is('educationLevel/create') ? 'active' : '' }}">
+                                        <i class="fas fa-plus-circle nav-icon "></i>
+                                        <p>เพิ่มข้อมูลระดับการศึกษา</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item has-treeview {{ Request::is('fixedCost*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('fixedCost*') ? 'active' : '' }}">
@@ -255,6 +301,27 @@
                                     <a href="{{ url('/incomePerYear/create') }}" class="nav-link {{ Request::is('incomePerYear/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลรายได้ต่อปี</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- Lab Development --}}
+                        <li class="nav-item has-treeview {{ Request::is('labDevelopment*') ? 'menu-open' : '' }}">
+                            {{-- active --}}
+                            <a href="#" class="nav-link {{ Request::is('labDevelopment*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-book-reader"></i>
+                                <p>การพัฒนาห้องปฏิบัติการ<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    {{-- active --}}
+                                    <a href="{{ url('/labDevelopment') }}" class="nav-link {{ Request::is('labDevelopment') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>รายการพัฒนาห้องปฏิบัติการ</p>
+                                    </a>
+                                    <a href="{{ url('/labDevelopment/create') }}" class="nav-link {{ Request::is('labDevelopment/create') ? 'active' : '' }}">
+                                        <i class="fas fa-plus-circle nav-icon "></i>
+                                        <p>เพิ่มข้อมูลการพัฒนา</p>
                                     </a>
                                 </li>
                             </ul>
@@ -301,30 +368,30 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="nav-item has-treeview {{ Request::is('equipment*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
+                {{-- Part 3 : Science Tools --}}
+                <li class="nav-item has-treeview {{ Request::is('scienceTool*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
-                        ข้อมูลเครื่องมือวิทยาศาสตร์
+                        ส่วนที่ 3 : เครื่องมือ
                         <i class="right fas fa-angle-left"></i>
                     </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item has-treeview {{ Request::is('equipment*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('scienceTool*') ? 'menu-open' : '' }}">
                             {{-- active --}}
-                            <a href="#" class="nav-link {{ Request::is('equipment*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('scienceTool*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-flask"></i>
                                 <p>เครื่องมือวิทยาศาสตร์<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     {{-- active --}}
-                                    <a href="{{ url('/equipment') }}" class="nav-link {{ Request::is('equipment') ? 'active' : '' }}">
+                                    <a href="{{ url('/scienceTool') }}" class="nav-link {{ Request::is('equipment') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>รายชื่อเครื่องมือวิทยาศาสตร์</p>
                                     </a>
-                                    <a href="{{ url('/equipment/create') }}" class="nav-link {{ Request::is('equipment/create') ? 'active' : '' }}">
+                                    <a href="{{ url('/scienceTool/create') }}" class="nav-link {{ Request::is('equipment/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลเครื่องมือวิทยาศาสตร์</p>
                                     </a>
@@ -493,12 +560,12 @@
                         </li>
                     </ul>
                 </li>
-
+                {{-- Part 4 : Product & Service --}}
                 <li class="nav-item has-treeview {{ Request::is('productType*','testingCalibratingList*','testingCalibratingType*','testingCalibratingMethod*','resultControl*','proficiencyTesting*','certifyLaboratory*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p>
-                        ผลิตภัณฑ์ และการทดสอบ
+                        ส่วนที่ 4 : ผลิตภัณฑ์ / บริการ
                         <i class="right fas fa-angle-left"></i>
                     </p>
                     </a>
@@ -645,6 +712,8 @@
                         </li>
                     </ul>
                 </li>
+                {{-- Other Basic Infos --}}
+                {{-- Add Country --}}
                 <li class="nav-item has-treeview {{ Request::is ('country*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is ('country*') ? 'active' : '' }}">
@@ -665,10 +734,11 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
                 {{-- Menu for Employee --}}
                 <li class="nav-header">ข้อมูลแบบสำรวจ</li>
-                {{-- menu-open --}}
+                {{-- Organization Menu--}}
                 <li class="nav-item has-treeview {{ Request::is('organization*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('organization*') ? 'active' : '' }}">
@@ -689,9 +759,10 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview {{ Request::is('lab*') ? 'menu-open' : '' }}">
+                {{-- Laboratory Menu --}}
+                <li class="nav-item has-treeview {{ Request::is('labInformations*') ? 'menu-open' : '' }}">
                     {{-- active --}}
-                    <a href="#" class="nav-link {{ Request::is('lab*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('labInformations*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-balance-scale"></i>
                         <p>ห้องปฏิบัติการ <i class="right fas fa-angle-left"></i></p>
                     </a>
@@ -709,6 +780,7 @@
                         </li>
                     </ul>
                 </li>
+                {{-- EquipmentLab Menu --}}
                 <li class="nav-item has-treeview {{ Request::is('equipmentLab*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('equipmentLab*') ? 'active' : '' }}">
@@ -729,6 +801,7 @@
                         </li>
                     </ul>
                 </li>
+                {{-- ProductLab Menu --}}
                 <li class="nav-item has-treeview {{ Request::is('productLab*') ? 'menu-open' : '' }}">
                     {{-- active --}}
                     <a href="#" class="nav-link {{ Request::is('productLab*') ? 'active' : '' }}">

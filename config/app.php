@@ -234,6 +234,8 @@ return [
         'Form' => Collective\Html\FormFacades::class,
         'Html' => Collective\Html\HtmlFacades::class,
 
+        'LogActivity' => App\Helpers\LogActivity::class,
+
     ],
 
 ];

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Dashboard | Laboratory Location')
+@section('title','Dashboard | Location of Laboratory')
     
 @section('content_header')
     <h1>รายการสถานที่ต้ังห้องปฏิบัติการ</h1>
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-2">
             <div class="card-body">
-              @if (count($showAllLabLocation) > 0)
+              @if (count($showAllLocationLab) > 0)
                   <table class="table">
                     <thead>
                       <tr>
@@ -23,12 +23,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($showAllLabLocation as $labLocation)
+                      @foreach ($showAllLocationLab as $locationLab)
                           <tr>
-                            <td class="text-center">{{$labLocation->id}}</td>
-                            <td>{{$labLocation->location_name}}</td>
-                            <td class="text-center">{{$labLocation->location_status}}</td>
-                            <td><a href="/labLocation/{{$labLocation->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
+                            <td class="text-center">{{$locationLab->id}}</td>
+                            <td>{{$locationLab->location_name}}</td>
+                            <td class="text-center">{{$locationLab->location_status}}</td>
+                            <td><a href="/locationLab/{{$locationLab->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
                           </tr>
                       @endforeach
                     </tbody>

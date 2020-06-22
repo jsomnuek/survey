@@ -24,72 +24,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', 'HomeController@admin')->name('dashboard');
-
-Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
-
-Route::resource('/equipment','BasicInformations\EquipmentController');
-
-Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
-
-Route::resource('/productType', 'BasicInformations\ProductTypeController');
-
-Route::resource('/testingCalibratingType', 'BasicInformations\TestingCalibratingTypeController');
-
-Route::resource('/businessType','BasicInformations\BusinessTypeController');
-
-Route::resource('/industrialType','BasicInformations\IndustrialTypeController');
-
-Route::resource('/organisationType','BasicInformations\OrganisationTypeController');
-
-Route::resource('/laboratoryType','BasicInformations\LaboratoryTypeController');
-
-Route::resource('/certifyLaboratory','BasicInformations\CertifyLaboratoryController');
-
-Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
-
-Route::resource('/objectiveUsage','BasicInformations\ObjectiveUsageController');
-
-Route::resource('/areaService','BasicInformations\AreaServiceController');
-
-Route::resource('/fixedCost','BasicInformations\FixedCostController');
-
-Route::resource('/incomePerYear','BasicInformations\IncomePerYearController');
-
-Route::resource('/employeeTraining','BasicInformations\EmployeeTrainingController');
-
-Route::resource('/resultControl','BasicInformations\ResultControlController');
-
-Route::resource('/equipmentUsage','BasicInformations\EquipmentUsageController');
-
-Route::resource('/equipmentMaintenance','BasicInformations\EquipmentMaintenanceController');
-
-Route::resource('/labLocation','BasicInformations\LabLocationController');
-
-Route::resource('/saleProduct','BasicInformations\SaleProductController');
-
-Route::resource('/environmentManage','BasicInformations\EnvironmentManageController');
-
-Route::resource('/equipmentCalibration','BasicInformations\EquipmentCalibrationController');
-
-Route::resource('/equipmentManual','BasicInformations\EquipmentManualController');
-
-Route::resource('/equipmentRent','BasicInformations\EquipmentRentController');
-
-Route::resource('/testingCalibratingList','BasicInformations\TestingCalibratingListController');
-
-Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratingMethodController');
-
-Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
-
-// country
-Route::resource('/country', 'BasicInformations\CountryController');
-
-
 Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');
 Route::get('/tambons/{id}', 'Api\ProvinceInfoController@tambons');
 
+<<<<<<< HEAD
 Route::resource('/organization', 'Employee\OrganizationController');
 
 Route::resource('/lab', 'Employee\LabController');
@@ -106,5 +45,52 @@ Route::resource('/productLab','Employee\ProductLabController');
 // Route::get('/home', 'HomeController@index')->name('home');
 
 // Auth::routes();
+=======
+Route::middleware(['checkRole:admin'])->group(function() {
+    // Dashboard
+    Route::get('/dashboard', 'HomeController@admin')->name('dashboard');
 
-// Route::get('/home', 'HomeController@index')->name('home');
+    // Basic Information
+    Route::resource('/areaService','BasicInformations\AreaServiceController');
+    Route::resource('/businessType','BasicInformations\BusinessTypeController');
+    Route::resource('/certifyLaboratory','BasicInformations\CertifyLaboratoryController');
+    Route::resource('/country', 'BasicInformations\CountryController');
+    Route::resource('/educationLevel','BasicInformations\EducationLevelController');
+    Route::resource('/employeeTraining','BasicInformations\EmployeeTrainingController');
+    Route::resource('/environmentManage','BasicInformations\EnvironmentManageController');
+    Route::resource('/equipmentCalibration','BasicInformations\EquipmentCalibrationController');
+    Route::resource('/equipmentMaintenance','BasicInformations\EquipmentMaintenanceController');
+    Route::resource('/equipmentManual','BasicInformations\EquipmentManualController');
+    Route::resource('/equipmentRent','BasicInformations\EquipmentRentController');
+    Route::resource('/equipmentUsage','BasicInformations\EquipmentUsageController');
+    Route::resource('/fixedCost','BasicInformations\FixedCostController');
+    Route::resource('/incomePerYear','BasicInformations\IncomePerYearController');
+    Route::resource('/industrialEstate','BasicInformations\IndustrialEstateController');
+    Route::resource('/industrialType','BasicInformations\IndustrialTypeController');
+    Route::resource('/locationLab','BasicInformations\LocationLabController');
+    Route::resource('/labDevelopment','BasicInformations\LabDevelopmentController');
+    Route::resource('/laboratoryType','BasicInformations\LaboratoryTypeController');
+    Route::resource('/majorTechnology','BasicInformations\MajorTechnologyController');
+    Route::resource('/objectiveUsage','BasicInformations\ObjectiveUsageController');
+    Route::resource('/organisationType','BasicInformations\OrganisationTypeController');
+    Route::resource('/productType', 'BasicInformations\ProductTypeController');
+    Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
+    Route::resource('/resultControl','BasicInformations\ResultControlController');
+    Route::resource('/saleProduct','BasicInformations\SaleProductController');
+    Route::resource('/scienceTool','BasicInformations\ScienceToolController');
+    Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
+    Route::resource('/testingCalibratingList','BasicInformations\TestingCalibratingListController');
+    Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratingMethodController');
+    Route::resource('/testingCalibratingType', 'BasicInformations\TestingCalibratingTypeController');
+    
+    // Log Activities
+    Route::get('logActivity','LogActivityController@logActivity');
+});
+>>>>>>> e91c35383f9d8c4bfb13766cd18be42d384c3fa1
+
+Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function(){
+    Route::resource('/organization', 'Employee\OrganizationController');
+    Route::resource('/lab', 'Employee\LabController');
+    Route::resource('/equipmentLab','Employee\EquipmentLabController');
+    Route::resource('/productLab','Employee\ProductLabController');
+});

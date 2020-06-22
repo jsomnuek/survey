@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard | Laboratory Location')
+@section('title', 'Dashboard | Laboratory Development')
     
 @section('content_header')
-    <h1>เพิ่มข้อมูลสถานที่ต้ังห้องปฏิบัติการ</h1>
+    <h1>เพิ่มข้อมูลการพัฒนาห้องปฏิบัติการ</h1>
 @stop
 
 @section('content')
@@ -18,13 +18,13 @@
               @endforeach
           @endif
           <div class="card">
-            {!!Form::open(['action' => 'BasicInformations\LabLocationController@store','method' => 'POST','class' => 'was-validate'])!!}
+            {!!Form::open(['action' => 'BasicInformations\LabDevelopmentController@store','method' => 'POST','class' => 'was-validate'])!!}
             <div class="card-body">
               <div class="form-group">
-                {{Form::label('title','ชื่อสถานที่ตั้งห้องปฏิบัติการ')}}
-                {{Form::text('labLocationName','',['class' => 'form-control','required'])}}
+                {{Form::label('title','การพัฒนาห้องปฏิบัติการ')}}
+                {{Form::text('labDevName','',['class' => 'form-control','required'])}}
               </div>
-              <a href="/labLocation" class="btn btn-secondary">ย้อนกลับ</a>
+              <a href="/labDevelopment" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::submit('บันทึก',['class' => 'btn btn-primary'])}}
             </div>
             {!!Form::close()!!}

@@ -39,13 +39,13 @@
                     <div class="col-md-6">
                       <div class="form-group">
                           <label for="">3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ)</label>
-                          <select class="form-control @error('equipments_id') is-invalid @enderror" name="equipments_id" id="equipments_id" >
+                          <select class="form-control @error('science_tool_id') is-invalid @enderror" name="science_tool_id" id="science_tool_id" >
                             <option value="">โปรดเลือกเครื่องมือ</option>
                             @foreach ($scienceTools as $scienceTool)
-                                <option value="{{$scienceTool->id}}" {{ old('equipments_id') ==  $scienceTool->id ? 'selected' : ''}}> {{$scienceTool->science_tool_abbr}} : {{$scienceTool->science_tool_name}} </option>
+                                <option value="{{$scienceTool->id}}" {{ old('science_tool_id') ==  $scienceTool->id ? 'selected' : ''}}> {{$scienceTool->science_tool_abbr}} : {{$scienceTool->science_tool_name}} </option>
                             @endforeach
                           </select>
-                          @error('equipments_id')
+                          @error('science_tool_id')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                               {{-- <strong>text assignment</strong> --}}
@@ -53,10 +53,28 @@
                           @enderror
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="form-group">
-                        <label for="">อื่นๆ โปรดระบุ  : </label>
-                        <input class="form-control" type="text" name="" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('')}}">
+                        <label for="">ชื่อเครื่องมือ : </label>
+                        <input class="form-control @error('science_tool_other_name') is-invalid @enderror" type="text" name="science_tool_other_name" id="science_tool_other_name" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('science_tool_other_name')}}">
+                        @error('science_tool_other_name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            {{-- <strong>text assignment</strong> --}}
+                        </span>
+                        @enderror
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label for="">ชื่อย่อเครื่องมือ :</label>
+                        <input class="form-control @error('science_tool_other_abbr') is-invalid @enderror" type="text" name="science_tool_other_abbr" id="science_tool_other_abbr" placeholder="เช่น ABR" value="{{ old('science_tool_other_abbr')}}">
+                        @error('science_tool_other_abbr')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            {{-- <strong>text assignment</strong> --}}
+                        </span>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -132,7 +150,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">อื่นๆ โปรดระบุ  : </label>
-                        <input class="form-control" type="text" name="" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('')}}">
+                        <input class="form-control" type="text" name="major_technologies_other" id="major_technologies_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('major_technologies_other')}}">
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -227,7 +245,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">อื่นๆ โปรดระบุ  : </label>
-                        <input class="form-control" type="text" name="" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('')}}">
+                        <input class="form-control" type="text" name="equipment_maintenances_other" id="equipment_maintenances_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('')}}">
                       </div>
                     </div>
                     <div class="col-md-6">

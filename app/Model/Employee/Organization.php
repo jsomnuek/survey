@@ -11,6 +11,7 @@ use App\Model\BasicInformations\Country;
 use App\Model\BasicInformations\OrganisationType;
 use App\Model\BasicInformations\BusinessType;
 use App\Model\BasicInformations\IndustrialType;
+use App\Model\Employee\Lab;
 
 class Organization extends Model
 {
@@ -76,6 +77,12 @@ class Organization extends Model
     public function industrialTypes()
     {
         return $this->belongsToMany(IndustrialType::class)->withTimestamps();
+    }
+
+    // Defining Relationships One To Many
+    public function labs()
+    {
+        return $this->hasMany(Lab::class);
     }
 
 }

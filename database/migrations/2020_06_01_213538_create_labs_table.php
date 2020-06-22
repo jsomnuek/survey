@@ -15,7 +15,11 @@ class CreateLabsTable extends Migration
     {
         Schema::create('labs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->comment(''); //รหัสผู้ใช้งานระบบ
+            $table->boolean('completed')->default(false); //1.10
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

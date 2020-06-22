@@ -93,6 +93,7 @@ Route::get('/tambons/{id}', 'Api\ProvinceInfoController@tambons');
 Route::resource('/organization', 'Employee\OrganizationController');
 
 Route::resource('/lab', 'Employee\LabController');
+Route::get('/lab/createByOrgId/{id}', 'Employee\LabController@createByOrgId')->name('lab.createByOrgId');
 
 Route::resource('/equipmentLab','Employee\EquipmentLabController');
 

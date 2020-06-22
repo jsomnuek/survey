@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Model\Employee\Lab;
+use App\Model\Employee\Organization;
+use App\Model\BasicInformations\LabLocation;
+use App\Model\BasicInformations\IndustrialEstate;
+use App\Model\BasicInformations\LaboratoryType;
+use App\Model\BasicInformations\AreaService;
 
 class LabController extends Controller
 {
@@ -26,7 +31,25 @@ class LabController extends Controller
      */
     public function create()
     {
-        return view('employee.lab.create');
+        //
+    }
+
+    public function createByOrgId($orgId)
+    {
+        // data for loop select
+        $orgId = Organization::findOrFail($orgId);
+        $labLocations = LabLocation::where('location_status', 'A')->get();
+        $industrialEstates = IndustrialEstate::where('estate_status', 'A')->get();
+        $laboratoryTypes = LaboratoryType::where('lab_type_status', 'A')->get();
+        $areaServices = AreaService::where('area_service_status', 'A')->get();
+
+        return view('employee.lab.create', [
+            'orgId' => $orgId,
+            'labLocations' => $labLocations,
+            'industrialEstates' => $industrialEstates,
+            'laboratoryTypes' => $laboratoryTypes,
+            'areaServices' => $areaServices,
+        ]);
     }
 
     /**
@@ -37,7 +60,11 @@ class LabController extends Controller
      */
     public function store(Request $request)
     {
-        dump(request()->all());
+        // dd($request);
+        dd($request->all());
+
+        // validate the data with function
+        $this->validateLab();
     }
 
     /**
@@ -71,7 +98,11 @@ class LabController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        // dd($request->all());
+
+        // validate the data with function
+        $this->validateLab();
     }
 
     /**
@@ -83,5 +114,20 @@ class LabController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function validateLab()
+    {
+        return request()->validate([
+            'lab_name' => 'required',
+            'lab_code' => 'required',
+            'lab_location_id' => 'required',
+            'lab_location_other' => '',
+            'industrial_estate_id' => '',
+            'industrial_estate_other' => '',
+            'laboratory_type_id' => 'required',
+            'area_service_id' => 'required',
+            'lab_employee_amount' => 'required',
+        ]);
     }
 }

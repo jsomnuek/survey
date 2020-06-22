@@ -1,13 +1,7 @@
 $(document).ready(function() {
     // checkInput
     function checkInput() {
-        let inputTypeNumber = [
-            document.getElementById("org_postcode"),
-            // document.getElementById("org_lat"),
-            // document.getElementById("org_long"),
-            document.getElementById("org_capital"),
-            document.getElementById("org_employee_amount")
-        ];
+        let inputTypeNumber = [document.getElementById("lab_employee_amount")];
         let invalidChars = ["-", "+", "e", ".", "E"];
         for (i = 0; i < inputTypeNumber.length; i++) {
             inputTypeNumber[i].addEventListener("keydown", function(e) {

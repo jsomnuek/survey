@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Model\Employee;
-use App\Model\BasicInformations\Equipment;
+use App\Model\BasicInformations\ScienceTool;
 use Illuminate\Database\Eloquent\Model;
 
 class EquipmentLab extends Model
@@ -41,9 +41,9 @@ class EquipmentLab extends Model
     ];
     public $timestamps = TRUE;
 
-    public function equipments()
+    public function scienceTool()
     {
-        return $this->belongsTo(Equipment::class);
+        return $this->belongsTo(scienceTool::class);
     }
 }
 

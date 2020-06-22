@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller;
 use App\Model\Employee\EquipmentLab;
-use App\Model\BasicInformations\Equipment;
+use App\Model\BasicInformations\ScienceTool;
 use App\Model\BasicInformations\MajorTechnology;
 use App\Model\BasicInformations\TechnicalEquipment;
 use App\Model\BasicInformations\ObjectiveUsage;
@@ -40,7 +40,7 @@ class EquipmentLabController extends Controller
      */
     public function create()
     {
-        $allEquipments = Equipment::where('equipment_status','A')->get();
+        $allScienceTool = ScienceTool::where('science_tool_status','A')->get();
         $allMajorTechnology = MajorTechnology::where('major_tech_status','A')->get();
         $allTechnicalEquipment = TechnicalEquipment::where('technical_equipment_status','A')->get();
         $allObjectiveUsage = ObjectiveUsage::where('obj_usage_status','A')->get();
@@ -50,7 +50,7 @@ class EquipmentLabController extends Controller
         $allEquipmentManual = EquipmentManual::where('equipment_manual_status','A')->get();
         $allEquipmentRent = EquipmentRent::where('equipment_rent_status','A')->get();
         $data = [
-            'equipments' => $allEquipments,
+            'scienceTools' => $allScienceTool,
             'majorTechnologies' => $allMajorTechnology,
             'technicalEquipments' => $allTechnicalEquipment,
             'objectiveUsages' => $allObjectiveUsage,

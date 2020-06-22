@@ -58,6 +58,9 @@ class EquipmentRentController extends Controller
         $insertEquipmentRent->equipment_rent_status = 'A';
         $insertEquipmentRent->save();
 
+        // create log activity
+        LogActivity::addToLog('Add new equipment rents : " ' . $insertEquipmentRent->equipment_rent_name . ' " successfully.');
+
         //retuen index view
         return redirect('/equipmentRent');
     }
@@ -101,6 +104,9 @@ class EquipmentRentController extends Controller
         $updateEquipmentRent->equipment_rent_name = $request->input('equipmentRentName');
         $updateEquipmentRent->equipment_rent_status = $request->input('equipmentRentStatus');
         $updateEquipmentRent->save();
+
+        // create log activity
+        LogActivity::addToLog('Update equipment rents : " ' . $updateEquipmentRent->equipment_rent_name . ' " successfully.');
 
         //retuen index view
         return redirect('/equipmentRent');

@@ -4,7 +4,7 @@
 		
 <div class="container">
 	<h1>Log Activity Lists</h1>
-	<table class="table table-bordered">
+	<table class="table table-bordered" id="dt1">
 		<tr>
 			<th>No</th>
 			<th>Subject</th>
@@ -31,4 +31,13 @@
 		@endif
 	</table>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
+

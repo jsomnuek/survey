@@ -58,6 +58,9 @@ class EquipmentUsageController extends Controller
         $insertEquipmentUsage->equipment_usage_status = 'A';
         $insertEquipmentUsage->save();
 
+        // create log activity
+        LogActivity::addToLog('Add new equipment usage : " ' . $insertEquipmentUsage->equipment_usage_name . ' " successfully.');
+
         //return index view
         return redirect('/equipmentUsage');
 
@@ -103,6 +106,10 @@ class EquipmentUsageController extends Controller
         $updateEquipmentUsage->equipment_usage_status = $request->input('equipmentUsageStatus');
         $updateEquipmentUsage->save();
 
+        // create log activity
+        LogActivity::addToLog('Update equipment usage : " ' . $updateEquipmentUsage->equipment_usage_name . ' " successfully.');
+
+        
         //return index view
         return redirect('/equipmentUsage');
 

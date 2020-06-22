@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -10,6 +10,20 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+
+                        <div class="form-group row">
+                            <label for="national-id" class="col-md-4 col-form-label text-md-right">{{ __('หมายเลขประจำตัวประชาชน') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="national_id" type="number" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" required autofocus>
+
+                                @error('national_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ชื่อ - นามสกุล') }}</label>
@@ -29,7 +43,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +57,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +71,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
                             </div>
                         </div>
 
@@ -65,7 +79,7 @@
                             <label for="user-role" class="col-md-4 col-form-label text-md-right">{{ __('สิทธิ์การใช้งาน') }}</label>
 
                             <div class="col-md-6">
-                                <select id="role_id" class="form-control select2 @error('role_id') is-invalid @enderror" name="role_id" required data-placeholder="-- โปรดเลือกสิทธิ์การใช้งาน --">
+                                <select id="role_id" class="form-control select2 @error('role_id') is-invalid @enderror" name="role_id"  data-placeholder="-- โปรดเลือกสิทธิ์การใช้งาน --">
                                     <option value="">-- โปรดเลือกสิทธิ์การใช้งาน --</option>
                                     @foreach ($showAllRole as $role)
                                         <option value="{{ $role->id }}">{{ $role->role_name }}</option>
@@ -79,7 +93,7 @@
                             <label for="agency-id" class="col-md-4 col-form-label text-md-right">{{ __('หน่วยจ้างงาน') }}</label>
 
                             <div class="col-md-6">
-                                <select id="agency_id" class="form-control select2 @error('agency_id') is-invalid @enderror" name="agency_id" required data-placeholder="-- โปรดเลือกหน่วยจ้างงาน --">
+                                <select style="width: 100%" id="agency_id" class="form-control select2 @error('agency_id') is-invalid @enderror" name="agency_id"  data-placeholder="-- โปรดเลือกหน่วยจ้างงาน --">
                                     <option value="">-- โปรดเลือกหน่วยจ้างงาน --</option>
                                     @foreach ($showAllAgency as $agency)
                                         <option value="{{ $agency->id }}">{{ $agency->agency_name }}</option>

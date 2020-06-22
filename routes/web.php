@@ -28,24 +28,6 @@ Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');
 Route::get('/tambons/{id}', 'Api\ProvinceInfoController@tambons');
 
-<<<<<<< HEAD
-Route::resource('/organization', 'Employee\OrganizationController');
-
-Route::resource('/lab', 'Employee\LabController');
-Route::get('/lab/createByOrgId/{id}', 'Employee\LabController@createByOrgId')->name('lab.createByOrgId');
-
-Route::resource('/equipmentLab','Employee\EquipmentLabController');
-
-Route::resource('/productLab','Employee\ProductLabController');
-
-
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
-// Auth::routes();
-=======
 Route::middleware(['checkRole:admin'])->group(function() {
     // Dashboard
     Route::get('/dashboard', 'HomeController@admin')->name('dashboard');
@@ -86,11 +68,11 @@ Route::middleware(['checkRole:admin'])->group(function() {
     // Log Activities
     Route::get('logActivity','LogActivityController@logActivity');
 });
->>>>>>> e91c35383f9d8c4bfb13766cd18be42d384c3fa1
 
 Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function(){
     Route::resource('/organization', 'Employee\OrganizationController');
     Route::resource('/lab', 'Employee\LabController');
+    Route::get('/lab/createByOrgId/{id}', 'Employee\LabController@createByOrgId')->name('lab.createByOrgId');
     Route::resource('/equipmentLab','Employee\EquipmentLabController');
     Route::resource('/productLab','Employee\ProductLabController');
 });

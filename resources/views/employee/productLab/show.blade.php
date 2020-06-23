@@ -31,18 +31,18 @@
                                 <td>{{ $productLabs->product_lab_name }}</td>
                             </tr>
                             <tr>
-                                <th class="pl-5" style="width: 30%;">ชื่อหน่วยงานย่อย ระดับที่ 1 :</th>
-                                <td>{{ $org->org_name_level_1 }}</td>
+                                <th class="" style="width: 30%;">4.2 ประเภทผลิตภัณฑ์</th>
+                                <td></td>
                             </tr>
                             <tr>
-                                <th class="pl-5" style="width: 30%;">ชื่อหน่วยงานย่อย ระดับที่ 2 :</th>
-                                <td>{{ $org->org_name_level_2 }}</td>
+                                <th class="" style="width: 30%;">4.3 มาตราฐานผลิตภัณฑ์ :</th>
+                                <td>{{ $productLabs->product_lab_standard }}</td>
                             </tr>
                             <tr>
-                                <th class="" style="width: 30%;">1.2 รหัสหน่วยงาน (AABCC) :</th>
-                                <td>{{ $org->org_code }}</td>
+                                <th class="" style="width: 30%;">4.4 ชื่อรายการทดสอบ/สอบเทียบ :</th>
+                                <td>{{ $productLabs->product_lab_test_name }}</td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th class="" style="width: 30%;">1.3 หมายเลขประจำหน่วยงาน :</th>
                                 <td>{{ $org->org_number }}</td>
                             </tr>
@@ -173,7 +173,7 @@
                                         <li>{{ $org->industrial_type_other }}</li>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>

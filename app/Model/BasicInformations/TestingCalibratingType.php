@@ -12,8 +12,8 @@ class TestingCalibratingType extends Model
     public $testingCalibratingTypeStatus = 'testing_calibrating_type_status';
     public $timestamps = true;
 
-    public function productLab()
+    public function productLabs()
     {
-        return $this->belongsToMany(ProductLab::class)->withTimestamps();
+        return $this->hasMany(ProductLab::class);
     }
 }

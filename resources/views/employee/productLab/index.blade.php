@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{ $allProductLab->id }}</td>
                                 <td>{{ $allProductLab->product_lab_name }}</td>
-                                <td>{{ $allProductLab->testing_list_name}}</td>
+                                <td>{{ $allProductLab->testingCalibratingList->testing_list_name}}</td>
                                 <td><a href="/productLab/{{ $allProductLab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a> 
                                     {{-- <a href="/productLab/{{ $allProductLab->id }}/edit" class="btn btn-warning btn-sm">แก้ไขข้อมูล</a> --}}
                                 </td>

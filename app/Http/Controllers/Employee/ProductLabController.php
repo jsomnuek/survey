@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Model\Employee\ProductLab;
 use App\Model\BasicInformations\ProductType;
-use App\Model\BasicInformations\IndustrialType;
-use App\Model\BasicInformations\TestingCalibratingType;
 use App\Model\BasicInformations\TestingCalibratingList;
-use App\Model\BasicInformations\CertifyLaboratory;
+use App\Model\BasicInformations\TestingCalibratingType;
+use App\Model\BasicInformations\TestingCalibratingMethod;
 use App\Model\BasicInformations\ResultControl;
+use App\Model\BasicInformations\CertifyLaboratory;
 
 class ProductLabController extends Controller
 {
@@ -43,19 +43,19 @@ class ProductLabController extends Controller
      */
     public function create()
     {
-        $allIndustrialTypes = IndustrialType::where('industrial_type_status','A')->get();
         $allProductTypes = ProductType::where('product_type_status','A')->get();
-        $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();
         $allTestingCalibratingList = TestingCalibratingList::where('testing_list_status','A')->get();
-        $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
+        $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();
+        $allTestingCalibratingMethod = TestingCalibratingMethod::where('testing_method_status','A')->get();
         $allResultControl = ResultControl::where('result_control_status','A')->get();
+        $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
         $data = [
-            'industrialTypes' => $allIndustrialTypes,
             'productTypes' => $allProductTypes,
-            'testingCalibratingTypes'=>$allTestingCalibratingType,
-            'testingCalibratingLists'=>$allTestingCalibratingList,
-            'cerifyLaboratories'=>$allCertifyLaboratory,
+            'testingCalibratingLists' => $allTestingCalibratingList,
+            'testingCalibratingTypes' => $allTestingCalibratingType,
+            'testingCalibratingMethods' => $allTestingCalibratingMethod,
             'resultControls' => $allResultControl,
+            'cerifyLaboratories'=>$allCertifyLaboratory,
         ];
         // return $data;
         return view('employee.productLab.create')->with($data);
@@ -79,12 +79,15 @@ class ProductLabController extends Controller
         $productLab->user_id = auth()->user()->id;
         $productLab->product_lab_name = $request['product_lab_name'];
         //$productLab->product_type_id = $request['product_type_id'];
+        $productLab->product_type_other = $request['product_type_other'];
         $productLab->product_lab_standard = $request['product_lab_standard'];
         $productLab->product_lab_test_name = $request['product_lab_test_name'];
-        $productLab->product_lab_test_process = $request['product_lab_test_process'];
+        // for4.5 
+        $productLab->testing_calibrating_list_id = $request['testing_calibrating_list_id'];
         $productLab->testing_calibrating_type_id = $request['testing_calibrating_type_id'];
-        $productLab->product_lab_test_method = $request['product_lab_test_method'];
-        $productLab->product_lab_test_method_detail = $request['product_lab_test_method_detail'];
+        $productLab->testing_calibrating_type_other = $request['testing_calibrating_type_other'];
+        $productLab->testing_calibrating_method_id = $request['testing_calibrating_method_id'];
+        $productLab->testing_calibrating_method_detail = $request['testing_calibrating_method_detail'];
         $productLab->product_lab_test_unit = $request['product_lab_test_unit'];
         $productLab->product_lab_test_duration = $request['product_lab_test_duration'];
         $productLab->product_lab_test_fee = $request['product_lab_test_fee'];
@@ -102,8 +105,8 @@ class ProductLabController extends Controller
         $productLab->productTypes()->sync($request->product_type_id, false);
         $productLab->resultControls()->sync($request->result_control_id, false);
 
-        //return $productLab;
-        return redirect()->route('productLab.edit', $productLab->id);
+        return $productLab;
+        //return redirect()->route('productLab.edit', $productLab->id);
     }
 
     /**

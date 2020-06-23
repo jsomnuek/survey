@@ -83,8 +83,9 @@
                                     <label for="">4.6 ประเภทรายการทดสอบ/สอบเทียบ</label>
                                     <select class="form-control  @error('product_lab_test_process') is-invalid @enderror" name="product_lab_test_process" id="product_lab_test_process" value="{{ old('product_lab_test_process')}}">
                                         <option value='' >โปรดเลือกรายการทดสอบ/สอบเทียบ</option>
-                                        <option value='1' {{ old('product_lab_test_process') ==  1? 'selected' : ''}}>ดำเนินการแล้ว</option>
-                                        <option value='2' {{ old('product_lab_test_process') ==  2? 'selected' : ''}}>อยู่ระหว่างพัฒนา/วิจัย/ทดสอบ</option>
+                                        @foreach ($testingCalibratingLists as $testingCalibratingList)
+                                            <option value="{{$testingCalibratingList->id}}" {{ old('product_lab_test_process') ==  $testingCalibratingList->id ? 'selected' : ''}} > {{$testingCalibratingList->testing_list_name}} </>
+                                        @endforeach
                                     </select>
                                     @error('product_lab_test_process')
                                     <span class="invalid-feedback" role="alert">

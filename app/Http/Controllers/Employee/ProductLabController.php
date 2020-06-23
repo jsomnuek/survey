@@ -8,6 +8,7 @@ use App\Model\Employee\ProductLab;
 use App\Model\BasicInformations\ProductType;
 use App\Model\BasicInformations\IndustrialType;
 use App\Model\BasicInformations\TestingCalibratingType;
+use App\Model\BasicInformations\TestingCalibratingList;
 use App\Model\BasicInformations\CertifyLaboratory;
 use App\Model\BasicInformations\ResultControl;
 
@@ -31,6 +32,7 @@ class ProductLabController extends Controller
     public function index()
     {
         $allProductLab = ProductLab::paginate(2);
+        //return $allProductLab;
         return view('employee.productlab.index',['allProductLabs' => $allProductLab]);
     }
 
@@ -44,12 +46,14 @@ class ProductLabController extends Controller
         $allIndustrialTypes = IndustrialType::where('industrial_type_status','A')->get();
         $allProductTypes = ProductType::where('product_type_status','A')->get();
         $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();
+        $allTestingCalibratingList = TestingCalibratingList::where('testing_list_status','A')->get();
         $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
         $allResultControl = ResultControl::where('result_control_status','A')->get();
         $data = [
             'industrialTypes' => $allIndustrialTypes,
             'productTypes' => $allProductTypes,
             'testingCalibratingTypes'=>$allTestingCalibratingType,
+            'testingCalibratingLists'=>$allTestingCalibratingList,
             'cerifyLaboratories'=>$allCertifyLaboratory,
             'resultControls' => $allResultControl,
         ];

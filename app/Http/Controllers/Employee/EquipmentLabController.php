@@ -29,7 +29,7 @@ class EquipmentLabController extends Controller
         //$allEstate = IndustrialEstate::all();
         //dd($allEquipmentLab->all());
         //return $allOrgData;
-
+        //return $allEquipmentLab;
         return view('employee.equipmentLab.index',['showEquipmentLab'=>$allEquipmentLab]);
     }
 
@@ -74,7 +74,9 @@ class EquipmentLabController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-
+        
+        //Validate Check
+        $this->validateEquipmentLab();
 
         //clean up
         $equipmentLab = new EquipmentLab;
@@ -115,7 +117,6 @@ class EquipmentLabController extends Controller
 
         //dd($equipmentLab->all());
         $equipmentLab->save();
-        
         $equipmentLab->majorTechnologies()->sync($request->major_technologies_id, false);
         $equipmentLab->objectiveUsages()->sync($request->objective_usages_id, false);
 
@@ -181,37 +182,9 @@ class EquipmentLabController extends Controller
      */
     public function update(Request $request, EquipmentLab $equipmentLab)
     {
-        $request->validate([
-            'equipment_lab_id' => 'required',
-            'equipments_id' =>'required',
-            'equipment_name_th' =>'',
-            'equipment_brand' =>'',
-            'equipment_model' =>'',
-            'equipment_org_code' =>'',
-            'major_technologies_id' =>'required',
-            'equipment_year' =>'',
-            'equipment_price' =>'',
-            'equipment_supplier' =>'',
-            'objective_usages_id' =>'required',
-            'equipment_usages_id' =>'required',
-            'equipment_ability' =>'',
-            'equipment_pic' =>'',
-            'equipment_calibrations_id' =>'',
-            'equipment_calibration_by' =>'',
-            'equipment_calibration_year' =>'',
-            'equipment_maintenances_id' =>'required',
-            'equipment_maintenance_budget' =>'',
-            'equipment_admin_name' =>'required',
-            'equipment_admin_phone' =>'',
-            'equipment_admin_email' =>'',
-            'equipment_manuals_id' =>'',
-            'equipment_manual_name' =>'',
-            'equipment_manual_locate' =>'',
-            'equipment_rent_id' =>'required',
-            'equipment_rent_fee' =>'',
-            'equipment_rent_detail' =>'',
 
-        ]);
+        //Validate Check
+        $this->validateEquipmentLab();
 
         $equipmentLab = EquipmentLab::find($equipmentLab->id);
         $equipmentLab->equipment_lab_id = $request['equipment_lab_id'];
@@ -264,8 +237,6 @@ class EquipmentLabController extends Controller
     protected function validateEquipmentLab()
     {
         return request()->validate([
-            'product_lab_name' => 'required|unique:product_labs',
-            'product_type_id' => ['required'],
             'equipment_lab_id' =>'',
             'science_tool_id' =>'' ,
             'science_tool_other_name' =>'' ,
@@ -277,9 +248,9 @@ class EquipmentLabController extends Controller
             'equipment_year'=>'' ,
             'equipment_price'=>'' ,
             'equipment_supplier'=>'' ,
-            'major_technologies_id'=>'' ,
+            'major_technologies_id'=>['required'] ,
             'major_technologies_other'=>'' ,
-            //'objective_usages_id')->comment('วัตถุประสงค์การใช้งาน');                           //3.11วัตถุประสงค์การใช้งาน=>'' ,
+            'objective_usages_id' => ['required'],
             'equipment_usages_id'=>'' ,
             'equipment_ability'=>'' ,
             'equipment_pic'=>'' ,

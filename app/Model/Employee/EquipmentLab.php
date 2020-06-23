@@ -43,6 +43,10 @@ class EquipmentLab extends Model
     ];
     public $timestamps = TRUE;
 
+    public function scienceTools()
+    {
+        return $this->belongsTo(ScienceTool::class);
+    }
     public function majorTechnologies()
     {
         return $this->belongsToMany(MajorTechnology::class);

@@ -29,7 +29,7 @@
                             <tr>
                                 <th style="width: 10px">รหัสผลิตภัณฑ์</th>
                                 <th>ชื่อผลิตภัณฑ์</th>
-                                <th>ประเภทผลิตภัณฑ์</th>
+                                <th>ประเภทรายการ</th>
                                 <th style="width: 10em"><i class="fas fa-users-cog"></i></th>
                             </tr>
                         </thead>
@@ -38,9 +38,9 @@
                             <tr>
                                 <td>{{ $allProductLab->id }}</td>
                                 <td>{{ $allProductLab->product_lab_name }}</td>
-                                <td>{{ $allProductLab->productType->product_type_name }}</td>
+                                <td>{{ $allProductLab->testing_list_name}}</td>
                                 <td><a href="/productLab/{{ $allProductLab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a> 
-                                    <a href="/productLab/{{ $allProductLab->id }}/edit" class="btn btn-warning btn-sm">แก้ไขข้อมูล</a>
+                                    {{-- <a href="/productLab/{{ $allProductLab->id }}/edit" class="btn btn-warning btn-sm">แก้ไขข้อมูล</a> --}}
                                 </td>
                                 
                             </tr>                                

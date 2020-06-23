@@ -78,7 +78,7 @@ class RegisterController extends Controller
         $registerUser->save();
 
         // create log activity
-        LogActivity::addToLog('Add new user : " ' . $registerUser->name . ' " successfully.');
+        LogActivity::addToLog('Add user : " ' . $registerUser->name . ' " successfully.');
 
         return redirect('/dashboard');
 

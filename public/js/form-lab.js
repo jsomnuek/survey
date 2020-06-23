@@ -19,136 +19,180 @@ $(document).ready(function() {
     checkInput();
 
     // Check Select Option
-    // 1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : กรณีเลือกอื่นๆ
-    function checkSaleProduct() {
+    // 2.3 ที่ตั้งห้องปฏิบัติการ : กรณีเลือกนิคมอุตสาหกรรม หรือ อื่นๆ
+    function checkLocationLab() {
         // this value
-        var data = $("#sale_products").val();
-        if (data != null) {
-            for (i = 0; i < data.length; i++) {
-                if (data[i] == "2") {
-                    var saleProductId = 2;
-                }
-            }
-        }
-        if (saleProductId == 2) {
-            $("#display_country").removeClass("d-none");
-            $("#countrys").prop("required", true);
+        var locationLabId = $("#lab_location_id").val();
+        if (locationLabId == "3") {
+            $("#display_industrial_estate_id").removeClass("d-none");
+            $("#industrial_estate_id").prop("required", true);
         } else {
-            $("#display_country").addClass("d-none");
-            $("#countrys")
+            $("#display_industrial_estate_id").addClass("d-none");
+            $("#industrial_estate_id")
                 .prop("required", false)
                 .val(null)
                 .trigger("change");
         }
+        if (locationLabId == "4") {
+            $("#display_lab_location_other").removeClass("d-none");
+            $("#lab_location_other").prop("required", true);
+        } else {
+            $("#display_lab_location_other").addClass("d-none");
+            $("#lab_location_other")
+                .prop("required", false)
+                .val(null);
+        }
         // event on selected
-        $("#sale_products").on("select2:select select2:unselect", function() {
-            var data = $("#sale_products").val();
-            if (data != null) {
-                for (i = 0; i < data.length; i++) {
-                    if (data[i] == "2") {
-                        var saleProductId = 2;
-                    }
-                }
-            }
-            if (saleProductId == 2) {
-                $("#display_country").removeClass("d-none");
-                $("#countrys").prop("required", true);
+        $("#lab_location_id").on("select2:select select2:unselect", function() {
+            var locationLabId = $("#lab_location_id").val();
+            if (locationLabId == "3") {
+                $("#display_industrial_estate_id").removeClass("d-none");
+                $("#industrial_estate_id").prop("required", true);
             } else {
-                $("#display_country").addClass("d-none");
-                $("#countrys")
+                $("#display_industrial_estate_id").addClass("d-none");
+                $("#industrial_estate_id")
                     .prop("required", false)
                     .val(null)
                     .trigger("change");
             }
+            if (locationLabId == "4") {
+                $("#display_lab_location_other").removeClass("d-none");
+                $("#lab_location_other").prop("required", true);
+            } else {
+                $("#display_lab_location_other").addClass("d-none");
+                $("#lab_location_other")
+                    .prop("required", false)
+                    .val(null);
+            }
         });
     }
-    checkSaleProduct();
+    checkLocationLab();
 
-    // 1.8 ประเภทองค์กร : กรณีเลือกอื่นๆ
-    function checkOrganisationType() {
+    function checkindEstateId() {
         // this value
-        var data = $("#organisation_type_id").val();
-        if (data != null) {
-            for (i = 0; i < data.length; i++) {
-                if (data[i] == "5") {
-                    var orgTypeId = 5;
-                }
-            }
-        }
-        if (orgTypeId == 5) {
-            $("#display_org_type_other").removeClass("d-none");
-            $("#organisation_type_other").prop("required", true);
+        var indEstateId = $("#industrial_estate_id").val();
+        if (indEstateId == "58") {
+            $("#display_industrial_estate_other").removeClass("d-none");
+            $("#industrial_estate_other").prop("required", true);
         } else {
-            $("#display_org_type_other").addClass("d-none");
-            $("#organisation_type_other").prop("required", false);
-            $("#organisation_type_other").val(null);
+            $("#display_industrial_estate_other").addClass("d-none");
+            $("#industrial_estate_other")
+                .prop("required", false)
+                .val(null);
         }
-        // event on selected
-        $("#organisation_type_id").on(
-            "select2:select select2:unselect",
-            function() {
-                var data = $("#organisation_type_id").val();
-                if (data != null) {
-                    for (i = 0; i < data.length; i++) {
-                        if (data[i] == "5") {
-                            var orgTypeId = 5;
-                        }
-                    }
-                }
-                if (orgTypeId == 5) {
-                    $("#display_org_type_other").removeClass("d-none");
-                    $("#organisation_type_other").prop("required", true);
-                } else {
-                    $("#display_org_type_other").addClass("d-none");
-                    $("#organisation_type_other").prop("required", false);
-                    $("#organisation_type_other").val(null);
-                }
+        // Event On
+        $("#industrial_estate_id").on("change", function() {
+            var indEstateId = $(this).val();
+            if (indEstateId == "58") {
+                $("#display_industrial_estate_other").removeClass("d-none");
+                $("#industrial_estate_other").prop("required", true);
+            } else {
+                $("#display_industrial_estate_other").addClass("d-none");
+                $("#industrial_estate_other")
+                    .prop("required", false)
+                    .val(null);
             }
-        );
+        });
     }
-    checkOrganisationType();
+    checkindEstateId();
 
-    // 1.10 ประเภทอุตสาหกรรม : กรณีเลือก อื่นๆ
-    function checkIndustrialType() {
-        // this value
-        var data = $("#industrial_types").val();
-        if (data != null) {
-            for (i = 0; i < data.length; i++) {
-                if (data[i] == "39") {
-                    var indTypeId = 39;
-                }
-            }
+    // 2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ
+    function educationLevelAmount() {
+        let edu_level_amount_1 = $("#education_level_amount_1").val();
+        let edu_level_amount_2 = $("#education_level_amount_2").val();
+        let edu_level_amount_3 = $("#education_level_amount_3").val();
+        let edu_level_amount_4 = $("#education_level_amount_4").val();
+        let edu_level_amount_5 = $("#education_level_amount_5").val();
+        let edu_level_amount_6 = $("#education_level_amount_6").val();
+        let edu_level_amount_7 = $("#education_level_amount_7").val();
+        if (edu_level_amount_1 == "") {
+            $("#education_level_amount_1").val(0);
         }
-        if (indTypeId == 39) {
-            $("#display_ind_type_other").removeClass("d-none");
-            $("#industrial_type_other").prop("required", true);
-        } else {
-            $("#display_ind_type_other").addClass("d-none");
-            $("#industrial_type_other").prop("required", false);
-            $("#industrial_type_other").val(null);
+        if (edu_level_amount_2 == "") {
+            $("#education_level_amount_2").val(0);
         }
-        // event on selected
-        $("#industrial_types").on(
-            "select2:select select2:unselect",
-            function() {
-                var data = $("#industrial_types").val();
-                if (data != null) {
-                    for (i = 0; i < data.length; i++) {
-                        if (data[i] == "39") {
-                            var indTypeId = 39;
-                        }
-                    }
-                }
-                if (indTypeId == 39) {
-                    $("#display_ind_type_other").removeClass("d-none");
-                    $("#industrial_type_other").prop("required", true);
-                } else {
-                    $("#display_ind_type_other").addClass("d-none");
-                    $("#industrial_type_other").prop("required", false);
-                    $("#industrial_type_other").val(null);
-                }
-            }
-        );
+        if (edu_level_amount_3 == "") {
+            $("#education_level_amount_3").val(0);
+        }
+        if (edu_level_amount_4 == "") {
+            $("#education_level_amount_4").val(0);
+        }
+        if (edu_level_amount_5 == "") {
+            $("#education_level_amount_5").val(0);
+        }
+        if (edu_level_amount_6 == "") {
+            $("#education_level_amount_6").val(0);
+        }
+        if (edu_level_amount_7 == "") {
+            $("#education_level_amount_7").val(0);
+        }
     }
-    checkIndustrialType();
+    educationLevelAmount();
+
+    // 2.10.1 เจ้าหน้าที่ได้รับการฝึกอบรมเพื่อการพัฒนาห้องปฏิบัติการหรือไม่อย่างไร :
+    // lab_development_amount
+    function labDevelopmentAmount() {
+        let lab_dev_amount_1 = $("#lab_development_amount_1").val();
+        let lab_dev_amount_2 = $("#lab_development_amount_2").val();
+        let lab_dev_amount_3 = $("#lab_development_amount_3").val();
+        let lab_dev_amount_4 = $("#lab_development_amount_4").val();
+        let lab_dev_amount_5 = $("#lab_development_amount_5").val();
+        let lab_dev_amount_6 = $("#lab_development_amount_6").val();
+        let lab_dev_amount_7 = $("#lab_development_amount_7").val();
+        if (lab_dev_amount_1 == "") {
+            $("#lab_development_amount_1").val(0);
+        }
+        if (lab_dev_amount_2 == "") {
+            $("#lab_development_amount_2").val(0);
+        }
+        if (lab_dev_amount_3 == "") {
+            $("#lab_development_amount_3").val(0);
+        }
+        if (lab_dev_amount_4 == "") {
+            $("#lab_development_amount_4").val(0);
+        }
+        if (lab_dev_amount_5 == "") {
+            $("#lab_development_amount_5").val(0);
+        }
+        if (lab_dev_amount_6 == "") {
+            $("#lab_development_amount_6").val(0);
+        }
+        if (lab_dev_amount_7 == "") {
+            $("#lab_development_amount_7").val(0);
+        }
+    }
+    labDevelopmentAmount();
+
+    // lab_development_day
+    function labDevelopmentDay() {
+        let lab_dev_day_1 = $("#lab_development_day_1").val();
+        let lab_dev_day_2 = $("#lab_development_day_2").val();
+        let lab_dev_day_3 = $("#lab_development_day_3").val();
+        let lab_dev_day_4 = $("#lab_development_day_4").val();
+        let lab_dev_day_5 = $("#lab_development_day_5").val();
+        let lab_dev_day_6 = $("#lab_development_day_6").val();
+        let lab_dev_day_7 = $("#lab_development_day_7").val();
+        if (lab_dev_day_1 == "") {
+            $("#lab_development_day_1").val(0);
+        }
+        if (lab_dev_day_2 == "") {
+            $("#lab_development_day_2").val(0);
+        }
+        if (lab_dev_day_3 == "") {
+            $("#lab_development_day_3").val(0);
+        }
+        if (lab_dev_day_4 == "") {
+            $("#lab_development_day_4").val(0);
+        }
+        if (lab_dev_day_5 == "") {
+            $("#lab_development_day_5").val(0);
+        }
+        if (lab_dev_day_6 == "") {
+            $("#lab_development_day_6").val(0);
+        }
+        if (lab_dev_day_7 == "") {
+            $("#lab_development_day_7").val(0);
+        }
+    }
+    labDevelopmentDay();
 });

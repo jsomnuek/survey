@@ -9,6 +9,10 @@ use App\Model\Employee\Organization;
 use App\Model\BasicInformations\IndustrialEstate;
 use App\Model\BasicInformations\LaboratoryType;
 use App\Model\BasicInformations\AreaService;
+use App\Model\BasicInformations\EducationLevel;
+use App\Model\BasicInformations\FixedCost;
+use App\Model\BasicInformations\IncomePerYear;
+use App\Model\BasicInformations\LabDevelopment;
 
 class Lab extends Model
 {
@@ -52,5 +56,29 @@ class Lab extends Model
     public function areaService()
     {
         return $this->belongsTo(AreaService::class);
+    }
+
+    // Defining Relationships Many To Many
+    public function educationLevels()
+    {
+        return $this->belongsToMany(EducationLevel::class)->withTimestamps();
+    }
+
+    // Defining Relationships One To Many
+    public function fixedCost()
+    {
+        return $this->belongsTo(FixedCost::class);
+    }
+
+    // Defining Relationships One To Many
+    public function incomePerYear()
+    {
+        return $this->belongsTo(IncomePerYear::class);
+    }
+
+    // Defining Relationships Many To Many
+    public function labDevelopments()
+    {
+        return $this->belongsToMany(LabDevelopment::class)->withTimestamps();
     }
 }

@@ -41,7 +41,7 @@
                                 <td>{{ $org->user->name }}</td>
                                 <td>
                                     <a href="/organization/{{ $org->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
-                                    <a href="{{ route('lab.createByOrgId', $org->id) }}" class="btn btn-info btn-sm">เพิ่มข้อมูลห้องปฏิบัติการ</a>
+                                    <a href="{{ route('labs.createByOrgId', $org->id) }}" class="btn btn-info btn-sm">เพิ่มข้อมูลห้องปฏิบัติการ</a>
                                 </td>
                             </tr>                                
                             @endforeach

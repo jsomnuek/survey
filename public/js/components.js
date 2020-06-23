@@ -15,6 +15,9 @@ $(document).ready(function() {
         })
         .trigger("change");
 
+    //inputmask
+    $("[data-mask]").inputmask();
+
     // Radio button that can be unchecked | jQuery
     var inputs = $("input[type=radio]");
     var checked = inputs.filter(":checked").val();

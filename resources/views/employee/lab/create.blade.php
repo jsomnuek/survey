@@ -19,17 +19,21 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/lab" method="POST" role="form">
+                <form action="/labs" method="POST" role="form">
                     @csrf
-                    <input type="hidden" name="org_id" value="{{ $orgId->id }}">
-                    <div class="card-body">
+                    <input type="hidden" name="org_id" value="{{ $org->id }}">
+                    <div class="card-body py-2">
                         <div class="row">
-                            <div class="col-md-12 post">
-                                <span>สำหรับองค์กร : </span>
-                                <a href="{{ route('organization.show', $orgId->id) }}">
-                                    {{ $orgId->org_name }}
-                                </a>
-                            </div>
+                            <div class="col-md-12">
+                                <blockquote class="py-2 my-2 bg-dark">
+                                    <p>
+                                        <span>สำหรับองค์กร : </span>
+                                        <a href="{{ route('organization.show', $org->id) }}">
+                                            {{ $org->org_name }}
+                                        </a>
+                                    </p>
+                                </blockquote>
+                            </div>                            
                             <div class="col-md-12 mb-3">
                                 <strong>หมายเหตุ: <span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
                             </div>
@@ -81,8 +85,8 @@
                                     <label for="lab_location_id">2.3 ที่ตั้งห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
                                     <select class="form-control custom-select select2 @error('lab_location_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="lab_location_id" id="lab_location_id" data-value="{{ old('lab_location_id') }}">
                                         <option value="" selected disabled="disabled">disabled</option>
-                                        @foreach ($labLocations as $labLocation)
-                                        <option value="{{ $labLocation->id }}" {{ ( old('lab_location_id') == $labLocation->id) ? 'selected' : '' }}>{{ $labLocation->location_name }}</option>
+                                        @foreach ($locationLabs as $locationLab)
+                                        <option value="{{ $locationLab->id }}" {{ ( old('lab_location_id') == $locationLab->id) ? 'selected' : '' }}>{{ $locationLab->location_name }}</option>
                                         @endforeach
                                     </select>
                                     @error('lab_location_id')
@@ -92,7 +96,7 @@
                                     @enderror
                                 </div>
                                 {{-- ./lab_location_id --}}
-                                <div class="form-group " id="display_lab_location_other">
+                                <div class="form-group d-none" id="display_lab_location_other">
                                     <label for="lab_location_other" class="col-md-12 col-form-label">กรณีเลือกพื้นที่อื่น โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
                                     <div class="col-md-12">
                                         <input type="text" name="lab_location_other" class="form-control" id="lab_location_other" placeholder="" value="{{ old('lab_location_other') }}">
@@ -104,7 +108,7 @@
                                     </div>
                                 </div>
                                 {{-- ./lab_location_other --}}
-                                <div class="form-group " id="display_industrial_estate_id">
+                                <div class="form-group d-none" id="display_industrial_estate_id">
                                     <label for="industrial_estate_id" class="col-md-12 col-form-label">กรณีเลือกนิคมอุตสาหกรรม โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
                                     <div class="col-md-12">
                                         <select class="form-control custom-select select2 @error('industrial_estate_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="industrial_estate_id" id="industrial_estate_id" data-value="{{ old('industrial_estate_id') }}">
@@ -121,7 +125,7 @@
                                     </div>
                                 </div>
                                 {{-- ./industrial_estate_id --}}
-                                <div class="form-group " id="display_industrial_estate_other">
+                                <div class="form-group d-none" id="display_industrial_estate_other">
                                     <label for="industrial_estate_other" class="col-md-12 col-form-label">กรณีเลือกอื่นๆ โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
                                     <div class="col-md-12">
                                         <input type="text" name="industrial_estate_other" class="form-control" id="industrial_estate_other" placeholder="" value="{{ old('industrial_estate_other') }}">
@@ -151,7 +155,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./2.4 ประเภทห้องปฏิบัติการ --}}
+                            {{-- ./col 2.4 ประเภทห้องปฏิบัติการ --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="area_service_id">2.5 ขอบเขตการให้บริการห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
@@ -180,7 +184,103 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./ --}}
+                            {{-- ./col 2.6 จำนวนเจ้าหน้าที่ในห้องปฏิบัติการ (คน) --}}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ :</label>
+                                    @foreach ($educationLevels as $item)
+                                    <div class="form-group row my-1">
+                                        <input type="hidden" name="education_level_id[]" value="{{ $item->id }}">
+                                        <label for="" class="col-md-6 col-form-label">{{ $item->edu_level_name }}</label>
+                                        <label for="" class="col-md-3 col-form-label">จำนวน (คน) :</label>
+                                        <div class="col-md-3">
+                                            <input type="number" name="education_level_amount[]" min="0" class="form-control form-control-sm" id="education_level_amount_{{$item->id}}" placeholder="" value="{{ old('education_level_amount.'.$educationLevelAmountItems++) }}">
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                                <div class="form-group">
+                                    <label for="">อื่นๆ โปรดระบุ :</label>
+                                    <textarea class="form-control col-md-12" name="education_level_other" rows="2" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            {{-- ./col 2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ : --}}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fixed_cost_id">2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี :<br>
+                                        <span class="pl-4">
+                                            (ค่าใช้จ่ายประจำที่ไม่ขึ้นกับจำนวนการทดสอบ/สอบเทียบ เช่น ค่าบุคลากร ค่าน้ำ ค่าไฟฟ้า ค่าบำรุงรักษา ค่ารับรองระบบงาน)
+                                        </span>
+                                    </label>
+                                    <select class="form-control custom-select select2 @error('fixed_cost_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="fixed_cost_id" id="fixed_cost_id" data-value="{{ old('fixed_cost_id') }}">
+                                        <option value="" selected disabled="disabled">disabled</option>
+                                        @foreach ($fixedCosts as $fixedCost)
+                                        <option value="{{ $fixedCost->id }}" {{ ( old('fixed_cost_id') == $fixedCost->id) ? 'selected' : '' }}>{{ $fixedCost->fixed_cost_name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('fixed_cost_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="income_per_year_id">2.9 รายได้รวมของห้องปฏิบัติการต่อปี :</label>
+                                    <select class="form-control custom-select select2 @error('income_per_year_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="income_per_year_id" id="income_per_year_id" data-value="{{ old('income_per_year_id') }}">
+                                        <option value="" selected disabled="disabled">disabled</option>
+                                        @foreach ($incomePerYears as $incomePerYear)
+                                        <option value="{{ $incomePerYear->id }}" {{ ( old('income_per_year_id') == $incomePerYear->id) ? 'selected' : '' }}>{{ $incomePerYear->income_detail }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('income_per_year_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- ./col 2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี : --}}
+                            {{-- ./col 2.9 รายได้รวมของห้องปฏิบัติการต่อปี : --}}
+                            <div class="col-md-12">
+                                <label for="">2.10 ข้อมูลการพัฒนาห้องปฏิบัติการ :</label>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">
+                                        2.10.1 เจ้าหน้าที่ได้รับการฝึกอบรมเพื่อการพัฒนาห้องปฏิบัติการหรือไม่อย่างไร :
+                                        <span><sup class="text-danger"> *</sup></span>
+                                        <span>(กรณีไม่เคยได้รับการอบรม โปรดระบุ "0")</span>
+                                    </label>
+                                    @foreach ($labDevelopments as $item)
+                                    <div class="form-group row my-1">
+                                        <input type="hidden" name="lab_development_id[]" value="{{ $item->id }}">
+                                        <label for="" class="col-md-3 col-form-label">- {{ $item->lab_dev_name }}</label>
+                                        <label for="" class="col-md-2 col-form-label">ได้รับการอบรม :</label>
+                                        <div class="col-md-1">
+                                            <input type="number" name="lab_development_amount[]" min="0" class="form-control form-control-sm" id="lab_development_amount_{{$item->id}}" placeholder="" value="{{ old('lab_development_amount.'.$labDevelopmentAmountItems++) }}">
+                                        </div>
+                                        <label for="" class="col-md-1 col-form-label">คน</label>
+                                        <label for="" class="col-md-1 col-form-label">จำนวน :</label>
+                                        <div class="col-md-1">
+                                            <input type="number" name="lab_development_day[]" min="0" class="form-control form-control-sm" id="lab_development_day_{{$item->id}}" placeholder="" value="{{ old('lab_development_day.'.$labDevelopmentDayItems++) }}">
+                                        </div>
+                                        <label for="" class="col-md-1 col-form-label">วัน</label>
+                                        <div class="form-group">
+                                            <select class="form-control form-control-sm custom-select" name="lab_development_join[]">
+                                                <option value="0">option 0</option>
+                                                <option value="1">option 1</option>
+                                                <option value="2">option 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                                <div class="form-group">
+                                    <label for="">อื่นๆ โปรดระบุ :</label>
+                                    <textarea class="form-control col-md-12" name="lab_development_other" rows="2" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            {{-- ./col  --}}
                         </div>
                         <!-- /.row -->
                     </div>

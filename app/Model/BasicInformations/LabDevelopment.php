@@ -4,6 +4,8 @@ namespace App\Model\BasicInformations;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Model\Employee\Lab;
+
 class LabDevelopment extends Model
 {
     protected $table = 'lab_developments';
@@ -11,4 +13,10 @@ class LabDevelopment extends Model
     protected $fillable = ['lab_dev_name','lab_dev_status',];
 
     public $timestamps = true;
+
+    // Defining Relationships Many To Many
+    public function labs()
+    {
+        return $this->belongsToMany(Lab::class)->withTimestamps();
+    }
 }

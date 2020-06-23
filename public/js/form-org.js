@@ -73,14 +73,7 @@ $(document).ready(function() {
     // 1.8 ประเภทองค์กร : กรณีเลือกอื่นๆ
     function checkOrganisationType() {
         // this value
-        var data = $("#organisation_type_id").val();
-        if (data != null) {
-            for (i = 0; i < data.length; i++) {
-                if (data[i] == "5") {
-                    var orgTypeId = 5;
-                }
-            }
-        }
+        var orgTypeId = $("#organisation_type_id").val();
         if (orgTypeId == 5) {
             $("#display_org_type_other").removeClass("d-none");
             $("#organisation_type_other").prop("required", true);
@@ -93,14 +86,7 @@ $(document).ready(function() {
         $("#organisation_type_id").on(
             "select2:select select2:unselect",
             function() {
-                var data = $("#organisation_type_id").val();
-                if (data != null) {
-                    for (i = 0; i < data.length; i++) {
-                        if (data[i] == "5") {
-                            var orgTypeId = 5;
-                        }
-                    }
-                }
+                var orgTypeId = $("#organisation_type_id").val();
                 if (orgTypeId == 5) {
                     $("#display_org_type_other").removeClass("d-none");
                     $("#organisation_type_other").prop("required", true);

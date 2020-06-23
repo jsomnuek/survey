@@ -27,7 +27,7 @@ class CreateEquipmentLabsTable extends Migration
             $table->integer('equipment_year')->nullable()->comment('ปีที่ซื้อเครื่องมือ');                      //3.7ปีที่ซื้อเครื่องมือ
             $table->integer('equipment_price')->nullable()->comment('มูลค่าเครื่องมือ');                      //3.8มูลค่าเครื่องมือ
             $table->string('equipment_supplier', 255)->nullable()->comment('บริษัทที่จำหน่าจย');             //3.9บริษัทที่จำหน่าย
-            $table->integer('major_technologies_id')->nullable()->comment('สาขาเทคโนเครื่องมือ');                       //3.10สาขาเทคโนเครื่องมือ
+            //$table->integer('major_technologies_id')->nullable()->comment('สาขาเทคโนเครื่องมือ');                       //3.10สาขาเทคโนเครื่องมือ
             $table->integer('major_technologies_other')->nullable()->comment('สาขาเทคโนเครื่องมืออื่นๆ ');                 //3.10สาขาเทคโนเครื่องมือ
             //$table->integer('objective_usages_id')->comment('วัตถุประสงค์การใช้งาน');                           //3.11วัตถุประสงค์การใช้งาน
             $table->integer('equipment_usages_id')->comment('ขอบเขตการใช้งานเครื่องมือ');                       //3.12ขอบเขตการใช้งานเครื่องมือ

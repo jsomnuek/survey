@@ -2,6 +2,8 @@
 
 namespace App\Model\Employee;
 use App\Model\BasicInformations\ScienceTool;
+use App\Model\BasicInformations\MajorTechnology;
+use App\Model\BasicInformations\ObjectiveUsage;
 use Illuminate\Database\Eloquent\Model;
 
 class EquipmentLab extends Model
@@ -43,7 +45,11 @@ class EquipmentLab extends Model
 
     public function majorTechnologies()
     {
-        return $this->belongsTo(ScienceTool::class);
+        return $this->belongsToMany(MajorTechnology::class);
+    }
+    public function objectiveUsages()
+    {
+        return $this->belongsToMany(ObjectiveUsage::class);
     }
 }
 

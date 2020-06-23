@@ -73,22 +73,27 @@ class EquipmentLabController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
 
 
         //clean up
         $equipmentLab = new EquipmentLab;
+        $equipmentLab->user_id = auth()->user()->id;
         $equipmentLab->equipment_lab_id = $request['equipment_lab_id'];
-        $equipmentLab->equipments_id = $request['equipments_id'];
+        //$equipmentLab->equipments_id = $request['equipments_id'];
+        $equipmentLab->science_tool_id = $request['science_tool_id'];
+        $equipmentLab->science_tool_other_name = $request['science_tool_other_name'];
+        $equipmentLab->science_tool_other_abbr = $request['science_tool_other_abbr'];
         $equipmentLab->equipment_name_th = $request['equipment_name_th'];
         $equipmentLab->equipment_brand = $request['equipment_brand'];
         $equipmentLab->equipment_model = $request['equipment_model'];
         $equipmentLab->equipment_org_code = $request['equipment_org_code'];
-        $equipmentLab->major_technologies_id = $request['major_technologies_id'];
+        $equipmentLab->major_technologies_other = $request[''];
         $equipmentLab->equipment_year = $request['equipment_year'];
         $equipmentLab->equipment_price = $request['equipment_price'];
         $equipmentLab->equipment_supplier = $request['equipment_supplier'];
-        $equipmentLab->objective_usages_id = $request['objective_usages_id'];
+        //$equipmentLab->major_technologies_id = $request['major_technologies_id'];
+        //$equipmentLab->objective_usages_id = $request['objective_usages_id'];
         $equipmentLab->equipment_usages_id = $request['equipment_usages_id'];
         $equipmentLab->equipment_ability = $request['equipment_ability'];
         $equipmentLab->equipment_pic = $request['equipment_pic'];
@@ -96,6 +101,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_calibration_by = $request['equipment_calibration_by'];
         $equipmentLab->equipment_calibration_year = $request['equipment_calibration_year'];
         $equipmentLab->equipment_maintenances_id = $request['equipment_maintenances_id'];
+        $equipmentLab->equipment_maintenances_other = $request['equipment_maintenances_other'];
         $equipmentLab->equipment_maintenance_budget = $request['equipment_maintenance_budget'];
         $equipmentLab->equipment_admin_name = $request['equipment_admin_name'];
         $equipmentLab->equipment_admin_phone = $request['equipment_admin_phone'];
@@ -109,7 +115,12 @@ class EquipmentLabController extends Controller
 
         //dd($equipmentLab->all());
         $equipmentLab->save();
-        return redirect('/equipmentLab');
+        
+        $equipmentLab->majorTechnologies()->sync($request->major_technologies_id, false);
+        $equipmentLab->objectiveUsages()->sync($request->objective_usages_id, false);
+
+        return redirect()->route('equipmentLab.show', $equipmentLab->id);
+        //return redirect('/equipmentLab');
     }
 
     /**

@@ -42,6 +42,61 @@
                                 <th class="" style="width: 30%;">4.4 ชื่อรายการทดสอบ/สอบเทียบ :</th>
                                 <td>{{ $productLabs->product_lab_test_name }}</td>
                             </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ :</th>
+                                <td>{{ $productLabs->product_lab_test_name }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.6 ประเภทรายการทดสอบ/สอบเทียบ :</th>
+                                <td>{{ $productLabs->testingCalibratingList->testing_list_name }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.7 ประเภทการทดสอบ/สอบเทียบ :</th>
+                                <td>{{ $productLabs->testingCalibratingType->testing_type_name }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.8 วิธีทดสอบ/สอบเทียบตามมาตราฐาน :</th>
+                                <td>{{ $productLabs->testingCalibratingMethod->testing_method_name }} รายละเอียด : {{$productLabs->testing_calibrating_method_detail}}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.9 ช่วงความสามารถของการวัด :</th>
+                                <td>{{ $productLabs->product_lab_test_unit }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.10 ระยะเวลาการทดสอบ :</th>
+                                <td>{{ $productLabs->product_lab_test_duration }} วัน</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.11 ค่าธรรมเนียมในการทดสอบ :</th>
+                                <td>{{ $productLabs->product_lab_test_fee }} บาท</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.12 วัสดุอ้างอิงที่ใช้ทดสอบ :</th>
+                                <td>{{ $productLabs->product_lab_material_ref }} </td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.13 ที่มาของแหล่งวัสดุอ้างอิงที่ใช้ทดสอบ :</th>
+                                <td>{{ $productLabs->product_lab_material_ref_from }} </td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.14 การควบคุมคุณภาพผลการทดสอบภายใน :</th>
+                                <td>ยังไม่สมบูรณ์----{{ $productLabs->product_lab_material_ref_from }} </td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.15 การทดสอบความชำนาญห้องปฏิบัติการ :</th>
+                                <td>
+                                    @if ($productLabs->proficiency_testing == 1 )
+                                        ยังไม่ได้ทดสอบความชำนาญห้องปฎิบัติการ
+                                    @else
+                                        มีการทดสอบความชำนาญห้องปฏิบัติการ  โดย{{ $productLabs->proficiency_testing_by }} เมื่อปี {{ $productLabs->proficiency_testing_year }}
+                                    @endif
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">4.16 การรับรองความสามารถห้องปฏิบัติการ :</th>
+                                <td>{{ $productLabs->certifyLaboratory->cert_lab_name }} </td>
+                            </tr>
                             {{-- <tr>
                                 <th class="" style="width: 30%;">1.3 หมายเลขประจำหน่วยงาน :</th>
                                 <td>{{ $org->org_number }}</td>
@@ -178,7 +233,8 @@
                     </table>
                 </div>
                 <div class="card-footer">
-
+                    <a href="/productLab" class="btn btn-secondary">ย้อนกลับ</a>
+                    <a href="/productLab/{{ $productLabs->id }}/edit" class="btn btn-primary">แก้ไขข้อมูล</a>
                 </div>
 
             </div>

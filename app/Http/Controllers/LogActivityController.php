@@ -7,6 +7,17 @@ use App\Helpers\logActivity;
 
 class LogActivityController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,8 @@ class LogActivityController extends Controller
      */
     public function index()
     {
-        //
+        $logs = LogActivity::logActivityLists();
+        return view('logActivity', compact('logs'));
     }
 
     /**
@@ -81,15 +93,6 @@ class LogActivityController extends Controller
     public function destroy(LogActivity $logActivity)
     {
         //
-    }
-
-    /**
-     * Put log activity to storage
-     */
-    public function logActivity()
-    {
-        $logs = LogActivity::logActivityLists();
-        return view('logActivity', compact('logs'));
     }
 
 }

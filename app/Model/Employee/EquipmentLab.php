@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Model\Employee;
-use App\Model\BasicInformations\MajorTechnology;
-use App\Model\BasicInformations\ObjectiveUsage;
+use App\Model\BasicInformations\ScienceTool;
 use Illuminate\Database\Eloquent\Model;
 
 class EquipmentLab extends Model
@@ -44,12 +43,7 @@ class EquipmentLab extends Model
 
     public function majorTechnologies()
     {
-        return $this->belongsToMany(MajorTechnology::class)->withTimestamps();
-    }
-    
-    public function objectiveUsages()
-    {
-        return $this->belongsToMany(ObjectiveUsage::class)->withTimestamps();
+        return $this->belongsTo(ScienceTool::class);
     }
 }
 

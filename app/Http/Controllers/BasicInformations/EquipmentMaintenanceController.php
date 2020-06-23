@@ -58,6 +58,9 @@ class EquipmentMaintenanceController extends Controller
         $insertEquipmentMA->equipment_maintenance_status = 'A';
         $insertEquipmentMA->save();
 
+        // create log activity
+        LogActivity::addToLog('Add new equipment maintenances : " ' . $insertEquipmentMA->equipment_maintenance_name . ' " successfully.');
+
         //return index view
         return redirect('/equipmentMaintenance');
 
@@ -102,6 +105,9 @@ class EquipmentMaintenanceController extends Controller
         $updateEquipmentMA->equipment_maintenance_name = $request->input('equipmentMAName');
         $updateEquipmentMA->equipment_maintenance_status = $request->input('equipmentMAStatus');;
         $updateEquipmentMA->save();
+
+        // create log activity
+        LogActivity::addToLog('Update equipment maintenances : " ' . $updateEquipmentMA->equipment_maintenance_name . ' " successfully.');
 
         //return index view
         return redirect('/equipmentMaintenance');

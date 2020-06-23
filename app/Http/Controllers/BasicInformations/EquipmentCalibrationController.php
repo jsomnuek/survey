@@ -58,6 +58,9 @@ class EquipmentCalibrationController extends Controller
         $insertEquipmentCalibration->equipment_calibration_status = 'A';
         $insertEquipmentCalibration->save();
 
+        // create log activity
+        LogActivity::addToLog('Add new equipment calibration : " ' . $insertEquipmentCalibration->equipment_calibration_name . ' " successfully.');
+
         //return index view
         return redirect('/equipmentCalibration');
     }
@@ -101,6 +104,9 @@ class EquipmentCalibrationController extends Controller
         $updateEquipmentCalibration->equipment_calibration_name = $request->input('equipmentCalibrationName');
         $updateEquipmentCalibration->equipment_calibration_status = $request->input('equipmentCalibrationStatus');
         $updateEquipmentCalibration->save();
+
+        // create log activity
+        LogActivity::addToLog('Update equipment calibration : " ' . $updateEquipmentCalibration->equipment_calibration_name . ' " successfully.');
 
         //return index view
         return redirect('/equipmentCalibration');

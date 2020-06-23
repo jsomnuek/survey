@@ -42,6 +42,24 @@
 
             {{-- Management Menu --}}
             <li class="nav-header">ข้อมูลการจัดการระบบ</li>
+                {{-- Register Sub-menu --}}
+                <li class="nav-item has-treeview {{ Request::is('register*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is('register*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>สิทธิ์การใช้งานระบบ<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ route('register') }}" class="nav-link {{ Request::is('register') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ลงทะเบียนผู้ใช้งานระบบ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
                 {{-- Log Activity Sub-menu --}}
                 <li class="nav-item has-treeview {{ Request::is('logActivity*') ? 'menu-open' : '' }}">
                     {{-- active --}}
@@ -72,6 +90,7 @@
                     </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        {{-- Location Lab Sub-menu --}}
                         <li class="nav-item has-treeview {{ Request::is('locationLab*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('locationLab*') ? 'active' : '' }}">
@@ -152,6 +171,7 @@
                                 </li>
                             </ul>
                         </li>
+                        {{-- Sale Product Sub-menu --}}
                         <li class="nav-item has-treeview {{ Request::is('saleProduct*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('saleProduct*') ? 'active' : '' }}">
@@ -172,6 +192,7 @@
                                 </li>
                             </ul>
                         </li>
+                        {{-- Industrial Type sub-menu --}}
                         <li class="nav-item has-treeview {{ Request::is('industrialType*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('industrialType*') ? 'active' : '' }}">
@@ -188,6 +209,27 @@
                                     <a href="{{ url('/industrialType/create') }}" class="nav-link {{ Request::is('industrialType/create') ? 'active' : '' }}">
                                         <i class="fas fa-plus-circle nav-icon "></i>
                                         <p>เพิ่มข้อมูลประเภทอุตสาหกรรม</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- Quality System Sub-menu --}}
+                        <li class="nav-item has-treeview {{ Request::is('qualitySystem*') ? 'menu-open' : '' }}">
+                            {{-- active --}}
+                            <a href="#" class="nav-link {{ Request::is('qualitySystem*') ? 'active' : '' }}">
+                                <i class="nav-icon fab fa-angellist"></i>
+                                <p>ระบบคุณภาพ<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    {{-- active --}}
+                                    <a href="{{ url('/qualitySystem') }}" class="nav-link {{ Request::is('qualitySystem') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>รายชื่อระบบคุณภาพ</p>
+                                    </a>
+                                    <a href="{{ url('/qualitySystem/create') }}" class="nav-link {{ Request::is('qualitySystem/create') ? 'active' : '' }}">
+                                        <i class="fas fa-plus-circle nav-icon "></i>
+                                        <p>เพิ่มข้อมูลระบบคุณภาพ</p>
                                     </a>
                                 </li>
                             </ul>
@@ -398,6 +440,7 @@
                                 </li>
                             </ul>
                         </li>
+                        {{-- Major Technology sub-menu --}}
                         <li class="nav-item has-treeview {{ Request::is('majorTechnology*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('majorTechnology*') ? 'active' : '' }}">
@@ -418,6 +461,8 @@
                                 </li>
                             </ul>
                         </li>
+                        {{-- Technical Equipment --}}
+                        @if (Route::has('disable'))
                         <li class="nav-item has-treeview {{ Request::is('technicalEquipment*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('technicalEquipment*') ? 'active' : '' }}">
@@ -438,6 +483,8 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
+                        {{-- Objective Usage --}}
                         <li class="nav-item has-treeview {{ Request::is('objectiveUsage*') ? 'menu-open' : '' }}">
                             {{-- active --}}
                             <a href="#" class="nav-link {{ Request::is('objectiveUsage*') ? 'active' : '' }}">

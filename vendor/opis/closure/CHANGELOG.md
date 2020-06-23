@@ -1,6 +1,13 @@
 CHANGELOG
 ---------
 
+<<<<<<< HEAD
+=======
+### v3.5.5, 2020.06.17
+
+- Fixed a false-positive when using `Opis\Closure\ReflectionClosure::isScopeRequired` method
+
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 ### v3.5.4, 2020.06.07
 
 - Fixed a false-positive when using `Opis\Closure\ReflectionClosure::isScopeRequired` method

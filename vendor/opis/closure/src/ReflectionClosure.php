@@ -569,7 +569,11 @@ class ReflectionClosure extends ReflectionFunction
                                     $context === 'root'
                                 ){
                                     if($id_start_ci === 'self' || $id_start_ci === 'static' || $id_start_ci === 'parent'){
+<<<<<<< HEAD
                                         if (!$inside_structure) {
+=======
+                                        if (!$inside_structure && !$id_start_ci === 'static') {
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
                                             $isUsingScope = true;
                                         }
                                     } elseif (!($php7 && in_array($id_start_ci, $php7_types))){

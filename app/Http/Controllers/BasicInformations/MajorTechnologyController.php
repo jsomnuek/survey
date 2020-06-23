@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BasicInformations;
 use App\Http\Controllers\Controller;
 use App\Model\BasicInformations\MajorTechnology;
 use Illuminate\Http\Request;
+use App\Helpers\LogActivity;
 
 class MajorTechnologyController extends Controller
 {
@@ -59,6 +60,9 @@ class MajorTechnologyController extends Controller
         $insertMajorTech->major_tech_status = 'A';
         $insertMajorTech->save();
 
+        //create logs
+        LogActivity::addToLog('Add Major Technology : "' . $insertMajorTech->major_tech_name . ' " successfully.');
+
         //return productType view
         return redirect('/majorTechnology');
     }
@@ -102,6 +106,9 @@ class MajorTechnologyController extends Controller
         $updateMajorTech->major_tech_name = $request->input('majorTechName');
         $updateMajorTech->major_tech_status = $request->input('majorTechStatus');
         $updateMajorTech->save();
+
+        //create logs
+        LogActivity::addToLog('Update Major Technology : "' . $insertMajorTech->major_tech_name . ' " successfully.');
 
         return redirect('/majorTechnology');
     }

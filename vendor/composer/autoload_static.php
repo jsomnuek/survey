@@ -4,7 +4,11 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
+=======
+class ComposerStaticInit3fae6850682ed80268266a6186e015b2
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -360,7 +364,11 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         ),
         'Egulias\\EmailValidator\\' => 
         array (
+<<<<<<< HEAD
             0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
+=======
+            0 => __DIR__ . '/..' . '/egulias/email-validator/src',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         ),
         'Dotenv\\' => 
         array (
@@ -424,6 +432,11 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
+=======
+        'App\\Helpers\\LogActivity' => __DIR__ . '/../..' . '/app/Helpers/LogActivity.php',
+        'App\\Http\\Controllers\\AgencyController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/AgencyController.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'App\\Http\\Controllers\\Api\\ProvinceInfoController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ProvinceInfoController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -434,10 +447,18 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         'App\\Http\\Controllers\\BasicInformations\\AreaServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/AreaServiceController.php',
         'App\\Http\\Controllers\\BasicInformations\\BusinessTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/BusinessTypeController.php',
         'App\\Http\\Controllers\\BasicInformations\\CertifyLaboratoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/CertifyLaboratoryController.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\BasicInformations\\EmployeeTrainingController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EmployeeTrainingController.php',
         'App\\Http\\Controllers\\BasicInformations\\EnvironmentManageController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EnvironmentManageController.php',
         'App\\Http\\Controllers\\BasicInformations\\EquipmentCalibrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EquipmentCalibrationController.php',
         'App\\Http\\Controllers\\BasicInformations\\EquipmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EquipmentController.php',
+=======
+        'App\\Http\\Controllers\\BasicInformations\\CountryController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/CountryController.php',
+        'App\\Http\\Controllers\\BasicInformations\\EducationLevelController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EducationLevelController.php',
+        'App\\Http\\Controllers\\BasicInformations\\EmployeeTrainingController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EmployeeTrainingController.php',
+        'App\\Http\\Controllers\\BasicInformations\\EnvironmentManageController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EnvironmentManageController.php',
+        'App\\Http\\Controllers\\BasicInformations\\EquipmentCalibrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EquipmentCalibrationController.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'App\\Http\\Controllers\\BasicInformations\\EquipmentMaintenanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EquipmentMaintenanceController.php',
         'App\\Http\\Controllers\\BasicInformations\\EquipmentManualController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EquipmentManualController.php',
         'App\\Http\\Controllers\\BasicInformations\\EquipmentRentController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/EquipmentRentController.php',
@@ -446,8 +467,14 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         'App\\Http\\Controllers\\BasicInformations\\IncomePerYearController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/IncomePerYearController.php',
         'App\\Http\\Controllers\\BasicInformations\\IndustrialEstateController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/IndustrialEstateController.php',
         'App\\Http\\Controllers\\BasicInformations\\IndustrialTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/IndustrialTypeController.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\BasicInformations\\LabLocationController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/LabLocationController.php',
         'App\\Http\\Controllers\\BasicInformations\\LaboratoryTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/LaboratoryTypeController.php',
+=======
+        'App\\Http\\Controllers\\BasicInformations\\LabDevelopmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/LabDevelopmentController.php',
+        'App\\Http\\Controllers\\BasicInformations\\LaboratoryTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/LaboratoryTypeController.php',
+        'App\\Http\\Controllers\\BasicInformations\\LocationLabController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/LocationLabController.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'App\\Http\\Controllers\\BasicInformations\\MajorTechnologyController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/MajorTechnologyController.php',
         'App\\Http\\Controllers\\BasicInformations\\ObjectiveUsageController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/ObjectiveUsageController.php',
         'App\\Http\\Controllers\\BasicInformations\\OrganisationTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/OrganisationTypeController.php',
@@ -455,6 +482,10 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         'App\\Http\\Controllers\\BasicInformations\\ProficiencyTestingController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/ProficiencyTestingController.php',
         'App\\Http\\Controllers\\BasicInformations\\ResultControlController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/ResultControlController.php',
         'App\\Http\\Controllers\\BasicInformations\\SaleProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/SaleProductController.php',
+<<<<<<< HEAD
+=======
+        'App\\Http\\Controllers\\BasicInformations\\ScienceToolController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/ScienceToolController.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'App\\Http\\Controllers\\BasicInformations\\TechnicalEquipmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/TechnicalEquipmentController.php',
         'App\\Http\\Controllers\\BasicInformations\\TestingCalibratingListController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/TestingCalibratingListController.php',
         'App\\Http\\Controllers\\BasicInformations\\TestingCalibratingMethodController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/TestingCalibratingMethodController.php',
@@ -465,6 +496,7 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         'App\\Http\\Controllers\\Employee\\OrganizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Employee/OrganizationController.php',
         'App\\Http\\Controllers\\Employee\\ProductLabController' => __DIR__ . '/../..' . '/app/Http/Controllers/Employee/ProductLabController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+<<<<<<< HEAD
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -479,6 +511,31 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         'App\\Model\\BasicInformations\\EmployeeTraining' => __DIR__ . '/../..' . '/app/Model/BasicInformations/EmployeeTraining.php',
         'App\\Model\\BasicInformations\\EnvironmentManage' => __DIR__ . '/../..' . '/app/Model/BasicInformations/EnvironmentManage.php',
         'App\\Model\\BasicInformations\\Equipment' => __DIR__ . '/../..' . '/app/Model/BasicInformations/Equipment.php',
+=======
+        'App\\Http\\Controllers\\LogActivityController' => __DIR__ . '/../..' . '/app/Http/Controllers/LogActivityController.php',
+        'App\\Http\\Controllers\\RegionController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/RegionController.php',
+        'App\\Http\\Controllers\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/BasicInformations/RoleController.php',
+        'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
+        'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
+        'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
+        'App\\Http\\Middleware\\CheckRole' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckRole.php',
+        'App\\Http\\Middleware\\DssUser' => __DIR__ . '/../..' . '/app/Http/Middleware/DssUser.php',
+        'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
+        'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
+        'App\\Http\\Middleware\\Surveyer' => __DIR__ . '/../..' . '/app/Http/Middleware/Surveyer.php',
+        'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
+        'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
+        'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Model\\BasicInformations\\Agency' => __DIR__ . '/../..' . '/app/Model/BasicInformations/Agency.php',
+        'App\\Model\\BasicInformations\\AreaService' => __DIR__ . '/../..' . '/app/Model/BasicInformations/AreaService.php',
+        'App\\Model\\BasicInformations\\BusinessType' => __DIR__ . '/../..' . '/app/Model/BasicInformations/BusinessType.php',
+        'App\\Model\\BasicInformations\\CertifyLaboratory' => __DIR__ . '/../..' . '/app/Model/BasicInformations/CertifyLaboratory.php',
+        'App\\Model\\BasicInformations\\Country' => __DIR__ . '/../..' . '/app/Model/BasicInformations/Country.php',
+        'App\\Model\\BasicInformations\\EducationLevel' => __DIR__ . '/../..' . '/app/Model/BasicInformations/EducationLevel.php',
+        'App\\Model\\BasicInformations\\EmployeeTraining' => __DIR__ . '/../..' . '/app/Model/BasicInformations/EmployeeTraining.php',
+        'App\\Model\\BasicInformations\\EnvironmentManage' => __DIR__ . '/../..' . '/app/Model/BasicInformations/EnvironmentManage.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'App\\Model\\BasicInformations\\EquipmentCalibration' => __DIR__ . '/../..' . '/app/Model/BasicInformations/EquipmentCalibration.php',
         'App\\Model\\BasicInformations\\EquipmentMaintenance' => __DIR__ . '/../..' . '/app/Model/BasicInformations/EquipmentMaintenance.php',
         'App\\Model\\BasicInformations\\EquipmentManual' => __DIR__ . '/../..' . '/app/Model/BasicInformations/EquipmentManual.php',
@@ -488,23 +545,44 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         'App\\Model\\BasicInformations\\IncomePerYear' => __DIR__ . '/../..' . '/app/Model/BasicInformations/IncomePerYear.php',
         'App\\Model\\BasicInformations\\IndustrialEstate' => __DIR__ . '/../..' . '/app/Model/BasicInformations/IndustrialEstate.php',
         'App\\Model\\BasicInformations\\IndustrialType' => __DIR__ . '/../..' . '/app/Model/BasicInformations/IndustrialType.php',
+<<<<<<< HEAD
         'App\\Model\\BasicInformations\\LabLocation' => __DIR__ . '/../..' . '/app/Model/BasicInformations/LabLocation.php',
         'App\\Model\\BasicInformations\\LaboratoryType' => __DIR__ . '/../..' . '/app/Model/BasicInformations/LaboratoryType.php',
+=======
+        'App\\Model\\BasicInformations\\LabDevelopment' => __DIR__ . '/../..' . '/app/Model/BasicInformations/LabDevelopment.php',
+        'App\\Model\\BasicInformations\\LaboratoryType' => __DIR__ . '/../..' . '/app/Model/BasicInformations/LaboratoryType.php',
+        'App\\Model\\BasicInformations\\LocationLab' => __DIR__ . '/../..' . '/app/Model/BasicInformations/LocationLab.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'App\\Model\\BasicInformations\\MajorTechnology' => __DIR__ . '/../..' . '/app/Model/BasicInformations/MajorTechnology.php',
         'App\\Model\\BasicInformations\\ObjectiveUsage' => __DIR__ . '/../..' . '/app/Model/BasicInformations/ObjectiveUsage.php',
         'App\\Model\\BasicInformations\\OrganisationType' => __DIR__ . '/../..' . '/app/Model/BasicInformations/OrganisationType.php',
         'App\\Model\\BasicInformations\\ProductType' => __DIR__ . '/../..' . '/app/Model/BasicInformations/ProductType.php',
         'App\\Model\\BasicInformations\\ProficiencyTesting' => __DIR__ . '/../..' . '/app/Model/BasicInformations/ProficiencyTesting.php',
+<<<<<<< HEAD
         'App\\Model\\BasicInformations\\ResultControl' => __DIR__ . '/../..' . '/app/Model/BasicInformations/ResultControl.php',
         'App\\Model\\BasicInformations\\SaleProduct' => __DIR__ . '/../..' . '/app/Model/BasicInformations/SaleProduct.php',
+=======
+        'App\\Model\\BasicInformations\\QualitySystem' => __DIR__ . '/../..' . '/app/Model/BasicInformations/QualitySystem.php',
+        'App\\Model\\BasicInformations\\Region' => __DIR__ . '/../..' . '/app/Model/BasicInformations/Region.php',
+        'App\\Model\\BasicInformations\\ResultControl' => __DIR__ . '/../..' . '/app/Model/BasicInformations/ResultControl.php',
+        'App\\Model\\BasicInformations\\Role' => __DIR__ . '/../..' . '/app/Model/BasicInformations/Role.php',
+        'App\\Model\\BasicInformations\\SaleProduct' => __DIR__ . '/../..' . '/app/Model/BasicInformations/SaleProduct.php',
+        'App\\Model\\BasicInformations\\ScienceTool' => __DIR__ . '/../..' . '/app/Model/BasicInformations/ScienceTool.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'App\\Model\\BasicInformations\\TechnicalEquipment' => __DIR__ . '/../..' . '/app/Model/BasicInformations/TechnicalEquipment.php',
         'App\\Model\\BasicInformations\\TestingCalibratingList' => __DIR__ . '/../..' . '/app/Model/BasicInformations/TestingCalibratingList.php',
         'App\\Model\\BasicInformations\\TestingCalibratingMethod' => __DIR__ . '/../..' . '/app/Model/BasicInformations/TestingCalibratingMethod.php',
         'App\\Model\\BasicInformations\\TestingCalibratingType' => __DIR__ . '/../..' . '/app/Model/BasicInformations/TestingCalibratingType.php',
         'App\\Model\\Employee\\EquipmentLab' => __DIR__ . '/../..' . '/app/Model/Employee/EquipmentLab.php',
         'App\\Model\\Employee\\Lab' => __DIR__ . '/../..' . '/app/Model/Employee/Lab.php',
+<<<<<<< HEAD
         'App\\Model\\Employee\\Ohter' => __DIR__ . '/../..' . '/app/Model/Employee/Ohter.php',
         'App\\Model\\Employee\\Organization' => __DIR__ . '/../..' . '/app/Model/Employee/Organization.php',
+=======
+        'App\\Model\\Employee\\Organization' => __DIR__ . '/../..' . '/app/Model/Employee/Organization.php',
+        'App\\Model\\Employee\\ProductLab' => __DIR__ . '/../..' . '/app/Model/Employee/ProductLab.php',
+        'App\\Model\\Logs\\LogActivity' => __DIR__ . '/../..' . '/app/Model/Logs/LogActivity.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'App\\Model\\ProvinceInfo' => __DIR__ . '/../..' . '/app/Model/ProvinceInfo.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -692,6 +770,7 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         'Dotenv\\Regex\\Result' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Result.php',
         'Dotenv\\Regex\\Success' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Success.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+<<<<<<< HEAD
         'Egulias\\EmailValidator\\EmailLexer' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/EmailLexer.php',
         'Egulias\\EmailValidator\\EmailParser' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/EmailParser.php',
         'Egulias\\EmailValidator\\EmailValidator' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/EmailValidator.php',
@@ -755,6 +834,71 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/Warning.php',
+=======
+        'Egulias\\EmailValidator\\EmailLexer' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailLexer.php',
+        'Egulias\\EmailValidator\\EmailParser' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailParser.php',
+        'Egulias\\EmailValidator\\EmailValidator' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailValidator.php',
+        'Egulias\\EmailValidator\\Exception\\AtextAfterCFWS' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/AtextAfterCFWS.php',
+        'Egulias\\EmailValidator\\Exception\\CRLFAtTheEnd' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/CRLFAtTheEnd.php',
+        'Egulias\\EmailValidator\\Exception\\CRLFX2' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/CRLFX2.php',
+        'Egulias\\EmailValidator\\Exception\\CRNoLF' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/CRNoLF.php',
+        'Egulias\\EmailValidator\\Exception\\CharNotAllowed' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/CharNotAllowed.php',
+        'Egulias\\EmailValidator\\Exception\\CommaInDomain' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/CommaInDomain.php',
+        'Egulias\\EmailValidator\\Exception\\ConsecutiveAt' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/ConsecutiveAt.php',
+        'Egulias\\EmailValidator\\Exception\\ConsecutiveDot' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/ConsecutiveDot.php',
+        'Egulias\\EmailValidator\\Exception\\DomainHyphened' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/DomainHyphened.php',
+        'Egulias\\EmailValidator\\Exception\\DotAtEnd' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/DotAtEnd.php',
+        'Egulias\\EmailValidator\\Exception\\DotAtStart' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/DotAtStart.php',
+        'Egulias\\EmailValidator\\Exception\\ExpectingAT' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/ExpectingAT.php',
+        'Egulias\\EmailValidator\\Exception\\ExpectingATEXT' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/ExpectingATEXT.php',
+        'Egulias\\EmailValidator\\Exception\\ExpectingCTEXT' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/ExpectingCTEXT.php',
+        'Egulias\\EmailValidator\\Exception\\ExpectingDTEXT' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/ExpectingDTEXT.php',
+        'Egulias\\EmailValidator\\Exception\\ExpectingDomainLiteralClose' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/ExpectingDomainLiteralClose.php',
+        'Egulias\\EmailValidator\\Exception\\ExpectingQPair' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/ExpectingQPair.php',
+        'Egulias\\EmailValidator\\Exception\\InvalidEmail' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/InvalidEmail.php',
+        'Egulias\\EmailValidator\\Exception\\NoDNSRecord' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/NoDNSRecord.php',
+        'Egulias\\EmailValidator\\Exception\\NoDomainPart' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/NoDomainPart.php',
+        'Egulias\\EmailValidator\\Exception\\NoLocalPart' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/NoLocalPart.php',
+        'Egulias\\EmailValidator\\Exception\\UnclosedComment' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/UnclosedComment.php',
+        'Egulias\\EmailValidator\\Exception\\UnclosedQuotedString' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/UnclosedQuotedString.php',
+        'Egulias\\EmailValidator\\Exception\\UnopenedComment' => __DIR__ . '/..' . '/egulias/email-validator/src/Exception/UnopenedComment.php',
+        'Egulias\\EmailValidator\\Parser\\DomainPart' => __DIR__ . '/..' . '/egulias/email-validator/src/Parser/DomainPart.php',
+        'Egulias\\EmailValidator\\Parser\\LocalPart' => __DIR__ . '/..' . '/egulias/email-validator/src/Parser/LocalPart.php',
+        'Egulias\\EmailValidator\\Parser\\Parser' => __DIR__ . '/..' . '/egulias/email-validator/src/Parser/Parser.php',
+        'Egulias\\EmailValidator\\Validation\\DNSCheckValidation' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/DNSCheckValidation.php',
+        'Egulias\\EmailValidator\\Validation\\EmailValidation' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/EmailValidation.php',
+        'Egulias\\EmailValidator\\Validation\\Error\\RFCWarnings' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/Error/RFCWarnings.php',
+        'Egulias\\EmailValidator\\Validation\\Error\\SpoofEmail' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/Error/SpoofEmail.php',
+        'Egulias\\EmailValidator\\Validation\\Exception\\EmptyValidationList' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/Exception/EmptyValidationList.php',
+        'Egulias\\EmailValidator\\Validation\\MultipleErrors' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/MultipleErrors.php',
+        'Egulias\\EmailValidator\\Validation\\MultipleValidationWithAnd' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/MultipleValidationWithAnd.php',
+        'Egulias\\EmailValidator\\Validation\\NoRFCWarningsValidation' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/NoRFCWarningsValidation.php',
+        'Egulias\\EmailValidator\\Validation\\RFCValidation' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/RFCValidation.php',
+        'Egulias\\EmailValidator\\Validation\\SpoofCheckValidation' => __DIR__ . '/..' . '/egulias/email-validator/src/Validation/SpoofCheckValidation.php',
+        'Egulias\\EmailValidator\\Warning\\AddressLiteral' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/AddressLiteral.php',
+        'Egulias\\EmailValidator\\Warning\\CFWSNearAt' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/CFWSNearAt.php',
+        'Egulias\\EmailValidator\\Warning\\CFWSWithFWS' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/CFWSWithFWS.php',
+        'Egulias\\EmailValidator\\Warning\\Comment' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/Comment.php',
+        'Egulias\\EmailValidator\\Warning\\DeprecatedComment' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/DeprecatedComment.php',
+        'Egulias\\EmailValidator\\Warning\\DomainLiteral' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/DomainLiteral.php',
+        'Egulias\\EmailValidator\\Warning\\DomainTooLong' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/DomainTooLong.php',
+        'Egulias\\EmailValidator\\Warning\\EmailTooLong' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/EmailTooLong.php',
+        'Egulias\\EmailValidator\\Warning\\IPV6BadChar' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/IPV6BadChar.php',
+        'Egulias\\EmailValidator\\Warning\\IPV6ColonEnd' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/IPV6ColonEnd.php',
+        'Egulias\\EmailValidator\\Warning\\IPV6ColonStart' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/IPV6ColonStart.php',
+        'Egulias\\EmailValidator\\Warning\\IPV6Deprecated' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/IPV6Deprecated.php',
+        'Egulias\\EmailValidator\\Warning\\IPV6DoubleColon' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/IPV6DoubleColon.php',
+        'Egulias\\EmailValidator\\Warning\\IPV6GroupCount' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/IPV6GroupCount.php',
+        'Egulias\\EmailValidator\\Warning\\IPV6MaxGroups' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/IPV6MaxGroups.php',
+        'Egulias\\EmailValidator\\Warning\\LabelTooLong' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/LabelTooLong.php',
+        'Egulias\\EmailValidator\\Warning\\LocalTooLong' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/LocalTooLong.php',
+        'Egulias\\EmailValidator\\Warning\\NoDNSMXRecord' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/NoDNSMXRecord.php',
+        'Egulias\\EmailValidator\\Warning\\ObsoleteDTEXT' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/ObsoleteDTEXT.php',
+        'Egulias\\EmailValidator\\Warning\\QuotedPart' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/QuotedPart.php',
+        'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/QuotedString.php',
+        'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/TLD.php',
+        'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/Warning.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'Facade\\FlareClient\\Api' => __DIR__ . '/..' . '/facade/flare-client-php/src/Api.php',
         'Facade\\FlareClient\\Concerns\\HasContext' => __DIR__ . '/..' . '/facade/flare-client-php/src/Concerns/HasContext.php',
         'Facade\\FlareClient\\Concerns\\UsesTime' => __DIR__ . '/..' . '/facade/flare-client-php/src/Concerns/UsesTime.php',
@@ -4552,6 +4696,10 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
+<<<<<<< HEAD
+=======
+        'Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
         'Whoops\\Exception\\Frame' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Frame.php',
@@ -4648,10 +4796,17 @@ class ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit43407fe5fe7b774d8978b461e115e8ed::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3fae6850682ed80268266a6186e015b2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3fae6850682ed80268266a6186e015b2::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit3fae6850682ed80268266a6186e015b2::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit3fae6850682ed80268266a6186e015b2::$classMap;
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 
         }, null, ClassLoader::class);
     }

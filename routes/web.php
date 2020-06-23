@@ -57,6 +57,7 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/organisationType','BasicInformations\OrganisationTypeController');
     Route::resource('/productType', 'BasicInformations\ProductTypeController');
     Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
+    Route::resource('/qualitySystem','BasicInformations\QualitySystemController');
     Route::resource('/resultControl','BasicInformations\ResultControlController');
     Route::resource('/saleProduct','BasicInformations\SaleProductController');
     Route::resource('/scienceTool','BasicInformations\ScienceToolController');
@@ -66,7 +67,7 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/testingCalibratingType', 'BasicInformations\TestingCalibratingTypeController');
     
     // Log Activities
-    Route::get('logActivity','LogActivityController@logActivity');
+    Route::get('logActivity','LogActivityController@index');
 });
 
 Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function(){

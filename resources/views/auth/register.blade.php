@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -10,6 +10,20 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+
+                        <div class="form-group row">
+                            <label for="national-id" class="col-md-4 col-form-label text-md-right">{{ __('หมายเลขประจำตัวประชาชน') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="national_id" type="number" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" required autofocus>
+
+                                @error('national_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ชื่อ - นามสกุล') }}</label>
@@ -57,7 +71,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  required autocomplete="new-password">
                             </div>
                         </div>
 
@@ -65,10 +79,10 @@
                             <label for="user-role" class="col-md-4 col-form-label text-md-right">{{ __('สิทธิ์การใช้งาน') }}</label>
 
                             <div class="col-md-6">
-                                <select id="role_id" class="form-control select2 @error('role_id') is-invalid @enderror" name="role_id" required data-placeholder="-- โปรดเลือกสิทธิ์การใช้งาน --">
+                                <select style="width: 100%" id="role_id" class="form-control select2 @error('role_id') is-invalid @enderror" name="role_id" required data-placeholder="-- โปรดเลือกสิทธิ์การใช้งาน --">
                                     <option value="">-- โปรดเลือกสิทธิ์การใช้งาน --</option>
                                     @foreach ($showAllRole as $role)
-                                        <option value="{{ $role->id }}">{{ $role->role_name }}</option>
+                                        <option value="{{ $role->id }}" {{ (old ('role_id') == $role->id ? 'selected' : '')}}>{{ $role->role_name }}</option>
                                     @endforeach
 
                                 </select>
@@ -79,10 +93,10 @@
                             <label for="agency-id" class="col-md-4 col-form-label text-md-right">{{ __('หน่วยจ้างงาน') }}</label>
 
                             <div class="col-md-6">
-                                <select id="agency_id" class="form-control select2 @error('agency_id') is-invalid @enderror" name="agency_id" required data-placeholder="-- โปรดเลือกหน่วยจ้างงาน --">
+                                <select style="width: 100%" id="agency_id" class="form-control select2 @error('agency_id') is-invalid @enderror" name="agency_id" required data-placeholder="-- โปรดเลือกหน่วยจ้างงาน --">
                                     <option value="">-- โปรดเลือกหน่วยจ้างงาน --</option>
                                     @foreach ($showAllAgency as $agency)
-                                        <option value="{{ $agency->id }}">{{ $agency->agency_name }}</option>
+                                        <option value="{{ $agency->id }}" {{ (old ('agency_id') == $agency->id ? 'selected' : '')}}>{{ $agency->agency_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

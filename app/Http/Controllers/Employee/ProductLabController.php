@@ -100,7 +100,6 @@ class ProductLabController extends Controller
         $productLab->proficiency_testing_year = $request['proficiency_testing_year'];
         $productLab->certify_laboratory_id = $request['certify_laboratory_id'];
 
-        
         $productLab->save();
         $productLab->productTypes()->sync($request->product_type_id, false);
         $productLab->resultControls()->sync($request->result_control_id, false);

@@ -18,6 +18,5 @@ class ScienceTool extends Model
     {
         return $this->hasMany(EquipmentLab::class);
     }
-
     
 }

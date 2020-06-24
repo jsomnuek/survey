@@ -61,7 +61,7 @@ class EquipmentLabController extends Controller
             'equipmentRents' => $allEquipmentRent,
 
         ];
-        //dd($data);
+        dd($data);
         return view('employee.equipmentLab.create')->with($data);
     }
 

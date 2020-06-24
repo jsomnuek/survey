@@ -77,7 +77,7 @@ class LabController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        dd($request->all());
+        // dd($request->all());
 
         // validate the data with function
         $this->validateLab();

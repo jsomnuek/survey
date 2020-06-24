@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-<<<<<<< HEAD
-=======
-use App\Helpers\LogActivity;
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 
 trait ResetsPasswords
 {
@@ -52,12 +48,6 @@ trait ResetsPasswords
             }
         );
 
-<<<<<<< HEAD
-=======
-        //loging
-        LogActivity::addToLog('The password was successfully reset.');
-
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         // If the password was successfully reset, we will redirect the user back to
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.

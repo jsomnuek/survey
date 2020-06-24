@@ -189,13 +189,14 @@
                                 <div class="form-group">
                                     <label for="">2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ :</label>
                                     @foreach ($educationLevels as $item)
-                                    <div class="form-group row my-1">
+                                    <div class="row mb-0">
                                         <input type="hidden" name="education_level_id[]" value="{{ $item->id }}">
-                                        <label for="" class="col-md-6 col-form-label">{{ $item->edu_level_name }}</label>
-                                        <label for="" class="col-md-3 col-form-label">จำนวน (คน) :</label>
-                                        <div class="col-md-3">
+                                        <label for="" class="col-md-5 col-form-label">{{ $item->edu_level_name }}</label>
+                                        <label for="" class="col-md-2 col-form-label">จำนวน :</label>
+                                        <div class="col-md-2">
                                             <input type="number" name="education_level_amount[]" min="0" class="form-control form-control-sm" id="education_level_amount_{{$item->id}}" placeholder="" value="{{ old('education_level_amount.'.$educationLevelAmountItems++) }}">
                                         </div>
+                                        <label for="" class="col-md-1 col-form-label">คน</label>
                                     </div>
                                     @endforeach
                                 </div>
@@ -252,7 +253,7 @@
                                         <span>(กรณีไม่เคยได้รับการอบรม โปรดระบุ "0")</span>
                                     </label>
                                     @foreach ($labDevelopments as $item)
-                                    <div class="form-group row my-1">
+                                    <div class="row my-1">
                                         <input type="hidden" name="lab_development_id[]" value="{{ $item->id }}">
                                         <label for="" class="col-md-3 col-form-label">- {{ $item->lab_dev_name }}</label>
                                         <label for="" class="col-md-2 col-form-label">ได้รับการอบรม :</label>
@@ -265,13 +266,9 @@
                                             <input type="number" name="lab_development_day[]" min="0" class="form-control form-control-sm" id="lab_development_day_{{$item->id}}" placeholder="" value="{{ old('lab_development_day.'.$labDevelopmentDayItems++) }}">
                                         </div>
                                         <label for="" class="col-md-1 col-form-label">วัน</label>
-                                        <div class="form-group">
-                                            <select class="form-control form-control-sm custom-select" name="lab_development_join[]">
-                                                <option value="0">option 0</option>
-                                                <option value="1">option 1</option>
-                                                <option value="2">option 2</option>
-                                            </select>
-                                        </div>
+                                        <select class="col-md-2 form-control form-control-sm" style="width: 100%;" name="lab_development_join[]">
+                                            
+                                        </select>
                                     </div>
                                     @endforeach
                                 </div>

@@ -174,13 +174,13 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">3.12 ขอบเขตการใช้เครื่องมือ</label>
-                        <select class="form-control @error('equipment_usages_id') is-invalid @enderror" name="equipment_usages_id" id="equipment_usages_id"  >
+                        <select class="form-control @error('equipment_usage_id') is-invalid @enderror" name="equipment_usage_id" id="equipment_usage_id"  >
                           <option value="">โปรดเลือกขอบเขตการใช้งานเครื่องมือ</option>
                             @foreach ($equipmentUsages as $equipmentUsage)
-                              <option value="{{$equipmentUsage->id}}" {{ old('equipment_usages_id') ==  $equipmentUsage->id ? 'selected' : ''}}> {{$equipmentUsage->equipment_usage_name}} </option>
+                              <option value="{{$equipmentUsage->id}}" {{ old('equipment_usage_id') ==  $equipmentUsage->id ? 'selected' : ''}}> {{$equipmentUsage->equipment_usage_name}} </option>
                             @endforeach
                         </select>
-                        @error('equipment_usages_id')
+                        @error('equipment_usage_id')
                         <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                           {{-- <strong>text assignment</strong> --}}
@@ -228,13 +228,13 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">3.16	การตรวจเช็ค/บำรุงรักษาเครื่องมืออุปกรณ์ทางวิทยาศาสตร์</label>
-                        <select name="equipment_maintenances_id" id="equipment_maintenances_id" class="form-control @error('equipment_maintenances_id') is-invalid @enderror">
+                        <select name="equipment_maintenance_id" id="equipment_maintenance_id" class="form-control @error('equipment_maintenance_id') is-invalid @enderror">
                           <option value="">โปรดเลือกขอบเขตการใช้งานเครื่องมือ</option>
                           @foreach ($equipmentMaintenances as $equipmentMaintenance)
-                            <option value="{{$equipmentMaintenance->id}}" {{ old('equipment_maintenances_id') ==  $equipmentMaintenance->id ? 'selected' : ''}} > {{$equipmentMaintenance->equipment_maintenance_name}} </option>
+                            <option value="{{$equipmentMaintenance->id}}" {{ old('equipment_maintenance_id') ==  $equipmentMaintenance->id ? 'selected' : ''}} > {{$equipmentMaintenance->equipment_maintenance_name}} </option>
                           @endforeach
                         </select>
-                        @error('equipment_maintenances_id')
+                        @error('equipment_maintenance_id')
                         <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                           {{-- <strong>text assignment</strong> --}}
@@ -245,7 +245,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">อื่นๆ โปรดระบุ  : </label>
-                        <input class="form-control" type="text" name="equipment_maintenances_other" id="equipment_maintenances_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('')}}">
+                        <input class="form-control" type="text" name="equipment_maintenance_other" id="equipment_maintenance_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('equipment_maintenance_other')}}">
                       </div>
                     </div>
                     <div class="col-md-6">

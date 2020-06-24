@@ -56,7 +56,7 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.8 มูลค่าเครื่องมือ :</th>
-                                <td>{{ $equipmentLabs->equipment_price }}</td>
+                                <td>{{ number_format($equipmentLabs->equipment_price) }} บาท</td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.9 บริษัทที่จำหน่าย :</th>
@@ -84,7 +84,7 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.12 ขอบเขตการใช้เครื่องมือ :</th>
-                                <td>{{ $equipmentLabs->equipmentUsage->equipment_usage_name }}</td>
+                                <td> {{$equipmentLabs->equipmentUsage->equipment_usage_name}} </td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.13 ความสามารถของเครื่อง/ความละเอียด :</th>
@@ -97,10 +97,54 @@
                             <tr>
                                 <th class="" style="width: 30%;">3.15 การสอบเทียบ :</th>
                                 <td> 
-                                    @if ($equipmentLabs->equipment_calibrations_id = 1)
+                                    @if ($equipmentLabs->equipment_calibrations_id == 1)
                                         ไม่มีการสอบเทียบเครื่องมือ
                                     @else
                                         มีการสอบเทียบเครื่องมือ โดย{{$equipmentLabs->equipment_calibration_by}} เมื่อปี {{$equipmentLabs->equipment_calibration_year}} 
+                                    @endif 
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">3.16 การตรวจเช็ค/บำรุงรักษาเครื่องมือ :</th>
+                                <td> {{$equipmentLabs->equipmentMaintenance->equipment_maintenance_name}} </td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">3.17 งบประมาณในการบำรุงรักษา/สอบเทียบ :</th>
+                                <td>{{ number_format($equipmentLabs->equipment_maintenance_budget) }} บาท</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">3.18 ผู้ดูแลเครื่องมือ</th>
+                                
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">ชื่อ :</th>
+                                <td>{{ $equipmentLabs->equipment_admin_name }} </td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">หมายเลขโทรศัพท์ :</th>
+                                <td>{{ $equipmentLabs->equipment_admin_phone }} </td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">อีเมล :</th>
+                                <td>{{ $equipmentLabs->equipment_admin_email }} </td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">3.19 คู่มือการใช้งาน :</th>
+                                <td> 
+                                    @if ($equipmentLabs->equipment_manuals_id == 1)
+                                        ไม่มีคู่มือการใข้งาน
+                                    @else
+                                        มีคู่มือการใช้งาน ชื่อ/รหัส : {{$equipmentLabs->equipment_manual_name}} ที่จัดเก็บ : {{$equipmentLabs->equipment_manual_locate}} 
+                                    @endif 
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">3.20 การให้เช่าใช้เครื่องมือ :</th>
+                                <td> 
+                                    @if ($equipmentLabs->equipment_rent_id == 1)
+                                        ไม่ให้บุคคลภายนอกเช่าใช้
+                                    @else
+                                        บุคคลภายนอกสามารถเช่าใช้ได้ ค่าบริการครั้งละ {{ number_format($equipmentLabs->equipment_rent_fee) }} บาท โดยมีเงื่อนไข : {{$equipmentLabs->equipment_rent_detail}} 
                                     @endif 
                                 </td>
                             </tr>

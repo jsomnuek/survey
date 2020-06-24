@@ -30,14 +30,14 @@ class CreateEquipmentLabsTable extends Migration
             //3.10 สาขาเทคโนเครื่องมือ FK many with other table
             $table->string('major_technologies_other', 255)->nullable()->comment('สาขาเทคโนเครื่องมืออื่นๆ ');   //3.10.1สาขาเทคโนเครื่องมืออื่นๆ
             //3.11วัตถุประสงค์การใช้งาน FK many with other Table
-            $table->unsignedBigInteger('equipment_usages_id')->comment('ขอบเขตการใช้งานเครื่องมือ');             //3.12ขอบเขตการใช้งานเครื่องมือ FK 
+            $table->unsignedBigInteger('equipment_usage_id')->comment('ขอบเขตการใช้งานเครื่องมือ');             //3.12ขอบเขตการใช้งานเครื่องมือ FK 
             $table->string('equipment_ability', 255)->nullable()->comment('คสามารถคละเอียดเครื่องมือ');         //3.13คสามารถคละเอียดเครื่องมือ
             $table->string('equipment_pic')->nullable()->comment('รูปเครื่องมือ');                              //3.14รูปเครื่องมือ
             $table->integer('equipment_calibrations_id')->nullable()->comment('การสอบเทียบเครื่องมือ');         //3.15 การสอบเทียบเครื่องมือ ใช่-ไม่ใช่
             $table->string('equipment_calibration_by', 255)->nullable()->comment('การสอบเทียบเครื่องมือโดย');   //3.15.1การสอบเทียบเครื่องมือโดย
             $table->integer('equipment_calibration_year')->nullable()->comment('การสอบเทียบเครื่องมือปี');       //3.15.2การสอบเทียบเครื่องมือปี
-            $table->unsignedBigInteger('equipment_maintenances_id')->nullable()->comment('การบำรุงรักษา');     //3.16การบำรุงรักษา FK 
-            $table->string('equipment_maintenances_other')->nullable()->comment('การบำรุงรักษาอื่นๆ ');           //3.16.1การบำรุงรักษาอื่นๆ
+            $table->unsignedBigInteger('equipment_maintenance_id')->nullable()->comment('การบำรุงรักษา');     //3.16การบำรุงรักษา FK 
+            $table->string('equipment_maintenance_other')->nullable()->comment('การบำรุงรักษาอื่นๆ ');           //3.16.1การบำรุงรักษาอื่นๆ
             $table->integer('equipment_maintenance_budget')->nullable()->comment('ค่าบำรุงรักษา');              //3.17ค่าบำรุงรักษา
             $table->string('equipment_admin_name',255)->nullable()->comment('ผู้ดูแลเครื่องมือชื่อ');               //3.18.1ผู้ดูแลเครื่องมือชื่อ
             $table->string('equipment_admin_phone',)->nullable()->comment('ผู้ดูแลเครื่องมือเบอร์โทร');            //3.18.2ผู้ดูแลเครื่องมือเบอร์โทร
@@ -52,8 +52,8 @@ class CreateEquipmentLabsTable extends Migration
 
             // Foreign Key to other table
             $table->foreign('science_tool_id')->references('id')->on('science_tools');                          //FK3.2.1 ชื่อเครื่องมือEN FK with other Table
-            $table->foreign('equipment_usages_id')->references('id')->on('equipment_usages');                   //FK3.12 ขอบเขตการใช้งานเครื่องมือ FK 
-            $table->foreign('equipment_maintenances_id')->references('id')->on('equipment_maintenances');       //FK3.16การบำรุงรักษา FK 
+            $table->foreign('equipment_usage_id')->references('id')->on('equipment_usages');                   //FK3.12 ขอบเขตการใช้งานเครื่องมือ FK 
+            $table->foreign('equipment_maintenance_id')->references('id')->on('equipment_maintenances');       //FK3.16การบำรุงรักษา FK 
             $table->timestamps();
 
         });

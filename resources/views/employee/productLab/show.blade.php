@@ -32,7 +32,13 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.2 ประเภทผลิตภัณฑ์</th>
-                                <td></td>
+                                <td>
+                                    @forelse ($productLabs->productTypes as $item)
+                                        <li>{{ $item->product_type_name }}</li>
+                                    @empty
+
+                                    @endforelse
+                                </td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.3 มาตราฐานผลิตภัณฑ์ :</th>
@@ -44,7 +50,7 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ :</th>
-                                <td>{{ $productLabs->product_lab_test_name }}</td>
+                                <td>ยังไม่สมบูรณ์----{{ $productLabs->product_lab_test_name }}</td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.6 ประเภทรายการทดสอบ/สอบเทียบ :</th>
@@ -52,7 +58,7 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.7 ประเภทการทดสอบ/สอบเทียบ :</th>
-                                <td>{{ $productLabs->testingCalibratingType->testing_type_name }}</td>
+                                <td>{{ $productLabs->testingCalibratingType->testing_calibrating_type_name }}</td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.8 วิธีทดสอบ/สอบเทียบตามมาตราฐาน :</th>
@@ -80,7 +86,13 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.14 การควบคุมคุณภาพผลการทดสอบภายใน :</th>
-                                <td>ยังไม่สมบูรณ์----{{ $productLabs->product_lab_material_ref_from }} </td>
+                                <td>
+                                    @forelse ($productLabs->resultControls as $item)
+                                        <li>{{ $item->result_control_name }}</li>
+                                    @empty
+
+                                    @endforelse
+                                </td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.15 การทดสอบความชำนาญห้องปฏิบัติการ :</th>
@@ -91,12 +103,12 @@
                                         มีการทดสอบความชำนาญห้องปฏิบัติการ  โดย{{ $productLabs->proficiency_testing_by }} เมื่อปี {{ $productLabs->proficiency_testing_year }}
                                     @endif
                                 </td>
-                                
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.16 การรับรองความสามารถห้องปฏิบัติการ :</th>
                                 <td>{{ $productLabs->certifyLaboratory->cert_lab_name }} </td>
                             </tr>
+                            
                             {{-- <tr>
                                 <th class="" style="width: 30%;">1.3 หมายเลขประจำหน่วยงาน :</th>
                                 <td>{{ $org->org_number }}</td>

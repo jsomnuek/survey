@@ -37,7 +37,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">4.2 ประเภทผลิตภัณฑ์</label>
+                                    <label for="">4.2 ประเภทผลิตภัณฑ์ (เลือกได้มากกว่า 1 คำตอบ)</label>
                                     <select class="form-control custom-select select2 @error('product_type_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="product_type_id[]" id="product_type_id" data-value="{{ old('product_type_id[]') }}">
                                         <option value="" disabled="disabled">disabled</option>
                                         @foreach ($productTypes ?? '' as $productType)
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ (ระบุโดยรหัสเครื่องมือจากส่วนที่ 2)</label>
+                                <label for="">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ (ระบุโดยรหัสเครื่องมือจากส่วนที่ 3)</label>
                                 <div class=" form-group">
                                     <input class="form-control" type="text" name="" placeholder="Ex.AABCC-MNN-RRRSS"><br/>
                                     <input class="form-control" type="text" name="" placeholder="Ex.AABCC-MNN-RRRSS"><br/>
@@ -161,7 +161,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class=" form-group">
-                                    <label for="">4.11 ค่าธรรมเนียมการทดสอบ/สอบเทียบ </label>
+                                    <label for="">4.11 ค่าธรรมเนียมการทดสอบ/สอบเทียบ (บาท) </label>
                                     <input type="text" name="product_lab_test_fee" class="form-control " id="" placeholder="หน่วยบาท" value="{{ old('product_lab_test_fee')}}">
                                 </div>
                             </div>
@@ -195,26 +195,26 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
+                                <label for="">4.15 การทดสอบความชำนาญห้องปฏิบัติการ (Proficiency Testing) </label>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="proficiency_testing1" name="proficiency_testing" value='1' {{ old('proficiency_testing') == 1 ? 'checked' : ''}}>
+                                    <label for="proficiency_testing1" class="custom-control-label">ไม่มี</label>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="proficiency_testing2" name="proficiency_testing" value='2' {{ old('proficiency_testing') == 2 ? 'checked' : ''}}>
+                                    <label for="proficiency_testing2" class="custom-control-label">มี</label>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <input class="form-control form-control-sm" type="text" name="proficiency_testing_by" id="" placeholder="โปรดระบุชื่ผู้จัด" value="{{ old('proficiency_testing_by')}}">
+                            </div>
+                            <div class="col-md-5">
                                 <div class="form-group">
-                                    <label for="">4.15 การทดสอบความชำนาญห้องปฏิบัติการ </label>
-                                    <div class="col-md-2">
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="proficiency_testing1" name="proficiency_testing" value='1' {{ old('proficiency_testing') == 1 ? 'checked' : ''}}>
-                                            <label for="proficiency_testing1" class="custom-control-label">ไม่มี</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="proficiency_testing2" name="proficiency_testing" value='2' {{ old('proficiency_testing') == 2 ? 'checked' : ''}}>
-                                            <label for="proficiency_testing2" class="custom-control-label">มี</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input class="form-control form-control-sm" type="text" name="proficiency_testing_by" id="" placeholder="โปรดระบุชื่ผู้จัด" value="{{ old('proficiency_testing_by')}}">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input class="form-control form-control-sm" type="text" name="proficiency_testing_year" id="" placeholder="โปรดระบุปี" value="{{ old('proficiency_testing_year')}}">
-                                    </div>
+                                    <input class="form-control form-control-sm" type="text" name="proficiency_testing_year" id="" placeholder="โปรดระบุปี" value="{{ old('proficiency_testing_year')}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -223,7 +223,7 @@
                                     <select class="form-control @error('certify_laboratory_id') is-invalid @enderror" name="certify_laboratory_id" id="certify_laboratory_id">
                                         <option value="">โปรดเลือกการรับรองความสามารถห้องปฏิบัติการ</option>
                                         @foreach ($cerifyLaboratories as $cerifyLaboratory)
-                                        <option value="{{$cerifyLaboratory->id}}" {{ old('certify_laboratory_id') ==  $cerifyLaboratory->id ? 'selected' : ''}} > {{$cerifyLaboratory->cert_lab_name}} </option>
+                                            <option value="{{$cerifyLaboratory->id}}" {{ old('certify_laboratory_id') ==  $cerifyLaboratory->id ? 'selected' : ''}} > {{$cerifyLaboratory->cert_lab_name}} </option>
                                         @endforeach
                                     </select>
                                     @error('certify_laboratory_id')

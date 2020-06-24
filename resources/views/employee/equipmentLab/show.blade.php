@@ -82,6 +82,28 @@
                                     @endforelse
                                 </td>
                             </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">3.12 ขอบเขตการใช้เครื่องมือ :</th>
+                                <td>{{ $equipmentLabs->equipmentUsage->equipment_usage_name }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">3.13 ความสามารถของเครื่อง/ความละเอียด :</th>
+                                <td>{{ $equipmentLabs->equipment_ability }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">3.14 รูปภาพเครื่องมือ :</th>
+                                <td>{{ $equipmentLabs->equipment_pic }}</td>
+                            </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">3.15 การสอบเทียบ :</th>
+                                <td> 
+                                    @if ($equipmentLabs->equipment_calibrations_id = 1)
+                                        ไม่มีการสอบเทียบเครื่องมือ
+                                    @else
+                                        มีการสอบเทียบเครื่องมือ โดย{{$equipmentLabs->equipment_calibration_by}} เมื่อปี {{$equipmentLabs->equipment_calibration_year}} 
+                                    @endif 
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

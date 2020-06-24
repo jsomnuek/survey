@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{ $equipmentLab->id }}</td>
                                 <td>{{ $equipmentLab->equipment_lab_id }}</td>
-                                <td>{{ $equipmentLab->scienceTools}}</td>
+                                <td>{{ $equipmentLab->scienceTool->science_tool_name }}:{{ $equipmentLab->scienceTool->science_tool_abbr}}</td>
                                 <td><a href="/equipmentLab/{{ $equipmentLab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a> 
                                     <a href="/equipmentLab/{{ $equipmentLab->id }}/edit" class="btn btn-warning btn-sm">แก้ไขข้อมูล</a>
                                 </td>

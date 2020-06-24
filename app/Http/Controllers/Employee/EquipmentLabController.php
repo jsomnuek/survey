@@ -61,7 +61,7 @@ class EquipmentLabController extends Controller
             'equipmentRents' => $allEquipmentRent,
 
         ];
-        dd($data);
+        //dd($data);
         return view('employee.equipmentLab.create')->with($data);
     }
 
@@ -269,7 +269,6 @@ class EquipmentLabController extends Controller
             'equipments_rent_id'=>'' ,
             'equipment_rent_fee'=>'' ,
             'equipment_rent_detail'=>'' ,
-            
         ]);
     }
 }

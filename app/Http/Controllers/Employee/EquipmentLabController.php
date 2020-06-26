@@ -133,7 +133,8 @@ class EquipmentLabController extends Controller
     public function show(EquipmentLab $equipmentLab)
     {
         //return $equipmentLab;
-        //$equipmentLabs = EquipmentLab::find($id);
+        $equipmentLab = EquipmentLab::find($equipmentLab->id);
+        //return $equipmentLab;
         return view('employee.equipmentLab.show', ['equipmentLabs' => $equipmentLab]);
     }
 

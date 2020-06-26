@@ -379,5 +379,4 @@
       //$('.equipment_manuals_id').val($equipment_manuals_id);
       //$('.equipment_manuals_id').trigger('onClick');
     </script>
-
 @endsection

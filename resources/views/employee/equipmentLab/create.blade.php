@@ -148,7 +148,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group">
+                      <div class="form-group d-none" id="display_major_technologies_other">
                         <label for="">อื่นๆ โปรดระบุ  : </label>
                         <input class="form-control" type="text" name="major_technologies_other" id="major_technologies_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('major_technologies_other')}}">
                       </div>
@@ -360,5 +360,11 @@
 
 @section('scripts')
     <script src="{{ asset('js/components.js') }}"></script>
-    <script src="{{ asset('js/form-org.js') }}"></script>
+    <script src="{{ asset('js/form-equipmentLab.js') }}"></script>
+    <script type="text/javascript">
+      // 4.2
+      $('#major_technologies_id').val({{ json_encode($majorTechnologies) }});
+      $('#major_technologies_id').trigger('change');
+    </script>
+
 @endsection

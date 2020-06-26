@@ -35,7 +35,7 @@
                                 <td>
                                     @forelse ($productLabs->productTypes as $item )
                                         @if ($item->id !=1)
-                                            <li>{{ $item->product_type_name }}</li>
+                                            <li>{{ $item->product_type_name }} </li>
                                         @else
                                             
                                         @endif

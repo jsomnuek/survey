@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-use App\Helpers\LogActivity;
 
 trait ResetsPasswords
 {
@@ -48,9 +47,6 @@ trait ResetsPasswords
                 $this->resetPassword($user, $password);
             }
         );
-
-        //loging
-        LogActivity::addToLog('The password was successfully reset.');
 
         // If the password was successfully reset, we will redirect the user back to
         // the application's home authenticated view. If there is an error we can

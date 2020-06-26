@@ -11,6 +11,10 @@ use App\Model\BasicInformations\Country;
 use App\Model\BasicInformations\OrganisationType;
 use App\Model\BasicInformations\BusinessType;
 use App\Model\BasicInformations\IndustrialType;
+use App\Model\Employee\QualitySystemIso9000;
+use App\Model\Employee\QualitySystemIso14000;
+use App\Model\Employee\QualitySystemIsoHaccp;
+use App\Model\Employee\Lab;
 
 class Organization extends Model
 {
@@ -76,6 +80,26 @@ class Organization extends Model
     public function industrialTypes()
     {
         return $this->belongsToMany(IndustrialType::class)->withTimestamps();
+    }
+
+    // Defining Relationships 1.11 One To Many
+    public function qualitySystemIso9000s()
+    {
+        return $this->hasMany(QualitySystemIso9000::class, 'org_id');
+    }
+    public function qualitySystemIso14000s()
+    {
+        return $this->hasMany(QualitySystemIso14000::class, 'org_id');
+    }
+    public function qualitySystemIsoHaccps()
+    {
+        return $this->hasMany(QualitySystemIsoHaccp::class, 'org_id');
+    }
+
+    // Defining Relationships One To Many
+    public function labs()
+    {
+        return $this->hasMany(Lab::class);
     }
 
 }

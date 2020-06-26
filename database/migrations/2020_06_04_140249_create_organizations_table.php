@@ -41,9 +41,10 @@ class CreateOrganizationsTable extends Migration
             $table->unsignedBigInteger('organisation_type_id'); //1.8
             $table->string('organisation_type_other')->nullable();
             $table->unsignedBigInteger('business_type_id'); //1.9
-            $table->string('business_type_other')->nullable();
+            $table->string('business_type_other')->nullable(); //1.9
             $table->string('industrial_type_other')->nullable(); //1.10
-            $table->boolean('completed')->default(false); //1.10
+            $table->text('quality_system_other')->nullable(); //1.11
+            $table->boolean('completed')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -90,6 +91,50 @@ class CreateOrganizationsTable extends Migration
             $table->foreign('organization_id')
                 ->references('id')->on('organizations');
         });
+
+        // 1.11
+        Schema::create('quality_system_iso9000s', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('org_id')->comment('');
+            $table->unsignedBigInteger('operation_id')->nullable()->comment('');
+            $table->string('scoped')->nullable()->comment('');
+            $table->string('certification_agency')->nullable()->comment('');
+            $table->string('accredited')->nullable()->comment('');
+            $table->timestamps();
+
+            $table->foreign('org_id')
+                ->references('id')->on('organizations');
+            $table->foreign('operation_id')
+                ->references('id')->on('operations');
+        });
+        Schema::create('quality_system_iso14000s', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('org_id')->comment('');
+            $table->unsignedBigInteger('operation_id')->nullable()->comment('');
+            $table->string('scoped')->nullable()->comment('');
+            $table->string('certification_agency')->nullable()->comment('');
+            $table->string('accredited')->nullable()->comment('');
+            $table->timestamps();
+
+            $table->foreign('org_id')
+                ->references('id')->on('organizations');
+            $table->foreign('operation_id')
+                ->references('id')->on('operations');
+        });
+        Schema::create('quality_system_iso_haccps', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('org_id')->comment('');
+            $table->unsignedBigInteger('operation_id')->nullable()->comment('');
+            $table->string('scoped')->nullable()->comment('');
+            $table->string('certification_agency')->nullable()->comment('');
+            $table->string('accredited')->nullable()->comment('');
+            $table->timestamps();
+
+            $table->foreign('org_id')
+                ->references('id')->on('organizations');
+            $table->foreign('operation_id')
+                ->references('id')->on('operations');
+        });
     }
 
     /**
@@ -102,6 +147,9 @@ class CreateOrganizationsTable extends Migration
         Schema::dropIfExists('organization_sale_product');
         Schema::dropIfExists('country_organization');
         Schema::dropIfExists('industrial_type_organization');
+        Schema::dropIfExists('quality_system_iso9000s');
+        Schema::dropIfExists('quality_system_iso14000s');
+        Schema::dropIfExists('quality_system_iso_haccps');
         Schema::dropIfExists('organizations');
     }
 }

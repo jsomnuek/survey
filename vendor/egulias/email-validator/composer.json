@@ -18,21 +18,35 @@
     "symfony/polyfill-intl-idn": "^1.10"
   },
   "require-dev": {
+<<<<<<< HEAD
+    "satooshi/php-coveralls": "^1.0.1",
+    "phpunit/phpunit": "^4.8.36|^7.5.15",
+    "dominicsayers/isemail": "^3.0.7"
+=======
     "dominicsayers/isemail": "^3.0.7",
     "phpunit/phpunit": "^4.8.36|^7.5.15",
     "satooshi/php-coveralls": "^1.0.1"
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
   },
   "suggest": {
     "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
   },
   "autoload": {
     "psr-4": {
+<<<<<<< HEAD
+      "Egulias\\EmailValidator\\": "EmailValidator"
+=======
       "Egulias\\EmailValidator\\": "src"
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
     }
   },
   "autoload-dev": {
     "psr-4": {
+<<<<<<< HEAD
+      "Egulias\\Tests\\": "Tests"
+=======
       "Egulias\\EmailValidator\\Tests\\": "tests"
+>>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
     }
   }
 }

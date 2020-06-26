@@ -1,28 +1,22 @@
 $(document).ready(function() {
-    // checkInput
-    function checkInput() {
-        let inputTypeNumber = [
-            document.getElementById("org_postcode"),
-            // document.getElementById("org_lat"),
-            // document.getElementById("org_long"),
-            document.getElementById("org_capital"),
-            document.getElementById("org_employee_amount")
-        ];
-        let invalidChars = ["-", "+", "e", ".", "E"];
-        for (i = 0; i < inputTypeNumber.length; i++) {
-            inputTypeNumber[i].addEventListener("keydown", function(e) {
-                if (invalidChars.includes(e.key)) {
-                    e.preventDefault();
-                }
-            });
-            inputTypeNumber[i].addEventListener("keyup", function(e) {
-                if (invalidChars.includes(e.key)) {
-                    e.preventDefault();
-                }
-            });
-        }
-    }
-    checkInput();
+    //Initialize Select2 Elements
+    $(".select2")
+        .select2({
+            theme: "bootstrap4",
+            allowClear: true
+        })
+        .trigger("change");
+    //Initialize Select2 Elements
+    $(".select2-multi")
+        .select2({
+            theme: "bootstrap4",
+            allowClear: true,
+            placeholder: "-- โปรดเลือก --"
+        })
+        .trigger("change");
+
+    //inputmask
+    $("[data-mask]").inputmask();
 
     // Radio button that can be unchecked | jQuery
     var inputs = $("input[type=radio]");

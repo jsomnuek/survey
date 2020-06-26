@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use App\Model\Employee\Organization;
+use App\Model\Employee\Lab;
 
 class User extends Authenticatable
 {
@@ -42,5 +43,10 @@ class User extends Authenticatable
     public function organizations()
     {
         return $this->hasMany(Organization::class);
+    }
+
+    public function labs()
+    {
+        return $this->hasMany(Lab::class);
     }
 }

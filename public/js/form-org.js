@@ -1,19 +1,28 @@
 $(document).ready(function() {
-    //Initialize Select2 Elements
-    $(".select2")
-        .select2({
-            theme: "bootstrap4",
-            allowClear: true
-        })
-        .trigger("change");
-    //Initialize Select2 Elements
-    $(".select2-multi")
-        .select2({
-            theme: "bootstrap4",
-            allowClear: true,
-            placeholder: "-- โปรดเลือก --"
-        })
-        .trigger("change");
+    // checkInput
+    function checkInput() {
+        let inputTypeNumber = [
+            document.getElementById("org_postcode"),
+            // document.getElementById("org_lat"),
+            // document.getElementById("org_long"),
+            document.getElementById("org_capital"),
+            document.getElementById("org_employee_amount")
+        ];
+        let invalidChars = ["-", "+", "e", ".", "E"];
+        for (i = 0; i < inputTypeNumber.length; i++) {
+            inputTypeNumber[i].addEventListener("keydown", function(e) {
+                if (invalidChars.includes(e.key)) {
+                    e.preventDefault();
+                }
+            });
+            inputTypeNumber[i].addEventListener("keyup", function(e) {
+                if (invalidChars.includes(e.key)) {
+                    e.preventDefault();
+                }
+            });
+        }
+    }
+    checkInput();
 
     // Check Select Option
     // 1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : กรณีเลือกอื่นๆ
@@ -64,14 +73,7 @@ $(document).ready(function() {
     // 1.8 ประเภทองค์กร : กรณีเลือกอื่นๆ
     function checkOrganisationType() {
         // this value
-        var data = $("#organisation_type_id").val();
-        if (data != null) {
-            for (i = 0; i < data.length; i++) {
-                if (data[i] == "5") {
-                    var orgTypeId = 5;
-                }
-            }
-        }
+        var orgTypeId = $("#organisation_type_id").val();
         if (orgTypeId == 5) {
             $("#display_org_type_other").removeClass("d-none");
             $("#organisation_type_other").prop("required", true);
@@ -84,14 +86,7 @@ $(document).ready(function() {
         $("#organisation_type_id").on(
             "select2:select select2:unselect",
             function() {
-                var data = $("#organisation_type_id").val();
-                if (data != null) {
-                    for (i = 0; i < data.length; i++) {
-                        if (data[i] == "5") {
-                            var orgTypeId = 5;
-                        }
-                    }
-                }
+                var orgTypeId = $("#organisation_type_id").val();
                 if (orgTypeId == 5) {
                     $("#display_org_type_other").removeClass("d-none");
                     $("#organisation_type_other").prop("required", true);

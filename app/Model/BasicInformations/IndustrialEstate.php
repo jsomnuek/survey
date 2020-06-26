@@ -4,7 +4,7 @@ namespace App\Model\BasicInformations;
 
 use Illuminate\Database\Eloquent\Model;
 
-// use App\Model\Employee\Organization;
+use App\Model\Employee\Lab;
 
 class IndustrialEstate extends Model
 {
@@ -14,8 +14,8 @@ class IndustrialEstate extends Model
     public $estateStatus = 'estate_status';
     public $timestamps = true;
 
-    // public function organizations()
-    // {
-    //     return $this->hasMany(Organization::class);
-    // }
+    public function labs()
+    {
+        return $this->hasMany(Lab::class);
+    }
 }

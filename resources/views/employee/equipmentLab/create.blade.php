@@ -39,9 +39,9 @@
                     <div class="col-md-6">
                       <div class="form-group">
                           <label for="">3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ)</label>
-                          <select class="form-control @error('science_tool_id') is-invalid @enderror" name="science_tool_id" id="science_tool_id" >
-                            <option value="">โปรดเลือกเครื่องมือ</option>
-                            @foreach ($scienceTools as $scienceTool)
+                          <select class="form-control custom-select select2 @error('science_tool_id') is-invalid @enderror" name="science_tool_id" id="science_tool_id" >
+                            <option value="">โปรดเลือกชื่อเครื่องมือ</option>
+                            @foreach ($scienceTools  ?? '' as $scienceTool)
                                 <option value="{{$scienceTool->id}}" {{ old('science_tool_id') ==  $scienceTool->id ? 'selected' : ''}}> {{$scienceTool->science_tool_abbr}} : {{$scienceTool->science_tool_name}} </option>
                             @endforeach
                           </select>
@@ -54,7 +54,7 @@
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <div class="form-group">
+                      <div class="form-group d-none" id="display_science_tool_other_name">
                         <label for="">ชื่อเครื่องมือ : </label>
                         <input class="form-control @error('science_tool_other_name') is-invalid @enderror" type="text" name="science_tool_other_name" id="science_tool_other_name" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('science_tool_other_name')}}">
                         @error('science_tool_other_name')
@@ -66,7 +66,7 @@
                       </div>
                     </div>
                     <div class="col-md-2">
-                      <div class="form-group">
+                      <div class="form-group d-none" id="display_science_tool_other_abbr">
                         <label for="">ชื่อย่อเครื่องมือ :</label>
                         <input class="form-control @error('science_tool_other_abbr') is-invalid @enderror" type="text" name="science_tool_other_abbr" id="science_tool_other_abbr" placeholder="เช่น ABR" value="{{ old('science_tool_other_abbr')}}">
                         @error('science_tool_other_abbr')
@@ -228,7 +228,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">3.16	การตรวจเช็ค/บำรุงรักษาเครื่องมืออุปกรณ์ทางวิทยาศาสตร์</label>
-                        <select name="equipment_maintenance_id" id="equipment_maintenance_id" class="form-control @error('equipment_maintenance_id') is-invalid @enderror">
+                        <select name="equipment_maintenance_id" id="equipment_maintenance_id" class="form-control custom-select select2 @error('equipment_maintenance_id') is-invalid @enderror">
                           <option value="">โปรดเลือกขอบเขตการใช้งานเครื่องมือ</option>
                           @foreach ($equipmentMaintenances as $equipmentMaintenance)
                             <option value="{{$equipmentMaintenance->id}}" {{ old('equipment_maintenance_id') ==  $equipmentMaintenance->id ? 'selected' : ''}} > {{$equipmentMaintenance->equipment_maintenance_name}} </option>
@@ -243,7 +243,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group">
+                      <div class="form-group d-none" id="display_equipment_maintenance_other">
                         <label for="">อื่นๆ โปรดระบุ  : </label>
                         <input class="form-control" type="text" name="equipment_maintenance_other" id="equipment_maintenance_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('equipment_maintenance_other')}}">
                       </div>
@@ -292,21 +292,25 @@
                       <label for="">3.19 คู่มือการใช้งาน</label>
                     </div>
                     <div class="col-md-12">
-                      <div class="form-group">
-                      <div class="col-md-2 custom-control custom-radio">
-                        <input class="custom-control-input" type="radio" id="equipment_manuals_id1" name="equipment_manuals_id" value='1' {{ old('equipment_manuals_id') == 1 ? 'checked' : ''}}>
-                        <label for="equipment_manuals_id1" class="custom-control-label">ไม่มี</label> 
-                      </div>
-                      <div class="col-md-2 custom-control custom-radio">
-                        <input class="custom-control-input" type="radio" id="equipment_manuals_id2" name="equipment_manuals_id" value='2' {{ old('equipment_manuals_id') == 2 ? 'checked' : ''}}>
-                        <label for="equipment_manuals_id2" class="custom-control-label">มี</label> 
-                      </div>
-                      <div class="col-md-4">
-                        <input type="text" class="form-control" name="equipment_manual_name" id="equipment_manual_name" placeholder="ชื่อคู่มือ/รหัสคู่มือ" value="{{ old('equipment_manual_name')}}">
-                      </div>
-                      <div class="col-md-4">
-                        <input type="text" class="form-control" name="equipment_manual_locate" id="equipment_manual_locate" placeholder="สถานที่จัดเก็บ/ลิงก์ดาวน์โหลด" value="{{ old('equipment_manual_locate')}}">
-                      </div>
+                      <div class="row form-group">
+                        <div class="col-md-2 custom-control custom-radio">
+                          <input class="custom-control-input" type="radio" id="equipment_manuals_id1" name="equipment_manuals_id" value='1' {{ old('equipment_manuals_id') == 1 ? 'checked' : ''}}>
+                          <label for="equipment_manuals_id1" class="custom-control-label">ไม่มี</label> 
+                        </div>
+                        <div class="col-md-2 custom-control custom-radio">
+                          <input class="custom-control-input" type="radio" id="equipment_manuals_id2" name="equipment_manuals_id" value='2' {{ old('equipment_manuals_id') == 2 ? 'checked' : ''}}>
+                          <label for="equipment_manuals_id2" class="custom-control-label">มี</label> 
+                        </div>
+                        <div class="col-md-4">
+                          <div class="" id="display_equipment_manual_name">
+                          <input type="text" class="form-control" name="equipment_manual_name" id="equipment_manual_name" placeholder="ชื่อคู่มือ/รหัสคู่มือ" value="{{ old('equipment_manual_name')}}">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="" id="display_equipment_manual_locate">
+                            <input type="text" class="form-control" name="equipment_manual_locate" id="equipment_manual_locate" placeholder="สถานที่จัดเก็บ/ลิงก์ดาวน์โหลด" value="{{ old('equipment_manual_locate')}}">
+                          </div>
+                        </div>
                       </div>
                     </div>
                     {{-- 2.21equipmentRent --}}
@@ -362,9 +366,18 @@
     <script src="{{ asset('js/components.js') }}"></script>
     <script src="{{ asset('js/form-equipmentLab.js') }}"></script>
     <script type="text/javascript">
-      // 4.2
+      // 3.10
       $('#major_technologies_id').val({{ json_encode($majorTechnologies) }});
       $('#major_technologies_id').trigger('change');
+      // 3.2
+      $('#science_tool_id').val($scienceTool->id);
+      $('#science_tool_id').trigger('change');
+      // 3.16
+      $('#equipment_maintenance_id').val($equipmentMaintenance->id);
+      $('#equipment_maintenance_id').trigger('change');
+      // 3.19
+      //$('.equipment_manuals_id').val($equipment_manuals_id);
+      //$('.equipment_manuals_id').trigger('onClick');
     </script>
 
 @endsection

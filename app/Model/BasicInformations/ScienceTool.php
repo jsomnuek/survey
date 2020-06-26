@@ -16,6 +16,7 @@ class ScienceTool extends Model
 
     public function equipmentLabs()
     {
-        return $this->belongsTo(EquipmentLab::class);
+        return $this->hasMany(EquipmentLab::class);
     }
+    
 }

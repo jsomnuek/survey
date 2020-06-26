@@ -3,6 +3,7 @@
 namespace App\Model\BasicInformations;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Employee\ProductLab;
 
 class ResultControl extends Model
 {
@@ -11,4 +12,9 @@ class ResultControl extends Model
     protected $fillable = ['result_control_name','result_control_status'];
 
     public $timestamps = true;
+
+    public function productLabs()
+    {
+        return $this->belongsToMany(ProductLab::class)->withTimestamps();
+    }
 }

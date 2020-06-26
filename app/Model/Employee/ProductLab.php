@@ -4,35 +4,52 @@ namespace App\Model\Employee;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\BasicInformations\ProductType;
+use App\Model\BasicInformations\TestingCalibratingList;
+use App\Model\BasicInformations\TestingCalibratingType;
+use App\Model\BasicInformations\TestingCalibratingMethod;
+use App\Model\BasicInformations\CertifyLaboratory;
+use App\Model\BasicInformations\ResultControl;
 
 class ProductLab extends Model
 {
     protected $table = 'product_labs';
     protected $primaryKey = 'id';
-    protected $fillable = [
-        'product_lab_name',
-        'product_type_id',
-        'product_lab_standard',
-        'product_lab_test_name',
-        'product_lab_test_process',
-        'testing_calibrating_type_id',
-        'product_lab_test_method',
-        'product_lab_test_method_detail',
-        'product_lab_test_unit',
-        'product_lab_test_duration',
-        'product_lab_test_fee',
-        'product_lab_material_ref',
-        'product_lab_material_ref_from',
-        'product_lab_test_control',
-        'proficiency_testing',
-        'proficiency_testing_by',
-        'proficiency_testing_year',
-        'certify_laboratory_id'
-    ];
+    protected $guarded = [];
     public $timestamps = true;
 
-    public function productType()
+    // relation for 4.2 ประเภทผลตภัณฑ์
+    public function productTypes()
     {
-        return $this->belongsTo(ProductType::class);
+        return $this->belongsToMany(ProductType::class)->withTimestamps();
+    }
+
+    // relation for 4.6 ประเภทรายากรทดสอบสอบเทียบ
+    public function testingCalibratingList()
+    {
+        return $this->belongsTo(TestingCalibratingList::class);
+
+    }
+    // relation for 4.7 ประเภทการทดสอบ/สอบเทียบ
+    public function testingCalibratingType()
+    {
+        return $this->belongsTo(TestingCalibratingType::class);
+    }
+
+    // relation for 4.8 วิธีการทดสอบสอบเทียบมาตราฐาน
+    public function testingCalibratingMethod()
+    {
+        return $this->belongsTo(TestingCalibratingMethod::class);
+    }
+
+    // relation for 4.14 การควบคุมคุณภาพผลการทดสอบภายใน
+    public function resultControls()
+    {
+        return $this->belongsToMany(ResultControl::class)->withTimestamps();
+    }
+
+     // relation for 4.16 การรับรองความสามารถห้องปฏิบัติการ
+    public function certifyLaboratory()
+    {
+        return $this->belongsTo(CertifyLaboratory::class);
     }
 }

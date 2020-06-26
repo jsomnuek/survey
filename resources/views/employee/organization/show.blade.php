@@ -173,8 +173,151 @@
                                     @endif
                                 </td>
                             </tr>
+                            <tr>
+                                <th class="" style="width: 30%;">1.11 ข้อมูลระบบคุณภาพของหน่วยงาน :</th>
+                                <td>{{ __('') }}</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">1.11.1 ISO 9000 series</th>
+                                <td>
+                                    @forelse ($org->qualitySystemIso9000s as $item)
+                                        <div class="row">
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">การดำเนินการ :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->operation->operation_name }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ขอบข่าย :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->scoped }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">หน่วยงานรับรอง :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->certification_agency }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ปีที่ได้รับการรับรอง :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->accredited }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse 
+                                </td>
+                            </tr>
+                            {{-- ./1.11.1 ISO 9000 series --}}
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">1.11.2 ISO 14000</th>
+                                <td>
+                                    @forelse ($org->qualitySystemIso14000s as $item)
+                                        <div class="row">
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">การดำเนินการ :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->operation->operation_name }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ขอบข่าย :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->scoped }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">หน่วยงานรับรอง :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->certification_agency }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ปีที่ได้รับการรับรอง :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->accredited }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
+                            </tr>
+                            {{-- ./1.11.2 ISO 14000 --}}
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">1.11.3 ISO HACCP</th>
+                                <td>
+                                    @forelse ($org->qualitySystemIsoHaccps as $item)
+                                        <div class="row">
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">การดำเนินการ :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->operation->operation_name }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ขอบข่าย :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->scoped }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">หน่วยงานรับรอง :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->certification_agency }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-3 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ปีที่ได้รับการรับรอง :</strong><hr>
+                                                    <span class="description-text text-success">{{ $item->accredited }}</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
+                            </tr>
+                            {{-- ./1.11.3 ISO HACCP --}}
+                            <tr>
+                                <th class="pl-5" style="width: 30%;">1.11.4 อื่นๆ</th>
+                                <td>{{ $org->quality_system_other }}</td>
+                            </tr>
+                            {{-- ./1.11.4 อื่นๆ : --}}
                         </tbody>
+                        {{-- ./tbody --}}
                     </table>
+                    {{-- ./table --}}
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

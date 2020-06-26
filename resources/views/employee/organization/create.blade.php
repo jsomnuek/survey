@@ -73,25 +73,25 @@
                             </div>
                             {{-- 1.3 หมายเลขประจำหน่วยงาน (ถ้ามี) : --}}
                             <div class="col-md-12">
-                                <label>1.4	ที่อยู่ :</label>
+                                <label>1.4	ที่อยู่</label>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="org_building">อาคาร</label>
+                                    <label for="org_building">อาคาร :</label>
                                     <input type="text" name="org_building" class="form-control" id="org_building" placeholder="" value="{{ old('org_building') }}">
                                 </div>
                             </div>
                             {{-- ./col อาคาร --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="org_floor">ชั้น</label>
+                                    <label for="org_floor">ชั้น :</label>
                                     <input type="text" name="org_floor" class="form-control" id="org_floor" placeholder="" value="{{ old('org_floor') }}">
                                 </div>
                             </div>
                             {{-- ./col ชั้น --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_address">เลขที่<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="org_address">เลขที่ :<span><sup class="text-danger"> *</sup></span></label>
                                     <input type="text" name="org_address" class="form-control @error('org_address') is-invalid @enderror" id="org_address" placeholder="" value="{{ old('org_address') }}">
                                     @error('org_address')
                                         <span class="invalid-feedback" role="alert">
@@ -103,21 +103,21 @@
                             {{-- ./col เลขที่ --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_soi">ซอย</label>
+                                    <label for="org_soi">ซอย :</label>
                                     <input type="text" name="org_soi" class="form-control" id="org_soi" placeholder="" value="{{ old('org_soi') }}">
                                 </div>
                             </div>
                             {{-- ./col ซอย --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_road">ถนน</label>
+                                    <label for="org_road">ถนน :</label>
                                     <input type="text" name="org_road" class="form-control" id="org_road" placeholder="" value="{{ old('org_road') }}">
                                 </div>
                             </div>
                             {{-- ./col ถนน --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="province_info_ch_id">จังหวัด<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="province_info_ch_id">จังหวัด :<span><sup class="text-danger"> *</sup></span></label>
                                     <select class="form-control custom-select select2 @error('province_info_ch_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกจังหวัด --" style="width: 100%;" name="province_info_ch_id" id="province_info_ch_id" data-value="{{ old('province_info_ch_id') }}">
                                         <option value="" selected disabled="disabled">-- โปรดเลือกจังหวัด --</option>
                                     </select>
@@ -131,7 +131,7 @@
                             {{-- ./col จังหวัด --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="province_info_am_id">เขต/อำเภอ<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="province_info_am_id">เขต/อำเภอ :<span><sup class="text-danger"> *</sup></span></label>
                                     <select class="form-control custom-select select2 @error('province_info_am_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกเขต/อำเภอ --" style="width: 100%;" name="province_info_am_id" id="province_info_am_id" data-value="{{ old('province_info_am_id') }}">
                                         <option value="" selected disabled="disabled">-- โปรดเลือกเขต/อำเภอ --</option>
                                     </select>
@@ -145,7 +145,7 @@
                             {{-- ./col เขต/อำเภอ --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="province_info_ta_id">แขวง/ตำบล<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="province_info_ta_id">แขวง/ตำบล :<span><sup class="text-danger"> *</sup></span></label>
                                     <select class="form-control custom-select select2 @error('province_info_ta_id') is-invalid @enderror" data-placeholder="-- โปรดเลือกแขวง/ตำบล --" style="width: 100%;" name="province_info_ta_id" id="province_info_ta_id" data-value="{{ old('province_info_ta_id') }}">
                                         <option value="" selected disabled="disabled">-- เลือกแขวง/ตำบล --</option>
                                     </select>
@@ -159,7 +159,7 @@
                             {{-- ./col แขวง/ตำบล --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_postcode">รหัสไปรษณีย์<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="org_postcode">รหัสไปรษณีย์ :<span><sup class="text-danger"> *</sup></span></label>
                                     <input type="text" name="org_postcode" class="form-control @error('org_postcode') is-invalid @enderror" id="org_postcode" placeholder="" value="{{ old('org_postcode') }}" data-inputmask='"mask": "99999"' data-mask>
                                     @error('org_postcode')
                                         <span class="invalid-feedback" role="alert">
@@ -171,7 +171,7 @@
                             {{-- ./col รหัสไปรษณีย์ --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_phone">โทรศัพท์</label>
+                                    <label for="org_phone">โทรศัพท์ :</label>
                                     <input type="text" name="org_phone" class="form-control @error('org_phone') is-invalid @enderror" id="org_phone" placeholder="" value="{{ old('org_phone') }}">
                                     @error('org_phone')
                                         <span class="invalid-feedback" role="alert">
@@ -183,35 +183,35 @@
                             {{-- ./col โทรศัพท์ --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_fax">โทรสาร</label>
+                                    <label for="org_fax">โทรสาร :</label>
                                     <input type="text" name="org_fax" class="form-control" id="org_fax" placeholder="" value="{{ old('org_fax') }}">
                                 </div>
                             </div>
                             {{-- ./col โทรสาร --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="org_email">อีเมล</label>
+                                    <label for="org_email">อีเมล :</label>
                                     <input type="email" name="org_email" class="form-control" id="org_email" placeholder="" value="{{ old('org_email') }}" autocomplete="email">
                                 </div>
                             </div>
                             {{-- ./col อีเมล --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="org_website">เว็บไซต์</label>
+                                    <label for="org_website">เว็บไซต์ :</label>
                                     <input type="text" name="org_website" class="form-control" id="org_website" placeholder="" value="{{ old('org_website') }}">
                                 </div>
                             </div>
                             {{-- ./col เว็บไซต์ --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="org_lat">ละติจูด</label>
+                                    <label for="org_lat">ละติจูด :</label>
                                     <input type="text" name="org_lat" class="form-control" id="org_lat" placeholder="" value="{{ old('org_lat') }}">
                                 </div>
                             </div>
                             {{-- ./col ละติจูด --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="org_long">ลองจิจูด</label>
+                                    <label for="org_long">ลองจิจูด :</label>
                                     <input type="text" name="org_long" class="form-control" id="org_long" placeholder="" value="{{ old('org_long') }}">
                                 </div>
                             </div>
@@ -257,7 +257,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- ./col 1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : --}}                    
+                            {{-- ./col 1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : --}}     
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="'organisation_type_id">1.8 ประเภทองค์กร :<span><sup class="text-danger"> *</sup></span></label>
@@ -317,10 +317,161 @@
                                 </div>                             
                             </div>
                             <!-- /.col 1.10 ประเภทอุตสาหกรรม : -->
-                            <div class="col-md-6">
+                            <div class="col-md-12">
+                                <label for="">1.11 ข้อมูลระบบคุณภาพของหน่วยงาน :</label>
+                            </div>                            
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="">1.11 ข้อมูลระบบคุณภาพของหน่วยงาน :</label>
+                                    <label for="">ระบบคุณภาพ</label>                                    
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="">1.11.1 ISO 9000 series</label>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="">การดำเนินการ :</label>
+                                                        <select class="custom-select" name="iso_9000_operation_id" data-placeholder="-- โปรดเลือก --" style="width: 100%;">
+                                                            <option value="" selected disabled="disabled">-- โปรดเลือก --</option>
+                                                            @foreach ($operations as $item)
+                                                            <option value="{{ $item->id }}" {{ (old('iso_9000_operation_id') == $item->id) ? 'selected' : '' }}>{{ $item->operation_name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="">หากได้รับการรับรองแล้ว</label>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">ขอบข่าย :</label>
+                                                        <input type="text" name="iso_9000_scoped" class="form-control" id="" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">หน่วยงานรับรอง :</label>
+                                                        <input type="text" name="iso_9000_certification_agency" class="form-control" id="" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">ปีที่ได้รับการรับรอง :</label>
+                                                        <input type="text" name="iso_9000_accredited" class="form-control" id="" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- ./row --}}
                                 </div>
+                                <hr>
+                                {{-- ./form-group 1.11.1 ISO 9000 series : --}}
+                                <div class="form-group">
+                                    <label for="">ระบบคุณภาพ</label>                                    
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="">1.11.2 ISO 14000</label>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="">การดำเนินการ :</label>
+                                                        <select class="custom-select" name="iso_14000_operation_id" data-placeholder="-- โปรดเลือก --" style="width: 100%;">
+                                                            <option value="" selected disabled="disabled">-- โปรดเลือก --</option>
+                                                            @foreach ($operations as $item)
+                                                            <option value="{{ $item->id }}" {{ (old('iso_14000_operation_id') == $item->id) ? 'selected' : '' }}>{{ $item->operation_name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="">หากได้รับการรับรองแล้ว</label>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">ขอบข่าย :</label>
+                                                        <input type="text" name="iso_14000_scoped" class="form-control" id="" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">หน่วยงานรับรอง :</label>
+                                                        <input type="text" name="iso_14000_certification_agency" class="form-control" id="" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">ปีที่ได้รับการรับรอง :</label>
+                                                        <input type="text" name="iso_14000_accredited" class="form-control" id="" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- ./row --}}
+                                </div>
+                                <hr>
+                                {{-- ./form-group 1.11.2 ISO 14000 : --}}
+                                <div class="form-group">
+                                    <label for="">ระบบคุณภาพ</label>                                    
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="">1.11.3 ISO HACCP</label>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="">การดำเนินการ :</label>
+                                                        <select class="custom-select" name="iso_haccp_operation_id" data-placeholder="-- โปรดเลือก --" style="width: 100%;">
+                                                            <option value="" selected disabled="disabled">-- โปรดเลือก --</option>
+                                                            @foreach ($operations as $item)
+                                                            <option value="{{ $item->id }}" {{ (old('iso_haccp_operation_id') == $item->id) ? 'selected' : '' }}>{{ $item->operation_name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="">หากได้รับการรับรองแล้ว</label>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">ขอบข่าย :</label>
+                                                        <input type="text" name="iso_haccp_scoped" class="form-control" id="" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">หน่วยงานรับรอง :</label>
+                                                        <input type="text" name="iso_haccp_certification_agency" class="form-control" id="" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">ปีที่ได้รับการรับรอง :</label>
+                                                        <input type="text" name="iso_haccp_accredited" class="form-control" id="" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- ./row --}}
+                                </div>
+                                <hr>
+                                {{-- ./form-group 1.11.2 ISO HACCP : --}}
+                                <div class="form-group">
+                                    <label for="">ระบบคุณภาพ</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="">1.11.4 อื่นๆ โปรดระบุ :</label>
+                                            <textarea class="form-control col-md-12" name="quality_system_other" rows="3" placeholder=""></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- ./form-group 1.11.4 อื่นๆ โปรดระบุ : --}}
                             </div>
                             {{-- ./col 1.11 ข้อมูลระบบคุณภาพของหน่วยงาน : --}}
                         </div>

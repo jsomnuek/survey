@@ -486,8 +486,16 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <a href="/organization/{{ $org->id }}" class="btn btn-secondary">ย้อนกลับ</a>
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <div class="d-flex justify-content-between">
+                            <a href="/organization" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-backward"></i>
+                                ย้อนกลับ
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                ถัดไป
+                                <i class="fas fa-forward"></i>
+                            </button>
+                        </div>
                     </div>
                     <!-- /.card-footer -->
                 </form>

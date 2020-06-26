@@ -285,7 +285,7 @@ class OrganizationController extends Controller
                     'accredited' => $request->input('iso_haccp_accredited'),
                 ]);
             
-            return redirect()->route('organization.edit', $org->id);
+            return redirect()->route('organization.show', $org->id);
         }
     }
 

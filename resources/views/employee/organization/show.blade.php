@@ -321,8 +321,16 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <a href="/organization" class="btn btn-secondary">ย้อนกลับ</a>
-                    <a href="/organization/{{ $org->id }}/edit" class="btn btn-primary">แก้ไขข้อมูล</a>
+                    <div class="d-flex justify-content-between">
+                        <a href="/organization/{{ $org->id }}/edit" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-edit"></i>
+                            แก้ไขข้อมูล
+                        </a>
+                        <a href="/organization" class="btn btn-success btn-lg">
+                            <i class="fas fa-save"></i>
+                            ยืนยันข้อมูล
+                        </a>
+                    </div>
                 </div>
                 <!-- /.card-footer -->
             </div>

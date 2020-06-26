@@ -280,7 +280,6 @@
                                 </div>
                             </div>
                             {{-- ./col --}}                           
-                            
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="industrial_type">1.10 ประเภทอุตสาหกรรม : (เลือกได้มากกว่า 1 คำตอบ)</label>

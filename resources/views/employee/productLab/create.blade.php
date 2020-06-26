@@ -52,10 +52,10 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
+                            <div class="col-md-6 ">
+                                <div class="form-group d-none"  id="display_product_type_other" >
                                     <label for="">อื่นๆ โปรดระบุ  : </label>
-                                    <input class="form-control form-control" type="text" name="product_type_other" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('product_type_other')}}">
+                                    <input class="form-control form-control" type="text" name="product_type_other" id="product_type_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('product_type_other')}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -98,7 +98,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">4.7 ประเภทการทดสอบ/สอบเทียบ</label>
-                                    <select class="form-control  @error('testing_calibrating_type_id') is-invalid @enderror" name="testing_calibrating_type_id" id="testing_calibrating_type_id">
+                                    <select class="form-control custom-select select2  @error('testing_calibrating_type_id') is-invalid @enderror" name="testing_calibrating_type_id" id="testing_calibrating_type_id">
                                         <option value="">โปรดเลือกประเภทการทดสอบ/สอบเทียบ</option>
                                         @foreach ($testingCalibratingTypes ?? '' as $testingCalibratingType)
                                             <option value="{{$testingCalibratingType->id}}" {{ old('testing_calibrating_type_id') ==  $testingCalibratingType->id ? 'selected' : ''}} > {{$testingCalibratingType->testing_calibrating_type_name}} </option>
@@ -113,7 +113,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group">
+                                <div class="form-group d-none" id="display_testing_calibrating_type_other">
                                     <label for="">อื่นๆ โปรดระบุ  : </label>
                                     <input class="form-control form-control" type="text" name="testing_calibrating_type_other" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('testing_calibrating_type_other')}}">
                                 </div>
@@ -189,7 +189,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group d-none" id="display_product_lab_result_control_other">
                                     <label for="">อื่นๆ โปรดระบุ  : </label>
                                     <input class="form-control form-control" type="text" name="product_lab_result_control_other" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('product_lab_result_control_other')}}">
                                 </div>
@@ -252,6 +252,18 @@
 @endsection
 
 @section('scripts')
-    {{-- <script src="{{ asset('js/components.js') }}"></script> --}}
+    <script src="{{ asset('js/components.js') }}"></script>
     <script src="{{ asset('js/form-productLab.js') }}"></script>
+    <script type="text/javascript">
+        // 4.2
+        $('#product_type_id').val({{ json_encode($productTypes) }});
+        $('#product_type_id').trigger('change');
+        // 4.14 
+        $('#result_control_id').val({{ json_encode($resultControls) }});
+        $('#result_control_id').trigger('change');
+
+        $('#testing_calibrating_type_id').val($testingCalibratingType->id);
+        $('#testing_calibrating_type_id').trigger('change');
+
+    </script>
 @endsection

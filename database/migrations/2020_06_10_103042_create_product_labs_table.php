@@ -24,7 +24,7 @@ class CreateProductLabsTable extends Migration
             // ขาด 4.5 เครื่องมือที่ใช้ทดสอบที่เกียวข้อง
             $table->unsignedBigInteger('testing_calibrating_list_id')->comment('ประะเภทรายการทดสอบ');//4.6 ประเภทรายการทดสอบ/สอบเทียบ
             $table->unsignedBigInteger('testing_calibrating_type_id')->comment('ประเภทการทดสอบ');//4.7.1 ประเภทการทดสอบ/สอบเทียบ
-            $table->string('testing_calibrating_type_other')->comment('ประเภทการทดสอบอื่นๆ');//4.7.2 ประเภทการทดสอบ/สอบเทียบอื่นๆ
+            $table->string('testing_calibrating_type_other')->nullable()->comment('ประเภทการทดสอบอื่นๆ');//4.7.2 ประเภทการทดสอบ/สอบเทียบอื่นๆ
             $table->unsignedBigInteger('testing_calibrating_method_id')->comment('วิธีทดสอบ/สอบเทียบ');//4.8.1 วิธีทดสอบ/สอบเทียบ
             $table->string('testing_calibrating_method_detail')->comment('รายละเอียดวิธีทดสอบ/สอบเทียบ');//4.8.2 รายละเอียดวิธีทดสอบ
             $table->string('product_lab_test_unit', 255)->nullable()->comment('ช่วงความสามารถของการวัด');//4.9ช่วงความสามารถของการวัด

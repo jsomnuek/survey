@@ -146,11 +146,19 @@ class EquipmentLabController extends Controller
      */
     public function edit(EquipmentLab $equipmentLab)
     {
-        $allEquipmentLab = EquipmentLab::find($equipmentLab->id);
-        $allEquipments = Equipment::where('equipment_status','A')->get();
+        $allEquipmentLab = EquipmentLab::findOrFail($equipmentLab->id);
+        $allScienceTool = ScienceTool::where('science_tool_status','A')->get();
         $allMajorTechnology = MajorTechnology::where('major_tech_status','A')->get();
+        $allMajorTechnologyItem = [];
+        foreach ($allEquipmentLab->majorTechnologies as $item) {
+            $allMajorTechnologyItem[] = $item->id;
+        }
         $allTechnicalEquipment = TechnicalEquipment::where('technical_equipment_status','A')->get();
         $allObjectiveUsage = ObjectiveUsage::where('obj_usage_status','A')->get();
+        $allObjectiveUsageItem = [];
+        foreach ($allObjectiveUsageItem->objectiveUsages as $item) {
+            $allObjectiveUsageItem[] = $item->id;
+        }
         $allEquipmentUsage = EquipmentUsage::where('equipment_usage_status','A')->get();
         $allEquipmentCalibration = EquipmentCalibration::where('equipment_calibration_status','A')->get();
         $allEquipmentMaintenance = EquipmentMaintenance::where('equipment_maintenance_status','A')->get();
@@ -158,10 +166,12 @@ class EquipmentLabController extends Controller
         $allEquipmentRent = EquipmentRent::where('equipment_rent_status','A')->get();
         $data = [
             'equipmentLab' => $allEquipmentLab,
-            'equipments' => $allEquipments,
+            'scienceTool' => $allScienceTool,
             'majorTechnologies' => $allMajorTechnology,
+            'majorTechnologyItem' => $allMajorTechnologyItem,
             'technicalEquipments' => $allTechnicalEquipment,
             'objectiveUsages' => $allObjectiveUsage,
+            'objectiveUsageItem' => $allObjectiveUsageItem,
             'equipmentUsages' => $allEquipmentUsage,
             'equipmentCalibrations' => $allEquipmentCalibration,
             'equipmentMaintenances' => $allEquipmentMaintenance,

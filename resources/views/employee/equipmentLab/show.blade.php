@@ -70,20 +70,19 @@
                                 <th class="" style="width: 30%;">3.10 สาขาเทคโนโลยี :</th>
                                 <td>
                                     @forelse ($equipmentLabs->majorTechnologies as $item )
-                                        @if ($item->id !=1)
-                                            <li>{{ $item->major_tech_name }}</li>
-                                        @else
-                                            
-                                        @endif
+                                    @if ($item->id >= 1)
+                                        <li>{{ $item->major_tech_name }} </li>
+                                    @else
                                         
-                                    @empty
-                                    
-                                    @endforelse
-
-                                    @if ($equipmentLabs->major_technologies_other != null)
-                                        <li>อื่นๆ {{ $equipmentLabs->major_technologies_other }}</li>
                                     @endif
                                     
+                                @empty
+                                
+                                @endforelse
+
+                                @if ($equipmentLabs->major_technologies_other != null)
+                                    <li>อื่นๆ {{ $equipmentLabs->major_technologies_other }}</li>
+                                @endif
                                 </td>
                             </tr>
                             <tr>
@@ -120,8 +119,14 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.16 การตรวจเช็ค/บำรุงรักษาเครื่องมือ :</th>
-
-                                <td> {{$equipmentLabs->equipment_maintenance_other}} </td>
+                                <td> 
+                                    @if ($equipmentLabs->equipment_maintenance_id == 1)
+                                        {{$equipmentLabs->equipment_maintenance_other}} 
+                                    @else
+                                        {{$equipmentLabs->equipmentMaintenance->equipment_maintenance_name}} 
+                                    @endif
+                                    
+                                </td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.17 งบประมาณในการบำรุงรักษา/สอบเทียบ :</th>

@@ -33,11 +33,21 @@
                             <tr>
                                 <th class="" style="width: 30%;">4.2 ประเภทผลิตภัณฑ์</th>
                                 <td>
-                                    @forelse ($productLabs->productTypes as $item)
-                                        <li>{{ $item->product_type_name }}</li>
+                                    @forelse ($productLabs->productTypes as $item )
+                                        @if ($item->id !=1)
+                                            <li>{{ $item->product_type_name }} </li>
+                                        @else
+                                            
+                                        @endif
+                                        
                                     @empty
-
+                                    
                                     @endforelse
+
+                                    @if ($productLabs->product_type_other != null)
+                                        <li>อื่นๆ {{ $productLabs->product_type_other }}</li>
+                                    @endif
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -58,7 +68,11 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.7 ประเภทการทดสอบ/สอบเทียบ :</th>
-                                <td>{{ $productLabs->testingCalibratingType->testing_calibrating_type_name }}</td>
+                                @if ($productLabs->testingCalibratingType->id != 5)
+                                    <td>{{ $productLabs->testingCalibratingType->testing_calibrating_type_name }}</td>   
+                                @else
+                                    <td>อื่นๆ {{ $productLabs->testing_calibrating_type_other }}</td>
+                                @endif
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.8 วิธีทดสอบ/สอบเทียบตามมาตราฐาน :</th>
@@ -88,10 +102,18 @@
                                 <th class="" style="width: 30%;">4.14 การควบคุมคุณภาพผลการทดสอบภายใน :</th>
                                 <td>
                                     @forelse ($productLabs->resultControls as $item)
+                                    @if ($item->id !=1)
                                         <li>{{ $item->result_control_name }}</li>
-                                    @empty
-
-                                    @endforelse
+                                    @else
+                                        
+                                    @endif
+                                    
+                                @empty
+                                
+                                @endforelse
+                                @if ($productLabs->product_lab_result_control_other != null)
+                                    <li>อื่นๆ {{ $productLabs->product_lab_result_control_other }}</li>
+                                @endif
                                 </td>
                             </tr>
                             <tr>

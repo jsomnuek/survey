@@ -13,10 +13,4 @@ class EducationLevel extends Model
     protected $fillable = ['edu_level_name','edu_level_abbr','edu_level_status',];
 
     public $timestamps = true;
-
-    // Defining Relationships Many To Many
-    public function labs()
-    {
-        return $this->belongsToMany(Lab::class)->withTimestamps();
-    }
 }

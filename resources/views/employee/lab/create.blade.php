@@ -43,9 +43,9 @@
                                     <label for="organization_id">โปรดเลือกข้อมูลองค์กร :<span><sup class="text-danger"> *</sup></span></label>
                                     <select class="form-control custom-select select2 @error('organization_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="organization_id" id="organization_id" data-value="{{ old('organization_id') }}">
                                         <option value="" selected disabled="disabled">disabled</option>
-                                        {{-- @foreach ($organizations as $organization)
+                                        @foreach ($organizations as $organization)
                                         <option value="{{ $organization->id }}" {{ ( old('organization_id') == $organization->id) ? 'selected' : '' }}>{{ $organization->org_name }}</option>
-                                        @endforeach --}}
+                                        @endforeach
                                     </select>
                                     @error('organization_id')
                                         <span class="invalid-feedback" role="alert">
@@ -82,14 +82,14 @@
                             {{-- ./col 2.2 รหัสห้องปฏิบัติการ (AABCC-MNN) --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="lab_location_id">2.3 ที่ตั้งห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select select2 @error('lab_location_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="lab_location_id" id="lab_location_id" data-value="{{ old('lab_location_id') }}">
+                                    <label for="location_lab_id">2.3 ที่ตั้งห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <select class="form-control custom-select select2 @error('location_lab_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="location_lab_id" id="location_lab_id" data-value="{{ old('location_lab_id') }}">
                                         <option value="" selected disabled="disabled">disabled</option>
                                         @foreach ($locationLabs as $locationLab)
-                                        <option value="{{ $locationLab->id }}" {{ ( old('lab_location_id') == $locationLab->id) ? 'selected' : '' }}>{{ $locationLab->location_name }}</option>
+                                        <option value="{{ $locationLab->id }}" {{ ( old('location_lab_id') == $locationLab->id) ? 'selected' : '' }}>{{ $locationLab->location_name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('lab_location_id')
+                                    @error('location_lab_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -97,17 +97,17 @@
                                 </div>
                                 {{-- ./lab_location_id --}}
                                 <div class="form-group d-none" id="display_lab_location_other">
-                                    <label for="lab_location_other" class="col-md-12 col-form-label">กรณีเลือกพื้นที่อื่น โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="location_lab_other" class="col-md-12 col-form-label">กรณีเลือกพื้นที่อื่น โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
                                     <div class="col-md-12">
-                                        <input type="text" name="lab_location_other" class="form-control" id="lab_location_other" placeholder="" value="{{ old('lab_location_other') }}">
-                                        @error('lab_location_other')
+                                        <input type="text" name="location_lab_other" class="form-control" id="location_lab_other" placeholder="" value="{{ old('location_lab_other') }}">
+                                        @error('location_lab_other')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                     </div>
                                 </div>
-                                {{-- ./lab_location_other --}}
+                                {{-- ./location_lab_other --}}
                                 <div class="form-group d-none" id="display_industrial_estate_id">
                                     <label for="industrial_estate_id" class="col-md-12 col-form-label">กรณีเลือกนิคมอุตสาหกรรม โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
                                     <div class="col-md-12">
@@ -188,21 +188,80 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ :</label>
-                                    @foreach ($educationLevels as $item)
-                                    <div class="row mb-0">
-                                        <input type="hidden" name="education_level_id[]" value="{{ $item->id }}">
-                                        <label for="" class="col-md-5 col-form-label">{{ $item->edu_level_name }}</label>
-                                        <label for="" class="col-md-2 col-form-label">จำนวน :</label>
-                                        <div class="col-md-2">
-                                            <input type="number" name="education_level_amount[]" min="0" class="form-control form-control-sm" id="education_level_amount_{{$item->id}}" placeholder="" value="{{ old('education_level_amount.'.$educationLevelAmountItems++) }}">
+                                    <div class="row mb-1">
+                                        <div class="col-md-6 d-flex justify-content-between align-items-center">
+                                            <label for="">ประถม</label>
+                                            <label for="">จำนวน (คน) :</label>
                                         </div>
-                                        <label for="" class="col-md-1 col-form-label">คน</label>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <input type="number" name="education_primary_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_primary_amount') }}">
+                                        </div>
                                     </div>
-                                    @endforeach
+                                    {{-- ./row ประถมศึกษา --}}
+                                    <div class="row mb-1">
+                                        <div class="col-md-6 d-flex justify-content-between align-items-center">
+                                            <label for="">มัธยม</label>
+                                            <label for="">จำนวน (คน) :</label>
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <input type="number" name="education_secondary_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_secondary_amount') }}">
+                                        </div>
+                                    </div>
+                                    {{-- ./row มัธยม --}}
+                                    <div class="row mb-1">
+                                        <div class="col-md-6 d-flex justify-content-between align-items-center">
+                                            <label for="">ปวช.</label>
+                                            <label for="">จำนวน (คน) :</label>
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <input type="number" name="education_vocational_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_vocational_amount') }}">
+                                        </div>
+                                    </div>
+                                    {{-- ./row ปวช. --}}
+                                    <div class="row mb-1">
+                                        <div class="col-md-6 d-flex justify-content-between align-items-center">
+                                            <label for="">ปวส.</label>
+                                            <label for="">จำนวน (คน) :</label>
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <input type="number" name="education_high_vocational_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_high_vocational_amount') }}">
+                                        </div>
+                                    </div>
+                                    {{-- ./row ปวส. --}}
+                                    <div class="row mb-1">
+                                        <div class="col-md-6 d-flex justify-content-between align-items-center">
+                                            <label for="">ปริญญาตรี</label>
+                                            <label for="">จำนวน (คน) :</label>
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <input type="number" name="education_bachelor_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_bachelor_amount') }}">
+                                        </div>
+                                    </div>
+                                    {{-- ./row ปริญญาตรี --}}
+                                    <div class="row mb-1">
+                                        <div class="col-md-6 d-flex justify-content-between align-items-center">
+                                            <label for="">ปริญญาโท</label>
+                                            <label for="">จำนวน (คน) :</label>
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <input type="number" name="education_master_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_master_amount') }}">
+                                        </div>
+                                    </div>
+                                    {{-- ./row ปริญญาโท --}}
+                                    <div class="row mb-1">
+                                        <div class="col-md-6 d-flex justify-content-between align-items-center">
+                                            <label for="">ปริญญาเอก</label>
+                                            <label for="">จำนวน (คน) :</label>
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <input type="number" name="education_doctor_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_doctor_amount') }}">
+                                        </div>
+                                    </div>
+                                    {{-- ./row ปริญญาเอก --}}
                                 </div>
                                 <div class="form-group">
                                     <label for="">อื่นๆ โปรดระบุ :</label>
-                                    <textarea class="form-control col-md-12" name="education_level_other" rows="2" placeholder=""></textarea>
+                                    <textarea class="form-control col-md-12" name="education_other" rows="2" placeholder="">{{ old('education_other') }}</textarea>
                                 </div>
                             </div>
                             {{-- ./col 2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ : --}}
@@ -252,38 +311,234 @@
                                         <span><sup class="text-danger"> *</sup></span>
                                         <span>(กรณีไม่เคยได้รับการอบรม โปรดระบุ "0")</span>
                                     </label>
-                                    @foreach ($labDevelopments as $item)
-                                    <div class="row my-1">
-                                        <input type="hidden" name="lab_development_id[]" value="{{ $item->id }}">
-                                        <label for="" class="col-md-3 col-form-label">- {{ $item->lab_dev_name }}</label>
-                                        <label for="" class="col-md-2 col-form-label">ได้รับการอบรม :</label>
-                                        <div class="col-md-1">
-                                            <input type="number" name="lab_development_amount[]" min="0" class="form-control form-control-sm" id="lab_development_amount_{{$item->id}}" placeholder="" value="{{ old('lab_development_amount.'.$labDevelopmentAmountItems++) }}">
+                                    <div class="row">
+                                        <div class="col-md-5 d-flex justify-content-between align-items-center ">
+                                            <label for="">- ISO/IEC17025</label>
+                                            <label for="">ได้รับการอบรม (คน) :</label>
                                         </div>
-                                        <label for="" class="col-md-1 col-form-label">คน</label>
-                                        <label for="" class="col-md-1 col-form-label">จำนวน :</label>
-                                        <div class="col-md-1">
-                                            <input type="number" name="lab_development_day[]" min="0" class="form-control form-control-sm" id="lab_development_day_{{$item->id}}" placeholder="" value="{{ old('lab_development_day.'.$labDevelopmentDayItems++) }}">
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="1_lab_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('1_lab_development_amount') }}">
                                         </div>
-                                        <label for="" class="col-md-1 col-form-label">วัน</label>
-                                        <select class="col-md-2 form-control form-control-sm" style="width: 100%;" name="lab_development_join[]">
-                                            
-                                        </select>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <label for="">จำนวน (วัน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="1_lab_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('1_lab_development_day') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" name="1_interested_in_training" class="custom-control-input" id="1_interested_in_training" value="1" {{ (! empty(old('1_interested_in_training') == 1) ? 'checked' : '') }}>
+                                                <label class="custom-control-label" for="1_interested_in_training">สนใจเข้าอบรม</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    @endforeach
+                                    <hr>
+                                    {{-- ./row ISO/IEC17025 key => 1  --}}
+                                    <div class="row">
+                                        <div class="col-md-5 d-flex justify-content-between align-items-center">
+                                            <label for="">- ความไม่แน่นอนในการวัด</label>
+                                            <label for="">ได้รับการอบรม (คน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="2_lab_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('2_lab_development_amount') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <label for="">จำนวน (วัน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="2_lab_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('2_lab_development_day') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" name="2_interested_in_training" class="custom-control-input" id="2_interested_in_training" value="1" {{ (! empty(old('2_interested_in_training') == 1) ? 'checked' : '') }}>
+                                                <label class="custom-control-label" for="2_interested_in_training">สนใจเข้าอบรม</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {{-- ./row ความไม่แน่นอนในการวัด key => 2 --}}
+                                    <div class="row">
+                                        <div class="col-md-5 d-flex justify-content-between align-items-center">
+                                            <label for="">- Method Validation</label>
+                                            <label for="">ได้รับการอบรม (คน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="3_lab_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('3_lab_development_amount') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <label for="">จำนวน (วัน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="3_lab_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('3_lab_development_day') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" name="3_interested_in_training" class="custom-control-input" id="3_interested_in_training" value="1" {{ (! empty(old('3_interested_in_training') == 1) ? 'checked' : '') }}>
+                                                <label class="custom-control-label" for="3_interested_in_training">สนใจเข้าอบรม</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {{-- ./row Method Validation key => 3 --}}
+                                    <div class="row">
+                                        <div class="col-md-5 d-flex justify-content-between align-items-center">
+                                            <label for="">- การควบคุมคุณภาพภายใน</label>
+                                            <label for="">ได้รับการอบรม (คน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="4_lab_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('4_lab_development_amount') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <label for="">จำนวน (วัน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="4_lab_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('4_lab_development_day') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" name="4_interested_in_training" class="custom-control-input" id="4_interested_in_training" value="1" {{ (! empty(old('4_interested_in_training') == 1) ? 'checked' : '') }}>
+                                                <label class="custom-control-label" for="4_interested_in_training">สนใจเข้าอบรม</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {{-- ./row การควบคุมคุณภาพภายใน key => 4 --}}
+                                    <div class="row">
+                                        <div class="col-md-5 d-flex justify-content-between align-items-center">
+                                            <label for="">- สถิติสำหรับงานทดสอบ</label>
+                                            <label for="">ได้รับการอบรม (คน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="5_lab_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('5_lab_development_amount') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <label for="">จำนวน (วัน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="5_lab_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('5_lab_development_day') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" name="5_interested_in_training" class="custom-control-input" id="5_interested_in_training" value="1" {{ (! empty(old('5_interested_in_training') == 1) ? 'checked' : '') }}>
+                                                <label class="custom-control-label" for="5_interested_in_training">สนใจเข้าอบรม</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {{-- ./row สถิติสำหรับงานทดสอบ key => 5 --}}
+                                    <div class="row">
+                                        <div class="col-md-5 d-flex justify-content-between align-items-center">
+                                            <label for="">- เทคนิคในการใช้เครื่องมือวิทยาศาสตร์</label>
+                                            <label for="">ได้รับการอบรม (คน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="6_lab_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('6_lab_development_amount') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <label for="">จำนวน (วัน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="6_lab_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('6_lab_development_day') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" name="6_interested_in_training" class="custom-control-input" id="6_interested_in_training" value="1" {{ (! empty(old('6_interested_in_training') == 1) ? 'checked' : '') }}>
+                                                <label class="custom-control-label" for="6_interested_in_training">สนใจเข้าอบรม</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {{-- ./row เทคนิคในการใช้เครื่องมือวิทยาศาสตร์ key => 6 --}}
+                                    <div class="row">
+                                        <div class="col-md-5 d-flex justify-content-between align-items-center">
+                                            <label for="">- ความปลอดภัยในห้องปฏิบัติการ</label>
+                                            <label for="">ได้รับการอบรม (คน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="7_lab_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('7_lab_development_amount') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <label for="">จำนวน (วัน) :</label>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start align-items-center">
+                                            <input type="number" name="7_lab_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('7_lab_development_day') }}">
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" name="7_interested_in_training" class="custom-control-input" id="7_interested_in_training" value="1" {{ (! empty(old('7_interested_in_training') == 1) ? 'checked' : '') }}>
+                                                <label class="custom-control-label" for="7_interested_in_training">สนใจเข้าอบรม</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {{-- ./row ความปลอดภัยในห้องปฏิบัติการ key => 7 --}}
                                 </div>
                                 <div class="form-group">
                                     <label for="">อื่นๆ โปรดระบุ :</label>
-                                    <textarea class="form-control col-md-12" name="lab_development_other" rows="2" placeholder=""></textarea>
+                                    <textarea class="form-control col-md-12" name="lab_development_other" rows="3" placeholder=""></textarea>
                                 </div>
                             </div>
-                            {{-- ./col  --}}
+                            {{-- ./col 2.10.1 เจ้าหน้าที่ได้รับการฝึกอบรมเพื่อการพัฒนาห้องปฏิบัติการหรือไม่อย่างไร : --}}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="employee_training_id">2.10.2 เจ้าหน้าที่ห้องปฏิบัติการได้รับการฝึกอบรมเฉลี่ยต่อปี :<span><sup class="text-danger"> *</sup></span></label>
+                                    <select class="form-control custom-select select2 @error('employee_training_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="employee_training_id" id="employee_training_id" data-value="{{ old('employee_training_id') }}">
+                                        <option value="" selected disabled="disabled">disabled</option>
+                                        @foreach ($employeeTrainings as $employeeTraining)
+                                        <option value="{{ $employeeTraining->id }}" {{ ( old('employee_training_id') == $employeeTraining->id) ? 'selected' : '' }}>{{ $employeeTraining->emp_training_detail }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('employee_training_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- ./col 2.10.2  : --}}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">2.10.3 ห้องปฏิบัติการของท่านมีการจัดการทางด้านสิ่งแวดล้อมในสถานที่ทำงานอย่างไรบ้าง (ถ้ามี) :</label>
+                                    <textarea class="form-control col-md-12" name="lab_environmental_management" rows="3" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            {{-- ./col 2.20.3 : --}}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">2.10.4 ปัญหาและอุปสรรคที่พบในการพัฒนาห้องปฏิบัติการทดสอบ (ถ้ามี) :</label>
+                                    <textarea class="form-control col-md-12" name="lab_development_problem" rows="3" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            {{-- ./col 2.20.4 : --}}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">2.10.5 ความต้องการที่จะได้รับการสนับสนุนเพื่อพัฒนาห้องปฏิบัติการทดสอบ (ถ้ามี) :</label>
+                                    <textarea class="form-control col-md-12" name="lab_development_request" rows="3" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            {{-- ./col 2.20.5 : --}}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">2.10.6 ข้อเสนอแนะอื่น ๆ (ถ้ามี) :</label>
+                                    <textarea class="form-control col-md-12" name="lab_development_suggestion" rows="3" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            {{-- ./col 2.20.6 : --}}
                         </div>
                         <!-- /.row -->
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <div class="d-flex justify-content-between">
+                            <a href="/labs" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-backward"></i>
+                                ย้อนกลับ
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                ถัดไป
+                                <i class="fas fa-forward"></i>
+                            </button>
+                        </div>
                     </div>
                     <!-- /.card-footer -->
                 </form>

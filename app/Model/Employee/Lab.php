@@ -6,13 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\User;
 use App\Model\Employee\Organization;
+use App\Model\Employee\EducationLevelLab;
+use App\Model\Employee\Development\Internal;
+use App\Model\Employee\Development\IsoIec17025;
+use App\Model\Employee\Development\Method;
+use App\Model\Employee\Development\Safety;
+use App\Model\Employee\Development\Statistic;
+use App\Model\Employee\Development\Technique;
+use App\Model\Employee\Development\Uncertainty;
+use App\Model\BasicInformations\LocationLab;
 use App\Model\BasicInformations\IndustrialEstate;
 use App\Model\BasicInformations\LaboratoryType;
 use App\Model\BasicInformations\AreaService;
 use App\Model\BasicInformations\EducationLevel;
 use App\Model\BasicInformations\FixedCost;
 use App\Model\BasicInformations\IncomePerYear;
-use App\Model\BasicInformations\LabDevelopment;
+use App\Model\BasicInformations\EmployeeTraining;
 
 class Lab extends Model
 {
@@ -41,6 +50,12 @@ class Lab extends Model
     }
 
     // Defining Relationships One To Many
+    public function locationLab()
+    {
+        return $this->belongsTo(LocationLab::class);
+    }
+
+    // Defining Relationships One To Many
     public function industrialEstate()
     {
         return $this->belongsTo(IndustrialEstate::class);
@@ -58,10 +73,10 @@ class Lab extends Model
         return $this->belongsTo(AreaService::class);
     }
 
-    // Defining Relationships Many To Many
-    public function educationLevels()
+    // Defining Relationships One To Many
+    public function educationLevelLabs()
     {
-        return $this->belongsToMany(EducationLevel::class)->withTimestamps();
+        return $this->hasMany(EducationLevelLab::class);
     }
 
     // Defining Relationships One To Many
@@ -76,9 +91,39 @@ class Lab extends Model
         return $this->belongsTo(IncomePerYear::class);
     }
 
-    // Defining Relationships Many To Many
-    public function labDevelopments()
+    // Defining Relationships One To Many
+    public function employeeTraining()
     {
-        return $this->belongsToMany(LabDevelopment::class)->withTimestamps();
+        return $this->belongsTo(EmployeeTraining::class);
+    }
+
+    // Defining Relationships One To Many
+    public function internals()
+    {
+        return $this->hasMany(Internal::class);
+    }
+    public function isoIec17025s()
+    {
+        return $this->hasMany(IsoIec17025::class);
+    }
+    public function methods()
+    {
+        return $this->hasMany(Method::class);
+    }
+    public function safetys()
+    {
+        return $this->hasMany(Safety::class);
+    }
+    public function statistics()
+    {
+        return $this->hasMany(Statistic::class);
+    }
+    public function techniques()
+    {
+        return $this->hasMany(Technique::class);
+    }
+    public function uncertaintys()
+    {
+        return $this->hasMany(Uncertainty::class);
     }
 }

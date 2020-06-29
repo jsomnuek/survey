@@ -13,10 +13,4 @@ class LabDevelopment extends Model
     protected $fillable = ['lab_dev_name','lab_dev_status',];
 
     public $timestamps = true;
-
-    // Defining Relationships Many To Many
-    public function labs()
-    {
-        return $this->belongsToMany(Lab::class)->withTimestamps();
-    }
 }

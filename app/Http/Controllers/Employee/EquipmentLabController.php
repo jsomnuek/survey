@@ -153,10 +153,11 @@ class EquipmentLabController extends Controller
         foreach ($allEquipmentLab->majorTechnologies as $item) {
             $allMajorTechnologyItem[] = $item->id;
         }
+        // return $allMajorTechnologyItem;
         $allTechnicalEquipment = TechnicalEquipment::where('technical_equipment_status','A')->get();
         $allObjectiveUsage = ObjectiveUsage::where('obj_usage_status','A')->get();
         $allObjectiveUsageItem = [];
-        foreach ($allObjectiveUsageItem->objectiveUsages as $item) {
+        foreach ($allEquipmentLab->objectiveUsages as $item) {
             $allObjectiveUsageItem[] = $item->id;
         }
         $allEquipmentUsage = EquipmentUsage::where('equipment_usage_status','A')->get();
@@ -165,8 +166,8 @@ class EquipmentLabController extends Controller
         $allEquipmentManual = EquipmentManual::where('equipment_manual_status','A')->get();
         $allEquipmentRent = EquipmentRent::where('equipment_rent_status','A')->get();
         $data = [
-            'equipmentLab' => $allEquipmentLab,
-            'scienceTool' => $allScienceTool,
+            'equipmentLabs' => $allEquipmentLab,
+            'scienceTools' => $allScienceTool,
             'majorTechnologies' => $allMajorTechnology,
             'majorTechnologyItem' => $allMajorTechnologyItem,
             'technicalEquipments' => $allTechnicalEquipment,
@@ -177,7 +178,6 @@ class EquipmentLabController extends Controller
             'equipmentMaintenances' => $allEquipmentMaintenance,
             'equipmentManuals' => $allEquipmentManual,
             'equipmentRents' => $allEquipmentRent,
-
         ];
         // return $data;
         // dd($data);

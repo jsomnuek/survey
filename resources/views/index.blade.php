@@ -11,6 +11,11 @@
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
+                            <div class="row-12">
+
+                                <img src='resources/pic/banner_1.png'/>
+                            </div>
+                            
                         </div>
                     @endif
                 </div>

@@ -105,7 +105,10 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.14 รูปภาพเครื่องมือ :</th>
-                                <td>{{ $equipmentLabs->equipment_pic }}</td>
+                                <td>
+
+                                    <img src="/storage/app/{{ $equipmentLabs->equipment_pic }}" height="100px" width="100px" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.15 การสอบเทียบ :</th>

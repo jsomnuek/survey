@@ -199,13 +199,13 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="proficiency_testing1" name="proficiency_testing" value='1' {{ old('proficiency_testing') == 1 ? 'checked' : ''}}>
+                                    <input class="custom-control-input" type="radio" id="proficiency_testing1" name="proficiency_testing" value=1 {{ old('proficiency_testing') == 1 ? 'checked' : ''}}>
                                     <label for="proficiency_testing1" class="custom-control-label">ไม่มี</label>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="proficiency_testing2" name="proficiency_testing" value='2' {{ old('proficiency_testing') == 2 ? 'checked' : ''}}>
+                                    <input class="custom-control-input" type="radio" id="proficiency_testing2" name="proficiency_testing" value=2 {{ old('proficiency_testing') == 2 ? 'checked' : ''}}>
                                     <label for="proficiency_testing2" class="custom-control-label">มี</label>
                                 </div>
                             </div>
@@ -266,6 +266,7 @@
         $('#testing_calibrating_type_id').trigger('change');
 
         $('#proficiency_testing').val(1);
+        $('#proficiency_testing').trigger('checked');
 
     </script>
 @endsection

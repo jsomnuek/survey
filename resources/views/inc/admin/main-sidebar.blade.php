@@ -820,6 +820,10 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ข้อมูลห้องปฏิบัติการทั้งหมด</p>
                             </a>
+                            <a href="{{ url('/labs/create') }}" class="nav-link {{ Request::is('labs/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon "></i>
+                                <p>เพิ่มข้อมูลห้องปฏิบัติการทั้งหมด</p>
+                            </a>
                         </li>
                     </ul>
                 </li>

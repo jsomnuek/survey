@@ -13,6 +13,7 @@ use App\Model\BasicInformations\EquipmentMaintenance;
 use App\Model\BasicInformations\EquipmentManual;
 use App\Model\BasicInformations\EquipmentRent;
 use Illuminate\Http\Request;
+use App\Model\Logs\LogActivity;
 
 class EquipmentLabController extends Controller
 {
@@ -65,7 +66,6 @@ class EquipmentLabController extends Controller
             'equipmentMaintenances' => $allEquipmentMaintenance,
             'equipmentManuals' => $allEquipmentManual,
             'equipmentRents' => $allEquipmentRent,
-
         ];
         //dd($data);
         return view('employee.equipmentLab.create')->with($data);
@@ -104,7 +104,8 @@ class EquipmentLabController extends Controller
         //$equipmentLab->objective_usages_id = $request['objective_usages_id'];
         $equipmentLab->equipment_usage_id = $request['equipment_usage_id'];
         $equipmentLab->equipment_ability = $request['equipment_ability'];
-        $equipmentLab->equipment_pic = $request['equipment_pic'];
+        // $equipmentLab->equipment_pic = $request->file('equipment_pic')->store('upload');
+        $equipmentLab->equipment_pic = $request->file('equipment_pic') ? $request->file('equipment_pic')->store('public/storage') : null;
         $equipmentLab->equipment_calibrations_id = $request['equipment_calibrations_id'];
         $equipmentLab->equipment_calibration_by = $request['equipment_calibration_by'];
         $equipmentLab->equipment_calibration_year = $request['equipment_calibration_year'];
@@ -120,12 +121,14 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipments_rent_id = $request['equipment_rent_id'];
         $equipmentLab->equipment_rent_fee = $request['equipment_rent_fee'];
         $equipmentLab->equipment_rent_detail = $request['equipment_rent_detail'];
+        
+        //$equipmentLab->equipment_pic = $request['equipment_pic']->image->store('images','public');
 
         // dd($equipmentLab->all());
         $equipmentLab->save();
         $equipmentLab->majorTechnologies()->sync($request->major_technologies_id, false);
         $equipmentLab->objectiveUsages()->sync($request->objective_usages_id, false);
-
+        LogActivity::addGlobalScope('create new EquipmentLab .' . $equipmentLab->equipment_lab_id .' successfully.');
         return redirect()->route('equipmentLab.show', $equipmentLab->id);
         //return redirect('/equipmentLab');
     }

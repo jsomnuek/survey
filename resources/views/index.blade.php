@@ -18,6 +18,9 @@
                         <div class="row-12 center">
                             <img class="img-fluid" src={{ asset('images/banner_1.png') }} alt="">
                         </div>
+                        <div class="row-12 text-center h3">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                        </div>
                     </div>
         </div>
     </div>

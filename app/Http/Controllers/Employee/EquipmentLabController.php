@@ -128,7 +128,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->save();
         $equipmentLab->majorTechnologies()->sync($request->major_technologies_id, false);
         $equipmentLab->objectiveUsages()->sync($request->objective_usages_id, false);
-        LogActivity::addGlobalScope('create new EquipmentLab .' . $equipmentLab->equipment_lab_id .' successfully.');
+        // LogActivity::addGlobalScope('create new EquipmentLab .' . $equipmentLab->equipment_lab_id .'successfully.');
         return redirect()->route('equipmentLab.show', $equipmentLab->id);
         //return redirect('/equipmentLab');
     }

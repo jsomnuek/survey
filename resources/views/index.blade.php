@@ -12,8 +12,7 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                             <div class="row-12">
-
-                                <img src='resources/pic/banner_1.png'/>
+                                <img src={{ asset('images/banner_1.png') }} alt="">
                             </div>
                             
                         </div>

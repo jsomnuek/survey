@@ -36,7 +36,7 @@
                 with font-awesome or any other icon font library -->
                 <li class="nav-header d-none">Display None</li>
                 {{-- Basic Informations Menu  --}}
-            <li class="nav-header">Role : {!! auth()->user()->role_id !!}</li>
+            {{-- <li class="nav-header">Role : {!! auth()->user()->role_id !!}</li> --}}
 
             @if(Auth::user()->role_id == 1)
 
@@ -820,9 +820,15 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ข้อมูลห้องปฏิบัติการทั้งหมด</p>
                             </a>
+<<<<<<< HEAD
                             <a href="{{ url('/labs/create') }}" class="nav-link {{ Request::is('labs/create') ? 'active' : '' }}">
                                 <i class="fas fa-plus-circle nav-icon "></i>
                                 <p>เพิ่มข้อมูลห้องปฏิบัติการทั้งหมด</p>
+=======
+                            <a href="{{ url('/labs/createByOrgId/1') }}" class="nav-link {{ Request::is('labs/createByOrgId/1') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon "></i>
+                                <p>เพิ่มข้อมูลห้องปฏิบัติการ</p>
+>>>>>>> bbaa07a4870fab0fc67675f85c332ce0f6e51c31
                             </a>
                         </li>
                     </ul>

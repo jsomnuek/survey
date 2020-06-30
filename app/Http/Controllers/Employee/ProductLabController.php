@@ -31,7 +31,7 @@ class ProductLabController extends Controller
      */
     public function index()
     {
-        $allProductLab = ProductLab::paginate(2);
+        $allProductLab = ProductLab::paginate(5);
         //return $allProductLab;
         return view('employee.productlab.index',['allProductLabs' => $allProductLab]);
     }

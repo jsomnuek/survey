@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('page')
-    Equipment Laboratory Create
+    Create Equipment Laboratory
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">เพิ่มข้อมูลเครื่องมือในห้องปฏิบัติการ</h1>
+    {{-- <h1 class="m-0 text-dark">เพิ่มข้อมูลเครื่องมือในห้องปฏิบัติการ</h1> --}}
 @endsection
 
 @section('content')
@@ -148,9 +148,9 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group d-none" id="display_major_technologies_other">
+                      <div class="form-group d-none" id="display_major_technology_other">
                         <label for="">อื่นๆ โปรดระบุ  : </label>
-                        <input class="form-control" type="text" name="major_technologies_other" id="major_technologies_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('major_technologies_other')}}">
+                        <input class="form-control" type="text" name="major_technology_other" id="major_technology_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('major_technology_other')}}">
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -351,10 +351,19 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer">
-                    {{-- a href="/technicalEquipment"  class="btn btn-secondary">ย้อนกลับ</a> --}}
-                    <button type="submit" class="btn btn-primary">บันทึก</button>
-                </div>
+                    <div class="card-footer">
+                      <div class="d-flex justify-content-between">
+                          <a href="/equipmentLab" class="btn btn-secondary btn-lg">
+                              <i class="fas fa-edit"></i>
+                              ย้อนกลับ
+                          </a>
+                          
+                          <button type="submit" class="btn btn-primary btn-lg">
+                            เพิ่มข้อมูล
+                            <i class="fas fa-save"></i>
+                        </button>
+                      </div>
+                  </div>
               </form>
             </div>
         </div>

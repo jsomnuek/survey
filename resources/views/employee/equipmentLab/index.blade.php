@@ -55,7 +55,7 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
-                @if (count($equipmentLabs) > 10)
+                @if (count($equipmentLabs) > 1)
                 <div class="card-footer clearfix">
                     {{ $equipmentLabs->links() }}
                 </div>

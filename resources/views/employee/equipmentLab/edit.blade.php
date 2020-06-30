@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('page')
-    Equipment Laboratory Edit
+    Edit Equipment Lab
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">เพิ่มข้อมูลเครื่องมือในห้องปฏิบัติการ</h1>
+    {{-- <h1 class="m-0 text-dark">เพิ่มข้อมูลเครื่องมือในห้องปฏิบัติการ</h1> --}}
 @endsection
 
 @section('content')
@@ -344,10 +344,20 @@
                     </div>
                   </div>
                 </div>
+                {{-- card footer --}}
                 <div class="card-footer">
-                    {{-- a href="/technicalEquipment"  class="btn btn-secondary">ย้อนกลับ</a> --}}
-                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                  <div class="d-flex justify-content-between">
+                      <a href="/equipmentLab" class="btn btn-secondary btn-lg">
+                          <i class="fas fa-undo"></i>
+                          ย้อนกลับ
+                      </a>
+                      <button type="submit" class="btn btn-primary btn-lg">
+                          ยืนยันการแก้ไข
+                          <i class="fas fa-save"></i>
+                      </button>
+                  </div>
                 </div>
+                {{-- end card footer --}}
               </form>
             </div>
         </div>

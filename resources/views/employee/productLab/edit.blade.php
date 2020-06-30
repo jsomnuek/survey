@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('page')
-    Product Create
+    Edit Product Lab
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">แก้ไขผลิตภัณฑ์ และรายการทดสอบ</h1>
+    {{-- <h1 class="m-0 text-dark">แก้ไขผลิตภัณฑ์ และรายการทดสอบ</h1> --}}
 @endsection
 
 @section('content')
@@ -240,10 +240,20 @@
                         </div>
                     </div>
                     <!-- /.card-body -->
+                    {{-- card footer --}}
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <div class="d-flex justify-content-between">
+                            <a href="/productLab" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-undo"></i>
+                                ย้อนกลับ
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                ยืนยันการแก้ไข
+                            <i class="fas fa-save"></i>
+                            </button>
+                        </div>
                     </div>
-                    <!-- /.card-footer -->
+                    {{-- end card footer --}}
                 </form>
                 <!-- /.form end -->
             </div>

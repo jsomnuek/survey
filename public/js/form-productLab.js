@@ -104,9 +104,6 @@ $(document).ready(function() {
     }
     checkProductType();
 
-
-
-
     //4.2 checkTestType
     function checkTestType() {
         // this value
@@ -150,5 +147,32 @@ $(document).ready(function() {
         );
     }
     checkTestType();
+
+    // 4.15
+    function checkPT() {
+        $("#proficiency_testing").on(
+            "custom-radio:checked",
+            function() {
+                var data = $("#proficiency_testing").val();
+                console.log(data);
+                // if (data != null) {
+                //     for (i = 0; i < data.length; i++) {
+                //         if (data[i] == "1") {
+                //             var indTypeId = 1;
+                //         }
+                //     }
+                // }
+                // if (data == 5) {
+                //     $("#display_testing_calibrating_type_other").removeClass("d-none");
+                //     $("#testing_calibrating_type_other").prop("required", true);
+                // } else {
+                //     $("#display_testing_calibrating_type_other").addClass("d-none");
+                //     $("#testing_calibrating_type_other").prop("required", false);
+                //     $("#testing_calibrating_type_other").val(null);
+                // }
+            }
+        );
+    }
+    checkPT();
 
 });

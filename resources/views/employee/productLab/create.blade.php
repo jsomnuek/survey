@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('page')
-    Product Create
+    Create Product Lab
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">เพิ่มรายการทดสอบ/สอบเทียบ</h1>
+    {{-- <h1 class="m-0 text-dark">เพิ่มรายการทดสอบ/สอบเทียบ</h1> --}}
 @endsection
 
 @section('content')
@@ -264,6 +264,8 @@
 
         $('#testing_calibrating_type_id').val($testingCalibratingType->id);
         $('#testing_calibrating_type_id').trigger('change');
+
+        $('#proficiency_testing').val(1);
 
     </script>
 @endsection

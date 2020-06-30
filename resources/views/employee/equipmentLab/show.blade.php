@@ -35,7 +35,7 @@
                                 @if ($equipmentLabs->scienceTool->id != 1)
                                     <td>{{ $equipmentLabs->scienceTool->science_tool_name }}</td>   
                                 @else
-                                    <td>อื่นๆ {{ $equipmentLabs->science_tool_other_name }}</td>
+                                    <td>อื่นๆ {{ $equipmentLabs->science_tool_other_name }} : {{ $equipmentLabs->science_tool_other_abbr }} </td>
                                 @endif
                             </tr>
                             <tr>
@@ -69,20 +69,20 @@
                             <tr>
                                 <th class="" style="width: 30%;">3.10 สาขาเทคโนโลยี :</th>
                                 <td>
-                                    @forelse ($equipmentLabs->majorTechnologies as $item )
-                                    @if ($item->id >= 1)
-                                        <li>{{ $item->major_tech_name }} </li>
-                                    @else
-                                        
-                                    @endif
-                                    
-                                @empty
-                                
-                                @endforelse
+                                    @foreach ($equipmentLabs->majorTechnologies as $item)
+                                        @if ($item->id !=1)
+                                        <li>{{ $item->major_tech_name }}</li>
+                                        @else
+                                            
+                                        @endif
+                                    @endforeach
 
                                 @if ($equipmentLabs->major_technologies_other != null)
-                                    <li>อื่นๆ {{ $equipmentLabs->major_technologies_other }}</li>
+                                    <li>อื่นๆ -->{{ $equipmentLabs->major_technologies_other }}</li>
+                                @else
+                                    
                                 @endif
+                                
                                 </td>
                             </tr>
                             <tr>

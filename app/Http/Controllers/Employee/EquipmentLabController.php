@@ -24,13 +24,19 @@ class EquipmentLabController extends Controller
     public function index()
     {
     
-        $allEquipmentLab = EquipmentLab::paginate(15);
+        $allEquipmentLab = EquipmentLab::paginate(5);
+        $allScienceTool = ScienceTool::where('science_tool_status','A')->get();
         //$allEquipments = Equipment::all();
         //$allEstate = IndustrialEstate::all();
         //dd($allEquipmentLab->all());
         //return $allOrgData;
         //return $allEquipmentLab;
-        return view('employee.equipmentLab.index',['showEquipmentLab'=>$allEquipmentLab]);
+        $data = [
+            'scienceTools' => $allScienceTool,
+            'equipmentLabs' => $allEquipmentLab,
+        ];
+        return view('employee.equipmentLab.index')->with($data);
+        // /return view('employee.equipmentLab.index',['showEquipmentLab'=>$allEquipmentLab]);
     }
 
     /**
@@ -90,7 +96,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_brand = $request['equipment_brand'];
         $equipmentLab->equipment_model = $request['equipment_model'];
         $equipmentLab->equipment_org_code = $request['equipment_org_code'];
-        $equipmentLab->major_technologies_other = $request[''];
+        $equipmentLab->major_technologies_other = $request['major_technology_other'];
         $equipmentLab->equipment_year = $request['equipment_year'];
         $equipmentLab->equipment_price = $request['equipment_price'];
         $equipmentLab->equipment_supplier = $request['equipment_supplier'];
@@ -115,7 +121,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_rent_fee = $request['equipment_rent_fee'];
         $equipmentLab->equipment_rent_detail = $request['equipment_rent_detail'];
 
-        //dd($equipmentLab->all());
+        // dd($equipmentLab->all());
         $equipmentLab->save();
         $equipmentLab->majorTechnologies()->sync($request->major_technologies_id, false);
         $equipmentLab->objectiveUsages()->sync($request->objective_usages_id, false);
@@ -208,7 +214,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_brand = $request['equipment_brand'];
         $equipmentLab->equipment_model = $request['equipment_model'];
         $equipmentLab->equipment_org_code = $request['equipment_org_code'];
-        $equipmentLab->major_technologies_other = $request[''];
+        $equipmentLab->major_technologies_other = $request['major_technology_other'];
         $equipmentLab->equipment_year = $request['equipment_year'];
         $equipmentLab->equipment_price = $request['equipment_price'];
         $equipmentLab->equipment_supplier = $request['equipment_supplier'];
@@ -234,7 +240,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_rent_detail = $request['equipment_rent_detail'];
         
         $equipmentLab->save();
-        $equipmentLab->majorTechnologies()->sync($request->major_technology_id);
+        $equipmentLab->majorTechnologies()->sync($request->major_technologies_id);
         $equipmentLab->objectiveUsages()->sync($request->objective_usages_id);
         return redirect()->route('equipmentLab.show', $equipmentLab->id);
     }

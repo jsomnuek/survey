@@ -327,7 +327,7 @@
                     </div>
                     <div class="col-md-4 custom-control custom-radio">
                       <div class="form-group">
-                        <input class="custom-control-input @error('equipment_rent_id') is-invalid @enderror" type="radio" id="equipment_rent1" name="equipment_rent_id" value=1 {{ old('equipment_rent_id') == 1 ? 'checked' : ''}}>
+                        <input class="custom-control-input @error('equipment_rent_id') is-invalid @enderror" type="radio" id="equipment_rent1" name="equipment_rent_id" value=1 {{ old('equipments_rent_id') == 1 ? 'checked' : ''}}>
                         <label for="equipment_rent1" class="custom-control-label">ไม่ให้บุคคลภายนอกเช่าใช้</label>
                       </div>
                     </div>

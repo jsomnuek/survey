@@ -73,7 +73,7 @@ checkOthSciTool();
 //3.10
 function checkMajorTechnology() {
     // this value
-    var data = $("#major_technology_id").val();
+    var data = $("#major_technologies_id").val();
     console.log(data);
     if (data != null) {
         for (i = 0; i < data.length; i++) {
@@ -91,10 +91,10 @@ function checkMajorTechnology() {
         $("#major_technology_other").val(null);
     }
     // event on selected
-    $("#major_technology_id").on(
+    $("#major_technologies_id").on(
         "select2:select select2:unselect",
         function() {
-            var data = $("#major_technology_id").val();
+            var data = $("#major_technologies_id").val();
             if (data != null) {
                 for (i = 0; i < data.length; i++) {
                     if (data[i] == "1") {

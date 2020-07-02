@@ -20,8 +20,8 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        // $allRole = Role::all();
-        // $allAgency = Agency::all();
+        $allRole = Role::all();
+        $allAgency = Agency::all();
         return view('auth.register',['showAllRole' => $allRole],['showAllAgency' => $allAgency]);
     }
 

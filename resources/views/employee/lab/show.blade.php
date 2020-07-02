@@ -26,7 +26,7 @@
                     <table class="table table-striped">
                         <tbody>
                             <tr>
-                                <th class="" style="width: 35%;">สำหรับองค์กร :</th>
+                                <th class="" style="width: 35%;">องค์กร :</th>
                                 <td>{{ $lab->organization->org_name }}</td>
                             </tr>
                             {{-- ./tr สำหรับองค์กร : --}}
@@ -143,12 +143,12 @@
                             {{-- ./tr 2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ :--}}
                             <tr>
                                 <th class="" style="width: 35%;">2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี :</th>                                
-                                <td>{{ $lab->fixedCost->fixed_cost_name }}</td>
+                                <td>{{ !empty($lab->fixedCost->fixed_cost_name) }}</td>
                             </tr>
                             {{-- ./tr 2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี :--}}
                             <tr>
                                 <th class="" style="width: 35%;">2.9 รายได้รวมของห้องปฏิบัติการต่อปี :</th>                                
-                                <td>{{ $lab->incomePerYear->income_detail }}</td>
+                                <td>{{ !empty($lab->incomePerYear->income_detail) }}</td>
                             </tr>
                             {{-- ./tr 2.9 รายได้รวมของห้องปฏิบัติการต่อปี :--}}
                             <tr>
@@ -159,10 +159,379 @@
                                 <th class="pl-5" colspan="2" style="">2.10.1 เจ้าหน้าที่ได้รับการฝึกอบรมเพื่อการพัฒนาห้องปฏิบัติการหรือไม่อย่างไร :</th>
                             </tr>
                             <tr>
-                                <th class="pl-5" style="width: 35%;">- ISO/IEC17025</th>                                
-                                <td></td>
+                                <th class="pl-5" style="width: 35%;">- ISO/IEC17025 :</th>                                
+                                <td>
+                                    @forelse ($lab->isoIec17025s as $item)
+                                        <div class="row">
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ได้รับการอบรม (คน) :</strong><hr>
+                                                    @if (!empty($item->development_amount))
+                                                    <span class="description-text text-success">{{ $item->development_amount }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">จำนวน (วัน) :</strong><hr>
+                                                    @if (!empty($item->development_day))                                                    
+                                                    <span class="description-text text-success">{{ $item->development_day }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ความสนใจในการฝึกอบรม :</strong><hr>                                                    
+                                                    @if (!empty($item->development_interested))
+                                                    <span class="description-text text-success">สนใจเข้าอบรม</span>
+                                                    @else
+                                                    <span class="description-text">- ไม่ระบุ -</span>
+                                                    @endif                                                    
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
                             </tr>
-                            
+                            {{-- ISO/IEC17025 --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">- ความไม่แน่นอนในการวัด :</th>                                
+                                <td>
+                                    @forelse ($lab->uncertaintys as $item)
+                                        <div class="row">
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ได้รับการอบรม (คน) :</strong><hr>
+                                                    @if (!empty($item->development_amount))
+                                                    <span class="description-text text-success">{{ $item->development_amount }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">จำนวน (วัน) :</strong><hr>
+                                                    @if (!empty($item->development_day))                                                    
+                                                    <span class="description-text text-success">{{ $item->development_day }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ความสนใจในการฝึกอบรม :</strong><hr>                                                    
+                                                    @if (!empty($item->development_interested))
+                                                    <span class="description-text text-success">สนใจเข้าอบรม</span>
+                                                    @else
+                                                    <span class="description-text">- ไม่ระบุ -</span>
+                                                    @endif                                                    
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
+                            </tr>
+                            {{-- ความไม่แน่นอนในการวัด --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">- Method Validation :</th>                                
+                                <td>
+                                    @forelse ($lab->methods as $item)
+                                        <div class="row">
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ได้รับการอบรม (คน) :</strong><hr>
+                                                    @if (!empty($item->development_amount))
+                                                    <span class="description-text text-success">{{ $item->development_amount }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">จำนวน (วัน) :</strong><hr>
+                                                    @if (!empty($item->development_day))                                                    
+                                                    <span class="description-text text-success">{{ $item->development_day }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ความสนใจในการฝึกอบรม :</strong><hr>                                                    
+                                                    @if (!empty($item->development_interested))
+                                                    <span class="description-text text-success">สนใจเข้าอบรม</span>
+                                                    @else
+                                                    <span class="description-text">- ไม่ระบุ -</span>
+                                                    @endif                                                    
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
+                            </tr>
+                            {{-- Method Validation --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">- การควบคุมคุณภาพภายใน :</th>                                
+                                <td>
+                                    @forelse ($lab->internals as $item)
+                                        <div class="row">
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ได้รับการอบรม (คน) :</strong><hr>
+                                                    @if (!empty($item->development_amount))
+                                                    <span class="description-text text-success">{{ $item->development_amount }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">จำนวน (วัน) :</strong><hr>
+                                                    @if (!empty($item->development_day))                                                    
+                                                    <span class="description-text text-success">{{ $item->development_day }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ความสนใจในการฝึกอบรม :</strong><hr>                                                    
+                                                    @if (!empty($item->development_interested))
+                                                    <span class="description-text text-success">สนใจเข้าอบรม</span>
+                                                    @else
+                                                    <span class="description-text">- ไม่ระบุ -</span>
+                                                    @endif                                                    
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
+                            </tr>
+                            {{-- การควบคุมคุณภาพภายใน --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">- สถิติสำหรับงานทดสอบ :</th>                                
+                                <td>
+                                    @forelse ($lab->statistics as $item)
+                                        <div class="row">
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ได้รับการอบรม (คน) :</strong><hr>
+                                                    @if (!empty($item->development_amount))
+                                                    <span class="description-text text-success">{{ $item->development_amount }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">จำนวน (วัน) :</strong><hr>
+                                                    @if (!empty($item->development_day))                                                    
+                                                    <span class="description-text text-success">{{ $item->development_day }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ความสนใจในการฝึกอบรม :</strong><hr>                                                    
+                                                    @if (!empty($item->development_interested))
+                                                    <span class="description-text text-success">สนใจเข้าอบรม</span>
+                                                    @else
+                                                    <span class="description-text">- ไม่ระบุ -</span>
+                                                    @endif                                                    
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
+                            </tr>
+                            {{-- สถิติสำหรับงานทดสอบ --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">- เทคนิคในการใช้เครื่องมือวิทยาศาสตร์ :</th>                                
+                                <td>
+                                    @forelse ($lab->techniques as $item)
+                                        <div class="row">
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ได้รับการอบรม (คน) :</strong><hr>
+                                                    @if (!empty($item->development_amount))
+                                                    <span class="description-text text-success">{{ $item->development_amount }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">จำนวน (วัน) :</strong><hr>
+                                                    @if (!empty($item->development_day))                                                    
+                                                    <span class="description-text text-success">{{ $item->development_day }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ความสนใจในการฝึกอบรม :</strong><hr>                                                    
+                                                    @if (!empty($item->development_interested))
+                                                    <span class="description-text text-success">สนใจเข้าอบรม</span>
+                                                    @else
+                                                    <span class="description-text">- ไม่ระบุ -</span>
+                                                    @endif                                                    
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
+                            </tr>
+                            {{-- เทคนิคในการใช้เครื่องมือวิทยาศาสตร์ --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">- ความปลอดภัยในห้องปฏิบัติการ :</th>                                
+                                <td>
+                                    @forelse ($lab->safetys as $item)
+                                        <div class="row">
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ได้รับการอบรม (คน) :</strong><hr>
+                                                    @if (!empty($item->development_amount))
+                                                    <span class="description-text text-success">{{ $item->development_amount }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">จำนวน (วัน) :</strong><hr>
+                                                    @if (!empty($item->development_day))                                                    
+                                                    <span class="description-text text-success">{{ $item->development_day }}</span>
+                                                    @else
+                                                    <span class="description-text">0</span>
+                                                    @endif
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 col-6">
+                                                <div class="description-block">
+                                                    <strong class="description-percentage ">ความสนใจในการฝึกอบรม :</strong><hr>                                                    
+                                                    @if (!empty($item->development_interested))
+                                                    <span class="description-text text-success">สนใจเข้าอบรม</span>
+                                                    @else
+                                                    <span class="description-text">- ไม่ระบุ -</span>
+                                                    @endif                                                    
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        {{-- ./row --}}
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
+                            </tr>
+                            {{-- ความปลอดภัยในห้องปฏิบัติการ --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">- อื่น ๆ :</th>                                
+                                <td>{{ $lab->lab_development_other }}</td>
+                            </tr>
+                            {{-- อื่น ๆ --}}
+                            {{-- ./tr 2.10.1 --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">2.10.2 เจ้าหน้าที่ห้องปฏิบัติการได้รับการฝึกอบรมเฉลี่ยต่อปี :</th>                                
+                                <td>{{ $lab->employeeTraining->emp_training_detail }}</td>
+                            </tr>
+                            {{-- ./tr 2.10.2 --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">2.10.3 ห้องปฏิบัติการของท่านมีการจัดการทางด้านสิ่งแวดล้อมในสถานที่ทำงานอย่างไรบ้าง :</th>                                
+                                <td>{{ $lab->lab_environmental_management }}</td>
+                            </tr>
+                            {{-- ./tr 2.10.3 --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">2.10.4 ปัญหาและอุปสรรคที่พบในการพัฒนาห้องปฏิบัติการทดสอบ :</th>                                
+                                <td>{{ $lab->lab_development_problem }}</td>
+                            </tr>
+                            {{-- ./tr 2.10.4 --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">2.10.5 ความต้องการที่จะได้รับการสนับสนุนเพื่อพัฒนาห้องปฏิบัติการทดสอบ :</th>                                
+                                <td>{{ $lab->lab_development_request }}</td>
+                            </tr>
+                            {{-- ./tr 2.10.5 --}}
+                            <tr>
+                                <th class="pl-5" style="width: 35%;">2.10.6 ข้อเสนอแนะอื่น ๆ :</th>                                
+                                <td>{{ $lab->lab_development_suggestion }}</td>
+                            </tr>
+                            {{-- ./tr 2.10.6 --}}
                             {{-- ./tr 2.10 ข้อมูลการพัฒนาห้องปฏิบัติการ :--}}
                         </tbody>
                         {{-- ./tbody --}}

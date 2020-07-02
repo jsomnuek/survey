@@ -17,6 +17,8 @@ use App\Model\Employee\QualitySystemIso9000;
 use App\Model\Employee\QualitySystemIso14000;
 use App\Model\Employee\QualitySystemIsoHaccp;
 
+use App\Helpers\LogActivity;
+
 class OrganizationController extends Controller
 {
     /**
@@ -46,6 +48,8 @@ class OrganizationController extends Controller
         $industrialType = IndustrialType::where('industrial_type_status', 'A')->get();
         $qualitySystems = QualitySystem::where('quality_system_status', 'A')->get();
         $operations = Operation::where('operation_status', 'A')->get();
+
+
         // return $industrialType;
 
         return view('employee.organization.create',[
@@ -138,6 +142,10 @@ class OrganizationController extends Controller
             $isoHaccp->certification_agency = $request->input('iso_haccp_certification_agency');
             $isoHaccp->accredited = $request->input('iso_haccp_accredited');
             $isoHaccp->save();
+
+            // create log activity
+            LogActivity::addToLog('Add Oranization : " ' . $org->org_name . ' " successfully.');
+
             
             return redirect()->route('organization.show', $org->id);
         }
@@ -284,6 +292,9 @@ class OrganizationController extends Controller
                     'certification_agency' => $request->input('iso_haccp_certification_agency'),
                     'accredited' => $request->input('iso_haccp_accredited'),
                 ]);
+
+            // create log activity
+            LogActivity::addToLog('Edit Oranization : " ' . $org->org_name . ' " successfully.');
             
             return redirect()->route('organization.show', $org->id);
         }

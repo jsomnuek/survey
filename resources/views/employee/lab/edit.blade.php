@@ -34,7 +34,11 @@
                                     <select class="form-control custom-select select2 @error('organization_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="organization_id" id="organization_id" required>
                                         <option value="" selected disabled="disabled">disabled</option>
                                         @foreach ($organizations as $organization)
-                                        <option value="{{ $organization->id }}" {{ $lab->organization_id == $organization->id ? 'selected' : '' }}>{{ $organization->org_name }}</option>
+                                        <option value="{{ $organization->id }}" {{ $lab->organization_id == $organization->id ? 'selected' : '' }}>
+                                            {{ $organization->org_name }}
+                                            @if(!empty($organization->org_name_level_1)){{' : '.$organization->org_name_level_1}}@else @endif 
+                                            @if(!empty($organization->org_name_level_2)){{' : '.$organization->org_name_level_2}}@else @endif
+                                        </option>
                                         @endforeach
                                     </select>
                                     @error('organization_id')
@@ -541,7 +545,7 @@
                                 ย้อนกลับ
                             </a>
                             <button type="submit" class="btn btn-primary btn-lg">
-                                ถัดไป
+                                บันทึกข้อมูล
                                 <i class="fas fa-forward"></i>
                             </button>
                         </div>

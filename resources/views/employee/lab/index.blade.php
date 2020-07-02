@@ -29,7 +29,7 @@
 						<thead>                  
 							<tr>
 								<th style="width: 10px">รหัส</th>
-								<th>ชื่อหน่วยงาน</th>
+								<th>ชื่อห้องปฏิบัติการ</th>
 								<th>ผู้บันทึกข้อมูล</th>
 								<th style=""></th>
 							</tr>

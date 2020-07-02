@@ -37,7 +37,11 @@
                             @foreach ($orgs as $org)
                             <tr>
                                 <td>{{ $org->id }}</td>
-                                <td>{{ $org->org_name }}</td>
+                                <td>
+                                    {{ $org->org_name }} 
+                                    @if(!empty($org->org_name_level_1)){{' : '.$org->org_name_level_1}}@else @endif 
+                                    @if(!empty($org->org_name_level_2)){{' : '.$org->org_name_level_2}}@else @endif 
+                                </td>
                                 <td>{{ $org->user->name }}</td>
                                 <td>
                                     <a href="/organization/{{ $org->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a>

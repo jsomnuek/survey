@@ -185,7 +185,11 @@
                                             <div class="col-sm-3 col-6">
                                                 <div class="description-block">
                                                     <strong class="description-percentage ">การดำเนินการ :</strong><hr>
+                                                    @if (!empty($item->operation))                                                        
                                                     <span class="description-text text-success">{{ $item->operation->operation_name }}</span>
+                                                    @else
+                                                        
+                                                    @endif
                                                 </div>
                                                 <!-- /.description-block -->
                                             </div>
@@ -229,7 +233,11 @@
                                             <div class="col-sm-3 col-6">
                                                 <div class="description-block">
                                                     <strong class="description-percentage ">การดำเนินการ :</strong><hr>
+                                                    @if (!empty($item->operation))                                                        
                                                     <span class="description-text text-success">{{ $item->operation->operation_name }}</span>
+                                                    @else
+                                                        
+                                                    @endif
                                                 </div>
                                                 <!-- /.description-block -->
                                             </div>
@@ -273,7 +281,11 @@
                                             <div class="col-sm-3 col-6">
                                                 <div class="description-block">
                                                     <strong class="description-percentage ">การดำเนินการ :</strong><hr>
+                                                    @if (!empty($item->operation))                                                        
                                                     <span class="description-text text-success">{{ $item->operation->operation_name }}</span>
+                                                    @else
+                                                        
+                                                    @endif
                                                 </div>
                                                 <!-- /.description-block -->
                                             </div>

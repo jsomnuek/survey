@@ -1,19 +1,41 @@
 <?php
 
 namespace App\Model\Employee;
+
+use Illuminate\Database\Eloquent\Model;
+
+use App\User;
+use App\Model\Employee\Lab;
 use App\Model\BasicInformations\ScienceTool;
 use App\Model\BasicInformations\MajorTechnology;
 use App\Model\BasicInformations\ObjectiveUsage;
 use App\Model\BasicInformations\EquipmentUsage;
 use App\Model\BasicInformations\EquipmentMaintenance;
-use Illuminate\Database\Eloquent\Model;
 
-class EquipmentLab extends Model
+class Equipment extends Model
 {
-    protected $table = 'equipment_labs';
-    public $primaryKey = 'id';
+    protected $table = 'equipments';
+    protected $primaryKey = 'id';
+
+    /*
+    protected $fillable = [''];
+    */
+    
     protected $guarded = [];
-    public $timestamps = TRUE;
+
+    public $timestamps = true;
+
+    // Defining Relationships One To Many
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Defining Relationships One To Many
+    public function lab()
+    {
+        return $this->belongsTo(Lab::class);
+    }
 
     // relation for 3.2.1 ชื่อเครื่องมือEN
     public function scienceTool()
@@ -21,10 +43,10 @@ class EquipmentLab extends Model
         return $this->belongsTo(ScienceTool::class);
     }
 
-    // relation for 3.10 สาขาเทคโนโลยี มากกว่า1รายการ
+    // relation for 3.10 สาขาเทคโนโลยี มากกว่า 1 รายการ
     public function majorTechnologies()
     {
-        return $this->belongsToMany(MajorTechnology::class);
+        return $this->belongsToMany(MajorTechnology::class)->withTimestamps();
     }
 
     // relation for 3.11 วัตถุประสงค์การใข้งาน มากกว่า 1 รายการ

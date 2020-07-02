@@ -2,8 +2,9 @@
 
 namespace App\Model\BasicInformations;
 
-use App\Model\Employee\EquipmentLab;
 use Illuminate\Database\Eloquent\Model;
+
+use App\Model\Employee\Equipment;
 
 class MajorTechnology extends Model
 {
@@ -13,8 +14,8 @@ class MajorTechnology extends Model
     public $orgTypeStatus = 'major_tech_status';
     public $timestamps = true;
 
-    public function equipmentLabs()
+    public function equipments()
     {
-        return $this->belongsToMany(EquipmentLab::class)->withTimestamps();
+        return $this->belongsToMany(Equipment::class)->withTimestamps();
     }
 }

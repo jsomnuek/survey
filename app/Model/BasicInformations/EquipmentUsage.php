@@ -3,7 +3,7 @@
 namespace App\Model\BasicInformations;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Employee\EquipmentLab;
+use App\Model\Employee\Equipment;
 
 class EquipmentUsage extends Model
 {
@@ -13,8 +13,8 @@ class EquipmentUsage extends Model
 
     public $timestamps = true;
 
-    public function equipmentLabs()
+    public function equipments()
     {
-        return $this->hasMany(EquipmentLab::class);
+        return $this->hasMany(Equipment::class);
     }
 }

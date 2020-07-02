@@ -3,7 +3,8 @@ $(document).ready(function() {
     $(".select2")
     .select2({
         theme: "bootstrap4",
-        allowClear: true
+        allowClear: true,
+        placeholder: "-- โปรดเลือก --"
     })
     .trigger("change");
 
@@ -104,9 +105,6 @@ $(document).ready(function() {
     }
     checkProductType();
 
-
-
-
     //4.2 checkTestType
     function checkTestType() {
         // this value
@@ -150,5 +148,44 @@ $(document).ready(function() {
         );
     }
     checkTestType();
+
+    // 4.15 การทดสอบห้องปฏิบัติการ ยังไม่เสร็จเลย
+    function checkPT() {
+        var data = $("#proficiency_testing").val();
+        if (data == 2) {
+            $("#display_proficiency_testing_by").removeClass("d-none");
+            $("#proficiency_testing_by").prop("required", true);
+            $("#display_proficiency_testing_year").removeClass("d-none");
+            $("#proficiency_testing_year").prop("required", true);
+        } else {
+            $("#display_proficiency_testing_by").addClass("d-none");
+            $("#proficiency_testing_by").prop("required", false);
+            $("#proficiency_testing_by").val(null);
+            $("#display_proficiency_testing_year").addClass("d-none");
+            $("#proficiency_testing_year").prop("required", false);
+            $("#proficiency_testing_year").val(null);
+        }
+        // event on selected
+        $("#proficiency_testing").on(
+            "select2:select select2:unselect",
+            function() {
+                var data = $("#proficiency_testing").val();
+                if (data == 2) {
+                    $("#display_proficiency_testing_by").removeClass("d-none");
+                    $("#proficiency_testing_by").prop("required", true);
+                    $("#display_proficiency_testing_year").removeClass("d-none");
+                    $("#proficiency_testing_year").prop("required", true);
+                } else {
+                    $("#display_proficiency_testing_by").addClass("d-none");
+                    $("#proficiency_testing_by").prop("required", false);
+                    $("#proficiency_testing_by").val(null);
+                    $("#display_proficiency_testing_year").addClass("d-none");
+                    $("#proficiency_testing_year").prop("required", false);
+                    $("#proficiency_testing_year").val(null);
+                }
+            }
+        );
+    }
+    checkPT();
 
 });

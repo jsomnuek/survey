@@ -35,7 +35,7 @@
                                 @if ($equipmentLabs->scienceTool->id != 1)
                                     <td>{{ $equipmentLabs->scienceTool->science_tool_name }}</td>   
                                 @else
-                                    <td>อื่นๆ {{ $equipmentLabs->science_tool_other_name }}</td>
+                                    <td>อื่นๆ {{ $equipmentLabs->science_tool_other_name }} : {{ $equipmentLabs->science_tool_other_abbr }} </td>
                                 @endif
                             </tr>
                             <tr>
@@ -69,20 +69,20 @@
                             <tr>
                                 <th class="" style="width: 30%;">3.10 สาขาเทคโนโลยี :</th>
                                 <td>
-                                    @forelse ($equipmentLabs->majorTechnologies as $item )
-                                    @if ($item->id >= 1)
-                                        <li>{{ $item->major_tech_name }} </li>
-                                    @else
-                                        
-                                    @endif
-                                    
-                                @empty
-                                
-                                @endforelse
+                                    @foreach ($equipmentLabs->majorTechnologies as $item)
+                                        @if ($item->id !=1)
+                                        <li>{{ $item->major_tech_name }}</li>
+                                        @else
+                                            
+                                        @endif
+                                    @endforeach
 
                                 @if ($equipmentLabs->major_technologies_other != null)
-                                    <li>อื่นๆ {{ $equipmentLabs->major_technologies_other }}</li>
+                                    <li>อื่นๆ -->{{ $equipmentLabs->major_technologies_other }}</li>
+                                @else
+                                    
                                 @endif
+                                
                                 </td>
                             </tr>
                             <tr>
@@ -105,7 +105,9 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.14 รูปภาพเครื่องมือ :</th>
-                                <td>{{ $equipmentLabs->equipment_pic }}</td>
+                                <td>
+                                    <img class="img-fluid" src="{{ asset('images/'. $equipmentLabs->equipment_pic)}}" height="100px" width="100px" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">3.15 การสอบเทียบ :</th>
@@ -171,10 +173,21 @@
                         </tbody>
                     </table>
                 </div>
+
+                {{-- card footer --}}
                 <div class="card-footer">
-                    <a href="/equipmentLab" class="btn btn-secondary">ย้อนกลับ</a>
-                    <a href="/equipmentLab/{{ $equipmentLabs->id }}/edit" class="btn btn-primary">แก้ไขข้อมูล</a>
+                    <div class="d-flex justify-content-between">
+                        <a href="/equipmentLab/{{ $equipmentLabs->id }}/edit" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-edit"></i>
+                            แก้ไขข้อมูล
+                        </a>
+                        <a href="/equipmentLab" class="btn btn-success btn-lg">
+                            <i class="fas fa-save"></i>
+                            ยืนยันข้อมูล
+                        </a>
+                    </div>
                 </div>
+                {{-- /.card footer --}}
 
             </div>
             <!-- /.card -->

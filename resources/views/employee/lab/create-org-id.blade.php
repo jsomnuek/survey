@@ -21,29 +21,23 @@
                 <!-- form start -->
                 <form action="/labs" method="POST" role="form">
                     @csrf
+                    <input type="hidden" name="organization_id" value="{{ $org->id }}">
                     <div class="card-body py-2">
-                        <div class="row">                            
+                        <div class="row">
+                            <div class="col-md-12">
+                                <blockquote class="py-2 my-2 bg-dark">
+                                    <p>
+                                        <span>องค์กร : </span>
+                                        <a href="{{ route('organization.show', $org->id) }}">
+                                            {{ $org->org_name }}
+                                        </a>
+                                    </p>
+                                </blockquote>
+                            </div>                            
                             <div class="col-md-12 mb-3">
                                 <strong>หมายเหตุ: <span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
                             </div>
                             {{-- ./col --}}
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="organization_id">โปรดเลือกองค์กร :<span><sup class="text-danger"> *</sup></span></label>
-                                    <select class="form-control custom-select select2 @error('organization_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="organization_id" id="organization_id" data-value="{{ old('organization_id') }}" required>
-                                        <option value="" selected disabled="disabled">disabled</option>
-                                        @foreach ($organizations as $organization)
-                                        <option value="{{ $organization->id }}" {{ ( old('organization_id') == $organization->id) ? 'selected' : '' }}>{{ $organization->org_name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('organization_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            {{-- ./col โปรดเลือกข้อมูลองค์กร --}}
                             <div class="col-md-6">
                                 <div class=" form-group">
                                     <label for="lab_name">2.1 ชื่อห้องปฎิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
@@ -183,7 +177,7 @@
                                             <label for="">จำนวน (คน) :</label>
                                         </div>
                                         <div class="col-md-2 d-flex align-items-center">
-                                            <input type="number" name="education_primary_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_primary_amount') }}">
+                                            <input type="number" name="education_primary_amount" id="education_primary_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_primary_amount') }}">
                                         </div>
                                     </div>
                                     {{-- ./row ประถมศึกษา --}}
@@ -193,7 +187,7 @@
                                             <label for="">จำนวน (คน) :</label>
                                         </div>
                                         <div class="col-md-2 d-flex align-items-center">
-                                            <input type="number" name="education_secondary_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_secondary_amount') }}">
+                                            <input type="number" name="education_secondary_amount" id="education_secondary_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_secondary_amount') }}">
                                         </div>
                                     </div>
                                     {{-- ./row มัธยม --}}
@@ -203,7 +197,7 @@
                                             <label for="">จำนวน (คน) :</label>
                                         </div>
                                         <div class="col-md-2 d-flex align-items-center">
-                                            <input type="number" name="education_vocational_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_vocational_amount') }}">
+                                            <input type="number" name="education_vocational_amount" id="education_vocational_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_vocational_amount') }}">
                                         </div>
                                     </div>
                                     {{-- ./row ปวช. --}}
@@ -213,7 +207,7 @@
                                             <label for="">จำนวน (คน) :</label>
                                         </div>
                                         <div class="col-md-2 d-flex align-items-center">
-                                            <input type="number" name="education_high_vocational_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_high_vocational_amount') }}">
+                                            <input type="number" name="education_high_vocational_amount" id="education_high_vocational_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_high_vocational_amount') }}">
                                         </div>
                                     </div>
                                     {{-- ./row ปวส. --}}
@@ -223,7 +217,7 @@
                                             <label for="">จำนวน (คน) :</label>
                                         </div>
                                         <div class="col-md-2 d-flex align-items-center">
-                                            <input type="number" name="education_bachelor_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_bachelor_amount') }}">
+                                            <input type="number" name="education_bachelor_amount" id="education_bachelor_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_bachelor_amount') }}">
                                         </div>
                                     </div>
                                     {{-- ./row ปริญญาตรี --}}
@@ -233,7 +227,7 @@
                                             <label for="">จำนวน (คน) :</label>
                                         </div>
                                         <div class="col-md-2 d-flex align-items-center">
-                                            <input type="number" name="education_master_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_master_amount') }}">
+                                            <input type="number" name="education_master_amount" id="education_master_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_master_amount') }}">
                                         </div>
                                     </div>
                                     {{-- ./row ปริญญาโท --}}
@@ -243,7 +237,7 @@
                                             <label for="">จำนวน (คน) :</label>
                                         </div>
                                         <div class="col-md-2 d-flex align-items-center">
-                                            <input type="number" name="education_doctor_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_doctor_amount') }}">
+                                            <input type="number" name="education_doctor_amount" id="education_doctor_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('education_doctor_amount') }}">
                                         </div>
                                     </div>
                                     {{-- ./row ปริญญาเอก --}}
@@ -306,17 +300,17 @@
                                             <label for="">ได้รับการอบรม (คน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="1_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('1_development_amount') }}">
+                                            <input type="number" name="1_development_amount" id="1_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('1_development_amount') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <label for="">จำนวน (วัน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="1_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('1_development_day') }}">
+                                            <input type="number" name="1_development_day" id="1_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('1_development_day') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="1_development_interested" class="custom-control-input" id="1_development_interested" value="1" {{ (!empty(old('1_development_interested') == 1) ? 'checked' : '') }}>
+                                                <input type="checkbox" name="1_development_interested" id="1_development_interested" class="custom-control-input" id="1_development_interested" value="1" {{ (! empty(old('1_development_interested') == 1) ? 'checked' : '') }}>
                                                 <label class="custom-control-label" for="1_development_interested">สนใจเข้าอบรม</label>
                                             </div>
                                         </div>
@@ -329,17 +323,17 @@
                                             <label for="">ได้รับการอบรม (คน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="2_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('2_development_amount') }}">
+                                            <input type="number" name="2_development_amount" id="2_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('2_development_amount') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <label for="">จำนวน (วัน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="2_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('2_development_day') }}">
+                                            <input type="number" name="2_development_day" id="2_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('2_development_day') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="2_development_interested" class="custom-control-input" id="2_development_interested" value="1" {{ (!empty(old('2_development_interested') == 1) ? 'checked' : '') }}>
+                                                <input type="checkbox" name="2_development_interested" id="2_development_interested" class="custom-control-input" id="2_development_interested" value="1" {{ (! empty(old('2_development_interested') == 1) ? 'checked' : '') }}>
                                                 <label class="custom-control-label" for="2_development_interested">สนใจเข้าอบรม</label>
                                             </div>
                                         </div>
@@ -352,17 +346,17 @@
                                             <label for="">ได้รับการอบรม (คน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="3_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('3_development_amount') }}">
+                                            <input type="number" name="3_development_amount" id="3_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('3_development_amount') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <label for="">จำนวน (วัน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="3_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('3_development_day') }}">
+                                            <input type="number" name="3_development_day" id="3_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('3_development_day') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="3_development_interested" class="custom-control-input" id="3_development_interested" value="1" {{ (!empty(old('3_development_interested') == 1) ? 'checked' : '') }}>
+                                                <input type="checkbox" name="3_development_interested" id="3_development_interested" class="custom-control-input" id="3_development_interested" value="1" {{ (! empty(old('3_development_interested') == 1) ? 'checked' : '') }}>
                                                 <label class="custom-control-label" for="3_development_interested">สนใจเข้าอบรม</label>
                                             </div>
                                         </div>
@@ -375,17 +369,17 @@
                                             <label for="">ได้รับการอบรม (คน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="4_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('4_development_amount') }}">
+                                            <input type="number" name="4_development_amount" id="4_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('4_development_amount') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <label for="">จำนวน (วัน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="4_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('4_development_day') }}">
+                                            <input type="number" name="4_development_day" id="4_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('4_development_day') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="4_development_interested" class="custom-control-input" id="4_development_interested" value="1" {{ (!empty(old('4_development_interested') == 1) ? 'checked' : '') }}>
+                                                <input type="checkbox" name="4_development_interested" id="4_development_interested" class="custom-control-input" id="4_development_interested" value="1" {{ (! empty(old('4_development_interested') == 1) ? 'checked' : '') }}>
                                                 <label class="custom-control-label" for="4_development_interested">สนใจเข้าอบรม</label>
                                             </div>
                                         </div>
@@ -398,17 +392,17 @@
                                             <label for="">ได้รับการอบรม (คน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="5_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('5_development_amount') }}">
+                                            <input type="number" name="5_development_amount" id="5_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('5_development_amount') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <label for="">จำนวน (วัน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="5_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('5_development_day') }}">
+                                            <input type="number" name="5_development_day" id="5_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('5_development_day') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="5_development_interested" class="custom-control-input" id="5_development_interested" value="1" {{ (!empty(old('5_development_interested') == 1) ? 'checked' : '') }}>
+                                                <input type="checkbox" name="5_development_interested" id="5_development_interested" class="custom-control-input" id="5_development_interested" value="1" {{ (! empty(old('5_development_interested') == 1) ? 'checked' : '') }}>
                                                 <label class="custom-control-label" for="5_development_interested">สนใจเข้าอบรม</label>
                                             </div>
                                         </div>
@@ -421,17 +415,17 @@
                                             <label for="">ได้รับการอบรม (คน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="6_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('6_development_amount') }}">
+                                            <input type="number" name="6_development_amount" id="6_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('6_development_amount') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <label for="">จำนวน (วัน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="6_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('6_development_day') }}">
+                                            <input type="number" name="6_development_day" id="6_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('6_development_day') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="6_development_interested" class="custom-control-input" id="6_development_interested" value="1" {{ (!empty(old('6_development_interested') == 1) ? 'checked' : '') }}>
+                                                <input type="checkbox" name="6_development_interested" id="6_development_interested" class="custom-control-input" id="6_development_interested" value="1" {{ (! empty(old('6_development_interested') == 1) ? 'checked' : '') }}>
                                                 <label class="custom-control-label" for="6_development_interested">สนใจเข้าอบรม</label>
                                             </div>
                                         </div>
@@ -444,17 +438,17 @@
                                             <label for="">ได้รับการอบรม (คน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="7_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('7_development_amount') }}">
+                                            <input type="number" name="7_development_amount" id="7_development_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('7_development_amount') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <label for="">จำนวน (วัน) :</label>
                                         </div>
                                         <div class="col-md-1 d-flex justify-content-start align-items-center">
-                                            <input type="number" name="7_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('7_development_day') }}">
+                                            <input type="number" name="7_development_day" id="7_development_day" min="0" class="form-control form-control-sm" placeholder="" value="{{ old('7_development_day') }}">
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-end align-items-center">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" name="7_development_interested" class="custom-control-input" id="7_development_interested" value="1" {{ (!empty(old('7_development_interested') == 1) ? 'checked' : '') }}>
+                                                <input type="checkbox" name="7_development_interested" id="7_development_interested" class="custom-control-input" id="7_development_interested" value="1" {{ (! empty(old('7_development_interested') == 1) ? 'checked' : '') }}>
                                                 <label class="custom-control-label" for="7_development_interested">สนใจเข้าอบรม</label>
                                             </div>
                                         </div>

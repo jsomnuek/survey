@@ -5,19 +5,23 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Welcome To Lab Survey</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    dddd
+                <div class="card-header ">
+                    <h2 for="" class="text-center">ระบบบันทึกข้อมูลการสำรวจห้องปฏิบัติการ</h2>
+                    {{-- <h4 for="" class="text-center">กระทรวงการอุดมศึกษา วิทยาศาสตร์ วิจัยและนวัตกรรม</h4> --}}
                 </div>
-
-            </div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                            @endif
+                        <div class="row-12 center">
+                            <img class="img-fluid" src={{ asset('images/banner_1_0.png') }} alt="">
+                        </div>
+                        <div class="row-12 text-center h3">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                        </div>
+                    </div>
         </div>
     </div>
 </div>

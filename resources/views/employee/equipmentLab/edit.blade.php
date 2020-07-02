@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('page')
-    Equipment Laboratory Edit
+    Edit Equipment Lab
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">เพิ่มข้อมูลเครื่องมือในห้องปฏิบัติการ</h1>
+    {{-- <h1 class="m-0 text-dark">เพิ่มข้อมูลเครื่องมือในห้องปฏิบัติการ</h1> --}}
 @endsection
 
 @section('content')
@@ -127,12 +127,12 @@
                     <div class="col-md-6">
                       <div class="form-group">
                           <label for="">3.10 สาขาเทคโนโลยีของเครื่องมือ</label>
-                          <select class="form-control custom-select select2 @error('major_technology_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="major_technology_id[]" id="major_technology_id" data-value="{{ old('major_technology_id[]') }}">
+                          <select class="form-control custom-select select2 @error('major_technologies_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="major_technologies_id[]" id="major_technologies_id" data-value="{{ old('major_technologies_id[]') }}">
                             @foreach ($majorTechnologies as $majorTechnology)
-                                <option value="{{ $majorTechnology->id }}" {{ in_array($majorTechnology->id,  old('major_technology_id') ? : []) ? 'selected' : '' }}>{{ $majorTechnology->major_tech_name }}</option>
+                                <option value="{{ $majorTechnology->id }}" {{ in_array($majorTechnology->id,  old('major_technologies_id') ? : []) ? 'selected' : '' }}>{{ $majorTechnology->major_tech_name }}</option>
                             @endforeach
                           </select>
-                          @error('major_technology_id')
+                          @error('major_technologies_id')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                               {{-- <strong>text assignment</strong> --}}
@@ -201,11 +201,11 @@
                           <label for="">3.15 การสอบเทียบ</label>
                         </div>
                         <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_calibrations_id1" name="equipment_calibrations_id" value='1' {{ old('equipment_calibrations_id') == 1 ? 'checked' : ''}}>
+                          <input class="custom-control-input" type="radio" id="equipment_calibrations_id1" name="equipment_calibrations_id" value='1' {{ $equipmentLabs->equipment_calibrations_id == 1 ? 'checked' : ''}}>
                           <label for="equipment_calibrations_id1" class="custom-control-label">ไม่มี</label> 
                         </div>
                         <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_calibrations_id2" name="equipment_calibrations_id" value='2' {{ old('equipment_calibrations_id') == 2 ? 'checked' : ''}}>
+                          <input class="custom-control-input" type="radio" id="equipment_calibrations_id2" name="equipment_calibrations_id" value='2' {{ $equipmentLabs->equipment_calibrations_id == 2 ? 'checked' : ''}}>
                           <label for="equipment_calibrations_id2" class="custom-control-label">มี</label> 
                         </div>
                         <div class="col-md-3">
@@ -287,11 +287,11 @@
                     <div class="col-md-12">
                       <div class="row form-group">
                         <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_manuals_id1" name="equipment_manuals_id" value='1' {{ old('equipment_manuals_id') == 1 ? 'checked' : ''}}>
+                          <input class="custom-control-input" type="radio" id="equipment_manuals_id1" name="equipment_manuals_id" value='1' {{ $equipmentLabs->equipment_manuals_id == 1 ? 'checked' : ''}}>
                           <label for="equipment_manuals_id1" class="custom-control-label">ไม่มี</label> 
                         </div>
                         <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_manuals_id2" name="equipment_manuals_id" value='2' {{ old('equipment_manuals_id') == 2 ? 'checked' : ''}}>
+                          <input class="custom-control-input" type="radio" id="equipment_manuals_id2" name="equipment_manuals_id" value='2' {{$equipmentLabs->equipment_manuals_id == 2 ? 'checked' : ''}}>
                           <label for="equipment_manuals_id2" class="custom-control-label">มี</label> 
                         </div>
                         <div class="col-md-4">
@@ -320,13 +320,13 @@
                     </div>
                     <div class="col-md-4 custom-control custom-radio">
                       <div class="form-group">
-                        <input class="custom-control-input @error('equipment_rent_id') is-invalid @enderror" type="radio" id="equipment_rent1" name="equipment_rent_id" value=1 {{ old('equipment_rent_id') == 1 ? 'checked' : ''}}>
+                        <input class="custom-control-input @error('equipment_rent_id') is-invalid @enderror" type="radio" id="equipment_rent1" name="equipment_rent_id" value=1 {{$equipmentLabs->equipments_rent_id == 1 ? 'checked' : ''}}>
                         <label for="equipment_rent1" class="custom-control-label">ไม่ให้บุคคลภายนอกเช่าใช้</label>
                       </div>
                     </div>
                     <div class="col-md-4 custom-control custom-radio">
                       <div class="form-group">
-                        <input class="custom-control-input @error('equipment_rent_id') is-invalid @enderror" type="radio" id="equipment_rent2" name="equipment_rent_id" value=2 {{ old('equipment_rent_id') == 2 ? 'checked' : ''}}>
+                        <input class="custom-control-input @error('equipment_rent_id') is-invalid @enderror" type="radio" id="equipment_rent2" name="equipment_rent_id" value=2 {{$equipmentLabs->equipments_rent_id  == 2 ? 'checked' : ''}}>
                         <label for="equipment_rent2" class="custom-control-label">ให้บุคคลภายนอกเช่าใช้</label>
                       </div> 
                     </div>
@@ -344,10 +344,20 @@
                     </div>
                   </div>
                 </div>
+                {{-- card footer --}}
                 <div class="card-footer">
-                    {{-- a href="/technicalEquipment"  class="btn btn-secondary">ย้อนกลับ</a> --}}
-                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                  <div class="d-flex justify-content-between">
+                      <a href="/equipmentLab" class="btn btn-secondary btn-lg">
+                          <i class="fas fa-undo"></i>
+                          ย้อนกลับ
+                      </a>
+                      <button type="submit" class="btn btn-primary btn-lg">
+                          ยืนยันการแก้ไข
+                          <i class="fas fa-save"></i>
+                      </button>
+                  </div>
                 </div>
+                {{-- end card footer --}}
               </form>
             </div>
         </div>
@@ -360,8 +370,8 @@
     <script src="{{ asset('js/form-equipmentLab.js') }}"></script>
     <script type="text/javascript">
       // 3.10
-      $('#major_technology_id').val({{ json_encode($majorTechnologyItem) }});
-      $('#major_technology_id').trigger('change');
+      $('#major_technologies_id').val({{ json_encode($majorTechnologyItem) }});
+      $('#major_technologies_id').trigger('change');
       // 3.11
       $('#objective_usages_id').val({{ json_encode($objectiveUsageItem) }});
       $('#objective_usages_id').trigger('change');

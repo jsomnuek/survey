@@ -299,11 +299,7 @@
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
-                            {{-- ./col --}}                           
-=======
                             {{-- ./col 1.9 ประเภทกิจการ : --}}
->>>>>>> c33baf5905cea4ce20c9ab82839d6e4427df6450
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="industrial_type">1.10 ประเภทอุตสาหกรรม : (เลือกได้มากกว่า 1 คำตอบ)</label>

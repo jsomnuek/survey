@@ -43,14 +43,8 @@ class LabController extends Controller
      */
     public function create()
     {
-        return abort(404);
-    }
-
-    public function createByOrgId($orgId)
-    {
         // data for loop select
-        $org = Organization::findOrFail($orgId);
-        $organizations = Organization::where('user_id', auth()->user()->id);
+        $organizations = Organization::where('user_id', auth()->user()->id)->get();
         $locationLabs = LocationLab::where('location_status', 'A')->get();
         $industrialEstates = IndustrialEstate::where('estate_status', 'A')->get();
         $laboratoryTypes = LaboratoryType::where('lab_type_status', 'A')->get();
@@ -60,8 +54,31 @@ class LabController extends Controller
         $employeeTrainings = EmployeeTraining::where('emp_training_status', 'A')->get();
 
         return view('employee.lab.create', [
-            'org' => $org,
             'organizations' => $organizations,
+            'locationLabs' => $locationLabs,
+            'industrialEstates' => $industrialEstates,
+            'laboratoryTypes' => $laboratoryTypes,
+            'areaServices' => $areaServices,
+            'fixedCosts' => $fixedCosts,
+            'incomePerYears' => $incomePerYears,
+            'employeeTrainings' => $employeeTrainings,
+        ]);
+    }
+
+    public function createByOrgId($orgId)
+    {
+        // data for loop select
+        $org = Organization::findOrFail($orgId);
+        $locationLabs = LocationLab::where('location_status', 'A')->get();
+        $industrialEstates = IndustrialEstate::where('estate_status', 'A')->get();
+        $laboratoryTypes = LaboratoryType::where('lab_type_status', 'A')->get();
+        $areaServices = AreaService::where('area_service_status', 'A')->get();
+        $fixedCosts = FixedCost::where('fixed_cost_status', 'A')->get();
+        $incomePerYears = IncomePerYear::where('income_status', 'A')->get();
+        $employeeTrainings = EmployeeTraining::where('emp_training_status', 'A')->get();
+
+        return view('employee.lab.create-org-id', [
+            'org' => $org,
             'locationLabs' => $locationLabs,
             'industrialEstates' => $industrialEstates,
             'laboratoryTypes' => $laboratoryTypes,
@@ -90,7 +107,7 @@ class LabController extends Controller
         $lab = new Lab;
 
         $lab->user_id = auth()->user()->id;
-        $lab->organization_id = $request->input('org_id');
+        $lab->organization_id = $request->input('organization_id');
         $lab->lab_name = $request->input('lab_name');
         $lab->lab_code = $request->input('lab_code');
         $lab->location_lab_id = $request->input('location_lab_id');
@@ -205,7 +222,7 @@ class LabController extends Controller
     public function edit($id)
     {
         $lab = Lab::findOrFail($id);
-        $organizations = Organization::where('user_id', auth()->user()->id);
+        $organizations = Organization::where('user_id', auth()->user()->id)->get();
         $locationLabs = LocationLab::where('location_status', 'A')->get();
         $industrialEstates = IndustrialEstate::where('estate_status', 'A')->get();
         $laboratoryTypes = LaboratoryType::where('lab_type_status', 'A')->get();
@@ -214,7 +231,7 @@ class LabController extends Controller
         $incomePerYears = IncomePerYear::where('income_status', 'A')->get();
         $employeeTrainings = EmployeeTraining::where('emp_training_status', 'A')->get();
 
-        return $lab;
+        // return $lab;
         
         return view('employee.lab.edit', [
             'lab' => $lab,
@@ -243,6 +260,94 @@ class LabController extends Controller
 
         // validate the data with function
         $this->validateLab();
+
+        // store in the database
+        $lab = Lab::find($id);
+        $lab->organization_id = $request->input('organization_id');
+        $lab->lab_name = $request->input('lab_name');
+        $lab->lab_code = $request->input('lab_code');
+        $lab->location_lab_id = $request->input('location_lab_id');
+        $lab->location_lab_other = $request->input('location_lab_other');
+        $lab->industrial_estate_id = $request->input('industrial_estate_id');
+        $lab->industrial_estate_other = $request->input('industrial_estate_other');
+        $lab->laboratory_type_id = $request->input('laboratory_type_id');
+        $lab->area_service_id = $request->input('area_service_id');
+        $lab->lab_employee_amount = $request->input('lab_employee_amount');
+        $lab->fixed_cost_id = $request->input('fixed_cost_id');
+        $lab->income_per_year_id = $request->input('income_per_year_id');
+        $lab->lab_development_other = $request->input('lab_development_other');
+        $lab->employee_training_id = $request->input('employee_training_id');
+        $lab->lab_environmental_management = $request->input('lab_environmental_management');
+        $lab->lab_development_problem = $request->input('lab_development_problem');
+        $lab->lab_development_request = $request->input('lab_development_request');
+        $lab->lab_development_suggestion = $request->input('lab_development_suggestion');
+        
+        if($lab->save()) {
+
+            // clean
+            EducationLevelLab::where('lab_id', $id)
+                ->update([
+                    'education_primary_amount' => $request->input('education_primary_amount'),
+                    'education_secondary_amount' => $request->input('education_secondary_amount'),
+                    'education_vocational_amount' => $request->input('education_vocational_amount'),
+                    'education_high_vocational_amount' => $request->input('education_high_vocational_amount'),
+                    'education_bachelor_amount' => $request->input('education_bachelor_amount'),
+                    'education_master_amount' => $request->input('education_master_amount'),
+                    'education_doctor_amount' => $request->input('education_doctor_amount'),
+                    'education_other' => $request->input('education_other'),
+                ]);
+
+            // clean
+            IsoIec17025::where('lab_id', $id)
+                ->update([
+                    'development_amount' => $request->input('1_development_amount'),
+                    'development_day' => $request->input('1_development_day'),
+                    'development_interested' => $request->input('1_development_interested'),
+                ]);
+            // clean
+            Uncertainty::where('lab_id', $id)
+                ->update([
+                    'development_amount' => $request->input('2_development_amount'),
+                    'development_day' => $request->input('2_development_day'),
+                    'development_interested' => $request->input('2_development_interested'),
+                ]);
+            // clean
+            Method::where('lab_id', $id)
+                ->update([
+                    'development_amount' => $request->input('3_development_amount'),
+                    'development_day' => $request->input('3_development_day'),
+                    'development_interested' => $request->input('3_development_interested'),
+                ]);
+            // clean
+            Internal::where('lab_id', $id)
+                ->update([
+                    'development_amount' => $request->input('4_development_amount'),
+                    'development_day' => $request->input('4_development_day'),
+                    'development_interested' => $request->input('4_development_interested'),
+                ]);
+            // clean
+            Statistic::where('lab_id', $id)
+                ->update([
+                    'development_amount' => $request->input('5_development_amount'),
+                    'development_day' => $request->input('5_development_day'),
+                    'development_interested' => $request->input('5_development_interested'),
+                ]);
+            // clean
+            Technique::where('lab_id', $id)
+                ->update([
+                    'development_amount' => $request->input('6_development_amount'),
+                    'development_day' => $request->input('6_development_day'),
+                    'development_interested' => $request->input('6_development_interested'),
+                ]);
+            Safety::where('lab_id', $id)
+                ->update([
+                    'development_amount' => $request->input('7_development_amount'),
+                    'development_day' => $request->input('7_development_day'),
+                    'development_interested' => $request->input('7_development_interested'),
+                ]);
+            
+            return redirect()->route('labs.show', $lab->id);
+        }
     }
 
     /**
@@ -259,6 +364,7 @@ class LabController extends Controller
     protected function validateLab()
     {
         return request()->validate([
+            'organization_id' => 'required',
             'lab_name' => 'required',
             'lab_code' => 'required',
             'location_lab_id' => 'required',

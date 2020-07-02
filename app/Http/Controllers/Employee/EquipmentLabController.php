@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Employee;
+use App\Helpers\LogActivity;
 use App\Http\Controllers\Controller;
 use App\Model\Employee\EquipmentLab;
 use App\Model\BasicInformations\ScienceTool;
@@ -24,13 +25,19 @@ class EquipmentLabController extends Controller
     public function index()
     {
     
-        $allEquipmentLab = EquipmentLab::paginate(15);
+        $allEquipmentLab = EquipmentLab::paginate(5);
+        $allScienceTool = ScienceTool::where('science_tool_status','A')->get();
         //$allEquipments = Equipment::all();
         //$allEstate = IndustrialEstate::all();
         //dd($allEquipmentLab->all());
         //return $allOrgData;
         //return $allEquipmentLab;
-        return view('employee.equipmentLab.index',['showEquipmentLab'=>$allEquipmentLab]);
+        $data = [
+            'scienceTools' => $allScienceTool,
+            'equipmentLabs' => $allEquipmentLab,
+        ];
+        return view('employee.equipmentLab.index')->with($data);
+        // /return view('employee.equipmentLab.index',['showEquipmentLab'=>$allEquipmentLab]);
     }
 
     /**
@@ -59,7 +66,6 @@ class EquipmentLabController extends Controller
             'equipmentMaintenances' => $allEquipmentMaintenance,
             'equipmentManuals' => $allEquipmentManual,
             'equipmentRents' => $allEquipmentRent,
-
         ];
         //dd($data);
         return view('employee.equipmentLab.create')->with($data);
@@ -90,7 +96,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_brand = $request['equipment_brand'];
         $equipmentLab->equipment_model = $request['equipment_model'];
         $equipmentLab->equipment_org_code = $request['equipment_org_code'];
-        $equipmentLab->major_technologies_other = $request[''];
+        $equipmentLab->major_technologies_other = $request['major_technology_other'];
         $equipmentLab->equipment_year = $request['equipment_year'];
         $equipmentLab->equipment_price = $request['equipment_price'];
         $equipmentLab->equipment_supplier = $request['equipment_supplier'];
@@ -98,7 +104,19 @@ class EquipmentLabController extends Controller
         //$equipmentLab->objective_usages_id = $request['objective_usages_id'];
         $equipmentLab->equipment_usage_id = $request['equipment_usage_id'];
         $equipmentLab->equipment_ability = $request['equipment_ability'];
-        $equipmentLab->equipment_pic = $request['equipment_pic'];
+        // $equipmentLab->equipment_pic = $request->file('equipment_pic')->store('upload');
+        // $equipmentLab->equipment_pic = $request->file('equipment_pic') ? $request->image('equipment_pic')->store('images/') : null;
+        if ($request->hasFile('equipment_pic')) {
+            $filenamewithExt = $request->file('equipment_pic')->getClientOriginalName();
+            $filename = pathinfo($filenamewithExt, PATHINFO_FILENAME);
+            $extension = $request->file('equipment_pic')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('equipment_pic')->storeAs('images/',$fileNameToStore );
+        } else {
+            # code...
+        }
+        
+        // $equipmentLab->equipment_pic = $fileNameToStore;
         $equipmentLab->equipment_calibrations_id = $request['equipment_calibrations_id'];
         $equipmentLab->equipment_calibration_by = $request['equipment_calibration_by'];
         $equipmentLab->equipment_calibration_year = $request['equipment_calibration_year'];
@@ -114,12 +132,14 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipments_rent_id = $request['equipment_rent_id'];
         $equipmentLab->equipment_rent_fee = $request['equipment_rent_fee'];
         $equipmentLab->equipment_rent_detail = $request['equipment_rent_detail'];
+        
+        //$equipmentLab->equipment_pic = $request['equipment_pic']->image->store('images','public');
 
-        //dd($equipmentLab->all());
+        // dd($equipmentLab->all());
         $equipmentLab->save();
         $equipmentLab->majorTechnologies()->sync($request->major_technologies_id, false);
         $equipmentLab->objectiveUsages()->sync($request->objective_usages_id, false);
-
+        // LogActivity::addToLog('add new equipment lab.');
         return redirect()->route('equipmentLab.show', $equipmentLab->id);
         //return redirect('/equipmentLab');
     }
@@ -208,7 +228,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_brand = $request['equipment_brand'];
         $equipmentLab->equipment_model = $request['equipment_model'];
         $equipmentLab->equipment_org_code = $request['equipment_org_code'];
-        $equipmentLab->major_technologies_other = $request[''];
+        $equipmentLab->major_technologies_other = $request['major_technology_other'];
         $equipmentLab->equipment_year = $request['equipment_year'];
         $equipmentLab->equipment_price = $request['equipment_price'];
         $equipmentLab->equipment_supplier = $request['equipment_supplier'];
@@ -234,7 +254,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_rent_detail = $request['equipment_rent_detail'];
         
         $equipmentLab->save();
-        $equipmentLab->majorTechnologies()->sync($request->major_technology_id);
+        $equipmentLab->majorTechnologies()->sync($request->major_technologies_id);
         $equipmentLab->objectiveUsages()->sync($request->objective_usages_id);
         return redirect()->route('equipmentLab.show', $equipmentLab->id);
     }
@@ -253,11 +273,11 @@ class EquipmentLabController extends Controller
     protected function validateEquipmentLab()
     {
         return request()->validate([
-            'equipment_lab_id' =>'',
-            'science_tool_id' =>'' ,
+            'equipment_lab_id' =>'required',
+            'science_tool_id' =>['required'] ,
             'science_tool_other_name' =>'' ,
             'science_tool_other_abbr' =>'' ,
-            'equipment_name_th' =>'' ,
+            'equipment_name_th' =>'required' ,
             'equipment_brand' =>'' ,
             'equipment_model' =>'' ,
             'equipment_org_code' =>'' ,
@@ -267,13 +287,13 @@ class EquipmentLabController extends Controller
             'major_technologies_id'=>['required'] ,
             'major_technologies_other'=>'' ,
             'objective_usages_id' => ['required'],
-            'equipment_usage_id'=>'' ,
+            'equipment_usage_id'=>'required' ,
             'equipment_ability'=>'' ,
             'equipment_pic'=>'' ,
             'equipment_calibrations_id'=>'' ,
             'equipment_calibration_by'=>'' ,
             'equipment_calibration_year'  =>'' ,
-            'equipment_maintenance_id'    =>'' ,
+            'equipment_maintenance_id'    =>'required' ,
             'equipment_maintenance_other' =>'' ,
             'equipment_maintenance_budget'=>'' ,
             'equipment_admin_name'=>'' ,

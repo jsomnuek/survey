@@ -31,7 +31,7 @@ class ProductLabController extends Controller
      */
     public function index()
     {
-        $allProductLab = ProductLab::paginate(2);
+        $allProductLab = ProductLab::paginate(5);
         //return $allProductLab;
         return view('employee.productlab.index',['allProductLabs' => $allProductLab]);
     }
@@ -180,7 +180,7 @@ class ProductLabController extends Controller
 
         $productLab =  ProductLab::find($id) ;
         $productLab->user_id = auth()->user()->id;
-        $productLab->product_lab_name = $request['product_lab_name'];
+        ['product_lab_name'];
         //$productLab->product_type_id = $request['product_type_id'];
         $productLab->product_type_other = $request['product_type_other'];
         $productLab->product_lab_standard = $request['product_lab_standard'];
@@ -227,25 +227,29 @@ class ProductLabController extends Controller
     protected function validateProductLab()
     {
         return request()->validate([
-            'product_lab_name' => 'required',
-            'product_type_id' => ['required'],
-            'product_lab_standard' => '' ,
-            'product_lab_test_name' => '',
-            'product_lab_test_process' => '',
-            'testing_calibrating_type_id' => '',
-            'product_lab_test_method' => '',
-            'product_lab_test_method_detail' => '',
-            'product_lab_test_unit' => '',
-            'product_lab_test_duration' => '',
-            'product_lab_test_fee' => '',
-            'product_lab_material_ref' => '',
-            'product_lab_material_ref_from' => '',
-            'result_control_id' => '',
-            'product_lab_test_control_other' => '',
-            'proficiency_testing' => '',
-            'proficiency_testing_by' => '',
-            'proficiency_testing_year' => '',
-            'certify_laboratory_id' => ''
+            'product_type_id' =>['required'],
+            'product_lab_name' =>'required',
+            'product_type_other' =>'',
+            'product_lab_standard' =>'',
+            'product_lab_test_name' =>'',
+            'testing_calibrating_list_id' =>'required',
+            'testing_calibrating_type_id' =>'required',
+            'testing_calibrating_type_other' =>'',
+            'testing_calibrating_method_id' =>'required', 
+            'testing_calibrating_method_detail' =>'',
+            'product_lab_test_unit' =>'',
+            'product_lab_test_duration' =>'',
+            'product_lab_test_fee' =>'',
+            'product_lab_material_ref' =>'',
+            'product_lab_material_ref_from' =>'',
+            'product_lab_test_control' =>'',
+            'product_lab_result_control_other' =>'',
+            'proficiency_testing' =>'required',
+            'proficiency_testing_by' =>'',
+            'proficiency_testing_year' =>'',
+            'certify_laboratory_id' =>'required',
+            'product_type_id' =>'required',
+            'result_control_id' =>['required'],
         ]);
     }
 }

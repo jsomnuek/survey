@@ -5,7 +5,7 @@
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">Equipment Lab</h1>
+    {{-- <h1 class="m-0 text-dark">Equipment Lab</h1> --}}
 @endsection
 
 @section('content')
@@ -24,7 +24,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <table class="table table-bordered">
-                        @if (count($showEquipmentLab) > 0)
+                        @if (count($equipmentLabs) > 0)
                         <thead>                  
                             <tr>
                                 <th style="width: 10px">ลำดับ</th>
@@ -34,11 +34,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($showEquipmentLab as $equipmentLab)
+                            @foreach ($equipmentLabs as $equipmentLab)
                             <tr>
                                 <td>{{ $equipmentLab->id }}</td>
                                 <td>{{ $equipmentLab->equipment_lab_id }}</td>
-                                <td>{{ $equipmentLab->scienceTool->science_tool_name }}:{{ $equipmentLab->scienceTool->science_tool_abbr}}</td>
+                                <td>{{ $equipmentLab->equipment_name_th }}</td>
                                 <td><a href="/equipmentLab/{{ $equipmentLab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a> 
                                     {{-- <a href="/equipmentLab/{{ $equipmentLab->id }}/edit" class="btn btn-warning btn-sm">แก้ไขข้อมูล</a> --}}
                                 </td>
@@ -55,7 +55,13 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
-                    
+                @if (count($equipmentLabs) > 1)
+                <div class="card-footer clearfix ">
+                    {{ $equipmentLabs->links() }}
+                </div>
+            @else
+                
+            @endif
                 <!-- /.card-footer -->
             </div>
             <!--/.card -->

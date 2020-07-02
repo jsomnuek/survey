@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('page')
-    Product Create
+    Create Product Lab
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">เพิ่มรายการทดสอบ/สอบเทียบ</h1>
+    {{-- <h1 class="m-0 text-dark">เพิ่มรายการทดสอบ/สอบเทียบ</h1> --}}
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/productLab" method="POST" role="form">
+                <form action="/productLab" method="POST" role="form" id="productLabForm">
                     @csrf
                     <div class="card-body">
                         <div class="row">
@@ -38,7 +38,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">4.2 ประเภทผลิตภัณฑ์ (เลือกได้มากกว่า 1 คำตอบ)</label>
-                                    <select class="form-control custom-select select2 @error('product_type_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="product_type_id[]" id="product_type_id" data-value="{{ old('product_type_id[]') }}">
+                                    <select class="form-control custom-select select2 @error('product_type_id') is-invalid @enderror" multiple="multiple" name="product_type_id[]" id="product_type_id" data-value="{{ old('product_type_id[]') }}">
                                         <option value="" disabled="disabled">disabled</option>
                                         @foreach ($productTypes ?? '' as $productType)
                                             <option value="{{ $productType->id }}" {{ in_array($productType->id, old('product_type_id') ? : []) ? 'selected' : '' }}>{{ $productType->product_type_name }}</option>
@@ -81,7 +81,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">4.6 ประเภทรายการทดสอบ/สอบเทียบ</label>
-                                    <select class="form-control  @error('testing_calibrating_list_id') is-invalid @enderror" name="testing_calibrating_list_id" id="testing_calibrating_list_id" value="{{ old('testing_calibrating_list_id')}}">
+                                    <select class="form-control custom-select select2 @error('testing_calibrating_list_id') is-invalid @enderror" name="testing_calibrating_list_id" id="testing_calibrating_list_id" value="{{ old('testing_calibrating_list_id')}}">
                                         <option value='' >โปรดเลือกรายการทดสอบ/สอบเทียบ</option>
                                         @foreach ($testingCalibratingLists as $testingCalibratingList)
                                             <option value="{{$testingCalibratingList->id}}" {{ old('testing_calibrating_list_id') ==  $testingCalibratingList->id ? 'selected' : ''}} > {{$testingCalibratingList->testing_list_name}} </>
@@ -115,13 +115,13 @@
                             <div class="col-md-4">
                                 <div class="form-group d-none" id="display_testing_calibrating_type_other">
                                     <label for="">อื่นๆ โปรดระบุ  : </label>
-                                    <input class="form-control form-control" type="text" name="testing_calibrating_type_other" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('testing_calibrating_type_other')}}">
+                                    <input class="form-control form-control" type="text" name="testing_calibrating_type_other" id="testing_calibrating_type_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('testing_calibrating_type_other')}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">4.8 วิธีทดสอบ/สอบเทียบตามมาตราฐาน </label>
-                                    <select class="form-control  @error('testing_calibrating_method_id') is-invalid @enderror" name="testing_calibrating_method_id" id="testing_calibrating_method_id">
+                                    <select class="form-control  custom-select select2  @error('testing_calibrating_method_id') is-invalid @enderror" name="testing_calibrating_method_id" id="testing_calibrating_method_id">
                                         <option value="">โปรดเลือกประเภทการทดสอบ/สอบเทียบ</option>
                                         @foreach ($testingCalibratingMethods ?? '' as $testingCalibratingMethod)
                                             <option value="{{$testingCalibratingMethod->id}}" {{ old('testing_calibrating_method_id') ==  $testingCalibratingMethod->id ? 'selected' : ''}} > {{$testingCalibratingMethod->testing_method_name}} </option>
@@ -137,20 +137,20 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">อื่นๆ โปรดระบุ  : </label>
-                                    <input class="form-control" type="text" name="testing_calibrating_method_detail" id="" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('testing_calibrating_method_detail')}}">
+                                    <label for="">รายละเอียด :</label>
+                                    <input class="form-control" type="text" name="testing_calibrating_method_detail" id="testing_calibrating_method_detail" placeholder="ระบุรายละเอียดเพิ่มเติม" value="{{ old('testing_calibrating_method_detail')}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class=" form-group">
                                     <label for="">4.9 ช่วงความสามารถของการวัด</label>
-                                    <input type="text" name="product_lab_test_unit" class="form-control " id="" placeholder="ตัวอย่างเช่น %, ppm, ppb" value="{{ old('product_lab_test_unit')}}">
+                                    <input type="text" name="product_lab_test_unit" class="form-control " id="product_lab_test_unit" placeholder="ตัวอย่างเช่น %, ppm, ppb" value="{{ old('product_lab_test_unit')}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">4.10 ระยะเวลาการทดสอบ/สอบเทียบ (วัน)</label>
-                                    <input type="number" name="product_lab_test_duration" class="form-control @error('product_lab_test_duration') is-invalid @enderror" id="" placeholder="" value="{{ old('product_lab_test_duration')}}">
+                                    <input type="number" name="product_lab_test_duration" class="form-control @error('product_lab_test_duration') is-invalid @enderror" id="product_lab_test_duration" placeholder="" value="{{ old('product_lab_test_duration')}}">
                                     @error('product_lab_test_duration')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -162,30 +162,36 @@
                             <div class="col-md-4">
                                 <div class=" form-group">
                                     <label for="">4.11 ค่าธรรมเนียมการทดสอบ/สอบเทียบ (บาท) </label>
-                                    <input type="text" name="product_lab_test_fee" class="form-control " id="" placeholder="หน่วยบาท" value="{{ old('product_lab_test_fee')}}">
+                                    <input type="text" name="product_lab_test_fee" class="form-control " id="product_lab_test_fee" placeholder="หน่วยบาท" value="{{ old('product_lab_test_fee')}}">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">4.12 วัสดุอ้างอิงที่ใช้ทดสอบ</label>
-                                    <input type="text" name="product_lab_material_ref" class="form-control " id="" placeholder="หากไม่ใช้ กรุณากรอกไม่ใช้" value="{{ old('product_lab_material_ref')}}">
+                                    <input type="text" name="product_lab_material_ref" class="form-control " id="product_lab_material_ref" placeholder="หากไม่ใช้ กรุณากรอกไม่ใช้" value="{{ old('product_lab_material_ref')}}">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">4.13 แหล่งที่มาของวัสดุอ้างอิง</label>
-                                    <input type="text" name="product_lab_material_ref_from" class="form-control " id="" placeholder="หากไม่ใช้กรุณากรอก ไม่มี" value="{{ old('product_lab_material_ref_from')}}">
+                                    <input type="text" name="product_lab_material_ref_from" class="form-control " id="product_lab_material_ref_from" placeholder="หากไม่ใช้กรุณากรอก ไม่มี" value="{{ old('product_lab_material_ref_from')}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">4.14 การควบคุมคุณภาพผลการทดสอบภายใน</label>
-                                    <select class="form-control custom-select select2" multiple="multiple" data-placeholder="-- โปรดเลือก --"  name="result_control_id[]" id="result_control_id" data-value="{{ old('result_control_id[]') }}">
+                                    <select class="form-control custom-select select2 @error('result_control_id') is-invalid @enderror" multiple="multiple" data-placeholder="-- โปรดเลือก --"  name="result_control_id[]" id="result_control_id" data-value="{{ old('result_control_id[]') }}">
                                         <option value="" disabled="disabled">disabled</option>
                                         @foreach ($resultControls ?? '' as $resultControl)
                                             <option value="{{ $resultControl->id }}" {{ in_array($resultControl->id, old('result_control_id') ? : []) ? 'selected' : '' }}>{{ $resultControl->result_control_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('result_control_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        {{-- <strong>text assignment</strong> --}}
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -197,30 +203,33 @@
                             <div class="col-md-12">
                                 <label for="">4.15 การทดสอบความชำนาญห้องปฏิบัติการ (Proficiency Testing) </label>
                             </div>
-                            <div class="col-md-12">
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="proficiency_testing1" name="proficiency_testing" value='1' {{ old('proficiency_testing') == 1 ? 'checked' : ''}}>
-                                    <label for="proficiency_testing1" class="custom-control-label">ไม่มี</label>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="proficiency_testing2" name="proficiency_testing" value='2' {{ old('proficiency_testing') == 2 ? 'checked' : ''}}>
-                                    <label for="proficiency_testing2" class="custom-control-label">มี</label>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <input class="form-control form-control-sm" type="text" name="proficiency_testing_by" id="" placeholder="โปรดระบุชื่ผู้จัด" value="{{ old('proficiency_testing_by')}}">
-                            </div>
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <input class="form-control form-control-sm" type="text" name="proficiency_testing_year" id="" placeholder="โปรดระบุปี" value="{{ old('proficiency_testing_year')}}">
+                                    <select class="form-control custom-select select2 @error('proficiency_testing') is-invalid @enderror"  data-placeholder="-- โปรดเลือก --"  name="proficiency_testing" id="proficiency_testing" data-value="{{ old('proficiency_testing') }}">
+                                        <option value="" >--โปรดเลือกการทดสอบ--</option>
+                                        <option value="1" {{ old('proficiency_testing') ==  1 ? 'selected' : ''}}>ไม่มีการทดสอบ</option>
+                                        <option value="2" {{ old('proficiency_testing') ==  2 ? 'selected' : ''}}>มีการทดสอบ</option>
+                                    </select>
+                                    @error('proficiency_testing')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        {{-- <strong>text assignment</strong> --}}
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4" id="display_proficiency_testing_by">
+                                <input class="form-control form-control-md" type="text" name="proficiency_testing_by" id="proficiency_testing_by" placeholder="โปรดระบุชื่ผู้จัด" value="{{ old('proficiency_testing_by')}}">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <div class="form-group" id="display_proficiency_testing_year">
+                                    <input class="form-control form-control-md" type="text" name="proficiency_testing_year" id="proficiency_testing_year" placeholder="โปรดระบุปี" value="{{ old('proficiency_testing_year')}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                 <label for="">4.16 การรับรองความสามารถห้องปฏิบัติการ</label>
-                                    <select class="form-control @error('certify_laboratory_id') is-invalid @enderror" name="certify_laboratory_id" id="certify_laboratory_id">
+                                    <select class="form-control custom-select select2 @error('certify_laboratory_id') is-invalid @enderror" name="certify_laboratory_id" id="certify_laboratory_id">
                                         <option value="">โปรดเลือกการรับรองความสามารถห้องปฏิบัติการ</option>
                                         @foreach ($cerifyLaboratories as $cerifyLaboratory)
                                             <option value="{{$cerifyLaboratory->id}}" {{ old('certify_laboratory_id') ==  $cerifyLaboratory->id ? 'selected' : ''}} > {{$cerifyLaboratory->cert_lab_name}} </option>
@@ -238,7 +247,16 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <div class="d-flex justify-content-between">
+                        <a href="/productLab" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-edit"></i>
+                            ย้อนกลับ
+                        </a>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            เพิ่มข้อมูล
+                            <i class="fas fa-save"></i>
+                        </button>
+                        </div>
                     </div>
                     <!-- /.card-footer -->
                 </form>
@@ -264,6 +282,9 @@
 
         $('#testing_calibrating_type_id').val($testingCalibratingType->id);
         $('#testing_calibrating_type_id').trigger('change');
+
+        $('#proficiency_testing').val(1);
+        $('#proficiency_testing').trigger('change');
 
     </script>
 @endsection

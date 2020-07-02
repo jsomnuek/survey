@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Model\BasicInformations\EquipmentUsage;
 use Illuminate\Http\Request;
 
+use App\Helpers\LogActivity;
+
 class EquipmentUsageController extends Controller
 {
     /**

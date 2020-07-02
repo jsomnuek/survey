@@ -30,6 +30,8 @@
                                         <span>องค์กร : </span>
                                         <a href="{{ route('organization.show', $org->id) }}">
                                             {{ $org->org_name }}
+                                            @if(!empty($org->org_name_level_1)){{' : '.$org->org_name_level_1}}@else @endif 
+                                            @if(!empty($org->org_name_level_2)){{' : '.$org->org_name_level_2}}@else @endif
                                         </a>
                                     </p>
                                 </blockquote>
@@ -518,7 +520,7 @@
                                 ย้อนกลับ
                             </a>
                             <button type="submit" class="btn btn-primary btn-lg">
-                                ถัดไป
+                                บันทึกข้อมูล
                                 <i class="fas fa-forward"></i>
                             </button>
                         </div>

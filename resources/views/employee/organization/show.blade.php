@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body table-responsive p-0" style="height: 400px;">
+                <div class="card-body table-responsive p-0" style="">
                     <table class="table table-striped">
                         <tbody>
                             <tr>
@@ -340,7 +340,7 @@
                         </a>
                         <a href="/organization" class="btn btn-success btn-lg">
                             <i class="fas fa-save"></i>
-                            ยืนยันข้อมูล
+                            ตกลง
                         </a>
                     </div>
                 </div>

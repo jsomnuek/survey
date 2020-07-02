@@ -160,6 +160,45 @@ function checkObjUse() {
 }
 checkObjUse();
 
+// 3.15 ยังไม่เสร็จ
+function checkCalibrate() {
+    var data = $("#equipment_calibrations_id").val();
+    if (data == 2) {
+        $("#display_equipment_calibration_by").removeClass("d-none");
+        $("#equipment_calibration_by").prop("required", true);
+        $("#display_equipment_calibration_year").removeClass("d-none");
+        $("#equipment_calibration_year").prop("required", true);
+    } else {
+        $("#display_equipment_calibration_by").addClass("d-none");
+        $("#equipment_calibration_by").prop("required", false);
+        $("#equipment_calibration_by").val(null);
+        $("#display_equipment_calibration_year").addClass("d-none");
+        $("#equipment_calibration_year").prop("required", false);
+        $("#equipment_calibration_year").val(null);
+    }
+    // event on selected
+    $("#equipment_calibrations_id").on(
+        "select2:select select2:unselect",
+        function() {
+            var data = $("#equipment_calibrations_id").val();
+            if (data == 2) {
+                $("#display_equipment_calibration_by").removeClass("d-none");
+                $("#equipment_calibration_by").prop("required", true);
+                $("#display_equipment_calibration_year").removeClass("d-none");
+                $("#equipment_calibration_year").prop("required", true);
+            } else {
+                $("#display_equipment_calibration_by").addClass("d-none");
+                $("#equipment_calibration_by").prop("required", false);
+                $("#equipment_calibration_by").val(null);
+                $("#display_equipment_calibration_year").addClass("d-none");
+                $("#equipment_calibration_year").prop("required", false);
+                $("#equipment_calibration_year").val(null);
+            }
+        }
+    );
+}
+checkCalibrate();
+
 //3.16
 function checkMaintenance() {
     // this value
@@ -204,3 +243,42 @@ function checkMaintenance() {
 }
 checkMaintenance();
 });
+
+// 3.19 ยังไม่เสร็จ
+function checkManual() {
+    var data = $("#equipment_manuals_id").val();
+    if (data == 2) {
+        $("#display_equipment_manual_name").removeClass("d-none");
+        $("equipment_manual_name").prop("required", true);
+        $("#display_equipment_manual_locate").removeClass("d-none");
+        $("#equipment_manual_locate").prop("required", true);
+    } else {
+        $("#display_equipment_manual_name").addClass("d-none");
+        $("#equipment_manual_name").prop("required", false);
+        $("#equipment_manual_name").val(null);
+        $("#display_equipment_manual_locate").addClass("d-none");
+        $("#equipment_manual_locate").prop("required", false);
+        $("#equipment_manual_locate").val(null);
+    }
+    // event on selected
+    $("#equipment_manuals_id").on(
+    "select2:select select2:unselect",
+    function() {
+        var data = $("#equipment_manuals_id").val();
+        if (data == 2) {
+                $("#display_equipment_manual_name").removeClass("d-none");
+                $("equipment_manual_name").prop("required", true);
+                $("#display_equipment_manual_locate").removeClass("d-none");
+                $("#equipment_manual_locate").prop("required", true);
+            } else {
+                $("#display_equipment_manual_name").addClass("d-none");
+                $("#equipment_manual_name").prop("required", false);
+                $("#equipment_manual_name").val(null);
+                $("#display_equipment_manual_locate").addClass("d-none");
+                $("#equipment_manual_locate").prop("required", false);
+                $("#equipment_manual_locate").val(null);
+            }
+        }
+    )
+}
+checkManual();

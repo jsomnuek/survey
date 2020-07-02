@@ -106,8 +106,7 @@
                             <tr>
                                 <th class="" style="width: 30%;">3.14 รูปภาพเครื่องมือ :</th>
                                 <td>
-
-                                    <img src="/storage/app/{{ $equipmentLabs->equipment_pic }}" height="100px" width="100px" />
+                                    <img class="img-fluid" src="{{ asset('images/'. $equipmentLabs->equipment_pic)}}" height="100px" width="100px" />
                                 </td>
                             </tr>
                             <tr>

@@ -202,26 +202,31 @@
                     </div>
                     {{-- 3.15สอบเทียบ --}}
                     <div class="col-md-12">
+                      <label for="">3.15 การสอบเทียบ</label>
+                    </div>
+                    <div class="col-md-4">
                       <div class="form-group">
-                        <div class="row">
-                        <div class="col-md-2">
-                          <label for="">3.15 การสอบเทียบ</label>
-                        </div>
-                        <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_calibrations_id1" name="equipment_calibrations_id" value='1' {{ old('equipment_calibrations_id') == 1 ? 'checked' : ''}}>
-                          <label for="equipment_calibrations_id1" class="custom-control-label">ไม่มี</label> 
-                        </div>
-                        <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_calibrations_id2" name="equipment_calibrations_id" value='2' {{ old('equipment_calibrations_id') == 2 ? 'checked' : ''}}>
-                          <label for="equipment_calibrations_id2" class="custom-control-label">มี</label> 
-                        </div>
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" name="equipment_calibration_by" id="equipment_calibration_by" value="{{old('equipment_calibration_by')}}" placeholder="ชื่อหน่วยงานสอบเทียบ">
-                        </div>
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" name="equipment_calibration_year" id="equipment_calibration_year" value="{{ old('equipment_calibration_year')}}" placeholder="วัน/เดือน/ปี">
-                        </div>
-                        </div>
+                          <select class="form-control custom-select select2 @error('equipment_calibrations_id') is-invalid @enderror"  data-placeholder="-- โปรดเลือก --"  name="equipment_calibrations_id" id="equipment_calibrations_id">
+                              <option value="" >--โปรดเลือกการทดสอบ--</option>
+                              <option value="1" {{ old('equipment_calibrations_id') ==  1 ? 'selected' : ''}}>ไม่มีการทดสอบเทียบ</option>
+                              <option value="2" {{ old('equipment_calibrations_id') ==  2 ? 'selected' : ''}}>มีการทดสอบเทียบ</option>
+                          </select>
+                          @error('equipment_calibrations_id')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                              {{-- <strong>text assignment</strong> --}}
+                          </span>
+                          @enderror
+                      </div>
+                    </div>
+                    <div class="col-md-4" >
+                      <div class="form-group" id="display_equipment_calibration_by">
+                        <input class="form-control form-control-md" type="text" name="equipment_calibration_by" id="equipment_calibration_by" placeholder="โปรดระบุชื่ผู้จัด" value="{{ old('equipment_calibration_by')}}">
+                      </div>
+                    </div>
+                    <div class="col-md-4 ">
+                      <div class="form-group" id="display_equipment_calibration_year">
+                        <input class="form-control form-control-md" type="text" name="equipment_calibration_year" id="equipment_calibration_year" placeholder="โปรดระบุปี" value="{{ old('equipment_calibration_year')}}">
                       </div>
                     </div>
                     {{-- 3.16equipmentMaintenance/3.17equipmentMaintenanceBudget --}}
@@ -291,26 +296,29 @@
                     <div class="col-md-12">
                       <label for="">3.19 คู่มือการใช้งาน</label>
                     </div>
-                    <div class="col-md-12">
-                      <div class="row form-group">
-                        <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_manuals_id1" name="equipment_manuals_id" value='1' {{ old('equipment_manuals_id') == 1 ? 'checked' : ''}}>
-                          <label for="equipment_manuals_id1" class="custom-control-label">ไม่มี</label> 
-                        </div>
-                        <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_manuals_id2" name="equipment_manuals_id" value='2' {{ old('equipment_manuals_id') == 2 ? 'checked' : ''}}>
-                          <label for="equipment_manuals_id2" class="custom-control-label">มี</label> 
-                        </div>
-                        <div class="col-md-4">
-                          <div class="" id="display_equipment_manual_name">
-                          <input type="text" class="form-control" name="equipment_manual_name" id="equipment_manual_name" placeholder="ชื่อคู่มือ/รหัสคู่มือ" value="{{ old('equipment_manual_name')}}">
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="" id="display_equipment_manual_locate">
-                            <input type="text" class="form-control" name="equipment_manual_locate" id="equipment_manual_locate" placeholder="สถานที่จัดเก็บ/ลิงก์ดาวน์โหลด" value="{{ old('equipment_manual_locate')}}">
-                          </div>
-                        </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select class="form-control custom-select select2 @error('equipment_manuals_id') is-invalid @enderror"  data-placeholder="-- โปรดเลือก --"  name="equipment_manuals_id" id="equipment_manuals_id">
+                          <option value="" >--โปรดเลือกการทดสอบ--</option>
+                          <option value="1" {{ old('equipment_manuals_id') ==  1 ? 'selected' : ''}}>ไม่มีคู่มือการใช้งาน</option>
+                          <option value="2" {{ old('equipment_manuals_id') ==  2 ? 'selected' : ''}}>มีคู่มือการใช้งาน</option>
+                        </select>
+                        @error('equipment_manuals_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            {{-- <strong>text assignment</strong> --}}
+                        </span>
+                        @enderror
+                      </div>
+                    </div>
+                    <div class="col-md-4" >
+                      <div class="form-group" id="display_equipment_manual_name">
+                        <input type="text" class="form-control" name="equipment_manual_name" id="equipment_manual_name" placeholder="ชื่อคู่มือ/รหัสคู่มือ" value="{{ old('equipment_manual_name')}}">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group" id="display_equipment_manual_locate">
+                        <input type="text" class="form-control" name="equipment_manual_locate" id="equipment_manual_locate" placeholder="สถานที่จัดเก็บ/ลิงก์ดาวน์โหลด" value="{{ old('equipment_manual_locate')}}">
                       </div>
                     </div>
                     {{-- 2.21equipmentRent --}}
@@ -351,19 +359,18 @@
                     </div>
                   </div>
                 </div>
-                    <div class="card-footer">
-                      <div class="d-flex justify-content-between">
-                          <a href="/equipmentLab" class="btn btn-secondary btn-lg">
-                              <i class="fas fa-edit"></i>
-                              ย้อนกลับ
-                          </a>
-                          
-                          <button type="submit" class="btn btn-primary btn-lg">
-                            เพิ่มข้อมูล
-                            <i class="fas fa-save"></i>
-                        </button>
-                      </div>
+                <div class="card-footer">
+                  <div class="d-flex justify-content-between">
+                    <a href="/equipmentLab" class="btn btn-secondary btn-lg">
+                      <i class="fas fa-edit"></i>
+                        ย้อนกลับ
+                    </a>
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        เพิ่มข้อมูล
+                      <i class="fas fa-save"></i>
+                    </button>
                   </div>
+                </div>
               </form>
             </div>
         </div>

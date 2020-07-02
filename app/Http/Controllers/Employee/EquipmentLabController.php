@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Employee;
+use App\Helpers\LogActivity;
 use App\Http\Controllers\Controller;
 use App\Model\Employee\EquipmentLab;
 use App\Model\BasicInformations\ScienceTool;
@@ -13,7 +14,6 @@ use App\Model\BasicInformations\EquipmentMaintenance;
 use App\Model\BasicInformations\EquipmentManual;
 use App\Model\BasicInformations\EquipmentRent;
 use Illuminate\Http\Request;
-use App\Model\Logs\LogActivity;
 
 class EquipmentLabController extends Controller
 {
@@ -105,7 +105,18 @@ class EquipmentLabController extends Controller
         $equipmentLab->equipment_usage_id = $request['equipment_usage_id'];
         $equipmentLab->equipment_ability = $request['equipment_ability'];
         // $equipmentLab->equipment_pic = $request->file('equipment_pic')->store('upload');
-        $equipmentLab->equipment_pic = $request->file('equipment_pic') ? $request->file('equipment_pic')->store('public/storage') : null;
+        // $equipmentLab->equipment_pic = $request->file('equipment_pic') ? $request->image('equipment_pic')->store('images/') : null;
+        if ($request->hasFile('equipment_pic')) {
+            $filenamewithExt = $request->file('equipment_pic')->getClientOriginalName();
+            $filename = pathinfo($filenamewithExt, PATHINFO_FILENAME);
+            $extension = $request->file('equipment_pic')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('equipment_pic')->storeAs('images/',$fileNameToStore );
+        } else {
+            # code...
+        }
+        
+        // $equipmentLab->equipment_pic = $fileNameToStore;
         $equipmentLab->equipment_calibrations_id = $request['equipment_calibrations_id'];
         $equipmentLab->equipment_calibration_by = $request['equipment_calibration_by'];
         $equipmentLab->equipment_calibration_year = $request['equipment_calibration_year'];
@@ -128,7 +139,7 @@ class EquipmentLabController extends Controller
         $equipmentLab->save();
         $equipmentLab->majorTechnologies()->sync($request->major_technologies_id, false);
         $equipmentLab->objectiveUsages()->sync($request->objective_usages_id, false);
-        // LogActivity::addGlobalScope('create new EquipmentLab .' . $equipmentLab->equipment_lab_id .'successfully.');
+        // LogActivity::addToLog('add new equipment lab.');
         return redirect()->route('equipmentLab.show', $equipmentLab->id);
         //return redirect('/equipmentLab');
     }
@@ -262,11 +273,11 @@ class EquipmentLabController extends Controller
     protected function validateEquipmentLab()
     {
         return request()->validate([
-            'equipment_lab_id' =>'',
-            'science_tool_id' =>'' ,
+            'equipment_lab_id' =>'required',
+            'science_tool_id' =>['required'] ,
             'science_tool_other_name' =>'' ,
             'science_tool_other_abbr' =>'' ,
-            'equipment_name_th' =>'' ,
+            'equipment_name_th' =>'required' ,
             'equipment_brand' =>'' ,
             'equipment_model' =>'' ,
             'equipment_org_code' =>'' ,
@@ -276,13 +287,13 @@ class EquipmentLabController extends Controller
             'major_technologies_id'=>['required'] ,
             'major_technologies_other'=>'' ,
             'objective_usages_id' => ['required'],
-            'equipment_usage_id'=>'' ,
+            'equipment_usage_id'=>'required' ,
             'equipment_ability'=>'' ,
             'equipment_pic'=>'' ,
             'equipment_calibrations_id'=>'' ,
             'equipment_calibration_by'=>'' ,
             'equipment_calibration_year'  =>'' ,
-            'equipment_maintenance_id'    =>'' ,
+            'equipment_maintenance_id'    =>'required' ,
             'equipment_maintenance_other' =>'' ,
             'equipment_maintenance_budget'=>'' ,
             'equipment_admin_name'=>'' ,

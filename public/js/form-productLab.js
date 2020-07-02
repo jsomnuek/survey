@@ -3,7 +3,8 @@ $(document).ready(function() {
     $(".select2")
     .select2({
         theme: "bootstrap4",
-        allowClear: true
+        allowClear: true,
+        placeholder: "-- โปรดเลือก --"
     })
     .trigger("change");
 
@@ -148,28 +149,40 @@ $(document).ready(function() {
     }
     checkTestType();
 
-    // 4.15
+    // 4.15 การทดสอบห้องปฏิบัติการ ยังไม่เสร็จเลย
     function checkPT() {
+        var data = $("#proficiency_testing").val();
+        if (data == 2) {
+            $("#display_proficiency_testing_by").removeClass("d-none");
+            $("#proficiency_testing_by").prop("required", true);
+            $("#display_proficiency_testing_year").removeClass("d-none");
+            $("#proficiency_testing_year").prop("required", true);
+        } else {
+            $("#display_proficiency_testing_by").addClass("d-none");
+            $("#proficiency_testing_by").prop("required", false);
+            $("#proficiency_testing_by").val(null);
+            $("#display_proficiency_testing_year").addClass("d-none");
+            $("#proficiency_testing_year").prop("required", false);
+            $("#proficiency_testing_year").val(null);
+        }
+        // event on selected
         $("#proficiency_testing").on(
-            "custom-radio:checked",
+            "select2:select select2:unselect",
             function() {
                 var data = $("#proficiency_testing").val();
-                console.log(data);
-                // if (data != null) {
-                //     for (i = 0; i < data.length; i++) {
-                //         if (data[i] == "1") {
-                //             var indTypeId = 1;
-                //         }
-                //     }
-                // }
-                // if (data == 5) {
-                //     $("#display_testing_calibrating_type_other").removeClass("d-none");
-                //     $("#testing_calibrating_type_other").prop("required", true);
-                // } else {
-                //     $("#display_testing_calibrating_type_other").addClass("d-none");
-                //     $("#testing_calibrating_type_other").prop("required", false);
-                //     $("#testing_calibrating_type_other").val(null);
-                // }
+                if (data == 2) {
+                    $("#display_proficiency_testing_by").removeClass("d-none");
+                    $("#proficiency_testing_by").prop("required", true);
+                    $("#display_proficiency_testing_year").removeClass("d-none");
+                    $("#proficiency_testing_year").prop("required", true);
+                } else {
+                    $("#display_proficiency_testing_by").addClass("d-none");
+                    $("#proficiency_testing_by").prop("required", false);
+                    $("#proficiency_testing_by").val(null);
+                    $("#display_proficiency_testing_year").addClass("d-none");
+                    $("#proficiency_testing_year").prop("required", false);
+                    $("#proficiency_testing_year").val(null);
+                }
             }
         );
     }

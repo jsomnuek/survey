@@ -108,7 +108,7 @@ class MajorTechnologyController extends Controller
         $updateMajorTech->save();
 
         //create logs
-        LogActivity::addToLog('Update Major Technology : "' . $insertMajorTech->major_tech_name . ' " successfully.');
+        LogActivity::addToLog('Update Major Technology : "' . $updateMajorTech->major_tech_name . ' " successfully.');
 
         return redirect('/majorTechnology');
     }

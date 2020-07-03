@@ -1,33 +1,32 @@
 $(document).ready(function() {
-    //Initialize Select2 Elements
-    $(".select2")
-        .select2({
-            theme: "bootstrap4",
-            allowClear: true
-        })
-        .trigger("change");
-
-    //Initialize Select2 Elements
-    $(".select2-multi")
-        .select2({
-            theme: "bootstrap4",
-            allowClear: true,
-            placeholder: "-- โปรดเลือก --"
-        })
-        .trigger("change");
+    // checkInput
+    function checkInput() {
+        let inputTypeNumber = [
+            document.getElementById("equipment_price"),
+            document.getElementById("equipment_maintenance_budget"),
+            document.getElementById("equipment_rent_fee")
+        ];
+        let invalidChars = ["-", "+", "e", ".", "E"];
+        for (i = 0; i < inputTypeNumber.length; i++) {
+            inputTypeNumber[i].addEventListener("keydown", function(e) {
+                if (invalidChars.includes(e.key)) {
+                    e.preventDefault();
+                }
+            });
+            inputTypeNumber[i].addEventListener("keyup", function(e) {
+                if (invalidChars.includes(e.key)) {
+                    e.preventDefault();
+                }
+            });
+        }
+    }
+    checkInput();
 
     //3.2
-    function checkOthSciTool() {
+    function checkScienceToolId() {
         // this value
-        var data = $("#science_tool_id").val();
-        if (data != null) {
-            for (i = 0; i < data.length; i++) {
-                if (data[i] == "1") {
-                    var sciToolID = 1;
-                }
-            }
-        }
-        if (sciToolID == 1) {
+        var sciToolId = $("#science_tool_id").val();
+        if (sciToolId == "") {
             $("#display_science_tool_other_name").removeClass("d-none");
             $("#science_tool_other_name").prop("required", true);
             $("#display_science_tool_other_abbr").removeClass("d-none");
@@ -42,15 +41,8 @@ $(document).ready(function() {
         }
         // event on selected
         $("#science_tool_id").on("select2:select select2:unselect", function() {
-            var data = $("#science_tool_id").val();
-            if (data != null) {
-                for (i = 0; i < data.length; i++) {
-                    if (data[i] == "1") {
-                        var sciToolID = 1;
-                    }
-                }
-            }
-            if (sciToolID == 1) {
+            var sciToolId = $("#science_tool_id").val();
+            if (sciToolId == "") {
                 $("#display_science_tool_other_name").removeClass("d-none");
                 $("#science_tool_other_name").prop("required", true);
                 $("#display_science_tool_other_abbr").removeClass("d-none");
@@ -65,21 +57,21 @@ $(document).ready(function() {
             }
         });
     }
-    checkOthSciTool();
+    // checkScienceToolId();
 
     //3.10
     function checkMajorTechnology() {
         // this value
-        var data = $("#major_technologies_id").val();
-        console.log(data);
+        var data = $("#major_technology_id").val();
+        // console.log(data);
         if (data != null) {
             for (i = 0; i < data.length; i++) {
-                if (data[i] == "1") {
-                    var majorOtherID = 1;
+                if (data[i] == "11") {
+                    var majorOtherID = 11;
                 }
             }
         }
-        if (majorOtherID == 1) {
+        if (majorOtherID == 11) {
             $("#display_major_technology_other").removeClass("d-none");
             $("#major_technology_other").prop("required", true);
         } else {
@@ -88,18 +80,18 @@ $(document).ready(function() {
             $("#major_technology_other").val(null);
         }
         // event on selected
-        $("#major_technologies_id").on(
+        $("#major_technology_id").on(
             "select2:select select2:unselect",
             function() {
-                var data = $("#major_technologies_id").val();
+                var data = $("#major_technology_id").val();
                 if (data != null) {
                     for (i = 0; i < data.length; i++) {
-                        if (data[i] == "1") {
-                            var majorOtherID = 1;
+                        if (data[i] == "11") {
+                            var majorOtherID = 11;
                         }
                     }
                 }
-                if (majorOtherID == 1) {
+                if (majorOtherID == 11) {
                     $("#display_major_technology_other").removeClass("d-none");
                     $("#major_technology_other").prop("required", true);
                 } else {
@@ -112,54 +104,9 @@ $(document).ready(function() {
     }
     checkMajorTechnology();
 
-    //3.11
-    function checkObjUse() {
-        // this value
-        var data = $("#result_control_id").val();
-        console.log(data);
-        if (data != null) {
-            for (i = 0; i < data.length; i++) {
-                if (data[i] == "1") {
-                    var objUse = 1;
-                }
-            }
-        }
-        // if (majorOtherID == 1) {
-        //     $("#display_major_technology_other").removeClass("d-none");
-        //     $("#major_technology_other").prop("required", true);
-        // } else {
-        //     $("#display_major_technology_other").addClass("d-none");
-        //     $("#major_technology_other").prop("required", false);
-        //     $("#major_technology_other").val(null);
-        // }
-        // event on selected
-        $("#result_control_id").on(
-            "select2:select select2:unselect",
-            function() {
-                var data = $("#result_control_id").val();
-                if (data != null) {
-                    for (i = 0; i < data.length; i++) {
-                        if (data[i] == "1") {
-                            var objUse = 1;
-                        }
-                    }
-                }
-                // if (majorOtherID == 1) {
-                //     $("#display_major_technology_other").removeClass("d-none");
-                //     $("#major_technology_other").prop("required", true);
-                // } else {
-                //     $("#display_major_technology_other").addClass("d-none");
-                //     $("#major_technology_other").prop("required", false);
-                //     $("#major_technology_other").val(null);
-                // }
-            }
-        );
-    }
-    checkObjUse();
-
-    // 3.15 ยังไม่เสร็จ
-    function checkCalibrate() {
-        var data = $("#equipment_calibrations_id").val();
+    // 3.15
+    function checkEquipmentCalibrationId() {
+        var data = $("#equipment_calibration_id").val();
         if (data == 2) {
             $("#display_equipment_calibration_by").removeClass("d-none");
             $("#equipment_calibration_by").prop("required", true);
@@ -174,10 +121,10 @@ $(document).ready(function() {
             $("#equipment_calibration_year").val(null);
         }
         // event on selected
-        $("#equipment_calibrations_id").on(
+        $("#equipment_calibration_id").on(
             "select2:select select2:unselect",
             function() {
-                var data = $("#equipment_calibrations_id").val();
+                var data = $("#equipment_calibration_id").val();
                 if (data == 2) {
                     $("#display_equipment_calibration_by").removeClass(
                         "d-none"
@@ -198,20 +145,13 @@ $(document).ready(function() {
             }
         );
     }
-    checkCalibrate();
+    checkEquipmentCalibrationId();
 
     //3.16
     function checkMaintenance() {
         // this value
-        var data = $("#equipment_maintenance_id").val();
-        if (data != null) {
-            for (i = 0; i < data.length; i++) {
-                if (data[i] == "1") {
-                    var mtID = 1;
-                }
-            }
-        }
-        if (mtID == 1) {
+        var mtId = $("#equipment_maintenance_id").val();
+        if (mtId == 6) {
             $("#display_equipment_maintenance_other").removeClass("d-none");
             $("#equipment_maintenance_other").prop("required", true);
         } else {
@@ -223,15 +163,8 @@ $(document).ready(function() {
         $("#equipment_maintenance_id").on(
             "select2:select select2:unselect",
             function() {
-                var data = $("#equipment_maintenance_id").val();
-                if (data != null) {
-                    for (i = 0; i < data.length; i++) {
-                        if (data[i] == "1") {
-                            var mtID = 1;
-                        }
-                    }
-                }
-                if (mtID == 1) {
+                var mtId = $("#equipment_maintenance_id").val();
+                if (mtId == 6) {
                     $("#display_equipment_maintenance_other").removeClass(
                         "d-none"
                     );
@@ -247,43 +180,82 @@ $(document).ready(function() {
         );
     }
     checkMaintenance();
-});
 
-// 3.19 ยังไม่เสร็จ
-function checkManual() {
-    var data = $("#equipment_manuals_id").val();
-    if (data == 2) {
-        $("#display_equipment_manual_name").removeClass("d-none");
-        $("equipment_manual_name").prop("required", true);
-        $("#display_equipment_manual_locate").removeClass("d-none");
-        $("#equipment_manual_locate").prop("required", true);
-    } else {
-        $("#display_equipment_manual_name").addClass("d-none");
-        $("#equipment_manual_name").prop("required", false);
-        $("#equipment_manual_name").val(null);
-        $("#display_equipment_manual_locate").addClass("d-none");
-        $("#equipment_manual_locate").prop("required", false);
-        $("#equipment_manual_locate").val(null);
-    }
-    // event on selected
-    $("#equipment_manuals_id").on(
-        "select2:select select2:unselect",
-        function() {
-            var data = $("#equipment_manuals_id").val();
-            if (data == 2) {
-                $("#display_equipment_manual_name").removeClass("d-none");
-                $("equipment_manual_name").prop("required", true);
-                $("#display_equipment_manual_locate").removeClass("d-none");
-                $("#equipment_manual_locate").prop("required", true);
-            } else {
-                $("#display_equipment_manual_name").addClass("d-none");
-                $("#equipment_manual_name").prop("required", false);
-                $("#equipment_manual_name").val(null);
-                $("#display_equipment_manual_locate").addClass("d-none");
-                $("#equipment_manual_locate").prop("required", false);
-                $("#equipment_manual_locate").val(null);
-            }
+    // 3.19
+    function checkManual() {
+        var data = $("#equipment_manual_id").val();
+        if (data == 2) {
+            $("#display_equipment_manual_name").removeClass("d-none");
+            $("equipment_manual_name").prop("required", true);
+            $("#display_equipment_manual_locate").removeClass("d-none");
+            $("#equipment_manual_locate").prop("required", true);
+        } else {
+            $("#display_equipment_manual_name").addClass("d-none");
+            $("#equipment_manual_name").prop("required", false);
+            $("#equipment_manual_name").val(null);
+            $("#display_equipment_manual_locate").addClass("d-none");
+            $("#equipment_manual_locate").prop("required", false);
+            $("#equipment_manual_locate").val(null);
         }
-    );
-}
-checkManual();
+        // event on selected
+        $("#equipment_manual_id").on(
+            "select2:select select2:unselect",
+            function() {
+                var data = $("#equipment_manual_id").val();
+                if (data == 2) {
+                    $("#display_equipment_manual_name").removeClass("d-none");
+                    $("equipment_manual_name").prop("required", true);
+                    $("#display_equipment_manual_locate").removeClass("d-none");
+                    $("#equipment_manual_locate").prop("required", true);
+                } else {
+                    $("#display_equipment_manual_name").addClass("d-none");
+                    $("#equipment_manual_name").prop("required", false);
+                    $("#equipment_manual_name").val(null);
+                    $("#display_equipment_manual_locate").addClass("d-none");
+                    $("#equipment_manual_locate").prop("required", false);
+                    $("#equipment_manual_locate").val(null);
+                }
+            }
+        );
+    }
+    checkManual();
+
+    // 3.20
+    function checkEquipmentRentId() {
+        var data = $("#equipment_rent_id").val();
+        if (data == 2) {
+            $("#display_equipment_rent_fee").removeClass("d-none");
+            $("#equipment_rent_fee").prop("required", true);
+            $("#display_equipment_rent_detail").removeClass("d-none");
+            $("#equipment_rent_detail").prop("required", true);
+        } else {
+            $("#display_equipment_rent_fee").addClass("d-none");
+            $("#equipment_rent_fee").prop("required", false);
+            $("#equipment_rent_fee").val(null);
+            $("#display_equipment_rent_detail").addClass("d-none");
+            $("#equipment_rent_detail").prop("required", false);
+            $("#equipment_rent_detail").val(null);
+        }
+        // event on selected
+        $("#equipment_rent_id").on(
+            "select2:select select2:unselect",
+            function() {
+                var data = $("#equipment_rent_id").val();
+                if (data == 2) {
+                    $("#display_equipment_rent_fee").removeClass("d-none");
+                    $("#equipment_rent_fee").prop("required", true);
+                    $("#display_equipment_rent_detail").removeClass("d-none");
+                    $("#equipment_rent_detail").prop("required", true);
+                } else {
+                    $("#display_equipment_rent_fee").addClass("d-none");
+                    $("#equipment_rent_fee").prop("required", false);
+                    $("#equipment_rent_fee").val(null);
+                    $("#display_equipment_rent_detail").addClass("d-none");
+                    $("#equipment_rent_detail").prop("required", false);
+                    $("#equipment_rent_detail").val(null);
+                }
+            }
+        );
+    }
+    checkEquipmentRentId();
+}); //Colback

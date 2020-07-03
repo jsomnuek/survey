@@ -18,6 +18,9 @@ $(document).ready(function() {
     //inputmask
     $("[data-mask]").inputmask();
 
+    // bs-custom-file-input
+    bsCustomFileInput.init();
+
     // Radio button that can be unchecked | jQuery
     var inputs = $("input[type=radio]");
     var checked = inputs.filter(":checked").val();

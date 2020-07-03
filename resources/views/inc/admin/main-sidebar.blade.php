@@ -81,7 +81,7 @@
             <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
                 {{-- List of Menu --}}
                 {{-- Part 1 : Organisation Infos --}}
-                <li class="nav-item has-treeview {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*','qualitySystem*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*','qualitySystem*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p class="">

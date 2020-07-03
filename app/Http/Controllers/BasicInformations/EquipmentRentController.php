@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BasicInformations;
 use App\Http\Controllers\Controller;
 use App\Model\BasicInformations\EquipmentRent;
 use Illuminate\Http\Request;
+use App\Helpers\LogActivity;
 
 class EquipmentRentController extends Controller
 {
@@ -59,7 +60,7 @@ class EquipmentRentController extends Controller
         $insertEquipmentRent->save();
 
         // create log activity
-        LogActivity::addToLog('Add new equipment rents : " ' . $insertEquipmentRent->equipment_rent_name . ' " successfully.');
+        LogActivity::addToLog('Add equipment rents : " ' . $insertEquipmentRent->equipment_rent_name . ' " successfully.');
 
         //retuen index view
         return redirect('/equipmentRent');
@@ -106,7 +107,7 @@ class EquipmentRentController extends Controller
         $updateEquipmentRent->save();
 
         // create log activity
-        LogActivity::addToLog('Update equipment rents : " ' . $updateEquipmentRent->equipment_rent_name . ' " successfully.');
+        LogActivity::addToLog('Edit equipment rents : " ' . $updateEquipmentRent->equipment_rent_name . ' " successfully.');
 
         //retuen index view
         return redirect('/equipmentRent');

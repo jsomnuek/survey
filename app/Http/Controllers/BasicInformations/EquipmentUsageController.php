@@ -5,7 +5,6 @@ namespace App\Http\Controllers\BasicInformations;
 use App\Http\Controllers\Controller;
 use App\Model\BasicInformations\EquipmentUsage;
 use Illuminate\Http\Request;
-
 use App\Helpers\LogActivity;
 
 class EquipmentUsageController extends Controller
@@ -61,7 +60,7 @@ class EquipmentUsageController extends Controller
         $insertEquipmentUsage->save();
 
         // create log activity
-        LogActivity::addToLog('Add new equipment usage : " ' . $insertEquipmentUsage->equipment_usage_name . ' " successfully.');
+        LogActivity::addToLog('Add equipment usage : " ' . $insertEquipmentUsage->equipment_usage_name . ' " successfully.');
 
         //return index view
         return redirect('/equipmentUsage');
@@ -109,7 +108,7 @@ class EquipmentUsageController extends Controller
         $updateEquipmentUsage->save();
 
         // create log activity
-        LogActivity::addToLog('Update equipment usage : " ' . $updateEquipmentUsage->equipment_usage_name . ' " successfully.');
+        LogActivity::addToLog('Edit equipment usage : " ' . $updateEquipmentUsage->equipment_usage_name . ' " successfully.');
 
         
         //return index view

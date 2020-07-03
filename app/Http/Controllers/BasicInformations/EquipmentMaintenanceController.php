@@ -5,7 +5,6 @@ namespace App\Http\Controllers\BasicInformations;
 use App\Http\Controllers\Controller;
 use App\Model\BasicInformations\EquipmentMaintenance;
 use Illuminate\Http\Request;
-
 use App\Helpers\LogActivity;
 
 class EquipmentMaintenanceController extends Controller
@@ -61,7 +60,7 @@ class EquipmentMaintenanceController extends Controller
         $insertEquipmentMA->save();
 
         // create log activity
-        LogActivity::addToLog('Add new equipment maintenances : " ' . $insertEquipmentMA->equipment_maintenance_name . ' " successfully.');
+        LogActivity::addToLog('Add equipment maintenances : " ' . $insertEquipmentMA->equipment_maintenance_name . ' " successfully.');
 
         //return index view
         return redirect('/equipmentMaintenance');
@@ -109,7 +108,7 @@ class EquipmentMaintenanceController extends Controller
         $updateEquipmentMA->save();
 
         // create log activity
-        LogActivity::addToLog('Update equipment maintenances : " ' . $updateEquipmentMA->equipment_maintenance_name . ' " successfully.');
+        LogActivity::addToLog('Edit equipment maintenances : " ' . $updateEquipmentMA->equipment_maintenance_name . ' " successfully.');
 
         //return index view
         return redirect('/equipmentMaintenance');

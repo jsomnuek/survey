@@ -107,7 +107,7 @@ class ScienceToolController extends Controller
         $updateScienceTool->save();
 
         // create log activity
-        LogActivity::addToLog('Update science tools : ' . $updateScienceTool->science_tool_name .' successfully.');
+        LogActivity::addToLog('Edit science tools : ' . $updateScienceTool->science_tool_name .' successfully.');
         
         return redirect('/scienceTool');
     }

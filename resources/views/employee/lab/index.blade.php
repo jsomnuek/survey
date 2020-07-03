@@ -6,7 +6,7 @@
 @endsection
 
 @section('header-box-1')
-    <h1 class="m-0 text-dark">Laboratory Data</h1>
+    {{-- <h1 class="m-0 text-dark">Laboratory Data</h1> --}}
 @endsection
 
 @section('content')
@@ -28,17 +28,23 @@
 						@if (count($labs) > 0)
 						<thead>                  
 							<tr>
-								<th style="width: 10px">รหัส</th>
+								<th style="width: 10px">ลำดับ</th>
 								<th>ชื่อห้องปฏิบัติการ</th>
+								<th>ชื่อหน่วยงาน</th>
 								<th>ผู้บันทึกข้อมูล</th>
-								<th style=""></th>
+								<th style="width: 10em"><i class="fas fa-users-cog"></i></th>
 							</tr>
 						</thead>
 						<tbody>
+							@php
+								$i = 1;
+							@endphp
 							@foreach ($labs as $lab)
 							<tr>
-								<td>{{ $lab->id }}</td>
+								<td class="text-center">{{ $i++ }}</td>
 								<td>{{ $lab->lab_name }}</td>
+								<td>{{ $lab->organization->org_name}} {{ $lab->organization->org_name_level_1 }} {{ $lab->organization->org_name_level_2 }} </td>
+								<td>{{ $lab->user->name}}</td>
 								<td>
 									<a href="/labs/{{ $lab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
 								</td>

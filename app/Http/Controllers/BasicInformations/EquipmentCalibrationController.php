@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BasicInformations;
 use App\Http\Controllers\Controller;
 use App\Model\BasicInformations\EquipmentCalibration;
 use Illuminate\Http\Request;
+use App\Helpers\LogActivity;
 
 class EquipmentCalibrationController extends Controller
 {

@@ -139,7 +139,10 @@ class EquipmentLabController extends Controller
         $equipmentLab->save();
         $equipmentLab->majorTechnologies()->sync($request->major_technologies_id, false);
         $equipmentLab->objectiveUsages()->sync($request->objective_usages_id, false);
-        // LogActivity::addToLog('add new equipment lab.');
+
+        // create log activity
+        LogActivity::addToLog('Add equipment to lab : " ' . $equipmentLab->equipment_name_th . ' to ' .$lab->organization_id . ' " successfully.');
+
         return redirect()->route('equipmentLab.show', $equipmentLab->id);
         //return redirect('/equipmentLab');
     }

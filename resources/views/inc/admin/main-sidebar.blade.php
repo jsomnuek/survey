@@ -82,7 +82,7 @@
                 {{-- List of Menu --}}
                 {{-- Part 1 : Organisation Infos --}}
                 <li class="nav-item has-treeview {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*','qualitySystem*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-arrow-circle-right"></i>
                     <p class="">
                         ส่วนที่ 1 : องค์กร

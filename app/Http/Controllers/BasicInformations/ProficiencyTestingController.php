@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BasicInformations;
 use App\Http\Controllers\Controller;
 use App\Model\BasicInformations\ProficiencyTesting;
 use Illuminate\Http\Request;
+use App\Helpers\LogActivity;
 
 class ProficiencyTestingController extends Controller
 {
@@ -58,6 +59,9 @@ class ProficiencyTestingController extends Controller
         $insertPT->pt_status = 'A';
         $insertPT->save();
 
+        // create log activity
+        LogActivity::addToLog('Add proficiency testings : " ' . $insertPT->pt_name . ' " successfully.');
+
         //return index view
         return redirect ('/proficiencyTesting');
     }
@@ -101,6 +105,10 @@ class ProficiencyTestingController extends Controller
         $updatePT->pt_name = $request->input('pTName');
         $updatePT->pt_status = $request->input('pTStatus');
         $updatePT->save();
+
+        // create log activity
+        LogActivity::addToLog('Edit proficiency testings : " ' . $updatePT->pt_name . ' " successfully.');
+
 
         //return index view
         return redirect ('/proficiencyTesting');

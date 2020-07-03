@@ -133,4 +133,10 @@ class Lab extends Model
     {
         return $this->hasMany(Equipment::class);
     }
+
+    // Defining Relationships One To Many
+    public function productLabs()
+    {
+        return $this->hasMany(ProductLab::class);
+    }
 }

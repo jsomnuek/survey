@@ -72,12 +72,35 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ (ระบุโดยรหัสเครื่องมือจากส่วนที่ 3)</label>
-                                <div class=" form-group">
-                                    <input class="form-control" type="text" name="" placeholder="Ex.AABCC-MNN-RRRSS"><br/>
-                                    <input class="form-control" type="text" name="" placeholder="Ex.AABCC-MNN-RRRSS"><br/>
-                                    <input class="form-control" type="text" name="" placeholder="Ex.AABCC-MNN-RRRSS">
-                                </div>
+                                <div class="form-group">
+                                    <label for="">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ (ระบุโดยรหัสเครื่องมือจากส่วนที่ 3)</label>
+                                    <select class="form-control custom-select select2 @error('equipments_id') is-invalid @enderror" multiple="multiple" name="equipments_id[]" id="equipments_id" data-value="{{ old('equipments_id[]') }}">
+                                        <option value="" disabled="disabled">disabled</option>
+                                        @foreach ($equipments ?? '' as $equipment)
+                                            <option value="{{ $equipment->id }}" {{ in_array($equipment->id, old('equipments_id') ? : []) ? 'selected' : '' }}>{{ $equipment->equipment_code }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('equipments_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            {{-- <strong>text assignment</strong> --}}
+                                        </span>
+                                    @enderror
+
+
+                                    <select class="form-control custom-select select2 @error('equipments_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="equipments_id[]" id="equipments_id" data-value="{{ old('equipments_id[]') }}">
+                                        <option value="" disabled="disabled">disabled</option>
+                                        @foreach ($equipments ?? '' as $equipment)
+                                            <option value="{{ $equipment->id }}" {{ in_array($equipment->id, old('equipments_id') ? : []) ? 'selected' : '' }}>{{ $equipment->equipment_code }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('equipments_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        {{-- <strong>text assignment</strong> --}}
+                                    </span>
+                                    @enderror
+                                    </div>   
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -274,6 +297,9 @@
         // 4.2
         $('#product_type_id').val({{ json_encode($productTypesItem) }});
         $('#product_type_id').trigger('change');
+        // 4.5
+        $('#equipments_id').val({{ json_encode($equipmentItem) }});
+        $('#equipments_id').trigger('change');
         // 4.14 
         $('#result_control_id').val({{ json_encode($resultControlsItem) }});
         $('#result_control_id').trigger('change');

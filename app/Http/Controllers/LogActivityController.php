@@ -25,7 +25,7 @@ class LogActivityController extends Controller
      */
     public function index()
     {
-        $logs = LogActivity::logActivityLists();
+        $logs = \LogActivity::logActivityLists();
         return view('logActivity', compact('logs'));
     }
 

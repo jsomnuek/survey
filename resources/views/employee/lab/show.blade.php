@@ -547,7 +547,7 @@
                         </a>
                         <a href="/labs" class="btn btn-success btn-lg">
                             <i class="fas fa-save"></i>
-                            ยืนยันข้อมูล
+                            ตกลง
                         </a>
                     </div>
                 </div>

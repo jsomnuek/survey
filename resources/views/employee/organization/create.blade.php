@@ -485,7 +485,7 @@
                                 ย้อนกลับ
                             </a>
                             <button type="submit" class="btn btn-primary btn-lg">
-                                ถัดไป
+                                บันทึกข้อมูล
                                 <i class="fas fa-forward"></i>
                             </button>
                         </div>

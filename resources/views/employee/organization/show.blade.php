@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body table-responsive p-0" style="height: 400px;">
+                <div class="card-body table-responsive p-0" style="">
                     <table class="table table-striped">
                         <tbody>
                             <tr>
@@ -185,7 +185,11 @@
                                             <div class="col-sm-3 col-6">
                                                 <div class="description-block">
                                                     <strong class="description-percentage ">การดำเนินการ :</strong><hr>
+                                                    @if (!empty($item->operation))                                                        
                                                     <span class="description-text text-success">{{ $item->operation->operation_name }}</span>
+                                                    @else
+                                                        
+                                                    @endif
                                                 </div>
                                                 <!-- /.description-block -->
                                             </div>
@@ -229,7 +233,11 @@
                                             <div class="col-sm-3 col-6">
                                                 <div class="description-block">
                                                     <strong class="description-percentage ">การดำเนินการ :</strong><hr>
+                                                    @if (!empty($item->operation))                                                        
                                                     <span class="description-text text-success">{{ $item->operation->operation_name }}</span>
+                                                    @else
+                                                        
+                                                    @endif
                                                 </div>
                                                 <!-- /.description-block -->
                                             </div>
@@ -273,7 +281,11 @@
                                             <div class="col-sm-3 col-6">
                                                 <div class="description-block">
                                                     <strong class="description-percentage ">การดำเนินการ :</strong><hr>
+                                                    @if (!empty($item->operation))                                                        
                                                     <span class="description-text text-success">{{ $item->operation->operation_name }}</span>
+                                                    @else
+                                                        
+                                                    @endif
                                                 </div>
                                                 <!-- /.description-block -->
                                             </div>
@@ -328,7 +340,7 @@
                         </a>
                         <a href="/organization" class="btn btn-success btn-lg">
                             <i class="fas fa-save"></i>
-                            ยืนยันข้อมูล
+                            ตกลง
                         </a>
                     </div>
                 </div>

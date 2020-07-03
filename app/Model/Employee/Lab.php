@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Model\Employee\Organization;
 use App\Model\Employee\EducationLevelLab;
+use App\Model\Employee\Equipment;
 use App\Model\Employee\Development\Internal;
 use App\Model\Employee\Development\IsoIec17025;
 use App\Model\Employee\Development\Method;
@@ -125,5 +126,11 @@ class Lab extends Model
     public function uncertaintys()
     {
         return $this->hasMany(Uncertainty::class);
+    }
+
+    // Defining Relationships One To Many
+    public function equipments()
+    {
+        return $this->hasMany(Equipment::class);
     }
 }

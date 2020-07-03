@@ -23,6 +23,8 @@ use App\Model\BasicInformations\FixedCost;
 use App\Model\BasicInformations\IncomePerYear;
 use App\Model\BasicInformations\EmployeeTraining;
 
+use App\Helpers\LogActivity;
+
 class LabController extends Controller
 {
     /**
@@ -196,6 +198,9 @@ class LabController extends Controller
             $safety->development_interested = $request->input('7_development_interested');
             $safety->save();
 
+            // create log activity
+            LogActivity::addToLog('Add Lab to an Oranization : " ' . $lab->lab_name . ' to ' .$lab->organization_id . ' " successfully.');
+
             return redirect()->route('labs.show', $lab->id);
         }
     }
@@ -345,7 +350,9 @@ class LabController extends Controller
                     'development_day' => $request->input('7_development_day'),
                     'development_interested' => $request->input('7_development_interested'),
                 ]);
-            
+
+            // create log activity
+            LogActivity::addToLog('Edit Lab in an Oranization : " ' . $lab->lab_name . ' to ' .$lab->organization_id . ' " successfully.');
             return redirect()->route('labs.show', $lab->id);
         }
     }

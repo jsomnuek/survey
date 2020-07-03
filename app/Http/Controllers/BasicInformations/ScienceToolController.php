@@ -61,7 +61,7 @@ class ScienceToolController extends Controller
         $insertScienceTool->save();
         
         // create log activity
-        LogActivity::addToLog('Add new science tools : " ' . $insertScienceTool->science_tool_name . ' " successfully.');
+        LogActivity::addToLog('Add science tools : " ' . $insertScienceTool->science_tool_name . ' " successfully.');
 
         // return index view
         return redirect('/scienceTool');
@@ -107,7 +107,7 @@ class ScienceToolController extends Controller
         $updateScienceTool->save();
 
         // create log activity
-        LogActivity::addToLog('Update science tools : ' . $updateScienceTool->science_tool_name .' successfully.');
+        LogActivity::addToLog('Edit science tools : ' . $updateScienceTool->science_tool_name .' successfully.');
         
         return redirect('/scienceTool');
     }

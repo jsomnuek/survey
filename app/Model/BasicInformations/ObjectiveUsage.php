@@ -3,7 +3,8 @@
 namespace App\Model\BasicInformations;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Employee\EquipmentLab;
+
+use App\Model\Employee\Equipment;
 
 class ObjectiveUsage extends Model
 {
@@ -13,9 +14,9 @@ class ObjectiveUsage extends Model
     public $orgTypeStatus = 'obj_usage_status';
     public $timestamps = true;
 
-    public function equipmentLabs()
+    public function equipments()
     {
-        return $this->belongsToMany(EquipmentLab::class)->withTimestamps();
+        return $this->belongsToMany(Equipment::class)->withTimestamps();
     }
 
 }

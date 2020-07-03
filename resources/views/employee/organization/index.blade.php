@@ -27,16 +27,19 @@
                         @if (count($orgs) > 0)
                         <thead>                  
                             <tr>
-                                <th style="width: 10px">รหัส</th>
+                                <th style="width: 10px">ลำดับ</th>
                                 <th>ชื่อหน่วยงาน</th>
                                 <th>ผู้บันทึกข้อมูล</th>
                                 <th style="width: 10em" colspan="2"><i class="fas fa-users-cog"> </i></th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
                             @foreach ($orgs as $org)
                             <tr>
-                                <td>{{ $org->id }}</td>
+                                <td class="text-center">{{ $i++ }}</td>
                                 <td>
                                     {{ $org->org_name }} 
                                     @if(!empty($org->org_name_level_1)){{' : '.$org->org_name_level_1}}@else @endif 

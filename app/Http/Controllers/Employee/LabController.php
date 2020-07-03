@@ -34,8 +34,10 @@ class LabController extends Controller
      */
     public function index()
     {
-        $labs = Lab::paginate(5);
-        return view('employee.lab.index', ['labs' => $labs]);
+        $labs = Lab::where('user_id', auth()->user()->id)->get();
+        return view('employee.lab.index', [
+            'labs' => $labs
+            ]);
     }
 
     /**

@@ -29,7 +29,7 @@ class OrganizationController extends Controller
     public function index()
     {
         // $orgs = Organization::all();
-        $orgs = Organization::paginate(5);
+        $orgs = Organization::where('user_id', auth()->user()->id)->get();
         return view('employee.organization.index', ['orgs' => $orgs]);
     }
 

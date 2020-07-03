@@ -30,7 +30,7 @@
                                 <th style="width: 10px">รหัส</th>
                                 <th>ชื่อหน่วยงาน</th>
                                 <th>ผู้บันทึกข้อมูล</th>
-                                <th style=""></th>
+                                <th style="width: 10em" colspan="2"><i class="fas fa-users-cog"> </i></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,6 +45,8 @@
                                 <td>{{ $org->user->name }}</td>
                                 <td>
                                     <a href="/organization/{{ $org->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
+                                </td>
+                                <td>
                                     <a href="{{ route('labs.create-org-id', $org->id) }}" class="btn btn-info btn-sm">เพิ่มข้อมูลห้องปฏิบัติการ</a>
                                 </td>
                             </tr>                                

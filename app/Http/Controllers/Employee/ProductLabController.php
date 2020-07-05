@@ -14,8 +14,6 @@ use App\Model\BasicInformations\TestingCalibratingMethod;
 use App\Model\BasicInformations\ResultControl;
 use App\Model\BasicInformations\CertifyLaboratory;
 
-use App\Helpers\LogActivity;
-
 class ProductLabController extends Controller
 {
     /**
@@ -171,7 +169,7 @@ class ProductLabController extends Controller
         foreach ($allProductLab->productTypes as $item) {
             $allProductTypesItem[] = $item->id;
         }
-        return $allProductTypesItem;
+        //return $allProductTypesItem;
         $allEquipment = Equipment::where('lab_id',5)->get();
         // return $allEquipment;
 
@@ -191,7 +189,7 @@ class ProductLabController extends Controller
         $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
         $data = [
             'productLabs' => $allProductLab,
-            //'equipments' => $allEquipment,
+            'equipments' => $allEquipment,
             'equipmentItem' => $allEquipmentItem,
             'productTypes' => $allProductTypes,
             'productTypesItem' => $allProductTypesItem,
@@ -202,8 +200,8 @@ class ProductLabController extends Controller
             'resultControlsItem' => $allResultControlItem,
             'cerifyLaboratories'=>$allCertifyLaboratory,
         ];
-        //return $data;
-        return view('employee.productLab.edit')->with($data);
+        return $data;
+        //return view('employee.productLab.edit')->with($data);
 
     }
 

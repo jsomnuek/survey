@@ -24,25 +24,25 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <table class="table table-bordered">
-                        @if (count($equipmentLabs) > 0)
+                        @if (count($equipments) > 0)
                         <thead>                  
                             <tr>
-                                <th style="width: 10px">ลำดับ</th>
-                                <th>รหัสเครื่องมือ</th>
-                                <th>ชื่อเครื่องมือ</th>
+                                <th style="width: 10px" class="text-center">ลำดับ</th>
+                                <th>ชื่อเครื่องมือ (ภาษาอังกฤษ)</th>
+                                <th>ห้องปฏิบัติการ</th>
                                 <th style="width: 10em"><i class="fas fa-users-cog"></i></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($equipmentLabs as $equipmentLab)
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach ($equipments as $equipment)
                             <tr>
-                                <td>{{ $equipmentLab->id }}</td>
-                                <td>{{ $equipmentLab->equipment_lab_id }}</td>
-                                <td>{{ $equipmentLab->equipment_name_th }}</td>
-                                <td><a href="/equipmentLab/{{ $equipmentLab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a> 
-                                    {{-- <a href="/equipmentLab/{{ $equipmentLab->id }}/edit" class="btn btn-warning btn-sm">แก้ไขข้อมูล</a> --}}
-                                </td>
-                                
+                                <td class="text-center">{{ $i++ }}</td>
+                                <td>{{ $equipment->scienceTool->science_tool_name }}</td>
+                                <td>{{ $equipment->lab->lab_name }}</td>
+                                <td><a href="/equipments/{{ $equipment->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a></td>
                             </tr>                                
                             @endforeach
                         </tbody>
@@ -55,13 +55,9 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
-                @if (count($equipmentLabs) > 1)
-                <div class="card-footer clearfix ">
-                    {{ $equipmentLabs->links() }}
+                <div class="card-footer clearfix">
+
                 </div>
-            @else
-                
-            @endif
                 <!-- /.card-footer -->
             </div>
             <!--/.card -->

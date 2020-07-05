@@ -828,20 +828,20 @@
                     </ul>
                 </li>
                 {{-- EquipmentLab Menu --}}
-                <li class="nav-item has-treeview {{ Request::is('equipmentLab*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ Request::is('equipments*') ? 'menu-open' : '' }}">
                     {{-- active --}}
-                    <a href="#" class="nav-link {{ Request::is('equipmentLab*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('equipments*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-microscope"></i>
                         <p>เครื่องมือ<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             {{-- active --}}
-                            <a href="{{ url('/equipmentLab') }}" class="nav-link {{ Request::is('equipmentLab') ? 'active' : '' }}">
+                            <a href="{{ url('/equipments') }}" class="nav-link {{ Request::is('equipments') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ข้อมูลเครื่องมือทั้งหมด</p>
                             </a>
-                            <a href="{{ url('/equipmentLab/create') }}" class="nav-link {{ Request::is('equipmentLab/create') ? 'active' : '' }}">
+                            <a href="{{ url('/equipments/create') }}" class="nav-link {{ Request::is('equipments/create') ? 'active' : '' }}">
                                 <i class="fas fa-plus-circle nav-icon"></i>
                                 <p>เพิ่มข้อมูลเครื่องมือ</p>
                             </a>

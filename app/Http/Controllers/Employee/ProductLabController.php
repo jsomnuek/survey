@@ -14,6 +14,8 @@ use App\Model\BasicInformations\TestingCalibratingMethod;
 use App\Model\BasicInformations\ResultControl;
 use App\Model\BasicInformations\CertifyLaboratory;
 
+use App\Helpers\LogActivity;
+
 class ProductLabController extends Controller
 {
     /**

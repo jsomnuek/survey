@@ -53,7 +53,7 @@ class Equipment extends Model
     // relation for 3.11 วัตถุประสงค์การใข้งาน มากกว่า 1 รายการ
     public function objectiveUsages()
     {
-        return $this->belongsToMany(ObjectiveUsage::class);
+        return $this->belongsToMany(ObjectiveUsage::class)->withTimestamps();
     }
 
     // relation for 3.12 ขอบเขตการใข้งานเครื่องมือ

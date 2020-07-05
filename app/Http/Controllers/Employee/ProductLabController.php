@@ -164,19 +164,20 @@ class ProductLabController extends Controller
     {
         $allProductLab = ProductLab::findOrFail($id);
         $allProductTypes = ProductType::where('product_type_status','A')->get();
+        // return $allProductTypes;
         $allProductTypesItem = [];
         foreach ($allProductLab->productTypes as $item) {
             $allProductTypesItem[] = $item->id;
         }
-        //return $allProductTypesItem;
-        $allEquipment = Equipment::where('lab_id',$id)->get();
-        return $allEquipment;
+        return $allProductTypesItem;
+        $allEquipment = Equipment::where('lab_id',5)->get();
+        // return $allEquipment;
 
-        $allEquipmentItem = [];
+        $allEquipmentsItem = [];
         foreach ($allEquipment->equipments as $item){
             $allEquipmentItem[] = $item->id;
         }
-        return $allEquipmentItem;
+        // return $allEquipmentItem;
         $allTestingCalibratingList = TestingCalibratingList::where('testing_list_status','A')->get();
         $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();
         $allTestingCalibratingMethod = TestingCalibratingMethod::where('testing_method_status','A')->get();
@@ -188,7 +189,7 @@ class ProductLabController extends Controller
         $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
         $data = [
             'productLabs' => $allProductLab,
-            'equipments' => $allEquipment,
+            //'equipments' => $allEquipment,
             'equipmentItem' => $allEquipmentItem,
             'productTypes' => $allProductTypes,
             'productTypesItem' => $allProductTypesItem,
@@ -199,7 +200,7 @@ class ProductLabController extends Controller
             'resultControlsItem' => $allResultControlItem,
             'cerifyLaboratories'=>$allCertifyLaboratory,
         ];
-        return $data;
+        //return $data;
         return view('employee.productLab.edit')->with($data);
 
     }

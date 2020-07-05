@@ -163,18 +163,17 @@ class ProductLabController extends Controller
     public function edit($id)
     {
         $allProductLab = ProductLab::findOrFail($id);
+        $labID = $allProductLab->lab_id;
+        // return $allProductLab->lab_id;
         $allProductTypes = ProductType::where('product_type_status','A')->get();
-        // return $allProductTypes;
         $allProductTypesItem = [];
         foreach ($allProductLab->productTypes as $item) {
             $allProductTypesItem[] = $item->id;
         }
-        //return $allProductTypesItem;
-        $allEquipment = Equipment::where('lab_id',5)->get();
+        $allEquipment = Equipment::where('lab_id',$labID)->get();
         // return $allEquipment;
-
-        $allEquipmentsItem = [];
-        foreach ($allEquipment->equipments as $item){
+        $allEquipmentItem = [];
+        foreach ($allProductLab->equipments as $item){
             $allEquipmentItem[] = $item->id;
         }
         // return $allEquipmentItem;
@@ -200,8 +199,8 @@ class ProductLabController extends Controller
             'resultControlsItem' => $allResultControlItem,
             'cerifyLaboratories'=>$allCertifyLaboratory,
         ];
-        return $data;
-        //return view('employee.productLab.edit')->with($data);
+        // return $data;
+        return view('employee.productLab.edit')->with($data);
 
     }
 
@@ -247,6 +246,7 @@ class ProductLabController extends Controller
         $productLab->certify_laboratory_id = $request['certify_laboratory_id'];
 
         $productLab->save();
+        $productLab->equipments()->sync($request->equipments_id);
         $productLab->productTypes()->sync($request->product_type_id);
         $productLab->resultControls()->sync($request->result_control_id);
 

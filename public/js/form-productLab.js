@@ -114,6 +114,47 @@ $(document).ready(function() {
     }
     checkProductType();
 
+    //4.2 checkProductTypes
+    function checkProductType() {
+        // this value
+        var data = $("#product_type_id").val();
+        if (data != null) {
+            for (i = 0; i < data.length; i++) {
+                if (data[i] == "39") {
+                    var indTypeId = 39;
+                }
+            }
+        }
+        if (indTypeId == 39) {
+            $("#display_product_type_other").removeClass("d-none");
+            $("#product_type_other").prop("required", true);
+        } else {
+            $("#display_product_type_other").addClass("d-none");
+            $("#product_type_other").prop("required", false);
+            $("#product_type_other").val(null);
+        }
+        // event on selected
+        $("#product_type_id").on("select2:select select2:unselect", function() {
+            var data = $("#product_type_id").val();
+            if (data != null) {
+                for (i = 0; i < data.length; i++) {
+                    if (data[i] == "39") {
+                        var indTypeId = 39;
+                    }
+                }
+            }
+            if (indTypeId == 39) {
+                $("#display_product_type_other").removeClass("d-none");
+                $("#product_type_other").prop("required", true);
+            } else {
+                $("#display_product_type_other").addClass("d-none");
+                $("#product_type_other").prop("required", false);
+                $("#product_type_other").val(null);
+            }
+        });
+    }
+    checkProductType();
+
     //4.2 checkTestType
     function checkTestType() {
         // this value

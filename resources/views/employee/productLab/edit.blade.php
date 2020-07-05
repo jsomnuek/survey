@@ -74,20 +74,6 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ (ระบุโดยรหัสเครื่องมือจากส่วนที่ 3)</label>
-                                    <select class="form-control custom-select select2 @error('equipments_id') is-invalid @enderror" multiple="multiple" name="equipments_id[]" id="equipments_id" data-value="{{ old('equipments_id[]') }}">
-                                        <option value="" disabled="disabled">disabled</option>
-                                        @foreach ($equipments ?? '' as $equipment)
-                                            <option value="{{ $equipment->id }}" {{ in_array($equipment->id, old('equipments_id') ? : []) ? 'selected' : '' }}>{{ $equipment->equipment_code }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('equipments_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                            {{-- <strong>text assignment</strong> --}}
-                                        </span>
-                                    @enderror
-
-
                                     <select class="form-control custom-select select2 @error('equipments_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="equipments_id[]" id="equipments_id" data-value="{{ old('equipments_id[]') }}">
                                         <option value="" disabled="disabled">disabled</option>
                                         @foreach ($equipments ?? '' as $equipment)

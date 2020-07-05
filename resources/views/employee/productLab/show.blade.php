@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page')
-    Product Create
+    Show ProductLab
 @endsection
 
 @section('header-box-1')

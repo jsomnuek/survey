@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Model\Employee\Lab;
 use App\Model\Employee\ProductLab;
+use App\Model\Employee\Equipment;
 use App\Model\BasicInformations\ProductType;
 use App\Model\BasicInformations\TestingCalibratingList;
 use App\Model\BasicInformations\TestingCalibratingType;
 use App\Model\BasicInformations\TestingCalibratingMethod;
 use App\Model\BasicInformations\ResultControl;
 use App\Model\BasicInformations\CertifyLaboratory;
-
-use App\Helpers\LogActivity;
 
 class ProductLabController extends Controller
 {
@@ -33,7 +33,7 @@ class ProductLabController extends Controller
      */
     public function index()
     {
-        $allProductLab = ProductLab::paginate(5);
+        $allProductLab = ProductLab::all();
         //return $allProductLab;
         return view('employee.productlab.index',['allProductLabs' => $allProductLab]);
     }
@@ -45,6 +45,8 @@ class ProductLabController extends Controller
      */
     public function create()
     {
+        $allLab = Lab::where('user_id', auth()->user()->id)->get();
+        $allEquipment = Equipment::where('user_id', auth()->user()->id)->get();
         $allProductTypes = ProductType::where('product_type_status','A')->get();
         $allTestingCalibratingList = TestingCalibratingList::where('testing_list_status','A')->get();
         $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();
@@ -52,6 +54,32 @@ class ProductLabController extends Controller
         $allResultControl = ResultControl::where('result_control_status','A')->get();
         $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
         $data = [
+            'labs' => $allLab,
+            'equipments' => $allEquipment,
+            'productTypes' => $allProductTypes,
+            'testingCalibratingLists' => $allTestingCalibratingList,
+            'testingCalibratingTypes' => $allTestingCalibratingType,
+            'testingCalibratingMethods' => $allTestingCalibratingMethod,
+            'resultControls' => $allResultControl,
+            'cerifyLaboratories'=>$allCertifyLaboratory,
+        ];
+        // return $data;
+        return view('employee.productLab.create')->with($data);
+    }
+
+    public function createFromLabID($labid)
+    {
+        $allLab = Lab::where('id', $labid)->get();
+        $allEquipment = Equipment::where('user_id', auth()->user()->id)->get();
+        $allProductTypes = ProductType::where('product_type_status','A')->get();
+        $allTestingCalibratingList = TestingCalibratingList::where('testing_list_status','A')->get();
+        $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();
+        $allTestingCalibratingMethod = TestingCalibratingMethod::where('testing_method_status','A')->get();
+        $allResultControl = ResultControl::where('result_control_status','A')->get();
+        $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
+        $data = [
+            'labs' => $allLab,
+            'equipments' => $allEquipment,
             'productTypes' => $allProductTypes,
             'testingCalibratingLists' => $allTestingCalibratingList,
             'testingCalibratingTypes' => $allTestingCalibratingType,
@@ -79,6 +107,7 @@ class ProductLabController extends Controller
         //clean up sort by number on views
         $productLab = new ProductLab;
         $productLab->user_id = auth()->user()->id;
+        $productLab->lab_id = $request['lab_id'];
         $productLab->product_lab_name = $request['product_lab_name'];
         //$productLab->product_type_id = $request['product_type_id'];
         $productLab->product_type_other = $request['product_type_other'];
@@ -103,11 +132,12 @@ class ProductLabController extends Controller
         $productLab->certify_laboratory_id = $request['certify_laboratory_id'];
 
         $productLab->save();
+        $productLab->equipments()->sync($request->equipments_id, false);
         $productLab->productTypes()->sync($request->product_type_id, false);
         $productLab->resultControls()->sync($request->result_control_id, false);
 
-        //return $productLab;
-        return redirect()->route('productLab.edit', $productLab->id);
+        // return $productLab;
+        return redirect()->route('productLab.show', $productLab->id);
     }
 
     /**
@@ -119,7 +149,7 @@ class ProductLabController extends Controller
     public function show($id)
     {
         $productLab = ProductLab::find($id);
-        // return $productLab;
+        //return $productLab;
         
         return view('employee.productLab.show',['productLabs'=>$productLab]);
     }
@@ -133,12 +163,20 @@ class ProductLabController extends Controller
     public function edit($id)
     {
         $allProductLab = ProductLab::findOrFail($id);
+        $labID = $allProductLab->lab_id;
+        // return $allProductLab->lab_id;
         $allProductTypes = ProductType::where('product_type_status','A')->get();
         $allProductTypesItem = [];
         foreach ($allProductLab->productTypes as $item) {
             $allProductTypesItem[] = $item->id;
         }
-        // return $allProductTypesItem;
+        $allEquipment = Equipment::where('lab_id',$labID)->get();
+        // return $allEquipment;
+        $allEquipmentItem = [];
+        foreach ($allProductLab->equipments as $item){
+            $allEquipmentItem[] = $item->id;
+        }
+        // return $allEquipmentItem;
         $allTestingCalibratingList = TestingCalibratingList::where('testing_list_status','A')->get();
         $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();
         $allTestingCalibratingMethod = TestingCalibratingMethod::where('testing_method_status','A')->get();
@@ -150,6 +188,8 @@ class ProductLabController extends Controller
         $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
         $data = [
             'productLabs' => $allProductLab,
+            'equipments' => $allEquipment,
+            'equipmentItem' => $allEquipmentItem,
             'productTypes' => $allProductTypes,
             'productTypesItem' => $allProductTypesItem,
             'testingCalibratingLists' => $allTestingCalibratingList,
@@ -182,7 +222,7 @@ class ProductLabController extends Controller
 
         $productLab =  ProductLab::find($id) ;
         $productLab->user_id = auth()->user()->id;
-        ['product_lab_name'];
+        $productLab->product_lab_name = $request['product_lab_name'];
         //$productLab->product_type_id = $request['product_type_id'];
         $productLab->product_type_other = $request['product_type_other'];
         $productLab->product_lab_standard = $request['product_lab_standard'];
@@ -206,6 +246,7 @@ class ProductLabController extends Controller
         $productLab->certify_laboratory_id = $request['certify_laboratory_id'];
 
         $productLab->save();
+        $productLab->equipments()->sync($request->equipments_id);
         $productLab->productTypes()->sync($request->product_type_id);
         $productLab->resultControls()->sync($request->result_control_id);
 
@@ -229,6 +270,7 @@ class ProductLabController extends Controller
     protected function validateProductLab()
     {
         return request()->validate([
+            'equipments_id' => ['required'],
             'product_type_id' =>['required'],
             'product_lab_name' =>'required',
             'product_type_other' =>'',

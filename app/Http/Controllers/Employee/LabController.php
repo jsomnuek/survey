@@ -27,6 +27,7 @@ use App\Helpers\LogActivity;
 
 class LabController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *

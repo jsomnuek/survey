@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page')
-    Product Create
+    Show ProductLab
 @endsection
 
 @section('header-box-1')
@@ -47,7 +47,6 @@
                                     @if ($productLabs->product_type_other != null)
                                         <li>อื่นๆ {{ $productLabs->product_type_other }}</li>
                                     @endif
-                                    
                                 </td>
                             </tr>
                             <tr>
@@ -60,7 +59,18 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ :</th>
-                                <td>ยังไม่สมบูรณ์----{{ $productLabs->product_lab_test_name }}</td>
+                                <td>
+                                    @forelse ($productLabs->equipments as $item )
+                                            <li>{{ $item->equipment_code }} </li>
+                                    @empty
+                                    
+                                    @endforelse
+
+                                    {{-- @if ($productLabs->product_type_other != null)
+                                        <li>อื่นๆ {{ $productLabs->product_type_other }}</li>
+                                    @endif
+                                </td>
+                                <td>ยังไม่สมบูรณ์----{{ $productLabs->product_lab_test_name }}</td> --}}
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.6 ประเภทรายการทดสอบ/สอบเทียบ :</th>

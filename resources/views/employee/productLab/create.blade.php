@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-md-6 ">
                                 <div class="form-group d-none"  id="display_product_type_other" >
-                                    <label for="">อื่นๆ โปรดระบุ  : </label>
+                                    <label for="">อื่นๆ โปรดระบุ : </label>
                                     <input class="form-control form-control" type="text" name="product_type_other" id="product_type_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ old('product_type_other')}}">
                                 </div>
                             </div>

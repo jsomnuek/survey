@@ -71,7 +71,7 @@ class ProductLabController extends Controller
     {
         $allLab = Lab::where('id', $labid)->get();
         $lab_id2 = Lab::where('id', $labid)->get('id');
-        // return $lab_id2;
+        return $lab_id2;
         $allEquipment = Equipment::where('lab_id',$lab_id2)->get();
         // return $allEquipment;
         $allProductTypes = ProductType::where('product_type_status','A')->get();
@@ -168,6 +168,8 @@ class ProductLabController extends Controller
         $allProductLab = ProductLab::findOrFail($id);
         $labID = $allProductLab->lab_id;
         // return $allProductLab->lab_id;
+        $allLab = Lab::where('id',$labID)->get();
+        //dd($allLab)->all();
         $allProductTypes = ProductType::where('product_type_status','A')->get();
         $allProductTypesItem = [];
         foreach ($allProductLab->productTypes as $item) {
@@ -191,6 +193,7 @@ class ProductLabController extends Controller
         $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
         $data = [
             'productLabs' => $allProductLab,
+            'labs' => $allLab,
             'equipments' => $allEquipment,
             'equipmentItem' => $allEquipmentItem,
             'productTypes' => $allProductTypes,

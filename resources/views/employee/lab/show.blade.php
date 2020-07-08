@@ -540,13 +540,17 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <div class="d-flex justify-content-between">
-                        <a href="/labs/{{ $lab->id }}/edit" class="btn btn-secondary btn-lg">
-                            <i class="fas fa-edit"></i>
-                            แก้ไขข้อมูล
-                        </a>
-                        <a href="/labs" class="btn btn-success btn-lg">
-                            ตกลง
-                        </a>
+                        @if (!Auth::guest())                            
+                            @if (Auth::user()->id == $org->user_id)
+                                <a href="/labs/{{ $lab->id }}/edit" class="btn btn-secondary btn-lg">
+                                    <i class="fas fa-edit"></i>
+                                    แก้ไขข้อมูล
+                                </a>
+                                <a href="/labs" class="btn btn-success btn-lg">
+                                    ตกลง
+                                </a>
+                            @endif
+                        @endif                        
                     </div>
                 </div>
                 <!-- /.card-footer -->

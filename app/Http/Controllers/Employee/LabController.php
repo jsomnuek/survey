@@ -227,7 +227,12 @@ class LabController extends Controller
     public function show($id)
     {
         $lab = Lab::findOrFail($id);
-        // return $lab;
+
+        // Check for correct user
+        if(auth()->user()->id !== $lab->user_id){
+            return redirect()->route('labs.index')->with('error', 'Unauthorized Page');
+        }
+
         return view('employee.lab.show', ['lab' => $lab]);
     }
 
@@ -240,6 +245,12 @@ class LabController extends Controller
     public function edit($id)
     {
         $lab = Lab::findOrFail($id);
+
+        // Check for correct user
+        if(auth()->user()->id !== $lab->user_id){
+            return redirect()->route('labs.index')->with('error', 'Unauthorized Page');
+        }
+
         $organizations = Organization::where('user_id', auth()->user()->id)->get();
         $locationLabs = LocationLab::where('location_status', 'A')->get();
         $industrialEstates = IndustrialEstate::where('estate_status', 'A')->get();

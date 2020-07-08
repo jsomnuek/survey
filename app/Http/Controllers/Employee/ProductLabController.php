@@ -33,7 +33,7 @@ class ProductLabController extends Controller
      */
     public function index()
     {
-        $allProductLab = ProductLab::all();
+        $allProductLab = ProductLab::where('user_id',auth()->user()->id)->get();
         //return $allProductLab;
         return view('employee.productlab.index',['allProductLabs' => $allProductLab]);
     }
@@ -70,7 +70,10 @@ class ProductLabController extends Controller
     public function createFromLabID($labid)
     {
         $allLab = Lab::where('id', $labid)->get();
-        $allEquipment = Equipment::where('user_id', auth()->user()->id)->get();
+        $lab_id2 = Lab::where('id', $labid)->get('id');
+        // return $lab_id2;
+        $allEquipment = Equipment::where('lab_id',$lab_id2)->get();
+        // return $allEquipment;
         $allProductTypes = ProductType::where('product_type_status','A')->get();
         $allTestingCalibratingList = TestingCalibratingList::where('testing_list_status','A')->get();
         $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();

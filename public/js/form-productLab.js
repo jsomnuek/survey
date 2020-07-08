@@ -23,8 +23,8 @@ $(document).ready(function() {
         var data = $("#result_control_id").val();
         if (data != null) {
             for (i = 0; i < data.length; i++) {
-                if (data[i] == "1") {
-                    var indTypeId = 1;
+                if (data[i] == "7") {
+                    var indTypeId = 7;
                 }
             }
         }
@@ -45,12 +45,12 @@ $(document).ready(function() {
                 var data = $("#result_control_id").val();
                 if (data != null) {
                     for (i = 0; i < data.length; i++) {
-                        if (data[i] == "1") {
-                            var indTypeId = 1;
+                        if (data[i] == "7") {
+                            var indTypeId = 7;
                         }
                     }
                 }
-                if (indTypeId == 1) {
+                if (indTypeId == 7) {
                     $("#display_product_lab_result_control_other").removeClass(
                         "d-none"
                     );
@@ -155,7 +155,7 @@ $(document).ready(function() {
     }
     checkProductType();
 
-    //4.2 checkTestType
+    //4.14 checkTestType
     function checkTestType() {
         // this value
         var data = $("#testing_calibrating_type_id").val();
@@ -166,7 +166,7 @@ $(document).ready(function() {
         //         }
         //     }
         // }
-        if (data == 5) {
+        if (data == 6) {
             $("#display_testing_calibrating_type_other").removeClass("d-none");
             $("#testing_calibrating_type_other").prop("required", true);
         } else {
@@ -186,7 +186,7 @@ $(document).ready(function() {
                 //         }
                 //     }
                 // }
-                if (data == 5) {
+                if (data == 6) {
                     $("#display_testing_calibrating_type_other").removeClass(
                         "d-none"
                     );

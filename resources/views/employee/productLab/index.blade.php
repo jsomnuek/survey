@@ -34,9 +34,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
                             @foreach ($allProductLabs as $allProductLab)
                             <tr>
-                                <td class="text-center">{{ $allProductLab->id }}</td>
+                                <td class="text-center">{{ $i++}}</td>
                                 <td>{{ $allProductLab->product_lab_name }}</td>
                                 <td>{{ $allProductLab->testingCalibratingList->testing_list_name}}</td>
                                 <td><a href="/productLab/{{ $allProductLab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a> 

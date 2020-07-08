@@ -229,7 +229,7 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <div class="form-group" id="display_proficiency_testing_year">
-                                    <input class="form-control form-control-md" type="text" name="proficiency_testing_year" id="proficiency_testing_year" placeholder="โปรดระบุปี" value="{{ $productLabs->proficiency_testing_year }}">
+                                    <input class="form-control form-control-md" type="text" name="proficiency_testing_year" id="proficiency_testing_year" placeholder="โปรดระบุปี" value="{{ $productLabs->proficiency_testing_year }}"  data-inputmask='"mask": "9999"' data-mask>
                                 </div>
                             </div>
                             <div class="col-md-6">

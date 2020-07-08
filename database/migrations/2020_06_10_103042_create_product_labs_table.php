@@ -15,7 +15,8 @@ class CreateProductLabsTable extends Migration
     {
         Schema::create('product_labs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->comment('รหัสผู้ใช้งานระบบที่เทคแอคชั่นกกับเรคอร์ด'); //รหัสผู้ใช้งานระบบ
+            $table->unsignedBigInteger('user_id')->comment('รหัสผู้ใช้งานระบบที่เทคแอคชั่นกกับเรคอร์ด'); //FKรหัสผู้ใช้งานระบบ
+            $table->unsignedBigInteger('lab_id')->comment('รหัสlab'); //FKรหัสLab
             $table->string('product_lab_name', 255)->comment('ชื่อผลิตภัณฑ์ที่ทดสอบ');//4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ
             //4.2ประเภทผลิตภัณฑ์ is multiple select
             $table->string('product_type_other', 255)->nullable()->comment('ประเภทผลิตภัณฑ์อื่นๆ');//4.2.1 ประเภทผลิตภัณฑ์อื่นๆ
@@ -40,6 +41,7 @@ class CreateProductLabsTable extends Migration
             $table->unsignedBigInteger('certify_laboratory_id')->nullable()->comment('การรับรองความสามารถห้องปฏิบัติการ');//4.16การรับรองความสามารถห้องปฏิบัติการ
 
             // Foreign Key to other table
+            $table->foreign('user_id')->references('id')->on('users'); //FKตารางuser
             $table->foreign('testing_calibrating_list_id')->references('id')->on('testing_calibrating_lists'); //FK4.6ของประเภทรายการทดสอบ
             $table->foreign('testing_calibrating_type_id')->references('id')->on('testing_calibrating_types'); //FK4.7.1 ประเภทการทดสอบ/สอบเทียบ
             $table->foreign('testing_calibrating_method_id')->references('id')->on('testing_calibrating_methods'); //FK4.8.1 วิธีทดสอบ/สอบเทียบ
@@ -49,6 +51,19 @@ class CreateProductLabsTable extends Migration
 
 
         // for multiple select dont forget to order alphabet for table name  
+
+        // ข้อ 4.5 เครื่องมือที่ใช้ในการทดสอบ
+        Schema::create('equipment_product_lab', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('equipment_id');
+            $table->unsignedBigInteger('product_lab_id');
+            $table->timestamps();
+            
+            $table->foreign('product_lab_id')
+                ->references('id')->on('product_labs');
+            $table->foreign('equipment_id')
+                ->references('id')->on('equipments');
+        });
 
         // ข้อ 4.2 ประเภทผลิตภัณฑ์
         Schema::create('product_lab_product_type', function (Blueprint $table) {
@@ -84,6 +99,7 @@ class CreateProductLabsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('equipment_product_lab');
         Schema::dropIfExists('product_lab_product_type');
         Schema::dropIfExists('product_lab_result_control');
         // OWNER MUST BE BOTTOM ALWAYS

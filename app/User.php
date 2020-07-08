@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Model\Employee\Organization;
 use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
+use App\Model\Employee\ProductLab;
 
 class User extends Authenticatable
 {
@@ -54,5 +55,10 @@ class User extends Authenticatable
     public function equipments()
     {
         return $this->hasMany(Equipment::class);
+    }
+
+    public function productLabs()
+    {
+        return $this->hasMany(ProductLab::class);
     }
 }

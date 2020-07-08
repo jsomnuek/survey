@@ -24,6 +24,35 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
+                                <blockquote class="py-2 my-2 bg-dark">
+                                    <p>
+                                        <span>ห้องปฏิบัติการ : </span>
+                                        {{-- <a href="{{ route('lab.show', $lab->id) }}">
+                                            {{ $org->org_name }}
+                                            @if(!empty($org->org_name_level_1)){{' : '.$org->org_name_level_1}}@else @endif 
+                                            @if(!empty($org->org_name_level_2)){{' : '.$org->org_name_level_2}}@else @endif
+                                        </a> --}}
+                                    </p>
+                                </blockquote>
+                            </div>  
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                <label for="">เลือกห้องปฏิบัติการ</label>
+                                <select class="form-control custom-select select2 @error('lab_id') is-invalid @enderror" name="lab_id" id="lab_id" value="{{ old('lab_id')}}">
+                                    <option value="" disabled="disabled"></option>
+                                    @foreach ($labs ?? '' as $lab)
+                                        <option value="{{ $lab->id }}" {{ old('lab_id') ==  $lab->id ? 'selected' : ''}}>{{ $lab->lab_name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('lab_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        {{-- <strong>text assignment</strong> --}}
+                                    </span>
+                                @enderror
+                                </div>    
+                            </div>
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ / สอบเทียบ</label>
                                     <input type="text" name="product_lab_name" class="form-control @error('product_lab_name') is-invalid @enderror" id="product_lab_name" placeholder="" value="{{ old('product_lab_name')}}"  >
@@ -71,12 +100,21 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
+                                <div class="form-group">
                                 <label for="">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ (ระบุโดยรหัสเครื่องมือจากส่วนที่ 3)</label>
-                                <div class=" form-group">
-                                    <input class="form-control" type="text" name="" placeholder="Ex.AABCC-MNN-RRRSS"><br/>
-                                    <input class="form-control" type="text" name="" placeholder="Ex.AABCC-MNN-RRRSS"><br/>
-                                    <input class="form-control" type="text" name="" placeholder="Ex.AABCC-MNN-RRRSS">
-                                </div>
+                                <select class="form-control custom-select select2 @error('equipments_id') is-invalid @enderror" multiple="multiple" name="equipments_id[]" id="equipments_id" data-value="{{ old('equipments_id[]') }}">
+                                    <option value="" disabled="disabled">disabled</option>
+                                    @foreach ($equipments ?? '' as $equipment)
+                                        <option value="{{ $equipment->id }}" {{ in_array($equipment->id, old('equipments_id') ? : []) ? 'selected' : '' }}>{{ $equipment->equipment_code }}</option>
+                                    @endforeach
+                                </select>
+                                @error('equipments_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        {{-- <strong>text assignment</strong> --}}
+                                    </span>
+                                @enderror
+                                </div>    
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">

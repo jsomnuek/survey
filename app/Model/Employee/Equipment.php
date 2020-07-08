@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\User;
 use App\Model\Employee\Lab;
+use App\Model\Employee\ProductLab;
 use App\Model\BasicInformations\ScienceTool;
 use App\Model\BasicInformations\MajorTechnology;
 use App\Model\BasicInformations\ObjectiveUsage;
@@ -67,6 +68,11 @@ class Equipment extends Model
         return $this->belongsTo(EquipmentMaintenance::class);
     }
 
+    // relation for 4.5
+    public function productLabs()
+    {
+        return $this->belongsToMany(ProductLab::class)->withTimestamps();
+    }
 }
 
 

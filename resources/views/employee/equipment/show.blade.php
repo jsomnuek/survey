@@ -211,7 +211,7 @@
                 <div class="card-footer">
                     <div class="d-flex justify-content-between">
                         @if (!Auth::guest())                            
-                            @if (Auth::user()->id == $org->user_id)
+                            @if (Auth::user()->id == $equipment->user_id)
                                 <a href="/equipments/{{ $equipment->id }}/edit" class="btn btn-secondary btn-lg">
                                     <i class="fas fa-edit"></i>
                                     แก้ไขข้อมูล

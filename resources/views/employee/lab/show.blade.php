@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body table-responsive p-0" style="height: 400px;">
+                <div class="card-body table-responsive p-0">
                     <table class="table table-striped">
                         <tbody>
                             <tr>
@@ -152,8 +152,7 @@
                             </tr>
                             {{-- ./tr 2.9 รายได้รวมของห้องปฏิบัติการต่อปี :--}}
                             <tr>
-                                <th class="" colspan="2" style="">2.10 ข้อมูลการพัฒนาห้องปฏิบัติการ :</th>                                
-                                <td>{{ __('') }}</td>
+                                <th class="" colspan="2" style="">2.10 ข้อมูลการพัฒนาห้องปฏิบัติการ :</th>
                             </tr>
                             <tr>
                                 <th class="pl-5" colspan="2" style="">2.10.1 เจ้าหน้าที่ได้รับการฝึกอบรมเพื่อการพัฒนาห้องปฏิบัติการหรือไม่อย่างไร :</th>
@@ -532,7 +531,7 @@
                                 <td>{{ $lab->lab_development_suggestion }}</td>
                             </tr>
                             {{-- ./tr 2.10.6 --}}
-                            {{-- ./tr 2.10 ข้อมูลการพัฒนาห้องปฏิบัติการ :--}}
+                            {{-- ./tr 2.10 ข้อมูลการพัฒนาห้องปฏิบัติการ :--}}                            
                         </tbody>
                         {{-- ./tbody --}}
                     </table>
@@ -546,7 +545,6 @@
                             แก้ไขข้อมูล
                         </a>
                         <a href="/labs" class="btn btn-success btn-lg">
-                            <i class="fas fa-save"></i>
                             ตกลง
                         </a>
                     </div>

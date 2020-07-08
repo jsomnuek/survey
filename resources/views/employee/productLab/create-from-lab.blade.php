@@ -29,7 +29,8 @@
                                         <span>ห้องปฏิบัติการ : </span>
                                         @foreach ($labs ?? '' as $lab)
                                         {{-- <a href="{{ route('labs.show', $lab->id) }}"> --}}
-                                            <label name="lab_id" id="lab_id" for="" value="">{{$lab->lab_name}}</label>
+                                            {{$lab->lab_name}}
+                                            <label name="lab_id" id="lab_id" for="" value=""></label>
                                         @endforeach
                                         {{-- <a href="{{ route('lab.show', $lab->id) }}">
                                             {{ $org->org_name }}
@@ -41,23 +42,6 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <strong>หมายเหตุ : <span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
-                            </div>  
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                <label for="">เลือกห้องปฏิบัติการ</label>
-                                <select class="form-control  custom-select select2  @error('lab_id') is-invalid @enderror" name="lab_id" id="lab_id">
-                                    <option value=""></option>
-                                    @foreach ($labs ?? '' as $lab)
-                                        <option value="{{$lab->id}}" {{ old('lab_id') ==  $lab->id ? 'selected' : ''}} > {{$lab->lab_name}} </option>
-                                    @endforeach
-                                </select>
-                                @error('lab_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                        {{-- <strong>text assignment</strong> --}}
-                                    </span>
-                                @enderror
-                                </div>    
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">

@@ -23,22 +23,6 @@
                     @csrf
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-12">
-                                <blockquote class="py-2 my-2 bg-dark">
-                                    <p>
-                                        <span>ห้องปฏิบัติการ : </span>
-                                        @foreach ($labs ?? '' as $lab)
-                                        {{-- <a href="{{ route('labs.show', $lab->id) }}"> --}}
-                                        {{$lab->lab_name}} 
-                                        @endforeach
-                                        {{-- <a href="{{ route('lab.show', $lab->id) }}">
-                                            {{ $org->org_name }}
-                                            @if(!empty($org->org_name_level_1)){{' : '.$org->org_name_level_1}}@else @endif 
-                                            @if(!empty($org->org_name_level_2)){{' : '.$org->org_name_level_2}}@else @endif
-                                        </a> --}}
-                                    </p>
-                                </blockquote>
-                            </div>
                             <div class="col-md-12 mb-3">
                                 <strong>หมายเหตุ : <span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
                             </div>  

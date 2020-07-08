@@ -70,9 +70,7 @@ class ProductLabController extends Controller
     public function createFromLabID($labid)
     {
         $allLab = Lab::where('id', $labid)->get();
-        $lab_id2 = Lab::where('id', $labid)->get('id');
-        return $lab_id2;
-        $allEquipment = Equipment::where('lab_id',$lab_id2)->get();
+        $allEquipment = Equipment::where('lab_id', $labid)->get();
         // return $allEquipment;
         $allProductTypes = ProductType::where('product_type_status','A')->get();
         $allTestingCalibratingList = TestingCalibratingList::where('testing_list_status','A')->get();
@@ -91,7 +89,7 @@ class ProductLabController extends Controller
             'cerifyLaboratories'=>$allCertifyLaboratory,
         ];
         // return $data;
-        return view('employee.productLab.create')->with($data);
+        return view('employee.productLab.create-from-lab')->with($data);
     }
 
     /**

@@ -147,7 +147,7 @@
 							{{-- 3.8 equipment_price --}}
 							<div class="col-md-4">
 								<div class="form-group">
-									<label for="equipment_price">3.8 มูลค่า :</label>
+									<label for="equipment_price">3.8 มูลค่า (บาท) :</label>
 									<input type="number" name="equipment_price" id="equipment_price" class="form-control" min="0" value="{{ old('equipment_price')}}">
 								</div>
 							</div>
@@ -234,17 +234,17 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="equipment_image">3.14 รูปภาพเครื่องมือ (.jpg, .jpeg, .png) :</label>
-									<div class="input-group">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input @error('equipment_image') is-invalid @enderror" name="equipment_image" id="equipment_image">
-											<label class="custom-file-label" for="equipment_image">เลือกไฟล์ภาพ</label>
-										</div>										
-									</div>
-									@error('equipment_image')
-											<span class="invalid-feedback" role="alert">
-												<strong>.jpg, .jpeg, .png</strong>
-											</span>
-										@enderror									
+									<div class="custom-file">
+										<input type="file" class="custom-file-input @error('equipment_image') is-invalid @enderror" name="equipment_image" id="equipment_image">
+										<label class="custom-file-label" for="equipment_image">
+											Choose file...
+										</label>                                            
+										@error('equipment_image')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+										@enderror
+									</div>                                   																	
 								</div>
 							</div>
 							{{-- ./col --}}
@@ -264,7 +264,7 @@
 								</div>
 								<div class="form-group" id="display_equipment_calibration_year">
 									<label for="equipment_calibration_by">กรณีเลือก "มี" โปรดระบุ :<span><sup class="text-danger"> *</sup></label>
-									<input class="form-control" type="text" name="equipment_calibration_year" id="equipment_calibration_year" placeholder="วันเดือนปี" value="{{ old('equipment_calibration_year') }}">
+									<input class="form-control" type="text" name="equipment_calibration_year" id="equipment_calibration_year" placeholder="วัน/เดือน/ปี" value="{{ old('equipment_calibration_year') }}">
 								</div>
 							</div>
 							{{-- ./col --}}

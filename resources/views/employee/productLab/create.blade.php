@@ -315,5 +315,8 @@
         $('#proficiency_testing').val(1);
         $('#proficiency_testing').trigger('change');
 
+        $('#equipments_id').val(json_encode($equipments));
+        $('#equipments_id').trigger('change')
+
     </script>
 @endsection

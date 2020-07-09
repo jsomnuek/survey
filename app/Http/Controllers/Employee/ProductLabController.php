@@ -33,7 +33,7 @@ class ProductLabController extends Controller
      */
     public function index()
     {
-        $allProductLab = ProductLab::all();
+        $allProductLab = ProductLab::where('user_id',auth()->user()->id)->get();
         //return $allProductLab;
         return view('employee.productlab.index',['allProductLabs' => $allProductLab]);
     }
@@ -70,7 +70,8 @@ class ProductLabController extends Controller
     public function createFromLabID($labid)
     {
         $allLab = Lab::where('id', $labid)->get();
-        $allEquipment = Equipment::where('user_id', auth()->user()->id)->get();
+        $allEquipment = Equipment::where('lab_id', $labid)->get();
+        // return $allEquipment;
         $allProductTypes = ProductType::where('product_type_status','A')->get();
         $allTestingCalibratingList = TestingCalibratingList::where('testing_list_status','A')->get();
         $allTestingCalibratingType = TestingCalibratingType::where('testing_calibrating_type_status','A')->get();
@@ -88,7 +89,7 @@ class ProductLabController extends Controller
             'cerifyLaboratories'=>$allCertifyLaboratory,
         ];
         // return $data;
-        return view('employee.productLab.create')->with($data);
+        return view('employee.productLab.create-from-lab')->with($data);
     }
 
     /**
@@ -99,7 +100,7 @@ class ProductLabController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
 
         // Validate Check
         $this->validateProductLab();
@@ -165,6 +166,8 @@ class ProductLabController extends Controller
         $allProductLab = ProductLab::findOrFail($id);
         $labID = $allProductLab->lab_id;
         // return $allProductLab->lab_id;
+        $allLab = Lab::where('id',$labID)->get();
+        //dd($allLab)->all();
         $allProductTypes = ProductType::where('product_type_status','A')->get();
         $allProductTypesItem = [];
         foreach ($allProductLab->productTypes as $item) {
@@ -188,6 +191,7 @@ class ProductLabController extends Controller
         $allCertifyLaboratory = CertifyLaboratory::where('cert_lab_status','A')->get();
         $data = [
             'productLabs' => $allProductLab,
+            'labs' => $allLab,
             'equipments' => $allEquipment,
             'equipmentItem' => $allEquipmentItem,
             'productTypes' => $allProductTypes,
@@ -265,6 +269,19 @@ class ProductLabController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function equipmentinLab ($labid)
+    {
+        // $data = $request->all();
+        // dd($data);
+        $allEquipment = Equipment::select('id','equipment_code')
+            ->where('lab_id', $labid)
+            ->orderBy('id', 'asc')
+            ->get();
+        return $allEquipment;
+        // return response()->json($allEquipment);
+        // return $amphoes;
     }
 
     protected function validateProductLab()

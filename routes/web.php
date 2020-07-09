@@ -74,7 +74,8 @@ Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function(){
     Route::resource('/organization', 'Employee\OrganizationController');
     Route::resource('/labs', 'Employee\LabController');
     Route::get('/labs/create-org-id/{id}', 'Employee\LabController@createByOrgId')->name('labs.create-org-id');
-    Route::get('/productLab/createFromLabID/{id}', 'Employee\ProductLabController@createFromLabID')->name('productLab.createFromLabID');
+    Route::get('/productLab/create-form-lab/{id}', 'Employee\ProductLabController@createFromLabID')->name('productLab.create-from-lab');
+    Route::get('/productLab/equipmentinLab/{id}', 'Employee\ProductLabController@equipmentinLab');
     Route::resource('/equipments','Employee\EquipmentController');
     Route::resource('/productLab','Employee\ProductLabController');
 });

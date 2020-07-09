@@ -179,6 +179,7 @@ $(document).ready(function() {
             "select2:select select2:unselect",
             function() {
                 var data = $("#testing_calibrating_type_id").val();
+                console.log(data);
                 // if (data != null) {
                 //     for (i = 0; i < data.length; i++) {
                 //         if (data[i] == "1") {
@@ -246,4 +247,57 @@ $(document).ready(function() {
         );
     }
     checkPT();
+
+    function getEquipmentLab() {
+        var oldlabID = $("#lab_id").attr("data-value");
+        var oldEquipID = $("#equipments_id").attr("data-value");
+        // var oldEquipID = $("#equipments_id").val([1, 2, 3]);
+        console.log(oldlabID);
+        console.log(oldEquipID);
+
+        if (oldlabID != "") {
+            $.ajax({
+                url: "/productLab/equipmentinLab/" + oldlabID,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    console.log(data);
+                    $.each(data, function(key, value) {
+                        $("#equipments_id").append(`
+                                <option value="${value.id}">${value.equipment_code}</option>
+                            `);
+                    });
+                }
+            });
+        } else {
+            $("#equipments_id").html(`<option value=""></option>`);
+            $("#equipments_id").trigger("change");
+        }
+
+        $("#lab_id").on("select2:select select2:unselect", function() {
+            var id_lab = $("#lab_id").val();
+            $("#equipments_id").html(`<option value=""></option>`);
+            $("#equipments_id").trigger("change");
+            console.log(id_lab);
+            if (id_lab != "") {
+                $.ajax({
+                    url: "/productLab/equipmentinLab/" + id_lab,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(data) {
+                        console.log(data);
+                        $.each(data, function(key, value) {
+                            $("#equipments_id").append(`
+                                <option value=" ${value.id} " {{ in_array(${value.id}, old('equipments_id') ? : []) ? 'selected' : '' }}> ${value.equipment_code} </option>
+                            `);
+                        });
+                    }
+                });
+            } else {
+                $("#equipments_id").html(`<option value=""></option>`);
+                $("#equipments_id").trigger("change");
+            }
+        });
+    }
+    getEquipmentLab();
 });

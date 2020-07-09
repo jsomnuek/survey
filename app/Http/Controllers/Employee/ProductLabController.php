@@ -100,7 +100,7 @@ class ProductLabController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
 
         // Validate Check
         $this->validateProductLab();
@@ -269,6 +269,19 @@ class ProductLabController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function equipmentinLab ($labid)
+    {
+        // $data = $request->all();
+        // dd($data);
+        $allEquipment = Equipment::select('id','equipment_code')
+            ->where('lab_id', $labid)
+            ->orderBy('id', 'asc')
+            ->get();
+        return $allEquipment;
+        // return response()->json($allEquipment);
+        // return $amphoes;
     }
 
     protected function validateProductLab()

@@ -29,7 +29,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                 <label for="">เลือกห้องปฏิบัติการ</label>
-                                <select class="form-control  custom-select select2  @error('lab_id') is-invalid @enderror" name="lab_id" id="lab_id">
+                                <select class="form-control  custom-select select2  @error('lab_id') is-invalid @enderror" name="lab_id" id="lab_id" data-value="{{ old('lab_id') }}">
                                     <option value=""></option>
                                     @foreach ($labs ?? '' as $lab)
                                         <option value="{{$lab->id}}" {{ old('lab_id') ==  $lab->id ? 'selected' : ''}} > {{$lab->lab_name}} </option>
@@ -95,9 +95,9 @@
                                 <label for="">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ : <span><sup class="text-danger"> *</sup></span></label>
                                 <select class="form-control custom-select select2 @error('equipments_id') is-invalid @enderror" multiple="multiple" name="equipments_id[]" id="equipments_id" data-value="{{ old('equipments_id[]') }}">
                                     <option value="" disabled="disabled">disabled</option>
-                                    @foreach ($equipments ?? '' as $equipment)
+                                    {{-- @foreach ($equipments ?? '' as $equipment)
                                         <option value="{{ $equipment->id }}" {{ in_array($equipment->id, old('equipments_id') ? : []) ? 'selected' : '' }}>{{ $equipment->equipment_code }}</option>
-                                    @endforeach
+                                    @endforeach --}}
                                 </select>
                                 @error('equipments_id')
                                     <span class="invalid-feedback" role="alert">
@@ -303,10 +303,10 @@
     <script src="{{ asset('js/form-productLab.js') }}"></script>
     <script type="text/javascript">
         // 4.2
-        $('#product_type_id').val({{ json_encode($productTypes) }});
+        $('#product_type_id').val(json_encode($productTypes));
         $('#product_type_id').trigger('change');
         // 4.14 
-        $('#result_control_id').val({{ json_encode($resultControls) }});
+        $('#result_control_id').val(json_encode($resultControls));
         $('#result_control_id').trigger('change');
 
         $('#testing_calibrating_type_id').val($testingCalibratingType->id);

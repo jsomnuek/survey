@@ -30,6 +30,7 @@
                                 <th style="width: 10px">ลำดับ</th>
                                 <th>ชื่อผลิตภัณฑ์</th>
                                 <th>ประเภทรายการ</th>
+                                <th>ห้องปฏิบัติการ</th>
                                 <th style="width: 10em"><i class="fas fa-users-cog"></i></th>
                             </tr>
                         </thead>
@@ -42,6 +43,7 @@
                                 <td class="text-center">{{ $i++}}</td>
                                 <td>{{ $allProductLab->product_lab_name }}</td>
                                 <td>{{ $allProductLab->testingCalibratingList->testing_list_name}}</td>
+                                <td>{{ $allProductLab->lab->lab_name}}</td>
                                 <td><a href="/productLab/{{ $allProductLab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a> 
                                     {{-- <a href="/productLab/{{ $allProductLab->id }}/edit" class="btn btn-warning btn-sm">แก้ไขข้อมูล</a> --}}
                                 </td>

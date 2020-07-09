@@ -16,7 +16,7 @@
 
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="card-title">รายละเอียดรายการทดสอบ/สอบเทียบ</h3>
+                    <h3 class="card-title">รายละเอียดรายการทดสอบ/สอบเทียบ {{ $productLabs->lab->lab_name}}</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -34,7 +34,7 @@
                                 <th class="" style="width: 30%;">4.2 ประเภทผลิตภัณฑ์</th>
                                 <td>
                                     @forelse ($productLabs->productTypes as $item )
-                                        @if ($item->id !=1)
+                                        @if ($item->id !=39)
                                             <li>{{ $item->product_type_name }} </li>
                                         @else
                                             
@@ -45,7 +45,7 @@
                                     @endforelse
 
                                     @if ($productLabs->product_type_other != null)
-                                        <li>อื่นๆ {{ $productLabs->product_type_other }}</li>
+                                        <li>อื่นๆ : {{ $productLabs->product_type_other }}</li>
                                     @endif
                                 </td>
                             </tr>
@@ -78,15 +78,15 @@
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.7 ประเภทการทดสอบ/สอบเทียบ :</th>
-                                @if ($productLabs->testingCalibratingType->id != 5)
+                                @if ($productLabs->testingCalibratingType->id != 6)
                                     <td>{{ $productLabs->testingCalibratingType->testing_calibrating_type_name }}</td>   
                                 @else
-                                    <td>อื่นๆ {{ $productLabs->testing_calibrating_type_other }}</td>
+                                    <td>อื่นๆ : {{ $productLabs->testing_calibrating_type_other }}</td>
                                 @endif
                             </tr>
                             <tr>
-                                <th class="" style="width: 30%;">4.8 วิธีทดสอบ/สอบเทียบตามมาตราฐาน :</th>
-                                <td>{{ $productLabs->testingCalibratingMethod->testing_method_name }} รายละเอียด : {{$productLabs->testing_calibrating_method_detail}}</td>
+                                <th class="" style="width: 30%;">4.8 วิธีทดสอบ/สอบเทียบตามมาตราฐาน : </th>
+                                <td>{{ $productLabs->testingCalibratingMethod->testing_method_name }} <strong>รายละเอียด : </strong>{{$productLabs->testing_calibrating_method_detail}}</td>
                             </tr>
                             <tr>
                                 <th class="" style="width: 30%;">4.9 ช่วงความสามารถของการวัด :</th>
@@ -112,7 +112,7 @@
                                 <th class="" style="width: 30%;">4.14 การควบคุมคุณภาพผลการทดสอบภายใน :</th>
                                 <td>
                                     @forelse ($productLabs->resultControls as $item)
-                                    @if ($item->id !=1)
+                                    @if ($item->id !=7)
                                         <li>{{ $item->result_control_name }}</li>
                                     @else
                                         
@@ -122,7 +122,7 @@
                                 
                                 @endforelse
                                 @if ($productLabs->product_lab_result_control_other != null)
-                                    <li>อื่นๆ {{ $productLabs->product_lab_result_control_other }}</li>
+                                    <li>อื่นๆ : {{ $productLabs->product_lab_result_control_other }}</li>
                                 @endif
                                 </td>
                             </tr>
@@ -132,7 +132,7 @@
                                     @if ($productLabs->proficiency_testing == 1 )
                                         ยังไม่ได้ทดสอบความชำนาญห้องปฎิบัติการ
                                     @else
-                                        มีการทดสอบความชำนาญห้องปฏิบัติการ  โดย{{ $productLabs->proficiency_testing_by }} เมื่อปี {{ $productLabs->proficiency_testing_year }}
+                                        มีการทดสอบความชำนาญห้องปฏิบัติการ  <strong>โดย : </strong>{{ $productLabs->proficiency_testing_by }} <strong>เมื่อปี : </strong>{{ $productLabs->proficiency_testing_year }}
                                     @endif
                                 </td>
                             </tr>

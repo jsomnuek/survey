@@ -16,7 +16,7 @@
 
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="card-title">รายละเอียดรายการทดสอบ/สอบเทียบ</h3>
+                    <h3 class="card-title">รายละเอียดเครื่องมือ </h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fas fa-minus"></i>

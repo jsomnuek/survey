@@ -250,18 +250,20 @@ $(document).ready(function() {
 
     function getEquipmentLab() {
         var oldlabID = $("#lab_id").attr("data-value");
+        // var oldEquipID = document.getElementById("equipments_id").innerHTML;
         var oldEquipID = $("#equipments_id").attr("data-value");
         // var oldEquipID = $("#equipments_id").val([1, 2, 3]);
-        console.log(oldlabID);
-        console.log(oldEquipID);
+        // console.log(oldlabID);
+        // console.log(oldEquipID);
 
+        // เพื่อให้ค่าเก่าของ Lab ID กลับมาด้วย
         if (oldlabID != "") {
             $.ajax({
                 url: "/productLab/equipmentinLab/" + oldlabID,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     $.each(data, function(key, value) {
                         $("#equipments_id").append(`
                                 <option value="${value.id}">${value.equipment_code}</option>
@@ -274,6 +276,7 @@ $(document).ready(function() {
             $("#equipments_id").trigger("change");
         }
 
+        // เลือก Lab ID จากนั้นแสดงรายการเครื่องมือของแลปนั้นๆ
         $("#lab_id").on("select2:select select2:unselect", function() {
             var id_lab = $("#lab_id").val();
             $("#equipments_id").html(`<option value=""></option>`);

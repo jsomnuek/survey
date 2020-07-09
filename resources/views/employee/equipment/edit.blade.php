@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page')
-    Edit Equipment Lab
+    Edit Equipment
 @endsection
 
 @section('header-box-1')
@@ -9,375 +9,423 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+	<div class="row">
+		<!-- column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
             <div class="card">
-              <form action="/equipmentLab/{{$equipmentLabs->id}}" role="form" method="post">
-                @csrf
-                @method('PUT')
-                <div class="card-header bg-primary">
-                    <h1 class="card-title">ส่วนที่ 3 เครื่องมือวิทยาศาสตร์ </h1>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    {{-- 3.1equipmentID--}}
-                    <div class="col-md-6">
-                      <div class="form-group">
-                          <label for="">3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS)</label>
-                          <input type="text" name="equipment_lab_id" id="equipment_lab_id" class="form-control @error('equipment_lab_id') is-invalid @enderror" value="{{ $equipmentLabs->equipment_lab_id }}">
-                          @error('equipment_lab_id')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                              {{-- <strong>text assignment</strong> --}}
-                          </span>
-                          @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                    </div>
-                    {{-- 3.2equipmentNameEN /3.3equipmentNameTH --}}
-                    <div class="col-md-6">
-                      <div class="form-group">
-                          <label for="">3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ)</label>
-                          <select class="form-control custom-select select2 @error('science_tool_id') is-invalid @enderror" name="science_tool_id" id="science_tool_id" >
-                            <option value="">โปรดเลือกชื่อเครื่องมือ</option>
-                            @foreach ($scienceTools as $scienceTool)
-                                <option value="{{$scienceTool->id}}" {{ $equipmentLabs->science_tool_id ==  $scienceTool->id ? 'selected' : ''}}> {{$scienceTool->science_tool_abbr}} : {{$scienceTool->science_tool_name}} </option>
-                            @endforeach
-                          </select>
-                          @error('science_tool_id')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                              {{-- <strong>text assignment</strong> --}}
-                          </span>
-                          @enderror
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group d-none" id="display_science_tool_other_name">
-                        <label for="">ชื่อเครื่องมือ : </label>
-                        <input class="form-control @error('science_tool_other_name') is-invalid @enderror" type="text" name="science_tool_other_name" id="science_tool_other_name" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{ $equipmentLabs->science_tool_other_name}}">
-                        @error('science_tool_other_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong> {{ $message }}</strong>
-                        </span>
-                        @enderror
-                      </div>
-                    </div>
-                    <div class="col-md-2">
-                      <div class="form-group d-none" id="display_science_tool_other_abbr">
-                        <label for="">ชื่อย่อเครื่องมือ :</label>
-                        <input class="form-control @error('science_tool_other_abbr') is-invalid @enderror" type="text" name="science_tool_other_abbr" id="science_tool_other_abbr" placeholder="เช่น ABR" value="{{ $equipmentLabs->science_tool_other_abbr }}">
-                        @error('science_tool_other_abbr')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                            {{-- <strong>text assignment</strong> --}}
-                        </span>
-                        @enderror
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="">3.3 ชื่อเครื่องมือ (ภาษาไทย)</label>
-                        <input type="text" name="equipment_name_th" id="equipment_name_th" class="form-control" value="{{ $equipmentLabs->equipment_name_th}}">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                    {{-- 3.4equipmentBrand /3.5equipmentModel /3.6equipmentOrgCode--}}
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="">3.4 ยี่ห้อของเครืองมือ</label>
-                        <input type="text" name="equipment_brand" id="equipment_brand" class="form-control" value="{{ $equipmentLabs->equipment_brand }}">
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="">3.5 รุ่นของเครืองมือ</label>
-                        <input type="text" class=form-control name="equipment_model" id="equipment_model" value="{{ $equipmentLabs->equipment_model }}">
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="">3.6 รหัสเครื่องมือของหน่วยงาน (ถ้ามี)</label>
-                        <input type="text" class=form-control name="equipment_org_code" id="equipment_org_code" value="{{ $equipmentLabs->equipment_org_code }}">
-                      </div>
-                    </div>
-                    {{-- 3.7 3.8 3.9 --}}
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="">3.7 ปีที่ซื้อ</label>
-                        <input type="number" class=form-control name="equipment_year" id="equipment_year" value="{{ $equipmentLabs->equipment_year }}">
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="">3.8 มูลค่า</label>
-                        <input type="number" class=form-control name="equipment_price" id="equipment_price" value="{{ $equipmentLabs->equipment_price }}">
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="">3.9 บริษัทที่จัดจำหน่าย</label>
-                        <input type="text" class=form-control name="equipment_supplier" id="equipment_supplier" value="{{ $equipmentLabs->equipment_supplier }}">
-                      </div>
-                    </div>
-                    {{-- 3.10equipmentMajorTech/3.11objective_usages --}}
-                    <div class="col-md-6">
-                      <div class="form-group">
-                          <label for="">3.10 สาขาเทคโนโลยีของเครื่องมือ</label>
-                          <select class="form-control custom-select select2 @error('major_technologies_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="major_technologies_id[]" id="major_technologies_id" data-value="{{ old('major_technologies_id[]') }}">
-                            @foreach ($majorTechnologies as $majorTechnology)
-                                <option value="{{ $majorTechnology->id }}" {{ in_array($majorTechnology->id,  old('major_technologies_id') ? : []) ? 'selected' : '' }}>{{ $majorTechnology->major_tech_name }}</option>
-                            @endforeach
-                          </select>
-                          @error('major_technologies_id')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                              {{-- <strong>text assignment</strong> --}}
-                          </span>
-                          @enderror
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group d-none" id="display_major_technology_other" >
-                        <label for="">อื่นๆ โปรดระบุ  : </label>
-                        <input class="form-control" type="text" name="major_technology_other" id="" placeholder="" value="{{ $equipmentLabs->major_technologies_other }}">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="">3.11 วัตถุประสงค์การใช้งาน</label>
-                        <select class="form-control custom-select select2 @error('objective_usages_id') is-invalid @enderror" multiple="multiple" data-placeholder="โปรดเลือกรายการ"  name="objective_usages_id[]" id="objective_usages_id" data-value="{{ old('objective_usages_id[]') }}">
-                          <option value="" disabled="">disabled</option>
-                          @foreach ($objectiveUsages ?? '' as $objectiveUsage)
-                              <option value="{{ $objectiveUsage->id }}" {{ in_array($objectiveUsage->id, old('objective_usages_id') ? : []) ? 'selected' : '' }}>{{ $objectiveUsage->obj_usage_name }}</option>
-                          @endforeach
-                        </select>
-                        @error('objective_usages_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                            {{-- <strong>text assignment</strong> --}}
-                        </span>
-                        @enderror
-                      </div>
-                    </div>
-                    {{-- 3.12ขอบเขต / 3.13 / 3.14--}}
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="">3.12 ขอบเขตการใช้เครื่องมือ</label>
-                        <select class="form-control @error('equipment_usage_id') is-invalid @enderror" name="equipment_usage_id" id="equipment_usage_id"  >
-                          {{-- <option value="">โปรดเลือกขอบเขตการใช้งานเครื่องมือ</option> --}}
-                            @foreach ($equipmentUsages as $equipmentUsage)
-                              <option value="{{$equipmentUsage->id}}" {{ $equipmentLabs->equipment_usage_id ==  $equipmentUsage->id ? 'selected' : ''}}> {{$equipmentUsage->equipment_usage_name}} </option>
-                            @endforeach
-                        </select>
-                        @error('equipment_usage_id')
-                        <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                          {{-- <strong>text assignment</strong> --}}
-                        </span>
-                        @enderror
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="">3.13 ความสามารถของเครื่อง/ความละเอียด</label>
-                        <input type="text" class=form-control name="equipment_ability" id="equipment_ability" value="{{ $equipmentLabs->equipment_ability }}">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="">3.14 ภาพเครื่องมือ</label>
-                        <input type="file" class="form-control" name="equipment_pic" id="equipment_pic" value="">
-                      </div>
-                    </div>
-                    {{-- 3.15สอบเทียบ --}}
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <div class="row">
-                        <div class="col-md-2">
-                          <label for="">3.15 การสอบเทียบ</label>
-                        </div>
-                        <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_calibrations_id1" name="equipment_calibrations_id" value='1' {{ $equipmentLabs->equipment_calibrations_id == 1 ? 'checked' : ''}}>
-                          <label for="equipment_calibrations_id1" class="custom-control-label">ไม่มี</label> 
-                        </div>
-                        <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_calibrations_id2" name="equipment_calibrations_id" value='2' {{ $equipmentLabs->equipment_calibrations_id == 2 ? 'checked' : ''}}>
-                          <label for="equipment_calibrations_id2" class="custom-control-label">มี</label> 
-                        </div>
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" name="equipment_calibration_by" id="equipment_calibration_by" value="{{$equipmentLabs->equipment_calibration_by}}" placeholder="ชื่อหน่วยงานสอบเทียบ">
-                        </div>
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" name="equipment_calibration_year" id="equipment_calibration_year" value="{{ $equipmentLabs->equipment_calibration_year}}" placeholder="วัน/เดือน/ปี">
-                        </div>
-                        </div>
-                      </div>
-                    </div>
-                    {{-- 3.16equipmentMaintenance/3.17equipmentMaintenanceBudget --}}
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="">3.16	การตรวจเช็ค/บำรุงรักษาเครื่องมืออุปกรณ์ทางวิทยาศาสตร์</label>
-                        <select name="equipment_maintenance_id" id="equipment_maintenance_id" class="form-control custom-select select2 @error('equipment_maintenance_id') is-invalid @enderror">
-                          <option value="">โปรดเลือกขอบเขตการใช้งานเครื่องมือ</option>
-                          @foreach ($equipmentMaintenances as $equipmentMaintenance)
-                            <option value="{{$equipmentMaintenance->id}}" {{ $equipmentLabs->equipment_maintenance_id ==  $equipmentMaintenance->id ? 'selected' : ''}} > {{$equipmentMaintenance->equipment_maintenance_name}} </option>
-                          @endforeach
-                        </select>
-                        @error('equipment_maintenance_id')
-                        <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                          {{-- <strong>text assignment</strong> --}}
-                        </span>
-                        @enderror
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group d-none" id="display_equipment_maintenance_other">
-                        <label for="">อื่นๆ โปรดระบุ  : </label>
-                        <input class="form-control" type="text" name="equipment_maintenance_other" id="equipment_maintenance_other" placeholder="หากเลือกอื่นๆ โปรดระบุรายละเอียด" value="{{  $equipmentLabs->equipment_maintenance_other }}">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">    
-                        <label for="">3.17 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท)</label>
-                        <input type="number" class="form-control" name="equipment_maintenance_budget" id="equipment_maintenance_budget" value="{{  $equipmentLabs->equipment_maintenance_budget }}">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                      
-                      </div>
-                    </div>
-                    {{-- 3.18equipmentAdmin --}}
-                    <div class="col-md-12">
-                      <label for="">3.18 ผู้ดูแลเครื่องมือ</label>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        ชื่อผู้ดูแล
-                        <input type="text" class="form-control @error('equipment_admin_name') is-invalid @enderror" name="equipment_admin_name" id="equipment_admin_name" value="{{  $equipmentLabs->equipment_admin_name }}">
-                        @error('equipment_admin_name')
-                        <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                          {{-- <strong>text assignment</strong> --}}
-                        </span>
-                        @enderror
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        เบอร์โทรศัพท์
-                        <input type="text" class="form-control" name="equipment_admin_phone" id="equipment_admin_phone" value="{{  $equipmentLabs->equipment_admin_phone }}">
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        Email
-                        <input type="email" class="form-control" name="equipment_admin_email" id="equipment_admin_email" value="{{ $equipmentLabs->equipment_admin_email }}">
-                      </div>
-                    </div>
-                    {{-- 3.19equipmentManual  --}}
-                    <div class="col-md-12">
-                      <label for="">3.19 คู่มือการใช้งาน</label>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="row form-group">
-                        <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_manuals_id1" name="equipment_manuals_id" value='1' {{ $equipmentLabs->equipment_manuals_id == 1 ? 'checked' : ''}}>
-                          <label for="equipment_manuals_id1" class="custom-control-label">ไม่มี</label> 
-                        </div>
-                        <div class="col-md-2 custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="equipment_manuals_id2" name="equipment_manuals_id" value='2' {{$equipmentLabs->equipment_manuals_id == 2 ? 'checked' : ''}}>
-                          <label for="equipment_manuals_id2" class="custom-control-label">มี</label> 
-                        </div>
-                        <div class="col-md-4">
-                          <div class="" id="display_equipment_manual_name">
-                          <input type="text" class="form-control" name="equipment_manual_name" id="equipment_manual_name" placeholder="ชื่อคู่มือ/รหัสคู่มือ" value="{{ $equipmentLabs->equipment_manual_name}}">
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="" id="display_equipment_manual_locate">
-                            <input type="text" class="form-control" name="equipment_manual_locate" id="equipment_manual_locate" placeholder="สถานที่จัดเก็บ/ลิงก์ดาวน์โหลด" value="{{ $equipmentLabs->equipment_manual_locate}}">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {{-- 2.21equipmentRent --}}
-                    <div class="col-md-4">
-                      <div class="form-group">
-                      <label for="">3.20 การให้เช่าใช้เครื่องมือ</label>
-                      @error('equipment_rent_id')
-                        <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                          {{-- <strong>text assignment</strong> --}}
-                        </span>
-                        @enderror
-                      </div>
-                    </div>
-                    <div class="col-md-4 custom-control custom-radio">
-                      <div class="form-group">
-                        <input class="custom-control-input @error('equipment_rent_id') is-invalid @enderror" type="radio" id="equipment_rent1" name="equipment_rent_id" value=1 {{$equipmentLabs->equipments_rent_id == 1 ? 'checked' : ''}}>
-                        <label for="equipment_rent1" class="custom-control-label">ไม่ให้บุคคลภายนอกเช่าใช้</label>
-                      </div>
-                    </div>
-                    <div class="col-md-4 custom-control custom-radio">
-                      <div class="form-group">
-                        <input class="custom-control-input @error('equipment_rent_id') is-invalid @enderror" type="radio" id="equipment_rent2" name="equipment_rent_id" value=2 {{$equipmentLabs->equipments_rent_id  == 2 ? 'checked' : ''}}>
-                        <label for="equipment_rent2" class="custom-control-label">ให้บุคคลภายนอกเช่าใช้</label>
-                      </div> 
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        3.20.1 ค่าบริการต่อครั้ง (บาท)
-                        <input type="number" class="form-control" name="equipment_rent_fee" id="equipment_rent_fee" value="{{ $equipmentLabs->equipment_rent_fee}}">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">    
-                        3.20.2 เงื่อนไขการขอยืม/ใช้งานเครื่องมือ 
-                        <input type="text" class="form-control" name="equipment_rent_detail" id="equipment_rent_detail" value="{{ $equipmentLabs->equipment_rent_detail}}">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {{-- card footer --}}
-                <div class="card-footer">
-                  <div class="d-flex justify-content-between">
-                      <a href="/equipmentLab" class="btn btn-secondary btn-lg">
-                          <i class="fas fa-undo"></i>
-                          ย้อนกลับ
-                      </a>
-                      <button type="submit" class="btn btn-primary btn-lg">
-                          ยืนยันการแก้ไข
-                          <i class="fas fa-save"></i>
-                      </button>
-                  </div>
-                </div>
-                {{-- end card footer --}}
-              </form>
-            </div>
-        </div>
-    </div>
-</div>
+				<!-- form start -->
+				<form action="/equipments/{{ $equipment->id }}" method="POST" enctype="multipart/form-data" role="form">
+                    @csrf
+                    @method('PUT')
+					<div class="card-header">
+						<h3 class="card-title">ส่วนที่ 3 เครื่องมือวิทยาศาสตร์</h3>
+					</div>
+					<!-- /.card-header -->
+					<div class="card-body py-2">
+						<div class="row">
+							<div class="col-md-12 mb-3">
+                                <strong>หมายเหตุ: <span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
+                            </div>
+							{{-- ./col --}}
+							<div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="lab_id">ห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <select class="form-control custom-select select2 @error('lab_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="lab_id" id="lab_id" required>
+                                        <option value="" selected disabled="disabled">disabled</option>
+                                        @foreach ($labs as $lab)
+                                        <option value="{{ $lab->id }}" {{ $equipment->lab_id == $lab->id ? 'selected' : '' }}>
+                                            {{ $lab->lab_name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    @error('lab_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.1 equipment_code --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_code">3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS) :<span><sup class="text-danger"> *</sup></span></label>
+									<input type="text" name="equipment_code" id="equipment_code" class="form-control @error('equipment_code') is-invalid @enderror" value="{{ $equipment->equipment_code }}" >
+									@error('equipment_code')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+										{{-- <strong>text assignment</strong> --}}
+									</span>
+									@enderror
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.2 science_tool_id --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="science_tool_id">3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"> *</sup></span></label>
+									<select class="form-control custom-select select2 @error('science_tool_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="science_tool_id" id="science_tool_id">
+                                        <option value="" selected disabled="disabled">disabled</option>
+                                        @foreach ($scienceTools as $scienceTool)
+                                        <option value="{{ $scienceTool->id }}" {{ $equipment->science_tool_id == $scienceTool->id ? 'selected' : '' }}>
+                                            {{ $scienceTool->science_tool_name }} : {{ $scienceTool->science_tool_abbr }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    @error('science_tool_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+								</div>
+							</div>
+							{{-- ./col --}}
+							<div class="col-md-6">
+								<div class="form-group d-none" id="display_science_tool_other_name">
+									<label for="science_tool_other_name">ชื่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"> *</sup></span></label>
+									<input class="form-control @error('science_tool_other_name') is-invalid @enderror" type="text" name="science_tool_other_name" id="science_tool_other_name" placeholder="กรณีเลือก Other โปรดระบุรายละเอียด" value="{{ $equipment->science_tool_other_name }}">
+									@error('science_tool_other_name')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+									@enderror
+								</div>
+							</div>
+							{{-- ./col --}}
+							<div class="col-md-6">
+								<div class="form-group d-none" id="display_science_tool_other_abbr">
+									<label for="science_tool_other_abbr">ชื่อย่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"> *</sup></span></label>
+									<input class="form-control @error('science_tool_other_abbr') is-invalid @enderror" type="text" name="science_tool_other_abbr" id="science_tool_other_abbr" placeholder="กรณีเลือก Other โปรดระบุ เช่น ABR" value="{{ $equipment->science_tool_other_abbr }}">
+									@error('science_tool_other_abbr')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+									@enderror
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.3 equipment_name_th --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_name_th">3.3 ชื่อเครื่องมือ (ภาษาไทย) :</label>
+									<input type="text" name="equipment_name_th" id="equipment_name_th" class="form-control" value="{{ $equipment->equipment_name_th }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.4 equipment_brand --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_brand">3.4 ยี่ห้อของเครืองมือ :</label>
+									<input type="text" name="equipment_brand" id="equipment_brand" class="form-control" value="{{ $equipment->equipment_brand }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.5 equipment_model --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="">3.5 รุ่นของเครืองมือ :</label>
+									<input type="text" name="equipment_model" id="equipment_model" class="form-control" value="{{ $equipment->equipment_model }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.6 equipment_number --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_number">3.6 รหัสเครื่องมือของหน่วยงาน/รหัสครุภัณฑ์ (ถ้ามี) :</label>
+									<input type="text" name="equipment_number" id="equipment_number" class="form-control" value="{{ $equipment->equipment_number }}">
+								</div>							
+							</div>
+							{{-- ./col --}}
+							{{-- 3.7 equipment_year --}}
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="equipment_year">3.7 ปีที่ซื้อ :</label>
+									<input type="text" name="equipment_year" id="equipment_year" class="form-control" min="0" value="{{ $equipment->equipment_year }}" data-inputmask='"mask": "9999"' data-mask>
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.8 equipment_price --}}
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="equipment_price">3.8 มูลค่า (บาท) :</label>
+									<input type="number" name="equipment_price" id="equipment_price" class="form-control" min="0" value="{{ $equipment->equipment_price }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.9 equipment_supplier --}}
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="equipment_supplier">3.9 บริษัทที่จัดจำหน่าย :</label>
+									<input type="text" name="equipment_supplier" id="equipment_supplier" class="form-control" value="{{ $equipment->equipment_supplier }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.10 major_technology_id --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="major_technology_id">3.10 สาขาเทคโนโลยีของเครื่องมือ (เลือกได้มากกว่า 1 คำตอบ) : <span><sup class="text-danger"> *</sup></span></label>
+									<select class="form-control custom-select select2-multi @error('major_technology_id') is-invalid @enderror" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="major_technology_id[]" id="major_technology_id">
+                                        {{-- <option value="" disabled="disabled">disabled</option> --}}
+                                        @foreach ($majorTechnologies as $majorTechnology)
+                                        <option value="{{ $majorTechnology->id }}" {{ in_array($majorTechnology->id, old('major_technology_id') ? : []) ? 'selected' : '' }}>
+                                            {{ $majorTechnology->major_tech_name }}
+                                        </option>
+                                        @endforeach
+									</select>
+									@error('major_technology_id')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+									@enderror
+								</div>
+								<div class="form-group d-none" id="display_major_technology_other">
+									<label for="major_technology_other">กรณีเลือกอื่น ๆ โปรดระบุ :<span><sup class="text-danger"> *</sup></label>
+									<input class="form-control" type="text" name="major_technology_other" id="major_technology_other" placeholder="โปรดระบุรายละเอียด" value="{{ $equipment->major_technology_other }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.11 objective_usage_id --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="objective_usage_id">3.11 วัตถุประสงค์การใช้งาน (เลือกได้มากกว่า 1 คำตอบ) :<span><sup class="text-danger"> *</sup></span></label>
+									<select class="form-control custom-select select2-multi @error('objective_usage_id') is-invalid @enderror" multiple="multiple" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="objective_usage_id[]" id="objective_usage_id">
+                                        {{-- <option value="" disabled="disabled">disabled</option> --}}
+                                        @foreach ($objectiveUsages ?? '' as $objectiveUsage)
+											<option value="{{ $objectiveUsage->id }}" {{ in_array($objectiveUsage->id, old('objective_usage_id') ? : []) ? 'selected' : '' }}>
+												{{ $objectiveUsage->obj_usage_name }}
+											</option>
+										@endforeach
+									</select>
+									@error('objective_usage_id')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.12 equipment_usage_id --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_usage_id">3.12 ขอบเขตการใช้เครื่องมือ :<span><sup class="text-danger"> *</sup></label>
+									<select class="form-control custom-select select2 @error('equipment_usage_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="equipment_usage_id" id="equipment_usage_id">
+										<option value="" selected disabled="disabled">disabled</option>
+										@foreach ($equipmentUsages as $equipmentUsage)
+										<option value="{{$equipmentUsage->id}}" {{ $equipment->equipment_usage_id ==  $equipmentUsage->id ? 'selected' : '' }}>
+											{{$equipmentUsage->equipment_usage_name}}
+										</option>
+										@endforeach
+									</select>
+									@error('equipment_usage_id')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror									
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.13 equipment_ability --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_ability">3.13 ความสามารถของเครื่อง/ความละเอียด :</label>
+									<input type="text" class="form-control" name="equipment_ability" id="equipment_ability" value="{{ $equipment->equipment_ability }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.13 equipment_image --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_image">3.14 รูปภาพเครื่องมือ (.jpg, .jpeg, .png) :</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input @error('equipment_image') is-invalid @enderror" name="equipment_image" id="equipment_image">
+                                        <label class="custom-file-label" for="equipment_image">
+                                            Choose file...
+                                        </label>                                            
+                                        @error('equipment_image')
+                                        <span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+                                        @enderror
+                                    </div>                                   																	
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.15 equipment_calibration_id --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_calibration_id">3.15 การสอบเทียบ :</label>
+									<select class="form-control custom-select select2"  data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="equipment_calibration_id" id="equipment_calibration_id">
+										<option value="" selected disabled="disabled">disabled</option>
+										<option value="1" {{ $equipment->equipment_calibration_id ==  1 ? 'selected' : '' }}>ไม่มี</option>
+										<option value="2" {{ $equipment->equipment_calibration_id ==  2 ? 'selected' : '' }}>มี</option>
+									</select>
+								</div>
+								<div class="form-group" id="display_equipment_calibration_by">
+									<label for="equipment_calibration_by">กรณีเลือก "มี" โปรดระบุ :<span><sup class="text-danger"> *</sup></label>
+									<input class="form-control" type="text" name="equipment_calibration_by" id="equipment_calibration_by" placeholder="ชื่อหน่วยงานสอบเทียบ" value="{{ $equipment->equipment_calibration_by }}">
+								</div>
+								<div class="form-group" id="display_equipment_calibration_year">
+									<label for="equipment_calibration_by">กรณีเลือก "มี" โปรดระบุ :<span><sup class="text-danger"> *</sup></label>
+									<input class="form-control" type="text" name="equipment_calibration_year" id="equipment_calibration_year" placeholder="วัน/เดือน/ปี" value="{{ $equipment->equipment_calibration_year }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.16 equipment_maintenance_id --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_maintenance_id">
+										3.16 การตรวจเช็ค/บำรุงรักษาเครื่องมืออุปกรณ์ทางวิทยาศาสตร์ :
+										<span><sup class="text-danger"> *</sup>
+									</label>
+									<select class="form-control custom-select select2 @error('equipment_maintenance_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="equipment_maintenance_id" id="equipment_maintenance_id">
+										<option value="" selected disabled="disabled">disabled</option>
+										@foreach ($equipmentMaintenances as $item)
+										<option value="{{ $item->id }}" {{ $equipment->equipment_maintenance_id ==  $item->id ? 'selected' : ''}} >
+											{{ $item->equipment_maintenance_name }}
+										</option>
+										@endforeach
+									</select>
+									@error('equipment_maintenance_id')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+								<div class="form-group d-none" id="display_equipment_maintenance_other">
+									<label for="">ในกรณีเลือกอื่น ๆ โปรดระบุ :<span><sup class="text-danger"> *</sup></label>
+									<input class="form-control" type="text" name="equipment_maintenance_other" id="equipment_maintenance_other" placeholder="" value="{{ $equipment->equipment_maintenance_other }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.17 equipment_maintenance_budget --}}
+							<div class="col-md-6">
+								<div class="form-group">    
+									<label for="equipment_maintenance_budget">3.17 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท) :</label>
+									<input type="number" min="0" class="form-control" name="equipment_maintenance_budget" id="equipment_maintenance_budget" value="{{ $equipment->equipment_maintenance_budget }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.18 --}}
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="equipment_admin_name">3.18 ชื่อผู้ดูแลเครื่องมือ :<span><sup class="text-danger"> *</sup></label>
+									<input type="text" class="form-control @error('equipment_admin_name') is-invalid @enderror" name="equipment_admin_name" id="equipment_admin_name" value="{{ $equipment->equipment_admin_name }}">
+									@error('equipment_admin_name')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+							</div>
+							{{-- ./col --}}
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="equipment_admin_phone">เบอร์โทรศัพท์ :</label>
+									<input type="text" class="form-control" name="equipment_admin_phone" id="equipment_admin_phone" value="{{ $equipment->equipment_admin_phone }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="equipment_admin_email">อีเมล :</label>
+									<input type="email" class="form-control" name="equipment_admin_email" id="equipment_admin_email" value="{{ $equipment->equipment_admin_email }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.19 --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_manual_id">3.19 คู่มือการใช้งาน</label>
+									<select class="form-control custom-select select2 @error('equipment_manual_id') is-invalid @enderror"  data-placeholder="-- โปรดเลือก --" style="width: 100%;"  name="equipment_manual_id" id="equipment_manual_id">
+										<option value="" selected disabled="disabled">disabled</option>
+										<option value="1" {{ $equipment->equipment_manual_id ==  1 ? 'selected' : '' }}>ไม่มี</option>
+										<option value="2" {{ $equipment->equipment_manual_id ==  2 ? 'selected' : '' }}>มี</option>
+									</select>
+									@error('equipment_manual_id')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+								<div class="form-group" id="display_equipment_manual_name">
+									<label for="equipment_manual_name">กรณีเลือก "มี" โปรดระบุ :<span><sup class="text-danger"> *</sup></label>
+									<input type="text" class="form-control" name="equipment_manual_name" id="equipment_manual_name" placeholder="ชื่อคู่มือ/รหัสคู่มือ" value="{{ $equipment->equipment_manual_name }}">
+								</div>
+								<div class="form-group" id="display_equipment_manual_locate">
+									<label for="equipment_manual_location">กรณีเลือก "มี" โปรดระบุ :<span><sup class="text-danger"> *</sup></label>
+									<input type="text" class="form-control" name="equipment_manual_location" id="equipment_manual_location" placeholder="สถานที่จัดเก็บ/ลิงก์ดาวน์โหลด" value="{{ $equipment->equipment_manual_location }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+							{{-- 3.20 --}}
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="equipment_rent_id">3.20 การให้เช่าใช้เครื่องมือ :<span><sup class="text-danger"> *</sup></label>
+									<select class="form-control custom-select select2 @error('equipment_rent_id') is-invalid @enderror"  data-placeholder="-- โปรดเลือก --" style="width: 100%;"  name="equipment_rent_id" id="equipment_rent_id">
+										<option value="" selected disabled="disabled">disabled</option>
+										<option value="1" {{ $equipment->equipment_rent_id ==  1 ? 'selected' : ''}}>
+											ไม่ให้บุคคลภายนอกเช่า
+										</option>
+										<option value="2" {{ $equipment->equipment_rent_id ==  2 ? 'selected' : ''}}>
+											ให้บุคคลภายนอกเช่าใช้ได้
+										</option>
+									</select>
+									@error('equipment_rent_id')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+								<div class="form-group" id="display_equipment_rent_fee">
+									<label for="equipment_rent_fee">
+										3.20.1 ค่าบริการต่อครั้ง (บาท) หากไม่คิดระบุเป็น "0 บาท" :
+										<span><sup class="text-danger"> *</sup></label>
+										<input type="number" class="form-control" name="equipment_rent_fee" id="equipment_rent_fee" value="{{ $equipment->equipment_rent_fee }}">
+								</div>
+								<div class="form-group" id="display_equipment_rent_detail">
+									<label for="equipment_rent_detail">
+										3.20.2 เงื่อนไขการขอยืม/ใช้งานเครื่องมือ :
+										<span><sup class="text-danger"> *</sup>
+									</label>
+									<input type="text" class="form-control" name="equipment_rent_detail" id="equipment_rent_detail" placeholder="" value="{{ $equipment->equipment_rent_detail }}">
+								</div>
+							</div>
+							{{-- ./col --}}
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /.card-body -->
+					<div class="card-footer">
+						<div class="d-flex justify-content-between">
+							<a href="/equipments/{{ $equipment->id }}" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-backward"></i>
+                                ย้อนกลับ
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                บันทึกข้อมูล
+                                <i class="fas fa-save"></i>
+                            </button>
+						</div>
+					</div>
+					<!-- /.card-footer -->
+				</form>
+				<!-- form end -->
+			</div>
+			{{-- ./card --}}
+		</div>
+		{{-- ./col --}}
+	</div>
+	{{-- ./row --}}
 @endsection
 
 @section('scripts')
     <script src="{{ asset('js/components.js') }}"></script>
-    <script src="{{ asset('js/form-equipmentLab.js') }}"></script>
+    <script src="{{ asset('js/form-equipment.js') }}"></script>
     <script type="text/javascript">
-      // 3.10
-      $('#major_technologies_id').val({{ json_encode($majorTechnologyItem) }});
-      $('#major_technologies_id').trigger('change');
-      // 3.11
-      $('#objective_usages_id').val({{ json_encode($objectiveUsageItem) }});
-      $('#objective_usages_id').trigger('change');
-      
-      // 3.19
-      //$('.equipment_manuals_id').val($equipment_manuals_id);
-      //$('.equipment_manuals_id').trigger('onClick');
+		$('#major_technology_id').val({{ $major_technology_item }});
+        $('#major_technology_id').trigger('change');
+		$('#objective_usage_id').val({{ $objective_usage_item }});
+        $('#objective_usage_id').trigger('change');
     </script>
 @endsection

@@ -26,7 +26,7 @@ class CreateEquipmentsTable extends Migration
             $table->string('equipment_model', 255)->nullable()->comment('รุ่นเครื่องมือ');                       
             $table->string('equipment_number', 255)->nullable()->comment('รหัสเครื่องมือในหน่วยงาน');          
             $table->integer('equipment_year')->nullable()->comment('ปีที่ซื้อเครื่องมือ');                          
-            $table->integer('equipment_price')->nullable()->comment('มูลค่าเครื่องมือ');                         
+            $table->bigInteger('equipment_price')->nullable()->comment('มูลค่าเครื่องมือ');                         
             $table->string('equipment_supplier', 255)->nullable()->comment('บริษัทที่จำหน่าจย');                
             //3.10 สาขาเทคโนเครื่องมือ FK many with other table
             $table->string('major_technology_other', 255)->nullable()->comment('สาขาเทคโนเครื่องมืออื่นๆ ');   
@@ -36,18 +36,18 @@ class CreateEquipmentsTable extends Migration
             $table->string('equipment_image')->nullable()->comment('รูปเครื่องมือ');                              
             $table->integer('equipment_calibration_id')->nullable()->comment('การสอบเทียบเครื่องมือ');         
             $table->string('equipment_calibration_by', 255)->nullable()->comment('การสอบเทียบเครื่องมือโดย');   
-            $table->integer('equipment_calibration_year')->nullable()->comment('การสอบเทียบเครื่องมือปี');    
+            $table->string('equipment_calibration_year')->nullable()->comment('การสอบเทียบเครื่องมือปี');    
             $table->unsignedBigInteger('equipment_maintenance_id')->nullable()->comment('การบำรุงรักษา');     
             $table->string('equipment_maintenance_other')->nullable()->comment('การบำรุงรักษาอื่นๆ');           
-            $table->integer('equipment_maintenance_budget')->nullable()->comment('ค่าบำรุงรักษา');              
+            $table->bigInteger('equipment_maintenance_budget')->nullable()->comment('ค่าบำรุงรักษา');              
             $table->string('equipment_admin_name', 255)->nullable()->comment('ผู้ดูแลเครื่องมือชื่อ');              
             $table->string('equipment_admin_phone', 255)->nullable()->comment('ผู้ดูแลเครื่องมือเบอร์โทร');           
             $table->string('equipment_admin_email', 255)->nullable()->comment('ผู้ดูแลเครื่องมืออีเมล์');              
             $table->integer('equipment_manual_id')->nullable()->comment('คู่มือเครื่องมือ');                   
             $table->string('equipment_manual_name', 255)->nullable()->comment('ชื่อคู่มือเครื่องมือ');                   
             $table->string('equipment_manual_location', 255)->nullable()->comment('ที่อยู่คู่มือเครื่องมือ');          
-            $table->integer('equipment_rent_id')->nullable()->comment('เช่าใช้เครื่องมือ');          
-            $table->integer('equipment_rent_fee')->nullable()->comment('ค่าเช่าใช้เครื่องมือ'); 
+            $table->unsignedBigInteger('equipment_rent_id')->nullable()->comment('เช่าใช้เครื่องมือ');          
+            $table->bigInteger('equipment_rent_fee')->nullable()->comment('ค่าเช่าใช้เครื่องมือ'); 
             $table->string('equipment_rent_detail', 255)->nullable()->comment('รายละเอียดเช่าใช้เครื่องมือ');
             // note - dont forget to add nullable 
 

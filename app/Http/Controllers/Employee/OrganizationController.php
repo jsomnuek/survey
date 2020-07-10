@@ -172,6 +172,11 @@ class OrganizationController extends Controller
     {
         // $org = Organization::find($id);
         $org = Organization::findOrFail($id);
+
+        // Check for correct user
+        if(auth()->user()->id !== $org->user_id){
+            return redirect()->route('organization.index')->with('error', 'Unauthorized Page');
+        }
         
         return view('employee.organization.show', [
             'org' => $org,
@@ -187,6 +192,12 @@ class OrganizationController extends Controller
     public function edit($id)
     {
         $org = Organization::findOrFail($id);
+
+        // Check for correct user
+        if(auth()->user()->id !== $org->user_id){
+            return redirect()->route('organization.index')->with('error', 'Unauthorized Page');
+        }
+
         // data for loop select
         $saleProducts = SaleProduct::where('sale_product_status', 'A')->get();
         $countrys = Country::where('country_status', 'A')->get();

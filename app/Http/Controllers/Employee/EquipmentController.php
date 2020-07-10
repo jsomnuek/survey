@@ -168,7 +168,12 @@ class EquipmentController extends Controller
     public function show($id)
     {
         $equipment = Equipment::findOrFail($id);
-        // return $lab;
+
+        // Check for correct user
+        if(auth()->user()->id !== $equipment->user_id){
+            return redirect()->route('equipments.index')->with('error', 'Unauthorized Page');
+        }
+        
         return view('employee.equipment.show', ['equipment' => $equipment]);
     }
 
@@ -181,6 +186,12 @@ class EquipmentController extends Controller
     public function edit($id)
     {
         $equipment = Equipment::findOrFail($id);
+
+        // Check for correct user
+        if(auth()->user()->id !== $equipment->user_id){
+            return redirect()->route('equipments.index')->with('error', 'Unauthorized Page');
+        }
+
         // data for loop select
         $labs = Lab::where('user_id', auth()->user()->id)->get();
         $scienceTools = ScienceTool::where('science_tool_status','A')->get();

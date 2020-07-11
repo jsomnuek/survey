@@ -16,7 +16,7 @@
 
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="card-title">รายละเอียดรายการทดสอบ/สอบเทียบ</h3>
+                    <h3 class="card-title">รายละเอียดเครื่องมือ </h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -210,13 +210,17 @@
                 {{-- card footer --}}
                 <div class="card-footer">
                     <div class="d-flex justify-content-between">
-                        <a href="/equipments/{{ $equipment->id }}/edit" class="btn btn-secondary btn-lg">
-                            <i class="fas fa-edit"></i>
-                            แก้ไขข้อมูล
-                        </a>
-                        <a href="/equipments" class="btn btn-success btn-lg">
-                            ตกลง
-                        </a>
+                        @if (!Auth::guest())                            
+                            @if (Auth::user()->id == $equipment->user_id)
+                                <a href="/equipments/{{ $equipment->id }}/edit" class="btn btn-secondary btn-lg">
+                                    <i class="fas fa-edit"></i>
+                                    แก้ไขข้อมูล
+                                </a>
+                                <a href="/equipments" class="btn btn-success btn-lg">
+                                    ตกลง
+                                </a>
+                            @endif
+                        @endif 
                     </div>
                 </div>
                 {{-- /.card footer --}}

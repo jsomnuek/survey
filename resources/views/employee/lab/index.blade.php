@@ -49,7 +49,7 @@
 									<a href="/labs/{{ $lab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
 								</td>
 								<td>
-									<a href="{{ route('productLab.createFromLabID', $lab->id ) }}" class="btn btn-info btn-sm">เพิ่มข้อมูลการทดสอบ</a>
+									<a href="{{ route('productLab.create-from-lab', $lab->id ) }}" class="btn btn-info btn-sm">เพิ่มข้อมูลการทดสอบ</a>
 								</td>
 							</tr>                                
 							@endforeach

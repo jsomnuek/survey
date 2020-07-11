@@ -21,8 +21,6 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.css') }}">
-    {{-- Dropzone --}}
-    <link rel="stylesheet" href="{{ asset('plugins/dropzone/dist/min/dropzone.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
@@ -130,9 +128,6 @@
         });
         });
     </script>
-
-    {{-- Dropzone --}}
-    <script src="{{ asset('plugins/dropzone/dist/dropzone.js') }}"></script>
 
     {{-- Developer --}}
     @yield('scripts')

@@ -78,3 +78,9 @@ Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function(){
     Route::resource('/equipments','Employee\EquipmentController');
     Route::resource('/productLab','Employee\ProductLabController');
 });
+
+Route::middleware(['checkRole:admin,approver'])->group(function() {
+    Route::get('/unApproveQuestionnaire', 'Questionnaire\QuestionnaireController@showUnApproveQuestionnaire');
+    Route::get('/approvedQuestionnaire', 'Questionnaire\QuestionnaireController@showApprovedQuestionnaire');
+    Route::get('/verifyQuestionnaire', 'Questionnaire\QuestionnaireController@showVerifyQuestionnaire');
+});

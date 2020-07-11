@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Model\Employee\Lab;
 use App\Model\Employee\Organization;
 use App\Model\Employee\EducationLevelLab;
+
 use App\Model\Employee\Development\Internal;
 use App\Model\Employee\Development\IsoIec17025;
 use App\Model\Employee\Development\Method;
@@ -15,6 +16,7 @@ use App\Model\Employee\Development\Safety;
 use App\Model\Employee\Development\Statistic;
 use App\Model\Employee\Development\Technique;
 use App\Model\Employee\Development\Uncertainty;
+
 use App\Model\BasicInformations\LocationLab;
 use App\Model\BasicInformations\IndustrialEstate;
 use App\Model\BasicInformations\LaboratoryType;
@@ -48,7 +50,7 @@ class LabController extends Controller
         $labs = Lab::where('user_id', auth()->user()->id)->get();
         return view('employee.lab.index', [
             'labs' => $labs
-            ]);
+        ]);
     }
 
     /**
@@ -80,6 +82,11 @@ class LabController extends Controller
         ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function createByOrgId($orgId)
     {
         // data for loop select
@@ -214,7 +221,7 @@ class LabController extends Controller
             // create log activity
             LogActivity::addToLog('Add Lab to an Oranization : " ' . $lab->lab_name . ' to ' .$lab->organization_id . ' " successfully.');
 
-            return redirect()->route('labs.show', $lab->id);
+            return redirect()->route('lab.show', $lab->id);
         }
     }
 
@@ -230,7 +237,7 @@ class LabController extends Controller
 
         // Check for correct user
         if(auth()->user()->id !== $lab->user_id){
-            return redirect()->route('labs.index')->with('error', 'Unauthorized Page');
+            return redirect()->route('lab.index')->with('error', 'Unauthorized Page');
         }
 
         return view('employee.lab.show', ['lab' => $lab]);
@@ -248,7 +255,7 @@ class LabController extends Controller
 
         // Check for correct user
         if(auth()->user()->id !== $lab->user_id){
-            return redirect()->route('labs.index')->with('error', 'Unauthorized Page');
+            return redirect()->route('lab.index')->with('error', 'Unauthorized Page');
         }
 
         $organizations = Organization::where('user_id', auth()->user()->id)->get();
@@ -377,7 +384,8 @@ class LabController extends Controller
 
             // create log activity
             LogActivity::addToLog('Edit Lab in an Oranization : " ' . $lab->lab_name . ' to ' .$lab->organization_id . ' " successfully.');
-            return redirect()->route('labs.show', $lab->id);
+            
+            return redirect()->route('lab.show', $lab->id);
         }
     }
 

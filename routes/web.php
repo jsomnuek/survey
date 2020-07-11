@@ -70,12 +70,19 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::get('logActivity','LogActivityController@index');
 });
 
-Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function(){
+Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function() {
+    // OrganizationController
     Route::resource('/organization', 'Employee\OrganizationController');
-    Route::resource('/labs', 'Employee\LabController');
-    Route::get('/labs/create-org-id/{id}', 'Employee\LabController@createByOrgId')->name('labs.create-org-id');
-    Route::get('/productLab/create-form-lab/{id}', 'Employee\ProductLabController@createFromLabID')->name('productLab.create-from-lab');
-    Route::get('/productLab/equipmentinLab/{id}', 'Employee\ProductLabController@equipmentinLab');
-    Route::resource('/equipments','Employee\EquipmentController');
-    Route::resource('/productLab','Employee\ProductLabController');
+
+    // LabController
+    Route::get('/lab/create-org-id/{id}', 'Employee\LabController@createByOrgId')->name('lab.create-org-id');
+    Route::resource('/lab', 'Employee\LabController');
+
+    // EquipmentController
+    Route::get('/equipment/create-lab-id/{id}', 'Employee\EquipmentController@createByLabId')->name('equipment.create-lab-id');
+    Route::resource('/equipment','Employee\EquipmentController');
+
+    // ProductLabController
+    Route::get('/productlab/create-lab-id/{id}', 'Employee\ProductLabController@createByLabId')->name('productlab.create-lab-id');
+    Route::resource('/productlab', 'Employee\ProductLabController');
 });

@@ -3,15 +3,17 @@
 namespace App\Model\Employee;
 
 use Illuminate\Database\Eloquent\Model;
+
 use App\User;
 use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
+
 use App\Model\BasicInformations\ProductType;
 use App\Model\BasicInformations\TestingCalibratingList;
 use App\Model\BasicInformations\TestingCalibratingType;
 use App\Model\BasicInformations\TestingCalibratingMethod;
-use App\Model\BasicInformations\CertifyLaboratory;
 use App\Model\BasicInformations\ResultControl;
+use App\Model\BasicInformations\CertifyLaboratory;
 
 class ProductLab extends Model
 {
@@ -31,17 +33,17 @@ class ProductLab extends Model
     {
         return $this->belongsTo(Lab::class);
     }
+    
+    // 4.5 relation for เครื่องมือในแลป
+    public function equipments()
+    {
+        return $this->belongsToMany(Equipment::class)->withTimestamps();
+    }
 
     // relation for 4.2 ประเภทผลตภัณฑ์
     public function productTypes()
     {
         return $this->belongsToMany(ProductType::class)->withTimestamps();
-    }
-
-    // 4.5 relation for เครื่องมือในแลป
-    public function equipments()
-    {
-        return $this->belongsToMany(Equipment::class)->withTimestamps();
     }
 
     // relation for 4.6 ประเภทรายากรทดสอบสอบเทียบ
@@ -74,5 +76,4 @@ class ProductLab extends Model
         return $this->belongsTo(CertifyLaboratory::class);
     }
 
-    
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
+
 use App\Model\BasicInformations\ScienceTool;
 use App\Model\BasicInformations\MajorTechnology;
 use App\Model\BasicInformations\TechnicalEquipment;
@@ -77,6 +78,39 @@ class EquipmentController extends Controller
             'equipmentRents' => $equipmentRents,
         ]);
 
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createByLabId($labId)
+    {
+        // data for loop select
+        $lab = Lab::findOrFail($labId);
+        $scienceTools = ScienceTool::where('science_tool_status','A')->get();
+        $majorTechnologies = MajorTechnology::where('major_tech_status','A')->get();
+        $technicalEquipments = TechnicalEquipment::where('technical_equipment_status','A')->get();
+        $objectiveUsages = ObjectiveUsage::where('obj_usage_status','A')->get();
+        $equipmentUsages = EquipmentUsage::where('equipment_usage_status','A')->get();
+        $equipmentCalibrations = EquipmentCalibration::where('equipment_calibration_status','A')->get();
+        $equipmentMaintenances = EquipmentMaintenance::where('equipment_maintenance_status','A')->get();
+        $equipmentManuals = EquipmentManual::where('equipment_manual_status','A')->get();
+        $equipmentRents = EquipmentRent::where('equipment_rent_status','A')->get();
+
+        return view('employee.equipment.create-lab-id', [
+            'lab' => $lab,
+            'scienceTools' => $scienceTools,
+            'majorTechnologies' => $majorTechnologies,
+            'technicalEquipments' => $technicalEquipments,
+            'objectiveUsages' => $objectiveUsages,
+            'equipmentUsages' => $equipmentUsages,
+            'equipmentCalibrations' => $equipmentCalibrations,
+            'equipmentMaintenances' => $equipmentMaintenances,
+            'equipmentManuals' => $equipmentManuals,
+            'equipmentRents' => $equipmentRents,
+        ]);
     }
 
     /**

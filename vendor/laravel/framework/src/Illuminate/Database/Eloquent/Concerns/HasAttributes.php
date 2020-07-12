@@ -1179,10 +1179,11 @@ trait HasAttributes
             return $this->castAttribute($key, $current) ==
                 $this->castAttribute($key, $original);
         } elseif ($this->hasCast($key, ['real', 'float', 'double'])) {
-            return bccomp(
-                $this->castAttribute($key, $current),
-                $this->castAttribute($key, $original)
-            ) === 0;
+            if (($current === null && $original !== null) || ($current !== null && $original === null)) {
+                return false;
+            }
+
+            return abs($this->castAttribute($key, $current) - $this->castAttribute($key, $original)) < PHP_FLOAT_EPSILON * 4;
         } elseif ($this->hasCast($key)) {
             return $this->castAttribute($key, $current) ===
                    $this->castAttribute($key, $original);

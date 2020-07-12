@@ -57,6 +57,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_id' => ['required'],
             'agency_id' => ['required'],
+            'region_id' => ['required'],
         ]);
     }
 
@@ -75,6 +76,7 @@ class RegisterController extends Controller
         $registerUser->password = Hash::make($data['password']);
         $registerUser->role_id = $data['role_id'];
         $registerUser->agency_id = $data['agency_id'];
+        $registerUser->region_id = $data['region_id'];
         $registerUser->save();
 
         // create log activity

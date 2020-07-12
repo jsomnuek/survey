@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page')
-    Organization Edit
+    Edit Organization
 @endsection
 
 @section('header-box-1')
@@ -10,21 +10,36 @@
 
 @section('content')
     <div class="row">
-        <!-- column -->
         <div class="col-md-12">
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">ส่วนที่ 1 ข้อมูลองค์กรและภาพรวมของห้องปฎิบัติการ</h3>
+                    <h3 class="card-title"><i class="fas fa-edit"></i> แก้ไขข้อมูลองค์กร :</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form action="/organization/{{ $org->id }}" method="POST" role="form">
                     @csrf
-                    @method('PUT')
-                    <div class="card-body">
+                    @method('PUT')                    
+                    <div class="card-body py-2">
                         <div class="row">
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-12">
+                                <blockquote class="m-0 bg-light">
+                                    <mark>Ref.รหัสเอกสาร</mark> : {{ $org->id }}
+                                    <strong>|</strong>
+                                    <mark>Create</mark> : <i class="far fa-clock"></i> {{ $org->created_at }}
+                                    <strong>|</strong> 
+                                    <mark>Update</mark> : <i class="far fa-clock"></i> {{ $org->updated_at }}
+                                    <strong>|</strong>
+                                    <mark>Status</mark> :
+                                    @if ($org->completed == 1)
+                                    <small class="badge badge-success">approved</small>                                            
+                                    @else
+                                    <small class="badge badge-secondary">pending</small>
+                                    @endif
+                                </blockquote>
+                            </div>
+                            <div class="col-md-12 my-2">
                                 <strong>หมายเหตุ: <span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
                             </div>
                             <div class="col-md-4">
@@ -39,21 +54,21 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col 1.1 ชื่อหน่วยงาน --}}
+                            {{-- /.col 1.1 ชื่อหน่วยงาน --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_name_level_1">ชื่อหน่วยงานย่อย ระดับที่ 1 :</label>
                                     <input type="text" name="org_name_level_1" class="form-control" id="org_name_level_1" placeholder="" value="{{ $org->org_name_level_1 }}">
                                 </div>
                             </div>
-                            {{-- ./col ชื่อหน่วยงานย่อย ระดับที่ 1 : --}}
+                            {{-- /.col ชื่อหน่วยงานย่อย ระดับที่ 1 : --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_name_level_2">ชื่อหน่วยงานย่อย ระดับที่ 2 :</label>
                                     <input type="text" name="org_name_level_2" class="form-control" id="org_name_level_2" placeholder="" value="{{ $org->org_name_level_2 }}">
                                 </div>
                             </div>
-                            {{-- ./col ชื่อหน่วยงานย่อย ระดับที่ 2 : --}}
+                            {{-- /.col ชื่อหน่วยงานย่อย ระดับที่ 2 : --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_code">1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> *</sup></span></label>
@@ -65,14 +80,14 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col 1.2 รหัสหน่วยงาน (AABCC) : --}}
+                            {{-- /.col 1.2 รหัสหน่วยงาน (AABCC) : --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_number">1.3	หมายเลขประจำหน่วยงาน  (ถ้ามี) :</label>
                                     <input type="text" name="org_number" class="form-control" id="org_number" placeholder="" value="{{ $org->org_number }}">
                                 </div>
                             </div>
-                            {{-- 1.3 หมายเลขประจำหน่วยงาน (ถ้ามี) : --}}
+                            {{-- /.col 1.3 หมายเลขประจำหน่วยงาน (ถ้ามี) : --}}
                             <div class="col-md-12">
                                 <label>1.4	ที่อยู่ :</label>
                             </div>
@@ -82,14 +97,14 @@
                                     <input type="text" name="org_building" class="form-control" id="org_building" placeholder="" value="{{ $org->org_building }}">
                                 </div>
                             </div>
-                            {{-- ./col อาคาร --}}
+                            {{-- /.col อาคาร --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_floor">ชั้น</label>
                                     <input type="text" name="org_floor" class="form-control" id="org_floor" placeholder="" value="{{ $org->org_floor }}">
                                 </div>
                             </div>
-                            {{-- ./col ชั้น --}}
+                            {{-- /.col ชั้น --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_address">เลขที่ <span><sup class="text-danger"> *</sup></span></label>
@@ -101,21 +116,21 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col เลขที่ --}}
+                            {{-- /.col เลขที่ --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_soi">ซอย</label>
                                     <input type="text" name="org_soi" class="form-control" id="org_soi" placeholder="" value="{{ $org->org_soi }}">
                                 </div>
                             </div>
-                            {{-- ./col ซอย --}}
+                            {{-- /.col ซอย --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_road">ถนน</label>
                                     <input type="text" name="org_road" class="form-control" id="org_road" placeholder="" value="{{ $org->org_road }}">
                                 </div>
                             </div>
-                            {{-- ./col ถนน --}}
+                            {{-- /.col ถนน --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="province_info_ch_id">จังหวัด<span><sup class="text-danger"> *</sup></span></label>
@@ -129,7 +144,7 @@
                                     @enderror                                    
                                 </div>
                             </div>
-                            {{-- ./col จังหวัด --}}
+                            {{-- /.col จังหวัด --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="province_info_am_id">เขต/อำเภอ<span><sup class="text-danger"> *</sup></span></label>
@@ -143,7 +158,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col เขต/อำเภอ --}}
+                            {{-- /.col เขต/อำเภอ --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="province_info_ta_id">แขวง/ตำบล<span><sup class="text-danger"> *</sup></span></label>
@@ -157,7 +172,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col แขวง/ตำบล --}}
+                            {{-- /.col แขวง/ตำบล --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_postcode">รหัสไปรษณีย์<span><sup class="text-danger"> *</sup></span></label>
@@ -169,7 +184,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col รหัสไปรษณีย์ --}}
+                            {{-- /.col รหัสไปรษณีย์ --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_phone">โทรศัพท์</label>
@@ -181,49 +196,49 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col โทรศัพท์ --}}
+                            {{-- /.col โทรศัพท์ --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_fax">โทรสาร</label>
                                     <input type="text" name="org_fax" class="form-control" id="org_fax" placeholder="" value="{{ $org->org_fax }}">
                                 </div>
                             </div>
-                            {{-- ./col โทรสาร --}}
+                            {{-- /.col โทรสาร --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_email">อีเมล</label>
                                     <input type="email" name="org_email" class="form-control" id="org_email" placeholder="" value="{{ $org->org_email }}" autocomplete="email">
                                 </div>
                             </div>
-                            {{-- ./col อีเมล --}}
+                            {{-- /.col อีเมล --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_website">เว็บไซต์</label>
                                     <input type="text" name="org_website" class="form-control" id="org_website" placeholder="" value="{{ $org->org_website }}">
                                 </div>
                             </div>
-                            {{-- ./col เว็บไซต์ --}}
+                            {{-- /.col เว็บไซต์ --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_lat">ละติจูด</label>
                                     <input type="text" name="org_lat" class="form-control" id="org_lat" placeholder="" value="{{ $org->org_lat }}">
                                 </div>
                             </div>
-                            {{-- ./col ละติจูด --}}
+                            {{-- /.col ละติจูด --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_long">ลองจิจูด</label>
                                     <input type="text" name="org_long" class="form-control" id="org_long" placeholder="" value="{{ $org->org_long }}">
                                 </div>
                             </div>
-                            {{-- ./col ลองจิจูด --}}
+                            {{-- /.col ลองจิจูด --}}
                             <div class="col-md-6">                        
                                 <div class="form-group">
                                     <label for="org_capital">1.5 ทุนจดทะเบียน (ล้านบาท) :</label>
                                     <input type="number" name="org_capital" min="1" class="form-control" id="org_capital" placeholder="" value="{{ $org->org_capital }}">
                                 </div>
                             </div>
-                            {{-- ./col 1.5 ทุนจดทะเบียน (ล้านบาท) : --}}
+                            {{-- /.col 1.5 ทุนจดทะเบียน (ล้านบาท) : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_employee_amount">1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> *</sup></span></label>
@@ -235,7 +250,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col 1.6 จำนวนบุคลากร (คน) : --}}
+                            {{-- /.col 1.6 จำนวนบุคลากร (คน) : --}}
                             <div class="col-md-6">
                                 <div class="form-group">                                    
                                     <label for="'sale_products">1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : (เลือกได้มากกว่า 1 คำตอบ)</label>
@@ -258,7 +273,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- ./col 1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : --}}     
+                            {{-- /.col 1.7 การจำหน่าย/ส่งออกสินค้า/บริการ : --}}     
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="'organisation_type_id">1.8 ประเภทองค์กร :<span><sup class="text-danger"> *</sup></span></label>
@@ -281,7 +296,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- ./col 1.8 ประเภทองค์กร : --}}
+                            {{-- /.col 1.8 ประเภทองค์กร : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="'business_type_id">1.9 ประเภทกิจการ :<span><sup class="text-danger"> *</sup></span></label>
@@ -299,7 +314,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- ./col 1.9 ประเภทกิจการ : --}}
+                            {{-- /.col 1.9 ประเภทกิจการ : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="industrial_type">1.10 ประเภทอุตสาหกรรม : (เลือกได้มากกว่า 1 คำตอบ)</label>
@@ -367,10 +382,10 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    {{-- ./row --}}
+                                    {{-- /.row --}}
                                 </div>
                                 <hr>
-                                {{-- ./form-group 1.11.1 ISO 9000 series : --}}
+                                {{-- /.form-group 1.11.1 ISO 9000 series : --}}
                                 <div class="form-group">
                                     <label for="">ระบบคุณภาพ</label>
                                     @foreach ($org->qualitySystemIso14000s as $iso14000)
@@ -416,10 +431,10 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    {{-- ./row --}}
+                                    {{-- /.row --}}
                                 </div>
                                 <hr>
-                                {{-- ./form-group 1.11.2 ISO 14000 : --}}
+                                {{-- /.form-group 1.11.2 ISO 14000 : --}}
                                 <div class="form-group">
                                     <label for="">ระบบคุณภาพ</label>
                                     @foreach ($org->qualitySystemIsoHaccps as $isoHaccp)
@@ -465,10 +480,10 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    {{-- ./row --}}
+                                    {{-- /.row --}}
                                 </div>
                                 <hr>
-                                {{-- ./form-group 1.11.2 ISO HACCP : --}}
+                                {{-- /.form-group 1.11.2 ISO HACCP : --}}
                                 <div class="form-group">
                                     <label for="">ระบบคุณภาพ</label>
                                     <div class="row">
@@ -478,28 +493,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- ./form-group 1.11.4 อื่นๆ โปรดระบุ : --}}
+                                {{-- /.form-group 1.11.4 อื่นๆ โปรดระบุ : --}}
                             </div>
-                            {{-- ./col 1.11 ข้อมูลระบบคุณภาพของหน่วยงาน : --}}
+                            {{-- /.col 1.11 ข้อมูลระบบคุณภาพของหน่วยงาน : --}}
                         </div>
                         <!-- /.row -->
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <div class="d-flex justify-content-between">
-                            <a href="/organization" class="btn btn-secondary btn-lg">
-                                <i class="fas fa-backward"></i>
-                                ย้อนกลับ
-                            </a>
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                บันทึกข้อมูล
-                                <i class="fas fa-forward"></i>
-                            </button>
-                        </div>
+                        <a href="/organization/{{ $org->id }}" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-undo"></i> ย้อนกลับ
+                        </a>
+                        <button type="submit" class="btn btn-info btn-sm">
+                            <i class="fas fa-save"></i> บันทึกการแก้ไข
+                        </button>
                     </div>
                     <!-- /.card-footer -->
                 </form>
-                <!-- /.form end -->
+                <!-- form end -->
             </div>
             <!-- /.card -->
         </div>

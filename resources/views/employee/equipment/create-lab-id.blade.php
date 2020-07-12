@@ -20,33 +20,23 @@
 				<!-- form start -->
 				<form action="/equipment" method="POST" enctype="multipart/form-data" role="form">
 					@csrf
+					<input type="hidden" name="lab_id" value="{{ $lab->id }}">
 					<div class="card-body py-2">
 						<div class="row">
+							<div class="col-md-12">
+                                <blockquote class="m-0 bg-light">
+                                    <mark>ห้องปฏิบัตการ</mark>
+                                    <strong>|</strong>
+                                    <a href="{{ route('lab.show', $lab->id) }}">
+                                        {{ $lab->lab_name }}
+                                    </a>
+                                </blockquote>
+                            </div>
+                            {{-- /.col --}}
 							<div class="col-md-12 my-2">
                                 <strong>ส่วนที่ 3 เครื่องมือวิทยาศาสตร์ : หมายเหตุ :<span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
                             </div>
 							{{-- /.col --}}
-							<div class="col-md-12">
-								<div class="form-group">
-									<label for="lab_id">
-										โปรดเลือกห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span>
-									</label>
-									<select class="form-control custom-select select2 @error('lab_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="lab_id" id="lab_id" required>
-										<option value="" selected disabled="disabled">disabled</option>
-										@foreach ($labs as $item)
-										<option value="{{ $item->id }}" {{ ( old('lab_id') == $item->id) ? 'selected' : '' }}>
-											{{ $item->lab_name }}
-										</option>
-										@endforeach
-									</select>
-									@error('lab_id')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								</div>
-							</div>
-							{{-- /.col โปรดเลือกห้องปฏิบัติการ : --}}
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="equipment_code">
@@ -141,21 +131,21 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="equipment_year">3.7 ปีที่ซื้อ :</label>
-									<input type="text" name="equipment_year" id="equipment_year" class="form-control" min="0" value="{{ old('equipment_year')}}" data-inputmask='"mask": "9999"' data-mask>
+									<input type="text" name="equipment_year" id="equipment_year" class="form-control" min="0" value="{{ old('equipment_year') }}" data-inputmask='"mask": "9999"' data-mask>
 								</div>
 							</div>
 							{{-- /.col 3.7 ปีที่ซื้อ : --}}
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="equipment_price">3.8 มูลค่า (บาท) :</label>
-									<input type="number" name="equipment_price" id="equipment_price" class="form-control" min="0" value="{{ old('equipment_price')}}">
+									<input type="number" name="equipment_price" id="equipment_price" class="form-control" min="0" value="{{ old('equipment_price') }}">
 								</div>
 							</div>
 							{{-- /.col 3.8 มูลค่า (บาท) : --}}
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="equipment_supplier">3.9 บริษัทที่จัดจำหน่าย :</label>
-									<input type="text" name="equipment_supplier" id="equipment_supplier" class="form-control" value="{{ old('equipment_supplier')}}">
+									<input type="text" name="equipment_supplier" id="equipment_supplier" class="form-control" value="{{ old('equipment_supplier') }}">
 								</div>
 							</div>
 							{{-- /.col 3.9 บริษัทที่จัดจำหน่าย : --}}
@@ -260,12 +250,16 @@
 									</select>
 								</div>
 								<div class="form-group" id="display_equipment_calibration_by">
-									<label for="equipment_calibration_by">กรณีเลือก "มี" โปรดระบุ :<span><sup class="text-danger"> *</sup></label>
-									<input class="form-control" type="text" name="equipment_calibration_by" id="equipment_calibration_by" placeholder="ชื่อหน่วยงานสอบเทียบ" value="{{ old('equipment_calibration_by') }}">
+									<label for="equipment_calibration_by">
+										กรณีเลือก "มี" โปรดระบุ ชื่อหน่วยงานสอบเทียบ :<span><sup class="text-danger"> *</sup>
+									</label>
+									<input class="form-control" type="text" name="equipment_calibration_by" id="equipment_calibration_by" placeholder="" value="{{ old('equipment_calibration_by') }}">
 								</div>
 								<div class="form-group" id="display_equipment_calibration_year">
-									<label for="equipment_calibration_by">กรณีเลือก "มี" โปรดระบุ :<span><sup class="text-danger"> *</sup></label>
-									<input class="form-control" type="text" name="equipment_calibration_year" id="equipment_calibration_year" placeholder="วัน/เดือน/ปี" value="{{ old('equipment_calibration_year') }}">
+									<label for="equipment_calibration_by">
+										กรณีเลือก "มี" โปรดระบุ วัน/เดือน/ปี :<span><sup class="text-danger"> *</sup>
+									</label>
+									<input class="form-control" type="text" name="equipment_calibration_year" id="equipment_calibration_year" placeholder="" value="{{ old('equipment_calibration_year') }}">
 								</div>
 							</div>
 							{{-- /.col 3.15 การสอบเทียบ : --}}
@@ -365,7 +359,7 @@
 									<label for="equipment_rent_id">
 										3.20 การให้เช่าใช้เครื่องมือ :<span><sup class="text-danger"> *</sup>
 									</label>
-									<select class="form-control custom-select select2 @error('equipment_rent_id') is-invalid @enderror"  data-placeholder="-- โปรดเลือก --" style="width: 100%;"  name="equipment_rent_id" id="equipment_rent_id" required>
+									<select class="form-control custom-select select2 @error('equipment_rent_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="equipment_rent_id" id="equipment_rent_id" required>
 										<option value="" selected disabled="disabled">disabled</option>
 										<option value="1" {{ old('equipment_rent_id') ==  1 ? 'selected' : '' }}>
 											ไม่ให้บุคคลภายนอกเช่า
@@ -380,13 +374,13 @@
 										</span>
 									@enderror
 								</div>
-								<div class="form-group d-none" id="display_equipment_rent_fee">
+								<div class="form-group" id="display_equipment_rent_fee">
 									<label for="equipment_rent_fee">
 										3.20.1 ค่าบริการต่อครั้ง (บาท) หากไม่คิดระบุเป็น "0 บาท" :<span><sup class="text-danger"> *</sup>
 									</label>
 									<input type="number" class="form-control" name="equipment_rent_fee" id="equipment_rent_fee" value="{{ old('equipment_rent_fee') }}">
 								</div>
-								<div class="form-group d-none" id="display_equipment_rent_detail">
+								<div class="form-group" id="display_equipment_rent_detail">
 									<label for="equipment_rent_detail">
 										3.20.2 เงื่อนไขการขอยืม/ใช้งานเครื่องมือ :<span><sup class="text-danger"> *</sup>
 									</label>
@@ -410,9 +404,9 @@
 				</form>
 				<!-- form end -->
 			</div>
-			{{-- ./card --}}
+			{{-- /.card --}}
 		</div>
-		{{-- ./col --}}
+		{{-- /.col --}}
 	</div>
 	{{-- ./row --}}
 @endsection
@@ -420,9 +414,4 @@
 @section('scripts')
     <script src="{{ asset('js/components.js') }}"></script>
     <script src="{{ asset('js/form-equipment.js') }}"></script>
-    <script type="text/javascript">
-		// 3.10
-		// $('#major_technologies_id').val({{ json_encode($majorTechnologies) }});
-		// $('#major_technologies_id').trigger('change');
-    </script>
 @endsection

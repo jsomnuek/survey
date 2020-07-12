@@ -177,9 +177,11 @@
                             <a href="/productlab" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-undo"></i> ย้อนกลับ
                             </a>
+                            @if ($productLab->completed == 0)
                             <a href="/productlab/{{ $productLab->id }}/edit" class="btn btn-info btn-sm">
                                 <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
-                            </a>                                                        
+                            </a>
+                            @endif
                         @endif
                     @endif
                 </div>

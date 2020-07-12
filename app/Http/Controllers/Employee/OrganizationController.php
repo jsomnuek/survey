@@ -198,6 +198,10 @@ class OrganizationController extends Controller
             return redirect()->route('organization.index')->with('error', 'Unauthorized Page');
         }
 
+        if($org->completed == 1) {
+            return redirect()->route('organization.show', $org->id);
+        }
+
         // data for loop select
         $saleProducts = SaleProduct::where('sale_product_status', 'A')->get();
         $countrys = Country::where('country_status', 'A')->get();

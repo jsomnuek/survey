@@ -21,6 +21,16 @@ use App\Model\BasicInformations\CertifyLaboratory;
 class ProductLabController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -153,9 +163,15 @@ class ProductLabController extends Controller
     {
         $productLab = ProductLab::findOrFail($id);
 
+        // return $productLab;
+
         // Check for correct user
         if(auth()->user()->id !== $productLab->user_id){
             return redirect()->route('productlab.index')->with('error', 'Unauthorized Page');
+        }
+
+        if($productLab->completed == 1) {
+            return redirect()->route('productlab.show', $productLab->id);
         }
 
         $productTypes = ProductType::where('product_type_status', 'A')->get();

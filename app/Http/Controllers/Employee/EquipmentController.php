@@ -189,7 +189,7 @@ class EquipmentController extends Controller
             // create log activity
             LogActivity::addToLog('Add Equipment : " ' . $equipment->equipment_name_th . ' " successfully.');
 
-            return redirect()->route('equipments.show', $equipment->id);
+            return redirect()->route('equipment.show', $equipment->id);
         }
     }
 
@@ -205,7 +205,7 @@ class EquipmentController extends Controller
 
         // Check for correct user
         if(auth()->user()->id !== $equipment->user_id){
-            return redirect()->route('equipments.index')->with('error', 'Unauthorized Page');
+            return redirect()->route('equipment.index')->with('error', 'Unauthorized Page');
         }
         
         return view('employee.equipment.show', ['equipment' => $equipment]);
@@ -223,7 +223,11 @@ class EquipmentController extends Controller
 
         // Check for correct user
         if(auth()->user()->id !== $equipment->user_id){
-            return redirect()->route('equipments.index')->with('error', 'Unauthorized Page');
+            return redirect()->route('equipment.index')->with('error', 'Unauthorized Page');
+        }
+
+        if($equipment->completed == 1) {
+            return redirect()->route('equipment.show', $equipment->id);
         }
 
         // data for loop select
@@ -349,7 +353,7 @@ class EquipmentController extends Controller
             // create log activity
             LogActivity::addToLog('Edit Equipment : " ' . $equipment->equipment_name_th . ' " successfully.');
 
-            return redirect()->route('equipments.show', $equipment->id);
+            return redirect()->route('equipment.show', $equipment->id);
         }
     }
 

@@ -566,9 +566,11 @@
                             <a href="/lab" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-undo"></i> ย้อนกลับ
                             </a>
+                            @if ($lab->completed == 0)
                             <a href="/lab/{{ $lab->id }}/edit" class="btn btn-info btn-sm">
                                 <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
-                            </a>
+                            </a>                                
+                            @endif
                             <a href="/equipment/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
                                 <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
                             </a>

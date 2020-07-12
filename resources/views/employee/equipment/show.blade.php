@@ -229,9 +229,11 @@
                             <a href="/equipment/" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-undo"></i> ย้อนกลับ
                             </a>
+                            @if ($equipment->completed == 0)
                             <a href="/equipment/{{ $equipment->id }}/edit" class="btn btn-info btn-sm">
                                 <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
                             </a>
+                            @endif                                
                         @endif
                     @endif
                 </div>

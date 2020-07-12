@@ -367,9 +367,11 @@
                             <a href="/organization" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-undo"></i> ย้อนกลับ
                             </a>
+                            @if ($org->completed == 0)
                             <a href="/organization/{{ $org->id }}/edit" class="btn btn-info btn-sm">
                                 <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
                             </a>
+                            @endif                            
                             <a href="/lab/create-org-id/{{ $org->id }}" class="btn btn-primary btn-sm">
                                 <i class="far fa-edit"></i> เพิ่มข้อมูลห้องปฏิบัติการ
                             </a>                                                        

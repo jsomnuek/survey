@@ -258,6 +258,10 @@ class LabController extends Controller
             return redirect()->route('lab.index')->with('error', 'Unauthorized Page');
         }
 
+        if($productLab->completed == 1) {
+            return redirect()->route('lab.show', $productLab->id);
+        }
+
         $organizations = Organization::where('user_id', auth()->user()->id)->get();
         $locationLabs = LocationLab::where('location_status', 'A')->get();
         $industrialEstates = IndustrialEstate::where('estate_status', 'A')->get();

@@ -46,7 +46,8 @@
 								<td>{{ $lab->organization->org_name}} {{ $lab->organization->org_name_level_1 }} {{ $lab->organization->org_name_level_2 }} </td>
 								<td>{{ $lab->user->name}}</td>
 								<td>
-									<a href="/labs/{{ $lab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
+									{{-- <a href="/labs/{{ $lab->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a> --}}
+									<a href="/equipments/create" class="btn btn-primary btn-sm">เพิ่มข้อมูลเครื่องมือวิทยาศาสตร์</a>
 								</td>
 								<td>
 									<a href="{{ route('productLab.create-from-lab', $lab->id ) }}" class="btn btn-info btn-sm">เพิ่มข้อมูลการทดสอบ</a>
@@ -56,7 +57,7 @@
 						</tbody>
 						@else
 							<div class="text-center">
-								No Data!
+								ไม่พบข้อมูลห้องปฏิบัติการ !
 							</div>
 						@endif
 						

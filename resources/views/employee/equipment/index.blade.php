@@ -48,7 +48,7 @@
                         </tbody>
                         @else
                             <div class="text-center">
-                                No Data!
+                                ไม่พบข้อมูลเครื่องมือวิทยาศาสตร์ !
                             </div>
                         @endif
                         

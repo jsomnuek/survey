@@ -246,7 +246,7 @@ class ProductLabController extends Controller
             // create log activity
             LogActivity::addToLog('Edit Product Lab : " ' . $productLab->product_lab_name . ' " successfully.');
 
-            return redirect()->route('productlab.edit', $productLab->id);
+            return redirect()->route('productlab.show', $productLab->id);
         }
         
     }

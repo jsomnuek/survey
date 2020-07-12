@@ -121,9 +121,9 @@
                                         4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ (เลือกได้มากกว่า 1 คำตอบ) :<span><sup class="text-danger"> *</sup></span>
                                     </label>
                                     <select class="form-control custom-select select2-multi @error('equipment_id') is-invalid @enderror" style="width: 100%;" multiple="multiple" name="equipment_id[]" id="equipment_id">
-                                        @foreach ($equipments as $equipment)
-                                        <option value="{{ $equipment->id }}" {{ in_array($equipment->id, old('equipment_id') ? : []) ? 'selected' : '' }}>
-                                            {{ $equipment->equipment_code }}
+                                        @foreach ($equipments as $item)
+                                        <option value="{{ $item->id }}" {{ in_array($item->id, old('equipment_id') ? : []) ? 'selected' : '' }}>
+                                            {{ $item->equipment_code }} : {{ $item->scienceTool->science_tool_name }}
                                         </option>
                                         @endforeach
                                     </select>
@@ -335,7 +335,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <a href="/productlab" class="btn btn-secondary btn-sm">
+                        <a href="/productlab/{{ $productLab->id }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-undo"></i> ย้อนกลับ
                         </a>
                         <button type="submit" class="btn btn-info btn-sm">

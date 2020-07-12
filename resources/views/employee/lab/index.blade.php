@@ -66,9 +66,11 @@
                                         </a>
 									</td>
 									<td>
+										@if (count($lab->equipments) > 0)
 										<a href="{{ route('productlab.create-lab-id', $lab->id) }}">
                                             <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
                                         </a>
+										@endif										
 									</td>
 								</tr>                                
 								@endforeach

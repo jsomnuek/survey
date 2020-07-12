@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page')
-    Show ProductLab
+    Show Product Lab 
 @endsection
 
 @section('header-box-1')
@@ -10,155 +10,186 @@
 
 @section('content')
     <div class="row">
-        <!-- column -->
         <div class="col-md-12">
-            <!-- general form elements -->
-
-            <div class="card">
-                <div class="card-header bg-primary">
-                    <h3 class="card-title">รายละเอียดรายการทดสอบ/สอบเทียบ {{ $productLabs->lab->lab_name}}</h3>
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="far fa-file-alt"></i> รายละเอียด</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fas fa-minus"></i>
                         </button>
                     </div>
                 </div>
-                <div class="card-body table-responsive p-0" style="height: 400px;">
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr>
-                                <th class="" style="width: 30%;">4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ/สอบเทียบ :</th>
-                                <td>{{ $productLabs->product_lab_name }}</td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.2 ประเภทผลิตภัณฑ์</th>
-                                <td>
-                                    @forelse ($productLabs->productTypes as $item )
-                                        @if ($item->id !=39)
-                                            <li>{{ $item->product_type_name }} </li>
-                                        @else
-                                            
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover mb-0">
+                            <tbody>
+                                <tr>
+                                    <th class="" style="width: 35%;">Ref.รหัสเอกสาร : {{ $productLab->id }}</th>
+                                    <td>
+                                        <mark>Create</mark> : <i class="far fa-clock"></i> {{ $productLab->created_at }}
+                                        <strong>|</strong> 
+                                        <mark>Update</mark> : <i class="far fa-clock"></i> {{ $productLab->updated_at }}
+                                        <strong>|</strong>
+                                        <mark>Status</mark> :
+                                        @if ($productLab->completed == 1)
+										<small class="badge badge-success">approved</small>                                            
+										@else
+										<small class="badge badge-secondary">pending</small>
                                         @endif
-                                        
-                                    @empty
-                                    
-                                    @endforelse
-
-                                    @if ($productLabs->product_type_other != null)
-                                        <li>อื่นๆ : {{ $productLabs->product_type_other }}</li>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.3 มาตราฐานผลิตภัณฑ์ :</th>
-                                <td>{{ $productLabs->product_lab_standard }}</td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.4 ชื่อรายการทดสอบ/สอบเทียบ :</th>
-                                <td>{{ $productLabs->product_lab_test_name }}</td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ :</th>
-                                <td>
-                                    @forelse ($productLabs->equipments as $item )
-                                            <li>{{ $item->equipment_code }} </li>
-                                    @empty
-                                    
-                                    @endforelse
-
-                                    {{-- @if ($productLabs->product_type_other != null)
-                                        <li>อื่นๆ {{ $productLabs->product_type_other }}</li>
-                                    @endif
-                                </td>
-                                <td>ยังไม่สมบูรณ์----{{ $productLabs->product_lab_test_name }}</td> --}}
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.6 ประเภทรายการทดสอบ/สอบเทียบ :</th>
-                                <td>{{ $productLabs->testingCalibratingList->testing_list_name }}</td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.7 ประเภทการทดสอบ/สอบเทียบ :</th>
-                                @if ($productLabs->testingCalibratingType->id != 6)
-                                    <td>{{ $productLabs->testingCalibratingType->testing_calibrating_type_name }}</td>   
-                                @else
-                                    <td>อื่นๆ : {{ $productLabs->testing_calibrating_type_other }}</td>
-                                @endif
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.8 วิธีทดสอบ/สอบเทียบตามมาตราฐาน : </th>
-                                <td>{{ $productLabs->testingCalibratingMethod->testing_method_name }} <strong>รายละเอียด : </strong>{{$productLabs->testing_calibrating_method_detail}}</td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.9 ช่วงความสามารถของการวัด :</th>
-                                <td>{{ $productLabs->product_lab_test_unit }}</td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.10 ระยะเวลาการทดสอบ :</th>
-                                <td>{{ $productLabs->product_lab_test_duration }} วัน</td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.11 ค่าธรรมเนียมในการทดสอบ :</th>
-                                <td>{{ number_format($productLabs->product_lab_test_fee) }} บาท</td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.12 วัสดุอ้างอิงที่ใช้ทดสอบ :</th>
-                                <td>{{ $productLabs->product_lab_material_ref }} </td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.13 ที่มาของแหล่งวัสดุอ้างอิงที่ใช้ทดสอบ :</th>
-                                <td>{{ $productLabs->product_lab_material_ref_from }} </td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.14 การควบคุมคุณภาพผลการทดสอบภายใน :</th>
-                                <td>
-                                    @forelse ($productLabs->resultControls as $item)
-                                    @if ($item->id !=7)
-                                        <li>{{ $item->result_control_name }}</li>
-                                    @else
-                                        
-                                    @endif
-                                    
-                                @empty
-                                
-                                @endforelse
-                                @if ($productLabs->product_lab_result_control_other != null)
-                                    <li>อื่นๆ : {{ $productLabs->product_lab_result_control_other }}</li>
-                                @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.15 การทดสอบความชำนาญห้องปฏิบัติการ :</th>
-                                <td>
-                                    @if ($productLabs->proficiency_testing == 1 )
-                                        ยังไม่ได้ทดสอบความชำนาญห้องปฎิบัติการ
-                                    @else
-                                        มีการทดสอบความชำนาญห้องปฏิบัติการ  <strong>โดย : </strong>{{ $productLabs->proficiency_testing_by }} <strong>เมื่อปี : </strong>{{ $productLabs->proficiency_testing_year }}
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="" style="width: 30%;">4.16 การรับรองความสามารถห้องปฏิบัติการ :</th>
-                                <td>{{ $productLabs->certifyLaboratory->cert_lab_name }} </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-between">
-                        <a href="/productLab/{{ $productLabs->id }}/edit" class="btn btn-secondary btn-lg">
-                            <i class="fas fa-edit"></i>
-                            แก้ไขข้อมูล
-                        </a>
-                        <a href="/productLab" class="btn btn-success btn-lg">
-                            <i class="fas fa-save"></i>
-                            ยืนยันข้อมูล
-                        </a>
+                                    </td>
+                                </tr>
+                                {{-- Ref.รหัสเอกสาร --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">ห้องปฏิบัติการ :</th>
+                                    <td>{{ $productLab->lab->lab_name }}</td>
+                                </tr>
+                                {{-- ห้องปฏิบัติการ --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ/สอบเทียบ :</th>
+                                    <td>{{ $productLab->product_lab_name }}</td>
+                                </tr>
+                                {{-- 4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ/สอบเทียบ : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.2 ประเภทผลิตภัณฑ์ :</th>
+                                    <td>
+                                        @foreach ($productLab->productTypes as $item)
+                                            @if ($item->id != 39)
+                                            <li>{{ $item->product_type_name }}</li>                                                
+                                            @endif
+                                        @endforeach
+                                        @if ($productLab->product_type_other != null)
+                                            <li>{{ $productLab->product_type_other }}</li>
+                                        @endif
+                                    </td>
+                                </tr>
+                                {{-- 4.2 ประเภทผลิตภัณฑ์ : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.3 มาตราฐานผลิตภัณฑ์ :</th>
+                                    <td>{{ $productLab->product_lab_standard }}</td>
+                                </tr>
+                                {{-- 4.3 มาตราฐานผลิตภัณฑ์ : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.4 ชื่อรายการทดสอบ/สอบเทียบ :</th>
+                                    <td>{{ $productLab->product_lab_test_name }}</td>
+                                </tr>
+                                {{-- 4.4 ชื่อรายการทดสอบ/สอบเทียบ : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ :</th>
+                                    <td>
+                                        @foreach ($productLab->equipments as $item)
+                                            <li>{{ $item->equipment_code }} : {{ $item->scienceTool->science_tool_name }}</li>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                                {{-- 4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.6 ประเภทรายการทดสอบ/สอบเทียบ :</th>
+                                    <td>{{ $productLab->testingCalibratingList->testing_list_name }}</td>
+                                </tr>
+                                {{-- 4.6 ประเภทรายการทดสอบ/สอบเทียบ : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.7 ประเภทการทดสอบ/สอบเทียบ :</th>
+                                    <td>
+                                        @if ($productLab->testingCalibratingType->id != 6)
+                                            {{ $productLab->testingCalibratingType->testing_calibrating_type_name }}
+                                        @else
+                                            {{ $productLab->testing_calibrating_type_other }}
+                                        @endif
+                                    </td>
+                                </tr>
+                                {{-- 4.7 ประเภทการทดสอบ/สอบเทียบ : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.8 วิธีทดสอบ/สอบเทียบตามมาตรฐาน :</th>
+                                    <td>
+                                        {{ $productLab->testingCalibratingMethod->testing_method_name }} : 
+                                        {{ $productLab->testing_calibrating_method_detail }}
+                                    </td>
+                                </tr>
+                                {{-- 4.8 วิธีทดสอบ/สอบเทียบตามมาตรฐาน : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.9 ช่วงความสามารถของการวัด :</th>
+                                    <td>{{ $productLab->product_lab_test_unit }}</td>
+                                </tr>
+                                {{-- 4.9 ช่วงความสามารถของการวัด : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.10 ระยะเวลาการทดสอบ/สอบเทียบ <br>(วัน โดย 1 วัน = 8 ชั่วโมง) :</th>
+                                    <td>{{ $productLab->product_lab_test_duration }}</td>
+                                </tr>
+                                {{-- 4.10 ระยะเวลาการทดสอบ/สอบเทียบ (วัน โดย 1 วัน = 8 ชั่วโมง) : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.11 ค่าธรรมเนียมการทดสอบ/สอบเทียบ (บาท) :</th>
+                                    <td>{{ number_format($productLab->product_lab_test_fee) }}</td>
+                                </tr>
+                                {{-- 4.11 ค่าธรรมเนียมการทดสอบ/สอบเทียบ (บาท) : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.12 วัสดุอ้างอิงที่ใช้ :</th>
+                                    <td>{{ $productLab->product_lab_material_ref }}</td>
+                                </tr>
+                                {{-- 4.12 วัสดุอ้างอิงที่ใช้ : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.13 แหล่งที่มาของวัสดุอ้างอิง :</th>
+                                    <td>{{ $productLab->product_lab_material_ref_from }}</td>
+                                </tr>
+                                {{-- 4.13 แหล่งที่มาของวัสดุอ้างอิง : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.14 การควบคุมคุณภาพผลการทดสอบภายใน :</th>
+                                    <td>
+                                        @foreach ($productLab->resultControls as $item)
+                                            @if ($item->id != 7)
+                                            <li>{{ $item->result_control_name }}</li>                                                
+                                            @endif
+                                        @endforeach
+                                        @if ($productLab->result_control_other != null)
+                                            <li>{{ $productLab->result_control_other }}</li>
+                                        @endif
+                                    </td>
+                                </tr>
+                                {{-- 4.14 การควบคุมคุณภาพผลการทดสอบภายใน : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.15 การทดสอบความสามารถห้องปฏิบัติการ (Proficiency Testing, PT) :</th>
+                                    <td>
+                                        @if ($productLab->proficiency_testing_id == 1)
+                                            ไม่มี
+                                        @else
+                                            <mark>ชื่อผู้จัด</mark> : {{ $productLab->proficiency_testing_by }}<br>
+                                            <mark>ปีที่เข้าร่วม</mark> : {{ $productLab->proficiency_testing_year }}
+                                        @endif
+                                    </td>
+                                </tr>
+                                {{-- 4.15 การทดสอบความสามารถห้องปฏิบัติการ (Proficiency Testing, PT) : --}}
+                                <tr>
+                                    <th class="" style="width: 35%;">4.16 การรับรองความสามารถห้องปฏิบัติการ :</th>
+                                    <td>{{ $productLab->certifyLaboratory->cert_lab_name }}</td>
+                                </tr>
+                                {{-- 4.16 การรับรองความสามารถห้องปฏิบัติการ : --}}
+                            </tbody>
+                            {{-- /.tbody --}}
+                        </table>
                     </div>
+                    {{-- /.table-responsive --}}
                 </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    @if (!Auth::guest())                            
+                        @if (Auth::user()->id == $productLab->user_id)
+                            <a href="/productlab" class="btn btn-secondary btn-sm">
+                                <i class="fas fa-undo"></i> ย้อนกลับ
+                            </a>
+                            @if ($productLab->completed == 0)
+                            <a href="/productlab/{{ $productLab->id }}/edit" class="btn btn-info btn-sm">
+                                <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                            </a>
+                            @endif
+                        @endif
+                    @endif
+                </div>
+                <!-- /.card-footer -->
             </div>
             <!-- /.card -->
         </div>
-        <!--/.col -->
+        <!-- /.col -->        
     </div>
-    <!--/.row -->
+    <!-- /.row -->
 @endsection

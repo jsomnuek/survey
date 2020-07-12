@@ -104,17 +104,10 @@ Method                                                   | Description
 `isIterable($value, $message = '')`                      | Check that a value is an array or a `\Traversable`
 `isCountable($value, $message = '')`                     | Check that a value is an array or a `\Countable`
 `isInstanceOf($value, $class, $message = '')`            | Check that a value is an `instanceof` a class
-<<<<<<< HEAD
-`isInstanceOfAny($value, array $classes, $message = '')` | Check that a value is an `instanceof` a at least one class on the array of classes
-`notInstanceOf($value, $class, $message = '')`           | Check that a value is not an `instanceof` a class
-`isAOf($value, $class, $message = '')`                   | Check that a value is of the class or has one of its parents
-`isAnyOf($value, array $classes, $message = '')`         | Check that a value a at least one of the class or has one of its parents
-=======
 `isInstanceOfAny($value, array $classes, $message = '')` | Check that a value is an `instanceof` at least one class on the array of classes
 `notInstanceOf($value, $class, $message = '')`           | Check that a value is not an `instanceof` a class
 `isAOf($value, $class, $message = '')`                   | Check that a value is of the class or has one of its parents
 `isAnyOf($value, array $classes, $message = '')`         | Check that a value is of at least one of the classes or has one of its parents
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 `isNotA($value, $class, $message = '')`                  | Check that a value is not of the class or has not one of its parents
 `isArrayAccessible($value, $message = '')`               | Check that a value can be accessed as an array
 `uniqueValues($values, $message = '')`                   | Check that the given array contains unique values
@@ -150,11 +143,7 @@ any of the following assertions.
 Method                                              | Description
 --------------------------------------------------- | -----------------------------------------------------------------
 `contains($value, $subString, $message = '')`       | Check that a string contains a substring
-<<<<<<< HEAD
-`notContains($value, $subString, $message = '')`    | Check that a string does not contains a substring
-=======
 `notContains($value, $subString, $message = '')`    | Check that a string does not contain a substring
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 `startsWith($value, $prefix, $message = '')`        | Check that a string has a prefix
 `notStartsWith($value, $prefix, $message = '')`     | Check that a string does not have a prefix
 `startsWithLetter($value, $message = '')`           | Check that a string starts with a letter

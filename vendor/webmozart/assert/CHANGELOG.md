@@ -3,8 +3,12 @@ Changelog
 
 ## UNRELEASED
 
-<<<<<<< HEAD
-=======
+## 1.9.1
+
+## Fixed
+
+* provisional support for PHP 8.0
+
 ## 1.9.0
 
 * added better Psalm support for `all*` & `nullOr*` methods
@@ -17,9 +21,8 @@ Changelog
 * the `all*` & `nullOr*` methods are now declared on an interface, instead of `@method` annotations.
 This interface is linked to the `Assert` class with a `@mixin` annotation. Most IDE's have supported this
 for a long time, and you should not lose any autocompletion capabilities. PHPStan has supported this since
-version `0.12.20`. This package is marked incompatbible (with a composer conflict) with phpstan version prior to that.
+version `0.12.20`. This package is marked incompatible (with a composer conflict) with phpstan version prior to that.
 If you do not use PHPStan than this does not matter.
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 
 ## 1.8.0
 
@@ -32,11 +35,7 @@ If you do not use PHPStan than this does not matter.
 
 ### Fixed
 
-<<<<<<< HEAD
-* Exception messages of comparisons between `DateTime(Immutalbe)` objects now display their date & time.
-=======
 * Exception messages of comparisons between `DateTime(Immutable)` objects now display their date & time.
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 * Custom Exception messages for `Assert::count()` now use the values to render the exception message.
 
 ## 1.7.0 (2020-02-14)
@@ -64,11 +63,7 @@ If you do not use PHPStan than this does not matter.
 They are countable, without implementing the `Countable` interface.
 * The doc block of `range` now has the proper variables.
 * An empty array will now pass `isList` and `isMap`. As it is a valid form of both.
-<<<<<<< HEAD
-If a non empty variant is needed, use `isNonEmptyList` or `isNonEmptyMap`.
-=======
 If a non-empty variant is needed, use `isNonEmptyList` or `isNonEmptyMap`.
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 
 ### Changed
 
@@ -77,13 +72,8 @@ If a non-empty variant is needed, use `isNonEmptyList` or `isNonEmptyMap`.
   * [#145](https://github.com/webmozart/assert/issues/145)
   * [#146](https://github.com/webmozart/assert/pull/146)
   * [#150](https://github.com/webmozart/assert/pull/150)
-<<<<<<< HEAD
-* If you use psalm, the minimum version needed is `3.6.0`. Which is enforced through a composer conflict.
-If you don't use psalm, then this has no impact.
-=======
 * If you use Psalm, the minimum version needed is `3.6.0`. Which is enforced through a composer conflict.
 If you don't use Psalm, then this has no impact.
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 
 ## 1.5.0 (2019-08-24)
 
@@ -96,11 +86,7 @@ If you don't use Psalm, then this has no impact.
 
 ### Fixed
 
-<<<<<<< HEAD
-* `Assert::endsWith()` would not give the correct result when dealing with multibyte suffix.
-=======
 * `Assert::endsWith()` would not give the correct result when dealing with a multibyte suffix.
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
 * `Assert::length(), minLength, maxLength, lengthBetween` would not give the correct result when dealing with multibyte characters.
 
 **NOTE**: These 2 changes may break your assertions if you relied on the fact that multibyte characters didn't behave correctly.

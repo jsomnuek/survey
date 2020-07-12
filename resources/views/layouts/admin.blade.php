@@ -139,7 +139,7 @@
         });
         });
     </script>
-    
+
     {{-- Developer --}}
     @yield('scripts')
 </body>

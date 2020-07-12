@@ -102,6 +102,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="region-id" class="col-md-4 col-form-label text-md-right">{{ __('ภูมิภาคที่ปฏิบัติงาน') }}</label>
+
+                            <div class="col-md-6">
+                                <select style="width: 100%" id="region_id" class="form-control select2 @error('region_id') is-invalid @enderror" name="region_id" required data-placeholder="-- โปรดเลือกหน่วยจ้างงาน --">
+                                    <option value="">-- โปรดเลือกภูมิภาคที่ปฏิบัติงาน --</option>
+                                    @foreach ($showAllRegion as $region)
+                                        <option value="{{ $region->id }}" {{ (old ('region_id') == $region->id ? 'selected' : '')}}>{{ $region->region_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -115,4 +128,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+    <script src="{{ asset('js/components.js') }} "></script>
 @endsection

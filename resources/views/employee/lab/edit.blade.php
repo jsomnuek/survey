@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page')
-		Laboratory Edit
+    Edit Laboratory 
 @endsection
 
 @section('header-box-1')
@@ -10,34 +10,51 @@
 
 @section('content')
     <div class="row">
-        <!-- column -->
         <div class="col-md-12">
             <!-- general form elements -->
-            <div class="card">
+            <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">ส่วนที่ 2 ห้องปฏิบัติการ</h3>
+                    <h3 class="card-title"><i class="fas fa-edit"></i> แก้ไขข้อมูลห้องปฏิบัติการ :</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/labs/{{ $lab->id }}" method="POST" role="form">
+                <form action="/lab/{{ $lab->id }}" method="POST" role="form">
                     @csrf
                     @method('PUT')
                     <div class="card-body py-2">
                         <div class="row">                            
-                            <div class="col-md-12 mb-3">
-                                <strong>หมายเหตุ: <span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
+                            <div class="col-md-12">
+                                <blockquote class="m-0 bg-light">
+                                    <mark>Ref.รหัสเอกสาร</mark> : {{ $lab->id }}
+                                    <strong>|</strong>
+                                    <mark>Create</mark> : <i class="far fa-clock"></i> {{ $lab->created_at }}
+                                    <strong>|</strong> 
+                                    <mark>Update</mark> : <i class="far fa-clock"></i> {{ $lab->updated_at }}
+                                    <strong>|</strong>
+                                    <mark>Status</mark> :
+                                    @if ($lab->completed == 1)
+                                    <small class="badge badge-success">approved</small>                                            
+                                    @else
+                                    <small class="badge badge-secondary">pending</small>
+                                    @endif
+                                </blockquote>
                             </div>
-                            {{-- ./col --}}
+                            <div class="col-md-12 my-2">
+                                <strong>หมายเหตุ :<span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
+                            </div>
+                            {{-- /.col --}}
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="organization_id">องค์กร :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="organization_id">
+                                        องค์กร :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <select class="form-control custom-select select2 @error('organization_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="organization_id" id="organization_id" required>
                                         <option value="" selected disabled="disabled">disabled</option>
-                                        @foreach ($organizations as $organization)
-                                        <option value="{{ $organization->id }}" {{ $lab->organization_id == $organization->id ? 'selected' : '' }}>
-                                            {{ $organization->org_name }}
-                                            @if(!empty($organization->org_name_level_1)){{' : '.$organization->org_name_level_1}}@else @endif 
-                                            @if(!empty($organization->org_name_level_2)){{' : '.$organization->org_name_level_2}}@else @endif
+                                        @foreach ($organizations as $item)
+                                        <option value="{{ $item->id }}" {{ $lab->organization_id == $item->id ? 'selected' : '' }}>
+                                            {{ $item->org_name }}
+                                            @if(!empty($item->org_name_level_1)){{' : '.$item->org_name_level_1}}@else @endif 
+                                            @if(!empty($item->org_name_level_2)){{' : '.$item->org_name_level_2}}@else @endif
                                         </option>
                                         @endforeach
                                     </select>
@@ -48,23 +65,26 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col โปรดเลือกข้อมูลองค์กร --}}
+                            {{-- /.col --}}
                             <div class="col-md-6">
                                 <div class=" form-group">
-                                    <label for="lab_name">2.1 ชื่อห้องปฎิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="lab_name">
+                                        2.1 ชื่อห้องปฎิบัติการ :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <input type="text" class="form-control @error('lab_name') is-invalid @enderror" name="lab_name" id="lab_name" placeholder="" value="{{ $lab->lab_name }}" required>
                                     @error('lab_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
-                                            {{-- <strong>text assignment</strong> --}}
                                         </span>
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col 2.1 ชื่อห้องปฎิบัติการ --}}
+                            {{-- /.col 2.1 ชื่อห้องปฎิบัติการ --}}
                             <div class="col-md-6">
                                 <div class=" form-group">
-                                    <label for="lab_code">2.2 รหัสห้องปฏิบัติการ (AABCC-MNN) :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="lab_code">
+                                        2.2 รหัสห้องปฏิบัติการ (AABCC-MNN) :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <input type="text" class="form-control @error('lab_code') is-invalid @enderror" name="lab_code" id="lab_code" placeholder="" value="{{ $lab->lab_code }}" required>
                                     @error('lab_code')
                                         <span class="invalid-feedback" role="alert">
@@ -73,14 +93,18 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col 2.2 รหัสห้องปฏิบัติการ (AABCC-MNN) --}}
+                            {{-- /.col 2.2 รหัสห้องปฏิบัติการ (AABCC-MNN) --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="location_lab_id">2.3 ที่ตั้งห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="location_lab_id">
+                                        2.3 ที่ตั้งห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <select class="form-control custom-select select2 @error('location_lab_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="location_lab_id" id="location_lab_id" required>
                                         <option value="" selected disabled="disabled">disabled</option>
-                                        @foreach ($locationLabs as $locationLab)
-                                        <option value="{{ $locationLab->id }}" {{ $lab->location_lab_id == $locationLab->id ? 'selected' : '' }}>{{ $locationLab->location_name }}</option>
+                                        @foreach ($locationLabs as $item)
+                                        <option value="{{ $item->id }}" {{ $lab->location_lab_id == $item->id ? 'selected' : '' }}>
+                                            {{ $item->location_name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     @error('location_lab_id')
@@ -89,9 +113,11 @@
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- ./lab_location_id --}}
+                                {{-- /.form-group lab_location_id --}}
                                 <div class="form-group d-none" id="display_lab_location_other">
-                                    <label for="location_lab_other" class="col-md-12 col-form-label">กรณีเลือกพื้นที่อื่น โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="location_lab_other" class="col-md-12 col-form-label">
+                                        กรณีเลือกพื้นที่อื่น โปรดระบุ :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <div class="col-md-12">
                                         <input type="text" name="location_lab_other" class="form-control" id="location_lab_other" placeholder="" value="{{ $lab->location_lab_other }}">
                                         @error('location_lab_other')
@@ -101,14 +127,18 @@
                                     @enderror
                                     </div>
                                 </div>
-                                {{-- ./location_lab_other --}}
+                                {{-- /.form-group location_lab_other --}}
                                 <div class="form-group d-none" id="display_industrial_estate_id">
-                                    <label for="industrial_estate_id" class="col-md-12 col-form-label">กรณีเลือกนิคมอุตสาหกรรม โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="industrial_estate_id" class="col-md-12 col-form-label">
+                                        กรณีเลือกนิคมอุตสาหกรรม โปรดระบุ :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <div class="col-md-12">
                                         <select class="form-control custom-select select2 @error('industrial_estate_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="industrial_estate_id" id="industrial_estate_id">
                                             <option value="" selected disabled="disabled">disabled</option>
-                                            @foreach ($industrialEstates as $industrialEstate)
-                                            <option value="{{ $industrialEstate->id }}" {{ $lab->industrial_estate_id == $industrialEstate->id ? 'selected' : '' }}>{{ $industrialEstate->estate_name }}</option>
+                                            @foreach ($industrialEstates as $item)
+                                            <option value="{{ $item->id }}" {{ $lab->industrial_estate_id == $item->id ? 'selected' : '' }}>
+                                                {{ $item->estate_name }}
+                                            </option>
                                             @endforeach
                                         </select>
                                         @error('industrial_estate_id')
@@ -118,28 +148,34 @@
                                         @enderror
                                     </div>
                                 </div>
-                                {{-- ./industrial_estate_id --}}
+                                {{-- /.form-group industrial_estate_id --}}
                                 <div class="form-group d-none" id="display_industrial_estate_other">
-                                    <label for="industrial_estate_other" class="col-md-12 col-form-label">กรณีเลือกอื่นๆ โปรดระบุ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="industrial_estate_other" class="col-md-12 col-form-label">
+                                        กรณีเลือกอื่นๆ โปรดระบุ :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <div class="col-md-12">
                                         <input type="text" name="industrial_estate_other" class="form-control" id="industrial_estate_other" placeholder="" value="{{ $lab->industrial_estate_other }}">
                                         @error('industrial_estate_other')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
-                                {{-- ./industrial_estate_other --}}
+                                {{-- /.form-group industrial_estate_other --}}
                             </div>
-                            {{-- ./col 2.3 ที่ตั้งห้องปฏิบัติการ --}}
+                            {{-- /.col 2.3 ที่ตั้งห้องปฏิบัติการ --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="laboratory_type_id">2.4 ประเภทห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="laboratory_type_id">
+                                        2.4 ประเภทห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <select class="form-control custom-select select2 @error('laboratory_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="laboratory_type_id" id="laboratory_type_id" required>
                                         <option value="" selected disabled="disabled">disabled</option>
-                                        @foreach ($laboratoryTypes as $laboratoryType)
-                                        <option value="{{ $laboratoryType->id }}" {{ $lab->laboratory_type_id == $laboratoryType->id ? 'selected' : '' }}>{{ $laboratoryType->lab_type_name }}</option>
+                                        @foreach ($laboratoryTypes as $item)
+                                        <option value="{{ $item->id }}" {{ $lab->laboratory_type_id == $item->id ? 'selected' : '' }}>
+                                            {{ $item->lab_type_name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     @error('laboratory_type_id')
@@ -149,14 +185,18 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col 2.4 ประเภทห้องปฏิบัติการ --}}
+                            {{-- /.col 2.4 ประเภทห้องปฏิบัติการ --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="area_service_id">2.5 ขอบเขตการให้บริการห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="area_service_id">
+                                        2.5 ขอบเขตการให้บริการห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <select class="form-control custom-select select2 @error('area_service_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="area_service_id" id="area_service_id" required>
                                         <option value="" selected disabled="disabled">disabled</option>
-                                        @foreach ($areaServices as $areaService)
-                                        <option value="{{ $areaService->id }}" {{ $lab->area_service_id == $areaService->id ? 'selected' : '' }}>{{ $areaService->area_service_name }}</option>
+                                        @foreach ($areaServices as $item)
+                                        <option value="{{ $item->id }}" {{ $lab->area_service_id == $item->id ? 'selected' : '' }}>
+                                            {{ $item->area_service_name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     @error('area_service_id')
@@ -166,10 +206,12 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col 2.5 ขอบเขตการให้บริการห้องปฏิบัติการ --}}
+                            {{-- /.col 2.5 ขอบเขตการให้บริการห้องปฏิบัติการ --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="lab_employee_amount">2.6 จำนวนเจ้าหน้าที่ในห้องปฏิบัติการ (คน) :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="lab_employee_amount">
+                                        2.6 จำนวนเจ้าหน้าที่ในห้องปฏิบัติการ (คน) :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <input type="number" name="lab_employee_amount" min="1" class="form-control @error('lab_employee_amount') is-invalid @enderror" id="lab_employee_amount" placeholder="" value="{{ $lab->lab_employee_amount }}" required>
                                     @error('lab_employee_amount')
                                         <span class="invalid-feedback" role="alert">
@@ -178,7 +220,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col 2.6 จำนวนเจ้าหน้าที่ในห้องปฏิบัติการ (คน) --}}
+                            {{-- /.col 2.6 จำนวนเจ้าหน้าที่ในห้องปฏิบัติการ (คน) --}}
                             <div class="col-md-6">
                                 @foreach ($lab->educationLevelLabs as $item)
                                 <div class="form-group">
@@ -192,7 +234,7 @@
                                             <input type="number" name="education_primary_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ $item->education_primary_amount }}">
                                         </div>
                                     </div>
-                                    {{-- ./row ประถมศึกษา --}}
+                                    {{-- /.row ประถมศึกษา --}}
                                     <div class="row mb-1">
                                         <div class="col-md-6 d-flex justify-content-between align-items-center">
                                             <label for="">มัธยม</label>
@@ -202,7 +244,7 @@
                                             <input type="number" name="education_secondary_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ $item->education_secondary_amount }}">
                                         </div>
                                     </div>
-                                    {{-- ./row มัธยม --}}
+                                    {{-- /.row มัธยม --}}
                                     <div class="row mb-1">
                                         <div class="col-md-6 d-flex justify-content-between align-items-center">
                                             <label for="">ปวช.</label>
@@ -212,7 +254,7 @@
                                             <input type="number" name="education_vocational_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ $item->education_vocational_amount }}">
                                         </div>
                                     </div>
-                                    {{-- ./row ปวช. --}}
+                                    {{-- /.row ปวช. --}}
                                     <div class="row mb-1">
                                         <div class="col-md-6 d-flex justify-content-between align-items-center">
                                             <label for="">ปวส.</label>
@@ -222,7 +264,7 @@
                                             <input type="number" name="education_high_vocational_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ $item->education_high_vocational_amount }}">
                                         </div>
                                     </div>
-                                    {{-- ./row ปวส. --}}
+                                    {{-- /.row ปวส. --}}
                                     <div class="row mb-1">
                                         <div class="col-md-6 d-flex justify-content-between align-items-center">
                                             <label for="">ปริญญาตรี</label>
@@ -232,7 +274,7 @@
                                             <input type="number" name="education_bachelor_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ $item->education_bachelor_amount }}">
                                         </div>
                                     </div>
-                                    {{-- ./row ปริญญาตรี --}}
+                                    {{-- /.row ปริญญาตรี --}}
                                     <div class="row mb-1">
                                         <div class="col-md-6 d-flex justify-content-between align-items-center">
                                             <label for="">ปริญญาโท</label>
@@ -242,7 +284,7 @@
                                             <input type="number" name="education_master_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ $item->education_master_amount }}">
                                         </div>
                                     </div>
-                                    {{-- ./row ปริญญาโท --}}
+                                    {{-- /.row ปริญญาโท --}}
                                     <div class="row mb-1">
                                         <div class="col-md-6 d-flex justify-content-between align-items-center">
                                             <label for="">ปริญญาเอก</label>
@@ -252,7 +294,7 @@
                                             <input type="number" name="education_doctor_amount" min="0" class="form-control form-control-sm" placeholder="" value="{{ $item->education_doctor_amount }}">
                                         </div>
                                     </div>
-                                    {{-- ./row ปริญญาเอก --}}                                    
+                                    {{-- /.row ปริญญาเอก --}}                                    
                                 </div>
                                 <div class="form-group">
                                     <label for="">อื่นๆ โปรดระบุ :</label>
@@ -260,7 +302,7 @@
                                 </div>
                                 @endforeach
                             </div>
-                            {{-- ./col 2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ : --}}
+                            {{-- /.col 2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="fixed_cost_id">2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี :<br>
@@ -270,8 +312,10 @@
                                     </label>
                                     <select class="form-control custom-select select2 @error('fixed_cost_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="fixed_cost_id" id="fixed_cost_id">
                                         <option value="" selected disabled="disabled">disabled</option>
-                                        @foreach ($fixedCosts as $fixedCost)
-                                        <option value="{{ $fixedCost->id }}" {{ $lab->fixed_cost_id == $fixedCost->id ? 'selected' : '' }}>{{ $fixedCost->fixed_cost_name }}</option>
+                                        @foreach ($fixedCosts as $item)
+                                        <option value="{{ $item->id }}" {{ $lab->fixed_cost_id == $item->id ? 'selected' : '' }}>
+                                            {{ $item->fixed_cost_name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     @error('fixed_cost_id')
@@ -280,12 +324,15 @@
                                         </span>
                                     @enderror
                                 </div>
+                                {{-- ./form-group --}}
                                 <div class="form-group">
                                     <label for="income_per_year_id">2.9 รายได้รวมของห้องปฏิบัติการต่อปี :</label>
                                     <select class="form-control custom-select select2 @error('income_per_year_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="income_per_year_id" id="income_per_year_id">
                                         <option value="" selected disabled="disabled">disabled</option>
-                                        @foreach ($incomePerYears as $incomePerYear)
-                                        <option value="{{ $incomePerYear->id }}" {{ $lab->income_per_year_id == $incomePerYear->id ? 'selected' : '' }}>{{ $incomePerYear->income_detail }}</option>
+                                        @foreach ($incomePerYears as $item)
+                                        <option value="{{ $item->id }}" {{ $lab->income_per_year_id == $item->id ? 'selected' : '' }}>
+                                            {{ $item->income_detail }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     @error('income_per_year_id')
@@ -294,9 +341,9 @@
                                         </span>
                                     @enderror
                                 </div>
+                                {{-- /.form-group --}}
                             </div>
-                            {{-- ./col 2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี : --}}
-                            {{-- ./col 2.9 รายได้รวมของห้องปฏิบัติการต่อปี : --}}
+                            {{-- /.col 2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี : & 2.9 รายได้รวมของห้องปฏิบัติการต่อปี : --}}
                             <div class="col-md-12">
                                 <label for="">2.10 ข้อมูลการพัฒนาห้องปฏิบัติการ :</label>
                             </div>
@@ -330,8 +377,8 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    {{-- /.row ISO/IEC17025 key => 1  --}}
                                     <hr>
-                                    {{-- ./row ISO/IEC17025 key => 1  --}}
                                     @foreach ($lab->uncertaintys as $item)                                 
                                     <div class="row">
                                         <div class="col-md-5 d-flex justify-content-between align-items-center">
@@ -355,8 +402,8 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    {{-- /.row ความไม่แน่นอนในการวัด key => 2 --}}
                                     <hr>
-                                    {{-- ./row ความไม่แน่นอนในการวัด key => 2 --}}
                                     @foreach ($lab->methods as $item)
                                     <div class="row">
                                         <div class="col-md-5 d-flex justify-content-between align-items-center">
@@ -380,8 +427,8 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    {{-- /.row Method Validation key => 3 --}}
                                     <hr>
-                                    {{-- ./row Method Validation key => 3 --}}
                                     @foreach ($lab->internals as $item)
                                     <div class="row">
                                         <div class="col-md-5 d-flex justify-content-between align-items-center">
@@ -405,8 +452,8 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    {{-- /.row การควบคุมคุณภาพภายใน key => 4 --}}
                                     <hr>
-                                    {{-- ./row การควบคุมคุณภาพภายใน key => 4 --}}
                                     @foreach ($lab->statistics as $item)
                                     <div class="row">
                                         <div class="col-md-5 d-flex justify-content-between align-items-center">
@@ -430,8 +477,8 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    {{-- /.row สถิติสำหรับงานทดสอบ key => 5 --}}
                                     <hr>
-                                    {{-- ./row สถิติสำหรับงานทดสอบ key => 5 --}}
                                     @foreach ($lab->techniques as $item)
                                     <div class="row">
                                         <div class="col-md-5 d-flex justify-content-between align-items-center">
@@ -455,8 +502,8 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    {{-- /.row เทคนิคในการใช้เครื่องมือวิทยาศาสตร์ key => 6 --}}
                                     <hr>
-                                    {{-- ./row เทคนิคในการใช้เครื่องมือวิทยาศาสตร์ key => 6 --}}
                                     @foreach ($lab->safetys as $item)
                                     <div class="row">
                                         <div class="col-md-5 d-flex justify-content-between align-items-center">
@@ -480,22 +527,26 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    {{-- /.row ความปลอดภัยในห้องปฏิบัติการ key => 7 --}}
                                     <hr>
-                                    {{-- ./row ความปลอดภัยในห้องปฏิบัติการ key => 7 --}}
                                 </div>
                                 <div class="form-group">
                                     <label for="">อื่นๆ โปรดระบุ :</label>
                                     <textarea class="form-control col-md-12" name="lab_development_other" rows="3" placeholder="">{{ $lab->lab_development_other }}</textarea>
                                 </div>
                             </div>
-                            {{-- ./col 2.10.1 เจ้าหน้าที่ได้รับการฝึกอบรมเพื่อการพัฒนาห้องปฏิบัติการหรือไม่อย่างไร : --}}
+                            {{-- /.col 2.10.1 เจ้าหน้าที่ได้รับการฝึกอบรมเพื่อการพัฒนาห้องปฏิบัติการหรือไม่อย่างไร : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="employee_training_id">2.10.2 เจ้าหน้าที่ห้องปฏิบัติการได้รับการฝึกอบรมเฉลี่ยต่อปี :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="employee_training_id">
+                                        2.10.2 เจ้าหน้าที่ห้องปฏิบัติการได้รับการฝึกอบรมเฉลี่ยต่อปี :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
                                     <select class="form-control custom-select select2 @error('employee_training_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="employee_training_id" id="employee_training_id" required>
                                         <option value="" selected disabled="disabled">disabled</option>
-                                        @foreach ($employeeTrainings as $employeeTraining)
-                                        <option value="{{ $employeeTraining->id }}" {{ $lab->employee_training_id == $employeeTraining->id ? 'selected' : '' }}>{{ $employeeTraining->emp_training_detail }}</option>
+                                        @foreach ($employeeTrainings as $item)
+                                        <option value="{{ $item->id }}" {{ $lab->employee_training_id == $item->id ? 'selected' : '' }}>
+                                            {{ $item->emp_training_detail }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     @error('employee_training_id')
@@ -505,54 +556,50 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- ./col 2.10.2  : --}}
+                            {{-- /.col 2.10.2  : --}}
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">2.10.3 ห้องปฏิบัติการของท่านมีการจัดการทางด้านสิ่งแวดล้อมในสถานที่ทำงานอย่างไรบ้าง (ถ้ามี) :</label>
                                     <textarea class="form-control col-md-12" name="lab_environmental_management" rows="3" placeholder="">{{ $lab->lab_environmental_management }}</textarea>
                                 </div>
                             </div>
-                            {{-- ./col 2.20.3 : --}}
+                            {{-- /.col 2.20.3 : --}}
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">2.10.4 ปัญหาและอุปสรรคที่พบในการพัฒนาห้องปฏิบัติการทดสอบ (ถ้ามี) :</label>
                                     <textarea class="form-control col-md-12" name="lab_development_problem" rows="3" placeholder="">{{ $lab->lab_development_problem }}</textarea>
                                 </div>
                             </div>
-                            {{-- ./col 2.20.4 : --}}
+                            {{-- /.col 2.20.4 : --}}
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">2.10.5 ความต้องการที่จะได้รับการสนับสนุนเพื่อพัฒนาห้องปฏิบัติการทดสอบ (ถ้ามี) :</label>
                                     <textarea class="form-control col-md-12" name="lab_development_request" rows="3" placeholder="">{{ $lab->lab_development_request }}</textarea>
                                 </div>
                             </div>
-                            {{-- ./col 2.20.5 : --}}
+                            {{-- /.col 2.20.5 : --}}
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">2.10.6 ข้อเสนอแนะอื่น ๆ (ถ้ามี) :</label>
                                     <textarea class="form-control col-md-12" name="lab_development_suggestion" rows="3" placeholder="">{{ $lab->lab_development_suggestion }}</textarea>
                                 </div>
                             </div>
-                            {{-- ./col 2.20.6 : --}}
+                            {{-- /.col 2.20.6 : --}}
                         </div>
                         <!-- /.row -->
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <div class="d-flex justify-content-between">
-                            <a href="/labs" class="btn btn-secondary btn-lg">
-                                <i class="fas fa-backward"></i>
-                                ย้อนกลับ
-                            </a>
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                บันทึกข้อมูล
-                                <i class="fas fa-forward"></i>
-                            </button>
-                        </div>
+                        <a href="/lab/{{ $lab->id }}" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-undo"></i> ย้อนกลับ
+                        </a>
+                        <button type="submit" class="btn btn-info btn-sm">
+                            <i class="fas fa-save"></i> บันทึกการแก้ไข
+                        </button>
                     </div>
                     <!-- /.card-footer -->
                 </form>
-                <!-- /.form end -->
+                <!-- form end -->
             </div>
             <!-- /.card -->
         </div>

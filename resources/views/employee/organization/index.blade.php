@@ -10,11 +10,10 @@
 
 @section('content')
     <div class="row">
-        <!-- column -->
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">ข้อมูลทั้งหมด</h3>
+                    <h3 class="card-title"><i class="far fa-folder-open"></i> ข้อมูลองค์กร</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -23,55 +22,61 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <table id="dt1" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
                         @if (count($orgs) > 0)
-                        <thead>                  
-                            <tr>
-                                <th style="width: 10px">ลำดับ</th>
-                                <th>ชื่อหน่วยงาน</th>
-                                <th>ผู้บันทึกข้อมูล</th>
-                                <th style="width: 10em" colspan="2"><i class="fas fa-users-cog"> </i></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $i = 1;
-                            @endphp
-                            @foreach ($orgs as $org)
-                            <tr>
-                                <td class="text-center">{{ $i++ }}</td>
-                                <td>
-                                    {{ $org->org_name }} 
-                                    @if(!empty($org->org_name_level_1)){{' : '.$org->org_name_level_1}}@else @endif 
-                                    @if(!empty($org->org_name_level_2)){{' : '.$org->org_name_level_2}}@else @endif 
-                                </td>
-                                <td>{{ $org->user->name }}</td>
-                                <td>
-                                    <a href="/organization/{{ $org->id }}" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
-                                </td>
-                                <td>
-                                    <a href="{{ route('labs.create-org-id', $org->id) }}" class="btn btn-info btn-sm">เพิ่มข้อมูลห้องปฏิบัติการ</a>
-                                </td>
-                            </tr>                                
-                            @endforeach
-                        </tbody>
+                            <thead>                  
+                                <tr>
+                                    <th style="width: 10px;">ลำดับ</th>
+                                    <th>ชื่อองค์กร</th>
+                                    <th>status</th>
+                                    <th><i class="fas fa-user-clock"></i></th>
+                                    <th><i class="fas fa-user-cog"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $i = 1;
+                                @endphp
+                                @foreach ($orgs as $org)
+                                <tr>
+                                    <td class="text-center">{{ $i++ }}</td>
+                                    <td>
+                                        <a href="/organization/{{ $org->id }}">
+                                            <i class="far fa-hand-point-right"></i> {{ $org->org_name }} 
+                                            @if(!empty($org->org_name_level_1)){{ ' : '.$org->org_name_level_1 }}@else @endif 
+                                            @if(!empty($org->org_name_level_2)){{ ' : '.$org->org_name_level_2 }}@else @endif                                            
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @if ($org->completed == 1)
+										<small class="badge badge-success">approved</small>                                            
+										@else
+										<small class="badge badge-secondary">pending</small>
+                                        @endif
+                                    </td>									
+									<td>{{ $org->updated_at }}</td>
+                                    <td>
+                                        <a href="{{ route('lab.create-org-id', $org->id) }}">
+                                            <i class="far fa-edit"></i> เพิ่มห้องปฏิบัติการ
+                                        </a>
+                                    </td>
+                                </tr>                                
+                                @endforeach
+                            </tbody>
                         @else
                             <div class="text-center">
                                 No Data!
                             </div>
-                        @endif
-                        
+                        @endif                        
                     </table>
                 </div>
                 <!-- /.card-body -->
-                @if (count($orgs) > 10)
-                    <div class="card-footer clearfix">
-                        {{ $orgs->links() }}
-                    </div>
-                @else
-                    
-                @endif
-                <!-- /.card-footer -->
+                <div class="card-footer clearfix">
+                    <a href="/organization/create">
+                        <i class="far fa-edit"></i></i> เพิ่มข้อมูลองค์กร
+                    </a>
+                </div>
+                <!--/.card-footer -->
             </div>
             <!--/.card -->
         </div>

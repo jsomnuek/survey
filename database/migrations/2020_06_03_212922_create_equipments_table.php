@@ -49,6 +49,8 @@ class CreateEquipmentsTable extends Migration
             $table->unsignedBigInteger('equipment_rent_id')->nullable()->comment('เช่าใช้เครื่องมือ');          
             $table->bigInteger('equipment_rent_fee')->nullable()->comment('ค่าเช่าใช้เครื่องมือ'); 
             $table->string('equipment_rent_detail', 255)->nullable()->comment('รายละเอียดเช่าใช้เครื่องมือ');
+            $table->boolean('completed')->default(false); 
+            $table->timestamps();
             // note - dont forget to add nullable 
 
             // Foreign Key to other table
@@ -56,9 +58,7 @@ class CreateEquipmentsTable extends Migration
             $table->foreign('lab_id')->references('id')->on('labs');
             $table->foreign('science_tool_id')->references('id')->on('science_tools');                          
             $table->foreign('equipment_usage_id')->references('id')->on('equipment_usages');                  
-            $table->foreign('equipment_maintenance_id')->references('id')->on('equipment_maintenances'); 
-            $table->timestamps();
-
+            $table->foreign('equipment_maintenance_id')->references('id')->on('equipment_maintenances');
         });
         
         // ข้อ 3.10 สาขาเทคโนโลยีเครื่องมือ 

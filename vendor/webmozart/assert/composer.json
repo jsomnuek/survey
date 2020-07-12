@@ -14,19 +14,15 @@
         }
     ],
     "require": {
-        "php": "^5.3.3 || ^7.0",
+        "php": "^5.3.3 || ^7.0 || ^8.0",
         "symfony/polyfill-ctype": "^1.8"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8.36 || ^7.5.13"
     },
     "conflict": {
-<<<<<<< HEAD
-        "vimeo/psalm": "<3.9.1"
-=======
         "vimeo/psalm": "<3.9.1",
         "phpstan/phpstan": "<0.12.20"
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
     },
     "autoload": {
         "psr-4": {
@@ -35,12 +31,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-<<<<<<< HEAD
-            "Webmozart\\Assert\\Tests\\": "tests/"
-=======
             "Webmozart\\Assert\\Tests\\": "tests/",
             "Webmozart\\Assert\\Bin\\": "bin/src"
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         }
     }
 }

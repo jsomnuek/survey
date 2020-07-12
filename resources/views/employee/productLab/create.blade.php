@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts.admin')
 
 @section('page')
@@ -112,3 +113,6 @@
 
     </script>
 @endsection
+=======
+CREATE
+>>>>>>> 39774622bbfac40ad4a2c5028ed46d645a7942f6

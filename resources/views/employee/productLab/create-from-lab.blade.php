@@ -32,11 +32,6 @@
                                             {{$lab->lab_name}}
                                             <label name="lab_id" id="lab_id" for="" value=""></label>
                                         @endforeach
-                                        {{-- <a href="{{ route('lab.show', $lab->id) }}">
-                                            {{ $org->org_name }}
-                                            @if(!empty($org->org_name_level_1)){{' : '.$org->org_name_level_1}}@else @endif 
-                                            @if(!empty($org->org_name_level_2)){{' : '.$org->org_name_level_2}}@else @endif
-                                        </a> --}}
                                     </p>
                                 </blockquote>
                             </div>
@@ -218,7 +213,6 @@
                                     @error('result_control_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                        {{-- <strong>text assignment</strong> --}}
                                     </span>
                                     @enderror
                                 </div>

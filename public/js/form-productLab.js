@@ -17,10 +17,53 @@ $(document).ready(function() {
         })
         .trigger("change");
 
-    //4.14 การควบคุมคุณภาพผลการทดสอบภายใน
-    function checkControlTest() {
+    //4.2 checkProductTypes
+    function checkProductType() {
+        // this value
+        var data = $("#product_type_id").val();
+        console.log(data);
+        if (data != null) {
+            for (i = 0; i < data.length; i++) {
+                if (data[i] == "39") {
+                    var indTypeId = 39;
+                }
+            }
+        }
+        if (indTypeId == 39) {
+            $("#display_product_type_other").removeClass("d-none");
+            $("#product_type_other").prop("required", true);
+        } else {
+            $("#display_product_type_other").addClass("d-none");
+            $("#product_type_other").val(null);
+            $("#product_type_other").prop("required", false);
+        }
+        // event on selected
+        $("#product_type_id").on("select2:select select2:unselect", function() {
+            var data = $("#product_type_id").val();
+            if (data != null) {
+                for (i = 0; i < data.length; i++) {
+                    if (data[i] == "39") {
+                        var indTypeId = 39;
+                    }
+                }
+            }
+            if (indTypeId == 39) {
+                $("#display_product_type_other").removeClass("d-none");
+                $("#product_type_other").prop("required", true);
+            } else {
+                $("#display_product_type_other").addClass("d-none");
+                $("#product_type_other").prop("required", false);
+                $("#product_type_other").val(null);
+            }
+        });
+    }
+    checkProductType();
+
+    //4.14 checkResultControl
+    function checkResultControl() {
         // this value
         var data = $("#result_control_id").val();
+        console.log(data);
         if (data != null) {
             for (i = 0; i < data.length; i++) {
                 if (data[i] == "7") {
@@ -28,15 +71,13 @@ $(document).ready(function() {
                 }
             }
         }
-        if (indTypeId == 1) {
-            $("#display_product_lab_result_control_other").removeClass(
-                "d-none"
-            );
-            $("#product_lab_result_control_other").prop("required", true);
+        if (indTypeId == 7) {
+            $("#display_result_control_other").removeClass("d-none");
+            $("#result_control_other").prop("required", true);
         } else {
-            $("#display_product_lab_result_control_other").addClass("d-none");
-            $("#product_lab_result_control_other").prop("required", false);
-            $("#product_lab_result_control_other").val(null);
+            $("#display_result_control_other").addClass("d-none");
+            $("#result_control_other").val(null);
+            $("#result_control_other").prop("required", false);
         }
         // event on selected
         $("#result_control_id").on(
@@ -51,111 +92,70 @@ $(document).ready(function() {
                     }
                 }
                 if (indTypeId == 7) {
-                    $("#display_product_lab_result_control_other").removeClass(
-                        "d-none"
-                    );
-                    $("#product_lab_result_control_other").prop(
-                        "required",
-                        true
-                    );
+                    $("#display_result_control_other").removeClass("d-none");
+                    $("#result_control_other").prop("required", true);
                 } else {
-                    $("#display_product_lab_result_control_other").addClass(
-                        "d-none"
-                    );
-                    $("#product_lab_result_control_other").prop(
-                        "required",
-                        false
-                    );
-                    $("#product_lab_result_control_other").val(null);
+                    $("#display_result_control_other").addClass("d-none");
+                    $("#result_control_other").prop("required", false);
+                    $("#result_control_other").val(null);
                 }
             }
         );
     }
-    checkControlTest();
+    checkResultControl();
 
-    //4.2 checkProductTypes
-    function checkProductType() {
+    //4.7
+    function checkTestCalibrate() {
         // this value
-        var data = $("#product_type_id").val();
+        var data = $("#testing_calibrating_type_id").val();
         if (data != null) {
             for (i = 0; i < data.length; i++) {
-                if (data[i] == "39") {
-                    var indTypeId = 39;
+                if (data[i] == "6") {
+                    var indTypeId = 6;
                 }
             }
         }
-        if (indTypeId == 39) {
-            $("#display_product_type_other").removeClass("d-none");
-            $("#product_type_other").prop("required", true);
+        if (indTypeId == 6) {
+            $("#display_testing_calibrating_type_other").removeClass("d-none");
+            $("#testing_calibrating_type_other").prop("required", true);
         } else {
-            $("#display_product_type_other").addClass("d-none");
-            $("#product_type_other").prop("required", false);
-            $("#product_type_other").val(null);
+            $("#display_testing_calibrating_type_other").addClass("d-none");
+            $("#testing_calibrating_type_other").prop("required", false);
+            $("#testing_calibrating_type_other").val(null);
         }
         // event on selected
-        $("#product_type_id").on("select2:select select2:unselect", function() {
-            var data = $("#product_type_id").val();
-            if (data != null) {
-                for (i = 0; i < data.length; i++) {
-                    if (data[i] == "39") {
-                        var indTypeId = 39;
+        $("#testing_calibrating_type_id").on(
+            "select2:select select2:unselect",
+            function() {
+                var data = $("#testing_calibrating_type_id").val();
+                if (data != null) {
+                    for (i = 0; i < data.length; i++) {
+                        if (data[i] == "6") {
+                            var indTypeId = 6;
+                        }
                     }
                 }
-            }
-            if (indTypeId == 39) {
-                $("#display_product_type_other").removeClass("d-none");
-                $("#product_type_other").prop("required", true);
-            } else {
-                $("#display_product_type_other").addClass("d-none");
-                $("#product_type_other").prop("required", false);
-                $("#product_type_other").val(null);
-            }
-        });
-    }
-    checkProductType();
-
-    //4.2 checkProductTypes
-    function checkProductType() {
-        // this value
-        var data = $("#product_type_id").val();
-        if (data != null) {
-            for (i = 0; i < data.length; i++) {
-                if (data[i] == "39") {
-                    var indTypeId = 39;
+                if (indTypeId == 6) {
+                    $("#display_testing_calibrating_type_other").removeClass(
+                        "d-none"
+                    );
+                    $("#testing_calibrating_type_other").prop("required", true);
+                } else {
+                    $("#display_testing_calibrating_type_other").addClass(
+                        "d-none"
+                    );
+                    $("#testing_calibrating_type_other").prop(
+                        "required",
+                        false
+                    );
+                    $("#testing_calibrating_type_other").val(null);
                 }
             }
-        }
-        if (indTypeId == 39) {
-            $("#display_product_type_other").removeClass("d-none");
-            $("#product_type_other").prop("required", true);
-        } else {
-            $("#display_product_type_other").addClass("d-none");
-            $("#product_type_other").prop("required", false);
-            $("#product_type_other").val(null);
-        }
-        // event on selected
-        $("#product_type_id").on("select2:select select2:unselect", function() {
-            var data = $("#product_type_id").val();
-            if (data != null) {
-                for (i = 0; i < data.length; i++) {
-                    if (data[i] == "39") {
-                        var indTypeId = 39;
-                    }
-                }
-            }
-            if (indTypeId == 39) {
-                $("#display_product_type_other").removeClass("d-none");
-                $("#product_type_other").prop("required", true);
-            } else {
-                $("#display_product_type_other").addClass("d-none");
-                $("#product_type_other").prop("required", false);
-                $("#product_type_other").val(null);
-            }
-        });
+        );
     }
-    checkProductType();
+    checkTestCalibrate();
 
-    //4.14 checkTestType
+    //4.14 checkTestingCalibratingType
     function checkTestType() {
         // this value
         var data = $("#testing_calibrating_type_id").val();

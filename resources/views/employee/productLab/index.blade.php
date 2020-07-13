@@ -78,6 +78,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/custom-datatable/productLab.js') }}"></script>
+    <script src="{{ asset('js/custom-datatable/productlab.js') }}"></script>
 @endsection
 

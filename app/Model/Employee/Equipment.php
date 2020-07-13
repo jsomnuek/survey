@@ -5,6 +5,7 @@ namespace App\Model\Employee;
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
+use App\Model\Employee\Organization;
 use App\Model\Employee\Lab;
 use App\Model\Employee\ProductLab;
 use App\Model\BasicInformations\ScienceTool;
@@ -30,6 +31,12 @@ class Equipment extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Defining Relationships One To Many
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class, 'org_id');
     }
 
     // Defining Relationships One To Many

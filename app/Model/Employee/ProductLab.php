@@ -33,6 +33,12 @@ class ProductLab extends Model
     {
         return $this->belongsTo(Lab::class);
     }
+
+    // Defining Relationships One To Many
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
     
     // 4.5 relation for เครื่องมือในแลป
     public function equipments()

@@ -16,6 +16,7 @@ class CreateProductLabsTable extends Migration
         Schema::create('product_labs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->comment(''); 
+            $table->unsignedBigInteger('organization_id')->nullable()->comment(''); 
             $table->unsignedBigInteger('lab_id')->comment('');
             $table->string('product_lab_name')->comment('');
             $table->string('product_type_other')->nullable()->comment('');
@@ -41,6 +42,7 @@ class CreateProductLabsTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users'); 
             $table->foreign('lab_id')->references('id')->on('labs');
+            $table->foreign('organization_id')->references('id')->on('organizations');
             $table->foreign('testing_calibrating_list_id')->references('id')->on('testing_calibrating_lists');
             $table->foreign('testing_calibrating_type_id')->references('id')->on('testing_calibrating_types');
             $table->foreign('testing_calibrating_method_id')->references('id')->on('testing_calibrating_methods');

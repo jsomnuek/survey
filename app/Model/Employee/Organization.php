@@ -15,6 +15,8 @@ use App\Model\Employee\QualitySystemIso9000;
 use App\Model\Employee\QualitySystemIso14000;
 use App\Model\Employee\QualitySystemIsoHaccp;
 use App\Model\Employee\Lab;
+use App\Model\Employee\Equipment;
+use App\Model\Employee\ProductLab;
 
 class Organization extends Model
 {
@@ -100,6 +102,18 @@ class Organization extends Model
     public function labs()
     {
         return $this->hasMany(Lab::class);
+    }
+
+    // Defining Relationships One To Many
+    public function equipments()
+    {
+        return $this->hasMany(Equipment::class);
+    }
+
+    // Defining Relationships One To Many
+    public function productlabs()
+    {
+        return $this->hasMany(ProductLab::class);
     }
 
 }

@@ -355,7 +355,7 @@
 
 @section('scripts')
     <script src="{{ asset('js/components.js') }}"></script>
-    <script src="{{ asset('js/form-productlab.js') }}"></script>
+    <script src="{{ asset('js/form-productLab.js') }}"></script>
     <script>
         // 4.2 product_type_id
         $('#product_type_id').val({{ json_encode($product_type_items) }});

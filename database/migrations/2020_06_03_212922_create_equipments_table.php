@@ -47,7 +47,7 @@ class CreateEquipmentsTable extends Migration
             $table->string('equipment_manual_name', 255)->nullable()->comment('ชื่อคู่มือเครื่องมือ');                   
             $table->string('equipment_manual_location', 255)->nullable()->comment('ที่อยู่คู่มือเครื่องมือ');          
             $table->unsignedBigInteger('equipment_rent_id')->nullable()->comment('เช่าใช้เครื่องมือ');          
-            $table->bigInteger('equipment_rent_fee')->nullable()->comment('ค่าเช่าใช้เครื่องมือ'); 
+            $table->string('equipment_rent_fee', 255)->nullable()->comment('ค่าเช่าใช้เครื่องมือ'); 
             $table->string('equipment_rent_detail', 255)->nullable()->comment('รายละเอียดเช่าใช้เครื่องมือ');
             $table->boolean('completed')->default(false); 
             $table->timestamps();

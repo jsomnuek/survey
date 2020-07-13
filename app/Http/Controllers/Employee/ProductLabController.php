@@ -39,7 +39,7 @@ class ProductLabController extends Controller
     {
         $productLabs = ProductLab::where('user_id', auth()->user()->id)->get();
 
-        return view('employee.productlab.index', [
+        return view('employee.productLab.index', [
             'productLabs' => $productLabs,
         ]);
     }

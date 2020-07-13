@@ -138,18 +138,18 @@
 							{{-- /.col 3.3 ชื่อเครื่องมือ (ภาษาไทย) : --}}
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="equipment_brand">3.4 ยี่ห้อของเครืองมือ :</label>
+									<label for="equipment_brand">3.4 ยี่ห้อของเครื่องมือ :</label>
 									<input type="text" name="equipment_brand" id="equipment_brand" class="form-control" value="{{ $equipment->equipment_brand }}">
 								</div>
 							</div>
-							{{-- /.col 3.4 ยี่ห้อของเครืองมือ : --}}
+							{{-- /.col 3.4 ยี่ห้อของเครื่องมือ : --}}
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="equipment_model">3.5 รุ่นของเครืองมือ :</label>
+									<label for="equipment_model">3.5 รุ่นของเครื่องมือ :</label>
 									<input type="text" name="equipment_model" id="equipment_model" class="form-control" value="{{ $equipment->equipment_model }}">
 								</div>
 							</div>
-							{{-- /.col 3.5 รุ่นของเครืองมือ : --}}
+							{{-- /.col 3.5 รุ่นของเครื่องมือ : --}}
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="equipment_number">3.6 รหัสเครื่องมือของหน่วยงาน/รหัสครุภัณฑ์ (ถ้ามี) :</label>
@@ -406,7 +406,7 @@
 									<label for="equipment_rent_fee">
 										3.20.1 ค่าบริการต่อครั้ง (บาท) หากไม่คิดระบุเป็น "0 บาท" :<span><sup class="text-danger"> *</sup>
 									</label>
-									<input type="number" class="form-control" name="equipment_rent_fee" id="equipment_rent_fee" value="{{ $equipment->equipment_rent_fee }}">
+									<input type="text" class="form-control" name="equipment_rent_fee" id="equipment_rent_fee" value="{{ $equipment->equipment_rent_fee }}">
 								</div>
 								<div class="form-group" id="display_equipment_rent_detail">
 									<label for="equipment_rent_detail">

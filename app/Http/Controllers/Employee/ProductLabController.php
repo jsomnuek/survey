@@ -40,7 +40,7 @@ class ProductLabController extends Controller
     {
         $productLabs = ProductLab::where('user_id', auth()->user()->id)->get();
 
-        return view('employee.productlab.index', [
+        return view('employee.productLab.index', [
             'productLabs' => $productLabs,
         ]);
     }
@@ -72,7 +72,7 @@ class ProductLabController extends Controller
         $resultControls = ResultControl::where('result_control_status', 'A')->get();
         $certifyLaboratories = CertifyLaboratory::where('cert_lab_status', 'A')->get();
         
-        return view('employee.productlab.create-lab-id', [
+        return view('employee.productLab.create-lab-id', [
             'lab' => $lab,
             'productTypes' => $productTypes,
             'equipments' => $equipments,
@@ -151,7 +151,7 @@ class ProductLabController extends Controller
             return redirect()->route('productlab.index')->with('error', 'Unauthorized Page');
         }
         
-        return view('employee.productlab.show', ['productLab' => $productLab]);
+        return view('employee.productLab.show', ['productLab' => $productLab]);
     }
 
     /**
@@ -197,7 +197,7 @@ class ProductLabController extends Controller
             $result_control_items[] = $item->id;
         }
         
-        return view('employee.productlab.edit', [
+        return view('employee.productLab.edit', [
             'productLab' => $productLab,
             'productTypes' => $productTypes,
             'product_type_items' => $product_type_items,

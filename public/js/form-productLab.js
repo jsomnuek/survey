@@ -26,6 +26,7 @@ $(document).ready(function() {
     function checkProductType() {
         // this value
         var data = $("#product_type_id").val();
+        console.log(data);
         if (data != null) {
             for (i = 0; i < data.length; i++) {
                 if (data[i] == "39") {
@@ -38,8 +39,8 @@ $(document).ready(function() {
             $("#product_type_other").prop("required", true);
         } else {
             $("#display_product_type_other").addClass("d-none");
-            $("#product_type_other").prop("required", false);
             $("#product_type_other").val(null);
+            $("#product_type_other").prop("required", false);
         }
         // event on selected
         $("#product_type_id").on("select2:select select2:unselect", function() {
@@ -49,6 +50,14 @@ $(document).ready(function() {
                     if (data[i] == "39") {
                         var productTypeId = 39;
                     }
+                }
+                if (productTypeId == 39) {
+                    $("#display_product_type_other").removeClass("d-none");
+                    $("#product_type_other").prop("required", true);
+                } else {
+                    $("#display_product_type_other").addClass("d-none");
+                    $("#product_type_other").prop("required", false);
+                    $("#product_type_other").val(null);
                 }
             }
             if (productTypeId == 39) {

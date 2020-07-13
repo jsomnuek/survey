@@ -258,8 +258,8 @@ class LabController extends Controller
             return redirect()->route('lab.index')->with('error', 'Unauthorized Page');
         }
 
-        if($productLab->completed == 1) {
-            return redirect()->route('lab.show', $productLab->id);
+        if($lab->completed == 1) {
+            return redirect()->route('lab.show', $lab->id);
         }
 
         $organizations = Organization::where('user_id', auth()->user()->id)->get();

@@ -40,7 +40,12 @@
                                 @foreach ($equipments as $equipment)
                                 <tr>
                                     {{-- <td class="text-center">{{ $i++ }}</td> --}}
-                                    <td>{{ $equipment->lab->lab_name }}</td>
+                                    <td>
+                                        {{ $equipment->organization->org_name }}
+                                        @if(!empty($equipment->organization->org_name_level_1)){{ ' : '.$equipment->organization->org_name_level_1 }}@else @endif 
+										@if(!empty($equipment->organization->org_name_level_2)){{ ' : '.$equipment->organization->org_name_level_2 }}@else @endif
+                                        | <mark>{{ $equipment->lab->lab_name }}</mark>
+                                    </td>
                                     <td>                                    
                                         <a href="/equipment/{{ $equipment->id }}">
                                             <i class="far fa-hand-point-right"></i>

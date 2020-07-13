@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Helpers\LogActivity;
 
 use App\Model\Employee\ProductLab;
+use App\Model\Employee\Organization;
 use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
 

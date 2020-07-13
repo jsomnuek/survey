@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
+use App\Model\Employee\Organization;
 use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
 
@@ -42,6 +43,8 @@ class EquipmentController extends Controller
     {
         // data
         $equipments = Equipment::where('user_id', auth()->user()->id)->get();
+
+        // return $equipments;
 
         return view('employee.equipment.index')->with('equipments', $equipments);
     }

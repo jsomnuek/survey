@@ -61,6 +61,7 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/resultControl','BasicInformations\ResultControlController');
     Route::resource('/saleProduct','BasicInformations\SaleProductController');
     Route::resource('/scienceTool','BasicInformations\ScienceToolController');
+    Route::resource('/surveyStatus','BasicInformations\SurveyStatusController');
     Route::resource('/technicalEquipment', 'BasicInformations\TechnicalEquipmentController');
     Route::resource('/testingCalibratingList','BasicInformations\TestingCalibratingListController');
     Route::resource('/testingCalibratingMethod','BasicInformations\TestingCalibratingMethodController');

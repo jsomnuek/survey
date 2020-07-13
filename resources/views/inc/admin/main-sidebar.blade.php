@@ -781,6 +781,27 @@
                         </li>
                     </ul>
                 </li>
+                {{-- Survey Status --}}
+                <li class="nav-item has-treeview {{ Request::is ('surveyStatus*') ? 'menu-open' : '' }}">
+                    {{-- active --}}
+                    <a href="#" class="nav-link {{ Request::is ('surveyStatus*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-search"></i>
+                        <p>รายการสถานะแบบสำรวจ <i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- active --}}
+                            <a href="{{ url('/surveyStatus') }}" class="nav-link {{ Request::is('surveyStatus') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายชื่อสถานะแบบสำรวจ</p>
+                            </a>
+                            <a href="{{ url('/surveyStatus/create') }}" class="nav-link {{ Request::is ('surveyStatus/create') ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>เพิ่มข้อมูลสถานะแบบสำรวจ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
 
                 {{-- Menu for Employee --}}

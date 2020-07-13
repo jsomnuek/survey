@@ -131,7 +131,7 @@ class ProductLabController extends Controller
             // create log activity
             LogActivity::addToLog('Add Product Lab : " ' . $productLab->product_lab_name . ' " successfully.');
 
-            return redirect()->route('productLab.show', $productLab->id);
+            return redirect()->route('productlab.show', $productLab->id);
         }
     }
 
@@ -147,7 +147,7 @@ class ProductLabController extends Controller
 
         // Check for correct user
         if(auth()->user()->id !== $productLab->user_id){
-            return redirect()->route('productLab.index')->with('error', 'Unauthorized Page');
+            return redirect()->route('productlab.index')->with('error', 'Unauthorized Page');
         }
         
         return view('employee.productLab.show', ['productLab' => $productLab]);
@@ -167,11 +167,11 @@ class ProductLabController extends Controller
 
         // Check for correct user
         if(auth()->user()->id !== $productLab->user_id){
-            return redirect()->route('productLab.index')->with('error', 'Unauthorized Page');
+            return redirect()->route('productlab.index')->with('error', 'Unauthorized Page');
         }
 
         if($productLab->completed == 1) {
-            return redirect()->route('productLab.show', $productLab->id);
+            return redirect()->route('productlab.show', $productLab->id);
         }
 
         $productTypes = ProductType::where('product_type_status', 'A')->get();
@@ -262,7 +262,7 @@ class ProductLabController extends Controller
             // create log activity
             LogActivity::addToLog('Edit Product Lab : " ' . $productLab->product_lab_name . ' " successfully.');
 
-            return redirect()->route('productLab.show', $productLab->id);
+            return redirect()->route('productlab.show', $productLab->id);
         }
         
     }

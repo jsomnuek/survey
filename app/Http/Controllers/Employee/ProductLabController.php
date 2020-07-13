@@ -71,7 +71,7 @@ class ProductLabController extends Controller
         $resultControls = ResultControl::where('result_control_status', 'A')->get();
         $certifyLaboratories = CertifyLaboratory::where('cert_lab_status', 'A')->get();
         
-        return view('employee.productlab.create-lab-id', [
+        return view('employee.productLab.create-lab-id', [
             'lab' => $lab,
             'productTypes' => $productTypes,
             'equipments' => $equipments,
@@ -131,7 +131,7 @@ class ProductLabController extends Controller
             // create log activity
             LogActivity::addToLog('Add Product Lab : " ' . $productLab->product_lab_name . ' " successfully.');
 
-            return redirect()->route('productlab.show', $productLab->id);
+            return redirect()->route('productLab.show', $productLab->id);
         }
     }
 
@@ -147,10 +147,10 @@ class ProductLabController extends Controller
 
         // Check for correct user
         if(auth()->user()->id !== $productLab->user_id){
-            return redirect()->route('productlab.index')->with('error', 'Unauthorized Page');
+            return redirect()->route('productLab.index')->with('error', 'Unauthorized Page');
         }
         
-        return view('employee.productlab.show', ['productLab' => $productLab]);
+        return view('employee.productLab.show', ['productLab' => $productLab]);
     }
 
     /**
@@ -167,11 +167,11 @@ class ProductLabController extends Controller
 
         // Check for correct user
         if(auth()->user()->id !== $productLab->user_id){
-            return redirect()->route('productlab.index')->with('error', 'Unauthorized Page');
+            return redirect()->route('productLab.index')->with('error', 'Unauthorized Page');
         }
 
         if($productLab->completed == 1) {
-            return redirect()->route('productlab.show', $productLab->id);
+            return redirect()->route('productLab.show', $productLab->id);
         }
 
         $productTypes = ProductType::where('product_type_status', 'A')->get();
@@ -196,7 +196,7 @@ class ProductLabController extends Controller
             $result_control_items[] = $item->id;
         }
         
-        return view('employee.productlab.edit', [
+        return view('employee.productLab.edit', [
             'productLab' => $productLab,
             'productTypes' => $productTypes,
             'product_type_items' => $product_type_items,
@@ -262,7 +262,7 @@ class ProductLabController extends Controller
             // create log activity
             LogActivity::addToLog('Edit Product Lab : " ' . $productLab->product_lab_name . ' " successfully.');
 
-            return redirect()->route('productlab.show', $productLab->id);
+            return redirect()->route('productLab.show', $productLab->id);
         }
         
     }

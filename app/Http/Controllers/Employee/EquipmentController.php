@@ -146,6 +146,10 @@ class EquipmentController extends Controller
             $fileNameToStore = '';
         }
 
+        //get org_id
+        $lab = Lab::find($request->input('lab_id'));
+        // dd($lab);
+
         // Handle File Upload
 
         // store in the database
@@ -153,6 +157,7 @@ class EquipmentController extends Controller
 
         $equipment->user_id = auth()->user()->id;
         $equipment->lab_id = $request->input('lab_id');
+        $equipment->org_id = $lab->organization_id;
         $equipment->equipment_code = $request->input('equipment_code');
         $equipment->science_tool_id = $request->input('science_tool_id');
         $equipment->science_tool_other_name = $request->input('science_tool_other_name');
@@ -311,9 +316,15 @@ class EquipmentController extends Controller
         }
 
         // store in the database
+        // get org_id
+        $lab = Lab::find($request->input('lab_id'));
+
+        // dd($lab);
+
         $equipment = Equipment::find($id);
 
         $equipment->lab_id = $request->input('lab_id');
+        $equipment->org_id = $lab->organization_id;
         $equipment->equipment_code = $request->input('equipment_code');
         $equipment->science_tool_id = $request->input('science_tool_id');
         $equipment->science_tool_other_name = $request->input('science_tool_other_name');

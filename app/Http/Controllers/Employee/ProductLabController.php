@@ -98,11 +98,15 @@ class ProductLabController extends Controller
         // validate the data with function
         $this->validateProductlab();
 
+        //get organization id
+        $lab = Lab::find($request->input('lab_id'));
+
         // store in the database
         $productLab = new ProductLab;
 
         $productLab->user_id = auth()->user()->id;
         $productLab->lab_id = $request->input('lab_id');
+        $productLab->organization_id = $lab->organization_id;
         $productLab->product_lab_name = $request->input('product_lab_name');
         $productLab->product_type_other = $request->input('product_type_other');
         $productLab->product_lab_standard = $request->input('product_lab_standard');
@@ -231,8 +235,12 @@ class ProductLabController extends Controller
         // validate the data with function
         $this->validateProductlab();
 
+        //get organization id
+        // $lab = Lab::find($request->input('lab_id'));
+
         // store in the database
         $productLab = ProductLab::find($id);
+    
 
         $productLab->product_lab_name = $request->input('product_lab_name');
         $productLab->product_type_other = $request->input('product_type_other');

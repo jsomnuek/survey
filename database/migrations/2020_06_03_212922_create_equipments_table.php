@@ -36,7 +36,7 @@ class CreateEquipmentsTable extends Migration
             $table->string('equipment_image')->nullable()->comment('รูปเครื่องมือ');                              
             $table->integer('equipment_calibration_id')->nullable()->comment('การสอบเทียบเครื่องมือ');         
             $table->string('equipment_calibration_by', 255)->nullable()->comment('การสอบเทียบเครื่องมือโดย');   
-            $table->string('equipment_calibration_year')->nullable()->comment('การสอบเทียบเครื่องมือปี');    
+            $table->string('equipment_calibration_year',255)->nullable()->comment('ปีสอบเทียบเครื่องมือ');    
             $table->unsignedBigInteger('equipment_maintenance_id')->nullable()->comment('การบำรุงรักษา');     
             $table->string('equipment_maintenance_other')->nullable()->comment('การบำรุงรักษาอื่นๆ');           
             $table->bigInteger('equipment_maintenance_budget')->nullable()->comment('ค่าบำรุงรักษา');              

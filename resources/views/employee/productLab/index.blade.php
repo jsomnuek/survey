@@ -41,7 +41,13 @@
                                 @foreach ($productLabs as $item)
                                 <tr>
                                     {{-- <td class="text-center">{{ $i++ }}</td> --}}
-                                    <td>{{ $item->lab->lab_name }}</td>
+                                    {{-- <td>{{ $item->lab->lab_name }}</td> --}}
+                                    <td>
+                                        {{ $item->organization->org_name }}
+                                        @if(!empty($item->organization->org_name_level_1)){{ ' : '.$item->organization->org_name_level_1 }}@else @endif 
+										@if(!empty($item->organization->org_name_level_2)){{ ' : '.$item->organization->org_name_level_2 }}@else @endif
+                                        | <mark>{{ $item->lab->lab_name }}</mark>
+                                    </td>
                                     <td>                                    
                                         <a href="/productlab/{{ $item->id }}">
                                             <i class="far fa-hand-point-right"></i>

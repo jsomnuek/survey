@@ -210,7 +210,7 @@
                                         @if ($equipment->equipment_rent_id == 1)
                                             ไม่ให้บุคคลภายนอกเช่าใช้
                                         @else
-                                            <strong>ค่าบริการต่อครั้ง (บาท) : </strong>{{ number_format($equipment->equipment_rent_fee) }}
+                                            <strong>ค่าบริการต่อครั้ง (บาท) : </strong>{{ $equipment->equipment_rent_fee }}
                                             <br>
                                             <strong>เงื่อนไขการขอยืม/ใช้งานเครื่องมือ : </strong>{{ $equipment->equipment_rent_detail }} 
                                         @endif 

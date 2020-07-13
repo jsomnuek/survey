@@ -384,7 +384,7 @@
 									<label for="equipment_rent_fee">
 										3.20.1 ค่าบริการต่อครั้ง (บาท) หากไม่คิดระบุเป็น "0 บาท" :<span><sup class="text-danger"> *</sup>
 									</label>
-									<input type="number" class="form-control" name="equipment_rent_fee" id="equipment_rent_fee" value="{{ old('equipment_rent_fee') }}">
+									<input type="text" class="form-control" name="equipment_rent_fee" id="equipment_rent_fee" value="{{ old('equipment_rent_fee') }}">
 								</div>
 								<div class="form-group d-none" id="display_equipment_rent_detail">
 									<label for="equipment_rent_detail">

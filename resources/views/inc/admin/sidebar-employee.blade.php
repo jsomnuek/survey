@@ -31,3 +31,9 @@
         <p>ข้อมูลผลิตภัณฑ์<br>และรายการทดสอบ/สอบเทียบ</p>
     </a>
 </li>
+<li class="nav-item has-treeview">
+    <a href="{{ asset('file/DSSLabSurveyManual_V03_63014.pdf') }}" class="nav-link" target="_blank">
+        <i class="nav-icon fas fa-file-pdf"></i>
+        <p>คู่มือการใช้งานระบบฯ</p>
+    </a>
+</li>

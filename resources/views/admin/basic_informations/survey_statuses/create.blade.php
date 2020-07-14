@@ -21,8 +21,12 @@
             {!!Form::open(['action' => 'BasicInformations\SurveyStatusController@store','method' => 'POST','class' => 'was-validate'])!!}
             <div class="card-body">
               <div class="form-group">
-                {{Form::label('surveyStatusName','รายการสถานะแบบสำรวจ')}}
-                {{Form::text('surveyStatusName','',['class' => 'form-control','required'])}}
+                {{Form::label('surveyStatusNameEn','สถานะข้อมูลภาษาอังกฤษ')}}
+                {{Form::text('surveyStatusNameEn','',['class' => 'form-control','required'])}}
+              </div>
+              <div class="form-group">
+                {{Form::label('surveyStatusNameTh','สถานะข้อมูลภาษาไทย')}}
+                {{Form::text('surveyStatusNameTh','',['class' => 'form-control','required'])}}
               </div>
               <a href="/surveyStatus" class="btn btn-secondary">ย้อนกลับ</a>
               {{Form::submit('บันทึก',['class' => 'btn btn-primary'])}}

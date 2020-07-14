@@ -21,8 +21,12 @@
             {!!Form::open(['action' => ['BasicInformations\SurveyStatusController@update',$editSurveyStatus->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
-                {{Form::label('surveyStatusName','รายการสถานะข้อมูลแบบสำรวจ')}}
-                {{Form::text('surveyStatusName',$editSurveyStatus->survey_status_name,['class'=>'form-control','required'])}}
+                {{Form::label('surveyStatusNameEn','สถานะข้อมูลภาษาอังกฤษ')}}
+                {{Form::text('surveyStatusNameEn',$editSurveyStatus->survey_status_name_en,['class'=>'form-control','required'])}}
+              </div>
+              <div class="form-group">
+                {{Form::label('surveyStatusNameTh','สถานะข้อมูลภาษาไทย')}}
+                {{Form::text('surveyStatusNameTh',$editSurveyStatus->survey_status_name_th,['class'=>'form-control','required'])}}
               </div>
               <div class="form-group">
                 {{Form::label('surveyStatusStatus', 'สถานะการใช้งานข้อมูล')}}

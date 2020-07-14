@@ -51,12 +51,13 @@ class SurveyStatusController extends Controller
     {
         // return $request->input();
         $this->validate($request, [
-            'surveyStatusName' => 'required|unique:survey_statuses,survey_status_name',
+            'surveyStatusNameEn' => 'required|unique:survey_statuses,survey_status_name_en',
         ]);
 
         // insert new science tool
         $insertServey = new SurveyStatus;
-        $insertServey->survey_status_name = $request->input('surveyStatusName');
+        $insertServey->survey_status_name_en = $request->input('surveyStatusNameEn');
+        $insertServey->survey_status_name_th = $request->input('surveyStatusNameTh');
         $insertServey->survey_status_status = 'A';
         $insertServey->save();
         
@@ -104,7 +105,8 @@ class SurveyStatusController extends Controller
 
         //update data
         $updateSurveyStatus = SurveyStatus::find($surveyStatus->id);
-        $updateSurveyStatus->survey_status_name = $request->input('surveyStatusName');
+        $updateSurveyStatus->survey_status_name_en = $request->input('surveyStatusNameEn');
+        $updateSurveyStatus->survey_status_name_th = $request->input('surveyStatusNameTh');
         $updateSurveyStatus->survey_status_status = $request->input('surveyStatusStatus');
         $updateSurveyStatus->save();
 

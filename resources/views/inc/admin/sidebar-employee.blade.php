@@ -31,3 +31,11 @@
         <p>ข้อมูลผลิตภัณฑ์<br>และรายการทดสอบ/สอบเทียบ</p>
     </a>
 </li>
+{{-- Sending & Check Data Menu --}}
+<li class="nav-item has-treeview {{ Request::is('questionnaire') ? 'menu-open' : '' }}">
+    {{-- active --}}
+    <a href="{{ url('questionnaire') }}" class="nav-link {{ Request::is('questionnaire') ? 'active' : '' }}">
+        <i class="nav-icon far fa-share-square"></i>
+        <p>ส่งและตรวจสอบสถานะ</p>
+    </a>
+</li>

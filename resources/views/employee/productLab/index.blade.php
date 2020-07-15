@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="far fa-folder-open"></i> ข้อมูลผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ</h3>
+                    <h3 class="card-title"><i class="far fa-folder-open"></i> ข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -29,7 +29,7 @@
                                 <tr>
                                     {{-- <th style="width: 10px;">ลำดับ</th> --}}
                                     <th>ห้องปฏิบัติการ</th>
-                                    <th>ชื่อผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ</th>
+                                    <th>ชื่อผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ</th>
                                     <th>status</th>
                                     <th><i class="fas fa-user-clock"></i></th>
                                 </tr>
@@ -71,7 +71,7 @@
                 <!--/.card-body -->
                 <div class="card-footer clearfix">
                     <a href="/lab">
-                        <i class="far fa-edit"></i> เพิ่มข้อมูลผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+                        <i class="far fa-edit"></i> เพิ่มข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
                     </a>
                 </div>
                 <!-- /.card-footer -->

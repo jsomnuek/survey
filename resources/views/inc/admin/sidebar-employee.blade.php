@@ -28,7 +28,7 @@
     {{-- active --}}
     <a href="{{ url('/productlab') }}" class="nav-link {{ Request::is('productlab*') ? 'active' : '' }}">
         <i class="nav-icon fa fa-database"></i>
-        <p>ข้อมูลผลิตภัณฑ์<br>และรายการทดสอบ/สอบเทียบ</p>
+        <p>ข้อมูลผลิตภัณฑ์<br>และรายการวิจัย/ทดสอบ/สอบเทียบ</p>
     </a>
 </li>
 <li class="nav-item has-treeview">

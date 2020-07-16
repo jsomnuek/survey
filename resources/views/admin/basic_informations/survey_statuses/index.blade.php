@@ -17,7 +17,8 @@
                     <thead>
                       <tr>
                         <th style="width:80px;">ลำดับที่</th>
-                        <th class="text-center">รายการสถานะข้อมูลแบบสำรวจ</th>
+                        <th class="text-center">สถานะข้อมูลภาษาอังกฤษ</th>
+                        <th class="text-center">สถานะข้อมูลภาษาไทย</th>
                         <th style="width:180px;">สถานะการใช้งานข้อมูล</th>
                         <th></th>
                       </tr>
@@ -26,7 +27,8 @@
                       @foreach ($showAllSurveyStatus as $surveyStatus)
                           <tr>
                             <td class="text-center">{{$surveyStatus->id}}</td>
-                            <td>{{$surveyStatus->survey_status_name}}</td>
+                            <td>{{$surveyStatus->survey_status_name_en}}</td>
+                            <td>{{$surveyStatus->survey_status_name_th}}</td>
                             <td class="text-center">{{$surveyStatus->survey_status_status}}</td>
                             <td><a href="/surveyStatus/{{$surveyStatus->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
                           </tr>

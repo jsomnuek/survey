@@ -34,7 +34,10 @@ class CreateLabsTable extends Migration
             $table->longText('lab_development_problem')->nullable()->comment('');
             $table->longText('lab_development_request')->nullable()->comment('');
             $table->longText('lab_development_suggestion')->nullable()->comment('');
-            $table->boolean('completed')->default(false); //1.10
+            $table->unsignedBigInteger('survey_status_id')->default(1)->comment('');
+            $table->boolean('completed')->default(false);
+            $table->timestamp('send_date')->nullable()->comment('');
+            $table->timestamp('approve_date')->nullable()->comment('');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -46,6 +49,7 @@ class CreateLabsTable extends Migration
             $table->foreign('fixed_cost_id')->references('id')->on('fixed_costs');
             $table->foreign('income_per_year_id')->references('id')->on('income_per_years');
             $table->foreign('employee_training_id')->references('id')->on('employee_trainings');
+            $table->foreign('survey_status_id')->references('id')->on('survey_statuses');
         });
 
         // 2.6

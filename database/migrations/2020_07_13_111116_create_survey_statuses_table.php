@@ -15,8 +15,9 @@ class CreateSurveyStatusesTable extends Migration
     {
         Schema::create('survey_statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('survey_status_name',255)->comment('รายการสถานะแบบสำรวจ');
-            $table->string('survey_status_status',1)->default('A')->comment('รายการสถานะแบบสำรวจ');
+            $table->string('survey_status_name_en',255)->comment('ชื่อสถานะภาษาอังกฤษ');
+            $table->string('survey_status_name_th',255)->comment('ชื่อสถานะภาษาไทย');
+            $table->string('survey_status_status',1)->default('A')->comment('สถานะการใช้งานข้อมูล');
             $table->timestamps();
         });
     }

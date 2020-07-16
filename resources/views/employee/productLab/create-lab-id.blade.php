@@ -14,7 +14,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-					<h3 class="card-title"><i class="far fa-edit"></i> เพิ่มข้อมูลผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ :</h3>
+					<h3 class="card-title"><i class="far fa-edit"></i> เพิ่มข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ :</h3>
 				</div>
 				<!-- /.card-header -->                
                 <!-- form start -->
@@ -34,13 +34,13 @@
                             </div>
                             {{-- /.col --}}
 							<div class="col-md-12 my-2">
-                                <strong>ส่วนที่ 4 ผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ : หมายเหตุ :<span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
+                                <strong>ส่วนที่ 4 ผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ : หมายเหตุ :<span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
                             </div>
 							{{-- /.col --}}
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="product_lab_name">
-                                        4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ/สอบเทียบ : <span><sup class="text-danger"> *</sup></span>
+                                        4.1 ชื่อผลิตภัณฑ์ที่วิจัย/ทดสอบ/สอบเทียบ : <span><sup class="text-danger"> *</sup></span>
                                     </label>
                                     <input type="text" name="product_lab_name" class="form-control @error('product_lab_name') is-invalid @enderror" id="product_lab_name" placeholder="" value="{{ old('product_lab_name') }}" required>
                                     @error('product_lab_name')
@@ -50,7 +50,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- /.col 4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ/สอบเทียบ : --}}
+                            {{-- /.col 4.1 ชื่อผลิตภัณฑ์ที่วิจัย/ทดสอบ/สอบเทียบ : --}}
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="product_type_id">
@@ -87,7 +87,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="product_lab_test_name">
-                                        4.4 ชื่อรายการทดสอบ/สอบเทียบ : <span><sup class="text-danger"> *</sup></span>
+                                        4.4 ชื่อรายการวิจัย/ทดสอบ/สอบเทียบ : <span><sup class="text-danger"> *</sup></span>
                                     </label>
                                     <input type="text" name="product_lab_test_name" class="form-control @error('product_lab_test_name') is-invalid @enderror" id="product_lab_test_name" placeholder="" value="{{ old('product_lab_test_name') }}" required>
                                     @error('product_lab_test_name')
@@ -97,11 +97,11 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- /.col 4.4 ชื่อรายการทดสอบ/สอบเทียบ : --}}
+                            {{-- /.col 4.4 ชื่อรายการวิจัย/ทดสอบ/สอบเทียบ : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="equipment_id">
-                                        4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ (เลือกได้มากกว่า 1 คำตอบ) :<span><sup class="text-danger"> *</sup></span>
+                                        4.5 เครื่องมือที่ใช้วิจัย/ทดสอบ/สอบเทียบ (เลือกได้มากกว่า 1 คำตอบ) :<span><sup class="text-danger"> *</sup></span>
                                     </label>
                                     <select class="form-control custom-select select2-multi @error('equipment_id') is-invalid @enderror" style="width: 100%;" multiple="multiple" name="equipment_id[]" id="equipment_id">
                                         @foreach ($equipments as $item)
@@ -117,11 +117,11 @@
                                     @enderror
                                 </div>    
                             </div>
-                            {{-- /.col 4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ : --}}
+                            {{-- /.col 4.5 เครื่องมือที่ใช้วิจัย/ทดสอบ/สอบเทียบ : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="testing_calibrating_list_id">
-                                        4.6 ประเภทรายการทดสอบ/สอบเทียบ :<span><sup class="text-danger"> *</sup></span>
+                                        4.6 ประเภทรายการวิจัย/ทดสอบ/สอบเทียบ :<span><sup class="text-danger"> *</sup></span>
                                     </label>
                                     <select class="form-control custom-select select2 @error('testing_calibrating_list_id') is-invalid @enderror" style="width: 100%;" name="testing_calibrating_list_id" id="testing_calibrating_list_id" data-placeholder="-- โปรดเลือก --">
                                         <option value="" selected disabled="disabled">disabled</option>
@@ -138,11 +138,11 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- /.col 4.6 ประเภทรายการทดสอบ/สอบเทียบ : --}}
+                            {{-- /.col 4.6 ประเภทรายการวิจัย/ทดสอบ/สอบเทียบ : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="testing_calibrating_type_id">
-                                        4.7 ประเภทการทดสอบ/สอบเทียบ :<span><sup class="text-danger"> *</sup></span>
+                                        4.7 ประเภทการวิจัย/ทดสอบ/สอบเทียบ :<span><sup class="text-danger"> *</sup></span>
                                     </label>
                                     <select class="form-control custom-select select2 @error('testing_calibrating_type_id') is-invalid @enderror" style="width: 100%;" name="testing_calibrating_type_id" id="testing_calibrating_type_id" data-placeholder="-- โปรดเลือก --">
                                         <option value="" selected disabled="disabled">disabled</option>
@@ -160,16 +160,16 @@
                                 </div>
                                 <div class="form-group d-none"  id="display_testing_calibrating_type_other">
                                     <label for="testing_calibrating_type_other">
-                                        ในกรณีเลือกอื่นๆ โปรดระบุ ประเภทการทดสอบ/สอบเทียบ :<span><sup class="text-danger"> *</sup> 
+                                        ในกรณีเลือกอื่นๆ โปรดระบุ ประเภทการวิจัย/ทดสอบ/สอบเทียบ :<span><sup class="text-danger"> *</sup> 
                                     </label>
                                     <input class="form-control" type="text" name="testing_calibrating_type_other" id="testing_calibrating_type_other" placeholder="" value="{{ old('testing_calibrating_type_other') }}">
                                 </div>
                             </div>
-                            {{-- /.col 4.7 ประเภทการทดสอบ/สอบเทียบ : --}}
+                            {{-- /.col 4.7 ประเภทการวิจัย/ทดสอบ/สอบเทียบ : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="testing_calibrating_method_id">
-                                        4.8 วิธีทดสอบ/สอบเทียบตามมาตรฐาน :<span><sup class="text-danger"> *</sup></span>
+                                        4.8 วิธีวิจัย/ทดสอบ/สอบเทียบตามมาตรฐาน :<span><sup class="text-danger"> *</sup></span>
                                     </label>
                                     <select class="form-control custom-select select2 @error('testing_calibrating_method_id') is-invalid @enderror" style="width: 100%;" name="testing_calibrating_method_id" id="testing_calibrating_method_id" data-placeholder="-- โปรดเลือก --">
                                         <option value="" selected disabled="disabled">disabled</option>
@@ -187,12 +187,12 @@
                                 </div>
                                 <div class="form-group d-none"  id="display_testing_calibrating_method_detail">
                                     <label for="testing_calibrating_method_detail">
-                                        โปรดระบุ รายละเอียด วิธีทดสอบ/สอบเทียบตามมาตรฐาน :<span><sup class="text-danger"> *</sup>
+                                        โปรดระบุ รายละเอียด วิธีวิจัย/ทดสอบ/สอบเทียบตามมาตรฐาน :<span><sup class="text-danger"> *</sup>
                                     </label>
                                     <input class="form-control" type="text" name="testing_calibrating_method_detail" id="testing_calibrating_method_detail" placeholder="" value="{{ old('testing_calibrating_method_detail') }}">
                                 </div>
                             </div>
-                            {{-- /.col 4.8 วิธีทดสอบ/สอบเทียบตามมาตรฐาน : --}}
+                            {{-- /.col 4.8 วิธีวิจัย/ทดสอบ/สอบเทียบตามมาตรฐาน : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="product_lab_test_unit">4.9 ช่วงความสามารถของการวัด :</label>
@@ -203,7 +203,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="product_lab_test_duration">
-                                        4.10 ระยะเวลาการทดสอบ/สอบเทียบ (วัน โดย 1 วัน = 8 ชั่วโมง) :<span><sup class="text-danger"> *</sup>
+                                        4.10 ระยะเวลาการวิจัย/ทดสอบ/สอบเทียบ (วัน โดย 1 วัน = 8 ชั่วโมง) :<span><sup class="text-danger"> *</sup>
                                     </label>
                                     <input type="number" name="product_lab_test_duration" class="form-control @error('product_lab_test_duration') is-invalid @enderror" id="product_lab_test_duration" placeholder="" value="{{ old('product_lab_test_duration') }}">
                                     @error('product_lab_test_duration')
@@ -213,16 +213,16 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- /.col 4.10 ระยะเวลาการทดสอบ/สอบเทียบ : --}}
+                            {{-- /.col 4.10 ระยะเวลาการวิจัย/ทดสอบ/สอบเทียบ : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="product_lab_test_fee">
-                                        4.11 ค่าธรรมเนียมการทดสอบ/สอบเทียบ (บาท) :
+                                        4.11 ค่าธรรมเนียมการวิจัย/ทดสอบ/สอบเทียบ (บาท) :
                                     </label>
                                     <input type="number" name="product_lab_test_fee" class="form-control" id="product_lab_test_fee" placeholder="" value="{{ old('product_lab_test_fee') }}">
                                 </div>
                             </div>
-                            {{-- /.col 4.11 ค่าธรรมเนียมการทดสอบ/สอบเทียบ (บาท) : --}}
+                            {{-- /.col 4.11 ค่าธรรมเนียมการวิจัย/ทดสอบ/สอบเทียบ (บาท) : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="product_lab_material_ref">
@@ -338,5 +338,5 @@
 
 @section('scripts')
     <script src="{{ asset('js/components.js') }}"></script>
-    <script src="{{ asset('js/form-productLab.js') }}"></script>
+    <script src="{{ asset('js/form-productab.js') }}"></script>
 @endsection

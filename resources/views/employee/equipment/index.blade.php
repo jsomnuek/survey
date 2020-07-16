@@ -29,7 +29,7 @@
                                     {{-- <th style="width: 10px;" class="text-center">ลำดับ</th> --}}
                                     <th>ห้องปฏิบัติการ</th>
                                     <th>รหัสเครื่องมือ : ชื่อเครื่องมือวิทยาศาสตร์</th>
-                                    <th>status</th>
+                                    <th>สถานะ</th>
                                     <th><i class="fas fa-user-clock"></i></th>
                                 </tr>
                             </thead>
@@ -44,7 +44,7 @@
                                         {{ $equipment->organization->org_name }}
                                         @if(!empty($equipment->organization->org_name_level_1)){{ ' : '.$equipment->organization->org_name_level_1 }}@else @endif 
 										@if(!empty($equipment->organization->org_name_level_2)){{ ' : '.$equipment->organization->org_name_level_2 }}@else @endif
-                                        | <mark>{{ $equipment->lab->lab_name }}</mark>
+                                        | <mark>{{ $equipment->lab->lab_name }} : {{ $equipment->lab->lab_code }}</mark>
                                     </td>
                                     <td>                                    
                                         <a href="/equipment/{{ $equipment->id }}">
@@ -53,10 +53,10 @@
                                         </a>
                                     </td>
                                     <td>
-                                        @if ($equipment->completed == 1)
-                                        <small class="badge badge-success">approved</small>                                            
-                                        @else
-                                        <small class="badge badge-secondary">pending</small>
+                                        @if ($equipment->completed == 0)
+										<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
+										@else
+										<small class="badge badge-primary">ส่งข้อมูล</small>
                                         @endif
                                     </td>									
                                     <td>{{ $equipment->updated_at }}</td>

@@ -27,24 +27,24 @@
                         <table class="table table-bordered table-hover mb-0">
                             <tbody>
                                 <tr>
-                                    <th class="" style="width: 30%;">Ref.รหัสเอกสาร : {{ $equipment->id }}</th>
+                                    <th class="" style="width: 35%;">Ref.รหัสเอกสาร : {{ $equipment->id }}</th>
                                     <td>
                                         <mark>Create</mark> : <i class="far fa-clock"></i> {{ $equipment->created_at }}
                                         <strong>|</strong> 
                                         <mark>Update</mark> : <i class="far fa-clock"></i> {{ $equipment->updated_at }}
                                         <strong>|</strong>
-                                        <mark>Status</mark> :
-                                        @if ($equipment->completed == 1)
-                                        <small class="badge badge-success">approved</small>                                            
-                                        @else
-                                        <small class="badge badge-secondary">pending</small>
+                                        <mark>สถานะ</mark> :
+                                        @if ($equipment->completed == 0)
+                                        <small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
+										@else
+										<small class="badge badge-primary">ส่งข้อมูล</small>
                                         @endif
                                     </td>
                                 </tr>
                                 {{-- Ref.รหัสเอกสาร --}}
                                 <tr>
                                     <th class="" style="width: 35%;">ห้องปฏิบัติการ :</th>
-                                    <td>{{ $equipment->lab->lab_name }}</td>
+                                    <td>{{ $equipment->lab->lab_name }} | {{ $equipment->lab->lab_code }}</td>
                                 </tr>
                                 {{-- ห้องปฏิบัติการ --}}
                                 <tr>
@@ -197,9 +197,9 @@
                                         @if ($equipment->equipment_manual_id == 1)
                                         ไม่มี
                                         @else
-                                        <strong>ชื่อคู่มือ/รหัสคู่มือ : </strong>{{ $equipment->equipment_manual_name }}
-                                        <br>
-                                        <strong>สถานที่เก็บ/ลิงค์ดาวน์โหลด : </strong>{{ $equipment->equipment_manual_location }} 
+                                        <mark>ชื่อคู่มือ/รหัสคู่มือ</mark> : {{ $equipment->equipment_manual_name }}
+                                        <hr>
+                                        <mark>สถานที่เก็บ/ลิงค์ดาวน์โหลด</mark> : {{ $equipment->equipment_manual_location }} 
                                         @endif 
                                     </td>
                                 </tr>

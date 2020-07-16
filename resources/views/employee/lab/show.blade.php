@@ -32,11 +32,11 @@
                                         <strong>|</strong> 
                                         <mark>Update</mark> : <i class="far fa-clock"></i> {{ $lab->updated_at }}
                                         <strong>|</strong>
-                                        <mark>Status</mark> :
-                                        @if ($lab->completed == 1)
-                                        <small class="badge badge-success">approved</small>                                            
-                                        @else
-                                        <small class="badge badge-secondary">pending</small>
+                                        <mark>สถานะ</mark> :
+                                        @if ($lab->completed == 0)
+                                        <small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
+										@else
+										<small class="badge badge-primary">ส่งข้อมูล</small>
                                         @endif
                                     </td>
                                 </tr>
@@ -47,6 +47,7 @@
                                         {{ $lab->organization->org_name }}
                                         @if(!empty($lab->organization->org_name_level_1)){{' : '.$lab->organization->org_name_level_1}}@else @endif 
                                         @if(!empty($lab->organization->org_name_level_2)){{' : '.$lab->organization->org_name_level_2}}@else @endif
+                                        | {{ $lab->organization->org_code }}
                                     </td>
                                 </tr>
                                 {{-- องค์กร : --}}
@@ -553,7 +554,6 @@
                                 {{-- 2.10.6 --}}
                                 {{-- 2.10 ข้อมูลการพัฒนาห้องปฏิบัติการ :--}}                            
                             </tbody>
-                            {{-- /.tbody --}}
                         </table>
                         <!-- /.table -->
                     </div>

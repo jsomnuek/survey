@@ -32,25 +32,25 @@
                                         <strong>|</strong> 
                                         <mark>Update</mark> : <i class="far fa-clock"></i> {{ $productLab->updated_at }}
                                         <strong>|</strong>
-                                        <mark>Status</mark> :
-                                        @if ($productLab->completed == 1)
-										<small class="badge badge-success">approved</small>                                            
+                                        <mark>สถานะ</mark> :
+                                        @if ($productLab->completed == 0)
+										<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
 										@else
-										<small class="badge badge-secondary">pending</small>
+										<small class="badge badge-primary">ส่งข้อมูล</small>
                                         @endif
                                     </td>
                                 </tr>
                                 {{-- Ref.รหัสเอกสาร --}}
                                 <tr>
                                     <th class="" style="width: 35%;">ห้องปฏิบัติการ :</th>
-                                    <td>{{ $productLab->lab->lab_name }}</td>
+                                    <td>{{ $productLab->lab->lab_name }} | {{ $productLab->lab->lab_code }}</td>
                                 </tr>
                                 {{-- ห้องปฏิบัติการ --}}
                                 <tr>
-                                    <th class="" style="width: 35%;">4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ/สอบเทียบ :</th>
+                                    <th class="" style="width: 35%;">4.1 ชื่อผลิตภัณฑ์ที่วิจัย/ทดสอบ/สอบเทียบ :</th>
                                     <td>{{ $productLab->product_lab_name }}</td>
                                 </tr>
-                                {{-- 4.1 ชื่อผลิตภัณฑ์ที่ทดสอบ/สอบเทียบ : --}}
+                                {{-- 4.1 ชื่อผลิตภัณฑ์ที่วิจัย/ทดสอบ/สอบเทียบ : --}}
                                 <tr>
                                     <th class="" style="width: 35%;">4.2 ประเภทผลิตภัณฑ์ :</th>
                                     <td>
@@ -71,26 +71,26 @@
                                 </tr>
                                 {{-- 4.3 มาตราฐานผลิตภัณฑ์ : --}}
                                 <tr>
-                                    <th class="" style="width: 35%;">4.4 ชื่อรายการทดสอบ/สอบเทียบ :</th>
+                                    <th class="" style="width: 35%;">4.4 ชื่อรายการวิจัย/ทดสอบ/สอบเทียบ :</th>
                                     <td>{{ $productLab->product_lab_test_name }}</td>
                                 </tr>
-                                {{-- 4.4 ชื่อรายการทดสอบ/สอบเทียบ : --}}
+                                {{-- 4.4 ชื่อรายการวิจัย/ทดสอบ/สอบเทียบ : --}}
                                 <tr>
-                                    <th class="" style="width: 35%;">4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ :</th>
+                                    <th class="" style="width: 35%;">4.5 เครื่องมือที่ใช้วิจัย/ทดสอบ/สอบเทียบ :</th>
                                     <td>
                                         @foreach ($productLab->equipments as $item)
                                             <li>{{ $item->equipment_code }} : {{ $item->scienceTool->science_tool_name }}</li>
                                         @endforeach
                                     </td>
                                 </tr>
-                                {{-- 4.5 เครื่องมือที่ใช้ทดสอบ/สอบเทียบ : --}}
+                                {{-- 4.5 เครื่องมือที่ใช้วิจัย/ทดสอบ/สอบเทียบ : --}}
                                 <tr>
-                                    <th class="" style="width: 35%;">4.6 ประเภทรายการทดสอบ/สอบเทียบ :</th>
+                                    <th class="" style="width: 35%;">4.6 ประเภทรายการวิจัย/ทดสอบ/สอบเทียบ :</th>
                                     <td>{{ $productLab->testingCalibratingList->testing_list_name }}</td>
                                 </tr>
-                                {{-- 4.6 ประเภทรายการทดสอบ/สอบเทียบ : --}}
+                                {{-- 4.6 ประเภทรายการวิจัย/ทดสอบ/สอบเทียบ : --}}
                                 <tr>
-                                    <th class="" style="width: 35%;">4.7 ประเภทการทดสอบ/สอบเทียบ :</th>
+                                    <th class="" style="width: 35%;">4.7 ประเภทการวิจัย/ทดสอบ/สอบเทียบ :</th>
                                     <td>
                                         @if ($productLab->testingCalibratingType->id != 6)
                                             {{ $productLab->testingCalibratingType->testing_calibrating_type_name }}
@@ -99,30 +99,30 @@
                                         @endif
                                     </td>
                                 </tr>
-                                {{-- 4.7 ประเภทการทดสอบ/สอบเทียบ : --}}
+                                {{-- 4.7 ประเภทการวิจัย/ทดสอบ/สอบเทียบ : --}}
                                 <tr>
-                                    <th class="" style="width: 35%;">4.8 วิธีทดสอบ/สอบเทียบตามมาตรฐาน :</th>
+                                    <th class="" style="width: 35%;">4.8 วิธีวิจัย/ทดสอบ/สอบเทียบตามมาตรฐาน :</th>
                                     <td>
                                         {{ $productLab->testingCalibratingMethod->testing_method_name }} : 
                                         {{ $productLab->testing_calibrating_method_detail }}
                                     </td>
                                 </tr>
-                                {{-- 4.8 วิธีทดสอบ/สอบเทียบตามมาตรฐาน : --}}
+                                {{-- 4.8 วิธีวิจัย/ทดสอบ/สอบเทียบตามมาตรฐาน : --}}
                                 <tr>
                                     <th class="" style="width: 35%;">4.9 ช่วงความสามารถของการวัด :</th>
                                     <td>{{ $productLab->product_lab_test_unit }}</td>
                                 </tr>
                                 {{-- 4.9 ช่วงความสามารถของการวัด : --}}
                                 <tr>
-                                    <th class="" style="width: 35%;">4.10 ระยะเวลาการทดสอบ/สอบเทียบ <br>(วัน โดย 1 วัน = 8 ชั่วโมง) :</th>
+                                    <th class="" style="width: 35%;">4.10 ระยะเวลาการวิจัย/ทดสอบ/สอบเทียบ <br>(วัน โดย 1 วัน = 8 ชั่วโมง) :</th>
                                     <td>{{ $productLab->product_lab_test_duration }}</td>
                                 </tr>
-                                {{-- 4.10 ระยะเวลาการทดสอบ/สอบเทียบ (วัน โดย 1 วัน = 8 ชั่วโมง) : --}}
+                                {{-- 4.10 ระยะเวลาการวิจัย/ทดสอบ/สอบเทียบ (วัน โดย 1 วัน = 8 ชั่วโมง) : --}}
                                 <tr>
-                                    <th class="" style="width: 35%;">4.11 ค่าธรรมเนียมการทดสอบ/สอบเทียบ (บาท) :</th>
+                                    <th class="" style="width: 35%;">4.11 ค่าธรรมเนียมการวิจัย/ทดสอบ/สอบเทียบ (บาท) :</th>
                                     <td>{{ number_format($productLab->product_lab_test_fee) }}</td>
                                 </tr>
-                                {{-- 4.11 ค่าธรรมเนียมการทดสอบ/สอบเทียบ (บาท) : --}}
+                                {{-- 4.11 ค่าธรรมเนียมการวิจัย/ทดสอบ/สอบเทียบ (บาท) : --}}
                                 <tr>
                                     <th class="" style="width: 35%;">4.12 วัสดุอ้างอิงที่ใช้ :</th>
                                     <td>{{ $productLab->product_lab_material_ref }}</td>
@@ -165,7 +165,6 @@
                                 </tr>
                                 {{-- 4.16 การรับรองความสามารถห้องปฏิบัติการ : --}}
                             </tbody>
-                            {{-- /.tbody --}}
                         </table>
                     </div>
                     {{-- /.table-responsive --}}

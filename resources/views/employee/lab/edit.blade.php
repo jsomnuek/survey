@@ -31,11 +31,11 @@
                                     <strong>|</strong> 
                                     <mark>Update</mark> : <i class="far fa-clock"></i> {{ $lab->updated_at }}
                                     <strong>|</strong>
-                                    <mark>Status</mark> :
-                                    @if ($lab->completed == 1)
-                                    <small class="badge badge-success">approved</small>                                            
-                                    @else
-                                    <small class="badge badge-secondary">pending</small>
+                                    <mark>สถานะ</mark> :
+                                    @if ($lab->completed == 0)
+                                    <small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
+									@else
+									<small class="badge badge-primary">ส่งข้อมูล</small>
                                     @endif
                                 </blockquote>
                             </div>

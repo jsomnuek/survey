@@ -28,8 +28,8 @@
 								<tr>
 									{{-- <th style="width: 10px;">ลำดับ</th> --}}
 									<th>ชื่อองค์กร</th>
-									<th>ชื่อห้องปฏิบัติการ</th>
-									<th>status</th>
+									<th>ชื่อห้องปฏิบัติการ : รหัสห้องปฏิบัติการ</th>
+									<th>สถานะ</th>
 									<th><i class="fas fa-user-clock"></i></th>
 									<th><i class="fas fa-user-cog"></i></th>
 									<th><i class="fas fa-user-cog"></i></th>
@@ -43,20 +43,22 @@
 								<tr>
 									{{-- <td class="text-center">{{ $i++ }}</td> --}}
 									<td>
-										{{ $lab->organization->org_name}} 
+										{{ $lab->organization->org_name }} 
 										@if(!empty($lab->organization->org_name_level_1)){{ ' : '.$lab->organization->org_name_level_1 }}@else @endif 
 										@if(!empty($lab->organization->org_name_level_2)){{ ' : '.$lab->organization->org_name_level_2 }}@else @endif
+										: <mark>{{ $lab->organization->org_code }}</mark>
 									</td>
 									<td>
 										<a href="/lab/{{ $lab->id }}">
-											<i class="far fa-hand-point-right"></i> {{ $lab->lab_name }}
+											<i class="far fa-hand-point-right"></i> {{ $lab->lab_name }} 
+											: <mark>{{ $lab->lab_code }}</mark>
 										</a>
 									</td>
 									<td>
-										@if ($lab->completed == 1)
-										<small class="badge badge-success">approved</small>                                            
+										@if ($lab->completed == 0)
+										<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
 										@else
-										<small class="badge badge-secondary">pending</small>
+										<small class="badge badge-primary">ส่งข้อมูล</small>
                                         @endif
 									</td>									
 									<td>{{ $lab->updated_at }}</td>									

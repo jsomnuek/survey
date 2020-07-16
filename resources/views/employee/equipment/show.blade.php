@@ -148,12 +148,12 @@
                                 <tr>
                                     <th class="" style="width: 35%;">3.15 การสอบเทียบ :</th>
                                     <td> 
-                                        @if ($equipment->equipment_calibration_id == 1)
+                                        @if($equipment->equipment_calibration_id == 1)
                                         ไม่มี
-                                        @else
-                                        <strong>ชื่อหน่วยงานสอบเทียบ : </strong>{{ $equipment->equipment_calibration_by }}
-                                        <br>
-                                        <strong>วัน เดือน ปี : </strong>{{$equipment->equipment_calibration_year}}
+                                        @elseif($equipment->equipment_calibration_id == 2)
+                                        <mark>ชื่อหน่วยงานสอบเทียบ</mark> : {{ $equipment->equipment_calibration_by }}
+                                        <hr>
+                                        <mark>วัน เดือน ปี</mark> : {{$equipment->equipment_calibration_year}}
                                         @endif 
                                     </td>
                                 </tr>
@@ -196,7 +196,7 @@
                                     <td> 
                                         @if ($equipment->equipment_manual_id == 1)
                                         ไม่มี
-                                        @else
+                                        @elseif($equipment->equipment_manual_id == 2)
                                         <mark>ชื่อคู่มือ/รหัสคู่มือ</mark> : {{ $equipment->equipment_manual_name }}
                                         <hr>
                                         <mark>สถานที่เก็บ/ลิงค์ดาวน์โหลด</mark> : {{ $equipment->equipment_manual_location }} 

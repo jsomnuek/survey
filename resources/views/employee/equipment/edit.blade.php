@@ -21,23 +21,45 @@
 				<!-- form start -->
 				<form action="/equipment/{{ $equipment->id }}" method="POST" enctype="multipart/form-data" role="form">
                     @csrf
-                    @method('PUT')
+					@method('PUT')
+					<input type="hidden" name="survey_status_id" value="{{ $equipment->lab->survey_status_id }}">
 					<div class="card-body py-2">
 						<div class="row">
 							<div class="col-md-12">
                                 <blockquote class="m-0 bg-light">
                                     <mark>Ref.รหัสเอกสาร</mark> : {{ $equipment->id }}
-                                    <strong>|</strong>
-                                    <mark>Create</mark> : <i class="far fa-clock"></i> {{ $equipment->created_at }}
                                     <strong>|</strong> 
-                                    <mark>Update</mark> : <i class="far fa-clock"></i> {{ $equipment->updated_at }}
+                                    <mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $equipment->updated_at }}
                                     <strong>|</strong>
                                     <mark>สถานะ</mark> :
-                                    @if ($equipment->completed == 0)
-                                    <small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-									@else
-									<small class="badge badge-primary">ส่งข้อมูล</small>
-                                    @endif
+                                    @switch($equipment->lab->survey_status_id)
+										@case(1)
+											<small class="badge badge-secondary">
+												{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+											</small>
+											@break
+										@case(2)
+											<small class="badge badge-primary">
+												{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+											</small>
+											@break
+										@case(3)
+											<small class="badge badge-info">
+												{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+											</small>
+											@break
+										@case(4)
+											<small class="badge badge-success">
+												{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+											</small>
+											@break
+										@case(5)
+											<small class="badge badge-warning">
+												{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+											</small>
+											@break
+										@default
+									@endswitch
                                 </blockquote>
 							</div>
 							{{-- /.col Ref.รหัสเอกสาร --}}
@@ -71,7 +93,7 @@
 									<label for="equipment_code">
 										3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS) :<span><sup class="text-danger"> *</sup></span>
 									</label>
-									<input type="text" name="equipment_code" id="equipment_code" class="form-control @error('equipment_code') is-invalid @enderror" value="{{ $equipment->equipment_code }}" required>
+									<input type="text" name="equipment_code" id="equipment_code" class="form-control @error('equipment_code') is-invalid @enderror" value="{{ $equipment->equipment_code }}" required readonly>
 									@error('equipment_code')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
@@ -424,9 +446,24 @@
 						<a href="/equipment/{{ $equipment->id }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-undo"></i> ย้อนกลับ
                         </a>
-                        <button type="submit" class="btn btn-info btn-sm">
-                            <i class="fas fa-save"></i> บันทึกการแก้ไข
-                        </button>
+						@switch($equipment->lab->survey_status_id)
+							@case(1)
+								<button type="submit" class="btn btn-info btn-sm">
+									<i class="fas fa-save"></i> บันทึกการแก้ไข
+								</button>
+								@break
+							@case(3)
+								<button type="submit" class="btn btn-info btn-sm">
+									<i class="fas fa-save"></i> บันทึกการแก้ไข
+								</button>
+								@break
+							@case(5)
+								<button type="submit" class="btn btn-info btn-sm">
+									<i class="fas fa-save"></i> บันทึกการแก้ไข
+								</button>
+								@break
+							@default
+						@endswitch
 					</div>
 					<!-- /.card-footer -->
 				</form>

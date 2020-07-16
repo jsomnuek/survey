@@ -105,63 +105,53 @@ class QuestionnaireController extends Controller
 
         $lab = Lab::find($id);
 
-        // Reset
+        // if send
         if($survey_status_id == 1) {
             // clean
-            $lab->survey_status_id = $request->input('survey_status_id');
+            $lab->survey_status_id = 2;
+            $lab->send_date = date('Y-m-d H:i:s');
+            $lab->save();
+
+            // create log activity
+            LogActivity::addToLog("Employee Edit Lab : $lab->id : $lab->lab_code successfully.");
+
+            return redirect()->route('questionnaire.index');
+        }
+        // if edit
+        if($survey_status_id == 3) {
+            // clean
+            $lab->survey_status_id = 2;
+            $lab->save();
+
+            // create log activity
+            LogActivity::addToLog("Employee Edit Lab : $lab->id : $lab->lab_code successfully.");
+
+            return redirect()->route('questionnaire.index');
+        }
+
+        // Test function Reset
+        if($survey_status_id == 100) {
+            // clean
+            $lab->survey_status_id = 1;
             $lab->completed = false;
             $lab->send_date = null;
             $lab->save();
 
-            // clean
-            Organization::where('id', $lab->organization_id)->update(['completed' => false,]);
-
             // $equipments = array();
-            foreach ($lab->equipments as $item){
-                // clean
-                // $equipments[] = $item->id;
-                Equipment::where('id', $item->id)->update(['completed' => false,]);
-            }
+            // foreach ($lab->equipments as $item){
+            //     // clean
+            //     // $equipments[] = $item->id;
+            //     Equipment::where('id', $item->id)->update(['completed' => false,]);
+            // }
             // return $equipments;
 
-            foreach ($lab->productLabs as $item){
-                // clean
-                ProductLab::where('id', $item->id)->update(['completed' => false,]);
-            }
+            // foreach ($lab->productLabs as $item){
+            //     // clean
+            //     ProductLab::where('id', $item->id)->update(['completed' => false,]);
+            // }
 
             return redirect()->route('questionnaire.index');
         }
-
-        // confirm
-        if($survey_status_id == 2) {
-            // clean
-            $lab->survey_status_id = $request->input('survey_status_id');
-            $lab->completed = true;
-            $lab->send_date = date('Y-m-d H:i:s');
-            $lab->save();
-
-            // clean
-            Organization::where('id', $lab->organization_id)->update(['completed' => true,]);
-
-            // $equipments = array();
-            foreach ($lab->equipments as $item){
-                // clean
-                // $equipments[] = $item->id;
-                Equipment::where('id', $item->id)->update(['completed' => true,]);
-            }
-            // return $equipments;
-
-            foreach ($lab->productLabs as $item){
-                // clean
-                ProductLab::where('id', $item->id)->update(['completed' => true,]);
-            }
-
-            // create log activity
-            LogActivity::addToLog('Employee Update and Send Lab : " ' . $lab->id . ' " successfully.');
-
-            return redirect()->route('questionnaire.index');
-        }
-        
     }
 
     /**

@@ -26,23 +26,23 @@
 					<div class="card-header p-0 border-bottom-0">
 						<ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">
+								<a class="nav-link active" id="custom-tabs-four-org-tab" data-toggle="pill" href="#custom-tabs-four-org" role="tab" aria-controls="custom-tabs-four-org" aria-selected="true">
 									<mark>ส่วนที่ 1</mark> องค์กร
                                 </a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">
+								<a class="nav-link" id="custom-tabs-four-lab-tab" data-toggle="pill" href="#custom-tabs-four-lab" role="tab" aria-controls="custom-tabs-four-lab" aria-selected="false">
 									<mark>ส่วนที่ 2</mark> ห้องปฏิบัติการ
                                 </a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">
+								<a class="nav-link" id="custom-tabs-four-equipment-tab" data-toggle="pill" href="#custom-tabs-four-equipment" role="tab" aria-controls="custom-tabs-four-equipment" aria-selected="false">
 									<mark>ส่วนที่ 3</mark> เครื่องมือ 
 									<span class="badge badge-primary">{{ count($lab->equipments) }}</span>
                                 </a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill" href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">
+								<a class="nav-link" id="custom-tabs-four-productLab-tab" data-toggle="pill" href="#custom-tabs-four-productLab" role="tab" aria-controls="custom-tabs-four-productLab" aria-selected="false">
 									<mark>ส่วนที่ 4</mark> รายการทดสอบ 
 									<span class="badge badge-primary">{{ count($lab->productLabs) }}</span>
                                 </a>
@@ -52,20 +52,13 @@
 					<!-- /.card-header -->
 					<div class="card-body">
 						<div class="tab-content" id="custom-tabs-four-tabContent">
-							<div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+							<div class="tab-pane fade active show" id="custom-tabs-four-org" role="tabpanel" aria-labelledby="custom-tabs-four-org-tab">
 								<table class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
 									<tbody>
 										<tr>
 											<th class="" style="width: 30%;">Ref.รหัสเอกสาร : {{ $lab->organization->id }}</th>
-											<td>	
+											<td>
 												<mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $lab->organization->updated_at }}
-												<strong>|</strong>
-												<mark>สถานะ</mark> :
-												@if ($lab->organization->completed == 0)
-												<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-												@else
-												<small class="badge badge-primary">ส่งข้อมูล</small>
-												@endif
 											</td>
 										</tr>
 										{{-- Ref.รหัสเอกสาร --}}
@@ -385,7 +378,7 @@
 								</table>
 							</div>
 							<!-- /.tab-pane -->
-							<div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">								
+							<div class="tab-pane fade" id="custom-tabs-four-lab" role="tabpanel" aria-labelledby="custom-tabs-four-lab-tab">								
 								<table class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
 									<tbody>
 										<tr>
@@ -394,11 +387,34 @@
 												<mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $lab->updated_at }}
 												<strong>|</strong>
 												<mark>สถานะ</mark> :
-												@if ($lab->completed == 0)
-												<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-												@else
-												<small class="badge badge-primary">ส่งข้อมูล</small>
-												@endif
+												@switch($lab->survey_status_id)
+													@case(1)
+														<small class="badge badge-secondary">
+															{{ $lab->surveyStatus->survey_status_name_th }}
+														</small>
+														@break
+													@case(2)
+														<small class="badge badge-primary">
+															{{ $lab->surveyStatus->survey_status_name_th }}
+														</small>
+														@break
+													@case(3)
+														<small class="badge badge-info">
+															{{ $lab->surveyStatus->survey_status_name_th }}
+														</small>
+														@break
+													@case(4)
+														<small class="badge badge-success">
+															{{ $lab->surveyStatus->survey_status_name_th }}
+														</small>
+														@break
+													@case(5)
+														<small class="badge badge-warning">
+															{{ $lab->surveyStatus->survey_status_name_th }}
+														</small>
+														@break
+													@default
+												@endswitch
 											</td>
 										</tr>
 										{{-- Ref.รหัสเอกสาร --}}
@@ -918,7 +934,7 @@
 								</table>
 							</div>
 							<!-- /.tab-pane -->
-							<div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
+							<div class="tab-pane fade" id="custom-tabs-four-equipment" role="tabpanel" aria-labelledby="custom-tabs-four-equipment-tab">
 								<div class="accordion" id="accordionEquipment">
 									@php
 										$i = 1;
@@ -945,11 +961,34 @@
 																<mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $equipment->updated_at }}
 																<strong>|</strong>
 																<mark>สถานะ</mark> :
-																@if ($equipment->completed == 0)
-																<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-																@else
-																<small class="badge badge-primary">ส่งข้อมูล</small>
-																@endif
+																@switch($equipment->lab->survey_status_id)
+																	@case(1)
+																		<small class="badge badge-secondary">
+																			{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@case(2)
+																		<small class="badge badge-primary">
+																			{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@case(3)
+																		<small class="badge badge-info">
+																			{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@case(4)
+																		<small class="badge badge-success">
+																			{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@case(5)
+																		<small class="badge badge-warning">
+																			{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@default
+																@endswitch
 															</td>
 														</tr>
 														{{-- Ref.รหัสเอกสาร --}}
@@ -1121,9 +1160,9 @@
 																@if ($equipment->equipment_rent_id == 1)
 																	ไม่ให้บุคคลภายนอกเช่าใช้
 																@else
-																	<strong>ค่าบริการต่อครั้ง (บาท) : </strong>{{ $equipment->equipment_rent_fee }}
-																	<br>
-																	<strong>เงื่อนไขการขอยืม/ใช้งานเครื่องมือ : </strong>{{ $equipment->equipment_rent_detail }} 
+																	<mark>ค่าบริการต่อครั้ง (บาท)</mark> : {{ $equipment->equipment_rent_fee }}
+																	<hr>
+																	<mark>เงื่อนไขการขอยืม/ใช้งานเครื่องมือ</mark> : {{ $equipment->equipment_rent_detail }} 
 																@endif 
 															</td>
 														</tr>
@@ -1140,7 +1179,7 @@
 								<!-- /.accordion -->
 							</div>
 							<!-- /.tab-pane -->
-							<div class="tab-pane fade" id="custom-tabs-four-settings" role="tabpanel" aria-labelledby="custom-tabs-four-settings-tab">
+							<div class="tab-pane fade" id="custom-tabs-four-productLab" role="tabpanel" aria-labelledby="custom-tabs-four-productLab-tab">
 								<div class="accordion" id="accordionProductLab">
 									@php
 										$i = 1;
@@ -1166,11 +1205,34 @@
 																<mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $productLab->updated_at }}
 																<strong>|</strong>
 																<mark>สถานะ</mark> :
-																@if ($productLab->completed == 0)
-																<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-																@else
-																<small class="badge badge-primary">ส่งข้อมูล</small>
-																@endif
+																@switch($productLab->lab->survey_status_id)
+																	@case(1)
+																		<small class="badge badge-secondary">
+																			{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@case(2)
+																		<small class="badge badge-primary">
+																			{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@case(3)
+																		<small class="badge badge-info">
+																			{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@case(4)
+																		<small class="badge badge-success">
+																			{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@case(5)
+																		<small class="badge badge-warning">
+																			{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+																		</small>
+																		@break
+																	@default
+																@endswitch
 															</td>
 														</tr>
 														{{-- Ref.รหัสเอกสาร --}}
@@ -1318,7 +1380,7 @@
                             <i class="fas fa-undo"></i> ย้อนกลับ
 						</a>
 						@if ($lab->surveyStatus->id == 1 || $lab->surveyStatus->id == 3)
-							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-primary">
+							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-send">
 								ส่งข้อมูล
 							</button>
 						@endif    
@@ -1352,7 +1414,7 @@
 			<form action="/questionnaire/{{ $lab->id }}" method="POST" role="form">
 				@csrf
 				@method('PUT')
-				<input type="hidden" name="survey_status_id" value="1">
+				<input type="hidden" name="survey_status_id" value="100">
 				<div class="modal-body">
 					<p>คุณต้องการส่งชุดข้อมูล รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark> ใช่หรือไม่?</p>
 				</div>
@@ -1367,7 +1429,7 @@
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-<div class="modal fade" id="modal-primary" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modal-send" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -1379,7 +1441,7 @@
 			<form action="/questionnaire/{{ $lab->id }}" method="POST" role="form">
 				@csrf
 				@method('PUT')
-				<input type="hidden" name="survey_status_id" value="2">
+				<input type="hidden" name="survey_status_id" value="{{ $lab->surveyStatus->id }}">
 				<div class="modal-body">
 					<p>คุณต้องการส่งชุดข้อมูล รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark> ใช่หรือไม่?</p>
 				</div>

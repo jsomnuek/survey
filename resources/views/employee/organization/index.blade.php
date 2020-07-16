@@ -28,7 +28,6 @@
                                 <tr>
                                     <th style="width: 10px;">ลำดับ</th>
                                     <th>ชื่อองค์กร : รหัสองค์กร</th>
-                                    <th>สถานะ</th>
                                     <th><i class="fas fa-user-clock"></i></th>
                                     <th><i class="fas fa-user-cog"></i></th>
                                 </tr>
@@ -48,13 +47,6 @@
                                             @if(!empty($org->org_name_level_2)){{ ' : '.$org->org_name_level_2 }}@else @endif
                                             : <mark>{{ $org->org_code }}</mark>                                  
                                         </a>
-                                    </td>
-                                    <td>
-                                        @if ($org->completed == 0)
-										<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-										@else
-										<small class="badge badge-primary">ส่งข้อมูล</small>
-                                        @endif
                                     </td>									
 									<td>{{ $org->updated_at }}</td>
                                     <td>
@@ -66,9 +58,6 @@
                                 @endforeach
                             </tbody>
                         @else
-                            <div class="text-center">
-                                No Data!
-                            </div>
                         @endif                        
                     </table>
                 </div>

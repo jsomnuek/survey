@@ -40,44 +40,97 @@
 									$i = 1;
 								@endphp
 								@foreach ($labs as $lab)
-								<tr>
-									{{-- <td class="text-center">{{ $i++ }}</td> --}}
-									<td>
-										{{ $lab->organization->org_name }} 
-										@if(!empty($lab->organization->org_name_level_1)){{ ' : '.$lab->organization->org_name_level_1 }}@else @endif 
-										@if(!empty($lab->organization->org_name_level_2)){{ ' : '.$lab->organization->org_name_level_2 }}@else @endif
-										: <mark>{{ $lab->organization->org_code }}</mark>
-									</td>
-									<td>
-										<a href="/lab/{{ $lab->id }}">
-											<i class="far fa-hand-point-right"></i> {{ $lab->lab_name }} 
-											: <mark>{{ $lab->lab_code }}</mark>
-										</a>
-									</td>
-									<td>
-										@if ($lab->completed == 0)
-										<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-										@else
-										<small class="badge badge-primary">ส่งข้อมูล</small>
-                                        @endif
-									</td>									
-									<td>{{ $lab->updated_at }}</td>									
-									<td>
-										<a href="{{ route('equipment.create-lab-id', $lab->id) }}">
-                                            <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
-                                        </a>
-									</td>
-									<td>
-										@if (count($lab->equipments) > 0)
-										<a href="{{ route('productlab.create-lab-id', $lab->id) }}">
-                                            <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
-                                        </a>
-										@endif										
-									</td>
-								</tr>                                
+									<tr>
+										{{-- <td class="text-center">{{ $i++ }}</td> --}}
+										<td>
+											{{ $lab->organization->org_name }} 
+											@if(!empty($lab->organization->org_name_level_1)){{ ' : '.$lab->organization->org_name_level_1 }}@else @endif 
+											@if(!empty($lab->organization->org_name_level_2)){{ ' : '.$lab->organization->org_name_level_2 }}@else @endif
+											: <mark>{{ $lab->organization->org_code }}</mark>
+										</td>
+										<td>
+											<a href="/lab/{{ $lab->id }}">
+												<i class="far fa-hand-point-right"></i> {{ $lab->lab_name }} 
+												: <mark>{{ $lab->lab_code }}</mark>
+											</a>
+										</td>
+										<td>
+											@switch($lab->survey_status_id)
+												@case(1)
+													<small class="badge badge-secondary">
+														{{ $lab->surveyStatus->survey_status_name_th }}
+													</small>
+													@break
+												@case(2)
+													<small class="badge badge-primary">
+														{{ $lab->surveyStatus->survey_status_name_th }}
+													</small>
+													@break
+												@case(3)
+													<small class="badge badge-info">
+														{{ $lab->surveyStatus->survey_status_name_th }}
+													</small>
+													@break
+												@case(4)
+													<small class="badge badge-success">
+														{{ $lab->surveyStatus->survey_status_name_th }}
+													</small>
+													@break
+												@case(5)
+													<small class="badge badge-warning">
+														{{ $lab->surveyStatus->survey_status_name_th }}
+													</small>
+													@break
+												@default												
+											@endswitch
+										</td>
+										<td>{{ $lab->updated_at }}</td>									
+										<td>
+											@switch($lab->survey_status_id)
+												@case(1)
+													<a href="{{ route('equipment.create-lab-id', $lab->id) }}">
+														<i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
+													</a>
+													@break
+												@case(3)
+													<a href="{{ route('equipment.create-lab-id', $lab->id) }}">
+														<i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
+													</a>
+													@break
+												@case(5)
+													<a href="{{ route('equipment.create-lab-id', $lab->id) }}">
+														<i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
+													</a>
+													@break
+												@default												
+											@endswitch										
+										</td>
+										<td>
+											@if (count($lab->equipments) > 0)
+												@switch($lab->survey_status_id)
+													@case(1)
+														<a href="{{ route('productlab.create-lab-id', $lab->id) }}">
+															<i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+														</a>
+														@break
+													@case(3)
+														<a href="{{ route('productlab.create-lab-id', $lab->id) }}">
+															<i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+														</a>
+														@break
+													@case(5)
+														<a href="{{ route('productlab.create-lab-id', $lab->id) }}">
+															<i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+														</a>
+														@break
+													@default												
+												@endswitch										
+											@endif										
+										</td>
+									</tr>                                
 								@endforeach
 							</tbody>						
-						@endif						
+						@endif		
 					</table>
 				</div>
 				<!-- /.card-body -->

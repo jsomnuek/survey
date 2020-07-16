@@ -28,16 +28,7 @@
                                 <tr>
                                     <th class="" style="width: 30%;">Ref.รหัสเอกสาร : {{ $org->id }}</th>
                                     <td>
-                                        <mark>Create</mark> : <i class="far fa-clock"></i> {{ $org->created_at }}
-                                        <strong>|</strong> 
-                                        <mark>Update</mark> : <i class="far fa-clock"></i> {{ $org->updated_at }}
-                                        <strong>|</strong>
-                                        <mark>สถานะ</mark> :
-                                        @if ($org->completed == 0)
-										<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-										@else
-										<small class="badge badge-primary">ส่งข้อมูล</small>
-                                        @endif
+                                        <mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $org->updated_at }}
                                     </td>
                                 </tr>
                                 {{-- Ref.รหัสเอกสาร --}}

@@ -27,16 +27,7 @@
                                 <blockquote class="m-0 bg-light">
                                     <mark>Ref.รหัสเอกสาร</mark> : {{ $org->id }}
                                     <strong>|</strong>
-                                    <mark>Create</mark> : <i class="far fa-clock"></i> {{ $org->created_at }}
-                                    <strong>|</strong> 
-                                    <mark>Update</mark> : <i class="far fa-clock"></i> {{ $org->updated_at }}
-                                    <strong>|</strong>
-                                    <mark>สถานะ</mark> :
-                                    @if ($org->completed == 0)
-                                    <small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-									@else
-									<small class="badge badge-primary">ส่งข้อมูล</small>
-                                    @endif
+                                    <mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $org->updated_at }}
                                 </blockquote>
                             </div>
                             <div class="col-md-12 my-2">
@@ -72,7 +63,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_code">1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> *</sup></span></label>
-                                    <input type="text" name="org_code" class="form-control @error('org_name') is-invalid @enderror" id="org_code" placeholder="" value="{{ $org->org_code }}">
+                                    <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="" value="{{ $org->org_code }}" readonly>
                                     @error('org_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

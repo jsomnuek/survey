@@ -28,16 +28,38 @@
                                 <tr>
                                     <th class="" style="width: 30%;">Ref.รหัสเอกสาร : {{ $lab->id }}</th>
                                     <td>
-                                        <mark>Create</mark> : <i class="far fa-clock"></i> {{ $lab->created_at }}
-                                        <strong>|</strong> 
-                                        <mark>Update</mark> : <i class="far fa-clock"></i> {{ $lab->updated_at }}
+                                        <mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> 
+                                        {{ $lab->updated_at }}
                                         <strong>|</strong>
                                         <mark>สถานะ</mark> :
-                                        @if ($lab->completed == 0)
-                                        <small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-										@else
-										<small class="badge badge-primary">ส่งข้อมูล</small>
-                                        @endif
+                                        @switch($lab->survey_status_id)
+											@case(1)
+												<small class="badge badge-secondary">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(2)
+												<small class="badge badge-primary">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(3)
+												<small class="badge badge-info">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(4)
+												<small class="badge badge-success">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(5)
+												<small class="badge badge-warning">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@default												
+										@endswitch
                                     </td>
                                 </tr>
                                 {{-- Ref.รหัสเอกสาร --}}
@@ -566,17 +588,42 @@
                             <a href="/lab" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-undo"></i> ย้อนกลับ
                             </a>
-                            @if ($lab->completed == 0)
-                            <a href="/lab/{{ $lab->id }}/edit" class="btn btn-info btn-sm">
-                                <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
-                            </a>                                
-                            @endif
-                            <a href="/equipment/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
-                                <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
-                            </a>
-                            <a href="/productlab/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
-                                <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
-                            </a>
+                            @switch($lab->survey_status_id)
+                                @case(1)
+                                    <a href="/lab/{{ $lab->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    <a href="/equipment/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
+                                    </a>
+                                    <a href="/productlab/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+                                    </a>
+                                    @break
+                                @case(3)
+                                    <a href="/lab/{{ $lab->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    <a href="/equipment/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
+                                    </a>
+                                    <a href="/productlab/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+                                    </a>
+                                    @break
+                                @case(5)
+                                    <a href="/lab/{{ $lab->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    <a href="/equipment/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
+                                    </a>
+                                    <a href="/productlab/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+                                    </a>
+                                    @break
+                                @default
+                            @endswitch                            
                         @endif
                     @endif
                 </div>

@@ -21,22 +21,45 @@
                 <form action="/productlab/{{ $productLab->id }}" method="POST" role="form">
                     @csrf
                     @method('PUT')
+                    <input type="hidden" name="lab_id" value="{{ $productLab->lab->id }}">
+                    <input type="hidden" name="survey_status_id" value="{{ $productLab->lab->survey_status_id }}">
                     <div class="card-body py-2">
                         <div class="row">
                             <div class="col-md-12">
                                 <blockquote class="m-0 bg-light">
                                     <mark>Ref.รหัสเอกสาร</mark> : {{ $productLab->id }}
-                                    <strong>|</strong>
-                                    <mark>Create</mark> : <i class="far fa-clock"></i> {{ $productLab->created_at }}
                                     <strong>|</strong> 
-                                    <mark>Update</mark> : <i class="far fa-clock"></i> {{ $productLab->updated_at }}
+                                    <mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $productLab->updated_at }}
                                     <strong>|</strong>
                                     <mark>สถานะ</mark> :
-                                    @if ($productLab->completed == 0)
-                                    <small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-									@else
-									<small class="badge badge-primary">ส่งข้อมูล</small>
-                                    @endif
+                                    @switch($productLab->lab->survey_status_id)
+                                        @case(1)
+                                            <small class="badge badge-secondary">
+                                                {{ $productLab->lab->surveyStatus->survey_status_name_th }}
+                                            </small>
+                                            @break
+                                        @case(2)
+                                            <small class="badge badge-primary">
+                                                {{ $productLab->lab->surveyStatus->survey_status_name_th }}
+                                            </small>
+                                            @break
+                                        @case(3)
+                                            <small class="badge badge-info">
+                                                {{ $productLab->lab->surveyStatus->survey_status_name_th }}
+                                            </small>
+                                            @break
+                                        @case(4)
+                                            <small class="badge badge-success">
+                                                {{ $productLab->lab->surveyStatus->survey_status_name_th }}
+                                            </small>
+                                            @break
+                                        @case(5)
+                                            <small class="badge badge-warning">
+                                                {{ $productLab->lab->surveyStatus->survey_status_name_th }}
+                                            </small>
+                                            @break
+                                        @default
+                                    @endswitch
                                 </blockquote>
 							</div>
 							{{-- /.col Ref.รหัสเอกสาร --}}
@@ -45,7 +68,7 @@
                                     <mark>ห้องปฏิบัตการ</mark>
                                     <strong>|</strong>
                                     <a href="{{ route('lab.show', $productLab->lab->id) }}">
-                                        {{ $productLab->lab->lab_name }}
+                                        {{ $productLab->lab->lab_name }} : {{ $productLab->lab->lab_code }}
                                     </a>
                                 </blockquote>
                             </div>
@@ -338,9 +361,24 @@
                         <a href="/productlab/{{ $productLab->id }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-undo"></i> ย้อนกลับ
                         </a>
-                        <button type="submit" class="btn btn-info btn-sm">
-                            <i class="fas fa-save"></i> บันทึกการแก้ไข
-                        </button>
+                        @switch($productLab->lab->survey_status_id)
+							@case(1)
+								<button type="submit" class="btn btn-info btn-sm">
+									<i class="fas fa-save"></i> บันทึกการแก้ไข
+								</button>
+								@break
+							@case(3)
+								<button type="submit" class="btn btn-info btn-sm">
+									<i class="fas fa-save"></i> บันทึกการแก้ไข
+								</button>
+								@break
+							@case(5)
+								<button type="submit" class="btn btn-info btn-sm">
+									<i class="fas fa-save"></i> บันทึกการแก้ไข
+								</button>
+								@break
+							@default
+						@endswitch
                     </div>
                     <!-- /.card-footer -->
                 </form>

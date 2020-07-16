@@ -53,11 +53,34 @@
                                         </a>
                                     </td>
                                     <td>
-                                        @if ($equipment->completed == 0)
-										<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-										@else
-										<small class="badge badge-primary">ส่งข้อมูล</small>
-                                        @endif
+                                        @switch($equipment->lab->survey_status_id)
+											@case(1)
+												<small class="badge badge-secondary">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(2)
+												<small class="badge badge-primary">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(3)
+												<small class="badge badge-info">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(4)
+												<small class="badge badge-success">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(5)
+												<small class="badge badge-warning">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@default
+										@endswitch
                                     </td>									
                                     <td>{{ $equipment->updated_at }}</td>
                                 </tr>                                

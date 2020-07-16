@@ -13,7 +13,7 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-header card-primary card-outline">
-				<h3 class="card-title"><i class="far fa-folder-open"></i> รายงานการส่งและการตรวจสอบสถานะ</h3>
+				<h3 class="card-title"><i class="far fa-folder-open"></i> ข้อมูลการส่งและการตรวจสอบสถานะ</h3>
 				<div class="card-tools">
 					<button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 						<i class="fas fa-minus"></i>
@@ -26,16 +26,27 @@
 					<div class="card-header p-0 border-bottom-0">
 						<ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link active" id="custom-tabs-four-lab-tab" data-toggle="pill" href="#custom-tabs-four-lab" role="tab" aria-controls="custom-tabs-four-lab" aria-selected="true">รายการสถานะทั้งหมด</a>
+								<a class="nav-link active" id="custom-tabs-four-lab-tab" data-toggle="pill" href="#custom-tabs-four-lab" role="tab" aria-controls="custom-tabs-four-lab" aria-selected="true">
+									รายการสถานะทั้งหมด
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-four-labJuly-tab" data-toggle="pill" href="#custom-tabs-four-labJuly" role="tab" aria-controls="custom-tabs-four-labJuly" aria-selected="false">รายการสถานะเดือนกรกฎาคม</a>
+								<a class="nav-link" id="custom-tabs-four-labJuly-tab" data-toggle="pill" href="#custom-tabs-four-labJuly" role="tab" aria-controls="custom-tabs-four-labJuly" aria-selected="false">
+									รายการสถานะเดือนกรกฎาคม
+									<span class="badge badge-primary">{{ count($labJuly) }}</span>
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-four-labAugust-tab" data-toggle="pill" href="#custom-tabs-four-labAugust" role="tab" aria-controls="custom-tabs-four-labAugust" aria-selected="false">รายการสถานะเดือนสิงหาคม</a>
+								<a class="nav-link" id="custom-tabs-four-labAugust-tab" data-toggle="pill" href="#custom-tabs-four-labAugust" role="tab" aria-controls="custom-tabs-four-labAugust" aria-selected="false">
+									รายการสถานะเดือนสิงหาคม
+									<span class="badge badge-primary">{{ count($labAugust) }}</span>
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-four-labSeptember-tab" data-toggle="pill" href="#custom-tabs-four-labSeptember" role="tab" aria-controls="custom-tabs-four-labSeptember" aria-selected="false">รายการสถานะเดือนกันยายน</a>
+								<a class="nav-link" id="custom-tabs-four-labSeptember-tab" data-toggle="pill" href="#custom-tabs-four-labSeptember" role="tab" aria-controls="custom-tabs-four-labSeptember" aria-selected="false">
+									รายการสถานะเดือนกันยายน
+									<span class="badge badge-primary">{{ count($labSeptember) }}</span>
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -43,7 +54,7 @@
 					<div class="card-body">
 						<div class="tab-content" id="custom-tabs-four-tabContent">
 							<div class="tab-pane fade active show" id="custom-tabs-four-lab" role="tabpanel" aria-labelledby="custom-tabs-four-lab-tab">
-								<table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+								<table id="dt1" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
 									@if (count($labs) > 0)
 										<thead>                  
 											<tr>
@@ -65,15 +76,34 @@
 													รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
 												</td>
 												<td>
-													@if ($lab->surveyStatus->id == 1)
-														<small class="badge badge-secondary">{{ $lab->surveyStatus->survey_status_name_th }}</small>                                            
-													@elseif($lab->surveyStatus->id == 2)
-														<small class="badge badge-primary">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@elseif($lab->surveyStatus->id == 3)
-														<small class="badge badge-danger">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@else
-														<small class="badge badge-success">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@endif												
+													@switch($lab->survey_status_id)
+														@case(1)
+															<small class="badge badge-secondary">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(2)
+															<small class="badge badge-primary">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(3)
+															<small class="badge badge-info">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(4)
+															<small class="badge badge-success">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(5)
+															<small class="badge badge-warning">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@default
+													@endswitch												
 												</td>
 												<td>{{ $lab->send_date }}</td>
 												<td>
@@ -113,15 +143,34 @@
 													รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
 												</td>
 												<td>
-													@if ($lab->surveyStatus->id == 1)
-														<small class="badge badge-secondary">{{ $lab->surveyStatus->survey_status_name_th }}</small>                                            
-													@elseif($lab->surveyStatus->id == 2)
-														<small class="badge badge-primary">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@elseif($lab->surveyStatus->id == 3)
-														<small class="badge badge-danger">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@else
-														<small class="badge badge-success">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@endif												
+													@switch($lab->survey_status_id)
+														@case(1)
+															<small class="badge badge-secondary">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(2)
+															<small class="badge badge-primary">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(3)
+															<small class="badge badge-info">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(4)
+															<small class="badge badge-success">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(5)
+															<small class="badge badge-warning">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@default
+													@endswitch												
 												</td>
 												<td>{{ $lab->send_date }}</td>
 												<td>
@@ -159,15 +208,34 @@
 													รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
 												</td>
 												<td>
-													@if ($lab->surveyStatus->id == 1)
-														<small class="badge badge-secondary">{{ $lab->surveyStatus->survey_status_name_th }}</small>                                            
-													@elseif($lab->surveyStatus->id == 2)
-														<small class="badge badge-primary">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@elseif($lab->surveyStatus->id == 3)
-														<small class="badge badge-danger">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@else
-														<small class="badge badge-success">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@endif												
+													@switch($lab->survey_status_id)
+														@case(1)
+															<small class="badge badge-secondary">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(2)
+															<small class="badge badge-primary">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(3)
+															<small class="badge badge-info">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(4)
+															<small class="badge badge-success">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(5)
+															<small class="badge badge-warning">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@default	
+													@endswitch												
 												</td>
 												<td>{{ $lab->send_date }}</td>
 												<td>
@@ -205,15 +273,34 @@
 													รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
 												</td>
 												<td>
-													@if ($lab->surveyStatus->id == 1)
-														<small class="badge badge-secondary">{{ $lab->surveyStatus->survey_status_name_th }}</small>                                            
-													@elseif($lab->surveyStatus->id == 2)
-														<small class="badge badge-primary">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@elseif($lab->surveyStatus->id == 3)
-														<small class="badge badge-danger">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@else
-														<small class="badge badge-success">{{ $lab->surveyStatus->survey_status_name_th }}</small>
-													@endif												
+													@switch($lab->survey_status_id)
+														@case(1)
+															<small class="badge badge-secondary">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(2)
+															<small class="badge badge-primary">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(3)
+															<small class="badge badge-info">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(4)
+															<small class="badge badge-success">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@case(5)
+															<small class="badge badge-warning">
+																{{ $lab->surveyStatus->survey_status_name_th }}
+															</small>
+															@break
+														@default	
+													@endswitch												
 												</td>
 												<td>{{ $lab->send_date }}</td>
 												<td>

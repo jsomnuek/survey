@@ -27,17 +27,38 @@
                             <tbody>
                                 <tr>
                                     <th class="" style="width: 35%;">Ref.รหัสเอกสาร : {{ $productLab->id }}</th>
-                                    <td>
-                                        <mark>Create</mark> : <i class="far fa-clock"></i> {{ $productLab->created_at }}
-                                        <strong>|</strong> 
-                                        <mark>Update</mark> : <i class="far fa-clock"></i> {{ $productLab->updated_at }}
+                                    <td>                                        
+                                        <mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $productLab->updated_at }}
                                         <strong>|</strong>
                                         <mark>สถานะ</mark> :
-                                        @if ($productLab->completed == 0)
-										<small class="badge badge-secondary">บันทึกข้อมูล</small>                                            
-										@else
-										<small class="badge badge-primary">ส่งข้อมูล</small>
-                                        @endif
+                                        @switch($productLab->lab->survey_status_id)
+											@case(1)
+												<small class="badge badge-secondary">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(2)
+												<small class="badge badge-primary">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(3)
+												<small class="badge badge-info">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(4)
+												<small class="badge badge-success">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(5)
+												<small class="badge badge-warning">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@default
+										@endswitch
                                     </td>
                                 </tr>
                                 {{-- Ref.รหัสเอกสาร --}}
@@ -176,11 +197,24 @@
                             <a href="/productlab" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-undo"></i> ย้อนกลับ
                             </a>
-                            @if ($productLab->completed == 0)
-                            <a href="/productlab/{{ $productLab->id }}/edit" class="btn btn-info btn-sm">
-                                <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
-                            </a>
-                            @endif
+                            @switch($productLab->lab->survey_status_id)
+                                @case(1)
+                                    <a href="/productlab/{{ $productLab->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    @break
+                                @case(3)
+                                    <a href="/productlab/{{ $productLab->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    @break
+                                @case(5)
+                                    <a href="/productlab/{{ $productLab->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    @break
+                                @default
+                            @endswitch
                         @endif
                     @endif
                 </div>

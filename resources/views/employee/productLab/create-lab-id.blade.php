@@ -28,7 +28,7 @@
                                     <mark>ห้องปฏิบัตการ</mark>
                                     <strong>|</strong>
                                     <a href="{{ route('lab.show', $lab->id) }}">
-                                        {{ $lab->lab_name }}
+                                        {{ $lab->lab_name }} : {{ $lab->lab_code }}
                                     </a>
                                 </blockquote>
                             </div>

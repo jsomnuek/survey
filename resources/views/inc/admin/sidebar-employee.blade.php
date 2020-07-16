@@ -35,8 +35,8 @@
 <li class="nav-item has-treeview {{ Request::is('questionnaire') ? 'menu-open' : '' }}">
     {{-- active --}}
     <a href="{{ url('questionnaire') }}" class="nav-link {{ Request::is('questionnaire') ? 'active' : '' }}">
-        <i class="nav-icon far fa-share-square"></i>
-        <p>ส่งและตรวจสอบสถานะ</p>
+        <i class="nav-icon fas fa-inbox"></i>
+        <p>ข้อมูลการส่งและตรวจสอบสถานะ</p>
     </a>
 </li>
 <li class="nav-item has-treeview">

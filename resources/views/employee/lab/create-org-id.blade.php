@@ -122,7 +122,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                {{-- /..form-group industrial_estate_id --}}
+                                {{-- /.form-group industrial_estate_id --}}
                                 <div class="form-group d-none" id="display_industrial_estate_other">
                                     <label for="industrial_estate_other" class="col-md-12 col-form-label">
                                         กรณีเลือกอื่นๆ โปรดระบุ :<span><sup class="text-danger"> *</sup></span>
@@ -136,7 +136,7 @@
                                     @enderror
                                     </div>
                                 </div>
-                                {{-- /..form-group industrial_estate_other --}}
+                                {{-- /.form-group industrial_estate_other --}}
                             </div>
                             {{-- /.col 2.3 ที่ตั้งห้องปฏิบัติการ --}}
                             <div class="col-md-6">

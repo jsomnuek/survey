@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Helpers\LogActivity;
+
 use App\Model\Employee\Organization;
 use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
@@ -153,6 +155,9 @@ class QuestionnaireController extends Controller
                 // clean
                 ProductLab::where('id', $item->id)->update(['completed' => true,]);
             }
+
+            // create log activity
+            LogActivity::addToLog('Employee Update and Send Lab : " ' . $lab->id . ' " successfully.');
 
             return redirect()->route('questionnaire.index');
         }

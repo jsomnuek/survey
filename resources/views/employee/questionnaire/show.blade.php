@@ -146,7 +146,7 @@
 										</tr>
 										<tr>
 											<th class="pl-5" style="width: 30%;">เว็บไซต์</th>
-											<td><a href="http://{{ $lab->organization->org_website }}" target="_bank">{{ $lab->organization->org_website }}</a></td>
+											<td><a href="{{ $lab->organization->org_website }}" target="_bank">{{ $lab->organization->org_website }}</a></td>
 										</tr>
 										<tr>
 											<th class="pl-5" style="width: 30%;">ละติจูด</th>

@@ -27,24 +27,45 @@
                         <table class="table table-bordered table-hover mb-0">
                             <tbody>
                                 <tr>
-                                    <th class="" style="width: 30%;">Ref.รหัสเอกสาร : {{ $equipment->id }}</th>
-                                    <td>
-                                        <mark>Create</mark> : <i class="far fa-clock"></i> {{ $equipment->created_at }}
-                                        <strong>|</strong> 
-                                        <mark>Update</mark> : <i class="far fa-clock"></i> {{ $equipment->updated_at }}
+                                    <th class="" style="width: 35%;">Ref.รหัสเอกสาร : {{ $equipment->id }}</th>
+                                    <td> 
+                                        <mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $equipment->updated_at }}
                                         <strong>|</strong>
-                                        <mark>Status</mark> :
-                                        @if ($equipment->completed == 1)
-                                        <small class="badge badge-success">approved</small>                                            
-                                        @else
-                                        <small class="badge badge-secondary">pending</small>
-                                        @endif
+                                        <mark>สถานะ</mark> :
+                                        @switch($equipment->lab->survey_status_id)
+											@case(1)
+												<small class="badge badge-secondary">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(2)
+												<small class="badge badge-primary">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(3)
+												<small class="badge badge-info">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(4)
+												<small class="badge badge-success">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(5)
+												<small class="badge badge-warning">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@default
+										@endswitch
                                     </td>
                                 </tr>
                                 {{-- Ref.รหัสเอกสาร --}}
                                 <tr>
                                     <th class="" style="width: 35%;">ห้องปฏิบัติการ :</th>
-                                    <td>{{ $equipment->lab->lab_name }}</td>
+                                    <td>{{ $equipment->lab->lab_name }} | {{ $equipment->lab->lab_code }}</td>
                                 </tr>
                                 {{-- ห้องปฏิบัติการ --}}
                                 <tr>
@@ -148,12 +169,12 @@
                                 <tr>
                                     <th class="" style="width: 35%;">3.15 การสอบเทียบ :</th>
                                     <td> 
-                                        @if ($equipment->equipment_calibration_id == 1)
+                                        @if($equipment->equipment_calibration_id == 1)
                                         ไม่มี
-                                        @else
-                                        <strong>ชื่อหน่วยงานสอบเทียบ : </strong>{{ $equipment->equipment_calibration_by }}
-                                        <br>
-                                        <strong>วัน เดือน ปี : </strong>{{$equipment->equipment_calibration_year}}
+                                        @elseif($equipment->equipment_calibration_id == 2)
+                                        <mark>ชื่อหน่วยงานสอบเทียบ</mark> : {{ $equipment->equipment_calibration_by }}
+                                        <hr>
+                                        <mark>วัน เดือน ปี</mark> : {{$equipment->equipment_calibration_year}}
                                         @endif 
                                     </td>
                                 </tr>
@@ -196,10 +217,10 @@
                                     <td> 
                                         @if ($equipment->equipment_manual_id == 1)
                                         ไม่มี
-                                        @else
-                                        <strong>ชื่อคู่มือ/รหัสคู่มือ : </strong>{{ $equipment->equipment_manual_name }}
-                                        <br>
-                                        <strong>สถานที่เก็บ/ลิงค์ดาวน์โหลด : </strong>{{ $equipment->equipment_manual_location }} 
+                                        @elseif($equipment->equipment_manual_id == 2)
+                                        <mark>ชื่อคู่มือ/รหัสคู่มือ</mark> : {{ $equipment->equipment_manual_name }}
+                                        <hr>
+                                        <mark>สถานที่เก็บ/ลิงค์ดาวน์โหลด</mark> : {{ $equipment->equipment_manual_location }} 
                                         @endif 
                                     </td>
                                 </tr>
@@ -210,9 +231,9 @@
                                         @if ($equipment->equipment_rent_id == 1)
                                             ไม่ให้บุคคลภายนอกเช่าใช้
                                         @else
-                                            <strong>ค่าบริการต่อครั้ง (บาท) : </strong>{{ $equipment->equipment_rent_fee }}
-                                            <br>
-                                            <strong>เงื่อนไขการขอยืม/ใช้งานเครื่องมือ : </strong>{{ $equipment->equipment_rent_detail }} 
+                                            <mark>ค่าบริการต่อครั้ง (บาท)</mark> : {{ $equipment->equipment_rent_fee }}
+                                            <hr>
+                                            <mark>เงื่อนไขการขอยืม/ใช้งานเครื่องมือ</mark> : {{ $equipment->equipment_rent_detail }} 
                                         @endif 
                                     </td>
                                 </tr>
@@ -226,19 +247,31 @@
                 <div class="card-footer">
                     @if (!Auth::guest())                            
                         @if (Auth::user()->id == $equipment->user_id)
-                            <a href="/equipment/" class="btn btn-secondary btn-sm">
+                            <a href="/equipment" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-undo"></i> ย้อนกลับ
                             </a>
-                            @if ($equipment->completed == 0)
-                            <a href="/equipment/{{ $equipment->id }}/edit" class="btn btn-info btn-sm">
-                                <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
-                            </a>
-                            @endif                                
+                            @switch($equipment->lab->survey_status_id)
+                                @case(1)
+                                    <a href="/equipment/{{ $equipment->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    @break
+                                @case(3)
+                                    <a href="/equipment/{{ $equipment->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    @break
+                                @case(5)
+                                    <a href="/equipment/{{ $equipment->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    @break
+                                @default
+                            @endswitch                                
                         @endif
                     @endif
                 </div>
-                {{-- /.card footer --}}
-
+                <!-- /.card-footer -->
             </div>
             <!-- /.card -->
         </div>

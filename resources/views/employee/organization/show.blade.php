@@ -28,16 +28,7 @@
                                 <tr>
                                     <th class="" style="width: 30%;">Ref.รหัสเอกสาร : {{ $org->id }}</th>
                                     <td>
-                                        <mark>Create</mark> : <i class="far fa-clock"></i> {{ $org->created_at }}
-                                        <strong>|</strong> 
-                                        <mark>Update</mark> : <i class="far fa-clock"></i> {{ $org->updated_at }}
-                                        <strong>|</strong>
-                                        <mark>Status</mark> :
-                                        @if ($org->completed == 1)
-										<small class="badge badge-success">approved</small>                                            
-										@else
-										<small class="badge badge-secondary">pending</small>
-                                        @endif
+                                        <mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> {{ $org->updated_at }}
                                     </td>
                                 </tr>
                                 {{-- Ref.รหัสเอกสาร --}}
@@ -118,7 +109,7 @@
                                 </tr>
                                 <tr>
                                     <th class="pl-5" style="width: 30%;">เว็บไซต์</th>
-                                    <td><a href="http://{{ $org->org_website }}" target="_bank">{{ $org->org_website }}</a></td>
+                                    <td><a href="{{ $org->org_website }}" target="_bank">{{ $org->org_website }}</a></td>
                                 </tr>
                                 <tr>
                                     <th class="pl-5" style="width: 30%;">ละติจูด</th>

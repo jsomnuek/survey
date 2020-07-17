@@ -62,7 +62,6 @@ class ProductLabController extends Controller
      */
     public function createByLabId($id)
     {
-        // Step 1
         $lab = Lab::findOrFail($id);
         $productTypes = ProductType::where('product_type_status', 'A')->get();
         $equipments = Equipment::where('lab_id', $id)->get();
@@ -134,7 +133,7 @@ class ProductLabController extends Controller
             $productLab->resultControls()->sync($request->input('result_control_id'), false);
 
             // create log activity
-            LogActivity::addToLog('Add Product Lab : " ' . $productLab->product_lab_name . ' " successfully.');
+            LogActivity::addToLog("Add Product Lab : $productLab->id : $productLab->product_lab_name successfully.");
 
             return redirect()->route('productlab.show', $productLab->id);
         }
@@ -175,8 +174,8 @@ class ProductLabController extends Controller
             return redirect()->route('productlab.index')->with('error', 'Unauthorized Page');
         }
 
-        if($productLab->completed == 1) {
-            return redirect()->route('productlab.show', $productLab->id);
+        if($productLab->lab->survey_status_id == 2 || $productLab->lab->survey_status_id == 4) {
+            return redirect()->route('equipment.show', $productLab->id);
         }
 
         $productTypes = ProductType::where('product_type_status', 'A')->get();
@@ -236,12 +235,18 @@ class ProductLabController extends Controller
         $this->validateProductlab();
 
         //get organization id
-        // $lab = Lab::find($request->input('lab_id'));
+        $lab = Lab::find($request->input('lab_id'));
+
+        // update status in labs
+        $survey_status_id = $request->input('survey_status_id');
+        if($survey_status_id == 5){
+            // clean
+            Lab::where('id', $lab->id)->update(['survey_status_id' => 3]);
+        }
 
         // store in the database
         $productLab = ProductLab::find($id);
     
-
         $productLab->product_lab_name = $request->input('product_lab_name');
         $productLab->product_type_other = $request->input('product_type_other');
         $productLab->product_lab_standard = $request->input('product_lab_standard');
@@ -269,7 +274,7 @@ class ProductLabController extends Controller
             $productLab->resultControls()->sync($request->input('result_control_id'));
 
             // create log activity
-            LogActivity::addToLog('Edit Product Lab : " ' . $productLab->product_lab_name . ' " successfully.');
+            LogActivity::addToLog("Edit Product Lab : $productLab->id : $productLab->product_lab_name successfully.");
 
             return redirect()->route('productlab.show', $productLab->id);
         }

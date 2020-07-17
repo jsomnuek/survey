@@ -37,7 +37,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('org_lat')->nullable()->comment('ละติจูด');
             $table->string('org_long')->nullable()->comment('ลองจิจูด');
             $table->bigInteger('org_capital')->nullable()->comment('ทุนจดทะเบียน'); //1.5 
-            $table->integer('org_employee_amount')->comment('จำนวนบุคลากร'); //1.6
+            $table->integer('org_employee_amount')->nullable()->comment('จำนวนบุคลากร'); //1.6
             $table->unsignedBigInteger('organisation_type_id'); //1.8
             $table->string('organisation_type_other')->nullable();
             $table->unsignedBigInteger('business_type_id'); //1.9

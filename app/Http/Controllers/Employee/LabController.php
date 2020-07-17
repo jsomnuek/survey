@@ -123,6 +123,10 @@ class LabController extends Controller
         // dd($request->all());
 
         // validate the data with function
+        $request->validate([
+            'lab_code' => 'required|unique:labs',
+        ]);
+
         $this->validateLab();
 
         // store in the database
@@ -219,7 +223,7 @@ class LabController extends Controller
             $safety->save();
 
             // create log activity
-            LogActivity::addToLog('Add Lab to an Oranization : " ' . $lab->lab_name . ' to ' .$lab->organization_id . ' " successfully.');
+            LogActivity::addToLog("Add Lab : $lab->id : $lab->lab_name successfully.");
 
             return redirect()->route('lab.show', $lab->id);
         }
@@ -258,7 +262,7 @@ class LabController extends Controller
             return redirect()->route('lab.index')->with('error', 'Unauthorized Page');
         }
 
-        if($lab->completed == 1) {
+        if($lab->survey_status_id == 2 || $lab->survey_status_id == 4) {
             return redirect()->route('lab.show', $lab->id);
         }
 
@@ -305,7 +309,6 @@ class LabController extends Controller
         $lab = Lab::find($id);
         $lab->organization_id = $request->input('organization_id');
         $lab->lab_name = $request->input('lab_name');
-        $lab->lab_code = $request->input('lab_code');
         $lab->location_lab_id = $request->input('location_lab_id');
         $lab->location_lab_other = $request->input('location_lab_other');
         $lab->industrial_estate_id = $request->input('industrial_estate_id');
@@ -321,6 +324,12 @@ class LabController extends Controller
         $lab->lab_development_problem = $request->input('lab_development_problem');
         $lab->lab_development_request = $request->input('lab_development_request');
         $lab->lab_development_suggestion = $request->input('lab_development_suggestion');
+
+        // update status
+        $survey_status_id = $request->input('survey_status_id');
+        if($survey_status_id == 5){
+            $lab->survey_status_id = 3;
+        }
         
         if($lab->save()) {
 
@@ -387,7 +396,7 @@ class LabController extends Controller
                 ]);
 
             // create log activity
-            LogActivity::addToLog('Edit Lab in an Oranization : " ' . $lab->lab_name . ' to ' .$lab->organization_id . ' " successfully.');
+            LogActivity::addToLog("Edit Lab : $lab->id : $lab->lab_name successfully.");
             
             return redirect()->route('lab.show', $lab->id);
         }
@@ -409,14 +418,13 @@ class LabController extends Controller
         return request()->validate([
             'organization_id' => 'required',
             'lab_name' => 'required',
-            'lab_code' => 'required',
             'location_lab_id' => 'required',
             'location_lab_other' => '',
             'industrial_estate_id' => '',
             'industrial_estate_other' => '',
             'laboratory_type_id' => 'required',
             'area_service_id' => 'required',
-            'lab_employee_amount' => 'required',
+            'lab_employee_amount' => '',
             'education_primary_amount' => '',
             'education_secondary_amount' => '',
             'education_vocational_amount' => '',

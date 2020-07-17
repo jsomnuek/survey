@@ -128,6 +128,10 @@ class EquipmentController extends Controller
         // dd($request->all());
         
         // validate the data with function
+        $request->validate([
+            'equipment_code' => 'required|unique:equipments',
+        ]);
+
         $this->validateEquipment();
 
         // Handle File Upload
@@ -195,7 +199,7 @@ class EquipmentController extends Controller
             $equipment->objectiveUsages()->sync($request->input('objective_usage_id'), false);
 
             // create log activity
-            LogActivity::addToLog('Add Equipment : " ' . $equipment->equipment_name_th . ' " successfully.');
+            LogActivity::addToLog('Add Equipment : '.$equipment->id.' : '.$equipment->equipment_code.' successfully.');
 
             return redirect()->route('equipment.show', $equipment->id);
         }
@@ -234,7 +238,7 @@ class EquipmentController extends Controller
             return redirect()->route('equipment.index')->with('error', 'Unauthorized Page');
         }
 
-        if($equipment->completed == 1) {
+        if($equipment->lab->survey_status_id == 2 || $equipment->lab->survey_status_id == 4) {
             return redirect()->route('equipment.show', $equipment->id);
         }
 
@@ -319,13 +323,19 @@ class EquipmentController extends Controller
         // get org_id
         $lab = Lab::find($request->input('lab_id'));
 
+        // update status in labs
+        $survey_status_id = $request->input('survey_status_id');
+        if($survey_status_id == 5){
+            // clean
+            Lab::where('id', $lab->id)->update(['survey_status_id' => 3]);
+        }
+
         // dd($lab);
 
         $equipment = Equipment::find($id);
 
         $equipment->lab_id = $request->input('lab_id');
         $equipment->org_id = $lab->organization_id;
-        $equipment->equipment_code = $request->input('equipment_code');
         $equipment->science_tool_id = $request->input('science_tool_id');
         $equipment->science_tool_other_name = $request->input('science_tool_other_name');
         $equipment->science_tool_other_abbr = $request->input('science_tool_other_abbr');
@@ -365,7 +375,7 @@ class EquipmentController extends Controller
             $equipment->objectiveUsages()->sync($request->input('objective_usage_id'));
 
             // create log activity
-            LogActivity::addToLog('Edit Equipment : " ' . $equipment->equipment_name_th . ' " successfully.');
+            LogActivity::addToLog('Edit Equipment : '.$equipment->id.' : '.$equipment->equipment_code.' successfully.');
 
             return redirect()->route('equipment.show', $equipment->id);
         }
@@ -385,7 +395,6 @@ class EquipmentController extends Controller
     protected function validateEquipment()
     {
         return request()->validate([
-            'equipment_code' => 'required',
             'science_tool_id' => 'required',
             'science_tool_other_name' => '',
             'science_tool_other_abbr' => '',

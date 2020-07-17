@@ -28,16 +28,38 @@
                                 <tr>
                                     <th class="" style="width: 30%;">Ref.รหัสเอกสาร : {{ $lab->id }}</th>
                                     <td>
-                                        <mark>Create</mark> : <i class="far fa-clock"></i> {{ $lab->created_at }}
-                                        <strong>|</strong> 
-                                        <mark>Update</mark> : <i class="far fa-clock"></i> {{ $lab->updated_at }}
+                                        <mark>ปรับปรุงข้อมูลล่าสุด</mark> : <i class="far fa-clock"></i> 
+                                        {{ $lab->updated_at }}
                                         <strong>|</strong>
-                                        <mark>Status</mark> :
-                                        @if ($lab->completed == 1)
-                                        <small class="badge badge-success">approved</small>                                            
-                                        @else
-                                        <small class="badge badge-secondary">pending</small>
-                                        @endif
+                                        <mark>สถานะ</mark> :
+                                        @switch($lab->survey_status_id)
+											@case(1)
+												<small class="badge badge-secondary">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(2)
+												<small class="badge badge-primary">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(3)
+												<small class="badge badge-info">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(4)
+												<small class="badge badge-success">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(5)
+												<small class="badge badge-warning">
+													{{ $lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@default												
+										@endswitch
                                     </td>
                                 </tr>
                                 {{-- Ref.รหัสเอกสาร --}}
@@ -47,6 +69,7 @@
                                         {{ $lab->organization->org_name }}
                                         @if(!empty($lab->organization->org_name_level_1)){{' : '.$lab->organization->org_name_level_1}}@else @endif 
                                         @if(!empty($lab->organization->org_name_level_2)){{' : '.$lab->organization->org_name_level_2}}@else @endif
+                                        | {{ $lab->organization->org_code }}
                                     </td>
                                 </tr>
                                 {{-- องค์กร : --}}
@@ -163,12 +186,20 @@
                                 {{-- 2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ :--}}
                                 <tr>
                                     <th class="" style="width: 35%;">2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี :</th>                                
-                                    <td>{{ !empty($lab->fixedCost->fixed_cost_name) }}</td>
+                                    <td>
+                                        @if (!empty($lab->fixed_cost_id))
+                                            {{ $lab->fixedCost->fixed_cost_name }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 {{-- 2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี :--}}
                                 <tr>
                                     <th class="" style="width: 35%;">2.9 รายได้รวมของห้องปฏิบัติการต่อปี :</th>                                
-                                    <td>{{ !empty($lab->incomePerYear->income_detail) }}</td>
+                                    <td>
+                                        @if (!empty($lab->income_per_year_id))
+                                            {{ $lab->incomePerYear->income_detail }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 {{-- 2.9 รายได้รวมของห้องปฏิบัติการต่อปี :--}}
                                 <tr>
@@ -553,7 +584,6 @@
                                 {{-- 2.10.6 --}}
                                 {{-- 2.10 ข้อมูลการพัฒนาห้องปฏิบัติการ :--}}                            
                             </tbody>
-                            {{-- /.tbody --}}
                         </table>
                         <!-- /.table -->
                     </div>
@@ -566,17 +596,42 @@
                             <a href="/lab" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-undo"></i> ย้อนกลับ
                             </a>
-                            @if ($lab->completed == 0)
-                            <a href="/lab/{{ $lab->id }}/edit" class="btn btn-info btn-sm">
-                                <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
-                            </a>                                
-                            @endif
-                            <a href="/equipment/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
-                                <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
-                            </a>
-                            <a href="/productlab/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
-                                <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
-                            </a>
+                            @switch($lab->survey_status_id)
+                                @case(1)
+                                    <a href="/lab/{{ $lab->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    <a href="/equipment/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
+                                    </a>
+                                    <a href="/productlab/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+                                    </a>
+                                    @break
+                                @case(3)
+                                    <a href="/lab/{{ $lab->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    <a href="/equipment/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
+                                    </a>
+                                    <a href="/productlab/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+                                    </a>
+                                    @break
+                                @case(5)
+                                    <a href="/lab/{{ $lab->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
+                                    </a>
+                                    <a href="/equipment/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มเครื่องมือวิทยาศาสตร์
+                                    </a>
+                                    <a href="/productlab/create-lab-id/{{ $lab->id }}" class="btn btn-primary btn-sm">
+                                        <i class="far fa-edit"></i> เพิ่มผลิตภัณฑ์ และรายการทดสอบ/สอบเทียบ
+                                    </a>
+                                    @break
+                                @default
+                            @endswitch                            
                         @endif
                     @endif
                 </div>

@@ -23,6 +23,7 @@ use App\Model\BasicInformations\EducationLevel;
 use App\Model\BasicInformations\FixedCost;
 use App\Model\BasicInformations\IncomePerYear;
 use App\Model\BasicInformations\EmployeeTraining;
+use App\Model\BasicInformations\SurveyStatus;
 
 class Lab extends Model
 {
@@ -48,6 +49,12 @@ class Lab extends Model
     public function organization()
     {
         return $this->belongsTo(Organization::class);
+    }
+
+    // Defining Relationships One To Many
+    public function surveyStatus()
+    {
+        return $this->belongsTo(SurveyStatus::class);
     }
 
     // Defining Relationships One To Many

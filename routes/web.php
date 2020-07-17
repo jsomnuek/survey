@@ -86,6 +86,13 @@ Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function() {
     // ProductLabController
     Route::get('/productlab/create-lab-id/{id}', 'Employee\ProductLabController@createByLabId')->name('productlab.create-lab-id');
     Route::resource('/productlab', 'Employee\ProductLabController');
+
+    //QuestionnaireController
+    /*
+    Route::get('/questionnaire', 'Employee\QuestionnaireController@index')->name('questionnaire.index');
+    Route::get('/questionnaire/{id}', 'Employee\QuestionnaireController@show')->name('questionnaire.show');
+    Route::put('/questionnaire/{id}', 'Employee\QuestionnaireController@update')->name('questionnaire.update');
+    */
 });
 
 Route::middleware(['checkRole:admin,approver'])->group(function() {

@@ -29,7 +29,7 @@
                                     {{-- <th style="width: 10px;" class="text-center">ลำดับ</th> --}}
                                     <th>ห้องปฏิบัติการ</th>
                                     <th>รหัสเครื่องมือ : ชื่อเครื่องมือวิทยาศาสตร์</th>
-                                    <th>status</th>
+                                    <th>สถานะ</th>
                                     <th><i class="fas fa-user-clock"></i></th>
                                 </tr>
                             </thead>
@@ -44,7 +44,7 @@
                                         {{ $equipment->organization->org_name }}
                                         @if(!empty($equipment->organization->org_name_level_1)){{ ' : '.$equipment->organization->org_name_level_1 }}@else @endif 
 										@if(!empty($equipment->organization->org_name_level_2)){{ ' : '.$equipment->organization->org_name_level_2 }}@else @endif
-                                        | <mark>{{ $equipment->lab->lab_name }}</mark>
+                                        | <mark>{{ $equipment->lab->lab_name }} : {{ $equipment->lab->lab_code }}</mark>
                                     </td>
                                     <td>                                    
                                         <a href="/equipment/{{ $equipment->id }}">
@@ -53,11 +53,34 @@
                                         </a>
                                     </td>
                                     <td>
-                                        @if ($equipment->completed == 1)
-                                        <small class="badge badge-success">approved</small>                                            
-                                        @else
-                                        <small class="badge badge-secondary">pending</small>
-                                        @endif
+                                        @switch($equipment->lab->survey_status_id)
+											@case(1)
+												<small class="badge badge-secondary">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(2)
+												<small class="badge badge-primary">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(3)
+												<small class="badge badge-info">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(4)
+												<small class="badge badge-success">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(5)
+												<small class="badge badge-warning">
+													{{ $equipment->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@default
+										@endswitch
                                     </td>									
                                     <td>{{ $equipment->updated_at }}</td>
                                 </tr>                                

@@ -27,8 +27,7 @@
                             <thead>                  
                                 <tr>
                                     <th style="width: 10px;">ลำดับ</th>
-                                    <th>ชื่อองค์กร</th>
-                                    <th>status</th>
+                                    <th>ชื่อองค์กร : รหัสองค์กร</th>
                                     <th><i class="fas fa-user-clock"></i></th>
                                     <th><i class="fas fa-user-cog"></i></th>
                                 </tr>
@@ -42,17 +41,12 @@
                                     <td class="text-center">{{ $i++ }}</td>
                                     <td>
                                         <a href="/organization/{{ $org->id }}">
-                                            <i class="far fa-hand-point-right"></i> {{ $org->org_name }} 
+                                            <i class="far fa-hand-point-right"></i> 
+                                            {{ $org->org_name }} 
                                             @if(!empty($org->org_name_level_1)){{ ' : '.$org->org_name_level_1 }}@else @endif 
-                                            @if(!empty($org->org_name_level_2)){{ ' : '.$org->org_name_level_2 }}@else @endif                                            
+                                            @if(!empty($org->org_name_level_2)){{ ' : '.$org->org_name_level_2 }}@else @endif
+                                            : <mark>{{ $org->org_code }}</mark>                                  
                                         </a>
-                                    </td>
-                                    <td>
-                                        @if ($org->completed == 1)
-										<small class="badge badge-success">approved</small>                                            
-										@else
-										<small class="badge badge-secondary">pending</small>
-                                        @endif
                                     </td>									
 									<td>{{ $org->updated_at }}</td>
                                     <td>
@@ -64,9 +58,6 @@
                                 @endforeach
                             </tbody>
                         @else
-                            <div class="text-center">
-                                No Data!
-                            </div>
                         @endif                        
                     </table>
                 </div>

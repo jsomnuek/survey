@@ -10,6 +10,7 @@
 .content .card .card-title {
     font-family: "Kanit-SemiBold";
 }
-.content .card .card-body {
+.content .card .card-body,
+.content .modal {
     font-family: "Sarabun-Light";
 }

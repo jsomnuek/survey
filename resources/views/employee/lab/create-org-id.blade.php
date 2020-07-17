@@ -122,7 +122,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                {{-- /..form-group industrial_estate_id --}}
+                                {{-- /.form-group industrial_estate_id --}}
                                 <div class="form-group d-none" id="display_industrial_estate_other">
                                     <label for="industrial_estate_other" class="col-md-12 col-form-label">
                                         กรณีเลือกอื่นๆ โปรดระบุ :<span><sup class="text-danger"> *</sup></span>
@@ -136,7 +136,7 @@
                                     @enderror
                                     </div>
                                 </div>
-                                {{-- /..form-group industrial_estate_other --}}
+                                {{-- /.form-group industrial_estate_other --}}
                             </div>
                             {{-- /.col 2.3 ที่ตั้งห้องปฏิบัติการ --}}
                             <div class="col-md-6">
@@ -186,7 +186,7 @@
                                     <label for="lab_employee_amount">
                                         2.6 จำนวนเจ้าหน้าที่ในห้องปฏิบัติการ (คน) :<span><sup class="text-danger"> *</sup></span>
                                     </label>
-                                    <input type="number" name="lab_employee_amount" min="1" class="form-control @error('lab_employee_amount') is-invalid @enderror" id="lab_employee_amount" placeholder="" value="{{ old('lab_employee_amount') }}" required>
+                                    <input type="number" name="lab_employee_amount" min="1" class="form-control @error('lab_employee_amount') is-invalid @enderror" id="lab_employee_amount" placeholder="" value="{{ old('lab_employee_amount') }}">
                                     @error('lab_employee_amount')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

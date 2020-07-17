@@ -85,6 +85,10 @@ class OrganizationController extends Controller
         // dd($request->all());
 
         // validate the data with function
+        $request->validate([
+            'org_code' => 'required|unique:organizations',
+        ]);
+
         $this->validateOrganization();
         
         // store in the database
@@ -154,7 +158,7 @@ class OrganizationController extends Controller
             $isoHaccp->save();
 
             // create log activity
-            LogActivity::addToLog('Add Oranization : " ' . $org->org_name . ' " successfully.');
+            LogActivity::addToLog("Add Organization : $org->id : $org->org_name successfully.");
 
             
             return redirect()->route('organization.show', $org->id);
@@ -259,7 +263,6 @@ class OrganizationController extends Controller
         $org->org_name = $request->input('org_name');
         $org->org_name_level_1 = $request->input('org_name_level_1');
         $org->org_name_level_2 = $request->input('org_name_level_2');
-        $org->org_code = $request->input('org_code');
         $org->org_number = $request->input('org_number');
         $org->org_building = $request->input('org_building');
         $org->org_floor = $request->input('org_floor');
@@ -319,7 +322,7 @@ class OrganizationController extends Controller
                 ]);
 
             // create log activity
-            LogActivity::addToLog('Edit Oranization : " ' . $org->org_name . ' " successfully.');
+            LogActivity::addToLog("Edit Organization : $org->id : $org->org_name successfully.");
             
             return redirect()->route('organization.show', $org->id);
         }
@@ -345,7 +348,6 @@ class OrganizationController extends Controller
             'org_name' => 'required',
             'org_name_level_1' => '',
             'org_name_level_2' => '',
-            'org_code' => 'required',
             'org_number' => '',
             'org_building' => '',
             'org_floor' => '',            
@@ -363,7 +365,7 @@ class OrganizationController extends Controller
             'org_lat' => '',
             'org_long' => '',           
             'org_capital' => '',          
-            'org_employee_amount' => 'required',  
+            'org_employee_amount' => '',  
             'sale_products' => [''],
             'countrys' => [''],
             'organisation_type_id' => 'required',  

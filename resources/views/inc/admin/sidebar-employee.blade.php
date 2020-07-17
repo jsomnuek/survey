@@ -31,6 +31,14 @@
         <p>ข้อมูลผลิตภัณฑ์<br>และรายการวิจัย/ทดสอบ/สอบเทียบ</p>
     </a>
 </li>
+{{-- Sending & Check Data Menu --}}
+<li class="d-none nav-item has-treeview {{ Request::is('questionnaire') ? 'menu-open' : '' }}">
+    {{-- active --}}
+    <a href="{{ url('questionnaire') }}" class="nav-link {{ Request::is('questionnaire') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-inbox"></i>
+        <p>ข้อมูลการส่งและตรวจสอบสถานะ</p>
+    </a>
+</li>
 <li class="nav-item has-treeview">
     <a href="{{ asset('file/DSSLabSurveyManual_V03_63014.pdf') }}" class="nav-link" target="_blank">
         <i class="nav-icon fas fa-file-pdf"></i>

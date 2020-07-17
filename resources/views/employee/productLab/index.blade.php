@@ -30,7 +30,7 @@
                                     {{-- <th style="width: 10px;">ลำดับ</th> --}}
                                     <th>ห้องปฏิบัติการ</th>
                                     <th>ชื่อผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ</th>
-                                    <th>status</th>
+                                    <th>สถานะ</th>
                                     <th><i class="fas fa-user-clock"></i></th>
                                 </tr>
                             </thead>
@@ -38,30 +38,53 @@
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach ($productLabs as $item)
+                                @foreach ($productLabs as $productLab)
                                 <tr>
                                     {{-- <td class="text-center">{{ $i++ }}</td> --}}
-                                    {{-- <td>{{ $item->lab->lab_name }}</td> --}}
+                                    {{-- <td>{{ $productLab->lab->lab_name }}</td> --}}
                                     <td>
-                                        {{ $item->organization->org_name }}
-                                        @if(!empty($item->organization->org_name_level_1)){{ ' : '.$item->organization->org_name_level_1 }}@else @endif 
-										@if(!empty($item->organization->org_name_level_2)){{ ' : '.$item->organization->org_name_level_2 }}@else @endif
-                                        | <mark>{{ $item->lab->lab_name }}</mark>
+                                        {{ $productLab->organization->org_name }}
+                                        @if(!empty($productLab->organization->org_name_level_1)){{ ' : '.$productLab->organization->org_name_level_1 }}@else @endif 
+										@if(!empty($productLab->organization->org_name_level_2)){{ ' : '.$productLab->organization->org_name_level_2 }}@else @endif
+                                        | <mark>{{ $productLab->lab->lab_name }} : {{ $productLab->lab->lab_code }}</mark>
                                     </td>
                                     <td>                                    
-                                        <a href="/productlab/{{ $item->id }}">
+                                        <a href="/productlab/{{ $productLab->id }}">
                                             <i class="far fa-hand-point-right"></i>
-                                            {{ $item->product_lab_name }}
+                                            {{ $productLab->product_lab_name }}
                                         </a>
                                     </td>
                                     <td>
-                                        @if ($item->completed == 1)
-                                        <small class="badge badge-success">approved</small>                                            
-                                        @else
-                                        <small class="badge badge-secondary">pending</small>
-                                        @endif
+                                        @switch($productLab->lab->survey_status_id)
+											@case(1)
+												<small class="badge badge-secondary">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(2)
+												<small class="badge badge-primary">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(3)
+												<small class="badge badge-info">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(4)
+												<small class="badge badge-success">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@case(5)
+												<small class="badge badge-warning">
+													{{ $productLab->lab->surveyStatus->survey_status_name_th }}
+												</small>
+												@break
+											@default
+										@endswitch
                                     </td>									
-                                    <td>{{ $item->updated_at }}</td>                        
+                                    <td>{{ $productLab->updated_at }}</td>                        
                                 </tr>                                
                                 @endforeach
                             </tbody>

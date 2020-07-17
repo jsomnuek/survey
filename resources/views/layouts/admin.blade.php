@@ -73,6 +73,9 @@
                     <!-- /.alert messages -->
                     @yield('content')
                 </div><!-- /.container-fluid -->
+                {{-- start modal --}}
+                @yield('modal')
+                {{-- end modal --}}
             </section>
             <!-- /.content -->
         </div>

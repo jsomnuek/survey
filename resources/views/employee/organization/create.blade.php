@@ -25,6 +25,7 @@
                             <div class="col-md-12 my-2">
                                 <strong>ส่วนที่ 1 ข้อมูลองค์กร : หมายเหตุ :<span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
                             </div>
+                            {{-- /.col --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="org_name">
@@ -59,7 +60,7 @@
                                     <label for="org_code">
                                         1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> *</sup></span>
                                     </label>
-                                    <input type="text" name="org_code" class="form-control @error('org_name') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}" required>
+                                    <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}" required>
                                     @error('org_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -241,7 +242,7 @@
                                     <label for="org_employee_amount">
                                         1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> *</sup></span>
                                     </label>
-                                    <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ old('org_employee_amount') }}" required>
+                                    <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ old('org_employee_amount') }}">
                                     @error('org_employee_amount')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -32,7 +32,7 @@
     </a>
 </li>
 {{-- Sending & Check Data Menu --}}
-<li class="nav-item has-treeview {{ Request::is('questionnaire') ? 'menu-open' : '' }}">
+<li class="d-none nav-item has-treeview {{ Request::is('questionnaire') ? 'menu-open' : '' }}">
     {{-- active --}}
     <a href="{{ url('questionnaire') }}" class="nav-link {{ Request::is('questionnaire') ? 'active' : '' }}">
         <i class="nav-icon fas fa-inbox"></i>

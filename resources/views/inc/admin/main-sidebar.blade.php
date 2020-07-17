@@ -813,6 +813,11 @@
                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 4)
                     @include('inc.admin.sidebar-approver')
                 @endif
+
+                {{-- BSIT Super user Menu --}}
+                @if (Auth::user()->role_id == 1)
+                    @include('inc.admin.sidebar-super-user')
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

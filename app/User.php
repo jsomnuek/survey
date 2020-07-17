@@ -67,4 +67,8 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo(Role::class);
     }
+
+    public function region() {
+        return $this->belongsTo(Region::class);
+    }
 }

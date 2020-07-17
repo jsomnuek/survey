@@ -424,7 +424,7 @@ class LabController extends Controller
             'industrial_estate_other' => '',
             'laboratory_type_id' => 'required',
             'area_service_id' => 'required',
-            'lab_employee_amount' => 'required',
+            'lab_employee_amount' => '',
             'education_primary_amount' => '',
             'education_secondary_amount' => '',
             'education_vocational_amount' => '',

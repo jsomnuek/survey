@@ -365,7 +365,7 @@ class OrganizationController extends Controller
             'org_lat' => '',
             'org_long' => '',           
             'org_capital' => '',          
-            'org_employee_amount' => 'required',  
+            'org_employee_amount' => '',  
             'sale_products' => [''],
             'countrys' => [''],
             'organisation_type_id' => 'required',  

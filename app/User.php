@@ -10,6 +10,8 @@ use App\Model\Employee\Organization;
 use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
 use App\Model\Employee\ProductLab;
+use App\Model\BasicInformations\Role;
+
 
 class User extends Authenticatable
 {
@@ -60,5 +62,9 @@ class User extends Authenticatable
     public function productLabs()
     {
         return $this->hasMany(ProductLab::class);
+    }
+
+    public function role() {
+        return $this->belongsTo(Role::class);
     }
 }

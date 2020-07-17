@@ -338,5 +338,5 @@
 
 @section('scripts')
     <script src="{{ asset('js/components.js') }}"></script>
-    <script src="{{ asset('js/form-productab.js') }}"></script>
+    <script src="{{ asset('js/form-productLab.js') }}"></script>
 @endsection

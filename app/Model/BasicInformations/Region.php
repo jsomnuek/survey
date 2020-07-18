@@ -3,7 +3,6 @@
 namespace App\Model\BasicInformations;
 
 use Illuminate\Database\Eloquent\Model;
-
 use App\User;
 
 class Region extends Model
@@ -14,8 +13,7 @@ class Region extends Model
 
     public $timestamp = true;
 
-    public function users()
-    {
+    public function users() {
         return $this->hasMany(User::class);
     }
 }

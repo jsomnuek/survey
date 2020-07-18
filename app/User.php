@@ -10,7 +10,7 @@ use App\Model\Employee\Organization;
 use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
 use App\Model\Employee\ProductLab;
-
+use App\Model\BasicInformations\Role;
 use App\Model\BasicInformations\Region;
 
 class User extends Authenticatable
@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'national_id','name', 'email', 'password', 'role_id', 'agency_id', 'region_id'
+        'user_code','name', 'email', 'password', 'role_id', 'agency_id', 'region_id'
     ];
 
     /**
@@ -64,8 +64,11 @@ class User extends Authenticatable
         return $this->hasMany(ProductLab::class);
     }
 
-    public function region()
-    {
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function region() {
         return $this->belongsTo(Region::class);
     }
 }

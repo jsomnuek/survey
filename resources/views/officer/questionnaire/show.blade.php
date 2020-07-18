@@ -23,7 +23,7 @@
 			<!-- /.card-header -->
 			<div class="card-body">
                 <blockquote class="mx-0 mt-0 bg-light">
-                    <h3><i class="fas fa-user-edit"></i> {{ $user->region->region_name }}</h3>          
+                    <h3><i class="fas fa-user-edit"></i> {{ $user->role->role_name }}</h3>          
                     <div class="d-flex flex-row justify-content-between">
                         <span class="mr-2">
                             <mark>รหัสประจำตัว</mark> : {{ $user->user_code }}

@@ -51,7 +51,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'national_id' => ['required', 'min:13', 'max:13', 'unique:users'],
+            'user_code' => ['required', 'max:25', 'unique:users'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -70,7 +70,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {   
         $registerUser = new User;
-        $registerUser->national_id = $data['national_id'];
+        $registerUser->user_code = $data['user_code'];
         $registerUser->name = $data['name'];
         $registerUser->email = $data['email'];
         $registerUser->password = Hash::make($data['password']);
@@ -82,7 +82,7 @@ class RegisterController extends Controller
         // create log activity
         LogActivity::addToLog('Add user : " ' . $registerUser->name . ' " successfully.');
 
-        return redirect('/dashboard');
+        return redirect('register');
 
     }
 

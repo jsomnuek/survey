@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Ask' => $baseDir . '/app/Model/Employee/Ask.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Helpers\\LogActivity' => $baseDir . '/app/Helpers/LogActivity.php',
@@ -47,15 +48,18 @@ return array(
     'App\\Http\\Controllers\\BasicInformations\\RoleController' => $baseDir . '/app/Http/Controllers/BasicInformations/RoleController.php',
     'App\\Http\\Controllers\\BasicInformations\\SaleProductController' => $baseDir . '/app/Http/Controllers/BasicInformations/SaleProductController.php',
     'App\\Http\\Controllers\\BasicInformations\\ScienceToolController' => $baseDir . '/app/Http/Controllers/BasicInformations/ScienceToolController.php',
+    'App\\Http\\Controllers\\BasicInformations\\SurveyStatusController' => $baseDir . '/app/Http/Controllers/BasicInformations/SurveyStatusController.php',
     'App\\Http\\Controllers\\BasicInformations\\TechnicalEquipmentController' => $baseDir . '/app/Http/Controllers/BasicInformations/TechnicalEquipmentController.php',
     'App\\Http\\Controllers\\BasicInformations\\TestingCalibratingListController' => $baseDir . '/app/Http/Controllers/BasicInformations/TestingCalibratingListController.php',
     'App\\Http\\Controllers\\BasicInformations\\TestingCalibratingMethodController' => $baseDir . '/app/Http/Controllers/BasicInformations/TestingCalibratingMethodController.php',
     'App\\Http\\Controllers\\BasicInformations\\TestingCalibratingTypeController' => $baseDir . '/app/Http/Controllers/BasicInformations/TestingCalibratingTypeController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\Employee\\EmployeeController' => $baseDir . '/app/Http/Controllers/Employee/EmployeeController.php',
     'App\\Http\\Controllers\\Employee\\EquipmentController' => $baseDir . '/app/Http/Controllers/Employee/EquipmentController.php',
     'App\\Http\\Controllers\\Employee\\LabController' => $baseDir . '/app/Http/Controllers/Employee/LabController.php',
     'App\\Http\\Controllers\\Employee\\OrganizationController' => $baseDir . '/app/Http/Controllers/Employee/OrganizationController.php',
     'App\\Http\\Controllers\\Employee\\ProductLabController' => $baseDir . '/app/Http/Controllers/Employee/ProductLabController.php',
+    'App\\Http\\Controllers\\Employee\\QuestionnaireController' => $baseDir . '/app/Http/Controllers/Employee/QuestionnaireController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\LogActivityController' => $baseDir . '/app/Http/Controllers/LogActivityController.php',
     'App\\Http\\Controllers\\Questionnaire\\QuestionnaireController' => $baseDir . '/app/Http/Controllers/Questionnaire/QuestionnaireController.php',

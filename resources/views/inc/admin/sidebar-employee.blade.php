@@ -39,6 +39,14 @@
         <p>ข้อมูลการส่งและตรวจสอบสถานะ</p>
     </a>
 </li>
+{{-- Question & Answer --}}
+<li class="nav-item has-treeview {{ Request::is('ask*') ? 'menu-open' : '' }}">
+    {{-- active --}}
+    <a href="{{ url('/ask') }}" class="nav-link {{ Request::is('ask*') ? 'active' : '' }}">
+        <i class="nav-icon fa fa-question-circle"></i>
+        <p>ถาม-ตอบ</p>
+    </a>
+</li>
 <li class="nav-item has-treeview">
     <a href="{{ asset('file/DSSLabSurveyManual_V03_63014.pdf') }}" class="nav-link" target="_blank">
         <i class="nav-icon fas fa-file-pdf"></i>

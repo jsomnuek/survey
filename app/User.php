@@ -11,6 +11,8 @@ use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
 use App\Model\Employee\ProductLab;
 
+use App\Model\BasicInformations\Region;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -60,5 +62,10 @@ class User extends Authenticatable
     public function productLabs()
     {
         return $this->hasMany(ProductLab::class);
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
     }
 }

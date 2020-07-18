@@ -541,12 +541,20 @@
 										{{-- 2.7 ระดับการศึกษาของเจ้าหน้าที่ในห้องปฏิบัติการ :--}}
 										<tr>
 											<th class="" style="width: 35%;">2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี :</th>                                
-											<td>{{ !empty($lab->fixedCost->fixed_cost_name) }}</td>
+											<td>
+												@if (!empty($lab->fixed_cost_id))
+													{{ $lab->fixedCost->fixed_cost_name }}
+												@endif
+											</td>
 										</tr>
 										{{-- 2.8 ต้นทุนคงที่ (Fix cost) ของห้องปฏิบัติการต่อปี :--}}
 										<tr>
 											<th class="" style="width: 35%;">2.9 รายได้รวมของห้องปฏิบัติการต่อปี :</th>                                
-											<td>{{ !empty($lab->incomePerYear->income_detail) }}</td>
+											<td>
+												@if (!empty($lab->income_per_year_id))
+													{{ $lab->incomePerYear->income_detail }}
+												@endif
+											</td>
 										</tr>
 										{{-- 2.9 รายได้รวมของห้องปฏิบัติการต่อปี :--}}
 										<tr>

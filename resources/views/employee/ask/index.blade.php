@@ -46,7 +46,8 @@
                                         {{ $ask->answer }}
                                     </td>
 									<td>
-                                        {{ $ask->updated_at }}
+                                        {{ \Carbon\Carbon::parse($ask->updated_at)->format('d/m/Y')}}
+                                        {{-- {{ $ask->updated_at->format('d/m/Y')}} --}}
                                     </td>
                                 </tr>                                
                                 @endforeach

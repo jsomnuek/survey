@@ -16,7 +16,7 @@ use App\Helpers\LogActivity;
 class EmployeeController extends Controller
 {
 
-    public function __contruct() {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -25,17 +25,11 @@ class EmployeeController extends Controller
         // get user where role_id = 3 (employee)
         $registerEmployee = User::where('role_id',3)
                                 ->where('email', 'not like', "%dss.go.th%")
+                                ->orderBy('user_code','asc')
                                 ->get();
-                                // ->first();
-        // dd($registerEmployee->role_id);
-        // get region
-        $region = Region::where('region_status', 'A')->get();
-
-        // dd($region);
 
         return view ('super_users.employees.register-employees',[
-            'showRegisterEmployee' => $registerEmployee,
-            'showRegion' => $region]);
+            'showRegisterEmployee' => $registerEmployee]);
     }
 
     public function showLoginEmployee () {

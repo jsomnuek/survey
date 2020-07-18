@@ -12,12 +12,12 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="national-id" class="col-md-4 col-form-label text-md-right">{{ __('หมายเลขประจำตัวประชาชน') }}</label>
+                            <label for="user_code" class="col-md-4 col-form-label text-md-right">{{ __('รหัสประจำตัวผู้ใช้งาน') }}</label>
 
                             <div class="col-md-6">
-                                <input id="national_id" type="number" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" required autofocus>
+                                <input id="user_code" type="text" class="form-control @error('user_code') is-invalid @enderror" name="user_code" value="{{ old('user_code') }}" required autofocus>
 
-                                @error('national_id')
+                                @error('user_code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -25,10 +25,10 @@
                     <tbody>
                       @foreach ($showRegisterEmployee as $registerEmployee)
                           <tr>
-                            <td class="text-center">{{$registerEmployee->id}}</td>
+                            <td class="text-center">{{$registerEmployee->user_code}}</td>
                             <td>{{$registerEmployee->name}}</td>
                             <td>{{$registerEmployee->email}}</td>
-                            <td>{{$registerEmployee->region_id}}</td>
+                            <td>{{$registerEmployee->region->region_name}}</td>
                           </tr>
                       @endforeach
                     </tbody>

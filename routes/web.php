@@ -102,7 +102,7 @@ Route::middleware(['checkRole:admin,approver'])->group(function() {
     Route::get('/verifyQuestionnaire', 'Questionnaire\QuestionnaireController@showVerifyQuestionnaire');
 });
 
-Route::middleware(['checkRole:admin,superAdmin'])->group(function() {
+Route::middleware(['checkRole:admin,superUser'])->group(function() {
     Route::get('/showRegisterEmployee','Employee\EmployeeController@showRegisterEmployee');
     Route::get('/showLoginEmployee','Employee\EmployeeController@showLoginEmployee');
 });

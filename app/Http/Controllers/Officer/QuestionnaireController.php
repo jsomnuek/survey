@@ -13,6 +13,8 @@ use App\Model\BasicInformations\SurveyStatus;
 
 use App\Model\Employee\Lab;
 
+use App\Model\Logs\LogCommentLab;
+
 class QuestionnaireController extends Controller
 {
     /**
@@ -76,6 +78,9 @@ class QuestionnaireController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        $logCommentLabs = LogCommentLab::where('user_id', $id)->get();
+        $surveyStatus = SurveyStatus::all();
+
         $labs = Lab::where('user_id', $id)
             ->orderBy('created_at', 'desc')
             ->get();
@@ -90,10 +95,12 @@ class QuestionnaireController extends Controller
             ->whereMonth('send_date', '09')
             ->get();
 
-        // return $labs;
+        // return $logCommentLabs;
 
         return view('officer.questionnaire.show', [
             'user' => $user,
+            'logCommentLabs' => $logCommentLabs,
+            'surveyStatus' => $surveyStatus,
             'labs' => $labs,
             'labJuly' => $labJuly,
             'labAugust' => $labAugust,
@@ -108,7 +115,11 @@ class QuestionnaireController extends Controller
      */
     public function detail($id)
     {
-        return $id;
+        $lab = Lab::find($id);
+
+        $surveyStatus = SurveyStatus::all();
+
+        return view('officer.questionnaire.detail', compact(['lab', 'surveyStatus']));
     }
 
     /**
@@ -131,7 +142,42 @@ class QuestionnaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $survey_status_id = $request->input('survey_status_id');
+
+        $lab = Lab::find($id);
+
+        // if approve
+        if($survey_status_id == 2) {
+            // clean
+            $lab->survey_status_id = 4;
+            $lab->approve_date = date('Y-m-d H:i:s');
+            $lab->save();
+
+            // create log activity
+            LogActivity::addToLog("Employee Approve Lab : $lab->id : $lab->lab_code successfully.");
+
+            return redirect()->route('officer-questionnaire.show', $lab->user_id);
+        }
+
+        // if reject
+        if($survey_status_id == 5) {
+            // clean
+            $lab->survey_status_id = 5;
+            $lab->save();
+
+            $logCommentLab = new LogCommentLab;
+            $logCommentLab->user_id = $request->input('user_id');
+            $logCommentLab->lab_id = $request->input('lab_id');
+            $logCommentLab->survey_status_id = $survey_status_id;
+            $logCommentLab->comment_lab_detail = $request->input('comment_lab_detail');
+            $logCommentLab->reject_date = date('Y-m-d H:i:s');
+            $logCommentLab->save();
+
+            // create log activity
+            LogActivity::addToLog("Employee Reject Lab : $lab->id : $lab->lab_code successfully.");
+
+            return redirect()->route('officer-questionnaire.show', $lab->user_id);
+        }
     }
 
     /**

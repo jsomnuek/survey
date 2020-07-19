@@ -25,6 +25,8 @@ use App\Model\BasicInformations\IncomePerYear;
 use App\Model\BasicInformations\EmployeeTraining;
 use App\Model\BasicInformations\SurveyStatus;
 
+use App\Model\Logs\LogCommentLab;
+
 class Lab extends Model
 {
     protected $table = 'labs';
@@ -145,5 +147,11 @@ class Lab extends Model
     public function productLabs()
     {
         return $this->hasMany(ProductLab::class);
+    }
+
+    // Defining Relationships One To Many
+    public function LogCommentLabs()
+    {
+        return $this->hasMany(LogCommentLab::class);
     }
 }

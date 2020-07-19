@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Model\Employee\Lab;
 
+use App\Model\Logs\LogCommentLab;
+
 class SurveyStatus extends Model
 {
     protected $table = 'survey_statuses';
@@ -15,8 +17,13 @@ class SurveyStatus extends Model
     public $timestamps = true;
 
     // Defining Relationships One To Many
-    public function lab()
+    public function labs()
     {
         return $this->hasMany(Lab::class);
+    }
+
+    public function logCommentLabs()
+    {
+        return $this->hasMany(LogCommentLab::class);
     }
 }

@@ -140,7 +140,7 @@
 		<!--/.card -->			
 		<div class="card bg-light">
 			<div class="card-body">
-                <blockquote class="m-0">           
+                <blockquote class="quote-secondary m-0">           
                     <div class="d-flex flex-row justify-content-between">
                         @foreach ($surveyStatus as $item)
                             @switch($item->id)

@@ -96,15 +96,11 @@ Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function() {
 });
 
 Route::middleware(['checkRole:admin,approver'])->group(function() {
-
+    // Officer
     Route::get('/officer-questionnaire', 'Officer\QuestionnaireController@index')->name('officer-questionnaire.index');
     Route::get('/officer-questionnaire/{id}', 'Officer\QuestionnaireController@show')->name('officer-questionnaire.show');
-    Route::get('/officer-questionnaire/detail/{id}', 'Officer\QuestionnaireController@detail')->name('officer-questionnaire.detail');
-
-    Route::get('/unApproveQuestionnaire', 'Questionnaire\QuestionnaireController@showUnApproveQuestionnaire');
-    Route::get('/unApproveQuestionnaire/{id}', 'Questionnaire\QuestionnaireController@showUnApproveQuestionnaireId');
-    Route::get('/approvedQuestionnaire', 'Questionnaire\QuestionnaireController@showApprovedQuestionnaire');
-    Route::get('/verifyQuestionnaire', 'Questionnaire\QuestionnaireController@showVerifyQuestionnaire');
+    Route::get('/officer-questionnaire-detail/{id}', 'Officer\QuestionnaireController@detail')->name('officer-questionnaire.detail');
+    Route::put('/officer-questionnaire/{id}', 'Officer\QuestionnaireController@update')->name('officer-questionnaire.update');
 });
 
 Route::middleware(['checkRole:admin,superUser'])->group(function() {

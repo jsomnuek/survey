@@ -80,7 +80,7 @@
                                                 <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
                                                 <th>สถานะ</th>
                                                 <th>วันที่ส่งข้อมูล</th>
-                                                <th><i class="fas fa-user-cog"></i></th>
+                                                <th>วันที่อนุมัติข้อมูล</th>
                                             </tr>
                                         </thead>
                                         <tbody id="items">
@@ -91,7 +91,15 @@
                                             <tr>
                                                 <td class="text-center">{{ $i++ }}</td>
                                                 <td>
-                                                    รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                    @switch($lab->survey_status_id)
+                                                        @case(1)
+                                                            รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                            @break
+                                                        @default
+                                                            <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                                                รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                            </a>
+                                                    @endswitch                                                    
                                                 </td>
                                                 <td>
                                                     @switch($lab->survey_status_id)
@@ -124,13 +132,7 @@
                                                     @endswitch												
                                                 </td>
                                                 <td>{{ $lab->send_date }}</td>
-                                                <td>
-                                                    @if ($lab->surveyStatus->id == 1 || $lab->surveyStatus->id == 3)
-                                                        <a href="/questionnaire/{{$lab->id}}">
-                                                            <i class="far fa-share-square"></i> ส่งข้อมูล
-                                                        </a>
-                                                    @endif													
-                                                </td>
+                                                <td>{{ $lab->approve_date }}</td>                                                
                                             </tr>                                
                                             @endforeach
                                         </tbody>						
@@ -147,7 +149,7 @@
                                                 <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
                                                 <th>สถานะ</th>
                                                 <th>วันที่ส่งข้อมูล</th>
-                                                <th><i class="fas fa-user-cog"></i></th>
+                                                <th>วันที่อนุมัติข้อมูล</th>
                                             </tr>
                                         </thead>
                                         <tbody id="items">
@@ -158,7 +160,15 @@
                                             <tr>
                                                 <td class="text-center">{{ $i++ }}</td>
                                                 <td>
-                                                    รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                    @switch($lab->survey_status_id)
+                                                        @case(1)
+                                                            รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                            @break
+                                                        @default
+                                                            <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                                                รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                            </a>
+                                                    @endswitch
                                                 </td>
                                                 <td>
                                                     @switch($lab->survey_status_id)
@@ -191,11 +201,7 @@
                                                     @endswitch												
                                                 </td>
                                                 <td>{{ $lab->send_date }}</td>
-                                                <td>
-                                                    <a href="/questionnaire/{{$lab->id}}">
-                                                        <i class="far fa-eye"></i> ดูรายละเอียด
-                                                    </a>													
-                                                </td>
+                                                <td>{{ $lab->approve_date }}</td>
                                             </tr>                                
                                             @endforeach
                                         </tbody>						
@@ -212,7 +218,7 @@
                                                 <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
                                                 <th>สถานะ</th>
                                                 <th>วันที่ส่งข้อมูล</th>
-                                                <th><i class="fas fa-user-cog"></i></th>
+                                                <th>วันที่อนุมัติข้อมูล</th>
                                             </tr>
                                         </thead>
                                         <tbody id="items">
@@ -223,7 +229,15 @@
                                             <tr>
                                                 <td class="text-center">{{ $i++ }}</td>
                                                 <td>
-                                                    รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                    @switch($lab->survey_status_id)
+                                                        @case(1)
+                                                            รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                            @break
+                                                        @default
+                                                            <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                                                รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                            </a>
+                                                    @endswitch
                                                 </td>
                                                 <td>
                                                     @switch($lab->survey_status_id)
@@ -256,11 +270,7 @@
                                                     @endswitch												
                                                 </td>
                                                 <td>{{ $lab->send_date }}</td>
-                                                <td>
-                                                    <a href="/questionnaire/{{$lab->id}}">
-                                                        <i class="far fa-eye"></i> ดูรายละเอียด
-                                                    </a>													
-                                                </td>
+                                                <td>{{ $lab->approve_date }}</td>
                                             </tr>                                
                                             @endforeach
                                         </tbody>						
@@ -277,7 +287,7 @@
                                                 <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
                                                 <th>สถานะ</th>
                                                 <th>วันที่ส่งข้อมูล</th>
-                                                <th><i class="fas fa-user-cog"></i></th>
+                                                <th>วันที่อนุมัติข้อมูล</th>
                                             </tr>
                                         </thead>
                                         <tbody id="items">
@@ -288,7 +298,15 @@
                                             <tr>
                                                 <td class="text-center">{{ $i++ }}</td>
                                                 <td>
-                                                    รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                    @switch($lab->survey_status_id)
+                                                        @case(1)
+                                                            รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                            @break
+                                                        @default
+                                                            <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                                                รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                            </a>
+                                                    @endswitch
                                                 </td>
                                                 <td>
                                                     @switch($lab->survey_status_id)
@@ -321,11 +339,7 @@
                                                     @endswitch												
                                                 </td>
                                                 <td>{{ $lab->send_date }}</td>
-                                                <td>
-                                                    <a href="/questionnaire/{{$lab->id}}">
-                                                        <i class="far fa-eye"></i> ดูรายละเอียด
-                                                    </a>													
-                                                </td>
+                                                <td>{{ $lab->approve_date }}</td>
                                             </tr>                                
                                             @endforeach
                                         </tbody>						
@@ -336,8 +350,45 @@
                         </div>
                         <!-- /.tab-content -->
                     </div>
-                    <!-- /.card-body -->                    
+                    <!-- /.card-body -->
+                    
                 </div>
+                <!-- /.card -->
+                @if (count($logCommentLabs) > 0)
+                <p>
+                    <i class="fas fa-tag text-warning"></i>
+                    <mark><cite title="Source Title">รายละเอียดสำหรับการแก้ไขข้อมูลห้องปฏิบัติการ</cite></mark>
+                </p>
+                <div class="card">
+                    <table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+                        <thead>                  
+                            <tr>
+                                <th style="width: 10px;">ลำดับ</th>
+                                <th>รายการ</th>
+                                {{-- <th>สถานะ</th> --}}
+                                <th>รายละเอียด</th>
+                                <th><i class="fas fa-user-clock"></i></th>
+                                <th>เอกสารแนบ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="items">
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach ($logCommentLabs as $logCommentLab)
+                            <tr>
+                                <td class="text-center">{{ $i++ }}</td>
+                                <td>{{ $logCommentLab->lab->lab_code }}</td>
+                                {{-- <td>{{ $logCommentLab->surveyStatus->survey_status_name_th }}</td> --}}
+                                <td>{{ $logCommentLab->comment_lab_detail }}</td>
+                                <td>{{ $logCommentLab->reject_date }}</td>
+                                <td><i class="far fa-file-alt"></i></td>
+                            </tr>                                
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                @endif
                 <!-- /.card -->
 			</div>
             <!-- /.card-body -->
@@ -347,6 +398,47 @@
                 </a>
             </div>
             <!-- /.card-footer -->
+		</div>
+        <!--/.card -->
+        <div class="card bg-light">
+			<div class="card-body">
+                <blockquote class="quote-secondary m-0">           
+                    <div class="d-flex flex-row justify-content-between">
+                        @foreach ($surveyStatus as $item)
+                            @switch($item->id)
+                                @case(1)
+                                    <span class="mr-2">
+                                        <mark><i class="fas fa-square text-secondary"></i></mark>{{ $item->survey_status_name_th }}
+                                    </span>
+                                    @break
+                                @case(2)
+                                    <span class="mr-2">
+                                        <mark><i class="fas fa-square text-primary"></i></mark>{{ $item->survey_status_name_th }}
+                                    </span>
+                                    @break
+                                @case(3)
+                                    <span class="mr-2">
+                                        <mark><i class="fas fa-square text-info"></i></mark>{{ $item->survey_status_name_th }}
+                                    </span>
+                                    @break
+                                @case(4)
+                                    <span class="mr-2">
+                                        <mark><i class="fas fa-square text-success"></i></mark>{{ $item->survey_status_name_th }}
+                                    </span>
+                                    @break
+                                @case(5)
+                                    <span class="mr-2">
+                                        <mark><i class="fas fa-square text-warning"></i></mark>{{ $item->survey_status_name_th }}
+                                    </span>
+                                    @break
+                                @default                                    
+                            @endswitch
+                        @endforeach
+                    </div>
+                    <!-- /.d-flex -->
+                </blockquote>
+			</div>
+			<!-- /.card-body -->
 		</div>
 		<!--/.card -->			
 	</div>

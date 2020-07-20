@@ -25,6 +25,10 @@
                 {{Form::text('labTypeName',$editLabType->lab_type_name,['class'=>'form-control','required'])}}
               </div>
               <div class="form-group">
+                {{Form::label('title','ชื่อย่อประเภทห้องปฏิบัติการ')}}
+                {{Form::text('labTypeAbbr',$editLabType->lab_type_abbr,['class'=>'form-control','required'])}}
+              </div>
+              <div class="form-group">
                 {{Form::label('title','สถานะการใช้งานข้อมูล')}}
                 {{Form::select('labTypeStatus',[
                   'A' => 'Active',

@@ -32,11 +32,11 @@
     </a>
 </li>
 {{-- Sending & Check Data Menu --}}
-<li class="d-none nav-item has-treeview {{ Request::is('questionnaire') ? 'menu-open' : '' }}">
+<li class="nav-item has-treeview {{ Request::is('questionnaire') ? 'menu-open' : '' }}">
     {{-- active --}}
     <a href="{{ url('questionnaire') }}" class="nav-link {{ Request::is('questionnaire') ? 'active' : '' }}">
         <i class="nav-icon fas fa-inbox"></i>
-        <p>ข้อมูลการส่งและตรวจสอบสถานะ</p>
+        <p>ตรวจสอบและส่งข้อมูล</p>
     </a>
 </li>
 {{-- Question & Answer --}}

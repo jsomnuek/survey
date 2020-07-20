@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page')
-	Show Questionnaire
+	Officer Questionnaire Detail
 @endsection
 
 @section('header-box-1')
@@ -39,17 +39,41 @@
                         </span>                     
                     </div>
 					<!-- /.d-flex -->
+					<hr>
+                    <div class="d-flex flex-row justify-content-start">
+                        <span class="mr-2">
+                            <mark>รหัสห้องปฏิบัติการ</mark> : {{ $lab->lab_code }}
+						</span>
+						<span class="mr-2">
+							<a href="/officer-questionnaire/{{$lab->user_id}}" class="btn btn-secondary btn-xs">
+								<i class="fas fa-undo"></i> ย้อนกลับ
+							</a>
+                        </span>
+						@if ($lab->survey_status_id == 2)
+						<span class="mr-2">
+							<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-approve">
+								อนุมัติข้อมูลส่งงานได้
+							</button>
+                        </span>                     
+                        <span class="mr-2">
+							<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-reject">
+								ตรวจสอบข้อมูลแล้วขอให้แก้ไข
+							</button>
+                        </span>
+						@endif
+                    </div>
+                    <!-- /.d-flex -->
                 </blockquote>
 				<div class="card card-primary card-outline card-outline-tabs">
 					<div class="card-header p-0 border-bottom-0">
 						<ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link active" id="custom-tabs-four-org-tab" data-toggle="pill" href="#custom-tabs-four-org" role="tab" aria-controls="custom-tabs-four-org" aria-selected="true">
+								<a class="nav-link" id="custom-tabs-four-org-tab" data-toggle="pill" href="#custom-tabs-four-org" role="tab" aria-controls="custom-tabs-four-org" aria-selected="true">
 									<mark>ส่วนที่ 1</mark> องค์กร
                                 </a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-four-lab-tab" data-toggle="pill" href="#custom-tabs-four-lab" role="tab" aria-controls="custom-tabs-four-lab" aria-selected="false">
+								<a class="nav-link active" id="custom-tabs-four-lab-tab" data-toggle="pill" href="#custom-tabs-four-lab" role="tab" aria-controls="custom-tabs-four-lab" aria-selected="false">
 									<mark>ส่วนที่ 2</mark> ห้องปฏิบัติการ
                                 </a>
 							</li>
@@ -70,7 +94,7 @@
 					<!-- /.card-header -->
 					<div class="card-body">
 						<div class="tab-content" id="custom-tabs-four-tabContent">
-							<div class="tab-pane fade active show" id="custom-tabs-four-org" role="tabpanel" aria-labelledby="custom-tabs-four-org-tab">
+							<div class="tab-pane fade" id="custom-tabs-four-org" role="tabpanel" aria-labelledby="custom-tabs-four-org-tab">
 								<table class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
 									<tbody>
 										<tr>
@@ -396,7 +420,7 @@
 								</table>
 							</div>
 							<!-- /.tab-pane -->
-							<div class="tab-pane fade" id="custom-tabs-four-lab" role="tabpanel" aria-labelledby="custom-tabs-four-lab-tab">								
+							<div class="tab-pane fade active show" id="custom-tabs-four-lab" role="tabpanel" aria-labelledby="custom-tabs-four-lab-tab">								
 								<table class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
 									<tbody>
 										<tr>
@@ -1400,25 +1424,19 @@
 						</div>
 						<!-- /.tab-content -->
 					</div>
-					
 					<!-- /.card-body -->
 					<div class="card-footer">
-						<a href="/questionnaire" class="btn btn-secondary btn-sm">
+						<a href="/officer-questionnaire/{{$lab->user_id}}" class="btn btn-secondary btn-xs">
                             <i class="fas fa-undo"></i> ย้อนกลับ
 						</a>
-						@switch($lab->survey_status_id)
-							@case(1)
-								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-send">
-									ส่งข้อมูล
-								</button>
-								@break
-							@case(3)
-								<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-send">
-									ส่งข้อมูลที่แก้ไข
-								</button>
-								@break
-							@default
-						@endswitch  
+						@if ($lab->survey_status_id == 2)
+							<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-approve">
+								อนุมัติข้อมูลส่งงานได้
+							</button>
+							<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-reject">
+								ตรวจสอบข้อมูลแล้วขอให้แก้ไข
+							</button>
+						@endif    
 					</div>
 					<!-- /.card-body -->
 				</div>
@@ -1475,33 +1493,80 @@
 @endsection
 
 @section('modal')
-<div class="modal fade" id="modal-send" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modal-approve" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">หากตรวจสอบความถูกต้องแล้ว?</h4>
+				<h4 class="modal-title">อนุมัติข้อมูลส่งงานได้?</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form action="/questionnaire/{{ $lab->id }}" method="POST" role="form">
+			<form action="/officer-questionnaire/{{ $lab->id }}" method="POST" role="form">
 				@csrf
 				@method('PUT')
 				<input type="hidden" name="survey_status_id" value="{{ $lab->survey_status_id }}">
 				<div class="modal-body">
-					<p>คุณต้องการส่งชุดข้อมูล รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark> ใช่หรือไม่?</p>
+                    <div class="d-flex flex-row justify-content-start">
+                        <span class="mr-2">
+                            <mark>คุณต้องการอนุมัติชุดข้อมูล รหัสห้องปฏิบัติการ</mark> : {{ $lab->lab_code }} ใช่หรือไม่?
+                        </span>                     
+                    </div>
+                    <!-- /.d-flex -->
 				</div>
 				<div class="modal-footer justify-content-between">
 					<button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
-					@switch($lab->survey_status_id)
-						@case(1)
-							<button type="submit" class="btn btn-primary">ส่งข้อมูล</button>
-							@break
-						@case(3)
-							<button type="submit" class="btn btn-info">ส่งข้อมูลที่แก้ไข</button>
-							@break
-						@default
-					@endswitch
+					@if ($lab->survey_status_id == 2)
+						<button type="submit" class="btn btn-success">อนุมัติ</button>
+					@endif
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<div class="modal fade" id="modal-reject" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">ตรวจสอบข้อมูลแล้วขอให้แก้ไข?</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="/officer-questionnaire/{{ $lab->id }}" method="POST" role="form">
+				@csrf
+				@method('PUT')
+				<input type="hidden" name="user_id" value="{{ $lab->user_id }}">
+				<input type="hidden" name="lab_id" value="{{ $lab->id }}">
+				<input type="hidden" name="survey_status_id" value="5">
+				<div class="modal-body">
+                    <p><mark>คุณต้องการขอให้แก้ไขชุดข้อมูล รหัสห้องปฏิบัติการ</mark> : {{ $lab->lab_code }} ใช่หรือไม่?</p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- textarea -->
+                            <div class="form-group">
+                                <label>โปรดระบุเหตุผล</label>
+                                <textarea class="form-control" name="comment_lab_detail" rows="3" placeholder="Enter ..." required></textarea>
+                            </div>
+                            <div class="form-group d-none">
+                                <div class="custom-file">
+									<input type="file" multiple class="custom-file-input" name="file-reject" id="file-reject">
+									<label class="custom-file-label" for="file-reject">
+										Choose file...
+									</label>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+					@if ($lab->survey_status_id == 2)
+						<button type="submit" class="btn btn-warning">ขอให้แก้ไข</button>
+					@endif
 				</div>
 			</form>
 		</div>

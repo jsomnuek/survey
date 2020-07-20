@@ -7,13 +7,29 @@ use Illuminate\Http\Request;
 
 use App\Helpers\LogActivity;
 
+use App\User;
+
 use App\Model\Employee\Organization;
 use App\Model\Employee\Lab;
 use App\Model\Employee\Equipment;
 use App\Model\Employee\ProductLab;
 
+use App\Model\BasicInformations\SurveyStatus;
+
+use App\Model\Logs\LogCommentLab;
+
 class QuestionnaireController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +37,12 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
+        $user = User::find(auth()->user()->id);
+
+        $logCommentLabs = LogCommentLab::where('user_id', auth()->user()->id)->get();
+
+        $surveyStatus = SurveyStatus::all();
+
         $labs = Lab::where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'desc')
             ->get();
@@ -35,9 +57,12 @@ class QuestionnaireController extends Controller
             ->whereMonth('send_date', '09')
             ->get();
 
-        // return date('Y-m-d H:i:s');
+        // return $logCommentLabs;
 
         return view('employee.questionnaire.index', [
+            'user' => $user,
+            'logCommentLabs' => $logCommentLabs,
+            'surveyStatus' => $surveyStatus,
             'labs' => $labs,
             'labJuly' => $labJuly,
             'labAugust' => $labAugust,
@@ -75,8 +100,12 @@ class QuestionnaireController extends Controller
     public function show($id)
     {
         $lab = Lab::find($id);
+        
+        $user = User::find($lab->user_id);
 
-        return view('employee.questionnaire.show', compact('lab'));
+        $surveyStatus = SurveyStatus::all();
+
+        return view('employee.questionnaire.show', compact(['lab', 'user', 'surveyStatus']));
 
         // return response()->json(['data' => $lab]);
     }

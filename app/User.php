@@ -13,6 +13,7 @@ use App\Model\Employee\ProductLab;
 use App\Model\BasicInformations\Role;
 use App\Model\BasicInformations\Region;
 
+use App\Model\Logs\logCommentLab;
 
 class User extends Authenticatable
 {
@@ -71,5 +72,10 @@ class User extends Authenticatable
 
     public function region() {
         return $this->belongsTo(Region::class);
+    }
+
+    public function logCommentLabs()
+    {
+        return $this->hasMany(LogCommentLab::class);
     }
 }

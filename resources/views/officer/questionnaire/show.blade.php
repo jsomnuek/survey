@@ -66,7 +66,7 @@
                                     <span class="badge badge-primary">{{ count($labSeptember) }}</span>
                                 </a>
                             </li>
-                        </ul>
+                        </ul>                        
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -137,256 +137,303 @@
                                             @endforeach
                                         </tbody>						
                                     @endif						
-                                </table>
+                                </table>                                
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane fade" id="custom-tabs-four-labJuly" role="tabpanel" aria-labelledby="custom-tabs-four-labJuly-tab">
-                                <table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
-                                    @if (count($labJuly) > 0)
-                                        <thead>                  
-                                            <tr>
-                                                <th style="width: 10px;">ลำดับ</th>
-                                                <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
-                                                <th>สถานะ</th>
-                                                <th>วันที่ส่งข้อมูล</th>
-                                                <th>วันที่อนุมัติข้อมูล</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="items">
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            @foreach ($labJuly as $lab)
-                                            <tr>
-                                                <td class="text-center">{{ $i++ }}</td>
-                                                <td>
-                                                    @switch($lab->survey_status_id)
-                                                        @case(1)
-                                                            รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-                                                            @break
-                                                        @default
-                                                            <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                <div class="table-responsive">
+                                    <table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+                                        @if (count($labJuly) > 0)
+                                            <thead>                  
+                                                <tr>
+                                                    <th style="width: 10px;">ลำดับ</th>
+                                                    <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
+                                                    <th>สถานะ</th>
+                                                    <th>วันที่ส่งข้อมูล</th>
+                                                    <th>วันที่อนุมัติข้อมูล</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="items">
+                                                @php
+                                                    $i = 1;
+                                                @endphp
+                                                @foreach ($labJuly as $lab)
+                                                <tr>
+                                                    <td class="text-center">{{ $i++ }}</td>
+                                                    <td>
+                                                        @switch($lab->survey_status_id)
+                                                            @case(1)
                                                                 รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-                                                            </a>
-                                                    @endswitch
-                                                </td>
-                                                <td>
-                                                    @switch($lab->survey_status_id)
-                                                        @case(1)
-                                                            <small class="badge badge-secondary">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(2)
-                                                            <small class="badge badge-primary">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(3)
-                                                            <small class="badge badge-info">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(4)
-                                                            <small class="badge badge-success">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(5)
-                                                            <small class="badge badge-warning">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @default
-                                                    @endswitch												
-                                                </td>
-                                                <td>{{ $lab->send_date }}</td>
-                                                <td>{{ $lab->approve_date }}</td>
-                                            </tr>                                
-                                            @endforeach
-                                        </tbody>						
-                                    @endif						
-                                </table>
+                                                                @break
+                                                            @default
+                                                                <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                                                    รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                                </a>
+                                                        @endswitch
+                                                    </td>
+                                                    <td>
+                                                        @switch($lab->survey_status_id)
+                                                            @case(1)
+                                                                <small class="badge badge-secondary">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(2)
+                                                                <small class="badge badge-primary">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(3)
+                                                                <small class="badge badge-info">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(4)
+                                                                <small class="badge badge-success">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(5)
+                                                                <small class="badge badge-warning">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @default
+                                                        @endswitch												
+                                                    </td>
+                                                    <td>{{ $lab->send_date }}</td>
+                                                    <td>{{ $lab->approve_date }}</td>
+                                                </tr>                                
+                                                @endforeach
+                                            </tbody>						
+                                        @endif						
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                                <div class="d-flex flex-row justify-content-center">
+                                    @if (!empty($lab->send_date))
+                                    <span class="mr-2">
+                                        <a href="/officer-questionnaire/{{$lab->user_id}}/send" class="btn btn-outline-primary btn-sm">
+                                            <i class="fas fa-file-alt"></i> สถานะการส่งข้อมูล
+                                        </a>
+                                    </span>
+                                    @endif
+                                </div>
+                                <!-- /.d-flex -->
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane fade" id="custom-tabs-four-labAugust" role="tabpanel" aria-labelledby="custom-tabs-four-labAugust-tab">
-                                <table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
-                                    @if (count($labAugust) > 0)
-                                        <thead>                  
-                                            <tr>
-                                                <th style="width: 10px;">ลำดับ</th>
-                                                <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
-                                                <th>สถานะ</th>
-                                                <th>วันที่ส่งข้อมูล</th>
-                                                <th>วันที่อนุมัติข้อมูล</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="items">
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            @foreach ($labAugust as $lab)
-                                            <tr>
-                                                <td class="text-center">{{ $i++ }}</td>
-                                                <td>
-                                                    @switch($lab->survey_status_id)
-                                                        @case(1)
-                                                            รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-                                                            @break
-                                                        @default
-                                                            <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                <div class="table-responsive">
+                                    <table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+                                        @if (count($labAugust) > 0)
+                                            <thead>                  
+                                                <tr>
+                                                    <th style="width: 10px;">ลำดับ</th>
+                                                    <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
+                                                    <th>สถานะ</th>
+                                                    <th>วันที่ส่งข้อมูล</th>
+                                                    <th>วันที่อนุมัติข้อมูล</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="items">
+                                                @php
+                                                    $i = 1;
+                                                @endphp
+                                                @foreach ($labAugust as $lab)
+                                                <tr>
+                                                    <td class="text-center">{{ $i++ }}</td>
+                                                    <td>
+                                                        @switch($lab->survey_status_id)
+                                                            @case(1)
                                                                 รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-                                                            </a>
-                                                    @endswitch
-                                                </td>
-                                                <td>
-                                                    @switch($lab->survey_status_id)
-                                                        @case(1)
-                                                            <small class="badge badge-secondary">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(2)
-                                                            <small class="badge badge-primary">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(3)
-                                                            <small class="badge badge-info">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(4)
-                                                            <small class="badge badge-success">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(5)
-                                                            <small class="badge badge-warning">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @default	
-                                                    @endswitch												
-                                                </td>
-                                                <td>{{ $lab->send_date }}</td>
-                                                <td>{{ $lab->approve_date }}</td>
-                                            </tr>                                
-                                            @endforeach
-                                        </tbody>						
-                                    @endif						
-                                </table>
+                                                                @break
+                                                            @default
+                                                                <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                                                    รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                                </a>
+                                                        @endswitch
+                                                    </td>
+                                                    <td>
+                                                        @switch($lab->survey_status_id)
+                                                            @case(1)
+                                                                <small class="badge badge-secondary">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(2)
+                                                                <small class="badge badge-primary">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(3)
+                                                                <small class="badge badge-info">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(4)
+                                                                <small class="badge badge-success">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(5)
+                                                                <small class="badge badge-warning">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @default	
+                                                        @endswitch												
+                                                    </td>
+                                                    <td>{{ $lab->send_date }}</td>
+                                                    <td>{{ $lab->approve_date }}</td>
+                                                </tr>                                
+                                                @endforeach
+                                            </tbody>						
+                                        @endif						
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane fade" id="custom-tabs-four-labSeptember" role="tabpanel" aria-labelledby="custom-tabs-four-labSeptember-tab">
-                                <table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
-                                    @if (count($labSeptember) > 0)
-                                        <thead>                  
-                                            <tr>
-                                                <th style="width: 10px;">ลำดับ</th>
-                                                <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
-                                                <th>สถานะ</th>
-                                                <th>วันที่ส่งข้อมูล</th>
-                                                <th>วันที่อนุมัติข้อมูล</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="items">
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            @foreach ($labSeptember as $lab)
-                                            <tr>
-                                                <td class="text-center">{{ $i++ }}</td>
-                                                <td>
-                                                    @switch($lab->survey_status_id)
-                                                        @case(1)
-                                                            รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-                                                            @break
-                                                        @default
-                                                            <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                <div class="table-responsive">
+                                    <table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+                                        @if (count($labSeptember) > 0)
+                                            <thead>                  
+                                                <tr>
+                                                    <th style="width: 10px;">ลำดับ</th>
+                                                    <th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
+                                                    <th>สถานะ</th>
+                                                    <th>วันที่ส่งข้อมูล</th>
+                                                    <th>วันที่อนุมัติข้อมูล</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="items">
+                                                @php
+                                                    $i = 1;
+                                                @endphp
+                                                @foreach ($labSeptember as $lab)
+                                                <tr>
+                                                    <td class="text-center">{{ $i++ }}</td>
+                                                    <td>
+                                                        @switch($lab->survey_status_id)
+                                                            @case(1)
                                                                 รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-                                                            </a>
-                                                    @endswitch
-                                                </td>
-                                                <td>
-                                                    @switch($lab->survey_status_id)
-                                                        @case(1)
-                                                            <small class="badge badge-secondary">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(2)
-                                                            <small class="badge badge-primary">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(3)
-                                                            <small class="badge badge-info">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(4)
-                                                            <small class="badge badge-success">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @case(5)
-                                                            <small class="badge badge-warning">
-                                                                {{ $lab->surveyStatus->survey_status_name_th }}
-                                                            </small>
-                                                            @break
-                                                        @default	
-                                                    @endswitch												
-                                                </td>
-                                                <td>{{ $lab->send_date }}</td>
-                                                <td>{{ $lab->approve_date }}</td>
-                                            </tr>                                
-                                            @endforeach
-                                        </tbody>						
-                                    @endif						
-                                </table>
+                                                                @break
+                                                            @default
+                                                                <a href="/officer-questionnaire-detail/{{$lab->id}}">
+                                                                    รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
+                                                                </a>
+                                                        @endswitch
+                                                    </td>
+                                                    <td>
+                                                        @switch($lab->survey_status_id)
+                                                            @case(1)
+                                                                <small class="badge badge-secondary">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(2)
+                                                                <small class="badge badge-primary">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(3)
+                                                                <small class="badge badge-info">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(4)
+                                                                <small class="badge badge-success">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @case(5)
+                                                                <small class="badge badge-warning">
+                                                                    {{ $lab->surveyStatus->survey_status_name_th }}
+                                                                </small>
+                                                                @break
+                                                            @default	
+                                                        @endswitch												
+                                                    </td>
+                                                    <td>{{ $lab->send_date }}</td>
+                                                    <td>{{ $lab->approve_date }}</td>
+                                                </tr>                                
+                                                @endforeach
+                                            </tbody>						
+                                        @endif						
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
                             </div>
                             <!-- /.tab-pane -->
                         </div>
                         <!-- /.tab-content -->
                     </div>
                     <!-- /.card-body -->
-                    
                 </div>
                 <!-- /.card -->
                 @if (count($logCommentLabs) > 0)
-                <p>
-                    <i class="fas fa-tag text-warning"></i>
-                    <mark><cite title="Source Title">รายละเอียดสำหรับการแก้ไขข้อมูลห้องปฏิบัติการ</cite></mark>
-                </p>
                 <div class="card">
-                    <table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
-                        <thead>                  
-                            <tr>
-                                <th style="width: 10px;">ลำดับ</th>
-                                <th>รายการ</th>
-                                {{-- <th>สถานะ</th> --}}
-                                <th>รายละเอียด</th>
-                                <th><i class="fas fa-user-clock"></i></th>
-                                <th>เอกสารแนบ</th>
-                            </tr>
-                        </thead>
-                        <tbody id="items">
-                            @php
-                                $i = 1;
-                            @endphp
-                            @foreach ($logCommentLabs as $logCommentLab)
-                            <tr>
-                                <td class="text-center">{{ $i++ }}</td>
-                                <td>{{ $logCommentLab->lab->lab_code }}</td>
-                                {{-- <td>{{ $logCommentLab->surveyStatus->survey_status_name_th }}</td> --}}
-                                <td>{{ $logCommentLab->comment_lab_detail }}</td>
-                                <td>{{ $logCommentLab->reject_date }}</td>
-                                <td><i class="far fa-file-alt"></i></td>
-                            </tr>                                
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="card-header card-warning card-outline">
+                        <h3 class="card-title"><i class="fas fa-tag text-warning"></i> รายละเอียดการแก้ไขข้อมูลห้องปฏิบัติการ</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="log-comment-lab" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+                                <thead>                  
+                                    <tr>
+                                        <th style="width: 10px;">ลำดับ</th>
+                                        <th class="d-none">log_comment_lab_id</th>
+                                        <th>รายการ</th>
+                                        {{-- <th>สถานะ</th> --}}
+                                        <th>รายละเอียด</th>
+                                        <th>วันที่ขอให้แก้ไข</th>
+                                        <th>เอกสารแนบ</th>
+                                        <th>อัพโหลด <i class="far fa-file-alt"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="log-comment-lab-item">
+                                    @php
+                                        $i = 1;
+                                        $files = 1;
+                                    @endphp
+                                    @foreach ($logCommentLabs as $logCommentLab)
+                                    <tr>
+                                        <td class="text-center">{{ $i++ }}</td>
+                                        <td class="d-none log_comment_lab_id">{{ $logCommentLab->id }}</td>
+                                        <td>{{ $logCommentLab->lab->lab_code }}</td>
+                                        {{-- <td>{{ $logCommentLab->surveyStatus->survey_status_name_th }}</td> --}}
+                                        <td>{{ $logCommentLab->comment_lab_detail }}</td>
+                                        <td>{{ $logCommentLab->reject_date }}</td>
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                @foreach ($logCommentLab->logCommentLabFiles as $item)
+                                                    <a href="{{ asset("storage/file_comment_lab/$item->file") }}" target="_blank">
+                                                        Download {{$files++}}
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                            <!-- /.d-flex -->                                    
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-block btn-outline-primary btn-xs upload" data-toggle="modal" data-target="#modal-upload">
+                                                <i class="fas fa-upload"></i>
+                                            </button>
+                                        </td>
+                                    </tr>                                
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.card-body -->
                 </div>
                 @endif
                 <!-- /.card -->
@@ -448,11 +495,39 @@
 @endsection
 
 @section('modal')
-
+<div class="modal fade" id="modal-upload" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">ต้องการอัพโหลดเอกสารแนบ?</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="/officer-questionnaire" method="POST" enctype="multipart/form-data" role="form">
+                @csrf
+                <input type="hidden" name="log_comment_lab_id" id="log_comment_lab_id" value="">
+				<div class="modal-body">
+                    <div class="form-group">
+                        <label for="file">โปรดเลือกไฟล์ที่ต้องการอัพโหลด</label>
+                        <input type="file" class="form-control-file" name="file" id="file">
+                    </div>
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+                    <button type="submit" class="btn btn-primary">อัพโหลด</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 @endsection
 
 @section('scripts')
-
+    <script src="{{ asset('js/officer/form-modal.js') }}"></script>
 @endsection
 
 

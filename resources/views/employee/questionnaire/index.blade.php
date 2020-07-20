@@ -341,33 +341,46 @@
                     <mark><cite title="Source Title">รายละเอียดสำหรับการแก้ไขข้อมูลห้องปฏิบัติการ</cite></mark>
                 </p>
                 <div class="card">
-                    <table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
-                        <thead>                  
-                            <tr>
-                                <th style="width: 10px;">ลำดับ</th>
-                                <th>รายการ</th>
-                                {{-- <th>สถานะ</th> --}}
-								<th>รายละเอียด</th>
-								<th><i class="fas fa-user-clock"></i></th>
-                                <th>เอกสารแนบ</th>
-                            </tr>
-                        </thead>
-                        <tbody id="items">
-                            @php
-                                $i = 1;
-                            @endphp
-                            @foreach ($logCommentLabs as $logCommentLab)
-                            <tr>
-                                <td class="text-center">{{ $i++ }}</td>
-                                <td>{{ $logCommentLab->lab->lab_code }}</td>
-                                {{-- <td>{{ $logCommentLab->surveyStatus->survey_status_name_th }}</td> --}}
-                                <td>{{ $logCommentLab->comment_lab_detail }}</td>
-                                <td>{{ $logCommentLab->reject_date }}</td>
-                                <td><i class="far fa-file-alt"></i></td>
-                            </tr>                                
-                            @endforeach
-                        </tbody>
-                    </table>
+					<div class="table-responsive">
+						<table id="" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+							<thead>                  
+								<tr>
+									<th style="width: 10px;">ลำดับ</th>
+									<th>รายการ</th>
+									{{-- <th>สถานะ</th> --}}
+									<th>รายละเอียด</th>
+									<th>วันที่ขอให้แก้ไข</th>
+									<th>เอกสารแนบ</th>
+								</tr>
+							</thead>
+							<tbody id="items">
+								@php
+									$i = 1;
+									$files = 1;
+								@endphp
+								@foreach ($logCommentLabs as $logCommentLab)
+								<tr>
+									<td class="text-center">{{ $i++ }}</td>
+									<td>{{ $logCommentLab->lab->lab_code }}</td>
+									{{-- <td>{{ $logCommentLab->surveyStatus->survey_status_name_th }}</td> --}}
+									<td>{{ $logCommentLab->comment_lab_detail }}</td>
+									<td>{{ $logCommentLab->reject_date }}</td>
+									<td>
+										<div class="d-flex flex-column">
+											@foreach ($logCommentLab->logCommentLabFiles as $item)
+												<a href="{{ asset("storage/file_comment_lab/$item->file") }}" target="_blank">
+													Download {{$files++}}
+												</a>
+											@endforeach
+										</div>
+										<!-- /.d-flex -->
+									</td>
+								</tr>                                
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+					<!-- /.table-responsive -->
                 </div>
                 @endif
                 <!-- /.card -->

@@ -84,20 +84,26 @@ class OrganizationController extends Controller
         // dd($request);
         // dd($request->all());
 
-        
-
-        $org = Organization::where('user_id', auth()->user()->id)
+        // select last org for get next running number
+        $last_org = Organization::where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'desc')
             ->first();
-        $user_code =  $org->user->user_code;
-
-        $org_code_intival =  intval(substr($org->org_code,-2))+1;
-        // return $user_codexx;
-        
         $org_type = OrganisationType::find($request->input('organisation_type_id'));
-        
-        
-        return $user_code."-".$request->input('province_info_ch_id').$org_type->org_type_abbr.$org_code_intival;
+        $org_code;
+        if ($last_org == null) {
+            $user_code = auth()->user()->user_code;
+            $org_code = $user_code."-".$request->input('province_info_ch_id').$org_type->org_type_abbr."01";
+        } else {
+            
+            $user_code =  $last_org->user->user_code;
+            $org_code_intival =  intval(substr($last_org->org_code,-2))+1;
+            if (strlen($org_code_intival)==1) {
+                $org_code_intival = "0".strval($org_code_intival);
+                $org_code = $user_code."-".$request->input('province_info_ch_id').$org_type->org_type_abbr.$org_code_intival;
+            } else {
+                $org_code = $user_code."-".$request->input('province_info_ch_id').$org_type->org_type_abbr.$org_code_intival;
+            }
+        }
 
         // validate the data with function
         $request->validate([
@@ -113,7 +119,7 @@ class OrganizationController extends Controller
         $org->org_name = $request->input('org_name');
         $org->org_name_level_1 = $request->input('org_name_level_1');
         $org->org_name_level_2 = $request->input('org_name_level_2');
-        $org->org_code = $request->input('org_code');
+        $org->org_code = $org_code;
         $org->org_number = $request->input('org_number');
         $org->org_building = $request->input('org_building');
         $org->org_floor = $request->input('org_floor');

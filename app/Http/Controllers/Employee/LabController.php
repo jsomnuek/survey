@@ -122,6 +122,34 @@ class LabController extends Controller
         // dd($request);
         // dd($request->all());
 
+        // select last lab for get next running number
+        $last_lab = Lab::where('user_id', auth()->user()->id)
+        ->orderBy('created_at', 'desc')
+        ->first();
+        //return $last_lab;
+        $lab_type = LaboratoryType::find($request->input('laboratory_type_id'));
+        // return $lab_type->lab_type_abbr;
+        $org_code = Organization::find($request->input('organization_id'));
+        $org_code = $org_code->org_code;
+        // return $lab_type->lab_type_abbr;
+        
+        if ($last_lab == null) {
+            // $user_code = auth()->user()->user_code;
+            $lab_code = $org_code."-".$lab_type->lab_type_abbr."01";
+            return $lab_code."never had lab";
+        } else {
+            // $user_code =  $last_org->user->user_code;
+            $lab_code_intival =  intval(substr($last_lab->lab_code,-2))+1;
+            if (strlen($lab_code_intival)==1) {
+                $lab_code_intival = "0".strval($lab_code_intival);
+                $lab_code = $org_code."-".$lab_type->lab_type_abbr.$lab_code_intival;
+                return $lab_code."have lab less 9";
+            } else {
+                $lab_code = $org_code."-".$lab_type->lab_type_abbr.$lab_code_intival;
+                return $lab_code."have lab more 10";
+            }
+        }
+
         // validate the data with function
         $request->validate([
             'lab_code' => 'required|unique:labs',
@@ -135,7 +163,8 @@ class LabController extends Controller
         $lab->user_id = auth()->user()->id;
         $lab->organization_id = $request->input('organization_id');
         $lab->lab_name = $request->input('lab_name');
-        $lab->lab_code = $request->input('lab_code');
+        // $lab->lab_code = $request->input('lab_code');
+        // $lab->lab_code = $lab_code;
         $lab->location_lab_id = $request->input('location_lab_id');
         $lab->location_lab_other = $request->input('location_lab_other');
         $lab->industrial_estate_id = $request->input('industrial_estate_id');

@@ -126,6 +126,35 @@ class EquipmentController extends Controller
     {
         // dd($request);
         // dd($request->all());
+
+        // select last equipment for get next running number
+        $last_equipment = Equipment::where('user_id', auth()->user()->id)
+        ->orderBy('created_at', 'desc')
+        ->first();
+        //return $last_equipment;
+        $science_tool_abbr = ScienceTool::find($request->input('science_tool_id'));
+        //return $science_tool_abbr->science_tool_abbr;
+        $lab_code = Lab::find($request->input('lab_id'));
+        $lab_code = $lab_code->lab_code;
+        //return $lab_code;
+        //return $lab_code."-".$science_tool_abbr->science_tool_abbr;
+        
+        if ($last_equipment == null) {
+            // $user_code = auth()->user()->user_code;
+            $equipment_code = $lab_code."-".$science_tool_abbr->science_tool_abbr."01";
+            return $equipment_code."never had lab";
+        } else {
+            // $user_code =  $last_org->user->user_code;
+            $equipment_code_intival =  intval(substr($last_equipment->equipment_code,-2))+1;
+            if (strlen($equipment_code_intival)==1) {
+                $equipment_code_intival = "0".strval($equipment_code_intival);
+                $equipment_code = $lab_code."-".$science_tool_abbr->science_tool_abbr.$equipment_code_intival;
+                return $equipment_code."have lab less 9";
+            } else {
+                $equipment_code = $lab_code."-".$science_tool_abbr->science_tool_abbr.$equipment_code_intival;
+                return $equipment_code."have lab more 10";
+            }
+        }
         
         // validate the data with function
         $request->validate([
@@ -162,7 +191,8 @@ class EquipmentController extends Controller
         $equipment->user_id = auth()->user()->id;
         $equipment->lab_id = $request->input('lab_id');
         $equipment->org_id = $lab->organization_id;
-        $equipment->equipment_code = $request->input('equipment_code');
+        // $equipment->equipment_code = $request->input('equipment_code');
+        $equipment->equipment_code = $equipment_code;
         $equipment->science_tool_id = $request->input('science_tool_id');
         $equipment->science_tool_other_name = $request->input('science_tool_other_name');
         $equipment->science_tool_other_abbr = $request->input('science_tool_other_abbr');

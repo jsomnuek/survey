@@ -60,7 +60,7 @@
                                     <label for="org_code">
                                         1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> *</sup></span>
                                     </label>
-                                    <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}" required>
+                                    <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}" required disabled>
                                     @error('org_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

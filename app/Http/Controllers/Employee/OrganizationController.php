@@ -84,15 +84,21 @@ class OrganizationController extends Controller
         // dd($request);
         // dd($request->all());
 
-        // get user code to add in org_code
-            $user_code = auth()->user()->user_code;
-        // dd ($user_code);
-
-        // get abbr_org_type to add in org_code
-        $organisationTypeSelect = OrganisationType::select('org_type_abbr')->where('id',$request->input('organisation_type_id'))->get();
-        dd( $organisationTypeSelect);
-
         
+
+        $org = Organization::where('user_id', auth()->user()->id)
+            ->orderBy('created_at', 'desc')
+            ->first();
+        $user_code =  $org->user->user_code;
+
+        $org_code_intival =  intval(substr($org->org_code,-2))+1;
+        // return $user_codexx;
+        
+        $org_type = OrganisationType::find($request->input('organisation_type_id'));
+        
+        
+        return $user_code."-".$request->input('province_info_ch_id').$org_type->org_type_abbr.$org_code_intival;
+
         // validate the data with function
         $request->validate([
             'org_code' => 'required|unique:organizations',

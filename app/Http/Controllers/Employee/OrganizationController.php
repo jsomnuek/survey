@@ -89,7 +89,7 @@ class OrganizationController extends Controller
         // dd ($user_code);
 
         // get abbr_org_type to add in org_code
-        $organisationTypeSelect = OrganisationType::select('org_type_name')->where('id',$request->input('organisation_type_id'))->get();
+        $organisationTypeSelect = OrganisationType::select('org_type_abbr')->where('id',$request->input('organisation_type_id'))->get();
         dd( $organisationTypeSelect);
 
         

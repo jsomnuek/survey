@@ -21,8 +21,12 @@
             {!!Form::open(['action' => ['BasicInformations\OrganisationTypeController@update',$editOrgType->id],'method'=>'PUT'])!!}
             <div class="card-body">
               <div class="form-group">
-                {{Form::label('little','ชื่อประเภทองค์กร')}}
+                {{Form::label('title','ชื่อประเภทองค์กร')}}
                 {{Form::text('orgTypeName',$editOrgType->org_type_name,['class'=>'form-control','required'])}}
+              </div>
+              <div class="form-group">
+                {{Form::label('title','ชื่อย่อประเภทองค์กร')}}
+                {{Form::text('orgTypeAbbr',$editOrgType->org_type_abbr,['class'=>'form-control','required'])}}
               </div>
               <div class="form-group">
                 {{Form::label('title', 'สถานะการใช้งานข้อมูล')}}

@@ -18,6 +18,7 @@
                       <tr>
                         <th style="width: 80px;">ลำดับที่</th>
                         <th>ชื่อประเภทองค์กร</th>
+                        <th>ชื่อย่อประเภทองค์กร</th>
                         <th>สถานะการใช้งานข้อมูล</th>
                         <th></th>
                       </tr>
@@ -27,6 +28,7 @@
                           <tr>
                             <td class="text-center">{{$orgType->id}}</td>
                             <td>{{$orgType->org_type_name}}</td>
+                            <td>{{$orgType->org_type_abbr}}</td>
                             <td>{{$orgType->org_type_status}}</td>
                             <td><a href="/organisationType/{{$orgType->id}}/edit" class="bth btn-primary btn-sm">แก้ไข</a></td>
                           </tr>

@@ -16,6 +16,7 @@ class CreateOrganisationTypesTable extends Migration
         Schema::create('organisation_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('org_type_name',255);
+            $table->String('org_type_abbr',1);
             $table->String('org_type_status',1)->default('A');
             $table->timestamps();
         });

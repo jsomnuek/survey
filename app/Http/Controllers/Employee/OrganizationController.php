@@ -84,6 +84,15 @@ class OrganizationController extends Controller
         // dd($request);
         // dd($request->all());
 
+        // get user code to add in org_code
+            $user_code = auth()->user()->user_code;
+        // dd ($user_code);
+
+        // get abbr_org_type to add in org_code
+        $organisationTypeSelect = OrganisationType::select('org_type_name')->where('id',$request->input('organisation_type_id'))->get();
+        dd( $organisationTypeSelect);
+
+        
         // validate the data with function
         $request->validate([
             'org_code' => 'required|unique:organizations',

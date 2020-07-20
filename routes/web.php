@@ -88,7 +88,6 @@ Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function() {
     Route::resource('/productlab', 'Employee\ProductLabController');
 
     // AskController
-    // Route::get('/productlab/create-lab-id/{id}', 'Employee\ProductLabController@createByLabId')->name('productlab.create-lab-id');
     Route::resource('/ask', 'Employee\AskController');
 
     //QuestionnaireController

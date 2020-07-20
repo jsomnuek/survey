@@ -51,6 +51,7 @@
     <script>console.log('Hi!');</script>
 @stop
 
+
 @section('scripts')
     <script src="{{ asset('js/custom-datatable/register-employees.js')}}"></script>
 @endsection

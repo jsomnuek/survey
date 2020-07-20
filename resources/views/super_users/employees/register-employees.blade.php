@@ -13,22 +13,22 @@
           <div class="card mb-2">
             <div class="card-body">
               @if (count($showRegisterEmployee) > 0)
-                  <table class="table">
+                  <table class="table" id="registerTable">
                     <thead>
                       <tr>
+                        <th>ภูมิภาคที่ปฏิบัติงาน</th>
                         <th style="width:100px;">รหัสผู้ใช้ (ID)</th>
                         <th class="text-center">ชื่อ - นามสกุล</th>
                         <th style="width:180px;">อีเมล</th>
-                        <th>ภูมิภาคที่ปฏิบัติงาน</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="items">
                       @foreach ($showRegisterEmployee as $registerEmployee)
                           <tr>
+                            <td>{{$registerEmployee->region->region_name}}</td>
                             <td class="text-center">{{$registerEmployee->user_code}}</td>
                             <td>{{$registerEmployee->name}}</td>
                             <td>{{$registerEmployee->email}}</td>
-                            <td>{{$registerEmployee->region->region_name}}</td>
                           </tr>
                       @endforeach
                     </tbody>
@@ -50,3 +50,8 @@
 @section('js')
     <script>console.log('Hi!');</script>
 @stop
+
+@section('scripts')
+    <script src="{{ asset('js/custom-datatable/register-employees.js')}}"></script>
+@endsection
+

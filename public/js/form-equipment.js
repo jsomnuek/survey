@@ -2,9 +2,9 @@ $(document).ready(function() {
     // checkInput
     function checkInput() {
         let inputTypeNumber = [
+            document.getElementById("equipment_year"),
             document.getElementById("equipment_price"),
-            document.getElementById("equipment_maintenance_budget"),
-            document.getElementById("equipment_rent_fee")
+            document.getElementById("equipment_maintenance_budget")
         ];
         let invalidChars = ["-", "+", "e", ".", "E"];
         for (i = 0; i < inputTypeNumber.length; i++) {

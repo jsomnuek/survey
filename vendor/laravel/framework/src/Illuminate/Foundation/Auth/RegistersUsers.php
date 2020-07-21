@@ -23,7 +23,8 @@ trait RegistersUsers
     {
         $allRole = Role::all();
         $allAgency = Agency::all();
-        $allRegion = Region::all();
+        // $allRegion = Region::all();
+        $allRegion = Region::where('region_status', 'A')->get();
         return view('auth.register',['showAllRole' => $allRole,'showAllAgency' => $allAgency, 'showAllRegion' => $allRegion]);
     }
 

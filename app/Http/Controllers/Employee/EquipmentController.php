@@ -187,6 +187,12 @@ class EquipmentController extends Controller
         $lab = Lab::find($request->input('lab_id'));
         // dd($lab);
 
+        // update status in labs
+        if($lab->survey_status_id == 5){
+            // clean
+            Lab::where('id', $lab->id)->update(['survey_status_id' => 3]);
+        }
+
         // Handle File Upload
 
         // store in the database

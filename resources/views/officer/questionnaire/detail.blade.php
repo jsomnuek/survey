@@ -1551,14 +1551,6 @@
                                 <label>โปรดระบุเหตุผล</label>
                                 <textarea class="form-control" name="comment_lab_detail" rows="3" placeholder="Enter ..." required></textarea>
                             </div>
-                            <div class="form-group d-none">
-                                <div class="custom-file">
-									<input type="file" multiple class="custom-file-input" name="file-reject" id="file-reject">
-									<label class="custom-file-label" for="file-reject">
-										Choose file...
-									</label>
-								</div>
-                            </div>
                         </div>
                     </div>
 				</div>

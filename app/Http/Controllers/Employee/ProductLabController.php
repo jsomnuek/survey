@@ -100,6 +100,12 @@ class ProductLabController extends Controller
         //get organization id
         $lab = Lab::find($request->input('lab_id'));
 
+        // update status in labs
+        if($lab->survey_status_id == 5){
+            // clean
+            Lab::where('id', $lab->id)->update(['survey_status_id' => 3]);
+        }
+
         // store in the database
         $productLab = new ProductLab;
 

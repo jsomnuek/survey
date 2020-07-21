@@ -186,14 +186,14 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="equipment_year">3.7 ปีที่ซื้อ :</label>
-									<input type="text" name="equipment_year" id="equipment_year" class="form-control" min="0" value="{{ $equipment->equipment_year }}" data-inputmask='"mask": "9999"' data-mask>
+									<input type="number" name="equipment_year" id="equipment_year" class="form-control" min="0" placeholder="กรอกเฉพาะตัวเลขเท่านั้น" value="{{ $equipment->equipment_year }}">
 								</div>
 							</div>
 							{{-- /.col 3.7 ปีที่ซื้อ : --}}
 							<div class="col-md-4">
 								<div class="form-group">
-									<label for="equipment_price">3.8 มูลค่า (บาท) :</label>
-									<input type="number" name="equipment_price" id="equipment_price" class="form-control" min="0" value="{{ $equipment->equipment_price }}">
+									<label for="equipment_price">3.8 มูลค่า (บาท) : กรอกเฉพาะตัวเลขเท่านั้น</label>
+									<input type="number" name="equipment_price" id="equipment_price" class="form-control" min="0" placeholder="กรอกเฉพาะตัวเลขเท่านั้น" value="{{ $equipment->equipment_price }}">
 								</div>
 							</div>
 							{{-- /.col 3.8 มูลค่า (บาท) : --}}
@@ -348,7 +348,7 @@
 							<div class="col-md-6">
 								<div class="form-group">    
 									<label for="equipment_maintenance_budget">3.17 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท) :</label>
-									<input type="number" min="0" class="form-control" name="equipment_maintenance_budget" id="equipment_maintenance_budget" value="{{ $equipment->equipment_maintenance_budget }}">
+									<input type="number" min="0" class="form-control" name="equipment_maintenance_budget" id="equipment_maintenance_budget" placeholder="กรอกเฉพาะตัวเลขเท่านั้น" value="{{ $equipment->equipment_maintenance_budget }}">
 								</div>
 							</div>
 							{{-- /.col 3.17 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท) : --}}

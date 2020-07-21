@@ -131,6 +131,7 @@ class LabController extends Controller
         // return $lab_type_abbr;
 
         $temp_lab_code = $org_code."-".$lab_type_abbr;
+        $count_lab_code = strlen($temp_lab_code);
         // return $temp_lab_code;
         $exist_lab_code = Lab::where('lab_code', 'LIKE' ,"$temp_lab_code%")
                                         ->orderBy('created_at', 'desc')
@@ -141,8 +142,7 @@ class LabController extends Controller
             $lab_code = $temp_lab_code."01";
             // return $lab_code."new lab";
         } else {
-            $lab_code_intival =  intval(substr( $exist_lab_code->lab_code,12))+1;
-            
+            $lab_code_intival =  intval(substr( $exist_lab_code->lab_code,$count_lab_code))+1;
             if (strlen($lab_code_intival)==1) {
                 $lab_code_intival = "0".strval($lab_code_intival);
                 $lab_code =  $temp_lab_code.$lab_code_intival;

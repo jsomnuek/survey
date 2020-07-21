@@ -90,6 +90,7 @@ class OrganizationController extends Controller
         $org_type_abbr = $org_type_id->org_type_abbr;
         
         $temp_org_code = $user_code."-".$province_id.$org_type_abbr;
+        $count_org_code = strlen($temp_org_code);
         $exist_org_code = Organization::where('org_code', 'LIKE' ,"$temp_org_code%")
                                         ->orderBy('created_at', 'desc')
                                         ->first();
@@ -99,7 +100,7 @@ class OrganizationController extends Controller
             $org_code = $temp_org_code."01";
             // return $org_code;
         } else {
-            $org_code_intival =  intval(substr( $exist_org_code->org_code,8))+1;
+            $org_code_intival =  intval(substr( $exist_org_code->org_code,$count_org_code))+1;
             // return $org_code_intival;
             if (strlen($org_code_intival)==1) {
                 $org_code_intival = "0".strval($org_code_intival);
@@ -189,7 +190,6 @@ class OrganizationController extends Controller
             // create log activity
             LogActivity::addToLog("Add Organization : $org->id : $org->org_name successfully.");
 
-            
             return redirect()->route('organization.show', $org->id);
         }
         

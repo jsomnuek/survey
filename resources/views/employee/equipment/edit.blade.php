@@ -67,7 +67,7 @@
                                 <strong>หมายเหตุ :<span><sup class="text-danger"> * </sup>จำเป็น</span></strong>
                             </div>
                             {{-- /.col  --}}
-							<div class="col-md-12">
+							<div class="col-md-12 d-none">
                                 <div class="form-group">
                                     <label for="lab_id">
 										ห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span>
@@ -104,6 +104,13 @@
 							{{-- /.col 3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS) : --}}
 							<div class="col-md-6">
 								<div class="form-group">
+									<label for="science_tool_id">
+										3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"></sup></span>
+									</label>
+									<input type="hidden" name="science_tool_id" id="" value="{{ $equipment->scienceTool->id}}">
+									<input type="text" class="form-control" value="{{ $equipment->scienceTool->science_tool_name}} : {{ $equipment->scienceTool->science_tool_abbr}}" readonly>
+								</div>
+								<div class="form-group d-none">
 									<label for="science_tool_id">
 										3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"> *</sup></span>
 									</label>

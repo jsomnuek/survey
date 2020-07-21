@@ -105,7 +105,7 @@
                             <div class="col-md-6">
                                 <div class=" form-group">
                                     <label for="lab_code">
-                                        2.2 รหัสห้องปฏิบัติการ (AABCC-MNN) :<span><sup class="text-danger"> *</sup></span>
+                                        2.2 รหัสห้องปฏิบัติการ (AABCC-MNN) :<span><sup class="text-danger"></sup></span>
                                     </label>
                                     <input type="text" class="form-control @error('lab_code') is-invalid @enderror" name="lab_code" id="lab_code" placeholder="" value="{{ $lab->lab_code }}" required readonly>
                                     @error('lab_code')

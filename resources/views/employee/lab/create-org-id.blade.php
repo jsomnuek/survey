@@ -57,9 +57,9 @@
                             <div class="col-md-6">
                                 <div class=" form-group">
                                     <label for="lab_code">
-                                        2.2 รหัสห้องปฏิบัติการ (AABCC-MNN) :<span><sup class="text-danger"> *</sup></span>
+                                        2.2 รหัสห้องปฏิบัติการ (AABCC-MNN) :<span><sup class="text-danger"> </sup></span>
                                     </label>
-                                    <input type="text" class="form-control @error('lab_code') is-invalid @enderror" name="lab_code" id="lab_code" placeholder="" value="{{ old('lab_code') }}" required>
+                                    <input type="text" class="form-control @error('lab_code') is-invalid @enderror" name="lab_code" id="lab_code" placeholder="ระบบจะสร้างให้อัตโนมัติ" value="{{ old('lab_code') }}" required disabled>
                                     @error('lab_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -148,7 +148,7 @@
                                         <option value="" selected disabled="disabled">disabled</option>
                                         @foreach ($laboratoryTypes as $laboratoryType)
                                         <option value="{{ $laboratoryType->id }}" {{ ( old('laboratory_type_id') == $laboratoryType->id) ? 'selected' : '' }}>
-                                            {{ $laboratoryType->lab_type_name }}.
+                                            {{ $laboratoryType->lab_type_name }}
                                         </option>
                                         @endforeach
                                     </select>

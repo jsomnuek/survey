@@ -14,6 +14,7 @@ use App\Model\BasicInformations\SurveyStatus;
 use App\Model\Employee\Lab;
 
 use App\Model\Logs\LogCommentLab;
+use App\Model\Logs\LogCommentLabFile;
 
 class QuestionnaireController extends Controller
 {
@@ -66,7 +67,42 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // dd($request->all());
+        
+        // validate the data with function
+        $request->validate([
+            'log_comment_lab_id' => '',
+            'file' => '',
+        ]);
+
+        // Handle File Upload
+        if($request->hasFile('file')) {
+            // Get filename with the extension
+            $fileNameWithExt = $request->file('file')->getClientOriginalName();
+            // Get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('file')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('file')->storeAs('public/file_comment_lab', $fileNameToStore);
+        } else {
+            $fileNameToStore = '';
+        }
+
+        // store in the database
+        $LogCommentLabFile = new LogCommentLabFile;
+
+        $LogCommentLabFile->log_comment_lab_id = $request->input('log_comment_lab_id');
+        $LogCommentLabFile->file = $fileNameToStore;
+        $LogCommentLabFile->save();
+
+        // create log activity
+        LogActivity::addToLog("Officer Upload file : log_comment_lab : $LogCommentLabFile->log_comment_lab_id successfully.");
+
+        return back();
     }
 
     /**
@@ -107,6 +143,37 @@ class QuestionnaireController extends Controller
             'labSeptember' => $labSeptember,
         ]);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function send($id)
+    {
+        $user = User::find($id);
+
+        $labJuly = Lab::where('user_id', $id)
+            ->whereMonth('send_date', '07')
+            ->get();
+        $labAugust = Lab::where('user_id', $id)
+            ->whereMonth('send_date', '08')
+            ->get();
+        $labSeptember = Lab::where('user_id', $id)
+            ->whereMonth('send_date', '09')
+            ->get();
+
+        // return $logCommentLabs;
+
+        return view('officer.questionnaire.send', [
+            'user' => $user,
+            'labJuly' => $labJuly,
+            'labAugust' => $labAugust,
+            'labSeptember' => $labSeptember,
+        ]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -154,7 +221,7 @@ class QuestionnaireController extends Controller
             $lab->save();
 
             // create log activity
-            LogActivity::addToLog("Employee Approve Lab : $lab->id : $lab->lab_code successfully.");
+            LogActivity::addToLog("Officer Approve Lab : $lab->id : $lab->lab_code successfully.");
 
             return redirect()->route('officer-questionnaire.show', $lab->user_id);
         }
@@ -174,7 +241,7 @@ class QuestionnaireController extends Controller
             $logCommentLab->save();
 
             // create log activity
-            LogActivity::addToLog("Employee Reject Lab : $lab->id : $lab->lab_code successfully.");
+            LogActivity::addToLog("Officer Reject Lab : $lab->id : $lab->lab_code successfully.");
 
             return redirect()->route('officer-questionnaire.show', $lab->user_id);
         }

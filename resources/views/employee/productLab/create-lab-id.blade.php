@@ -219,7 +219,7 @@
                                     <label for="product_lab_test_fee">
                                         4.11 ค่าธรรมเนียมการวิจัย/ทดสอบ/สอบเทียบ (บาท) :
                                     </label>
-                                    <input type="number" name="product_lab_test_fee" class="form-control" id="product_lab_test_fee" placeholder="" value="{{ old('product_lab_test_fee') }}">
+                                    <input type="text" name="product_lab_test_fee" class="form-control" id="product_lab_test_fee" placeholder="" value="{{ old('product_lab_test_fee') }}">
                                 </div>
                             </div>
                             {{-- /.col 4.11 ค่าธรรมเนียมการวิจัย/ทดสอบ/สอบเทียบ (บาท) : --}}

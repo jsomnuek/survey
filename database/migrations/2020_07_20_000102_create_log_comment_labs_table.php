@@ -31,7 +31,7 @@ class CreateLogCommentLabsTable extends Migration
         Schema::create('log_comment_lab_files', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('log_comment_lab_id')->comment('');
-            $table->string('files')->nullable()->comment('');
+            $table->string('file')->nullable()->comment('');
             $table->timestamps();
 
             $table->foreign('log_comment_lab_id')

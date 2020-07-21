@@ -57,7 +57,7 @@ class QuestionnaireController extends Controller
             ->whereMonth('send_date', '09')
             ->get();
 
-        // return $logCommentLabs;
+        // return $labJuly;
 
         return view('employee.questionnaire.index', [
             'user' => $user,

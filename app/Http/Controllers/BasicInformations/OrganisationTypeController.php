@@ -54,6 +54,7 @@ class OrganisationTypeController extends Controller
         //Insert new org type record
         $insertOrgType = new OrganisationType;
         $insertOrgType->org_type_name = $request->input('orgTypeName');
+        $insertOrgType->org_type_abbr = $request->input('orgTypeAbbr');
         $insertOrgType->org_type_status = 'A';
         $insertOrgType->save();
 
@@ -100,6 +101,7 @@ class OrganisationTypeController extends Controller
 
         $updateOrgType = OrganisationType::find($organisationType->id);
         $updateOrgType->org_type_name = $request->input('orgTypeName');
+        $updateOrgType->org_type_abbr = $request->input('orgTypeAbbr');
         $updateOrgType->org_type_status = $request->input('orgTypeStatus');
         $updateOrgType->save();
 

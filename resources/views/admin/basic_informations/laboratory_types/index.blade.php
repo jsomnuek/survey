@@ -19,6 +19,7 @@
                     <tr>
                       <th>ลำดับที่</th>
                       <th>ชื่อประเภทห้องปฏิบัติการ</th>
+                      <th>ชื่อย่อประเภทห้องปฏิบัติการ</th>
                       <th>สถานะการใช้งาน</th>
                       <th></th>
                     </tr>
@@ -28,6 +29,7 @@
                     <tr>
                       <td>{{$labType->id}}</td>
                       <td>{{$labType->lab_type_name}}</td>
+                      <td>{{$labType->lab_type_abbr}}</td>
                       <td>{{$labType->lab_type_status}}</td>
                       <td><a href="/laboratoryType/{{$labType->id}}/edit" class="btn btn-primary btn-sm">แก้ไข</a></td>
                     </tr>

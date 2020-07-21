@@ -75,10 +75,10 @@
                                 {{-- 3.1 รหัสเครื่องมือ --}}
                                 <tr>
                                     <th class="" style="width: 35%;">3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ)</th>
-                                    @if (!empty($equipment->scienceTool->id))
-                                        <td>{{ $equipment->scienceTool->science_tool_name }}</td>   
+                                    @if ($equipment->scienceTool->id != 308)
+                                        <td>{{ $equipment->scienceTool->science_tool_name }}</td>
                                     @else
-                                        <td>{{ $equipment->science_tool_other_name }} : {{ $equipment->science_tool_other_abbr }} </td>
+                                        <td>รายการที่เพิ่มเอง : {{ $equipment->science_tool_other_name }} </td>
                                     @endif
                                 </tr>
                                 {{-- 3.2 ชื่อเครื่องมือ --}}

@@ -89,7 +89,6 @@ Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function() {
     Route::resource('/productlab', 'Employee\ProductLabController');
 
     // AskController
-    // Route::get('/productlab/create-lab-id/{id}', 'Employee\ProductLabController@createByLabId')->name('productlab.create-lab-id');
     Route::resource('/ask', 'Employee\AskController');
 
     //QuestionnaireController
@@ -104,7 +103,9 @@ Route::middleware(['checkRole:admin,approver'])->group(function() {
     // Officer
     Route::get('/officer-questionnaire', 'Officer\QuestionnaireController@index')->name('officer-questionnaire.index');
     Route::get('/officer-questionnaire/{id}', 'Officer\QuestionnaireController@show')->name('officer-questionnaire.show');
+    Route::get('/officer-questionnaire/{id}/send', 'Officer\QuestionnaireController@send')->name('officer-questionnaire.send');
     Route::get('/officer-questionnaire-detail/{id}', 'Officer\QuestionnaireController@detail')->name('officer-questionnaire.detail');
+    Route::post('/officer-questionnaire', 'Officer\QuestionnaireController@store')->name('officer-questionnaire.store');
     Route::put('/officer-questionnaire/{id}', 'Officer\QuestionnaireController@update')->name('officer-questionnaire.update');
 });
 

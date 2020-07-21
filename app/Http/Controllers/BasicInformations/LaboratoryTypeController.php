@@ -55,6 +55,7 @@ class LaboratoryTypeController extends Controller
         // Insert new product type record
         $insertLabType = new LaboratoryType;
         $insertLabType->lab_type_name = $request->input('labTypeName');
+        $insertLabType->lab_type_abbr = $request->input('labTypeAbbr');
         $insertLabType->lab_type_status = 'A';
         $insertLabType->save();
 
@@ -101,6 +102,7 @@ class LaboratoryTypeController extends Controller
 
         $updateLabType = LaboratoryType::find($laboratoryType->id);
         $updateLabType->lab_type_name = $request->input('labTypeName');
+        $updateLabType->lab_type_abbr = $request->input('labTypeAbbr');
         $updateLabType->lab_type_status = $request->input('labTypeStatus');
         $updateLabType->save();
 

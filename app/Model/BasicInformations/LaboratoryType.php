@@ -11,6 +11,7 @@ class LaboratoryType extends Model
     protected $table = 'laboratory_types';
     public $primaryKey = 'id';
     public $orgTypeName = 'lab_type_name';
+    public $orgTypeAbbr = 'lab_type_abbr';
     public $orgTypeStatus = 'lab_type_status';
     public $timestamps = true;
 

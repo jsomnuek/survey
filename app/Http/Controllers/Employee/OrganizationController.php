@@ -84,9 +84,39 @@ class OrganizationController extends Controller
         // dd($request);
         // dd($request->all());
 
+        $user_code = auth()->user()->user_code;
+        $province_id = $request->input('province_info_ch_id');
+        $org_type_id = OrganisationType::find($request->input('organisation_type_id'));
+        $org_type_abbr = $org_type_id->org_type_abbr;
+        
+        $temp_org_code = $user_code."-".$province_id.$org_type_abbr;
+        $count_org_code = strlen($temp_org_code);
+        $exist_org_code = Organization::where('org_code', 'LIKE' ,"$temp_org_code%")
+                                        ->orderBy('created_at', 'desc')
+                                        ->first();
+        // return $exist_org_code;
+
+        if ($exist_org_code == null) {
+            $org_code = $temp_org_code."01";
+            // return $org_code;
+        } else {
+            $org_code_intival =  intval(substr( $exist_org_code->org_code,$count_org_code))+1;
+            // return $org_code_intival;
+            if (strlen($org_code_intival)==1) {
+                $org_code_intival = "0".strval($org_code_intival);
+                $org_code =  $temp_org_code.$org_code_intival;
+                // return $org_code;
+            }else if(strlen($org_code_intival)!=1){
+                $org_code_intival = strval($org_code_intival);
+                $org_code =  $temp_org_code.$org_code_intival;
+                // return $org_code."no 0";
+            }
+        }
+        
+
         // validate the data with function
         $request->validate([
-            'org_code' => 'required|unique:organizations',
+            'org_code' => '',
         ]);
 
         $this->validateOrganization();
@@ -98,7 +128,7 @@ class OrganizationController extends Controller
         $org->org_name = $request->input('org_name');
         $org->org_name_level_1 = $request->input('org_name_level_1');
         $org->org_name_level_2 = $request->input('org_name_level_2');
-        $org->org_code = $request->input('org_code');
+        $org->org_code = $org_code;
         $org->org_number = $request->input('org_number');
         $org->org_building = $request->input('org_building');
         $org->org_floor = $request->input('org_floor');
@@ -160,7 +190,6 @@ class OrganizationController extends Controller
             // create log activity
             LogActivity::addToLog("Add Organization : $org->id : $org->org_name successfully.");
 
-            
             return redirect()->route('organization.show', $org->id);
         }
         

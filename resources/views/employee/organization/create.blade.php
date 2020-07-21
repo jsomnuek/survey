@@ -58,9 +58,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_code">
-                                        1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> *</sup></span>
+                                        1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> </sup></span>
                                     </label>
-                                    <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}" required>
+                                    <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="ระบบจะสร้างรหัสให้อัตโนมัติ" value="{{ old('org_code') }}" required disabled>
                                     @error('org_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -240,7 +240,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_employee_amount">
-                                        1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> *</sup></span>
+                                        1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> </sup></span>
                                     </label>
                                     <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ old('org_employee_amount') }}">
                                     @error('org_employee_amount')
@@ -386,19 +386,19 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="iso_9000_scoped">ขอบข่าย :</label>
-                                                        <input type="text" name="iso_9000_scoped" class="form-control" id="" placeholder="">
+                                                        <input type="text" name="iso_9000_scoped" class="form-control" id="" placeholder="" value="{{ old('iso_9000_scoped') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="iso_9000_certification_agency">หน่วยงานรับรอง :</label>
-                                                        <input type="text" name="iso_9000_certification_agency" class="form-control" id="" placeholder="">
+                                                        <input type="text" name="iso_9000_certification_agency" class="form-control" id="" placeholder="" value="{{ old('iso_9000_certification_agency') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="iso_9000_accredited">ปีที่ได้รับการรับรอง :</label>
-                                                        <input type="text" name="iso_9000_accredited" class="form-control" id="" placeholder="">
+                                                        <input type="text" name="iso_9000_accredited" class="form-control" id="" placeholder="" value="{{ old('iso_9000_accredited') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -434,19 +434,19 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="iso_14000_scoped">ขอบข่าย :</label>
-                                                        <input type="text" name="iso_14000_scoped" class="form-control" id="" placeholder="">
+                                                        <input type="text" name="iso_14000_scoped" class="form-control" id="" placeholder="" value="{{ old('iso_14000_scoped') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="iso_14000_certification_agency">หน่วยงานรับรอง :</label>
-                                                        <input type="text" name="iso_14000_certification_agency" class="form-control" id="" placeholder="">
+                                                        <input type="text" name="iso_14000_certification_agency" class="form-control" id="" placeholder="" value="{{ old('iso_14000_certification_agency') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="iso_14000_accredited">ปีที่ได้รับการรับรอง :</label>
-                                                        <input type="text" name="iso_14000_accredited" class="form-control" id="" placeholder="">
+                                                        <input type="text" name="iso_14000_accredited" class="form-control" id="" placeholder="" value="{{ old('iso_14000_accredited') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -482,19 +482,19 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="iso_haccp_scoped">ขอบข่าย :</label>
-                                                        <input type="text" name="iso_haccp_scoped" class="form-control" id="" placeholder="">
+                                                        <input type="text" name="iso_haccp_scoped" class="form-control" id="" placeholder="" value="{{ old('iso_haccp_scoped') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="iso_haccp_certification_agency">หน่วยงานรับรอง :</label>
-                                                        <input type="text" name="iso_haccp_certification_agency" class="form-control" id="" placeholder="">
+                                                        <input type="text" name="iso_haccp_certification_agency" class="form-control" id="" placeholder="" value="{{ old('iso_haccp_certification_agency') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="iso_haccp_accredited">ปีที่ได้รับการรับรอง :</label>
-                                                        <input type="text" name="iso_haccp_accredited" class="form-control" id="" placeholder="">
+                                                        <input type="text" name="iso_haccp_accredited" class="form-control" id="" placeholder="" value="{{ old('iso_haccp_accredited') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -508,7 +508,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label for="quality_system_other">1.11.4 อื่นๆ โปรดระบุ :</label>
-                                            <textarea class="form-control col-md-12" name="quality_system_other" rows="3" placeholder=""></textarea>
+                                            <textarea class="form-control col-md-12" name="quality_system_other" rows="3" placeholder="">{{ old('quality_system_other') }}</textarea>
                                         </div>
                                     </div>
                                 </div>

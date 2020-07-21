@@ -126,10 +126,43 @@ class EquipmentController extends Controller
     {
         // dd($request);
         // dd($request->all());
+
+        $lab_id = Lab::find($request->input('lab_id'));
+        $lab_code = $lab_id->lab_code;
+        // return $lab_code;
+
+        $science_tool_id = ScienceTool::find($request->input('science_tool_id'));
+        $science_tool_abbr = $science_tool_id->science_tool_abbr;
+        // return $science_tool_abbr;
+
+        $temp_science_tool_code = $lab_code."-".$science_tool_abbr;
+        $count_science_tool_code = strlen($temp_science_tool_code);
+        // return $temp_science_tool_code;
+        $exist_equipment_code = Equipment::where('equipment_code', 'LIKE' ,"$temp_science_tool_code%")
+                                        ->orderBy('created_at', 'desc')
+                                        ->first();
+        // return $exist_equipment_code."xxx";
+
+        if ($exist_equipment_code == null) {
+            $equipment_code = $temp_science_tool_code."01";
+            // return $equipment_code."new lab";
+        } else {
+            $equipment_code_intival =  intval(substr( $exist_equipment_code->equipment_code,$count_science_tool_code))+1;
+            
+            if (strlen($equipment_code_intival)==1) {
+                $equipment_code_intival = "0".strval($equipment_code_intival);
+                $equipment_code =  $temp_science_tool_code.$equipment_code_intival;
+                // return $equipment_code."less 9";
+            }else if(strlen($equipment_code_intival)!=1){
+                $equipment_code_intival = strval($equipment_code_intival);
+                $equipment_code =  $temp_science_tool_code.$equipment_code_intival;
+                // return $equipment_code."more 10";
+            }
+        }
         
         // validate the data with function
         $request->validate([
-            'equipment_code' => 'required|unique:equipments',
+            'equipment_code' => '',
         ]);
 
         $this->validateEquipment();
@@ -154,6 +187,12 @@ class EquipmentController extends Controller
         $lab = Lab::find($request->input('lab_id'));
         // dd($lab);
 
+        // update status in labs
+        if($lab->survey_status_id == 5){
+            // clean
+            Lab::where('id', $lab->id)->update(['survey_status_id' => 3]);
+        }
+
         // Handle File Upload
 
         // store in the database
@@ -162,7 +201,8 @@ class EquipmentController extends Controller
         $equipment->user_id = auth()->user()->id;
         $equipment->lab_id = $request->input('lab_id');
         $equipment->org_id = $lab->organization_id;
-        $equipment->equipment_code = $request->input('equipment_code');
+        // $equipment->equipment_code = $request->input('equipment_code');
+        $equipment->equipment_code = $equipment_code;
         $equipment->science_tool_id = $request->input('science_tool_id');
         $equipment->science_tool_other_name = $request->input('science_tool_other_name');
         $equipment->science_tool_other_abbr = $request->input('science_tool_other_abbr');

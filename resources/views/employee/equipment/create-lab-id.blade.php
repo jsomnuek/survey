@@ -40,9 +40,9 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="equipment_code">
-										3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS) :<span><sup class="text-danger"> *</sup></span>
+										3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS) :<span><sup class="text-danger"></sup></span>
 									</label>
-									<input type="text" name="equipment_code" id="equipment_code" class="form-control @error('equipment_code') is-invalid @enderror" value="{{ old('equipment_code') }}" required>
+									<input type="text" name="equipment_code" id="equipment_code" class="form-control @error('equipment_code') is-invalid @enderror" placeholder="ระบบจะสร้างอัตโนมัติ" value="{{ old('equipment_code') }}"  disabled>
 									@error('equipment_code')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
@@ -70,9 +70,6 @@
                                         </span>
                                     @enderror
 								</div>
-							</div>
-							{{-- /.col 3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ) : --}}
-							<div class="col-md-6">
 								<div class="form-group d-none" id="display_science_tool_other_name">
 									<label for="science_tool_other_name">
 										ในกรณีเลือกอื่นๆ โปรดระบุ ชื่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"> *</sup></span>
@@ -85,8 +82,10 @@
 									@enderror
 								</div>
 							</div>
+							{{-- /.col 3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ) : --}}
+							
 							{{-- /.col --}}
-							<div class="col-md-6">
+							{{-- <div class="col-md-6">
 								<div class="form-group d-none" id="display_science_tool_other_abbr">
 									<label for="science_tool_other_abbr">
 										ชื่อย่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"> *</sup></span>
@@ -98,7 +97,7 @@
 										</span>
 									@enderror
 								</div>
-							</div>
+							</div> --}}
 							{{-- /.col --}}
 							<div class="col-md-6">
 								<div class="form-group">
@@ -131,14 +130,14 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="equipment_year">3.7 ปีที่ซื้อ :</label>
-									<input type="text" name="equipment_year" id="equipment_year" class="form-control" min="0" value="{{ old('equipment_year') }}" data-inputmask='"mask": "9999"' data-mask>
+									<input type="number" name="equipment_year" id="equipment_year" class="form-control" min="0" placeholder="กรอกเฉพาะตัวเลขเท่านั้น" value="{{ old('equipment_year') }}">
 								</div>
 							</div>
 							{{-- /.col 3.7 ปีที่ซื้อ : --}}
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="equipment_price">3.8 มูลค่า (บาท) :</label>
-									<input type="number" name="equipment_price" id="equipment_price" class="form-control" min="0" value="{{ old('equipment_price') }}">
+									<input type="number" name="equipment_price" id="equipment_price" class="form-control" min="0" placeholder="กรอกเฉพาะตัวเลขเท่านั้น" value="{{ old('equipment_price') }}">
 								</div>
 							</div>
 							{{-- /.col 3.8 มูลค่า (บาท) : --}}
@@ -293,7 +292,7 @@
 							<div class="col-md-6">
 								<div class="form-group">    
 									<label for="equipment_maintenance_budget">3.17 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท) :</label>
-									<input type="number" min="0" class="form-control" name="equipment_maintenance_budget" id="equipment_maintenance_budget" value="{{ old('equipment_maintenance_budget') }}">
+									<input type="number" min="0" class="form-control" name="equipment_maintenance_budget" id="equipment_maintenance_budget" placeholder="กรอกเฉพาะตัวเลขเท่านั้น" value="{{ old('equipment_maintenance_budget') }}">
 								</div>
 							</div>
 							{{-- /.col 3.17 งบประมาณในการบำรุงรักษา/สอบเทียบ ต่อปี (บาท) : --}}

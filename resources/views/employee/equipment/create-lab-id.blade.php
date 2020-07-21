@@ -40,9 +40,9 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="equipment_code">
-										3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS) :<span><sup class="text-danger"> *</sup></span>
+										3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS) :<span><sup class="text-danger"></sup></span>
 									</label>
-									<input type="text" name="equipment_code" id="equipment_code" class="form-control @error('equipment_code') is-invalid @enderror" value="{{ old('equipment_code') }}" required disabled>
+									<input type="text" name="equipment_code" id="equipment_code" class="form-control @error('equipment_code') is-invalid @enderror" placeholder="ระบบจะสร้างอัตโนมัติ" value="{{ old('equipment_code') }}"  disabled>
 									@error('equipment_code')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>

@@ -130,7 +130,6 @@ class LabController extends Controller
         $lab_type_abbr = $lab_type_id->lab_type_abbr;
         // return $lab_type_abbr;
 
-        
         $temp_lab_code = $org_code."-".$lab_type_abbr;
         // return $temp_lab_code;
         $exist_lab_code = Lab::where('lab_code', 'LIKE' ,"$temp_lab_code%")

@@ -70,7 +70,16 @@
                                     <label for="organization_id">
                                         องค์กร :<span><sup class="text-danger"> *</sup></span>
                                     </label>
-                                    <select class="form-control custom-select select2 @error('organization_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="organization_id" id="organization_id" required>
+                                    <input type="hidden" name="organization_id" value="{{ $lab->organization->id}}">
+                                    <input type="text" name="" class="form-control"  value="{{ $lab->organization->org_name}}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12 d-none">
+                                <div class="form-group">
+                                    <label for="organization_id">
+                                        องค์กร :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
+                                    <select class=" form-control custom-select select2  @error('organization_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="organization_id" id="organization_id" required read>
                                         <option value="" selected disabled="disabled">disabled</option>
                                         @foreach ($organizations as $item)
                                         <option value="{{ $item->id }}" {{ $lab->organization_id == $item->id ? 'selected' : '' }}>
@@ -80,6 +89,7 @@
                                         </option>
                                         @endforeach
                                     </select>
+
                                     @error('organization_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -192,7 +202,16 @@
                                     <label for="laboratory_type_id">
                                         2.4 ประเภทห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span>
                                     </label>
-                                    <select class="form-control custom-select select2 @error('laboratory_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="laboratory_type_id" id="laboratory_type_id" required>
+                                    <input type="hidden" name="laboratory_type_id" class="form-control " id="laboratory_type_id" value="{{ $lab->laboratory_type_id }}" required>
+                                    <input type="text" name="" class="form-control" value="{{ $lab->laboratoryType->lab_type_name}}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-none">
+                                <div class="form-group">
+                                    <label for="laboratory_type_id">
+                                        2.4 ประเภทห้องปฏิบัติการ :<span><sup class="text-danger"> *</sup></span>
+                                    </label>
+                                    <select class="form-control custom-select select2 @error('laboratory_type_id') is-invalid @enderror" data-placeholder="-- โปรดเลือก --" style="width: 100%;" name="laboratory_type_id" id="laboratory_type_id" required >
                                         <option value="" selected disabled="disabled">disabled</option>
                                         @foreach ($laboratoryTypes as $item)
                                         <option value="{{ $item->id }}" {{ $lab->laboratory_type_id == $item->id ? 'selected' : '' }}>

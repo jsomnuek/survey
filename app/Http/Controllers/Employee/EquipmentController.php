@@ -127,38 +127,42 @@ class EquipmentController extends Controller
         // dd($request);
         // dd($request->all());
 
-        // select last equipment for get next running number
-        $last_equipment = Equipment::where('user_id', auth()->user()->id)
-        ->orderBy('created_at', 'desc')
-        ->first();
-        //return $last_equipment;
-        $science_tool_abbr = ScienceTool::find($request->input('science_tool_id'));
-        //return $science_tool_abbr->science_tool_abbr;
-        $lab_code = Lab::find($request->input('lab_id'));
-        $lab_code = $lab_code->lab_code;
-        //return $lab_code;
-        //return $lab_code."-".$science_tool_abbr->science_tool_abbr;
-        
-        if ($last_equipment == null) {
-            // $user_code = auth()->user()->user_code;
-            $equipment_code = $lab_code."-".$science_tool_abbr->science_tool_abbr."01";
-            return $equipment_code."never had lab";
+        $lab_id = Lab::find($request->input('lab_id'));
+        $lab_code = $lab_id->lab_code;
+        // return $lab_code;
+
+        $science_tool_id = ScienceTool::find($request->input('science_tool_id'));
+        $science_tool_abbr = $science_tool_id->science_tool_abbr;
+        // return $science_tool_abbr;
+
+        $temp_science_tool_code = $lab_code."-".$science_tool_abbr;
+        $count_science_tool_code = strlen($temp_science_tool_code);
+        // return $temp_science_tool_code;
+        $exist_equipment_code = Equipment::where('equipment_code', 'LIKE' ,"$temp_science_tool_code%")
+                                        ->orderBy('created_at', 'desc')
+                                        ->first();
+        // return $exist_equipment_code."xxx";
+
+        if ($exist_equipment_code == null) {
+            $equipment_code = $temp_science_tool_code."01";
+            // return $equipment_code."new lab";
         } else {
-            // $user_code =  $last_org->user->user_code;
-            $equipment_code_intival =  intval(substr($last_equipment->equipment_code,-2))+1;
+            $equipment_code_intival =  intval(substr( $exist_equipment_code->equipment_code,$count_science_tool_code))+1;
+            
             if (strlen($equipment_code_intival)==1) {
                 $equipment_code_intival = "0".strval($equipment_code_intival);
-                $equipment_code = $lab_code."-".$science_tool_abbr->science_tool_abbr.$equipment_code_intival;
-                return $equipment_code."have lab less 9";
-            } else {
-                $equipment_code = $lab_code."-".$science_tool_abbr->science_tool_abbr.$equipment_code_intival;
-                return $equipment_code."have lab more 10";
+                $equipment_code =  $temp_science_tool_code.$equipment_code_intival;
+                // return $equipment_code."less 9";
+            }else if(strlen($equipment_code_intival)!=1){
+                $equipment_code_intival = strval($equipment_code_intival);
+                $equipment_code =  $temp_science_tool_code.$equipment_code_intival;
+                // return $equipment_code."more 10";
             }
         }
         
         // validate the data with function
         $request->validate([
-            'equipment_code' => 'required|unique:equipments',
+            'equipment_code' => '',
         ]);
 
         $this->validateEquipment();

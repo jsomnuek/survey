@@ -3,7 +3,6 @@ $(document).ready(function() {
     function checkInput() {
         let inputTypeNumber = [
             document.getElementById("product_lab_test_duration"),
-            document.getElementById("product_lab_test_fee"),
             document.getElementById("proficiency_testing_year")
         ];
         let invalidChars = ["-", "+", "e", ".", "E"];

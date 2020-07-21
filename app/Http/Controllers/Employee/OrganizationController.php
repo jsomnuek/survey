@@ -84,11 +84,6 @@ class OrganizationController extends Controller
         // dd($request);
         // dd($request->all());
 
-        // select last org for get next running number
-        // $last_org = Organization::where('user_id', auth()->user()->id)
-        //     ->orderBy('created_at', 'desc')
-        //     ->first();
-
         $user_code = auth()->user()->user_code;
         $province_id = $request->input('province_info_ch_id');
         $org_type_id = OrganisationType::find($request->input('organisation_type_id'));
@@ -98,25 +93,23 @@ class OrganizationController extends Controller
         $exist_org_code = Organization::where('org_code', 'LIKE' ,"$temp_org_code%")
                                         ->orderBy('created_at', 'desc')
                                         ->first();
-        return $exist_org_code->org_code;
+        // return $exist_org_code;
 
-        if ($exist_org_code->org_code == null) {
+        if ($exist_org_code == null) {
             $org_code = $temp_org_code."01";
-            return $org_code;
+            // return $org_code;
         } else {
             $org_code_intival =  intval(substr( $exist_org_code->org_code,8))+1;
             // return $org_code_intival;
             if (strlen($org_code_intival)==1) {
                 $org_code_intival = "0".strval($org_code_intival);
                 $org_code =  $temp_org_code.$org_code_intival;
-                return $org_code."with 0";
+                // return $org_code;
             }else if(strlen($org_code_intival)!=1){
                 $org_code_intival = strval($org_code_intival);
                 $org_code =  $temp_org_code.$org_code_intival;
-                return $org_code."no 0";
+                // return $org_code."no 0";
             }
-            
-
         }
         
 

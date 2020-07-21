@@ -62,7 +62,7 @@
                             {{-- /.col ชื่อหน่วยงานย่อย ระดับที่ 2 : --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="org_code">1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="org_code">1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> </sup></span></label>
                                     <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="" value="{{ $org->org_code }}" readonly>
                                     @error('org_code')
                                         <span class="invalid-feedback" role="alert">
@@ -232,7 +232,7 @@
                             {{-- /.col 1.5 ทุนจดทะเบียน (ล้านบาท) : --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="org_employee_amount">1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> *</sup></span></label>
+                                    <label for="org_employee_amount">1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> </sup></span></label>
                                     <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ $org->org_employee_amount }}" required>
                                     @error('org_employee_amount')
                                         <span class="invalid-feedback" role="alert">

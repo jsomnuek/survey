@@ -58,9 +58,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_code">
-                                        1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> *</sup></span>
+                                        1.2 รหัสหน่วยงาน (AABCC) :<span><sup class="text-danger"> </sup></span>
                                     </label>
-                                    <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="" value="{{ old('org_code') }}" required disabled>
+                                    <input type="text" name="org_code" class="form-control @error('org_code') is-invalid @enderror" id="org_code" placeholder="ระบบจะสร้างรหัสให้อัตโนมัติ" value="{{ old('org_code') }}" required disabled>
                                     @error('org_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -240,7 +240,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_employee_amount">
-                                        1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> *</sup></span>
+                                        1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> </sup></span>
                                     </label>
                                     <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ old('org_employee_amount') }}">
                                     @error('org_employee_amount')

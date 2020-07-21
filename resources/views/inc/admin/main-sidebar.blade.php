@@ -802,6 +802,7 @@
                         </li>
                     </ul>
                 </li>
+                    @include('inc.admin.sidebar-admin')
                 @endif
 
                 {{-- Menu for Employee --}}

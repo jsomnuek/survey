@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title','Dashboard | Employment Login Details')
+@section('title','Dashboard | Employment Unlogin Details')
     
 @section('content_header')
-    <h1>รายชื่อผู้เข้าร่วมโครงการที่ล็อกอินเข้าสู่ระบบแล้ว</h1>
+    <h1>รายชื่อผู้เข้าร่วมโครงการที่ยังไม่ล็อกอินเข้าสู่ระบบ</h1>
 @stop
 
 @section('content')
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-2">
             <div class="card-body">
-              @if (count($showLoginEmployee) > 0)
+              @if (count($showUnloginEmployee) > 0)
                   <table class="table" id="registerTable">
                     <thead>
                       <tr>
@@ -23,12 +23,12 @@
                       </tr>
                     </thead>
                     <tbody id="items">
-                      @foreach ($showLoginEmployee as $loginEmployee)
+                      @foreach ($showUnloginEmployee as $unloginEmployee)
                           <tr>
-                            <td>{{$loginEmployee->region->region_name}}</td>
-                            <td class="text-center">{{$loginEmployee->user_code}}</td>
-                            <td>{{$loginEmployee->name}}</td>
-                            <td>{{$loginEmployee->email}}</td>
+                            <td>{{$unloginEmployee->region->region_name}}</td>
+                            <td class="text-center">{{$unloginEmployee->user_code}}</td>
+                            <td>{{$unloginEmployee->name}}</td>
+                            <td>{{$unloginEmployee->email}}</td>
                           </tr>
                       @endforeach
                     </tbody>

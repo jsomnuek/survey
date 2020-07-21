@@ -59,6 +59,7 @@ Route::middleware(['checkRole:admin'])->group(function() {
     Route::resource('/proficiencyTesting','BasicInformations\ProficiencyTestingController');
     Route::resource('/qualitySystem','BasicInformations\QualitySystemController');
     Route::resource('/resultControl','BasicInformations\ResultControlController');
+    Route::resource('/roleList','BasicInformations\RoleController');
     Route::resource('/saleProduct','BasicInformations\SaleProductController');
     Route::resource('/scienceTool','BasicInformations\ScienceToolController');
     Route::resource('/surveyStatus','BasicInformations\SurveyStatusController');
@@ -109,5 +110,9 @@ Route::middleware(['checkRole:admin,approver'])->group(function() {
 
 Route::middleware(['checkRole:admin,superUser'])->group(function() {
     Route::get('/showRegisterEmployee','Employee\EmployeeController@showRegisterEmployee');
+    Route::get('/viewRegisterEmployee','Employee\EmployeeController@index');
+    Route::get('/editRegisterEmployee/{id}','Employee\EmployeeController@edit');
+    Route::put('/editRegisterEmployee/{id}','Employee\EmployeeController@update');
     Route::get('/showLoginEmployee','Employee\EmployeeController@showLoginEmployee');
+    Route::get('/showUnloginEmployee','Employee\EmployeeController@showUnloginEmployee');
 });

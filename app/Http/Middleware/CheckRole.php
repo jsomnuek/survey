@@ -20,7 +20,7 @@ class CheckRole
     
     public function handle($request, Closure $next, ...$roles)
     {
-        $roleIds = ['admin' => 1, 'dssUser' => 2, 'surveyer' => 3, 'approver' => '4'];
+        $roleIds = ['admin' => 1, 'dssUser' => 2, 'surveyer' => 3, 'approver' => '4', 'committee' => '5', 'superUser' => '6'];
         $allowedRoleIds = [];
         foreach ($roles as $role) {
             if(isset($roleIds[$role]))

@@ -41,6 +41,16 @@ class EmployeeController extends Controller
         return view ('super_users.employees.login-employees', ['showLoginEmployee' => $loginEmployee]);
     }
 
+    public function showUnloginEmployee () {
+        // get user where remember token is null
+        $unloginEmployee = User::whereNull('remember_token')
+                                ->where('role_id',3)
+                                ->where('email', 'not like', "%dss.go.th%")
+                                ->get();
+        return view ('super_users.employees.unlogin-employees', ['showUnloginEmployee' => $unloginEmployee]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +58,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $viewAllRegisterEmployee = User::all();
+        return view('super_users.employees.view-register-employees', ['viewAllRegisterEmployee' => $viewAllRegisterEmployee]);
     }
 
     /**
@@ -91,7 +102,10 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $region = Region::where('region_status', 'A')->get();
+        
+        $editRegisterEmployee = User::find($id);
+        return view('super_users.employees.edit-register-employees', ['editRegisterEmployee' => $editRegisterEmployee,'allRegion' =>$region]);
     }
 
     /**
@@ -103,7 +117,18 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updateRegisterEmployee = User::find($id);
+        $updateRegisterEmployee->user_code = $request->input('userCode');
+        $updateRegisterEmployee->name = $request->input('userName');
+        $updateRegisterEmployee->email = $request->input('userEmail');
+        $updateRegisterEmployee->region_id = $request->input('userRegion');
+        $updateRegisterEmployee->save();
+
+        // กลับหน้าเดิมก่อนกดปุ่ม (edit-register-employees)
+        // return back();
+
+        // กลับไปที่หน้าดูข้อมูลทั้งหมด
+        return redirect('viewRegisterEmployee');
     }
 
     /**

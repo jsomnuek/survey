@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title','Dashboard | Employment Login Details')
+@section('title','Dashboard | View All Register Employee')
     
 @section('content_header')
-    <h1>รายชื่อผู้เข้าร่วมโครงการที่ล็อกอินเข้าสู่ระบบแล้ว</h1>
+    <h1>รายชื่อผู้เข้าร่วมโครงการ</h1>
 @stop
 
 @section('content')
@@ -12,23 +12,25 @@
         <div class="col-12">
           <div class="card mb-2">
             <div class="card-body">
-              @if (count($showLoginEmployee) > 0)
-                  <table class="table" id="registerTable">
+              @if (count($viewAllRegisterEmployee) > 0)
+                  <table class="table" id="dt1">
                     <thead>
                       <tr>
-                        <th>ภูมิภาคที่ปฏิบัติงาน</th>
-                        <th style="width:100px;">รหัสผู้ใช้ (ID)</th>
+                        <th style="width:120px;">รหัสผู้ใช้ (User Code)</th>
                         <th class="text-center">ชื่อ - นามสกุล</th>
                         <th style="width:180px;">อีเมล</th>
+                        <th>ภูมิภาคที่ปฏิบัติงาน</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody id="items">
-                      @foreach ($showLoginEmployee as $loginEmployee)
+                      @foreach ($viewAllRegisterEmployee as $allRegisterEmployee)
                           <tr>
-                            <td>{{$loginEmployee->region->region_name}}</td>
-                            <td class="text-center">{{$loginEmployee->user_code}}</td>
-                            <td>{{$loginEmployee->name}}</td>
-                            <td>{{$loginEmployee->email}}</td>
+                            <td class="text-center">{{$allRegisterEmployee->user_code}}</td>
+                            <td>{{$allRegisterEmployee->name}}</td>
+                            <td>{{$allRegisterEmployee->email}}</td>
+                            <td>{{$allRegisterEmployee->region->region_name}}</td>
+                            <td><a href="/editRegisterEmployee/{{$allRegisterEmployee->id}}" class="bth btn-primary btn-sm">แก้ไข</a></td>
                           </tr>
                       @endforeach
                     </tbody>
@@ -51,6 +53,8 @@
     <script>console.log('Hi!');</script>
 @stop
 
-@section('scripts')
+
+{{-- @section('scripts')
     <script src="{{ asset('js/custom-datatable/register-employees.js')}}"></script>
-@endsection
+@endsection --}}
+

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\BasicInformations;
 
-use App\Http\Controller\Controllers;
+use App\Http\Controllers\Controller;
 use App\Model\BasicInformations\Role;
 use Illuminate\Http\Request;
 
@@ -25,7 +25,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $allRole = Role::all();
+        return view('admin.basic_informations.roles.index',['showAllRole' => $allRole]);
     }
 
     /**
@@ -35,7 +36,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.basic_informations.roles.create');
     }
 
     /**
@@ -46,7 +47,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate unique data
+        $this->validate($request,[
+            'roleName' => 'required|unique:roles,role_name'
+        ]);
+
+        //Insert new data
+        $insertRole = new Role;
+        $insertRole->role_name = $request->input('roleName');
+        $insertRole->role_status = 'A';
+        $insertRole->save();
+
+        //Retuen index view
+        return redirect('/roleList');
     }
 
     /**
@@ -66,9 +79,10 @@ class RoleController extends Controller
      * @param  \App\Model\BasicInformations\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit($id)
     {
-        //
+        $editRole = Role::find($id);
+        return view('admin.basic_informations.roles.edit')->with('editRole', $editRole);
     }
 
     /**
@@ -78,9 +92,17 @@ class RoleController extends Controller
      * @param  \App\Model\BasicInformations\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
-        //
+        // validate data before update 
+
+        $updateRole = Role::find($id);
+        $updateRole->role_name = $request->input('roleName');
+        $updateRole->role_status = $request->input('roleStatus');
+        $updateRole->save();
+
+        //redirect to index
+        return redirect('roleList');
     }
 
     /**

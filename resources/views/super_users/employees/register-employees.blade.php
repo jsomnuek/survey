@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title','Dashboard | Area Service')
+@section('title','Dashboard | Register Employee')
     
 @section('content_header')
-    <h1>ขอบเขตการให้บริการ</h1>
+    <h1>รายชื่อผู้เข้าร่วมโครงการทั้งหมด</h1>
 @stop
 
 @section('content')

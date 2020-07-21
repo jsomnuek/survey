@@ -70,9 +70,6 @@
                                         </span>
                                     @enderror
 								</div>
-							</div>
-							{{-- /.col 3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ) : --}}
-							<div class="col-md-6">
 								<div class="form-group d-none" id="display_science_tool_other_name">
 									<label for="science_tool_other_name">
 										ในกรณีเลือกอื่นๆ โปรดระบุ ชื่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"> *</sup></span>
@@ -85,8 +82,10 @@
 									@enderror
 								</div>
 							</div>
+							{{-- /.col 3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ) : --}}
+							
 							{{-- /.col --}}
-							<div class="col-md-6">
+							{{-- <div class="col-md-6">
 								<div class="form-group d-none" id="display_science_tool_other_abbr">
 									<label for="science_tool_other_abbr">
 										ชื่อย่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"> *</sup></span>
@@ -98,7 +97,7 @@
 										</span>
 									@enderror
 								</div>
-							</div>
+							</div> --}}
 							{{-- /.col --}}
 							<div class="col-md-6">
 								<div class="form-group">

@@ -26,38 +26,38 @@ $(document).ready(function() {
     function checkScienceToolId() {
         // this value
         var sciToolId = $("#science_tool_id").val();
-        if (sciToolId == "") {
+        if (sciToolId == 308) {
             $("#display_science_tool_other_name").removeClass("d-none");
             $("#science_tool_other_name").prop("required", true);
-            $("#display_science_tool_other_abbr").removeClass("d-none");
-            $("#science_tool_other_abbr").prop("required", true);
+            // $("#display_science_tool_other_abbr").removeClass("d-none");
+            // $("#science_tool_other_abbr").prop("required", true);
         } else {
             $("#display_science_tool_other_name").addClass("d-none");
             $("#science_tool_other_name").prop("required", false);
             $("#science_tool_other_name").val(null);
-            $("#display_science_tool_other_abbr").addClass("d-none");
-            $("#science_tool_other_abbr").prop("required", false);
-            $("#science_tool_other_abbr").val(null);
+            // $("#display_science_tool_other_abbr").addClass("d-none");
+            // $("#science_tool_other_abbr").prop("required", false);
+            // $("#science_tool_other_abbr").val(null);
         }
         // event on selected
         $("#science_tool_id").on("select2:select select2:unselect", function() {
             var sciToolId = $("#science_tool_id").val();
-            if (sciToolId == "") {
+            if (sciToolId == 308) {
                 $("#display_science_tool_other_name").removeClass("d-none");
                 $("#science_tool_other_name").prop("required", true);
-                $("#display_science_tool_other_abbr").removeClass("d-none");
-                $("#science_tool_other_abbr").prop("required", true);
+                // $("#display_science_tool_other_abbr").removeClass("d-none");
+                // $("#science_tool_other_abbr").prop("required", true);
             } else {
                 $("#display_science_tool_other_name").addClass("d-none");
                 $("#science_tool_other_name").prop("required", false);
                 $("#science_tool_other_name").val(null);
                 $("#display_science_tool_other_abbr").addClass("d-none");
-                $("#science_tool_other_abbr").prop("required", false);
-                $("#science_tool_other_abbr").val(null);
+                // $("#science_tool_other_abbr").prop("required", false);
+                // $("#science_tool_other_abbr").val(null);
             }
         });
     }
-    // checkScienceToolId();
+    checkScienceToolId();
 
     //3.10
     function checkMajorTechnology() {

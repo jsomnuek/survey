@@ -245,7 +245,7 @@
                                     <label for="product_lab_test_duration">
                                         4.10 ระยะเวลาการวิจัย/ทดสอบ/สอบเทียบ (วัน โดย 1 วัน = 8 ชั่วโมง) :<span><sup class="text-danger"> *</sup>
                                     </label>
-                                    <input type="number" name="product_lab_test_duration" class="form-control @error('product_lab_test_duration') is-invalid @enderror" id="product_lab_test_duration" placeholder="" value="{{ $productLab->product_lab_test_duration }}">
+                                    <input type="text" name="product_lab_test_duration" class="form-control @error('product_lab_test_duration') is-invalid @enderror" id="product_lab_test_duration" placeholder="" value="{{ $productLab->product_lab_test_duration }}">
                                     @error('product_lab_test_duration')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -233,7 +233,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="org_employee_amount">1.6 จำนวนบุคลากร (คน) :<span><sup class="text-danger"> </sup></span></label>
-                                    <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ $org->org_employee_amount }}" required>
+                                    <input type="number" name="org_employee_amount" min="1" class="form-control @error('org_employee_amount') is-invalid @enderror" id="org_employee_amount" placeholder="" value="{{ $org->org_employee_amount }}">
                                     @error('org_employee_amount')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -50,6 +50,11 @@ class LoginController extends Controller
             return '/dashboard';
         }
 
+        if (auth()->user()->role_id == 5 ) {
+            LogActivity::addToLog('Login success.');
+            return '/dashboard';
+        }
+
         if (auth()->user()->role_id == 6 ) {
             LogActivity::addToLog('Login success.');
             return '/dashboard';

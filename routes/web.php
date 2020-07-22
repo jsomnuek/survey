@@ -109,7 +109,7 @@ Route::middleware(['checkRole:admin,approver'])->group(function() {
     Route::put('/officer-questionnaire/{id}', 'Officer\QuestionnaireController@update')->name('officer-questionnaire.update');
 });
 
-Route::middleware(['checkRole:admin,superUser'])->group(function() {
+Route::middleware(['checkRole:admin,bstiAdmin'])->group(function() {
     Route::get('/showRegisterEmployee','Employee\EmployeeController@showRegisterEmployee');
     Route::get('/viewRegisterEmployee','Employee\EmployeeController@index');
     Route::get('/editRegisterEmployee/{id}','Employee\EmployeeController@edit');

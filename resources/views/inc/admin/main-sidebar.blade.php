@@ -77,7 +77,8 @@
                         </li>
                     </ul>
                 </li>
-
+            @endif
+            @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 6)
             <li class="nav-header">ข้อมูลพื้นฐานของระบบ</li>
                 {{-- List of Menu --}}
                 {{-- Part 1 : Organisation Infos --}}
@@ -802,11 +803,15 @@
                         </li>
                     </ul>
                 </li>
+                {{-- Extra Admin Menu --}}
+                @if (Auth::user()->role_id == 1)
                     @include('inc.admin.sidebar-admin')
+                @endif
+                
                 @endif
 
                 {{-- Menu for Employee --}}
-                @if (Auth::user()->role_id != 4)
+                @if (Auth::user()->role_id != 4 && Auth::user()->role_id != 6)
                     @include('inc.admin.sidebar-employee')
                 @endif
 
@@ -815,9 +820,9 @@
                     @include('inc.admin.sidebar-approver')
                 @endif
 
-                {{-- BSIT Super user Menu --}}
-                @if (Auth::user()->role_id == 1)
-                    @include('inc.admin.sidebar-super-user')
+                {{-- BSIT Admin Menu --}}
+                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 6)
+                    @include('inc.admin.sidebar-bsti-admin')
                 @endif
             </ul>
         </nav>

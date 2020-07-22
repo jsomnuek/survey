@@ -29,13 +29,10 @@ class QuestionnaireController extends Controller
             ->where('user_code', 'NOT LIKE', '%IT%')   
             ->get();
 
-        $surveyStatus = SurveyStatus::all();
-
         // return $users;
 
         return view('committee.questionnaire.index', [
             'users' => $users,
-            'surveyStatus' => $surveyStatus,
         ]);
     }
 
@@ -69,8 +66,6 @@ class QuestionnaireController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $logCommentLabs = LogCommentLab::where('user_id', $id)->get();
-        $surveyStatus = SurveyStatus::all();
 
         $labJuly = Lab::where('user_id', $id)
             ->whereMonth('send_date', '07')
@@ -86,8 +81,6 @@ class QuestionnaireController extends Controller
 
         return view('committee.questionnaire.show', [
             'user' => $user,
-            'logCommentLabs' => $logCommentLabs,
-            'surveyStatus' => $surveyStatus,
             'labJuly' => $labJuly,
             'labAugust' => $labAugust,
             'labSeptember' => $labSeptember,

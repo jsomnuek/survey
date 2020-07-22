@@ -100,7 +100,12 @@
                                     <th class="" style="width: 35%;">4.5 เครื่องมือที่ใช้วิจัย/ทดสอบ/สอบเทียบ :</th>
                                     <td>
                                         @foreach ($productLab->equipments as $item)
-                                            <li>{{ $item->equipment_code }} : {{ $item->scienceTool->science_tool_name }}</li>
+                                            @if ($item->scienceTool->id != 308)
+                                                <li>{{ $item->equipment_code }} : {{ $item->scienceTool->science_tool_name }}</li>                                                
+                                            @endif
+                                            @if (!empty($item->science_tool_other_name))
+                                                <li>{{ $item->equipment_code }} : {{ $item->science_tool_other_name }}</li>                                                
+                                            @endif
                                         @endforeach
                                     </td>
                                 </tr>

@@ -994,9 +994,14 @@
                                         <div class="card-header" id="heading{{ $equipment->id }}">
                                             <h2 class="mb-0">
                                                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ $equipment->id }}" aria-expanded="true" aria-controls="collapse{{ $equipment->id }}">
-                                                    <span class="badge badge-primary">{{$i++}}</span>
-                                                    {{ $equipment->equipment_code }} : 
-                                                    {{ $equipment->scienceTool->science_tool_name }}
+													<span class="badge badge-primary">{{$i++}}</span>
+													@if ($equipment->scienceTool->id != 308)
+														{{ $equipment->equipment_code }} : 
+														{{ $equipment->scienceTool->science_tool_name }}
+													@else
+														{{ $equipment->equipment_code }} : 
+														{{ $equipment->science_tool_other_name }}
+													@endif                                                    
                                                 </button>
                                             </h2>
                                         </div>
@@ -1240,7 +1245,7 @@
                                             <h2 class="mb-0">
                                                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ $productLab->id }}" aria-expanded="true" aria-controls="collapse{{ $productLab->id }}">
                                                     <span class="badge badge-primary">{{$i++}}</span>
-                                                    {{ $productLab->product_lab_name }}
+													{{ $productLab->product_lab_name }}													
                                                 </button>
                                             </h2>
                                         </div>
@@ -1324,7 +1329,12 @@
 															<th class="" style="width: 35%;">4.5 เครื่องมือที่ใช้วิจัย/ทดสอบ/สอบเทียบ :</th>
 															<td>
 																@foreach ($productLab->equipments as $item)
-																	<li>{{ $item->equipment_code }} : {{ $item->scienceTool->science_tool_name }}</li>
+																	@if ($item->scienceTool->id != 308)
+																		<li>{{ $item->equipment_code }} : {{ $item->scienceTool->science_tool_name }}</li>                                                
+																	@endif
+																	@if (!empty($item->science_tool_other_name))
+																		<li>{{ $item->equipment_code }} : {{ $item->science_tool_other_name }}</li>                                                
+																	@endif
 																@endforeach
 															</td>
 														</tr>

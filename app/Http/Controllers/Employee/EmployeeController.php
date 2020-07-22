@@ -25,6 +25,7 @@ class EmployeeController extends Controller
         // get user where role_id = 3 (employee)
         $registerEmployee = User::where('role_id',3)
                                 ->where('email', 'not like', "%dss.go.th%")
+                                ->where('status', 'A')
                                 ->orderBy('user_code','asc')
                                 ->get();
 
@@ -36,6 +37,7 @@ class EmployeeController extends Controller
         // get user where remember token is not null
         $loginEmployee = User::whereNotNull('remember_token')
                                 ->where('role_id',3)
+                                ->where('status', 'A')
                                 ->where('email', 'not like', "%dss.go.th%")
                                 ->get();
         return view ('bsti_admin.employees.login-employees', ['showLoginEmployee' => $loginEmployee]);
@@ -45,6 +47,7 @@ class EmployeeController extends Controller
         // get user where remember token is null
         $unloginEmployee = User::whereNull('remember_token')
                                 ->where('role_id',3)
+                                ->where('status', 'A')
                                 ->where('email', 'not like', "%dss.go.th%")
                                 ->get();
         return view ('bsti_admin.employees.unlogin-employees', ['showUnloginEmployee' => $unloginEmployee]);
@@ -58,7 +61,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $viewAllRegisterEmployee = User::all();
+        $viewAllRegisterEmployee = User::where('role_id','not like', "1")
+                                    ->get();
         return view('bsti_admin.employees.view-register-employees', ['viewAllRegisterEmployee' => $viewAllRegisterEmployee]);
     }
 
@@ -122,6 +126,7 @@ class EmployeeController extends Controller
         $updateRegisterEmployee->name = $request->input('userName');
         $updateRegisterEmployee->email = $request->input('userEmail');
         $updateRegisterEmployee->region_id = $request->input('userRegion');
+        $updateRegisterEmployee->status = $request->input('userStatus');
         $updateRegisterEmployee->save();
 
         // กลับหน้าเดิมก่อนกดปุ่ม (edit-register-employees)

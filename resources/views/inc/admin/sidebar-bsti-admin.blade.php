@@ -1,11 +1,19 @@
 {{-- Menu for Super user --}}
 <li class="nav-header">ตรวจสอบข้อมูลผู้เข้าร่วมโครงการ</li>
+{{-- All Applicants Menu--}} 
+<li class="nav-item has-treeview {{ Request::is('viewRegisterEmployee') ? 'menu-open' : '' }}">
+    {{-- active --}}
+    <a href="{{ url('/viewRegisterEmployee') }}" class="nav-link {{ Request::is('viewRegisterEmployee') ? 'active' : '' }}">
+        <i class="fa fa-user-cog nav-icon"></i>
+        <p>รายชื่อผู้ใช้งานระบบทั้งหมด</p>
+    </a>
+</li>
 {{-- View User Menu--}}
 <li class="nav-item has-treeview {{ Request::is('showRegisterEmployee') ? 'menu-open' : '' }}">
     {{-- active --}}
     <a href="{{ url('/showRegisterEmployee') }}" class="nav-link {{ Request::is('showRegisterEmployee') ? 'active' : '' }}">
         <i class="fa fa-user-friends nav-icon"></i>
-        <p>รายชื่อผู้เข้าร่วมโครงการทั้งหมด</p>
+        <p>รายชื่อผู้ปฏิบัติงานในโครงการ</p>
     </a>
 </li>
 {{-- View User Login Menu --}}
@@ -24,16 +32,6 @@
         <p>รายชื่อผู้ที่ยังไม่ล็อกอิน</p>
     </a>
 </li>
-{{-- Edit User Detail--}}
-@if (Auth::user()->role_id == 1)    
-<li class="nav-item has-treeview {{ Request::is('viewRegisterEmployee') ? 'menu-open' : '' }}">
-    {{-- active --}}
-    <a href="{{ url('/viewRegisterEmployee') }}" class="nav-link {{ Request::is('viewRegisterEmployee') ? 'active' : '' }}">
-        <i class="fa fa-user-cog nav-icon"></i>
-        <p>แก้ไขรายชื่อผู้เข้าร่วมโครงการ</p>
-    </a>
-</li>
-@endif
 {{-- approver --}}
 <li class="nav-item has-treeview {{ Request::is('bstiadmin-questionnaire') ? 'menu-open' : '' }}">
     {{-- active --}}

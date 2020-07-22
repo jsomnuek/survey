@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('region_id');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('status',1)->default('A');
 
             $table->foreign('role_id')->references('id')->on('roles');
             $table->foreign('region_id')->references('id')->on('regions');

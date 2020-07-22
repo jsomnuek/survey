@@ -37,6 +37,10 @@
             {{-- {{Form::text('userRegion',$editRegisterEmployee->region->region_name,['class'=>'form-control','required'])}} --}}
             {{Form::select('userRegion',$allRegion->pluck('region_name', 'id'),$editRegisterEmployee->region->id,['class'=>'form-control','required'])}}
           </div>
+          <div class="form-group">
+            {{ Form::label ('userStatus','สถานะการจ้างงาน')}}
+            {{ Form::select('userStatus',['A' => 'Active','D' => 'Disable'],$editRegisterEmployee->status,['class'=>'form-control','required'])}}
+          </div>
           <a href="/viewRegisterEmployee" class="btn btn-secondary">ย้อนกลับ</a>
           {{Form::hidden('_method','PUT')}}
           {{Form::submit('บันทึก',['class'=>'btn btn-primary'])}}

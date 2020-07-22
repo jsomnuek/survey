@@ -139,7 +139,7 @@ class EquipmentController extends Controller
         $count_science_tool_code = strlen($temp_science_tool_code);
         // return $temp_science_tool_code;
         $exist_equipment_code = Equipment::where('equipment_code', 'LIKE' ,"$temp_science_tool_code%")
-                                        ->orderBy('created_at', 'desc')
+                                        ->orderBy('equipment_code', 'desc')
                                         ->first();
         // return $exist_equipment_code."xxx";
 

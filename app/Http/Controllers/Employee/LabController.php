@@ -134,7 +134,7 @@ class LabController extends Controller
         $count_lab_code = strlen($temp_lab_code);
         // return $temp_lab_code;
         $exist_lab_code = Lab::where('lab_code', 'LIKE' ,"$temp_lab_code%")
-                                        ->orderBy('created_at', 'desc')
+                                        ->orderBy('lab_code', 'desc')
                                         ->first();
         // return $exist_lab_code."xxx";
 

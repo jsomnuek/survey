@@ -92,7 +92,7 @@ class OrganizationController extends Controller
         $temp_org_code = $user_code."-".$province_id.$org_type_abbr;
         $count_org_code = strlen($temp_org_code);
         $exist_org_code = Organization::where('org_code', 'LIKE' ,"$temp_org_code%")
-                                        ->orderBy('created_at', 'desc')
+                                        ->orderBy('org_code', 'desc')
                                         ->first();
         // return $exist_org_code;
 

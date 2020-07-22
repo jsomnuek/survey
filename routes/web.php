@@ -28,7 +28,7 @@ Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');
 Route::get('/tambons/{id}', 'Api\ProvinceInfoController@tambons');
 
-Route::middleware(['checkRole:admin'])->group(function() {
+Route::middleware(['checkRole:admin,bstiAdmin'])->group(function() {
     // Dashboard
     Route::get('/dashboard', 'HomeController@admin')->name('dashboard');
 

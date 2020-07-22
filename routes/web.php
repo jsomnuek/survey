@@ -118,10 +118,18 @@ Route::middleware(['checkRole:admin,bstiAdmin'])->group(function() {
     Route::get('/showUnloginEmployee','Employee\EmployeeController@showUnloginEmployee');
 
     // QuestionnaireController
-    Route::get('/bstiadmin-questionnaire', 'BstiAdmin\QuestionnaireController@index')->name('bsitadmin-questionnaire.index');
+    Route::get('/bstiadmin-questionnaire', 'BstiAdmin\QuestionnaireController@index')->name('bstiadmin-questionnaire.index');
     Route::get('/bstiadmin-questionnaire/{id}', 'BstiAdmin\QuestionnaireController@show')->name('bstiadmin-questionnaire.show');
     Route::get('/bstiadmin-questionnaire/{id}/send', 'BstiAdmin\QuestionnaireController@send')->name('bstiadmin-questionnaire.send');
     Route::get('/bstiadmin-questionnaire-detail/{id}', 'BstiAdmin\QuestionnaireController@detail')->name('bstiadmin-questionnaire.detail');
     Route::post('/bstiadmin-questionnaire', 'BstiAdmin\QuestionnaireController@store')->name('bstiadmin-questionnaire.store');
     Route::put('/bstiadmin-questionnaire/{id}', 'BstiAdmin\QuestionnaireController@update')->name('bstiadmin-questionnaire.update');
+});
+
+Route::middleware(['checkRole:admin,committee'])->group(function() {
+
+    // QuestionnaireController
+    Route::get('/committee-questionnaire', 'Committee\QuestionnaireController@index')->name('committee-questionnaire.index');
+    Route::get('/committee-questionnaire/{id}', 'Committee\QuestionnaireController@show')->name('committee-questionnaire.show');
+    Route::get('/committee-questionnaire-detail/{id}', 'Committee\QuestionnaireController@detail')->name('committee-questionnaire.detail');
 });

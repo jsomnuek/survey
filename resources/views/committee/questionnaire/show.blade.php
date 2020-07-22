@@ -99,8 +99,8 @@ Committee Questionnaire Show
                                                         @endswitch
                                                     </td>
                                                     <td>
-                                                        <small class="badge badge-primary">
-                                                            ส่งข้อมูลแล้วรอตรวจสอบ
+                                                        <small class="badge badge-success">
+                                                            อนุมัติข้อมูลส่งงานได้
                                                         </small>
                                                     </td>
                                                     <td>{{ $lab->send_date }}</td>
@@ -144,8 +144,8 @@ Committee Questionnaire Show
                                                         @endswitch
                                                     </td>
                                                     <td>
-                                                        <small class="badge badge-primary">
-                                                            ส่งข้อมูลแล้วรอตรวจสอบ
+                                                        <small class="badge badge-success">
+                                                            อนุมัติข้อมูลส่งงานได้
                                                         </small>												
                                                     </td>
                                                     <td>{{ $lab->send_date }}</td>
@@ -189,8 +189,8 @@ Committee Questionnaire Show
                                                         @endswitch
                                                     </td>
                                                     <td>
-                                                        <small class="badge badge-primary">
-                                                            ส่งข้อมูลแล้วรอตรวจสอบ
+                                                        <small class="badge badge-success">
+                                                            อนุมัติข้อมูลส่งงานได้
                                                         </small>												
                                                     </td>
                                                     <td>{{ $lab->send_date }}</td>
@@ -218,48 +218,7 @@ Committee Questionnaire Show
             </div>
             <!-- /.card-footer -->
 		</div>
-        <!--/.card -->
-        <div class="card bg-light">
-			<div class="card-body">
-                <blockquote class="quote-secondary m-0">           
-                    <div class="d-flex flex-row justify-content-between">
-                        @foreach ($surveyStatus as $item)
-                            @switch($item->id)
-                                @case(1)
-                                    <span class="mr-2">
-                                        <mark><i class="fas fa-square text-secondary"></i></mark>{{ $item->survey_status_name_th }}
-                                    </span>
-                                    @break
-                                @case(2)
-                                    <span class="mr-2">
-                                        <mark><i class="fas fa-square text-primary"></i></mark>{{ $item->survey_status_name_th }}
-                                    </span>
-                                    @break
-                                @case(3)
-                                    <span class="mr-2">
-                                        <mark><i class="fas fa-square text-info"></i></mark>{{ $item->survey_status_name_th }}
-                                    </span>
-                                    @break
-                                @case(4)
-                                    <span class="mr-2">
-                                        <mark><i class="fas fa-square text-success"></i></mark>{{ $item->survey_status_name_th }}
-                                    </span>
-                                    @break
-                                @case(5)
-                                    <span class="mr-2">
-                                        <mark><i class="fas fa-square text-warning"></i></mark>{{ $item->survey_status_name_th }}
-                                    </span>
-                                    @break
-                                @default                                    
-                            @endswitch
-                        @endforeach
-                    </div>
-                    <!-- /.d-flex -->
-                </blockquote>
-			</div>
-			<!-- /.card-body -->
-		</div>
-		<!--/.card -->			
+        <!--/.card -->			
 	</div>
 	<!--/.col -->
 </div>

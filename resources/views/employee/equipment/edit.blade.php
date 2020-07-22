@@ -103,14 +103,7 @@
 							</div>
 							{{-- /.col 3.1 รหัสเครื่องมือ (AABCC-MNN-RRRSS) : --}}
 							<div class="col-md-6">
-								<div class="form-group">
-									<label for="science_tool_id">
-										3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"></sup></span>
-									</label>
-									<input type="hidden" name="science_tool_id" id="" value="{{ $equipment->scienceTool->id}}">
-									<input type="text" class="form-control" value="{{ $equipment->scienceTool->science_tool_name}} : {{ $equipment->scienceTool->science_tool_abbr}}" readonly>
-								</div>
-								<div class="form-group d-none">
+								<div class="form-group ">
 									<label for="science_tool_id">
 										3.2 ชื่อเครื่องมือ (ภาษาอังกฤษ) :<span><sup class="text-danger"> *</sup></span>
 									</label>
@@ -140,7 +133,6 @@
 									@enderror
 								</div>
 							</div>
-						
 							{{-- <div class="col-md-6">
 								<div class="form-group d-none" id="display_science_tool_other_abbr">
 									<label for="science_tool_other_abbr">

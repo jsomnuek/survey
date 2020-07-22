@@ -824,6 +824,11 @@
                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 6)
                     @include('inc.admin.sidebar-bsti-admin')
                 @endif
+
+                {{-- Committee Menu --}}
+                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 5)
+                    @include('inc.admin.sidebar-committee')
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

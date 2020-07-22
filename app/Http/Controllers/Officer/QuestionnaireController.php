@@ -36,6 +36,7 @@ class QuestionnaireController extends Controller
     public function index()
     {
         $users = User::where('region_id', auth()->user()->region->id)
+            ->where('status', 'A')
             ->where('role_id', 3)    
             ->get();
 

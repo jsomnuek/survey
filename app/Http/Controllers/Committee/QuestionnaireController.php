@@ -26,6 +26,7 @@ class QuestionnaireController extends Controller
     public function index()
     {
         $users = User::where('role_id', 3)
+            ->where('status', 'A')
             ->where('user_code', 'NOT LIKE', '%IT%')   
             ->get();
 

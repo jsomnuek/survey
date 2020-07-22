@@ -133,7 +133,6 @@
 									@enderror
 								</div>
 							</div>
-						
 							{{-- <div class="col-md-6">
 								<div class="form-group d-none" id="display_science_tool_other_abbr">
 									<label for="science_tool_other_abbr">

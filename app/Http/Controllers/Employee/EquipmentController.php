@@ -352,7 +352,6 @@ class EquipmentController extends Controller
         $count_science_tool_code = strlen($temp_science_tool_code);
         // return $temp_science_tool_code;
 
-
         $exist_equipment_code = Equipment::where('equipment_code', 'LIKE' ,"$temp_science_tool_code%")
                                         ->orderBy('created_at', 'desc')
                                         ->first();
@@ -363,7 +362,6 @@ class EquipmentController extends Controller
             // return $equipment_code."new lab";
         } else {
             $equipment_code_intival =  intval(substr( $exist_equipment_code->equipment_code,$count_science_tool_code))+1;
-            
             if (strlen($equipment_code_intival)==1) {
                 $equipment_code_intival = "0".strval($equipment_code_intival);
                 $equipment_code =  $temp_science_tool_code.$equipment_code_intival;
@@ -374,16 +372,10 @@ class EquipmentController extends Controller
                 // return $equipment_code."more 10";
             }
         }
-
         // dd($request);
         
-
-
-
         // validate the data with function
         $this->validateEquipment();
-
-
 
         // Handle File Upload
         if($request->hasFile('equipment_image')) {

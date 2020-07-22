@@ -253,7 +253,7 @@
                                     <label for="lab_employee_amount">
                                         2.6 จำนวนเจ้าหน้าที่ในห้องปฏิบัติการ (คน) :<span><sup class="text-danger"> *</sup></span>
                                     </label>
-                                    <input type="number" name="lab_employee_amount" min="1" class="form-control @error('lab_employee_amount') is-invalid @enderror" id="lab_employee_amount" placeholder="" value="{{ $lab->lab_employee_amount }}" required>
+                                    <input type="number" name="lab_employee_amount" min="1" class="form-control @error('lab_employee_amount') is-invalid @enderror" id="lab_employee_amount" placeholder="" value="{{ $lab->lab_employee_amount }}">
                                     @error('lab_employee_amount')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

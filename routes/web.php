@@ -28,7 +28,7 @@ Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
 Route::get('/amphoes/{id}', 'Api\ProvinceInfoController@amphoes');
 Route::get('/tambons/{id}', 'Api\ProvinceInfoController@tambons');
 
-Route::middleware(['checkRole:admin'])->group(function() {
+Route::middleware(['checkRole:admin,bstiAdmin'])->group(function() {
     // Dashboard
     Route::get('/dashboard', 'HomeController@admin')->name('dashboard');
 
@@ -109,7 +109,7 @@ Route::middleware(['checkRole:admin,approver'])->group(function() {
     Route::put('/officer-questionnaire/{id}', 'Officer\QuestionnaireController@update')->name('officer-questionnaire.update');
 });
 
-Route::middleware(['checkRole:admin,superUser'])->group(function() {
+Route::middleware(['checkRole:admin,bstiAdmin'])->group(function() {
     Route::get('/showRegisterEmployee','Employee\EmployeeController@showRegisterEmployee');
     Route::get('/viewRegisterEmployee','Employee\EmployeeController@index');
     Route::get('/editRegisterEmployee/{id}','Employee\EmployeeController@edit');

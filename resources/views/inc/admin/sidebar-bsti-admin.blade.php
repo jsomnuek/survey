@@ -34,3 +34,11 @@
     </a>
 </li>
 @endif
+{{-- approver --}}
+<li class="nav-item has-treeview {{ Request::is('bstiadmin-questionnaire') ? 'menu-open' : '' }}">
+    {{-- active --}}
+    <a href="{{ url('bstiadmin-questionnaire') }}" class="nav-link {{ Request::is('bstiadmin-questionnaire') ? 'active' : '' }}">
+        <i class="nav-icon far fa-list-alt"></i>
+        <p>ตรวจสอบและอนุมัติข้อมูล</p>
+    </a>
+</li>

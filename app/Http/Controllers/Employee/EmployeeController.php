@@ -28,7 +28,7 @@ class EmployeeController extends Controller
                                 ->orderBy('user_code','asc')
                                 ->get();
 
-        return view ('super_users.employees.register-employees',[
+        return view ('bsti_admin.employees.register-employees',[
             'showRegisterEmployee' => $registerEmployee]);
     }
 
@@ -38,7 +38,7 @@ class EmployeeController extends Controller
                                 ->where('role_id',3)
                                 ->where('email', 'not like', "%dss.go.th%")
                                 ->get();
-        return view ('super_users.employees.login-employees', ['showLoginEmployee' => $loginEmployee]);
+        return view ('bsti_admin.employees.login-employees', ['showLoginEmployee' => $loginEmployee]);
     }
 
     public function showUnloginEmployee () {
@@ -47,7 +47,7 @@ class EmployeeController extends Controller
                                 ->where('role_id',3)
                                 ->where('email', 'not like', "%dss.go.th%")
                                 ->get();
-        return view ('super_users.employees.unlogin-employees', ['showUnloginEmployee' => $unloginEmployee]);
+        return view ('bsti_admin.employees.unlogin-employees', ['showUnloginEmployee' => $unloginEmployee]);
     }
 
 
@@ -59,7 +59,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $viewAllRegisterEmployee = User::all();
-        return view('super_users.employees.view-register-employees', ['viewAllRegisterEmployee' => $viewAllRegisterEmployee]);
+        return view('bsti_admin.employees.view-register-employees', ['viewAllRegisterEmployee' => $viewAllRegisterEmployee]);
     }
 
     /**
@@ -105,7 +105,7 @@ class EmployeeController extends Controller
         $region = Region::where('region_status', 'A')->get();
         
         $editRegisterEmployee = User::find($id);
-        return view('super_users.employees.edit-register-employees', ['editRegisterEmployee' => $editRegisterEmployee,'allRegion' =>$region]);
+        return view('bsti_admin.employees.edit-register-employees', ['editRegisterEmployee' => $editRegisterEmployee,'allRegion' =>$region]);
     }
 
     /**

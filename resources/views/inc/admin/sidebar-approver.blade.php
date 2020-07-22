@@ -1,5 +1,5 @@
 {{-- Menu for Verify and Approve --}}
-<li class="nav-header">สำหรับเจ้าหน้าที่ วศ.</li>
+<li class="nav-header">สำหรับผู้ตรวจสอบและอนุมัติข้อมูล</li>
 {{-- Approve & Check Data Menu --}}
 <li class="nav-item has-treeview {{ Request::is('officer-questionnaire') ? 'menu-open' : '' }}">
     {{-- active --}}

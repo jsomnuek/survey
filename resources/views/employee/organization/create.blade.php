@@ -233,7 +233,7 @@
                             <div class="col-md-6">                        
                                 <div class="form-group">
                                     <label for="org_capital">1.5 ทุนจดทะเบียน (ล้านบาท) :</label>
-                                    <input type="number" name="org_capital" min="1" class="form-control" id="org_capital" placeholder="" value="{{ old('org_capital') }}">
+                                    <input type="number" name="org_capital" min="0" class="form-control" id="org_capital" placeholder="" value="{{ old('org_capital') }}">
                                 </div>
                             </div>
                             {{-- /.col 1.5 ทุนจดทะเบียน (ล้านบาท) : --}}

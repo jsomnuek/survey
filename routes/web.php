@@ -116,4 +116,12 @@ Route::middleware(['checkRole:admin,bstiAdmin'])->group(function() {
     Route::put('/editRegisterEmployee/{id}','Employee\EmployeeController@update');
     Route::get('/showLoginEmployee','Employee\EmployeeController@showLoginEmployee');
     Route::get('/showUnloginEmployee','Employee\EmployeeController@showUnloginEmployee');
+
+    // QuestionnaireController
+    Route::get('/bstiadmin-questionnaire', 'BstiAdmin\QuestionnaireController@index')->name('bsitadmin-questionnaire.index');
+    Route::get('/bstiadmin-questionnaire/{id}', 'BstiAdmin\QuestionnaireController@show')->name('bstiadmin-questionnaire.show');
+    Route::get('/bstiadmin-questionnaire/{id}/send', 'BstiAdmin\QuestionnaireController@send')->name('bstiadmin-questionnaire.send');
+    Route::get('/bstiadmin-questionnaire-detail/{id}', 'BstiAdmin\QuestionnaireController@detail')->name('bstiadmin-questionnaire.detail');
+    Route::post('/bstiadmin-questionnaire', 'BstiAdmin\QuestionnaireController@store')->name('bstiadmin-questionnaire.store');
+    Route::put('/bstiadmin-questionnaire/{id}', 'BstiAdmin\QuestionnaireController@update')->name('bstiadmin-questionnaire.update');
 });

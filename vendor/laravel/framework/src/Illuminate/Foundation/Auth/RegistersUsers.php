@@ -6,10 +6,6 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use App\Model\BasicInformations\Role;
-use App\Model\BasicInformations\Agency;
-use App\Model\BasicInformations\Region;
-
 trait RegistersUsers
 {
     use RedirectsUsers;
@@ -21,11 +17,7 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        $allRole = Role::all();
-        $allAgency = Agency::all();
-        // $allRegion = Region::all();
-        $allRegion = Region::where('region_status', 'A')->get();
-        return view('auth.register',['showAllRole' => $allRole,'showAllAgency' => $allAgency, 'showAllRegion' => $allRegion]);
+        return view('auth.register');
     }
 
     /**
@@ -40,7 +32,7 @@ trait RegistersUsers
 
         event(new Registered($user = $this->create($request->all())));
 
-        //$this->guard()->login($user);
+        $this->guard()->login($user);
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());

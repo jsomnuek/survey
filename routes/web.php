@@ -132,4 +132,5 @@ Route::middleware(['checkRole:admin,committee'])->group(function() {
     Route::get('/committee-questionnaire', 'Committee\QuestionnaireController@index')->name('committee-questionnaire.index');
     Route::get('/committee-questionnaire/{id}', 'Committee\QuestionnaireController@show')->name('committee-questionnaire.show');
     Route::get('/committee-questionnaire-detail/{id}', 'Committee\QuestionnaireController@detail')->name('committee-questionnaire.detail');
+    Route::get('/committee-questionnaire-pdf', 'Committee\QuestionnaireController@generate_pdf')->name('committee-questionnaire.pdf');
 });

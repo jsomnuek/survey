@@ -66,7 +66,7 @@ class ProductLabController extends Controller
     {
         $lab = Lab::findOrFail($id);
         $productTypes = ProductType::where('product_type_status', 'A')->get();
-        $equipments = Equipment::where('lab_id', $id)->get();
+        $equipments = Equipment::where('lab_id', $id)->where('completed',FALSE)->get();
         $testingCalibratingLists = TestingCalibratingList::where('testing_list_status', 'A')->get();
         $testingCalibratingTypes = TestingCalibratingType::where('testing_calibrating_type_status', 'A')->get();
         $testingCalibratingMethods = TestingCalibratingMethod::where('testing_method_status', 'A')->get();
@@ -187,11 +187,15 @@ class ProductLabController extends Controller
         }
 
         if($productLab->lab->survey_status_id == 2 || $productLab->lab->survey_status_id == 4) {
-            return redirect()->route('equipment.show', $productLab->id);
+            return redirect()->route('productlab.show', $productLab->id);
+        }
+
+        if ($productLab->completed == 1){
+            return redirect()->route('productlab.index')->with('error', 'รายการทดสอบที่ท่านต้องการดูข้อมูลถูกยกเลิกแล้ว');
         }
 
         $productTypes = ProductType::where('product_type_status', 'A')->get();
-        $equipments = Equipment::where('lab_id', $productLab->lab_id)->get();
+        $equipments = Equipment::where('lab_id', $productLab->lab_id)->where('completed',FALSE)->get();
         $testingCalibratingLists = TestingCalibratingList::where('testing_list_status', 'A')->get();
         $testingCalibratingTypes = TestingCalibratingType::where('testing_calibrating_type_status', 'A')->get();
         $testingCalibratingMethods = TestingCalibratingMethod::where('testing_method_status', 'A')->get();

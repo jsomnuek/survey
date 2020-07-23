@@ -95,7 +95,10 @@ class EquipmentController extends Controller
     public function createByLabId($labId)
     {
         // data for loop select
-        $lab = Lab::findOrFail($labId);
+        $lab = Lab::find($labId);
+        if($lab->completed == 1){
+            return redirect()->route('lab.index')->with('error', 'ห้องปฏิบัติการที่ท่านต้องการเพิ่มข้อมูลถูกยกเลิกแล้ว');
+        }
         $scienceTools = ScienceTool::where('science_tool_status','A')->get();
         $majorTechnologies = MajorTechnology::where('major_tech_status','A')->get();
         $technicalEquipments = TechnicalEquipment::where('technical_equipment_status','A')->get();
@@ -288,6 +291,10 @@ class EquipmentController extends Controller
 
         if($equipment->lab->survey_status_id == 2 || $equipment->lab->survey_status_id == 4) {
             return redirect()->route('equipment.show', $equipment->id);
+        }
+
+        if($equipment->completed == 1 ){
+            return redirect()->route('equipment.index')->with('error', 'เครื่องมือที่ท่านต้องการดูข้อมูลถูกยกเลิกแล้ว');
         }
 
         // data for loop select

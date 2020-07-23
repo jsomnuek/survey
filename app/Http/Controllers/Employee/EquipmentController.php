@@ -95,7 +95,7 @@ class EquipmentController extends Controller
     public function createByLabId($labId)
     {
         // data for loop select
-        $lab = Lab::find($labId);
+        $lab = Lab::findOrFail($labId);
         if($lab->completed == 1){
             return redirect()->route('lab.index')->with('error', 'ห้องปฏิบัติการที่ท่านต้องการเพิ่มข้อมูลถูกยกเลิกแล้ว');
         }

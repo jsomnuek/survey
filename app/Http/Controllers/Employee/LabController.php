@@ -305,6 +305,10 @@ class LabController extends Controller
             return redirect()->route('lab.show', $lab->id);
         }
 
+        if($lab->completed == 1){
+            return redirect()->route('lab.index')->with('error', 'ห้องปฏิบัติการที่ท่านต้องการดูข้อมูลถูกยกเลิกแล้ว');
+        }
+
         $organizations = Organization::where('user_id', auth()->user()->id)->get();
         $locationLabs = LocationLab::where('location_status', 'A')->get();
         $industrialEstates = IndustrialEstate::where('estate_status', 'A')->get();

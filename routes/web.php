@@ -86,6 +86,7 @@ Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function() {
 
     // ProductLabController
     Route::get('/productlab/create-lab-id/{id}', 'Employee\ProductLabController@createByLabId')->name('productlab.create-lab-id');
+    Route::put('/productlab-changeStatus/{id}', 'Employee\ProductLabController@changeStatus');
     Route::resource('/productlab', 'Employee\ProductLabController');
 
     // AskController

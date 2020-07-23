@@ -38,10 +38,12 @@ class ProductLabController extends Controller
      */
     public function index()
     {
-        $productLabs = ProductLab::where('user_id', auth()->user()->id)->get();
+        $productLabs = ProductLab::where('user_id', auth()->user()->id)->where('completed',0)->get();
+        $productLabsDel = ProductLab::where('user_id', auth()->user()->id)->where('completed',1)->get();
 
         return view('employee.productLab.index', [
             'productLabs' => $productLabs,
+            'productLabsDel' => $productLabsDel
         ]);
     }
 
@@ -158,6 +160,10 @@ class ProductLabController extends Controller
         // Check for correct user
         if(auth()->user()->id !== $productLab->user_id){
             return redirect()->route('productlab.index')->with('error', 'Unauthorized Page');
+        }
+
+        if ($productLab->completed == 1){
+            return redirect()->route('productlab.index')->with('error', 'รายการที่ท่านต้องการดูถูกยกเลิกแล้ว');
         }
         
         return view('employee.productLab.show', ['productLab' => $productLab]);
@@ -296,6 +302,16 @@ class ProductLabController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changeStatus(Request $request, $id)
+    {
+        $productLab = ProductLab::findOrFail($id);
+        $productLab->completed = TRUE;
+        $productLab->save();
+        // dd($productLab);
+        return redirect()->route('productlab.index');
+        
     }
 
     protected function validateProductlab()

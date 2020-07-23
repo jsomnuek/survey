@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+    {{-- productLab Active --}}
     <div class="row">
         <!-- column -->
         <div class="col-md-12">
@@ -23,7 +24,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="productlabTable" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+                    <table id="" class="table table-bordered table-hover table-sm display productlabTable" cellspacing="0" width="100%">
                         @if (count($productLabs) > 0)
                             <thead>                  
                                 <tr>
@@ -34,7 +35,7 @@
                                     <th><i class="fas fa-user-clock"></i></th>
                                 </tr>
                             </thead>
-                            <tbody id="items">
+                            <tbody class="items">
                                 @php
                                     $i = 1;
                                 @endphp
@@ -104,6 +105,72 @@
         <!--/.col -->
     </div>
     <!--/.row -->
+
+    {{-- productLab Disabled --}}
+    <div class="row">
+        <!-- column -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-danger card-outline">
+                    <h3 class="card-title"><i class="fas fa-trash-alt"></i> รายการที่ถูกยกเลิก </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="" class="table table-bordered table-hover table-sm display productlabTable" cellspacing="0" width="100%">
+                        @if (count($productLabsDel) > 0)
+                            <thead>                  
+                                <tr>
+                                    {{-- <th style="width: 10px;">ลำดับ</th> --}}
+                                    <th>ห้องปฏิบัติการ</th>
+                                    <th>ชื่อผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ</th>
+                                    <th>สถานะ</th>
+                                    <th><i class="fas fa-user-clock"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody class="items">
+                                @php
+                                    $i = 1;
+                                @endphp
+                                @foreach ($productLabsDel as $productLab)
+                                <tr>
+                                    {{-- <td class="text-center">{{ $i++ }}</td> --}}
+                                    {{-- <td>{{ $productLab->lab->lab_name }}</td> --}}
+                                    <td>
+                                        {{ $productLab->organization->org_name }}
+                                        @if(!empty($productLab->organization->org_name_level_1)){{ ' : '.$productLab->organization->org_name_level_1 }}@else @endif 
+										@if(!empty($productLab->organization->org_name_level_2)){{ ' : '.$productLab->organization->org_name_level_2 }}@else @endif
+                                        | <mark>{{ $productLab->lab->lab_name }} : {{ $productLab->lab->lab_code }}</mark>
+                                    </td>
+                                    <td>                                    
+                                        {{ $productLab->product_lab_name }}
+                                    </td>
+                                    <td>
+                                        <small class="badge badge-danger">
+                                            รายการที่ถูกยกเลิก
+                                        </small>
+                                    </td>									
+                                    <td>{{ $productLab->updated_at }}</td>                        
+                                </tr>                                
+                                @endforeach
+                            </tbody>
+                        @endif                        
+                    </table>
+                </div>
+                <!--/.card-body -->
+                <div class="card-footer clearfix">
+                    
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <!--/.card -->
+        </div>
+        <!--/.col -->
+    </div>
 @endsection
 
 @section('scripts')

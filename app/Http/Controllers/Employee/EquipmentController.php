@@ -42,11 +42,15 @@ class EquipmentController extends Controller
     public function index()
     {
         // data
-        $equipments = Equipment::where('user_id', auth()->user()->id)->get();
-
+        $equipments = Equipment::where('user_id', auth()->user()->id)->where('completed',0)->get();
+        $equipmentsDel = Equipment::where('user_id', auth()->user()->id)->where('completed',1)->get();
+        
         // return $equipments;
 
-        return view('employee.equipment.index')->with('equipments', $equipments);
+        return view('employee.equipment.index', [
+            'equipments' => $equipments,
+            'equipmentsDel' => $equipmentsDel
+        ]);
     }
 
     /**
@@ -259,6 +263,10 @@ class EquipmentController extends Controller
         if(auth()->user()->id !== $equipment->user_id){
             return redirect()->route('equipment.index')->with('error', 'Unauthorized Page');
         }
+
+        if($equipment->completed == 1){
+            return redirect()->route('equipment.index')->with('error', 'เครื่องมือที่ท่านต้องการดูถูกยกเลิกแล้ว');
+        }
         
         return view('employee.equipment.show', ['equipment' => $equipment]);
     }
@@ -463,6 +471,17 @@ class EquipmentController extends Controller
     public function destroy($id)
     {
         return abort(404);
+    }
+
+    public function changeStatus(Request $request, $id)
+    {
+        // return "eee";
+        $equipments = Equipment::findOrFail($id);
+        $equipments->completed = TRUE;
+        $equipments->save();
+        // dd($productLab);
+        return redirect()->route('equipment.index');
+        
     }
 
     protected function validateEquipment()

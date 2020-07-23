@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+    {{-- equipment active --}}
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -22,7 +23,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="equipmentTable" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+                    <table id="" class="table table-bordered table-hover table-sm display equipmentTable" cellspacing="0" width="100%">
                         @if (count($equipments) > 0)
                             <thead>                  
                                 <tr>
@@ -33,7 +34,7 @@
                                     <th><i class="fas fa-user-clock"></i></th>
                                 </tr>
                             </thead>
-                            <tbody id="items">
+                            <tbody class="items">
                                 @php
                                     $i = 1;
                                 @endphp
@@ -94,6 +95,71 @@
                     <a href="/lab">
                         <i class="far fa-edit"></i> เพิ่มข้อมูลเครื่องมือวิทยาศาสตร์
                     </a>
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <!--/.card -->
+        </div>
+        <!--/.col -->
+    </div>
+    <!--/.row -->
+
+    {{-- equipment disabled --}}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-danger card-outline">
+                    <h3 class="card-title"><i class="fas fa-trash-alt"></i> รายการที่ถูกยกเลิก </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="" class="table table-bordered table-hover table-sm display equipmentTable" cellspacing="0" width="100%">
+                        @if (count($equipmentsDel) > 0)
+                            <thead>                  
+                                <tr>
+                                    {{-- <th style="width: 10px;" class="text-center">ลำดับ</th> --}}
+                                    <th>ห้องปฏิบัติการ</th>
+                                    <th>รหัสเครื่องมือ : ชื่อเครื่องมือวิทยาศาสตร์</th>
+                                    <th>สถานะ</th>
+                                    <th><i class="fas fa-user-clock"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody class="items">
+                                @php
+                                    $i = 1;
+                                @endphp
+                                @foreach ($equipmentsDel as $equipment)
+                                <tr>
+                                    {{-- <td class="text-center">{{ $i++ }}</td> --}}
+                                    <td>
+                                        {{ $equipment->organization->org_name }}
+                                        @if(!empty($equipment->organization->org_name_level_1)){{ ' : '.$equipment->organization->org_name_level_1 }}@else @endif 
+										@if(!empty($equipment->organization->org_name_level_2)){{ ' : '.$equipment->organization->org_name_level_2 }}@else @endif
+                                        | <mark>{{ $equipment->lab->lab_name }} : {{ $equipment->lab->lab_code }}</mark>
+                                    </td>
+                                    <td>                                    
+                                        {{ $equipment->equipment_code }} : {{ $equipment->scienceTool->science_tool_name }}
+                                    </td>
+                                    <td>
+                                        <small class="badge badge-danger">
+                                            รายการที่ถูกยกเลิก
+                                        </small>
+                                    </td>									
+                                    <td>{{ $equipment->updated_at }}</td>
+                                </tr>                                
+                                @endforeach
+                            </tbody>
+                        @endif                        
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer clearfix">
+                
                 </div>
                 <!-- /.card-footer -->
             </div>

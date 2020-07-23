@@ -255,16 +255,25 @@
                                     <a href="/equipment/{{ $equipment->id }}/edit" class="btn btn-info btn-sm">
                                         <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
                                     </a>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+                                        ยกเลิกข้อมูล
+                                    </button>
                                     @break
                                 @case(3)
                                     <a href="/equipment/{{ $equipment->id }}/edit" class="btn btn-info btn-sm">
                                         <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
                                     </a>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+                                        ยกเลิกข้อมูล
+                                    </button>
                                     @break
                                 @case(5)
                                     <a href="/equipment/{{ $equipment->id }}/edit" class="btn btn-info btn-sm">
                                         <i class="fas fa-user-edit"></i> แก้ไขข้อมูล
                                     </a>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+                                        ยกเลิกข้อมูล
+                                    </button>
                                     @break
                                 @default
                             @endswitch                                
@@ -278,4 +287,38 @@
         <!--/.col -->
     </div>
     <!--/.row -->
+@endsection
+
+@section('modal')
+<div class="modal fade" id="modal-delete" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-danger">
+				<h4 class="modal-title">ยืนยันยกเลิกข้อมูล ?</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="/equipment-changeStatus/{{ $equipment->id }}" method="POST" role="form">
+				@csrf
+				@method('PUT')
+				<div class="modal-body">
+                    <div class="d-flex flex-row justify-content-start">
+                        <span class="mr-2">
+                            คุณต้องการยกเลิกเครื่องมือ : <mark> {{ $equipment->equipment_code }} </mark> ใช่หรือไม่?
+                        </span>                      
+                    </div>
+                    <!-- /.d-flex -->
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+					<button type="submit" class="btn btn-danger">ยืนยันการยกเลิกข้อมูล</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 @endsection

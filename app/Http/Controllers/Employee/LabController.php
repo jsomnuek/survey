@@ -47,9 +47,12 @@ class LabController extends Controller
      */
     public function index()
     {
-        $labs = Lab::where('user_id', auth()->user()->id)->get();
+        $labs = Lab::where('user_id', auth()->user()->id)->where('completed',0)->get();
+        $labsDel = Lab::where('user_id', auth()->user()->id)->where('completed',1)->get();
+        // return $labsDel;
         return view('employee.lab.index', [
-            'labs' => $labs
+            'labs' => $labs,
+            'labsDel' => $labsDel
         ]);
     }
 
@@ -276,6 +279,9 @@ class LabController extends Controller
         if(auth()->user()->id !== $lab->user_id){
             return redirect()->route('lab.index')->with('error', 'Unauthorized Page');
         }
+        if($lab->completed == 1){
+            return redirect()->route('lab.index')->with('error', 'ห้องปฏิบัติการที่ท่านต้องการดูข้อมูลถูกยกเลิกแล้ว');
+        }
 
         return view('employee.lab.show', ['lab' => $lab]);
     }
@@ -444,6 +450,16 @@ class LabController extends Controller
     public function destroy($id)
     {
         return abort(404);
+    }
+
+    public function changeStatus(Request $request, $id)
+    {
+        // return "eee";
+        $lab = Lab::findOrFail($id);
+        $lab->completed = TRUE;
+        $lab->save();
+        // dd($productLab);
+        return redirect()->route('lab.index');
     }
 
     protected function validateLab()

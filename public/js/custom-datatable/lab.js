@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // DataTable
     var groupColumn = 0;
-    var table = $("#labTable").DataTable({
+    var table = $(".labTable").DataTable({
         columnDefs: [
             {
                 targets: [groupColumn],
@@ -44,7 +44,7 @@ $(document).ready(function() {
     // Event Toggle
     // $('tr.odd').toggle();
     // $('tr.even').toggle();
-    $("#items").on("click", "tr.group", function(e) {
+    $(".items").on("click", "tr.group", function(e) {
         let this_ = $(this)
             .find("i")
             .toggleClass("far fa-minus-square fas fa-plus-square");

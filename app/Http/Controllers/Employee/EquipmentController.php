@@ -265,7 +265,7 @@ class EquipmentController extends Controller
         }
 
         if($equipment->completed == 1){
-            return redirect()->route('equipment.index')->with('error', 'เครื่องมือที่ท่านต้องการดูถูกยกเลิกแล้ว');
+            return redirect()->route('equipment.index')->with('error', 'เครื่องมือที่ท่านต้องการดูข้อมูลถูกยกเลิกแล้ว');
         }
         
         return view('employee.equipment.show', ['equipment' => $equipment]);

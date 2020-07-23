@@ -74,10 +74,12 @@ Route::middleware(['checkRole:admin,bstiAdmin'])->group(function() {
 
 Route::middleware(['checkRole:admin,dssUser,surveyer'])->group(function() {
     // OrganizationController
+    Route::put('/organization-changeStatus/{id}', 'Employee\OrganizationController@changeStatus');
     Route::resource('/organization', 'Employee\OrganizationController');
 
     // LabController
     Route::get('/lab/create-org-id/{id}', 'Employee\LabController@createByOrgId')->name('lab.create-org-id');
+    Route::put('/lab-changeStatus/{id}', 'Employee\LabController@changeStatus');
     Route::resource('/lab', 'Employee\LabController');
 
     // EquipmentController

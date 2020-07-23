@@ -163,7 +163,7 @@ class ProductLabController extends Controller
         }
 
         if ($productLab->completed == 1){
-            return redirect()->route('productlab.index')->with('error', 'รายการทดสอบที่ท่านต้องการดูถูกยกเลิกแล้ว');
+            return redirect()->route('productlab.index')->with('error', 'รายการทดสอบที่ท่านต้องการดูข้อมูลถูกยกเลิกแล้ว');
         }
         
         return view('employee.productLab.show', ['productLab' => $productLab]);

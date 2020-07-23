@@ -39,8 +39,9 @@ class OrganizationController extends Controller
     public function index()
     {
         // $orgs = Organization::all();
-        $orgs = Organization::where('user_id', auth()->user()->id)->get();
-        return view('employee.organization.index', ['orgs' => $orgs]);
+        $orgs = Organization::where('user_id', auth()->user()->id)->where('completed',0)->get();
+        $orgsDel = Organization::where('user_id', auth()->user()->id)->where('completed',1)->get();
+        return view('employee.organization.index', ['orgs' => $orgs, 'orgsDel' => $orgsDel]);
     }
 
     /**
@@ -211,6 +212,9 @@ class OrganizationController extends Controller
             return redirect()->route('organization.index')->with('error', 'Unauthorized Page');
         }
         
+        if($org->completed == 1){
+            return redirect()->route('organization.index')->with('error', 'องค์กรที่ท่านต้องการดูข้อมูลถูกยกเลิกแล้ว');
+        }
         return view('employee.organization.show', [
             'org' => $org,
         ]);
@@ -366,6 +370,15 @@ class OrganizationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changeStatus(Request $request, $id)
+    {
+        // return "000";
+        $orgs = Organization::findOrFail($id);
+        $orgs->completed = TRUE;
+        $orgs->save();
+        return redirect()->route('organization.index');
     }
 
     /**

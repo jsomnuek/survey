@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+	{{-- active lab --}}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
@@ -22,7 +23,7 @@
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">
-					<table id="labTable" class="table table-bordered table-hover table-sm display" cellspacing="0" width="100%">
+					<table id="" class="table table-bordered table-hover table-sm display labTable" cellspacing="0" width="100%">
 						@if (count($labs) > 0)
 							<thead>                  
 								<tr>
@@ -35,7 +36,7 @@
 									<th><i class="fas fa-user-cog"></i></th>
 								</tr>
 							</thead>
-							<tbody id="items">
+							<tbody class="items">
 								@php
 									$i = 1;
 								@endphp
@@ -138,6 +139,71 @@
                     <a href="/organization">
                         <i class="far fa-edit"></i> เพิ่มข้อมูลห้องปฏิบัติการ
                     </a>
+                </div>
+                <!--/.card-footer -->
+			</div>
+			<!--/.card -->
+		</div>
+		<!--/.col -->
+	</div>
+	<!--/.row -->
+
+	{{-- disabled lab --}}
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header card-danger card-outline">
+					<h3 class="card-title"><i class="far fa-trash-alt"></i> รายการที่ถูกยกเลิก</h3>
+					<div class="card-tools">
+						<button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+					<table id="" class="table table-bordered table-hover table-sm display labTable" cellspacing="0" width="100%">
+						@if (count($labsDel) > 0)
+							<thead>                  
+								<tr>
+									{{-- <th style="width: 10px;">ลำดับ</th> --}}
+									<th>ชื่อองค์กร</th>
+									<th>ชื่อห้องปฏิบัติการ : รหัสห้องปฏิบัติการ</th>
+									<th>สถานะ</th>
+									<th><i class="fas fa-user-clock"></i></th>
+								</tr>
+							</thead>
+							<tbody class="items">
+								@php
+									$i = 1;
+								@endphp
+								@foreach ($labsDel as $lab)
+									<tr>
+										{{-- <td class="text-center">{{ $i++ }}</td> --}}
+										<td>
+											{{ $lab->organization->org_name }} 
+											@if(!empty($lab->organization->org_name_level_1)){{ ' : '.$lab->organization->org_name_level_1 }}@else @endif 
+											@if(!empty($lab->organization->org_name_level_2)){{ ' : '.$lab->organization->org_name_level_2 }}@else @endif
+											: <mark>{{ $lab->organization->org_code }}</mark>
+										</td>
+										<td>
+											{{ $lab->lab_name }} : <mark>{{ $lab->lab_code }}</mark>
+										</td>
+										<td>
+											<small class="badge badge-danger">
+												รายการที่ถูกยกเลิก
+											</small>
+										</td>
+										<td>{{ $lab->updated_at }}</td>		
+									</tr>                                
+								@endforeach
+							</tbody>						
+						@endif		
+					</table>
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer clearfix">
+                    
                 </div>
                 <!--/.card-footer -->
 			</div>

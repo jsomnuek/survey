@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/committee-questionnaire-pdf', 'Committee\QuestionnaireController@generatePdf')->name('committee-questionnaire.pdf');
 // Route::get('/org', function () {
 //     return view('employee.organize.create');
 // });

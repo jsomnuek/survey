@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Committee;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use PDF;
 use App\User;
 
 use App\Helpers\LogActivity;
@@ -18,6 +18,18 @@ use App\Model\Logs\LogCommentLabFile;
 
 class QuestionnaireController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['generatePdf']
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -135,5 +147,13 @@ class QuestionnaireController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    function generatePdf() {
+        $data = [
+            'foo' => 'bar'
+        ];
+        $pdf = PDF::loadView('committee.questionnaire.pdf', $data);
+        return $pdf->stream('document.pdf');
     }
 }

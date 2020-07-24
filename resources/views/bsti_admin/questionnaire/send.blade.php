@@ -97,8 +97,8 @@
                                                         @endswitch
                                                     </td>
                                                     <td>
-                                                        <small class="badge badge-primary">
-                                                            ส่งข้อมูลแล้วรอตรวจสอบ
+                                                        <small class="badge badge-success">
+                                                            อนุมัติข้อมูลส่งงานได้
                                                         </small>
                                                     </td>
                                                     <td>{{ $lab->send_date }}</td>

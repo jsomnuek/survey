@@ -180,7 +180,7 @@ return [
         * Survey Application Service Provider
         */
         Collective\Html\HtmlServiceProvider::class,
-
+        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
     ],
 
     /*
@@ -195,7 +195,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -233,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacades::class,
         'Html' => Collective\Html\HtmlFacades::class,
-
+        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
         'LogActivity' => App\Helpers\LogActivity::class,
 
     ],

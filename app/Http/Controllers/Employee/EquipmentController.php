@@ -499,7 +499,7 @@ class EquipmentController extends Controller
         } else {
             for ($i=0; $i < count($productLab); $i++) { 
                 if($productLab[$i] == 0){
-                    return redirect()->route('equipment.index')->with('error', '!! ไม่สามารถยกเลิกเครื่องมือได้ เนื่องจากมีข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
+                    return redirect()->route('equipment.index')->with('error', '!! ไม่สามารถยกเลิกเครื่องมือได้ เนื่องจากมีข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบที่ใช้เครื่องมือนี้อยู่
             กรุณาตรวจสอบอีกครั้ง !!');
                 } else {
                     $equipment->completed = TRUE;

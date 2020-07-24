@@ -51,7 +51,11 @@
                                             <td>                                    
                                                 <a href="/equipment/{{ $equipment->id }}">
                                                     <i class="far fa-hand-point-right"></i>
-                                                    {{ $equipment->equipment_code }} : {{ $equipment->scienceTool->science_tool_name }}
+                                                    @if ($equipment->science_tool_other_name == null )
+                                                        {{ $equipment->equipment_code }} : {{ $equipment->scienceTool->science_tool_name }}
+                                                    @else
+                                                        {{ $equipment->equipment_code }} : {{ $equipment->science_tool_other_name }}
+                                                    @endif
                                                 </a>
                                             </td>
                                             <td>
@@ -145,7 +149,11 @@
                                         | <mark>{{ $equipment->lab->lab_name }} : {{ $equipment->lab->lab_code }}</mark>
                                     </td>
                                     <td>                                    
-                                        {{ $equipment->equipment_code }} : {{ $equipment->scienceTool->science_tool_name }}
+                                        @if ($equipment->science_tool_other_name == null )
+                                            {{ $equipment->equipment_code }} : {{ $equipment->scienceTool->science_tool_name }}
+                                        @else
+                                            {{ $equipment->equipment_code }} : {{ $equipment->science_tool_other_name }}
+                                        @endif
                                     </td>
                                     <td>
                                         <small class="badge badge-danger">

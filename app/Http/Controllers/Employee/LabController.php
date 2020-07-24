@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Model\Employee\Lab;
 use App\Model\Employee\Organization;
+use App\Model\Employee\Equipment;
+use App\Model\Employee\ProductLab;
 use App\Model\Employee\EducationLevelLab;
 
 use App\Model\Employee\Development\Internal;
@@ -458,12 +460,43 @@ class LabController extends Controller
 
     public function changeStatus(Request $request, $id)
     {
-        // return "eee";
+        // Find Lab that will disabled
         $lab = Lab::findOrFail($id);
-        $lab->completed = TRUE;
-        $lab->save();
-        // dd($productLab);
-        return redirect()->route('lab.index');
+
+        // check lab that will disabled no equipment or productLab yet ?
+        // $chk_equipment_in_lab = count($lab->equipments);
+        // $chk_product_in_lab = count($lab->productLabs);
+
+        // if ($chk_equipment_in_lab == 0 && $chk_product_in_lab == 0) {
+        //     $lab->completed = TRUE;
+        //     $lab->save();
+        //     return redirect()->route('lab.index');
+        // } else {
+        //     return redirect()->route('lab.index')->with('error', '!! ไม่สามารถยกเลิกห้องปฏิบัติการได้ เนื่องจากในห้องปฏิบัติการนี้ยังมีเครื่องมือวิทยาศาสตร์หรือข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
+        //     กรูณาตรวจสอบอีกครั้ง !!');
+        // }
+
+        $equipment = array();
+        foreach ($lab->equipments as $item) {
+            $equipment[] = $item->completed;
+        }
+        
+        if (empty($equipment)) {
+            $lab->completed = TRUE;
+            $lab->save();
+            return redirect()->route('lab.index');
+        } else {
+            for ($i=0; $i < count($equipment); $i++) { 
+                if($equipment[$i] == 0){
+                    return redirect()->route('lab.index')->with('error', '!! ไม่สามารถยกเลิกเครื่องมือได้ เนื่องจากมีข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
+            กรุณาตรวจสอบอีกครั้ง !!');
+                } else {
+                    $lab->completed = TRUE;
+                    $lab->save();
+                    return redirect()->route('lab.index');
+                }
+            }
+        }
     }
 
     protected function validateLab()

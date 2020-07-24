@@ -45,7 +45,7 @@ class EquipmentController extends Controller
         $equipments = Equipment::where('user_id', auth()->user()->id)->where('completed',0)->get();
         $equipmentsDel = Equipment::where('user_id', auth()->user()->id)->where('completed',1)->get();
         
-        // return $equipments;
+        // dd($equipments) ;
 
         return view('employee.equipment.index', [
             'equipments' => $equipments,
@@ -482,13 +482,32 @@ class EquipmentController extends Controller
 
     public function changeStatus(Request $request, $id)
     {
-        // return "eee";
-        $equipments = Equipment::findOrFail($id);
-        $equipments->completed = TRUE;
-        $equipments->save();
-        // dd($productLab);
-        return redirect()->route('equipment.index');
-        
+        $equipment = Equipment::findOrFail($id);
+        // check equipment use in productLab
+
+        $productLab = array();
+        foreach ($equipment->productLabs as $item) {
+            $productLab[] = $item->completed;
+        }
+
+        // return json_encode($productLab);
+
+        if (empty($productLab)) {
+            $equipment->completed = TRUE;
+            $equipment->save();
+            return redirect()->route('equipment.index');
+        } else {
+            for ($i=0; $i < count($productLab); $i++) { 
+                if($productLab[$i] == 0){
+                    return redirect()->route('equipment.index')->with('error', '!! ไม่สามารถยกเลิกเครื่องมือได้ เนื่องจากมีข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
+            กรุณาตรวจสอบอีกครั้ง !!');
+                } else {
+                    $equipment->completed = TRUE;
+                    $equipment->save();
+                    return redirect()->route('equipment.index');
+                }
+            }
+        }
     }
 
     protected function validateEquipment()

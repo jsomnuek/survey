@@ -310,6 +310,7 @@ class ProductLabController extends Controller
 
     public function changeStatus(Request $request, $id)
     {
+        
         $productLab = ProductLab::findOrFail($id);
         $productLab->completed = TRUE;
         $productLab->save();

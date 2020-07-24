@@ -39,7 +39,7 @@
                                     $i = 1;
                                 @endphp
                                 @foreach ($equipments as $equipment)
-                                    @if ($equipment->lab->completed == 0)    
+                                    @if ($equipment->organization->completed == 0 && $equipment->lab->completed == 0)    
                                         <tr>
                                             {{-- <td class="text-center">{{ $i++ }}</td> --}}
                                             <td>

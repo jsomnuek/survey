@@ -8,6 +8,7 @@ use App\User;
 use App\Model\Employee\Organization;
 use App\Model\Employee\EducationLevelLab;
 use App\Model\Employee\Equipment;
+use App\Model\Employee\ProductLab;
 use App\Model\Employee\Development\Internal;
 use App\Model\Employee\Development\IsoIec17025;
 use App\Model\Employee\Development\Method;

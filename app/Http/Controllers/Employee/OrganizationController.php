@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Model\Employee\Organization;
+use App\Model\Employee\Lab;
+use App\Model\Employee\Equipment;
+use App\Model\Employee\ProductLab;
+
 use App\Model\BasicInformations\SaleProduct;
 use App\Model\BasicInformations\Country;
 use App\Model\BasicInformations\OrganisationType;
@@ -374,11 +378,44 @@ class OrganizationController extends Controller
 
     public function changeStatus(Request $request, $id)
     {
-        // return "000";
-        $orgs = Organization::findOrFail($id);
-        $orgs->completed = TRUE;
-        $orgs->save();
-        return redirect()->route('organization.index');
+        // find org that will disabled
+        $org = Organization::findOrFail($id);
+
+        // // check Lab in this Organize that disabled yet ?
+        // $chk_lab_in_org = count($org->labs);
+        // // return $chk_lab_in_org;
+
+        // if ($chk_lab_in_org == 0) {
+        //     $org->completed = TRUE;
+        //     $org->save();
+        //     return redirect()->route('organization.index');
+        // } else {
+        //     return redirect()->route('organization.index')->with('error', 'ไม่สามารถยกเลิกองค์กรนี้ได้ เนื่องจากในองค์กรนี้ยังมีห้องปฏิบัติการ เครื่องมือวิทยาศาสตร์ หรือข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
+        //     กรุณาตรวจสอบอีกครั้ง !!');
+        // }
+        
+        $lab = array();
+        foreach ($org->labs as $item) {
+            $lab[] = $item->completed;
+        }
+        
+        if (empty($lab)) {
+            $org->completed = TRUE;
+            $org->save();
+            return redirect()->route('organization.index');
+        } else {
+            for ($i=0; $i < count($lab); $i++) { 
+                if($lab[$i] == 0){
+                    return redirect()->route('organization.index')->with('error', '!! ไม่สามารถยกเลิกเครื่องมือได้ เนื่องจากมีข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
+            กรุณาตรวจสอบอีกครั้ง !!');
+                } else {
+                    $org->completed = TRUE;
+                    $org->save();
+                    return redirect()->route('organization.index');
+                }
+            }
+        }
+        
     }
 
     /**

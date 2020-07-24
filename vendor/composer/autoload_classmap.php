@@ -4131,8 +4131,6 @@ return array(
     'Symfony\\Component\\HttpKernel\\RebootableInterface' => $vendorDir . '/symfony/http-kernel/RebootableInterface.php',
     'Symfony\\Component\\HttpKernel\\TerminableInterface' => $vendorDir . '/symfony/http-kernel/TerminableInterface.php',
     'Symfony\\Component\\HttpKernel\\UriSigner' => $vendorDir . '/symfony/http-kernel/UriSigner.php',
-    'Symfony\\Component\\HttpKernel\\names' => $vendorDir . '/symfony/http-kernel/Kernel.php',
-    'Symfony\\Component\\HttpKernel\\null' => $vendorDir . '/symfony/http-kernel/Kernel.php',
     'Symfony\\Component\\Mime\\Address' => $vendorDir . '/symfony/mime/Address.php',
     'Symfony\\Component\\Mime\\BodyRendererInterface' => $vendorDir . '/symfony/mime/BodyRendererInterface.php',
     'Symfony\\Component\\Mime\\CharacterStream' => $vendorDir . '/symfony/mime/CharacterStream.php',

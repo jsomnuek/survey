@@ -89,11 +89,7 @@ final class Address
             return $address;
         }
         if (\is_string($address)) {
-<<<<<<< HEAD
-            return new self($address);
-=======
             return self::fromString($address);
->>>>>>> f644d35c23b987086ad2e652e5fc022bb27544b6
         }
 
         throw new InvalidArgumentException(sprintf('An address can be an instance of Address or a string ("%s") given).', get_debug_type($address)));

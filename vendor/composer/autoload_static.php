@@ -4580,8 +4580,6 @@ class ComposerStaticInit3fae6850682ed80268266a6186e015b2
         'Symfony\\Component\\HttpKernel\\RebootableInterface' => __DIR__ . '/..' . '/symfony/http-kernel/RebootableInterface.php',
         'Symfony\\Component\\HttpKernel\\TerminableInterface' => __DIR__ . '/..' . '/symfony/http-kernel/TerminableInterface.php',
         'Symfony\\Component\\HttpKernel\\UriSigner' => __DIR__ . '/..' . '/symfony/http-kernel/UriSigner.php',
-        'Symfony\\Component\\HttpKernel\\names' => __DIR__ . '/..' . '/symfony/http-kernel/Kernel.php',
-        'Symfony\\Component\\HttpKernel\\null' => __DIR__ . '/..' . '/symfony/http-kernel/Kernel.php',
         'Symfony\\Component\\Mime\\Address' => __DIR__ . '/..' . '/symfony/mime/Address.php',
         'Symfony\\Component\\Mime\\BodyRendererInterface' => __DIR__ . '/..' . '/symfony/mime/BodyRendererInterface.php',
         'Symfony\\Component\\Mime\\CharacterStream' => __DIR__ . '/..' . '/symfony/mime/CharacterStream.php',

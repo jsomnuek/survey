@@ -488,7 +488,7 @@ class LabController extends Controller
         } else {
             for ($i=0; $i < count($equipment); $i++) { 
                 if($equipment[$i] == 0){
-                    return redirect()->route('lab.index')->with('error', '!! ไม่สามารถยกเลิกเครื่องมือได้ เนื่องจากมีข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
+                    return redirect()->route('lab.index')->with('error', '!! ไม่สามารถยกเลิกห้องปฏิบัติการได้ เนื่องจากในห้องปฏิบัติการนี้ยังมีเครื่องมือวิทยาศาสตร์หรือข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
             กรุณาตรวจสอบอีกครั้ง !!');
                 } else {
                     $lab->completed = TRUE;

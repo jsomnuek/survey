@@ -406,8 +406,7 @@ class OrganizationController extends Controller
         } else {
             for ($i=0; $i < count($lab); $i++) { 
                 if($lab[$i] == 0){
-                    return redirect()->route('organization.index')->with('error', '!! ไม่สามารถยกเลิกเครื่องมือได้ เนื่องจากมีข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ
-            กรุณาตรวจสอบอีกครั้ง !!');
+                    return redirect()->route('organization.index')->with('error', '!! ไม่สามารถยกเลิกข้อมูลองค์กรได้ เนื่องจากในองค์กรยังมีข้อมูลห้องปฏิบัติการ เครื่องมือวิทยาศาสตร์ หรือข้อมูลผลิตภัณฑ์ และรายการวิจัย/ทดสอบ/สอบเทียบ กรุณาตรวจสอบอีกครั้ง !!');
                 } else {
                     $org->completed = TRUE;
                     $org->save();

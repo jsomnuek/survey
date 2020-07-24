@@ -146,7 +146,11 @@
                                     <select class="form-control custom-select select2-multi @error('equipment_id') is-invalid @enderror" style="width: 100%;" multiple="multiple" name="equipment_id[]" id="equipment_id">
                                         @foreach ($equipments as $item)
                                         <option value="{{ $item->id }}" {{ in_array($item->id, old('equipment_id') ? : []) ? 'selected' : '' }}>
-                                            {{ $item->equipment_code }} : {{ $item->scienceTool->science_tool_name }}
+                                            @if ($item->science_tool_other_name == null)
+                                                {{ $item->equipment_code }} : {{ $item->scienceTool->science_tool_name }}
+                                            @else
+                                                {{ $item->equipment_code }} : {{ $item->science_tool_other_name }}
+                                            @endif
                                         </option>
                                         @endforeach
                                     </select>

@@ -1632,7 +1632,7 @@
                 "dev-development": "7.x-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Mpdf\\": "src/"

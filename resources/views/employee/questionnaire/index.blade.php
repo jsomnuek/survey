@@ -77,10 +77,10 @@
 										<thead>                  
 											<tr>
 												<th style="width: 10px;">ลำดับ</th>
-												<th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
+												<th style="width: 60%;">ชื่อหน่วยงาน : รายการชุดข้อมูลห้องปฏิบัติการ</th>
 												<th>สถานะ</th>
 												<th>วันที่ส่งข้อมูล</th>
-												<th><i class="fas fa-user-cog"></i></th>
+												{{-- <th><i class="fas fa-user-cog"></i></th> --}}
 											</tr>
 										</thead>
 										<tbody id="items">
@@ -91,9 +91,14 @@
 											<tr>
 												<td class="text-center">{{ $i++ }}</td>
 												<td>
-													<a href="/questionnaire/{{$lab->id}}">
-														รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-													</a>
+													{{ $lab->organization->org_name }}
+													@if(!empty($lab->organization->org_name_level_1)){{ ' : '.$lab->organization->org_name_level_1 }}@else @endif 
+													@if(!empty($lab->organization->org_name_level_2)){{ ' : '.$lab->organization->org_name_level_2 }}@else @endif
+													<mark>
+														<a href="/questionnaire/{{$lab->id}}">
+															รหัสห้องปฏิบัติการ: {{ $lab->lab_code }}
+														</a>
+													</mark>
 												</td>
 												<td>
 													@switch($lab->survey_status_id)
@@ -126,13 +131,13 @@
 													@endswitch												
 												</td>
 												<td>{{ $lab->send_date }}</td>
-												<td>
+												{{-- <td>
 													@if ($lab->surveyStatus->id == 1 || $lab->surveyStatus->id == 3)
 														<a href="/questionnaire/{{$lab->id}}">
 															<i class="far fa-share-square"></i> ส่งข้อมูล
 														</a>
 													@endif													
-												</td>
+												</td> --}}
 											</tr>                                
 											@endforeach
 										</tbody>						
@@ -146,7 +151,7 @@
 										<thead>                  
 											<tr>
 												<th style="width: 10px;">ลำดับ</th>
-												<th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
+												<th style="width: 50%;">ชื่อหน่วยงาน : รายการชุดข้อมูลห้องปฏิบัติการ</th>
 												<th>สถานะ</th>
 												<th>วันที่ส่งข้อมูล</th>
 												<th>วันที่อนุมัติข้อมูล</th>
@@ -160,9 +165,14 @@
 											<tr>
 												<td class="text-center">{{ $i++ }}</td>
 												<td>
-													<a href="/questionnaire/{{$lab->id}}">
-														รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-													</a>
+													{{ $lab->organization->org_name }}
+													@if(!empty($lab->organization->org_name_level_1)){{ ' : '.$lab->organization->org_name_level_1 }}@else @endif 
+													@if(!empty($lab->organization->org_name_level_2)){{ ' : '.$lab->organization->org_name_level_2 }}@else @endif
+													<mark>
+														<a href="/questionnaire/{{$lab->id}}">
+															รหัสห้องปฏิบัติการ: {{ $lab->lab_code }}
+														</a>
+													</mark>
 												</td>
 												<td>
 													@switch($lab->survey_status_id)
@@ -209,7 +219,7 @@
 										<thead>                  
 											<tr>
 												<th style="width: 10px;">ลำดับ</th>
-												<th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
+												<th style="width: 50%;">ชื่อหน่วยงาน : รายการชุดข้อมูลห้องปฏิบัติการ</th>
 												<th>สถานะ</th>
 												<th>วันที่ส่งข้อมูล</th>
 												<th>วันที่อนุมัติข้อมูล</th>
@@ -223,9 +233,14 @@
 											<tr>
 												<td class="text-center">{{ $i++ }}</td>
 												<td>
-													<a href="/questionnaire/{{$lab->id}}">
-														รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-													</a>
+													{{ $lab->organization->org_name }}
+													@if(!empty($lab->organization->org_name_level_1)){{ ' : '.$lab->organization->org_name_level_1 }}@else @endif 
+													@if(!empty($lab->organization->org_name_level_2)){{ ' : '.$lab->organization->org_name_level_2 }}@else @endif
+													<mark>
+														<a href="/questionnaire/{{$lab->id}}">
+															รหัสห้องปฏิบัติการ: {{ $lab->lab_code }}
+														</a>
+													</mark>
 												</td>
 												<td>
 													@switch($lab->survey_status_id)
@@ -272,7 +287,7 @@
 										<thead>                  
 											<tr>
 												<th style="width: 10px;">ลำดับ</th>
-												<th>รายการชุดข้อมูลห้องปฏิบัติการ</th>
+												<th style="width: 50%;">ชื่อหน่วยงาน : รายการชุดข้อมูลห้องปฏิบัติการ</th>
 												<th>สถานะ</th>
 												<th>วันที่ส่งข้อมูล</th>
 												<th>วันที่อนุมัติข้อมูล</th>
@@ -286,9 +301,14 @@
 											<tr>
 												<td class="text-center">{{ $i++ }}</td>
 												<td>
-													<a href="/questionnaire/{{$lab->id}}">
-														รหัสห้องปฏิบัติการ: <mark>{{ $lab->lab_code }}</mark>
-													</a>
+													{{ $lab->organization->org_name }}
+													@if(!empty($lab->organization->org_name_level_1)){{ ' : '.$lab->organization->org_name_level_1 }}@else @endif 
+													@if(!empty($lab->organization->org_name_level_2)){{ ' : '.$lab->organization->org_name_level_2 }}@else @endif
+													<mark>
+														<a href="/questionnaire/{{$lab->id}}">
+															รหัสห้องปฏิบัติการ: {{ $lab->lab_code }}
+														</a>
+													</mark>
 												</td>
 												<td>
 													@switch($lab->survey_status_id)

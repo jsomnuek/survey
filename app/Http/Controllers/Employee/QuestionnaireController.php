@@ -44,16 +44,20 @@ class QuestionnaireController extends Controller
         $surveyStatus = SurveyStatus::all();
 
         $labs = Lab::where('user_id', auth()->user()->id)
+            ->where('completed', 0)
             ->orderBy('created_at', 'desc')
             ->get();
 
         $labJuly = Lab::where('user_id', auth()->user()->id)
+            ->where('completed', 0)
             ->whereMonth('send_date', '07')
             ->get();
         $labAugust = Lab::where('user_id', auth()->user()->id)
+            ->where('completed', 0)
             ->whereMonth('send_date', '08')
             ->get();
         $labSeptember = Lab::where('user_id', auth()->user()->id)
+            ->where('completed', 0)
             ->whereMonth('send_date', '09')
             ->get();
 
@@ -100,6 +104,10 @@ class QuestionnaireController extends Controller
     public function show($id)
     {
         $lab = Lab::find($id);
+
+        if($lab->completed == 1){
+            return redirect()->route('questionnaire.index')->with('error', 'ห้องปฏิบัติการที่ท่านต้องการดูข้อมูลถูกยกเลิกแล้ว');
+        }
         
         $user = User::find($lab->user_id);
 
@@ -154,30 +162,6 @@ class QuestionnaireController extends Controller
 
             // create log activity
             LogActivity::addToLog("Employee Edit Lab : $lab->id : $lab->lab_code successfully.");
-
-            return redirect()->route('questionnaire.index');
-        }
-
-        // Test function Reset
-        if($survey_status_id == 100) {
-            // clean
-            $lab->survey_status_id = 1;
-            $lab->completed = false;
-            $lab->send_date = null;
-            $lab->save();
-
-            // $equipments = array();
-            // foreach ($lab->equipments as $item){
-            //     // clean
-            //     // $equipments[] = $item->id;
-            //     Equipment::where('id', $item->id)->update(['completed' => false,]);
-            // }
-            // return $equipments;
-
-            // foreach ($lab->productLabs as $item){
-            //     // clean
-            //     ProductLab::where('id', $item->id)->update(['completed' => false,]);
-            // }
 
             return redirect()->route('questionnaire.index');
         }

@@ -970,9 +970,15 @@
                                         <div class="card-header" id="heading{{ $equipment->id }}">
                                             <h2 class="mb-0">
                                                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ $equipment->id }}" aria-expanded="true" aria-controls="collapse{{ $equipment->id }}">
-                                                    <span class="badge badge-primary">{{$i++}}</span>
-                                                    {{ $equipment->equipment_code }} : 
-                                                    {{ $equipment->scienceTool->science_tool_name }}
+													<span class="badge badge-primary">{{$i++}}</span>
+													@if ($equipment->science_tool_other_name != null)
+														{{ $equipment->equipment_code }} : 
+														{{ $equipment->science_tool_other_name }}
+													@else
+														{{ $equipment->equipment_code }} : 
+														{{ $equipment->scienceTool->science_tool_name }}
+													@endif
+                                                    
                                                 </button>
                                             </h2>
                                         </div>

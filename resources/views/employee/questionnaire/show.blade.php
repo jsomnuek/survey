@@ -56,13 +56,17 @@
 							<li class="nav-item">
 								<a class="nav-link" id="custom-tabs-four-equipment-tab" data-toggle="pill" href="#custom-tabs-four-equipment" role="tab" aria-controls="custom-tabs-four-equipment" aria-selected="false">
 									<mark>ส่วนที่ 3</mark> เครื่องมือ 
-									<span class="badge badge-primary">{{ count($lab->equipments) }}</span>
+									<span class="badge badge-primary">
+										{{ $equipment_count }}
+									</span>
                                 </a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="custom-tabs-four-productLab-tab" data-toggle="pill" href="#custom-tabs-four-productLab" role="tab" aria-controls="custom-tabs-four-productLab" aria-selected="false">
 									<mark>ส่วนที่ 4</mark> รายการทดสอบ 
-									<span class="badge badge-primary">{{ count($lab->productLabs) }}</span>
+									<span class="badge badge-primary">
+										{{ $productLab_count }}
+									</span>
                                 </a>
 							</li>
 						</ul>
@@ -965,7 +969,8 @@
 									@php
 										$i = 1;
 									@endphp
-                                    @foreach ($lab->equipments as $equipment)
+									@foreach ($lab->equipments as $equipment)
+									@if ($equipment->completed != 1)
                                     <div class="card mb-0">
                                         <div class="card-header" id="heading{{ $equipment->id }}">
                                             <h2 class="mb-0">
@@ -1205,7 +1210,8 @@
 											<!-- /.card-body -->
 										</div>
 										<!-- /.collapse -->
-                                    </div>
+                                    </div>									
+									@endif
                                     @endforeach
 								</div>
 								<!-- /.accordion -->
@@ -1216,7 +1222,8 @@
 									@php
 										$i = 1;
 									@endphp
-                                    @foreach ($lab->productLabs as $productLab)
+									@foreach ($lab->productLabs as $productLab)
+									@if ($productLab->completed != 1)
                                     <div class="card mb-0">
                                         <div class="card-header" id="heading{{ $productLab->id }}">
                                             <h2 class="mb-0">
@@ -1397,7 +1404,8 @@
 											<!-- /.card-body -->
 										</div>
 										<!-- /.collapse -->
-                                    </div>
+                                    </div>										
+									@endif
                                     @endforeach
 								</div>
 								<!-- /.accordion -->

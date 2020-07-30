@@ -44,21 +44,21 @@ class QuestionnaireController extends Controller
         $surveyStatus = SurveyStatus::all();
 
         $labs = Lab::where('user_id', auth()->user()->id)
-            ->where('completed', 0)
             ->orderBy('created_at', 'desc')
+            ->where('completed', 0)
             ->get();
 
         $labJuly = Lab::where('user_id', auth()->user()->id)
-            ->where('completed', 0)
             ->whereMonth('send_date', '07')
+            ->where('completed', 0)
             ->get();
         $labAugust = Lab::where('user_id', auth()->user()->id)
-            ->where('completed', 0)
             ->whereMonth('send_date', '08')
+            ->where('completed', 0)
             ->get();
         $labSeptember = Lab::where('user_id', auth()->user()->id)
-            ->where('completed', 0)
             ->whereMonth('send_date', '09')
+            ->where('completed', 0)
             ->get();
 
         // return $labJuly;
@@ -105,6 +105,22 @@ class QuestionnaireController extends Controller
     {
         $lab = Lab::find($id);
 
+        $equipments = array();
+        foreach($lab->equipments as $item){
+            if($item->completed != 1){
+                $equipments[] = $item->id;
+            }
+        }
+        $equipment_count = count($equipments);
+
+        $productLabs = array();
+        foreach($lab->productLabs as $item){
+            if($item->completed != 1){
+                $productLabs[] = $item->id;
+            }
+        }
+        $productLab_count = count($productLabs);
+
         if($lab->completed == 1){
             return redirect()->route('questionnaire.index')->with('error', 'ห้องปฏิบัติการที่ท่านต้องการดูข้อมูลถูกยกเลิกแล้ว');
         }
@@ -113,7 +129,9 @@ class QuestionnaireController extends Controller
 
         $surveyStatus = SurveyStatus::all();
 
-        return view('employee.questionnaire.show', compact(['lab', 'user', 'surveyStatus']));
+        return view('employee.questionnaire.show', compact([
+            'lab', 'user', 'equipment_count', 'productLab_count', 'surveyStatus'
+        ]));
 
         // return response()->json(['data' => $lab]);
     }

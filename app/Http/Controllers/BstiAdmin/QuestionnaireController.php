@@ -120,16 +120,20 @@ class QuestionnaireController extends Controller
 
         $labs = Lab::where('user_id', $id)
             ->orderBy('created_at', 'desc')
+            ->where('completed', 0)
             ->get();
 
         $labJuly = Lab::where('user_id', $id)
             ->whereMonth('send_date', '07')
+            ->where('completed', 0)
             ->get();
         $labAugust = Lab::where('user_id', $id)
             ->whereMonth('send_date', '08')
+            ->where('completed', 0)
             ->get();
         $labSeptember = Lab::where('user_id', $id)
             ->whereMonth('send_date', '09')
+            ->where('completed', 0)
             ->get();
 
         // return $logCommentLabs;
@@ -157,12 +161,15 @@ class QuestionnaireController extends Controller
 
         $labJuly = Lab::where('user_id', $id)
             ->whereMonth('send_date', '07')
+            ->where('completed', 0)
             ->get();
         $labAugust = Lab::where('user_id', $id)
             ->whereMonth('send_date', '08')
+            ->where('completed', 0)
             ->get();
         $labSeptember = Lab::where('user_id', $id)
             ->whereMonth('send_date', '09')
+            ->where('completed', 0)
             ->get();
 
         // return $logCommentLabs;
@@ -184,10 +191,28 @@ class QuestionnaireController extends Controller
     public function detail($id)
     {
         $lab = Lab::find($id);
+        
+        $equipments = array();
+        foreach($lab->equipments as $item){
+            if($item->completed != 1){
+                $equipments[] = $item->id;
+            }
+        }
+        $equipment_count = count($equipments);
+
+        $productLabs = array();
+        foreach($lab->productLabs as $item){
+            if($item->completed != 1){
+                $productLabs[] = $item->id;
+            }
+        }
+        $productLab_count = count($productLabs);
 
         $surveyStatus = SurveyStatus::all();
 
-        return view('bsti_admin.questionnaire.detail', compact(['lab', 'surveyStatus']));
+        return view('bsti_admin.questionnaire.detail', compact([
+            'lab', 'equipment_count', 'productLab_count', 'surveyStatus',
+        ]));
     }
 
     /**

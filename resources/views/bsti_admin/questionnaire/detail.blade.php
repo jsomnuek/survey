@@ -89,7 +89,7 @@
 								<a class="nav-link" id="custom-tabs-four-productLab-tab" data-toggle="pill" href="#custom-tabs-four-productLab" role="tab" aria-controls="custom-tabs-four-productLab" aria-selected="false">
 									<mark>ส่วนที่ 4</mark> รายการทดสอบ 
 									<span class="badge badge-primary">
-										{{ $productLab_count) }}
+										{{ $productLab_count }}
 									</span>
                                 </a>
 							</li>
